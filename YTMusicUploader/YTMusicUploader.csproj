@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>YTMusicUploader</RootNamespace>
+    <AssemblyName>YTMusicUploader</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>yt_logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.113.1\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.113.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.113.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomControls\CustomToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\FastScrollDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\FilterTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Graphics\RoundRectangle.cs" />
+    <Compile Include="CustomControls\Helpers\ColourHelper.cs" />
+    <Compile Include="CustomControls\Helpers\CursorHelper.cs" />
+    <Compile Include="CustomControls\Helpers\DirtyTracker.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssAnonymousBlockBox.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssAnonymousBox.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBlock.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBox.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBoxWord.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBoxWordSplitter.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssConstants.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssDefaults.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssDrawingHelper.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssLayoutEngine.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssLength.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssLineBox.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssPropertyAttribute.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssPropertyInheritedAttribute.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssRectangle.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssTable.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\CssValue.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\HtmlConstants.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\HtmlRenderer.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\HtmlTag.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\InitialContainer.cs" />
+    <Compile Include="CustomControls\Helpers\HtmlHelper\Parser.cs" />
+    <Compile Include="CustomControls\HtmlLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\HtmlPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\HtmlToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ImageButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\OptimisedMetroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\Popup.designer.cs">
+      <DependentUpon>Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\RoundTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ScrollingListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\DirectoryHelper.cs" />
+    <Compile Include="Helpers\FastFileSearcher.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\SafeFileStream.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\CulterHelper.cs" />
+    <Compile Include="MainForm.Delegates.cs">
+      <SubType>Form</SubType>
+	  <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Models\Settings.cs" />
+    <Compile Include="Providers\Models\WatchFolder.cs" />
+    <Compile Include="Providers\Repos\MusicFileRepo.cs" />
+    <Compile Include="Providers\Models\MusicFile.cs" />
+    <Compile Include="Providers\DataAccess.cs" />
+    <Compile Include="Providers\Repos\SettingsRepo.cs" />
+    <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
+    <EmbeddedResource Include="CustomControls\Popup.resx">
+      <DependentUpon>Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MainForm.Events.Buttons.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <None Include="AppData\ytuploader.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yt_logo.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Raw\yt_logo.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yt_logo.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\minus.png" />
+    <None Include="Resources\minus_hover.png" />
+    <None Include="Resources\plus_hover.png" />
+    <None Include="Resources\minus_down.png" />
+    <None Include="Resources\plus_down.png" />
+    <None Include="Resources\cross.png" />
+    <None Include="Resources\Raw\plus_minus.svg" />
+    <None Include="Resources\Raw\tick_cross.svg" />
+    <None Include="Resources\tick.png" />
+    <Content Include="yt_logo.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />
+</Project>

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README.md", "README.md", "{728DD5D2-8863-4B06-A106-B96759224B2C}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTMusicUploader", "YTMusicUploader\YTMusicUploader.csproj", "{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8B387E6-CB36-4ED8-A25B-86F87F1C7548}
+	EndGlobalSection
+EndGlobal
