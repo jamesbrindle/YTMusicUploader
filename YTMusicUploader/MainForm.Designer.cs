@@ -222,7 +222,7 @@
             // pbConnectedToYoutube
             // 
             this.pbConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.tick;
-            this.pbConnectedToYoutube.Location = new System.Drawing.Point(627, 261);
+            this.pbConnectedToYoutube.Location = new System.Drawing.Point(620, 261);
             this.pbConnectedToYoutube.Name = "pbConnectedToYoutube";
             this.pbConnectedToYoutube.Size = new System.Drawing.Size(16, 16);
             this.pbConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -233,7 +233,7 @@
             // pbNotConnectedToYoutube
             // 
             this.pbNotConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.cross;
-            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(630, 263);
+            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(623, 263);
             this.pbNotConnectedToYoutube.Name = "pbNotConnectedToYoutube";
             this.pbNotConnectedToYoutube.Size = new System.Drawing.Size(12, 12);
             this.pbNotConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -302,6 +302,7 @@
             this.btnConnectToYoutube.TabIndex = 15;
             this.btnConnectToYoutube.Text = "Connect to YouTube Music";
             this.btnConnectToYoutube.Transparency = false;
+            this.btnConnectToYoutube.Click += new System.EventHandler(this.BtnConnectToYoutube_Click);
             // 
             // tbThrottleSpeed
             // 

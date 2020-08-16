@@ -185,7 +185,7 @@ namespace JBToolkit.WinForms
                 else
                 {
                     e.Graphics.DrawString(Text, Font, brush, ClientRectangle.Width / 2 + (Image.Width / 2), ClientRectangle.Height / 2 + 1, sf);
-                    e.Graphics.DrawImage(Image, 8, 5, Image.Width, Image.Height);
+                    e.Graphics.DrawImage(Image, 8, 6, Image.Width, Image.Height);
                 }
             }
 
@@ -208,7 +208,7 @@ namespace JBToolkit.WinForms
                 using (Brush brush = new SolidBrush(ForeColor))
                 {
                     e.Graphics.DrawImage(BackgroundImage,
-                        (roundedRect.Rect.Size.Width - BackgroundImage.Size.Width) / 2 + 1,
+                         (roundedRect.Rect.Size.Width - BackgroundImage.Size.Width) / 2 + 1,
                          (roundedRect.Rect.Size.Height - BackgroundImage.Size.Height) / 2 + 1
                         );
                 }

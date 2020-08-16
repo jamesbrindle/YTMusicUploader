@@ -14,6 +14,7 @@ using JBToolkit.Helpers;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.Models;
 using YTMusicUploader.Providers.Repos;
+using System.Threading;
 
 namespace YTMusicUploader
 {
@@ -27,7 +28,7 @@ namespace YTMusicUploader
 
 
         public MainForm() : base(formResizable: false,
-                             controlTagsAsTooltips: false)
+                                 controlTagsAsTooltips: false)
         {
             CulterHelper.GloballySetCultureToGB();
             //CheckForIllegalCrossThreadCalls = false;            
@@ -48,13 +49,17 @@ namespace YTMusicUploader
         {
             // TODO: Try catch and handle here
 
-            DataAccess.CheckAndCopyDatabaseFile();
-            WatchFolders = WatchFolderRepo.Load();
-            Settings = SettingsRepo.Load();
+            new Thread((ThreadStart)delegate
+            {
+                DataAccess.CheckAndCopyDatabaseFile();
+                WatchFolders = WatchFolderRepo.Load();
+                Settings = SettingsRepo.Load();
 
-            SetConnectedToYouTubeMusic(!string.IsNullOrEmpty(Settings.AuthenticationCookie));
-            SetStartWithWindows(Settings.StartWithWindows);
-            BindWatchFoldersList();
-        }
+                SetConnectedToYouTubeMusic(!string.IsNullOrEmpty(Settings.AuthenticationCookie));
+                SetStartWithWindows(Settings.StartWithWindows);
+                BindWatchFoldersList();
+
+            }).Start();
+        }        
     }
 }

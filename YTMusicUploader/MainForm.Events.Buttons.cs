@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YTMusicUploader.Dialogues;
 
 namespace YTMusicUploader
 {
     public partial class MainForm 
     {
+        // Connect to TY Music
+
+        private void BtnConnectToYoutube_Click(object sender, EventArgs e)
+        {
+            new ConnectToYTMusic().ShowDialog();
+        }
+
 
         // Add To Wath Folder
 
