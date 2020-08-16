@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>yt_logo.ico</ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -164,7 +164,7 @@
     <Compile Include="Helpers\CulterHelper.cs" />
     <Compile Include="MainForm.Delegates.cs">
       <SubType>Form</SubType>
-	  <DependentUpon>MainForm.cs</DependentUpon>
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -233,7 +233,7 @@
     <None Include="Resources\Raw\plus_minus.svg" />
     <None Include="Resources\Raw\tick_cross.svg" />
     <None Include="Resources\tick.png" />
-    <Content Include="yt_logo.ico" />
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
