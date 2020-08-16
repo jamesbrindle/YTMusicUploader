@@ -124,6 +124,9 @@ namespace JBToolkit.Windows
             return files;
         }
 
+        /// <summary>
+        /// Shortens a file path to something more readable and containable be adding ... in in the enter. I.e. C:\users\jamesb1\...\Documents
+        /// </summary>
         public static string EllipsisPath(string filePath, int maxLength = 100)
         {
             if (filePath.Length > maxLength)
@@ -194,21 +197,6 @@ namespace JBToolkit.Windows
                     + "be available on this system.", result);
             }
         }
-
-        public static string GetSystem32DirectoryPath()
-        {
-            string winDir = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
-            string system32Directory = Path.Combine(winDir, "system32");
-            if (Environment.Is64BitOperatingSystem && !Environment.Is64BitProcess)
-            {
-                // For 32-bit processes on 64-bit systems, %windir%\system32 folder
-                // can only be accessed by specifying %windir%\sysnative folder.
-                system32Directory = Path.Combine(winDir, "sysnative");
-            }
-
-            return system32Directory;
-        }
-
 
         /// <summary>
         /// Gets the temp path of the Windows environment of the current user
@@ -377,14 +365,5 @@ namespace JBToolkit.Windows
         PublicFolder,
         ThreeDObjects,
         Downloads
-    }
-
-    /// <summary>
-    /// Specify application or website / web service context
-    /// </summary>
-    public enum ContextType
-    {
-        Application,
-        HttpContext
     }
 }

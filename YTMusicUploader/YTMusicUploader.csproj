@@ -99,6 +99,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControls\Graphics\RoundRectangle.cs" />
+    <Compile Include="CustomControls\AntiAliasedLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomControls\Helpers\ColourHelper.cs" />
     <Compile Include="CustomControls\Helpers\CursorHelper.cs" />
     <Compile Include="CustomControls\Helpers\DirtyTracker.cs" />
@@ -216,13 +219,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\yt_logo.svg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\yt_logo.png" />
+    <Content Include="Resources\Logo\yt_logo-128.png" />
+    <Content Include="Resources\Logo\yt_logo-16.png" />
+    <Content Include="Resources\Logo\yt_logo-180.png" />
+    <Content Include="Resources\Logo\yt_logo-24.png" />
+    <Content Include="Resources\Logo\yt_logo-256.png" />
+    <Content Include="Resources\Logo\yt_logo-48.png" />
+    <Content Include="Resources\Logo\yt_logo-64.png" />
+    <Content Include="Resources\Logo\yt_logo-72.png" />
+    <Content Include="Resources\Logo\yt_logo-96.png" />
+    <Content Include="Resources\Raw\yt_logo_sm.svg" />
+    <None Include="Resources\Logo\yt_logo.png" />
+    <None Include="Resources\Logo\yt_logo-32.png" />
     <None Include="Resources\plus.png" />
     <None Include="Resources\minus.png" />
     <None Include="Resources\minus_hover.png" />

@@ -637,28 +637,7 @@ namespace System
             }
         }
 
-        /// <summary>
-        /// For prior to .Net 4.6 -> Creates an enumberable object from a DataTable
-        /// </summary>
-        /// <param name="dataTable">Datatable to convert to IEnumerable</param>
-        /// <returns>IEnumerable object</returns>
-        public static IEnumerable<dynamic> AsEnumerable_Legacy(this DataTable dataTable)
-        {
-            List<dynamic> result = new List<dynamic>();
-            Dictionary<string, object> d;
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                d = new Dictionary<string, object>();
 
-                foreach (DataColumn dc in dataTable.Columns)
-                {
-                    d.Add(dc.ColumnName, dr[dc]);
-                }
-
-                result.Add(ToDynamicObject(d));
-            }
-            return result.AsEnumerable<dynamic>();
-        }
 
         /// <summary>
         /// Converts a DataTable to a list with generic objects
@@ -672,7 +651,7 @@ namespace System
             {
                 List<T> list = new List<T>();
 
-                foreach (var row in dataTable.AsEnumerable_Legacy())
+                foreach (var row in dataTable.AsEnumerable())
                 {
                     T obj = new T();
 
@@ -810,7 +789,7 @@ namespace System
         /// <summary>
         /// Converts property dictionary to dynamic object
         /// </summary>
-        private static dynamic ToDynamicObject(this Dictionary<string, object> properties)
+        public static dynamic ToDynamicObject(this Dictionary<string, object> properties)
         {
             return new MyDynObject(properties);
         }
@@ -856,107 +835,5 @@ namespace System
                 }
             }
         }
-
-        /// <summary>
-        /// Try-Catch-Finally wrapper. Allow you to do this:
-        /// 
-        ///  var result = Try(() => SomeObject.GetPropertyText(someParameterVariable))
-        ///                   .Catch(response: e => { Console.Out.WriteLine(e.Message); })
-        ///                   .Finally(() => Console.Out.WriteLine("Carry on!"));
-        /// </summary>
-        public static TryWrapper<T> Try<T>(Func<T> func)
-        {
-            var product = new TryWrapper<T>();
-
-            try
-            {
-                product.Result = func.Invoke();
-            }
-            catch (Exception e)
-            {
-                product.Exception = e;
-            }
-
-            return product;
-        }
-
-        /// <summary>
-        /// Try-Catch-Finally wrapper. Allow you to do this:
-        /// 
-        ///  var result = Try(() => SomeObject.GetPropertyText(someParameterVariable))
-        ///                   .Catch(response: e => { Console.Out.WriteLine(e.Message); })
-        ///                   .Finally(() => Console.Out.WriteLine("Carry on!"));
-        /// </summary>
-        public static TryWrapper<T> Try<T>(Action action)
-        {
-            var product = new TryWrapper<T>();
-
-            try
-            {
-                action.Invoke();
-            }
-            catch (Exception e)
-            {
-                product.Exception = e;
-            }
-
-            return product;
-        }
-
-        public static CatchWrapper<T> Catch<T>(this TryWrapper<T> wrapper, Action<Exception> response)
-        {
-            if (wrapper.Exception is null)
-            {
-                return wrapper as CatchWrapper<T>;
-            }
-
-            response.Invoke(wrapper);
-            wrapper.Exception = null;
-
-            return wrapper as CatchWrapper<T>;
-        }
-
-        public static TryWrapper<T> Finally<T>(this TryWrapper<T> wrapper, Action<T> response)
-        {
-            response.Invoke(wrapper);
-
-            return wrapper;
-        }
-
-        public static TryWrapper<T> Finally<T>(this TryWrapper<T> wrapper, Func<T> response)
-        {
-            wrapper.Result = response.Invoke();
-
-            return wrapper;
-        }
-
-        public static TryWrapper<T> Finally<T>(this TryWrapper<T> wrapper, Action response)
-        {
-            response.Invoke();
-
-            return wrapper;
-        }
-    }
-
-    public class TryWrapper<T>
-    {
-#pragma warning disable IDE0034 // Simplify 'default' expression
-        protected internal T Result { get; set; } = default(T);
-#pragma warning restore IDE0034 // Simplify 'default' expression
-        protected internal Exception Exception { get; set; } = null;
-
-        public static implicit operator T(TryWrapper<T> wrapper)
-        {
-            return wrapper.Result;
-        }
-
-        public static implicit operator Exception(TryWrapper<T> wrapper)
-        {
-            return wrapper.Exception;
-        }
-    }
-
-    public class CatchWrapper<T> : TryWrapper<T>
-    {
     }
 }
