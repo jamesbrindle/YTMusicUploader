@@ -222,9 +222,9 @@
             // pbConnectedToYoutube
             // 
             this.pbConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.tick;
-            this.pbConnectedToYoutube.Location = new System.Drawing.Point(620, 261);
+            this.pbConnectedToYoutube.Location = new System.Drawing.Point(621, 261);
             this.pbConnectedToYoutube.Name = "pbConnectedToYoutube";
-            this.pbConnectedToYoutube.Size = new System.Drawing.Size(16, 16);
+            this.pbConnectedToYoutube.Size = new System.Drawing.Size(14, 14);
             this.pbConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbConnectedToYoutube.TabIndex = 16;
             this.pbConnectedToYoutube.TabStop = false;

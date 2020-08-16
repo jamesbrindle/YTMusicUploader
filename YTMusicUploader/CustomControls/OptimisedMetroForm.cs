@@ -119,7 +119,7 @@ namespace JBToolkit.WinForms
                         else
                         {
                             Cursor.Current = Cursors.Arrow;
-                            message.Result = (IntPtr)1;  // Processed
+                            message.Result = (IntPtr)1;  // Processed6
                             return;
                         }
                     }

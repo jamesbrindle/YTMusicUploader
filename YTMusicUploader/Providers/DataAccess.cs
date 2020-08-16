@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ionic.Zip;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
@@ -11,6 +12,16 @@ namespace YTMusicUploader.Providers
 {
     public abstract class DataAccess
     {
+        public static string AppDataLocation
+        {
+            get
+            {
+                return Path.Combine(Path.GetTempPath(), @"TYUploader");
+            }
+        }
+
+
+
         public static string DBLocation
         {
             get
@@ -31,11 +42,13 @@ namespace YTMusicUploader.Providers
         {
             if (!File.Exists(DBLocation))
             {
-                if (!Directory.Exists(Path.GetDirectoryName(DBLocation)))
-                    Directory.CreateDirectory(Path.GetDirectoryName(DBLocation));
+                if (!Directory.Exists(AppDataLocation))
+                    Directory.CreateDirectory(AppDataLocation);
 
                 File.Copy(Path.Combine(WorkingDirectory, @"AppData\ytuploader.db"), DBLocation);
             }
+
+
         }
 
         public static SQLiteConnection DbConnection()

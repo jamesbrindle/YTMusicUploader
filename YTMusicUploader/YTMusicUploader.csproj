@@ -66,6 +66,21 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.SQLite, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Wpf, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
     </Reference>
@@ -74,6 +89,24 @@
     </Reference>
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
@@ -184,6 +217,7 @@
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\PythonHelper.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -205,6 +239,8 @@
     <Compile Include="Providers\DataAccess.cs" />
     <Compile Include="Providers\Repos\SettingsRepo.cs" />
     <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
+    <Compile Include="Providers\Requests.cs" />
+    <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
     <EmbeddedResource Include="CustomControls\Popup.resx">
       <DependentUpon>Popup.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +264,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <None Include="AppData\Python38.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AppData\ytmusicapi.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="AppData\ytuploader.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -259,6 +301,7 @@
     <Content Include="Resources\Logo\yt_logo-72.png" />
     <Content Include="Resources\Logo\yt_logo-96.png" />
     <Content Include="Resources\Raw\yt_logo_sm.svg" />
+    <None Include="Resources\tick.png" />
     <None Include="Resources\Logo\yt_logo.png" />
     <None Include="Resources\Logo\yt_logo-32.png" />
     <None Include="Resources\plus.png" />
@@ -270,7 +313,6 @@
     <None Include="Resources\cross.png" />
     <None Include="Resources\Raw\plus_minus.svg" />
     <None Include="Resources\Raw\tick_cross.svg" />
-    <None Include="Resources\tick.png" />
     <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup />
@@ -282,7 +324,9 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets')" />
 </Project>

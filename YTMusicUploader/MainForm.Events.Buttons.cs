@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MetroFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YTMusicUploader.Dialogues;
+using YTMusicUploader.Providers;
 
 namespace YTMusicUploader
 {
@@ -14,9 +16,23 @@ namespace YTMusicUploader
 
         private void BtnConnectToYoutube_Click(object sender, EventArgs e)
         {
-            new ConnectToYTMusic().ShowDialog();
+            try
+            {
+                var result = new ConnectToYTMusic(this).ShowDialog();
+                if (result == DialogResult.OK)
+                    SetConnectedToYouTubeMusic(Requests.IsAuthenticated());
+            }
+            catch(Exception)
+            {
+                MetroMessageBox.Show(
+                   this,
+                   @"You must install the latest verion of Microsoft Edge from  the Canary channel for this to work: https://www.microsoftedgeinsider.com/en-us/download",
+                   "Dependency Required",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Asterisk,
+                   120);
+            }
         }
-
 
         // Add To Wath Folder
 
