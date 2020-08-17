@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YTMusicUploader.Dialogues;
@@ -10,7 +11,7 @@ using YTMusicUploader.Providers;
 
 namespace YTMusicUploader
 {
-    public partial class MainForm 
+    public partial class MainForm
     {
         // Connect to TY Music
 
@@ -18,19 +19,36 @@ namespace YTMusicUploader
         {
             try
             {
-                var result = new ConnectToYTMusic(this).ShowDialog();
-                if (result == DialogResult.OK)
+                ConnectToYTMusicForm.ShowDialog();
+                new Thread((ThreadStart)delegate
+                {
                     SetConnectedToYouTubeMusic(Requests.IsAuthenticated());
+                });
             }
-            catch(Exception)
+            catch (Exception)
             {
-                MetroMessageBox.Show(
-                   this,
-                   @"You must install the latest verion of Microsoft Edge from  the Canary channel for this to work: https://www.microsoftedgeinsider.com/en-us/download",
-                   "Dependency Required",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Asterisk,
-                   120);
+                try
+                {
+                    ConnectToYTMusicForm.BrowserControl.Dispose();
+                    ConnectToYTMusicForm.Dispose();
+                    ConnectToYTMusicForm = new ConnectToYTMusic(this);
+
+                    ConnectToYTMusicForm.ShowDialog();
+                    new Thread((ThreadStart)delegate
+                    {
+                        SetConnectedToYouTubeMusic(Requests.IsAuthenticated());
+                    });
+                }
+                catch (Exception)
+                {
+                    MetroMessageBox.Show(
+                       this,
+                       @"You must install the latest verion of Microsoft Edge from  the Canary channel for this to work: https://www.microsoftedgeinsider.com/en-us/download",
+                       "Dependency Required",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Asterisk,
+                       120);
+                }
             }
         }
 
@@ -76,6 +94,6 @@ namespace YTMusicUploader
         private void BtnRemoveWatchFolder_MouseDown(object sender, MouseEventArgs e)
         {
             btnRemoveWatchFolder.Image = Properties.Resources.minus_down;
-        }       
+        }
     }
 }

@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectToYTMusic));
+            this.lblSignInMessage = new System.Windows.Forms.Label();
             this.pnlBrowser = new System.Windows.Forms.Panel();
             this.browser = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.pbConnectSuccess = new System.Windows.Forms.PictureBox();
+            this.lblConnectSuccess = new System.Windows.Forms.Label();
             this.pnlBrowser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbConnectSuccess)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblSignInMessage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(479, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Sign into YouTube Music to retrieve your authorisation cookie. Once retrieved thi" +
-    "s window will close.";
+            this.lblSignInMessage.AutoSize = true;
+            this.lblSignInMessage.Location = new System.Drawing.Point(23, 37);
+            this.lblSignInMessage.Name = "lblSignInMessage";
+            this.lblSignInMessage.Size = new System.Drawing.Size(300, 13);
+            this.lblSignInMessage.TabIndex = 0;
+            this.lblSignInMessage.Text = "Sign into YouTube Music to retrieve your authorisation cookie.";
             // 
             // pnlBrowser
             // 
@@ -52,33 +55,61 @@
             this.pnlBrowser.Controls.Add(this.browser);
             this.pnlBrowser.Location = new System.Drawing.Point(26, 76);
             this.pnlBrowser.Name = "pnlBrowser";
-            this.pnlBrowser.Size = new System.Drawing.Size(751, 701);
+            this.pnlBrowser.Size = new System.Drawing.Size(988, 701);
             this.pnlBrowser.TabIndex = 1;
             // 
             // browser
             // 
             this.browser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browser.Location = new System.Drawing.Point(0, 0);
+            this.browser.MinimumSize = new System.Drawing.Size(988, 701);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(751, 701);
+            this.browser.Size = new System.Drawing.Size(988, 701);
             this.browser.Source = new System.Uri("https://music.youtube.com/", System.UriKind.Absolute);
             this.browser.TabIndex = 0;
             this.browser.Text = "YouTube Music";
             this.browser.ZoomFactor = 1D;
             this.browser.CoreWebView2Ready += new System.EventHandler<System.EventArgs>(this.Browser_CoreWebView2Ready);
             // 
+            // pbConnectSuccess
+            // 
+            this.pbConnectSuccess.Image = global::YTMusicUploader.Properties.Resources.success;
+            this.pbConnectSuccess.Location = new System.Drawing.Point(23, 21);
+            this.pbConnectSuccess.Name = "pbConnectSuccess";
+            this.pbConnectSuccess.Size = new System.Drawing.Size(40, 40);
+            this.pbConnectSuccess.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbConnectSuccess.TabIndex = 2;
+            this.pbConnectSuccess.TabStop = false;
+            this.pbConnectSuccess.Visible = false;
+            // 
+            // lblConnectSuccess
+            // 
+            this.lblConnectSuccess.AutoSize = true;
+            this.lblConnectSuccess.Location = new System.Drawing.Point(75, 37);
+            this.lblConnectSuccess.Name = "lblConnectSuccess";
+            this.lblConnectSuccess.Size = new System.Drawing.Size(217, 13);
+            this.lblConnectSuccess.TabIndex = 3;
+            this.lblConnectSuccess.Text = "Connected! You can now close this window.";
+            this.lblConnectSuccess.Visible = false;
+            // 
             // ConnectToYTMusic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 800);
+            this.ClientSize = new System.Drawing.Size(1037, 800);
+            this.Controls.Add(this.lblConnectSuccess);
+            this.Controls.Add(this.pbConnectSuccess);
             this.Controls.Add(this.pnlBrowser);
-            this.Controls.Add(this.label1);
-            this.MinimumSize = new System.Drawing.Size(800, 800);
+            this.Controls.Add(this.lblSignInMessage);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(920, 800);
             this.Name = "ConnectToYTMusic";
+            this.Style = MetroFramework.MetroColorStyle.Red;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConnectToYTMusic_FormClosing);
             this.Load += new System.EventHandler(this.ConnectToYTMusic_Load);
+            this.Shown += new System.EventHandler(this.ConnectToYTMusic_Shown);
             this.pnlBrowser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbConnectSuccess)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,8 +117,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSignInMessage;
         private System.Windows.Forms.Panel pnlBrowser;
         private Microsoft.Web.WebView2.WinForms.WebView2 browser;
+        private System.Windows.Forms.PictureBox pbConnectSuccess;
+        private System.Windows.Forms.Label lblConnectSuccess;
     }
 }

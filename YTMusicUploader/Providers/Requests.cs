@@ -22,19 +22,11 @@ namespace YTMusicUploader.Providers
         public static string PythonPath = null;
         public static ScriptEngine PythonEngine = Python.CreateEngine();
 
-        public static string AppDataLocation
-        {
-            get
-            {
-                return Path.Combine(Path.GetTempPath(), @"TYUploader");
-            }
-        }
-
         public static string ApiLocation
         {
             get
             {
-                return Path.Combine(Path.GetTempPath(), @"TYUploader\ytmusicapi");
+                return Path.Combine(Global.AppDataLocation, @"ytmusicapi");
             }
         }
 
@@ -42,15 +34,7 @@ namespace YTMusicUploader.Providers
         {
             get
             {
-                return Path.Combine(Path.GetTempPath(), @"TYUploader\ytmusicapi\requests");
-            }
-        }
-
-        public static string WorkingDirectory
-        {
-            get
-            {
-                return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                return Path.Combine(Global.AppDataLocation, @"ytmusicapi\requests");
             }
         }
 
@@ -58,7 +42,7 @@ namespace YTMusicUploader.Providers
         {
             get
             {
-                return Path.Combine(Path.GetTempPath(), @"TYUploader\ytmusicapi\requests\headers_auth.json");
+                return Path.Combine(Global.AppDataLocation, @"ytmusicapi\requests\headers_auth.json");
             }
         }
 
@@ -70,28 +54,32 @@ namespace YTMusicUploader.Providers
             File.WriteAllText(AuthHeaderLocation, JsonConvert.SerializeObject(jsonObj, Formatting.Indented));
         }
 
-        public static bool CheckAndCopyApiFiles()
+        public static bool CheckAndCopyApiFiles(MainForm mainForm)
         {
             if (!Directory.Exists(ApiLocation))
                 Directory.CreateDirectory(ApiLocation);
 
-            var zip = ZipFile.Read(Path.Combine(WorkingDirectory, @"AppData\ytmusicapi.zip"));
+            var zip = ZipFile.Read(Path.Combine(Global.WorkingDirectory, @"AppData\ytmusicapi.zip"));
             zip.ExtractAll(ApiLocation, ExtractExistingFileAction.OverwriteSilently);
 
             PythonPath = PythonHelper.GetPythonPath();
 
             if (string.IsNullOrEmpty(PythonPath))
             {
-                zip = ZipFile.Read(Path.Combine(WorkingDirectory, @"AppData\Python38.zip"));
-                zip.ExtractAll(Path.Combine(AppDataLocation, "Python38"), ExtractExistingFileAction.OverwriteSilently);
+                mainForm.SetStatusMessage("Installing Python");
+
+                zip = ZipFile.Read(Path.Combine(Global.WorkingDirectory, @"AppData\Python38.zip"));
+                zip.ExtractAll(Path.Combine(Global.AppDataLocation, "Python38"), ExtractExistingFileAction.OverwriteSilently);
 
                 var name = "PATH";
                 var scope = EnvironmentVariableTarget.User; 
-                var oldValue = Environment.GetEnvironmentVariable(name, scope);
+                var oldValue = Environment.GetEnvironmentVariable(name, scope);                
                 var newValue = oldValue + @";" + Path.Combine(ApiLocation, "Python38") + @"\";
                 Environment.SetEnvironmentVariable(name, newValue, scope);
 
-                PythonPath = Path.Combine(AppDataLocation, @"Python38\python.exe");
+                PythonPath = Path.Combine(Global.AppDataLocation, @"Python38\python.exe");
+
+                mainForm.SetStatusMessage("Not running");
             }
 
             try

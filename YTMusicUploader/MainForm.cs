@@ -15,6 +15,7 @@ using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.Models;
 using YTMusicUploader.Providers.Repos;
 using System.Threading;
+using YTMusicUploader.Dialogues;
 
 namespace YTMusicUploader
 {
@@ -25,7 +26,7 @@ namespace YTMusicUploader
         public MusicFileRepo MusicFileRepo { get; set; } = new MusicFileRepo();
         public Settings Settings { get; set; }
         public List<WatchFolder> WatchFolders { get; set; }
-
+        public ConnectToYTMusic ConnectToYTMusicForm { get; set; }
 
         public MainForm() : base(formResizable: false,
                                  controlTagsAsTooltips: false)
@@ -36,6 +37,8 @@ namespace YTMusicUploader
             InitializeComponent();
             SuspendDrawing(this);
 
+            ConnectToYTMusicForm = new ConnectToYTMusic(this);
+            InitialiseTooltips();
             PerformPrechecks();
         }
 
@@ -45,20 +48,42 @@ namespace YTMusicUploader
             ResumeDrawing(this);
         }
 
+        private void InitialiseTooltips()
+        {
+            ToolTip tyConnectSuccess = new ToolTip
+            {
+                ToolTipTitle = "YouTube Music Connection",
+                ToolTipIcon = ToolTipIcon.Info,
+                IsBalloon = true,
+                InitialDelay = 1000,
+            };
+
+            ToolTip tyConnectFailure = new ToolTip
+            {
+                ToolTipTitle = "YouTube Music Connection",
+                ToolTipIcon = ToolTipIcon.Warning,
+                IsBalloon = true,
+                InitialDelay = 1000,
+            };
+
+            tyConnectSuccess.SetToolTip(pbConnectedToYoutube, "\nYou are connected to YouTube Music and successfully authenticated.");
+            tyConnectFailure.SetToolTip(pbNotConnectedToYoutube, "\nYou are not connected to YouTube Music.\n\nPress the 'Connect to YouTube Music button and sign into YouTube Music.");
+        }
+
         private void PerformPrechecks()
         {
             // TODO: Try catch and handle here
 
             new Thread((ThreadStart)delegate
             {
-                DataAccess.CheckAndCopyDatabaseFile();                
+                DataAccess.CheckAndCopyDatabaseFile();
                 WatchFolders = WatchFolderRepo.Load();
                 Settings = SettingsRepo.Load();
-                
+
                 SetStartWithWindows(Settings.StartWithWindows);
                 BindWatchFoldersList();
 
-                if (!Requests.CheckAndCopyApiFiles())
+                if (!Requests.CheckAndCopyApiFiles(this))
                 {
                     MetroMessageBox.Show(
                        this,
@@ -70,13 +95,22 @@ namespace YTMusicUploader
                 }
                 else
                 {
+                    SetStatusMessage("Connecting to YouTube Music");
+
                     if (!string.IsNullOrEmpty(Settings.AuthenticationCookie))
                         SetConnectedToYouTubeMusic(Requests.IsAuthenticated());
                     else
                         SetConnectedToYouTubeMusic(false);
+
+                    SetStatusMessage("Not running");
                 }
 
             }).Start();
-        }        
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ConnectToYTMusicForm.BrowserControl.Dispose();
+        }
     }
 }

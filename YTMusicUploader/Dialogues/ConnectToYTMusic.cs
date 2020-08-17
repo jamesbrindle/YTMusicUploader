@@ -1,5 +1,6 @@
 ﻿using JBToolkit.WinForms;
 using Microsoft.Web.WebView2.Core;
+using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System;
 using System.Windows.Forms;
@@ -10,9 +11,11 @@ namespace YTMusicUploader.Dialogues
     public partial class ConnectToYTMusic : OptimisedMetroForm
     {
         private MainForm MainForm { get; set; }
+        private bool Invisible { get; set; }
+        public WebView2 BrowserControl { get { return browser; } }
 
         public ConnectToYTMusic(MainForm mainForm) : base(formResizable: true,
-                                         controlTagsAsTooltips: false)
+                                                          controlTagsAsTooltips: false)
         {
             MainForm = mainForm;
             InitializeComponent();
@@ -20,14 +23,15 @@ namespace YTMusicUploader.Dialogues
         }
 
         private void ConnectToYTMusic_Load(object sender, EventArgs e)
-        {
+        {            
             OnLoad(e);
             ResumeDrawing(this);
         }
 
         private void ConnectToYTMusic_FormClosing(object sender, FormClosingEventArgs e)
         {
-            browser.Dispose();
+            e.Cancel = true;
+            Hide();
         }
 
         private void CoreWebView2_WebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs e)
@@ -51,8 +55,9 @@ namespace YTMusicUploader.Dialogues
                         Requests.UpdateAuthHeader(cookieValue);
                         MainForm.Settings.Save();
 
-                        DialogResult = DialogResult.OK;
-                        this.Hide();
+                        lblSignInMessage.Visible = false;
+                        pbConnectSuccess.Visible = true;
+                        lblConnectSuccess.Visible = true;
                     }
                 }
                 catch { }                
@@ -63,6 +68,11 @@ namespace YTMusicUploader.Dialogues
         {
             browser.CoreWebView2.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
             browser.CoreWebView2.WebResourceRequested += CoreWebView2_WebResourceRequested;
+        }
+
+        private void ConnectToYTMusic_Shown(object sender, EventArgs e)
+        {
+         
         }
     }
 }

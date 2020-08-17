@@ -12,29 +12,11 @@ namespace YTMusicUploader.Providers
 {
     public abstract class DataAccess
     {
-        public static string AppDataLocation
-        {
-            get
-            {
-                return Path.Combine(Path.GetTempPath(), @"TYUploader");
-            }
-        }
-
-
-
         public static string DBLocation
         {
             get
             {
-                return Path.Combine(Path.GetTempPath(), @"TYUploader\ytuploader.db");
-            }
-        }
-
-        public static string WorkingDirectory
-        {
-            get
-            {
-                return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                return Path.Combine(Global.AppDataLocation, @"ytuploader.db");
             }
         }
 
@@ -42,13 +24,11 @@ namespace YTMusicUploader.Providers
         {
             if (!File.Exists(DBLocation))
             {
-                if (!Directory.Exists(AppDataLocation))
-                    Directory.CreateDirectory(AppDataLocation);
+                if (!Directory.Exists(Global.AppDataLocation))
+                    Directory.CreateDirectory(Global.AppDataLocation);
 
-                File.Copy(Path.Combine(WorkingDirectory, @"AppData\ytuploader.db"), DBLocation);
+                File.Copy(Path.Combine(Global.WorkingDirectory, @"AppData\ytuploader.db"), DBLocation);
             }
-
-
         }
 
         public static SQLiteConnection DbConnection()

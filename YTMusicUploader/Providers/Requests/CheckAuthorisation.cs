@@ -51,7 +51,7 @@ namespace YTMusicUploader.Providers
                     "Output from process: " + outputStringBuilder.ToString());
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

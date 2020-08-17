@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 
 namespace JBToolkit.Windows
 {
-
     /// <summary>
     /// Class containing methods to retrieve specific file system paths.
     /// </summary>
@@ -20,14 +19,51 @@ namespace JBToolkit.Windows
             "{BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968}", // Links
             "{4BD8D571-6D19-48D3-BE97-422220080E43}", // Music
             "{33E28130-4E1E-4676-835A-98395C3BC3BB}", // Pictures
-            "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}", // SavedGames
-            "{7D1D3A04-DEBB-4115-95CF-2F29DA2920DA}", // SavedSearches
+            "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}", // Saved Games
+            "{7D1D3A04-DEBB-4115-95CF-2F29DA2920DA}", // Saved Searches
             "{18989B1D-99B5-455B-841C-AB7C74E4DDFC}", // Videos
             "{BD84B380-8CA2-1069-AB1D-08000948F534}", // Fonts
             "{4336a54d-038b-4685-ab02-99bb52d3fb8b}", // Public Folder
             "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}", // 3D Objects
             "{018D5C66-4533-4307-9B53-224DE2ED1FE6}", // OneDrive
             "{374DE290-123F-4565-9164-39C4925E467B}", // Downloads
+            "{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}", // Local App Data
+            "{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}", // Add New Programs
+            "{724EF170-A42D-4FEF-9F26-B60E846FBA4F}", // Admin Tools
+            "{D0384E7D-BAC3-4797-8F14-CBA229B392B5}", // Common Admin Tools
+            "{0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}", // Common Programs
+            "{A4115719-D62E-491D-AA7C-E74B8BE3B067}", // CommonStartMenu
+            "{82A5EA35-D9CD-47C5-9629-E15D2F714E6E}", // CommonStartup
+            "{B94237E7-57AC-4347-9151-B08C6C32D1F7}", // CommonTemplates
+            "{0AC0837C-BBF8-452A-850D-79D08E667CA7}", // Computer
+            "{82A74AEB-AEB4-465C-A014-D097EE346D63}", // ControlPanel
+            "{CAC52C1A-B53D-4EDC-92D7-6B2E8AC19434}", // Games
+            "{D20BEEC4-5CA8-4905-AE3B-BF251EA09B53}", // Network
+            "{76FC4E2D-D6AD-4519-A663-37BD56068185}", // Printers
+            "{62AB5D82-FDC1-4DC3-A9DD-070D1D495D97}", // ProgramData
+            "{905E63B6-C1BF-494E-B29C-65B732D3D21A}", // ProgramFiles
+            "{6D809377-6AF0-444B-8957-A3773F02200E}", // ProgramFilesX64
+            "{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}", // ProgramFilesX86
+            "{A77F5D77-2E2B-44C3-A6A2-ABA601054A51}", // Programs
+            "{DFDF76A2-C82A-4D63-906A-5644AC457385}", // Public
+            "{C4AA340D-F20F-4863-AFEF-F87EF2E6BA25}", // PublicDesktop
+            "{ED4824AF-DCE4-45A8-81E2-FC7965083634}", // PublicDocuments
+            "{3D644C9B-1FB8-4F30-9B45-F670235F79C0}", // PublicDownloads
+            "{3214FAB5-9757-4298-BB61-92A9DEAA44FF}", // PublicMusic
+            "{B6EBFB86-6907-413C-9AF7-4FC2ABF07CC5}", // PublicPictures
+            "{2400183A-6185-49FB-A2D8-4A392A602BA3}", // PublicVideos
+            "{52A4F021-7B75-48A9-9F6B-4B87A210BC8F}", // QuickLaunch
+            "{AE50C081-EBD2-438A-8655-8A092E34987A}", // RecordedTV
+            "{BD85E001-112E-431E-983B-7B15AC09FFF1}", // Recent
+            "{B7534046-3ECB-4C18-BE4E-64CD4CB7D6AC}", // RecycleBin
+            "{3EB685DB-65F9-4CF6-A03A-E3EF65729F3D}", // RoamingAppData
+            "{625B53C3-AB48-4EC1-BA1F-A1EF4146FC19}", // StartMenu
+            "{B97D20BB-F46A-4C97-BA10-5E3608430854}", // Startup
+            "{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}", // System
+            "{D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}", // SystemX86
+            "{A63293E8-664E-48DB-A079-DF759E0509F7}", // Templates
+            "{F3CE0F7C-4901-4ACC-8648-D5D44B04EF8F}", // UsersFiles
+            "{F38BF404-1D43-42F2-9305-67DE0B28FC23}"  // Windows
         };
 
         /// <summary>
@@ -351,6 +387,62 @@ namespace JBToolkit.Windows
     /// </summary>
     public enum KnownFolder
     {
+        /*
+            "{56784854-C6CB-462B-8169-88E350ACB882}", // Contacts            
+            "{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}", // Desktop
+            "{FDD39AD0-238F-46AF-ADB4-6C85480369C7}", // Documents
+            "{1777F761-68AD-4D8A-87BD-30B759FA33DD}", // Favorites
+            "{BFB9D5E0-C6A9-404C-B2B2-AE6DB6AF4968}", // Links
+            "{4BD8D571-6D19-48D3-BE97-422220080E43}", // Music
+            "{33E28130-4E1E-4676-835A-98395C3BC3BB}", // Pictures
+            "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}", // Saved Games
+            "{7D1D3A04-DEBB-4115-95CF-2F29DA2920DA}", // Saved Searches
+            "{18989B1D-99B5-455B-841C-AB7C74E4DDFC}", // Videos
+            "{BD84B380-8CA2-1069-AB1D-08000948F534}", // Fonts
+            "{4336a54d-038b-4685-ab02-99bb52d3fb8b}", // Public Folder
+            "{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}", // 3D Objects
+            "{018D5C66-4533-4307-9B53-224DE2ED1FE6}", // OneDrive
+            "{374DE290-123F-4565-9164-39C4925E467B}", // Downloads
+            "{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}", // Local App Data
+            "{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}", // Add New Programs
+            "{724EF170-A42D-4FEF-9F26-B60E846FBA4F}", // Admin Tools
+            "{D0384E7D-BAC3-4797-8F14-CBA229B392B5}", // Common Admin Tools
+            "{0139D44E-6AFE-49F2-8690-3DAFCAE6FFB8}", // Common Programs
+            "{A4115719-D62E-491D-AA7C-E74B8BE3B067}", // Common StartMenu
+            "{82A5EA35-D9CD-47C5-9629-E15D2F714E6E}", // Common Startup
+            "{B94237E7-57AC-4347-9151-B08C6C32D1F7}", // Common Templates
+            "{0AC0837C-BBF8-452A-850D-79D08E667CA7}", // Computer
+            "{82A74AEB-AEB4-465C-A014-D097EE346D63}", // Control Panel
+            "{CAC52C1A-B53D-4EDC-92D7-6B2E8AC19434}", // Games
+            "{D20BEEC4-5CA8-4905-AE3B-BF251EA09B53}", // Network
+            "{76FC4E2D-D6AD-4519-A663-37BD56068185}", // Printers
+            "{62AB5D82-FDC1-4DC3-A9DD-070D1D495D97}", // Program Data
+            "{905E63B6-C1BF-494E-B29C-65B732D3D21A}", // Program Files
+            "{6D809377-6AF0-444B-8957-A3773F02200E}", // Program Files X64
+            "{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}", // Program Files X86
+            "{A77F5D77-2E2B-44C3-A6A2-ABA601054A51}", // Programs
+            "{DFDF76A2-C82A-4D63-906A-5644AC457385}", // Public
+            "{C4AA340D-F20F-4863-AFEF-F87EF2E6BA25}", // Public Desktop
+            "{ED4824AF-DCE4-45A8-81E2-FC7965083634}", // Public Documents
+            "{3D644C9B-1FB8-4F30-9B45-F670235F79C0}", // Public Downloads
+            "{3214FAB5-9757-4298-BB61-92A9DEAA44FF}", // Public Music
+            "{B6EBFB86-6907-413C-9AF7-4FC2ABF07CC5}", // Public Pictures
+            "{2400183A-6185-49FB-A2D8-4A392A602BA3}", // Public Videos
+            "{52A4F021-7B75-48A9-9F6B-4B87A210BC8F}", // Quick Launch
+            "{AE50C081-EBD2-438A-8655-8A092E34987A}", // Recorded TV
+            "{BD85E001-112E-431E-983B-7B15AC09FFF1}", // Recent
+            "{B7534046-3ECB-4C18-BE4E-64CD4CB7D6AC}", // Recycle Bin
+            "{3EB685DB-65F9-4CF6-A03A-E3EF65729F3D}", // Roaming App Data
+            "{625B53C3-AB48-4EC1-BA1F-A1EF4146FC19}", // Start Menu
+            "{B97D20BB-F46A-4C97-BA10-5E3608430854}", // Startup
+            "{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}", // System
+            "{D65231B0-B2F1-4857-A4CE-A8E7C6EA7D27}", // System X86
+            "{A63293E8-664E-48DB-A079-DF759E0509F7}", // Templates
+            "{F3CE0F7C-4901-4ACC-8648-D5D44B04EF8F}", // Users Files
+            "{F38BF404-1D43-42F2-9305-67DE0B28FC23}"  // Windows                
+         */
+
+
         Contacts,
         Desktop,
         Documents,
@@ -364,6 +456,44 @@ namespace JBToolkit.Windows
         Fonts,
         PublicFolder,
         ThreeDObjects,
-        Downloads
+        OneDrive,
+        Downloads,
+        LocalAppData,
+        AddNewPrograms,
+        AdminTools,
+        CommonAdminTools,
+        CommonPrograms,
+        CommonStartMenu,
+        CommonStartup,
+        CommonTemplates,
+        Computer,
+        ControlPanel,
+        Games,
+        Network,
+        Printers,
+        ProgramData,
+        ProgramFiles,
+        ProgramFilesX64,
+        ProgramFilesX86,
+        Programs,
+        Public,
+        PublicDesktop,
+        PublicDocuments,
+        PublicDownloads,
+        PublicMusic,
+        PublicPictures,
+        PublicVideos,
+        QuickLaunch,
+        RecordedTV,
+        Recent,
+        RecycleBin,
+        RoamingAppData,
+        StartMenu,
+        Startup,
+        System,
+        SystemX86,
+        Templates,
+        UsersFiles,
+        Windows
     }
 }

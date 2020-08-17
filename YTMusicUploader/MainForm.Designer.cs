@@ -352,6 +352,7 @@
             this.Name = "MainForm";
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "YT Music Uploader";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).EndInit();
             this.panel1.ResumeLayout(false);

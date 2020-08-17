@@ -214,6 +214,7 @@
     <Compile Include="Dialogues\ConnectToYTMusic.Designer.cs">
       <DependentUpon>ConnectToYTMusic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
@@ -300,7 +301,9 @@
     <Content Include="Resources\Logo\yt_logo-64.png" />
     <Content Include="Resources\Logo\yt_logo-72.png" />
     <Content Include="Resources\Logo\yt_logo-96.png" />
+    <Content Include="Resources\Raw\success.svg" />
     <Content Include="Resources\Raw\yt_logo_sm.svg" />
+    <None Include="Resources\success.png" />
     <None Include="Resources\tick.png" />
     <None Include="Resources\Logo\yt_logo.png" />
     <None Include="Resources\Logo\yt_logo-32.png" />

@@ -11,6 +11,20 @@ namespace YTMusicUploader
 {
     public partial class MainForm
     {
+        delegate void SetStatusMessageDelegate(string statusMessage);
+        public void SetStatusMessage(string statusMessage)
+        {
+            if (lblStatus.InvokeRequired)
+            {
+                SetStatusMessageDelegate d = new SetStatusMessageDelegate(SetStatusMessage);
+                Invoke(d, new object[] { statusMessage });
+            }
+            else
+            {
+                lblStatus.Text = statusMessage;
+            }
+        }
+
         delegate void SetConnectedToYouTubeMusicDelegate(bool connectedToYouTubeMusic);
         public void SetConnectedToYouTubeMusic(bool connectedToYouTubeMusic)
         {
