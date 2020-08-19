@@ -1,11 +1,5 @@
 ﻿using JBToolkit.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using YTMusicUploader.Providers.Models;
 
 namespace YTMusicUploader
 {
@@ -28,6 +22,8 @@ namespace YTMusicUploader
         delegate void SetConnectedToYouTubeMusicDelegate(bool connectedToYouTubeMusic);
         public void SetConnectedToYouTubeMusic(bool connectedToYouTubeMusic)
         {
+            ConnectedToYTMusic = connectedToYouTubeMusic;
+
             if (pbConnectedToYoutube.InvokeRequired ||
                 pbNotConnectedToYoutube.InvokeRequired)
             {
@@ -63,8 +59,8 @@ namespace YTMusicUploader
             }
         }
 
-        delegate void SetThrottleSpeedDelegate(int mbps);
-        public void SetThrottleSpeed(int mbps)
+        delegate void SetThrottleSpeedDelegate(string mbps);
+        public void SetThrottleSpeed(string mbps)
         {
             if (tbThrottleSpeed.InvokeRequired)
             {
@@ -73,16 +69,118 @@ namespace YTMusicUploader
             }
             else
             {
-                if (mbps == 0 || mbps == -1)
+                if (mbps == "0" || mbps == "-1" || mbps == "∞")
                     tbThrottleSpeed.Text = "∞";
                 else
+                {
                     tbThrottleSpeed.Text = mbps.ToString();
+                }
+            }
+        }
+
+        delegate void SetVersionDelegate(string version);
+        public void SetVersion(string version)
+        {
+            if (lblVersion.InvokeRequired)
+            {
+                SetVersionDelegate d = new SetVersionDelegate(SetVersion);
+                Invoke(d, new object[] { version });
+            }
+            else
+            {
+                lblVersion.Text = version;
+            }
+        }
+
+        delegate void SetUploadingMessageDelegate(string text);
+        public void SetUploadingMessage(string text)
+        {
+            if (lblUploadingMessage.InvokeRequired)
+            {
+                SetUploadingMessageDelegate d = new SetUploadingMessageDelegate(SetUploadingMessage);
+                Invoke(d, new object[] { text });
+            }
+            else
+            {
+                lblUploadingMessage.Text = text;
+            }
+        }
+
+        delegate void SetDiscoveredFilesLabelDelegate(string text);
+        public void SetDiscoveredFilesLabel(string text)
+        {
+            if (lblDiscoveredFiles.InvokeRequired)
+            {
+                SetDiscoveredFilesLabelDelegate d = new SetDiscoveredFilesLabelDelegate(SetDiscoveredFilesLabel);
+                Invoke(d, new object[] { text });
+            }
+            else
+            {
+                lblDiscoveredFiles.Text = text;
+            }
+        }
+
+        delegate void SetIssuesLabelDelegate(string text);
+        public void SetIssuesLabel(string text)
+        {
+            if (lblIssues.InvokeRequired)
+            {
+                SetIssuesLabelDelegate d = new SetIssuesLabelDelegate(SetIssuesLabel);
+                Invoke(d, new object[] { text });
+            }
+            else
+            {
+                lblIssues.Text = text;
+            }
+        }
+
+        delegate string GetIssuesLabelDelegate();
+        public string GetIssuesLabel()
+        {
+            if (lblIssues.InvokeRequired)
+            {
+                GetIssuesLabelDelegate d = new GetIssuesLabelDelegate(GetIssuesLabel);
+                return (string)Invoke(d, new object[] { });
+            }
+            else
+            {
+                return lblIssues.Text;
+            }
+        }
+
+        delegate void SetUploadedLabelDelegate(string text);
+        public void SetUploadedLabel(string text)
+        {
+            if (lblUploaded.InvokeRequired)
+            {
+                SetUploadedLabelDelegate d = new SetUploadedLabelDelegate(SetUploadedLabel);
+                Invoke(d, new object[] { text });
+            }
+            else
+            {
+                lblUploaded.Text = text;
+            }
+        }
+
+        delegate string GetUploadLabelDelegate();
+        public string GetUploadLabel()
+        {
+            if (lblUploaded.InvokeRequired)
+            {
+                GetUploadLabelDelegate d = new GetUploadLabelDelegate(GetUploadLabel);
+                return (string) Invoke(d, new object[] { });
+            }
+            else
+            {
+                return lblUploaded.Text;
             }
         }
 
         delegate void BindWatchFoldersListDelegate();
         public void BindWatchFoldersList()
         {
+            WatchFolders = WatchFolderRepo.Load();
+
             if (lbWatchFolders.InvokeRequired)
             {
                 BindWatchFoldersListDelegate d = new BindWatchFoldersListDelegate(BindWatchFoldersList);
@@ -98,7 +196,6 @@ namespace YTMusicUploader
                         DirectoryHelper.EllipsisPath(watchFolder.Path, 100);
                 }
 
-                lbWatchFolders.Items.Clear();
                 lbWatchFolders.DataSource = new BindingSource(WatchFolders, null);
                 lbWatchFolders.DisplayMember = "Path";
                 lbWatchFolders.ValueMember = "Id";               

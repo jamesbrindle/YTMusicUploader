@@ -57,6 +57,15 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.5.2\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Brotli.Core, Version=2.0.4.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Brotli.NET.2.0.4.2\lib\net45\Brotli.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BrotliSharpLib, Version=0.3.2.0, Culture=neutral, PublicKeyToken=3f4e2a1cd615fcb7, processorArchitecture=MSIL">
+      <HintPath>..\packages\BrotliSharpLib.0.3.3\lib\net451\BrotliSharpLib.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -69,18 +78,6 @@
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Modules, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.Modules.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.SQLite, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Wpf, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.10\lib\net45\IronPython.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
     </Reference>
@@ -89,15 +86,6 @@
     </Reference>
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Dynamic, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Dynamic.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Scripting.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting.Metadata, Version=1.2.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicLanguageRuntime.1.2.3\lib\net45\Microsoft.Scripting.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.WebView2.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
@@ -108,6 +96,9 @@
     <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -117,7 +108,15 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ookii.Dialogs.WinForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ookii.Dialogs.WinForms.1.1.0\lib\net45\Ookii.Dialogs.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -129,6 +128,36 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.113.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -138,58 +167,19 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\CustomToolTip.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Business\FileScanner.cs" />
+    <Compile Include="Business\FileUploader.cs" />
     <Compile Include="CustomControls\FastScrollDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControls\FilterTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControls\Graphics\RoundRectangle.cs" />
     <Compile Include="CustomControls\AntiAliasedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\Helpers\ColourHelper.cs" />
-    <Compile Include="CustomControls\Helpers\CursorHelper.cs" />
-    <Compile Include="CustomControls\Helpers\DirtyTracker.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssAnonymousBlockBox.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssAnonymousBox.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBlock.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBox.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBoxWord.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssBoxWordSplitter.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssConstants.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssDefaults.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssDrawingHelper.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssLayoutEngine.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssLength.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssLineBox.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssPropertyAttribute.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssPropertyInheritedAttribute.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssRectangle.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssTable.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\CssValue.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\HtmlConstants.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\HtmlRenderer.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\HtmlTag.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\InitialContainer.cs" />
-    <Compile Include="CustomControls\Helpers\HtmlHelper\Parser.cs" />
-    <Compile Include="CustomControls\HtmlLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControls\HtmlPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControls\HtmlToolTip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControls\ImageButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="CustomControls\OptimisedMetroForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,31 +195,41 @@
     <Compile Include="CustomControls\RoundTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\ScrollingListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Dialogues\ConnectToYTMusic.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogues\ConnectToYTMusic.Designer.cs">
       <DependentUpon>ConnectToYTMusic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global.cs" />
+    <Compile Include="Global.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Helpers\ColourHelper.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="Helpers\PythonHelper.cs" />
+    <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />
+    <Compile Include="Helpers\ThrottleStream.cs" />
+    <Compile Include="Helpers\VersionHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Helpers\CulterHelper.cs" />
+    <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="MainForm.Delegates.cs">
       <SubType>Form</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.Events.TextBoxes.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Events.Checkboxes.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -241,6 +241,7 @@
     <Compile Include="Providers\Repos\SettingsRepo.cs" />
     <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
     <Compile Include="Providers\Requests.cs" />
+    <Compile Include="Providers\Requests\UploadSong.cs" />
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
     <EmbeddedResource Include="CustomControls\Popup.resx">
       <DependentUpon>Popup.cs</DependentUpon>
@@ -265,10 +266,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <None Include="AppData\Python38.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="AppData\ytmusicapi.zip">
+    <None Include="AppData\context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\ytuploader.db">
@@ -301,8 +299,8 @@
     <Content Include="Resources\Logo\yt_logo-64.png" />
     <Content Include="Resources\Logo\yt_logo-72.png" />
     <Content Include="Resources\Logo\yt_logo-96.png" />
-    <Content Include="Resources\Raw\success.svg" />
-    <Content Include="Resources\Raw\yt_logo_sm.svg" />
+    <None Include="Resources\Raw\success.svg" />
+    <None Include="Resources\Raw\yt_logo_sm.svg" />
     <None Include="Resources\success.png" />
     <None Include="Resources\tick.png" />
     <None Include="Resources\Logo\yt_logo.png" />
@@ -328,8 +326,10 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets'))" />
+    <Error Condition="!Exists('..\packages\Brotli.NET.2.0.4.2\build\Brotli.NET.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Brotli.NET.2.0.4.2\build\Brotli.NET.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />
   <Import Project="..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.0.9.579-prerelease\build\Microsoft.Web.WebView2.targets')" />
+  <Import Project="..\packages\Brotli.NET.2.0.4.2\build\Brotli.NET.targets" Condition="Exists('..\packages\Brotli.NET.2.0.4.2\build\Brotli.NET.targets')" />
 </Project>

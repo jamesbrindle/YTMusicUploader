@@ -1,92 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using JBToolkit.StreamHelpers;
+using Newtonsoft.Json;
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Net;
 namespace YTMusicUploader.Providers
 {
+    /// <summary>
+    /// Thanks to: sigma67: 
+    ///     https://ytmusicapi.readthedocs.io/en/latest/ 
+    ///     https://github.com/sigma67/ytmusicapi
+    /// </summary>
     public partial class Requests
     {
-        public static bool IsAuthenticated()
+        public static bool IsAuthenticated(string cookieValue)
         {
-            StringBuilder outputStringBuilder = new StringBuilder();
-            Process process = new Process();
-            string error = string.Empty;
-            bool isError = false;
-
             try
             {
-                process = new Process();
+                var request = (HttpWebRequest)WebRequest.Create(YouTubeBaseUrl + "browse" + Params);
+                request = AddStandardHeaders(request, cookieValue);
 
-                process.StartInfo.FileName = PythonPath;
-                process.StartInfo.WorkingDirectory = RequestsLocation;
-                process.StartInfo.Arguments = "GetIsAuthenticated.py";
+                request.ContentType = "application/json; charset=UTF-8";
+                request.Headers["X-Goog-AuthUser"] = "0";
+                request.Headers["x-origin"] = "https://music.youtube.com";
+                request.Headers["X-Goog-Visitor-Id"] = "CgtvVTcxa1EtbV9hayiMu-P0BQ%3D%3D";                
+                request.Headers["Authorization"] = GetAuthorisation(GetSAPISIDFromCookie(cookieValue) + " " + "https://music.youtube.com");
 
-                process.StartInfo.RedirectStandardError = true;
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                process.StartInfo.CreateNoWindow = true;
-                process.StartInfo.UseShellExecute = false;
-                process.EnableRaisingEvents = false;
-                process.OutputDataReceived += Process_OutputDataReceived;
-                process.ErrorDataReceived += Process_ErrorDataReceived;
-                process.Start();
-                process.BeginOutputReadLine();
-                process.BeginErrorReadLine();
-                var processExited = process.WaitForExit(30000);
+                byte[] postBytes = GetPostBytes(
+                                        SafeFileStream.ReadAllText(
+                                                Path.Combine(Global.WorkingDirectory, @"AppData\context.json")));
+                request.ContentLength = postBytes.Length;
 
-                if (processExited == false) // we timed out...
+                Stream requestStream = request.GetRequestStream();
+                requestStream.Write(postBytes, 0, postBytes.Length);
+                requestStream.Close();
+
+                var response = (HttpWebResponse)request.GetResponse();
+                string result;
+
+                using (var brotli = new Brotli.BrotliStream(
+                                                    response.GetResponseStream(), 
+                                                    System.IO.Compression.CompressionMode.Decompress, 
+                                                    true))
                 {
-                    process.Kill();
-                    throw new Exception("ERROR: ytmusicapi Process took too long to finish");
+                    var streamReader = new StreamReader(brotli);
+                    result = streamReader.ReadToEnd();
                 }
-                else if (process.ExitCode != 0)
-                {
-                    var output = outputStringBuilder.ToString();
 
-                    throw new Exception("ytmusicapi process exited with non-zero exit code of: " + process.ExitCode + Environment.NewLine +
-                    "Output from process: " + outputStringBuilder.ToString());
-                }
+                var json = JsonConvert.DeserializeObject(result);
             }
-            catch (Exception)
+            catch(Exception)
             {
                 return false;
             }
-            finally
-            {
-                process.Close();
-
-                try
-                {
-                    process.Kill();
-                }
-                catch { }
-
-                if (!string.IsNullOrEmpty(error))
-                    isError = true;
-            }
-
-#if DEBUG
-            Console.Out.WriteLine(outputStringBuilder.ToString());
-#endif
-            if (isError)
-                return false;
 
             return true;
-
-            void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
-            {
-                outputStringBuilder.Append(e.Data);
-            }
-
-            void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
-            {
-                if (!string.IsNullOrWhiteSpace(e.Data))
-                    error = "ytmusicapi Error: " + e.Data;
-            }
         }
     }
 }

@@ -1,13 +1,10 @@
 ﻿using MetroFramework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using YTMusicUploader.Dialogues;
 using YTMusicUploader.Providers;
+using YTMusicUploader.Providers.Models;
 
 namespace YTMusicUploader
 {
@@ -22,13 +19,15 @@ namespace YTMusicUploader
                 ConnectToYTMusicForm.ShowDialog();
                 new Thread((ThreadStart)delegate
                 {
-                    SetConnectedToYouTubeMusic(Requests.IsAuthenticated());
+                    SetConnectedToYouTubeMusic(Requests.IsAuthenticated(Settings.AuthenticationCookie));
                 });
             }
             catch (Exception)
             {
                 try
                 {
+                    // HACK: Odd behaviour on 'reshow' form. This is a workaround.
+
                     ConnectToYTMusicForm.BrowserControl.Dispose();
                     ConnectToYTMusicForm.Dispose();
                     ConnectToYTMusicForm = new ConnectToYTMusic(this);
@@ -36,18 +35,19 @@ namespace YTMusicUploader
                     ConnectToYTMusicForm.ShowDialog();
                     new Thread((ThreadStart)delegate
                     {
-                        SetConnectedToYouTubeMusic(Requests.IsAuthenticated());
+                        SetConnectedToYouTubeMusic(Requests.IsAuthenticated(Settings.AuthenticationCookie));
                     });
                 }
                 catch (Exception)
                 {
                     MetroMessageBox.Show(
-                       this,
-                       @"You must install the latest verion of Microsoft Edge from  the Canary channel for this to work: https://www.microsoftedgeinsider.com/en-us/download",
-                       "Dependency Required",
-                       MessageBoxButtons.OK,
-                       MessageBoxIcon.Asterisk,
-                       120);
+                        this,
+                        Environment.NewLine + "You must install the latest verion of Microsoft Edge from  the Canary channel for this to work:" +
+                            Environment.NewLine + Environment.NewLine + "https://www.microsoftedgeinsider.com/en-us/download",
+                        "Dependency Required",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Stop,
+                        200);
                 }
             }
         }
@@ -56,7 +56,17 @@ namespace YTMusicUploader
 
         private void BtnWatchFolder_Click(object sender, EventArgs e)
         {
+            var openResult = FolderSelector.ShowDialog();
+            if (openResult == DialogResult.OK)
+            {
+                WatchFolderRepo.Insert(new WatchFolder
+                {
+                    Path = FolderSelector.SelectedPath
+                });
 
+                WatchFolders = WatchFolderRepo.Load();
+                BindWatchFoldersList();
+            }
         }
 
         private void BtnAddWatchFolder_MouseEnter(object sender, EventArgs e)
@@ -78,7 +88,16 @@ namespace YTMusicUploader
 
         private void BtnRemoveWatchFolder_Click(object sender, EventArgs e)
         {
+            // TODO: Delete all from DB at the same time, rather than allowing individual 
+            // delete for better performance
 
+            try
+            {
+                if ((WatchFolder)lbWatchFolders.SelectedItem != null)
+                    WatchFolderRepo.Delete(((WatchFolder)lbWatchFolders.SelectedItem).Id);
+            }
+            catch { }
+            BindWatchFoldersList();
         }
 
         private void BtnRemoveWatchFolder_MouseEnter(object sender, EventArgs e)
@@ -94,6 +113,21 @@ namespace YTMusicUploader
         private void BtnRemoveWatchFolder_MouseDown(object sender, MouseEventArgs e)
         {
             btnRemoveWatchFolder.Image = Properties.Resources.minus_down;
+        }
+
+        // About
+
+        private void PbAbout_Click(object sender, EventArgs e)
+        {
+            MetroMessageBox.Show(
+               this,
+               Environment.NewLine + "Version: " + Global.ApplicationVersion +
+                    Environment.NewLine + Environment.NewLine + "By James Brindle" +
+                    Environment.NewLine + Environment.NewLine + "https://github.com/jamesbrindle/YTMusicUploader",
+               "YT Music Uploader",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Asterisk,
+               200);
         }
     }
 }

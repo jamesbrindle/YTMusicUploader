@@ -123,6 +123,9 @@ namespace JBToolkit.Windows
             catch { }
         }
 
+        /// <summary>
+        /// Recursively fetches files in a directory and subdirectory in a more organised order
+        /// </summary>
         public static List<string> GetAllFilesTraversive(string targetDirectory)
         {
             List<string> directories = new List<string>();
@@ -142,6 +145,9 @@ namespace JBToolkit.Windows
             return files;
         }
 
+        /// <summary>
+        /// Recursively fetches file infos in a directory and subdirectory in a more organised order
+        /// </summary>
         public static List<FileInfo> GetAllFileInfoTraversive(string targetDirectory)
         {
             List<string> directories = new List<string>();
@@ -340,7 +346,7 @@ namespace JBToolkit.Windows
         /// </summary>
         public static string[] ReadAllLinesEvenLocked(string filePath)
         {
-            return SafeStream.SafeFileStream.ReadAllLines(filePath);
+            return StreamHelpers.SafeFileStream.ReadAllLines(filePath);
         }
 
         /// <summary>
@@ -348,7 +354,7 @@ namespace JBToolkit.Windows
         /// </summary>
         public static string ReadAllTextEvenLocked(string filePath)
         {
-            return SafeStream.SafeFileStream.ReadAllText(filePath);
+            return StreamHelpers.SafeFileStream.ReadAllText(filePath);
         }
 
         /// <summary>
@@ -356,7 +362,7 @@ namespace JBToolkit.Windows
         /// </summary>
         public static byte[] ReadAllBytesEvenLocked(string filePath)
         {
-            return SafeStream.SafeFileStream.GetBytes(filePath);
+            return StreamHelpers.SafeFileStream.GetBytes(filePath);
         }
 
         [DllImport("Shell32.dll")]

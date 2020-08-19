@@ -29,6 +29,26 @@ namespace YTMusicUploader.Providers
 
                 File.Copy(Path.Combine(Global.WorkingDirectory, @"AppData\ytuploader.db"), DBLocation);
             }
+            else
+            {
+                if (File.Exists("ytuploader.db-shm"))
+                {
+                    try
+                    {
+                        File.Delete("ytuploader.db-shm");
+                    }
+                    catch { }
+                }
+
+                if (File.Exists("ytuploader.db-wal"))
+                {
+                    try
+                    {
+                        File.Delete("ytuploader.db-wal");
+                    }
+                    catch { }
+                }
+            }
         }
 
         public static SQLiteConnection DbConnection()

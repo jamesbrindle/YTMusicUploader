@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JBToolkit.ColorHelper;
+using System;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;

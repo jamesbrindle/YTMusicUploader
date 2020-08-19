@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblVersion = new JBToolkit.WinForms.AntiAliasedLabel();
             this.lblStatus = new JBToolkit.WinForms.AntiAliasedLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.lblDiscoveredFiles = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@
             this.lblUploadingMessage = new System.Windows.Forms.Label();
             this.lblUploaded = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.FolderSelector = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.btnConnectToYoutube = new JBToolkit.WinForms.RoundButton();
             this.tbThrottleSpeed = new JBToolkit.WinForms.RoundTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
@@ -63,6 +65,7 @@
             // 
             // pbAbout
             // 
+            this.pbAbout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbAbout.Image = global::YTMusicUploader.Properties.Resources.yt_logo;
             this.pbAbout.Location = new System.Drawing.Point(662, 39);
             this.pbAbout.Name = "pbAbout";
@@ -70,6 +73,7 @@
             this.pbAbout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbAbout.TabIndex = 0;
             this.pbAbout.TabStop = false;
+            this.pbAbout.Click += new System.EventHandler(this.PbAbout_Click);
             // 
             // lblSub
             // 
@@ -108,6 +112,7 @@
             this.cbStartWithWindows.TabIndex = 5;
             this.cbStartWithWindows.Text = " ";
             this.cbStartWithWindows.UseSelectable = true;
+            this.cbStartWithWindows.CheckedChanged += new System.EventHandler(this.CbStartWithWindows_CheckedChanged);
             // 
             // label2
             // 
@@ -127,11 +132,12 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "mb /s";
+            this.label3.Text = "MB /s";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Controls.Add(this.lblVersion);
             this.panel1.Controls.Add(this.lblStatus);
             this.panel1.Location = new System.Drawing.Point(0, 363);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -139,13 +145,24 @@
             this.panel1.Size = new System.Drawing.Size(735, 29);
             this.panel1.TabIndex = 8;
             // 
+            // lblVersion
+            // 
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(687, 1);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(35, 20);
+            this.lblVersion.TabIndex = 14;
+            this.lblVersion.Text = "v1.0";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // lblStatus
             // 
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.White;
             this.lblStatus.Location = new System.Drawing.Point(11, 1);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(702, 20);
+            this.lblStatus.Size = new System.Drawing.Size(574, 20);
             this.lblStatus.TabIndex = 13;
             this.lblStatus.Text = "Not running";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -256,11 +273,12 @@
             // lblUploadingMessage
             // 
             this.lblUploadingMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUploadingMessage.Location = new System.Drawing.Point(24, 302);
+            this.lblUploadingMessage.Location = new System.Drawing.Point(24, 300);
             this.lblUploadingMessage.Name = "lblUploadingMessage";
             this.lblUploadingMessage.Size = new System.Drawing.Size(689, 40);
             this.lblUploadingMessage.TabIndex = 19;
             this.lblUploadingMessage.Text = "Uploading: N/A";
+            this.lblUploadingMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblUploaded
             // 
@@ -318,6 +336,10 @@
             this.tbThrottleSpeed.TabIndex = 3;
             this.tbThrottleSpeed.Text = "∞";
             this.tbThrottleSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbThrottleSpeed.TextChanged += new System.EventHandler(this.TbThrottleSpeed_TextChanged);
+            this.tbThrottleSpeed.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbThrottleSpeed_KeyDown);
+            this.tbThrottleSpeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbThrottleSpeed_KeyPress);
+            this.tbThrottleSpeed.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbThrottleSpeed_KeyDown);
             // 
             // MainForm
             // 
@@ -391,6 +413,8 @@
         private System.Windows.Forms.Label lblUploadingMessage;
         private System.Windows.Forms.Label lblUploaded;
         private System.Windows.Forms.Label label8;
+        private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog FolderSelector;
+        private JBToolkit.WinForms.AntiAliasedLabel lblVersion;
     }
 }
 

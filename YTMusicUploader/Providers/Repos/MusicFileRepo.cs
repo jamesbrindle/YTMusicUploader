@@ -29,6 +29,45 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        public int CountAll()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var count = conn.Query<int>(
+                        @"SELECT COUNT(Id) 
+                          FROM MusicFiles").FirstOrDefault();
+                return count;
+            }
+        }
+
+        public int CountIssues()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var count = conn.Query<int>(
+                        @"SELECT COUNT(Id) 
+                          FROM MusicFiles
+                          WHERE Error = 1").FirstOrDefault();
+                return count;
+            }
+        }
+
+        public int CountUploaded()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var count = conn.Query<int>(
+                        @"SELECT COUNT(Id) 
+                          FROM MusicFiles
+                          WHERE LastUpload IS NOT NULL AND LastUpload != '0001-01-01 00:00:00'
+                          AND LastUpload != ''").FirstOrDefault();
+                return count;
+            }
+        }
+
         public MusicFile Load(string path)
         {
             using (var conn = DbConnection())
@@ -48,23 +87,36 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
-        public List<MusicFile> LoadAll(bool includeErrorFiles = true, bool lastUploadAscending = false)
+        public List<MusicFile> LoadAll(
+            bool includeErrorFiles = true, 
+            bool lastUploadAscending = false,
+            bool ignoreRecentlyUploaded = false)
         {
             using (var conn = DbConnection())
             {
+                string cmd = string.Format(
+                                @"SELECT 
+                                       Id, 
+                                       Path, 
+                                       LastUpload, 
+                                       Error,
+                                       ErrorReason
+                                FROM MusicFiles
+                                {0} {1} {2}",
+                                includeErrorFiles
+                                    ? ""
+                                    : " WHERE Error = 0",
+                                ignoreRecentlyUploaded
+                                    ? (includeErrorFiles
+                                            ? " WHERE "
+                                            : " AND ") +
+                                        "LastUpload < '" + DateTime.Now.AddMonths(-1).ToString("yyyy-mm-dd HH:mm:ss") + "'"
+                                    : "",
+                                lastUploadAscending ? " ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
+
                 conn.Open();
-                var musicFiles = conn.Query<MusicFile>(string.Format(
-                        @"SELECT 
-                            Id, 
-                            Path, 
-                            LastUpload, 
-                            Error,
-                            ErrorReason
-                        FROM MusicFiles
-                        {0} {1}",
-                        includeErrorFiles ? "" : " WHERE Error = 0",
-                        lastUploadAscending ? " ORDER BY LastUpload" : ""));
-                return musicFiles.ToList();
+                var musicFiles = conn.Query<MusicFile>(cmd).ToList();
+                return musicFiles;
             }
         }
 
@@ -141,28 +193,18 @@ namespace YTMusicUploader.Providers.Repos
                     conn.Open();
                     Parallel.ForEach(musicFiles, (musicFile) =>
                     {
-                        var existingMusicFile = conn.Query<MusicFile>(
-                                @"SELECT Id
-                                FROM MusicFiles
-                                WHERE Path = @Path
-                                LIMIT 1",
-                                new { musicFile.Path }).FirstOrDefault();
-
-                        if (musicFile == null)
-                        {
-                            musicFile.Id = (int)conn.Query<long>(
-                                @"INSERT INTO MusicFiles (
-                                    Path, 
-                                    LastUpload, 
-                                    Error,
-                                    ErrorReason) VALUES (
-                                        @Path, 
-                                        @LastUpload, 
-                                        @Error,
-                                        @ErrorReason);
-                                SELECT last_insert_rowid()",
-                                musicFile).First();
-                        }
+                        conn.Execute(
+                          @"INSERT INTO MusicFiles (
+			                            Path, 
+			                            LastUpload, 
+			                            Error,
+			                            ErrorReason)
+                            SELECT @Path,
+	                               @LastUpload,
+	                               @Error,
+	                               @ErrorReason
+                            WHERE NOT EXISTS (SELECT Id FROM MusicFiles WHERE Path = @Path LIMIT 1)",
+                          musicFile);
                     });
                 }
 
@@ -188,10 +230,10 @@ namespace YTMusicUploader.Providers.Repos
                     conn.Open();
                     musicFile.Id = (int)conn.Query<long>(
                         @"UPDATE MusicFiles
-                            SET LastUpload = @LastUpdate, 
+                            SET LastUpload = @LastUpload, 
                                 Error = @Error,
                                 ErrorReason = @ErrorReason
-                        WHERE Id = @Id);
+                        WHERE Id = @Id;
                         SELECT last_insert_rowid()",
                         musicFile).First();
                 }

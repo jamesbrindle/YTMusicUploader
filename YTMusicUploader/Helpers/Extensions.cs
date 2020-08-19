@@ -249,7 +249,6 @@ namespace System
 
             if (firstString != lastString)
             {
-
                 int Pos1 = text.IndexOf(firstString) + firstString.Length;
                 int Pos2 = text.IndexOf(lastString);
                 FinalString = text.Substring(Pos1, Pos2 - Pos1);
@@ -636,7 +635,6 @@ namespace System
                 return false;
             }
         }
-
 
 
         /// <summary>

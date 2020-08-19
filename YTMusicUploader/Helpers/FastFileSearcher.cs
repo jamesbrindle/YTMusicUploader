@@ -9,8 +9,11 @@ using Microsoft.Win32.SafeHandles;
 namespace JBToolkit.Windows
 {
     /// <summary>
-    /// Contains information about a file returned by the <see cref="FastDirectoryEnumerator"/> class.    /// 
-    /// Got code from here: https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator
+    /// Contains information about a file returned by the <see cref="FastDirectoryEnumerator"/> class.    
+    /// 
+    /// Thanks to: wilsone8
+    ///      https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator
+    ///      
     /// </summary>
     [Serializable]
     public class FileData
@@ -158,6 +161,10 @@ namespace JBToolkit.Windows
     /// <summary>
     /// A fast enumerator of files in a directory.  Use this if you need to get attributes for 
     /// all files in a directory.
+    /// 
+    /// Thanks to: wilsone8
+    ///      https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator
+    /// 
     /// </summary>
     /// <remarks>
     /// This enumerator is substantially faster than using <see cref="Directory.GetFiles(string)"/>

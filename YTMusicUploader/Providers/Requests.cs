@@ -1,104 +1,72 @@
-﻿using Ionic.Zip;
-using IronPython.Hosting;
-using JBToolkit.SafeStream;
-using Microsoft.Scripting.Hosting;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System;
 using System.Net;
-using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using YTMusicUploader.Helpers;
-using YTMusicUploader.Properties;
+using System.Text.RegularExpressions;
 
 namespace YTMusicUploader.Providers
 {
     public partial class Requests
     {
-        public static string PythonPath = null;
-        public static ScriptEngine PythonEngine = Python.CreateEngine();
-
-        public static string ApiLocation
+        public static string YouTubeBaseUrl
         {
             get
             {
-                return Path.Combine(Global.AppDataLocation, @"ytmusicapi");
+                return "https://music.youtube.com/youtubei/v1/";
             }
         }
 
-        public static string RequestsLocation
+        public static string UploadUrl
         {
             get
             {
-                return Path.Combine(Global.AppDataLocation, @"ytmusicapi\requests");
+                return "https://upload.youtube.com/upload/usermusic/http?authuser=0";
             }
         }
 
-        public static string AuthHeaderLocation
+        public static string Params
         {
             get
             {
-                return Path.Combine(Global.AppDataLocation, @"ytmusicapi\requests\headers_auth.json");
+                return "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
             }
         }
 
-        public static void UpdateAuthHeader(string authCoookieValue)
+        public static HttpWebRequest AddStandardHeaders(HttpWebRequest webRequest, string cookieValue)
         {
-            dynamic jsonObj = JsonConvert.DeserializeObject(SafeFileStream.ReadAllText(AuthHeaderLocation));
-            jsonObj.Cookie = authCoookieValue;
+            webRequest.Accept = "*/*";
+            webRequest.Headers["Accept-Encoding"] = "gzip, deflate, br";
+            webRequest.UserAgent = "Mozilla / 5.0(Windows NT 10.0; Win64; x64; rv: 72.0) Gecko / 20100101 Firefox / 72.0";            
+            webRequest.Headers["Cookie"] = cookieValue;
+            webRequest.Method = "POST";
 
-            File.WriteAllText(AuthHeaderLocation, JsonConvert.SerializeObject(jsonObj, Formatting.Indented));
+            return webRequest;
         }
 
-        public static bool CheckAndCopyApiFiles(MainForm mainForm)
+        public static byte[] GetPostBytes(string stringToEncode)
         {
-            if (!Directory.Exists(ApiLocation))
-                Directory.CreateDirectory(ApiLocation);
+            byte[] bytes = Encoding.Default.GetBytes(stringToEncode);
+            string body = Encoding.UTF8.GetString(bytes);
+            return Encoding.UTF8.GetBytes(body);
+        }
 
-            var zip = ZipFile.Read(Path.Combine(Global.WorkingDirectory, @"AppData\ytmusicapi.zip"));
-            zip.ExtractAll(ApiLocation, ExtractExistingFileAction.OverwriteSilently);
+        private static string GetSAPISIDFromCookie(string cookieValue)
+        {
+            string[] parts = Regex.Split(cookieValue, "SAPISID=");
+            string[] parts2 = parts[1].Split(';');
+            return parts2[0];
+        }
 
-            PythonPath = PythonHelper.GetPythonPath();
+        private static string GetAuthorisation(string auth)
+        {
+            int unixTimestamp = (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(unixTimestamp + " " + auth));
+            var sb = new StringBuilder(hash.Length * 2);
 
-            if (string.IsNullOrEmpty(PythonPath))
-            {
-                mainForm.SetStatusMessage("Installing Python");
+            foreach (byte b in hash)
+                sb.Append(b.ToString("x2"));
 
-                zip = ZipFile.Read(Path.Combine(Global.WorkingDirectory, @"AppData\Python38.zip"));
-                zip.ExtractAll(Path.Combine(Global.AppDataLocation, "Python38"), ExtractExistingFileAction.OverwriteSilently);
-
-                var name = "PATH";
-                var scope = EnvironmentVariableTarget.User; 
-                var oldValue = Environment.GetEnvironmentVariable(name, scope);                
-                var newValue = oldValue + @";" + Path.Combine(ApiLocation, "Python38") + @"\";
-                Environment.SetEnvironmentVariable(name, newValue, scope);
-
-                PythonPath = Path.Combine(Global.AppDataLocation, @"Python38\python.exe");
-
-                mainForm.SetStatusMessage("Not running");
-            }
-
-            try
-            {
-                var startInfo = new ProcessStartInfo
-                {
-                    FileName = PythonPath,
-                    Arguments = Path.Combine(ApiLocation, "setup.py install"),
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                };
-
-                Process.Start(startInfo);
-                return true;
-            }
-            catch(Exception)
-            {
-                return false;
-            }
+            return "SAPISIDHASH " + unixTimestamp + "_" + sb.ToString();
         }
     }
 }

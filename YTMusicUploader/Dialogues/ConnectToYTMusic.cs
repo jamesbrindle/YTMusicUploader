@@ -4,7 +4,6 @@ using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System;
 using System.Windows.Forms;
-using YTMusicUploader.Providers;
 
 namespace YTMusicUploader.Dialogues
 {
@@ -14,8 +13,7 @@ namespace YTMusicUploader.Dialogues
         private bool Invisible { get; set; }
         public WebView2 BrowserControl { get { return browser; } }
 
-        public ConnectToYTMusic(MainForm mainForm) : base(formResizable: true,
-                                                          controlTagsAsTooltips: false)
+        public ConnectToYTMusic(MainForm mainForm) : base(formResizable: true)
         {
             MainForm = mainForm;
             InitializeComponent();
@@ -52,7 +50,6 @@ namespace YTMusicUploader.Dialogues
                         cookieValue.Contains("LOGIN_INFO"))
                     {
                         MainForm.Settings.AuthenticationCookie = cookieValue;
-                        Requests.UpdateAuthHeader(cookieValue);
                         MainForm.Settings.Save();
 
                         lblSignInMessage.Visible = false;

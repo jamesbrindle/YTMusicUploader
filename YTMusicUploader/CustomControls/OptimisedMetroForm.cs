@@ -265,47 +265,6 @@ namespace JBToolkit.WinForms
 
         #endregion
 
-        #region Control tags as tooltips
-
-        private CustomToolTip _globalTooltip = new CustomToolTip();
-
-        private void PrepareTooltips()
-        {
-            _globalTooltip.UseAnimation = true;
-            _globalTooltip.UseFading = true;
-            _globalTooltip.Active = true;
-            _globalTooltip.BackColor = Color.White;
-
-            // Force the ToolTip text to be displayed whether or not the form is active.
-            _globalTooltip.ShowAlways = true;
-
-            AddToolTipsToControls(this);
-        }
-
-        /// <summary>
-        /// Converts anything in the 'Tag' property of a control to a tooltip
-        /// </summary>
-        public virtual void AddToolTipsToControls(Control parent)
-        {
-            foreach (Control c in parent.Controls)
-            {
-                if (c.Tag is string)
-                {
-                    if (!string.IsNullOrEmpty(c.Tag.ToString()))
-                    {
-                        c.MouseHover += new EventHandler(delegate (Object o, EventArgs a)
-                        {
-                            _globalTooltip.SetToolTip((Control)o, ((Control)o).Tag.ToString());
-                        });
-                    }
-                }
-
-                AddToolTipsToControls(c);
-            }
-        }
-
-        #endregion
-
         #region FontSizesForDPI
 
         public int GetScreenDPI()
@@ -365,11 +324,6 @@ namespace JBToolkit.WinForms
                 SizeGripStyle = SizeGripStyle.Hide;
             }
 
-            if (TagsAsTooltips)
-            {
-                PrepareTooltips();
-            }
-
             if (HandleCustomClientDPI)
             {
                 AutoScaleDimensions = new SizeF(96F, 96F);
@@ -391,7 +345,6 @@ namespace JBToolkit.WinForms
         /// setting this to true will 'try' to make the form handle different DPI settings.</param>
         public OptimisedMetroForm(
                 bool formResizable = true,
-                bool controlTagsAsTooltips = false,
                 bool handleCustomClientDPI = false
             )
         {
@@ -402,7 +355,6 @@ namespace JBToolkit.WinForms
             CheckForIllegalCrossThreadCalls = false;
 
             FormResizable = formResizable;
-            TagsAsTooltips = controlTagsAsTooltips;
             HandleCustomClientDPI = handleCustomClientDPI;
 
             Resizable = formResizable;
@@ -433,7 +385,6 @@ namespace JBToolkit.WinForms
         }
 
         private bool FormResizable { get; set; }
-        private bool TagsAsTooltips { get; set; }
         private bool HandleCustomClientDPI { get; set; }
     }
 

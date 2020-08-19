@@ -41,7 +41,7 @@
             // lblSignInMessage
             // 
             this.lblSignInMessage.AutoSize = true;
-            this.lblSignInMessage.Location = new System.Drawing.Point(23, 37);
+            this.lblSignInMessage.Location = new System.Drawing.Point(23, 34);
             this.lblSignInMessage.Name = "lblSignInMessage";
             this.lblSignInMessage.Size = new System.Drawing.Size(300, 13);
             this.lblSignInMessage.TabIndex = 0;
@@ -74,7 +74,7 @@
             // pbConnectSuccess
             // 
             this.pbConnectSuccess.Image = global::YTMusicUploader.Properties.Resources.success;
-            this.pbConnectSuccess.Location = new System.Drawing.Point(23, 21);
+            this.pbConnectSuccess.Location = new System.Drawing.Point(23, 20);
             this.pbConnectSuccess.Name = "pbConnectSuccess";
             this.pbConnectSuccess.Size = new System.Drawing.Size(40, 40);
             this.pbConnectSuccess.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -85,7 +85,7 @@
             // lblConnectSuccess
             // 
             this.lblConnectSuccess.AutoSize = true;
-            this.lblConnectSuccess.Location = new System.Drawing.Point(75, 37);
+            this.lblConnectSuccess.Location = new System.Drawing.Point(75, 34);
             this.lblConnectSuccess.Name = "lblConnectSuccess";
             this.lblConnectSuccess.Size = new System.Drawing.Size(217, 13);
             this.lblConnectSuccess.TabIndex = 3;

@@ -2,9 +2,8 @@
 using System.IO;
 using System.Threading;
 
-namespace JBToolkit.SafeStream
+namespace JBToolkit.StreamHelpers
 {
-
     /// <summary>
     /// This is a wrapper around a FileStream.  While it is not a Stream itself, it can be cast to
     /// one (keep in mind that this might throw an exception). It's a mechanism for creating a stream from a file without the issue if it still
