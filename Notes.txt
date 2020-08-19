@@ -1,0 +1,8 @@
+TODO: 
+
+* Folder watcher
+* Performance and stability check when lots of read / writes to DB
+* Make tray applicataion
+* Start with Windows implementation
+* Documentation
+* README.md
