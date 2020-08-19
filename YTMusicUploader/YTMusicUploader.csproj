@@ -201,9 +201,7 @@
     <Compile Include="Dialogues\ConnectToYTMusic.Designer.cs">
       <DependentUpon>ConnectToYTMusic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Helpers\ColourHelper.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
