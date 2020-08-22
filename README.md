@@ -5,6 +5,7 @@
 
 Automatically upload your local music personal library to YouTube music.
 &nbsp;
+&nbsp;
 
 ### Application
 
@@ -23,6 +24,7 @@ This is a .Net application written in C# that uploads your person music library 
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
+&nbsp;
 
 ### Reason for Creation
 
@@ -34,6 +36,7 @@ I got a subscription in the end, so some might consider this pointless in the wo
 
 - Upload songs that aren't on YouTube music.
 - Backup your songs *(you can't download them again from YouTube music, but you can use [Google Takeout](https://takeout.google.com/settings/takeout?pli=1) to get them).*
+&nbsp;
 &nbsp;
 
 ### How it Works
@@ -56,11 +59,14 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 - WinForms
 - SQLite
 &nbsp;
+&nbsp;
 
 ### IDE / Extensions
 
 - Microsoft Visual Studio 2019
 - Microsoft Visual Studio Install Project
+&nbsp;
+&nbsp;
 
 ### Libraries
 
@@ -69,15 +75,18 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 - [Metro Framework (UI Styling)](https://github.com/dennismagno/metroframework-modern-ui) 
 - [Ookii Dialogues](http://www.ookii.org/software/dialogs)
 &nbsp;
+&nbsp;
 
 ### Tools
 
 - [Doxygen (Source code HTML documentation)](https://www.doxygen.nl/index.html)
 &nbsp;
+&nbsp;
 
 ### Web Control
 
 - [WebView2](https://docs.microsoft.com/en-us/microsoft-edge/webview2/)
+&nbsp;
 
 **WebView2** is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing its still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.
 
@@ -89,6 +98,8 @@ Dispite some of the issues found using this control, it is actually a very good 
 &nbsp;
 
 **GOTCHAS**
+&nbsp;
+
 One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up **before** navigating to any URL:
 &nbsp;
 
@@ -100,7 +111,6 @@ private async void InitializeBrowser()
         browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
 }
 ```
-&nbsp;
 
 Thank you [DjSt3rios](https://github.com/DjSt3rios) for working that out: https://github.com/MicrosoftEdge/WebViewFeedback/issues/297
 
@@ -114,7 +124,6 @@ private void Browser_CoreWebView2Ready(object sender, EventArgs e)
     browser.CoreWebView2.WebResourceRequested += CoreWebView2_WebResourceRequested;
 }
 ```
-&nbsp;
 
 ### How Long Will This Application Last?
 
@@ -122,11 +131,13 @@ Who knows... It's dependent on YouTube Music / Google not changing how their 'no
 
 I'm going to be using this application for personal use, so I'll know straight aware when it's not working and will attempt to update the API call implementation as soon as possible.
 &nbsp;
+&nbsp;
 
 ### Further Development Considerations
 
 - Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, which multiple 'fuzzy / AI logic' result sets for 'similar' songs.
 - Would like to add the ability to upload playlists *([sigma67](https://ytmusicapi.readthedocs.io/en/latest/) has included this ability in his API so it's definately do-able).*
+&nbsp;
 &nbsp;
 
 ### Special Thanks
