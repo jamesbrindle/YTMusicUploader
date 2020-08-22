@@ -18,7 +18,6 @@ namespace YTMusicUploader.Business
         public List<MusicFile> MusicFilesToDelete { get; set; } = new List<MusicFile>();
         public List<MusicFile> CurrentMusicFiles { get; set; }
         public HashSet<string> CurrentMusicFilesHash { get; set; } = new HashSet<string>();
-        public bool Abort { get; set; } = false;
 
         public FileScanner(MainForm mainForm)
         {
@@ -33,21 +32,30 @@ namespace YTMusicUploader.Business
             foreach (var musicFile in CurrentMusicFiles)
                 CurrentMusicFilesHash.Add(musicFile.Path);
 
+            if (MainForm.WatchFolders.Count == 0)
+                MainForm.MusicFileRepo.DeleteAll();
+
             //
             // Get files to add - Cross reference with the DB
             //
             foreach (var watchFolder in MainForm.WatchFolders)
             {
-                if (Abort)
+                if (MainForm.Aborting)
+                {
+                    MainForm.SetStatusMessage("Idle");
                     return;
+                }
 
-                foreach (FileData file in FastDirectoryEnumerator.EnumerateFiles(
+                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(
                                                                         watchFolder.Path,
                                                                         "*.*",
                                                                         SearchOption.AllDirectories))
                 {
-                    if (Abort)
+                    if (MainForm.Aborting)
+                    {
+                        MainForm.SetStatusMessage("Idle");
                         return;
+                    }
 
                     if (!CurrentMusicFilesHash.Contains(file.Path))
                     {
@@ -71,8 +79,11 @@ namespace YTMusicUploader.Business
             //
             foreach (var musicFile in CurrentMusicFiles)
             {
-                if (Abort)
+                if (MainForm.Aborting)
+                {
+                    MainForm.SetStatusMessage("Idle");
                     return;
+                }
 
                 if (!DiscoveredFilesHash.Contains(musicFile.Path))
                     MusicFilesToDelete.Add(musicFile);
@@ -84,8 +95,11 @@ namespace YTMusicUploader.Business
                 int count = 0;
                 foreach (var file in NewFiles)
                 {
-                    if (Abort)
+                    if (MainForm.Aborting)
+                    {
+                        MainForm.SetStatusMessage("Idle");
                         return;
+                    }
 
                     count++;
                     if (count > MainForm.InitialFilesCount)
@@ -95,16 +109,22 @@ namespace YTMusicUploader.Business
                     AddToDB(conn, new MusicFile(file.Path));
                 }
 
-                if (Abort)
+                if (MainForm.Aborting)
+                {
+                    MainForm.SetStatusMessage("Idle");
                     return;
+                }
 #if DEBUG
                 Console.Out.WriteLine("Insert new music files complete: " + count + " files inserted");
 #endif
                 count = 0;
                 foreach (var musicFile in MusicFilesToDelete)
                 {
-                    if (Abort)
+                    if (MainForm.Aborting)
+                    {
+                        MainForm.SetStatusMessage("Idle");
                         return;
+                    }
 
                     count++;
                     RemoveFromDB(conn, musicFile.Path);
@@ -117,7 +137,7 @@ namespace YTMusicUploader.Business
                 Console.Out.WriteLine("Delete removed music files complete: " + count + " files inserted");
 #endif
             }
-            
+
             MainForm.SetStatusMessage(MainForm.ConnectedToYTMusic ? "Ready" : "Not running");
         }
 
@@ -157,6 +177,15 @@ namespace YTMusicUploader.Business
                           new { path });
             }
             catch { }
+        }
+
+        public void Reset()
+        {
+            NewFiles = new List<FileData>();
+            NewFilesHash = new HashSet<string>();
+            DiscoveredFilesHash = new HashSet<string>();
+            MusicFilesToDelete = new List<MusicFile>();
+            CurrentMusicFilesHash = new HashSet<string>();
         }
     }
 }

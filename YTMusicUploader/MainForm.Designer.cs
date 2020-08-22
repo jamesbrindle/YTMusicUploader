@@ -37,8 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblVersion = new JBToolkit.WinForms.AntiAliasedLabel();
-            this.lblStatus = new JBToolkit.WinForms.AntiAliasedLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.lblDiscoveredFiles = new System.Windows.Forms.Label();
             this.lblIssues = new System.Windows.Forms.Label();
@@ -53,6 +51,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.FolderSelector = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.btnConnectToYoutube = new JBToolkit.WinForms.RoundButton();
+            this.lblVersion = new JBToolkit.WinForms.AntiAliasedLabel();
+            this.lblStatus = new JBToolkit.WinForms.AntiAliasedLabel();
             this.tbThrottleSpeed = new JBToolkit.WinForms.RoundTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
             this.panel1.SuspendLayout();
@@ -66,7 +66,7 @@
             // pbAbout
             // 
             this.pbAbout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbAbout.Image = global::YTMusicUploader.Properties.Resources.yt_logo;
+            this.pbAbout.Image = ((System.Drawing.Image)(resources.GetObject("pbAbout.Image")));
             this.pbAbout.Location = new System.Drawing.Point(662, 39);
             this.pbAbout.Name = "pbAbout";
             this.pbAbout.Size = new System.Drawing.Size(40, 40);
@@ -144,28 +144,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(735, 29);
             this.panel1.TabIndex = 8;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(687, 1);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(35, 20);
-            this.lblVersion.TabIndex = 14;
-            this.lblVersion.Text = "v1.0";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.White;
-            this.lblStatus.Location = new System.Drawing.Point(11, 1);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(574, 20);
-            this.lblStatus.TabIndex = 13;
-            this.lblStatus.Text = "Not running";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
@@ -321,6 +299,28 @@
             this.btnConnectToYoutube.Text = "Connect to YouTube Music";
             this.btnConnectToYoutube.Transparency = false;
             this.btnConnectToYoutube.Click += new System.EventHandler(this.BtnConnectToYoutube_Click);
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(687, 1);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(35, 20);
+            this.lblVersion.TabIndex = 14;
+            this.lblVersion.Text = "v1.0";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.White;
+            this.lblStatus.Location = new System.Drawing.Point(11, 1);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(574, 20);
+            this.lblStatus.TabIndex = 13;
+            this.lblStatus.Text = "Not running";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tbThrottleSpeed
             // 

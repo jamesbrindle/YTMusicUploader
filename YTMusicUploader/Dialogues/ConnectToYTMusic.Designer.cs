@@ -32,8 +32,8 @@
             this.lblSignInMessage = new System.Windows.Forms.Label();
             this.pnlBrowser = new System.Windows.Forms.Panel();
             this.browser = new Microsoft.Web.WebView2.WinForms.WebView2();
-            this.pbConnectSuccess = new System.Windows.Forms.PictureBox();
             this.lblConnectSuccess = new System.Windows.Forms.Label();
+            this.pbConnectSuccess = new System.Windows.Forms.PictureBox();
             this.pnlBrowser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbConnectSuccess)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +71,16 @@
             this.browser.ZoomFactor = 1D;
             this.browser.CoreWebView2Ready += new System.EventHandler<System.EventArgs>(this.Browser_CoreWebView2Ready);
             // 
+            // lblConnectSuccess
+            // 
+            this.lblConnectSuccess.AutoSize = true;
+            this.lblConnectSuccess.Location = new System.Drawing.Point(75, 34);
+            this.lblConnectSuccess.Name = "lblConnectSuccess";
+            this.lblConnectSuccess.Size = new System.Drawing.Size(217, 13);
+            this.lblConnectSuccess.TabIndex = 3;
+            this.lblConnectSuccess.Text = "Connected! You can now close this window.";
+            this.lblConnectSuccess.Visible = false;
+            // 
             // pbConnectSuccess
             // 
             this.pbConnectSuccess.Image = global::YTMusicUploader.Properties.Resources.success;
@@ -81,16 +91,6 @@
             this.pbConnectSuccess.TabIndex = 2;
             this.pbConnectSuccess.TabStop = false;
             this.pbConnectSuccess.Visible = false;
-            // 
-            // lblConnectSuccess
-            // 
-            this.lblConnectSuccess.AutoSize = true;
-            this.lblConnectSuccess.Location = new System.Drawing.Point(75, 34);
-            this.lblConnectSuccess.Name = "lblConnectSuccess";
-            this.lblConnectSuccess.Size = new System.Drawing.Size(217, 13);
-            this.lblConnectSuccess.TabIndex = 3;
-            this.lblConnectSuccess.Text = "Connected! You can now close this window.";
-            this.lblConnectSuccess.Visible = false;
             // 
             // ConnectToYTMusic
             // 

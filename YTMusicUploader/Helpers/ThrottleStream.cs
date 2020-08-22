@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Timers;
+using System.Windows.Controls;
+using YTMusicUploader;
 
 namespace JBToolkit.StreamHelpers
 {
@@ -45,9 +48,13 @@ namespace JBToolkit.StreamHelpers
         #region Private Members
 
         private int processed;
+        private int processedTotal = 0;
         System.Timers.Timer resettimer;
         AutoResetEvent wh = new AutoResetEvent(true);
         private Stream parent;
+        private MainForm mainForm;
+        private Stopwatch stopWatch = new Stopwatch();
+        private int fileBytes;
 
         #endregion
 
@@ -56,8 +63,15 @@ namespace JBToolkit.StreamHelpers
         /// </summary>
         /// <param name="parentStream"></param>
         /// <param name="maxBytesPerSecond"></param>
-        public ThrottledStream(Stream parentStream, int maxBytesPerSecond = int.MaxValue)
+        public ThrottledStream(
+            Stream parentStream,
+            MainForm mainForm,
+            int fileBytes,
+            int maxBytesPerSecond = int.MaxValue)
         {
+            this.mainForm = mainForm;
+            this.fileBytes = fileBytes;
+
             MaxBytesPerSecond = maxBytesPerSecond;
             parent = parentStream;
             processed = 0;
@@ -65,7 +79,8 @@ namespace JBToolkit.StreamHelpers
             {
                 Interval = 1000
             };
-            resettimer.Elapsed += Resettimer_Elapsed;
+            resettimer.Elapsed += ResetTimer_Elapsed;
+            stopWatch.Start();
             resettimer.Start();
         }
 
@@ -73,6 +88,8 @@ namespace JBToolkit.StreamHelpers
         {
             try
             {
+                processedTotal += bytes;
+                UpdateMbps();
                 processed += bytes;
                 if (processed >= maxBytesPerSecond)
                     wh.WaitOne();
@@ -80,10 +97,23 @@ namespace JBToolkit.StreamHelpers
             catch
             { }
         }
-        private void Resettimer_Elapsed(object sender, ElapsedEventArgs e)
+
+        private void ResetTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             processed = 0;
             wh.Set();
+        }
+
+        private void UpdateMbps()
+        {
+            double percentage = (double)processedTotal / (double)fileBytes * (double)100;
+            if (percentage > 100)
+                percentage = 100;
+
+            double bytesPerSecond = processedTotal / stopWatch.Elapsed.TotalSeconds;
+            mainForm.SetStatusMessage(
+                        "Uploading: " + percentage.ToString("0") + "% " +
+                        "(" + ((double)bytesPerSecond / (double)1048576).ToString("0.0") + " MB /s" + ")");
         }
 
         #region Stream-Overrides

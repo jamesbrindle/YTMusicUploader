@@ -59,6 +59,8 @@ namespace YTMusicUploader
             var openResult = FolderSelector.ShowDialog();
             if (openResult == DialogResult.OK)
             {
+                Aborting = true;
+
                 WatchFolderRepo.Insert(new WatchFolder
                 {
                     Path = FolderSelector.SelectedPath
@@ -66,6 +68,8 @@ namespace YTMusicUploader
 
                 WatchFolders = WatchFolderRepo.Load();
                 BindWatchFoldersList();
+
+                Queue = true;
             }
         }
 
@@ -88,16 +92,20 @@ namespace YTMusicUploader
 
         private void BtnRemoveWatchFolder_Click(object sender, EventArgs e)
         {
-            // TODO: Delete all from DB at the same time, rather than allowing individual 
-            // delete for better performance
+            Aborting = true;
 
             try
             {
                 if ((WatchFolder)lbWatchFolders.SelectedItem != null)
+                {
                     WatchFolderRepo.Delete(((WatchFolder)lbWatchFolders.SelectedItem).Id);
+                    MusicFileRepo.DeleteWatchFolder(((WatchFolder)lbWatchFolders.SelectedItem).Path);
+                }
             }
             catch { }
+
             BindWatchFoldersList();
+            Queue = true;
         }
 
         private void BtnRemoveWatchFolder_MouseEnter(object sender, EventArgs e)

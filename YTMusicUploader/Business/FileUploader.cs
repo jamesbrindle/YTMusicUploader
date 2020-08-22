@@ -10,6 +10,7 @@ namespace YTMusicUploader.Business
     {
         private MainForm MainForm;
         private List<MusicFile> MusicFiles;
+        public bool Stopped { get; set; } = true;
 
         public FileUploader(MainForm mainForm)
         {
@@ -21,9 +22,18 @@ namespace YTMusicUploader.Business
             MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true);     
             foreach (var musicFile in MusicFiles)
             {
+                if (MainForm.Aborting)
+                {
+                    Stopped = true;
+                    MainForm.SetUploadingMessage("Uploading: N/A");
+                    return;
+                }
+
                 MainForm.SetUploadingMessage("Uploading: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210));
 
-                Requests.UploadSong(
+                Stopped = false;
+                Requests.UploadSong(          
+                            MainForm,
                             MainForm.Settings.AuthenticationCookie, 
                             musicFile.Path, 
                             MainForm.Settings.ThrottleSpeed,
@@ -43,6 +53,9 @@ namespace YTMusicUploader.Business
                
                 musicFile.Save();
             }
+
+            MainForm.SetUploadingMessage("Uploading: N/A");
+            Stopped = true;
         }
     }
 }

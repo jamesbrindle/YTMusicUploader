@@ -29,45 +29,6 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
-        public int CountAll()
-        {
-            using (var conn = DbConnection())
-            {
-                conn.Open();
-                var count = conn.Query<int>(
-                        @"SELECT COUNT(Id) 
-                          FROM MusicFiles").FirstOrDefault();
-                return count;
-            }
-        }
-
-        public int CountIssues()
-        {
-            using (var conn = DbConnection())
-            {
-                conn.Open();
-                var count = conn.Query<int>(
-                        @"SELECT COUNT(Id) 
-                          FROM MusicFiles
-                          WHERE Error = 1").FirstOrDefault();
-                return count;
-            }
-        }
-
-        public int CountUploaded()
-        {
-            using (var conn = DbConnection())
-            {
-                conn.Open();
-                var count = conn.Query<int>(
-                        @"SELECT COUNT(Id) 
-                          FROM MusicFiles
-                          WHERE LastUpload IS NOT NULL AND LastUpload != '0001-01-01 00:00:00'
-                          AND LastUpload != ''").FirstOrDefault();
-                return count;
-            }
-        }
-
         public MusicFile Load(string path)
         {
             using (var conn = DbConnection())
@@ -117,6 +78,45 @@ namespace YTMusicUploader.Providers.Repos
                 conn.Open();
                 var musicFiles = conn.Query<MusicFile>(cmd).ToList();
                 return musicFiles;
+            }
+        }
+
+        public int CountAll()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var count = conn.Query<int>(
+                        @"SELECT COUNT(Id) 
+                          FROM MusicFiles").FirstOrDefault();
+                return count;
+            }
+        }
+
+        public int CountIssues()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var count = conn.Query<int>(
+                        @"SELECT COUNT(Id) 
+                          FROM MusicFiles
+                          WHERE Error = 1").FirstOrDefault();
+                return count;
+            }
+        }
+
+        public int CountUploaded()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var count = conn.Query<int>(
+                        @"SELECT COUNT(Id) 
+                          FROM MusicFiles
+                          WHERE LastUpload IS NOT NULL AND LastUpload != '0001-01-01 00:00:00'
+                          AND LastUpload != ''").FirstOrDefault();
+                return count;
             }
         }
 
@@ -349,6 +349,30 @@ namespace YTMusicUploader.Providers.Repos
                             @"DELETE FROM MusicFiles 
                             WHERE Path LIKE @Path + '%'",
                             new { path });
+                }
+
+                stopWatch.Stop();
+                return DbOperationResult.Success(-1, stopWatch.Elapsed);
+            }
+            catch (Exception e)
+            {
+                stopWatch.Stop();
+                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+            }
+        }
+
+        public DbOperationResult DeleteAll()
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+            try
+            {
+                using (var conn = DbConnection())
+                {
+                    conn.Open();
+                    conn.Execute(
+                            @"DELETE FROM MusicFiles");
                 }
 
                 stopWatch.Stop();

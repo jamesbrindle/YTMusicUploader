@@ -30,23 +30,27 @@ namespace YTMusicUploader.Providers
                                                 Path.Combine(Global.WorkingDirectory, @"AppData\context.json")));
                 request.ContentLength = postBytes.Length;
 
-                Stream requestStream = request.GetRequestStream();
-                requestStream.Write(postBytes, 0, postBytes.Length);
-                requestStream.Close();
-
-                var response = (HttpWebResponse)request.GetResponse();
-                string result;
-
-                using (var brotli = new Brotli.BrotliStream(
-                                                    response.GetResponseStream(), 
-                                                    System.IO.Compression.CompressionMode.Decompress, 
-                                                    true))
+                using (var requestStream = request.GetRequestStream())
                 {
-                    var streamReader = new StreamReader(brotli);
-                    result = streamReader.ReadToEnd();
+                    requestStream.Write(postBytes, 0, postBytes.Length);
+                    requestStream.Close();
                 }
 
-                var json = JsonConvert.DeserializeObject(result);
+                postBytes = null;
+                using (var response = (HttpWebResponse)request.GetResponse())
+                {
+                    string result;
+                    using (var brotli = new Brotli.BrotliStream(
+                                                        response.GetResponseStream(),
+                                                        System.IO.Compression.CompressionMode.Decompress,
+                                                        true))
+                    {
+                        var streamReader = new StreamReader(brotli);
+                        result = streamReader.ReadToEnd();
+                    }
+
+                    var json = JsonConvert.DeserializeObject(result);
+                }
             }
             catch(Exception)
             {
