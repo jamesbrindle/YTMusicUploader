@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Timers;
-using System.Windows.Controls;
 using YTMusicUploader;
 
 namespace JBToolkit.StreamHelpers
@@ -58,11 +57,11 @@ namespace JBToolkit.StreamHelpers
 
         #endregion
 
-        /// <summary>
-        /// Creates a new Stream with Databandwith cap
+        /// <summary> 
+        /// Creates a new Stream with Data bandwith cap
         /// </summary>
-        /// <param name="parentStream"></param>
-        /// <param name="maxBytesPerSecond"></param>
+        /// <param name="parentStream">The original stream in which to throttle</param>
+        /// <param name="maxBytesPerSecond">The maximum bytes per second allowed</param>
         public ThrottledStream(
             Stream parentStream,
             MainForm mainForm,
@@ -104,16 +103,19 @@ namespace JBToolkit.StreamHelpers
             wh.Set();
         }
 
+        /// <summary>
+        /// Updates the percentage uploaded and current speed of the form form
+        /// </summary>
         private void UpdateMbps()
         {
-            double percentage = (double)processedTotal / (double)fileBytes * (double)100;
+            double percentage = processedTotal / (double)fileBytes * 100;
             if (percentage > 100)
                 percentage = 100;
 
             double bytesPerSecond = processedTotal / stopWatch.Elapsed.TotalSeconds;
             mainForm.SetStatusMessage(
                         "Uploading: " + percentage.ToString("0") + "% " +
-                        "(" + ((double)bytesPerSecond / (double)1048576).ToString("0.0") + " MB /s" + ")");
+                        "(" + ((double)bytesPerSecond / 1048576).ToString("0.0") + " MB /s" + ")");
         }
 
         #region Stream-Overrides

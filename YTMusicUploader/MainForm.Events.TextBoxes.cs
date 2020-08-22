@@ -8,7 +8,7 @@ namespace YTMusicUploader
         private void TbThrottleSpeed_KeyPress(object sender, KeyPressEventArgs e)
         {
             RemoveDoublePoints();
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);           
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
             ThrottleTextChangedTimer.Stop();
             ThrottleTextChangedTimer.Start();
         }
@@ -16,7 +16,7 @@ namespace YTMusicUploader
         private void TbThrottleSpeed_KeyDown(object sender, KeyEventArgs e)
         {
             RemoveDoublePoints();
-            e.Handled = !char.IsDigit((char)e.KeyValue) && !char.IsControl((char)e.KeyValue);            
+            e.Handled = !char.IsDigit((char)e.KeyValue) && !char.IsControl((char)e.KeyValue);
             ThrottleTextChangedTimer.Stop();
             ThrottleTextChangedTimer.Start();
         }
@@ -26,7 +26,7 @@ namespace YTMusicUploader
             RemoveDoublePoints();
             if (tbThrottleSpeed.Text != "∞")
             {
-                tbThrottleSpeed.Text = tbThrottleSpeed.Text.RemoveLetters().Trim();                
+                tbThrottleSpeed.Text = tbThrottleSpeed.Text.RemoveLetters().Trim();
                 ThrottleTextChangedTimer.Stop();
                 ThrottleTextChangedTimer.Start();
             }
@@ -74,7 +74,7 @@ namespace YTMusicUploader
             {
                 int lastPointCharIndex = tbThrottleSpeed.Text.LastIndexOf(".");
                 tbThrottleSpeed.Text = tbThrottleSpeed.Text.Remove(lastPointCharIndex, 1);
-            }           
+            }
         }
 
         private void ValidateThrottleTextBox()

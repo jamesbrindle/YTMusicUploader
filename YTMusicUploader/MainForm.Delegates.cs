@@ -168,7 +168,7 @@ namespace YTMusicUploader
             if (lblUploaded.InvokeRequired)
             {
                 GetUploadLabelDelegate d = new GetUploadLabelDelegate(GetUploadLabel);
-                return (string) Invoke(d, new object[] { });
+                return (string)Invoke(d, new object[] { });
             }
             else
             {
@@ -198,7 +198,7 @@ namespace YTMusicUploader
 
                 lbWatchFolders.DataSource = new BindingSource(WatchFolders, null);
                 lbWatchFolders.DisplayMember = "Path";
-                lbWatchFolders.ValueMember = "Id";               
+                lbWatchFolders.ValueMember = "Id";
             }
         }
     }

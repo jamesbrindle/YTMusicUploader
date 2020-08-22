@@ -39,8 +39,9 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -55,6 +56,21 @@
     <PlatformTarget>x64</PlatformTarget>
     <DefineConstants>RELEASE</DefineConstants>
     <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3820B426558C08E313ADB0226335DBCEBCD82BB9</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>YTMusicUploader.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>YTMusicUploader.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
@@ -74,9 +90,6 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -98,12 +111,6 @@
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -179,15 +186,21 @@
     <Compile Include="CustomControls\AntiAliasedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dialogues\UploadLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogues\UploadLog.Designer.cs">
+      <DependentUpon>UploadLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogues\IssueLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogues\IssueLog.Designer.cs">
+      <DependentUpon>IssueLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="CustomControls\OptimisedMetroForm.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomControls\Popup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomControls\Popup.designer.cs">
-      <DependentUpon>Popup.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\RoundButton.cs">
       <SubType>Component</SubType>
@@ -207,6 +220,7 @@
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
+    <Compile Include="Helpers\RegistryHelper.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />
     <Compile Include="Helpers\ThrottleStream.cs" />
     <Compile Include="Helpers\VersionHelper.cs" />
@@ -221,6 +235,14 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.Events.FileSystemWatcher.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.Events.Menu.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.Events.TextBoxes.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Form</SubType>
@@ -231,8 +253,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Models\IDbModel.cs" />
     <Compile Include="Providers\Models\Settings.cs" />
     <Compile Include="Providers\Models\WatchFolder.cs" />
+    <Compile Include="Providers\Models\_DbModels.cs" />
     <Compile Include="Providers\Repos\MusicFileRepo.cs" />
     <Compile Include="Providers\Models\MusicFile.cs" />
     <Compile Include="Providers\DataAccess.cs" />
@@ -241,8 +265,11 @@
     <Compile Include="Providers\Requests.cs" />
     <Compile Include="Providers\Requests\UploadSong.cs" />
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
-    <EmbeddedResource Include="CustomControls\Popup.resx">
-      <DependentUpon>Popup.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogues\UploadLog.resx">
+      <DependentUpon>UploadLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogues\IssueLog.resx">
+      <DependentUpon>IssueLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogues\ConnectToYTMusic.resx">
       <DependentUpon>ConnectToYTMusic.cs</DependentUpon>
@@ -280,6 +307,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="YTMusicUploader.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -288,15 +316,24 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Logo\yt_logo-128.png" />
-    <Content Include="Resources\Logo\yt_logo-16.png" />
-    <Content Include="Resources\Logo\yt_logo-180.png" />
-    <Content Include="Resources\Logo\yt_logo-24.png" />
-    <Content Include="Resources\Logo\yt_logo-256.png" />
-    <Content Include="Resources\Logo\yt_logo-48.png" />
-    <Content Include="Resources\Logo\yt_logo-64.png" />
-    <Content Include="Resources\Logo\yt_logo-72.png" />
-    <Content Include="Resources\Logo\yt_logo-96.png" />
+    <None Include="Resources\Logo\yt_logo_padded.png" />
+    <None Include="Resources\happy.png" />
+    <Content Include="InstallerDependencies\MicrosoftEdgeSetup.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Logo\yt_logo-128.png" />
+    <None Include="Resources\Logo\yt_logo-16.png" />
+    <None Include="Resources\Logo\yt_logo-180.png" />
+    <None Include="Resources\Logo\yt_logo-24.png" />
+    <None Include="Resources\Logo\yt_logo-256.png" />
+    <None Include="Resources\Logo\yt_logo-48.png" />
+    <None Include="Resources\Logo\yt_logo-64.png" />
+    <None Include="Resources\Logo\yt_logo-72.png" />
+    <None Include="Resources\Logo\yt_logo-96.png" />
+    <None Include="Resources\Raw\happy_unhappy.svg" />
+    <None Include="Resources\unhappy.png" />
+    <None Include="Resources\show.png" />
+    <None Include="Resources\quit.png" />
     <None Include="Resources\Raw\success.svg" />
     <None Include="Resources\Raw\yt_logo_sm.svg" />
     <None Include="Resources\success.png" />
@@ -311,7 +348,7 @@
     <None Include="Resources\plus_down.png" />
     <None Include="Resources\cross.png" />
     <None Include="Resources\Raw\plus_minus.svg" />
-    <None Include="Resources\Raw\tick_cross.svg" />
+    <None Include="Resources\Raw\tick_cross_open.svg" />
     <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup />

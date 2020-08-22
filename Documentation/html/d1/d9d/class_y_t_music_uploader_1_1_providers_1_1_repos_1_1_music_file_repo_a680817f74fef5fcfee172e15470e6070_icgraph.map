@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Repos.MusicFileRepo.Delete" name="YTMusicUploader.Providers.Repos.MusicFileRepo.Delete">
+<area shape="rect" id="node1" title="Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to se..." alt="" coords="239,5,429,47"/>
+<area shape="rect" id="node2" href="$da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a28d390cd36a7ea7d5840f97013f4d80d" title="Delete from the database (for MusicFiles, it typically set the flag of &#39;Removed&#39; but doesn&#39;t actually..." alt="" coords="5,5,191,47"/>
+</map>

@@ -1,10 +1,8 @@
 ﻿using JBToolkit.ColorHelper;
 using System;
 using System.ComponentModel;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
 
 namespace JBToolkit.WinForms

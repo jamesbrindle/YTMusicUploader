@@ -1,0 +1,192 @@
+.TH "YTMusicUploader.MainForm" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MainForm
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBOptimisedMetroForm\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMainForm\fP (bool hidden)"
+.br
+.ti -1c
+.RI "void \fBRepopulateAmountLables\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetStatusMessage\fP (string statusMessage)"
+.br
+.ti -1c
+.RI "void \fBSetConnectedToYouTubeMusic\fP (bool connectedToYouTubeMusic)"
+.br
+.ti -1c
+.RI "void \fBSetStartWithWindows\fP (bool startWithWindows)"
+.br
+.ti -1c
+.RI "void \fBSetThrottleSpeed\fP (string mbps)"
+.br
+.ti -1c
+.RI "void \fBSetVersion\fP (string version)"
+.br
+.ti -1c
+.RI "void \fBSetUploadingMessage\fP (string text)"
+.br
+.ti -1c
+.RI "void \fBSetDiscoveredFilesLabel\fP (string text)"
+.br
+.ti -1c
+.RI "void \fBSetIssuesLabel\fP (string text)"
+.br
+.ti -1c
+.RI "string \fBGetIssuesLabel\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetUploadedLabel\fP (string text)"
+.br
+.ti -1c
+.RI "string \fBGetUploadLabel\fP ()"
+.br
+.ti -1c
+.RI "void \fBBindWatchFoldersList\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "Clean up any resources being used\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBConnectToYTMusic\fP \fBConnectToYTMusicForm\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIssueLog\fP \fBIssueLogForm\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBUploadLog\fP \fBUploadLogForm\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSettingsRepo\fP \fBSettingsRepo\fP = new \fBSettingsRepo\fP()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBWatchFolderRepo\fP \fBWatchFolderRepo\fP = new \fBWatchFolderRepo\fP()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBMusicFileRepo\fP \fBMusicFileRepo\fP = new \fBMusicFileRepo\fP()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSettings\fP \fBSettings\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "List< \fBWatchFolder\fP > \fBWatchFolders\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFileScanner\fP \fBFileScanner\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFileUploader\fP \fBFileUploader\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBConnectedToYTMusic\fP = false\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "System\&.Windows\&.Forms\&.Timer \fBThrottleTextChangedTimer\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBInitialFilesCount\fP = 0\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBAborting\fP = false\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBQueue\fP = false\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.MainForm\&.MainForm (bool hidden)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void YTMusicUploader\&.MainForm\&.BindWatchFoldersList ()"
+
+.SS "override void YTMusicUploader\&.MainForm\&.Dispose (bool disposing)\fC [protected]\fP"
+
+.PP
+Clean up any resources being used\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdisposing\fP true if managed resources should be disposed; otherwise, false\&.
+.RE
+.PP
+
+.SS "string YTMusicUploader\&.MainForm\&.GetIssuesLabel ()"
+
+.SS "string YTMusicUploader\&.MainForm\&.GetUploadLabel ()"
+
+.SS "void YTMusicUploader\&.MainForm\&.RepopulateAmountLables ()"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetConnectedToYouTubeMusic (bool connectedToYouTubeMusic)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetDiscoveredFilesLabel (string text)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetIssuesLabel (string text)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetStartWithWindows (bool startWithWindows)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetStatusMessage (string statusMessage)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetThrottleSpeed (string mbps)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetUploadedLabel (string text)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetVersion (string version)"
+
+.SH "Property Documentation"
+.PP 
+.SS "bool YTMusicUploader\&.MainForm\&.Aborting = false\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.MainForm\&.ConnectedToYTMusic = false\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBConnectToYTMusic\fP YTMusicUploader\&.MainForm\&.ConnectToYTMusicForm\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBFileScanner\fP YTMusicUploader\&.MainForm\&.FileScanner\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBFileUploader\fP YTMusicUploader\&.MainForm\&.FileUploader\fC [get]\fP, \fC [set]\fP"
+
+.SS "int YTMusicUploader\&.MainForm\&.InitialFilesCount = 0\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBIssueLog\fP YTMusicUploader\&.MainForm\&.IssueLogForm = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBMusicFileRepo\fP YTMusicUploader\&.MainForm\&.MusicFileRepo = new \fBMusicFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.MainForm\&.Queue = false\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBSettings\fP YTMusicUploader\&.MainForm\&.Settings\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBSettingsRepo\fP YTMusicUploader\&.MainForm\&.SettingsRepo = new \fBSettingsRepo\fP()\fC [get]\fP, \fC [set]\fP"
+
+.SS "System\&.Windows\&.Forms\&.Timer YTMusicUploader\&.MainForm\&.ThrottleTextChangedTimer\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBUploadLog\fP YTMusicUploader\&.MainForm\&.UploadLogForm = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBWatchFolderRepo\fP YTMusicUploader\&.MainForm\&.WatchFolderRepo = new \fBWatchFolderRepo\fP()\fC [get]\fP, \fC [set]\fP"
+
+.SS "List<\fBWatchFolder\fP> YTMusicUploader\&.MainForm\&.WatchFolders\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

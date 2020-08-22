@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Requests.UploadSong" name="YTMusicUploader.Providers.Requests.UploadSong">
+<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="240,5,425,47"/>
+<area shape="rect" id="node2" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="5,5,192,47"/>
+</map>

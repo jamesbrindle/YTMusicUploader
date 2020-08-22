@@ -1,0 +1,141 @@
+.TH "JBToolkit.WinForms.OptimisedMetroForm" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JBToolkit.WinForms.OptimisedMetroForm \- Abstract form to inherit that uses the MetroForms styler, and optimises buffering, drawing, size grips, resizing shadow, allows custom tooltip for each control by putting a string in the control's 'Tag' property and handles client screen DPI not set to 100% more effectively\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBMetroForm\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int \fBSendMessage\fP (IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam)"
+.br
+.ti -1c
+.RI "static int \fBGetSystemParametersInfo\fP (int uAction, int uParam, out int lpvParam, int fuWinIni)"
+.br
+.ti -1c
+.RI "static int \fBSetSystemParametersInfo\fP (int uAction, int uParam, int lpvParam, int fuWinIni)"
+.br
+.ti -1c
+.RI "void \fBSetAllControlsDoubleBuffered\fP (\fBControl\fP parentControl)"
+.br
+.RI "Iterates through all controls and ensure they're set to double buffered "
+.ti -1c
+.RI "static int \fBSendMessage\fP (IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType\&.LPWStr)] string lParam)"
+.br
+.ti -1c
+.RI "void \fBSetTextBoxCueBanner\fP (TextBox textbox, string text)"
+.br
+.ti -1c
+.RI "int \fBGetScreenDPI\fP ()"
+.br
+.ti -1c
+.RI "new void \fBOnLoad\fP (EventArgs _)"
+.br
+.ti -1c
+.RI "\fBOptimisedMetroForm\fP (bool formResizable=true, bool handleCustomClientDPI=false)"
+.br
+.RI "A pre-customised and optimised form using the Metro Style\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBSuspendDrawing\fP (\fBControl\fP parent)"
+.br
+.RI "Suspend the drawing of a control "
+.ti -1c
+.RI "static void \fBResumeDrawing\fP (\fBControl\fP parent)"
+.br
+.RI "Resume the drawing of a control "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBEM_SETCUEBANNER\fP = 0x1501"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBWndProc\fP (ref Message message)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override CreateParams \fBCreateParams\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract form to inherit that uses the MetroForms styler, and optimises buffering, drawing, size grips, resizing shadow, allows custom tooltip for each control by putting a string in the control's 'Tag' property and handles client screen DPI not set to 100% more effectively\&. 
+
+Be sure to call OnLoad(e) / OnLoad(null) in calling Form contructor or 'Load' method\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JBToolkit\&.WinForms\&.OptimisedMetroForm\&.OptimisedMetroForm (bool formResizable = \fCtrue\fP, bool handleCustomClientDPI = \fCfalse\fP)"
+
+.PP
+A pre-customised and optimised form using the Metro Style\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIformResizable\fP Set's whether or not the form can be resized, and sets up certain properties and border appropriately
+.br
+\fIcontrolTagsAsTooltips\fP Set's whether or not any text in a control's 'Tag' property is converted to a tooltip - for ease
+.br
+\fIhandleCustomClientDPI\fP I\&.e\&. 125% or 150% - \fBWinForms\fP isn't that good at dealing with different display DPI settings, however setting this to true will 'try' to make the form handle different DPI settings\&.
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int JBToolkit\&.WinForms\&.OptimisedMetroForm\&.GetScreenDPI ()"
+
+.SS "static int JBToolkit\&.WinForms\&.OptimisedMetroForm\&.GetSystemParametersInfo (int uAction, int uParam, out int lpvParam, int fuWinIni)"
+
+.SS "new void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.OnLoad (EventArgs _)"
+
+.SS "static void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.ResumeDrawing (\fBControl\fP parent)\fC [static]\fP"
+
+.PP
+Resume the drawing of a control 
+.SS "static int JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SendMessage (IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType\&.LPWStr)] string lParam)"
+
+.SS "static int JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SendMessage (IntPtr hWnd, Int32 wMsg, bool wParam, Int32 lParam)"
+
+.SS "void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SetAllControlsDoubleBuffered (\fBControl\fP parentControl)"
+
+.PP
+Iterates through all controls and ensure they're set to double buffered 
+.SS "static int JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SetSystemParametersInfo (int uAction, int uParam, int lpvParam, int fuWinIni)"
+
+.SS "void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SetTextBoxCueBanner (TextBox textbox, string text)"
+
+.SS "static void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SuspendDrawing (\fBControl\fP parent)\fC [static]\fP"
+
+.PP
+Suspend the drawing of a control 
+.SS "override void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.WndProc (ref Message message)\fC [protected]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "const int JBToolkit\&.WinForms\&.OptimisedMetroForm\&.EM_SETCUEBANNER = 0x1501\fC [static]\fP"
+
+.SH "Property Documentation"
+.PP 
+.SS "override CreateParams JBToolkit\&.WinForms\&.OptimisedMetroForm\&.CreateParams\fC [get]\fP, \fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

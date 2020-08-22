@@ -1,14 +1,20 @@
 ﻿using Dapper;
 using System;
-using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using YTMusicUploader.Providers.Models;
 
 namespace YTMusicUploader.Providers.Repos
 {
+    /// <summary>
+    /// Application settings database repository access. 
+    /// </summary>
     public class SettingsRepo : DataAccess
     {
+        /// <summary>
+        /// Loads the application settings data from the database
+        /// </summary>
+        /// <returns>Setting model object</returns>
         public Settings Load()
         {
             using (var conn = DbConnection())
@@ -16,15 +22,20 @@ namespace YTMusicUploader.Providers.Repos
                 conn.Open();
                 var settings = conn.Query<Settings>(
                         @"SELECT 
-                            Id, 
-                            StartWithWindows, 
-                            ThrottleSpeed, 
-                            AuthenticationCookie
-                        FROM Settings").FirstOrDefault();
+                              Id, 
+                              StartWithWindows, 
+                              ThrottleSpeed, 
+                              AuthenticationCookie
+                          FROM Settings").FirstOrDefault();
                 return settings;
             }
         }
 
+        /// <summary>
+        /// Updates the application settings data in the database
+        /// </summary>
+        /// <param name="settings">Settings model object</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public DbOperationResult Update(Settings settings)
         {
             Stopwatch stopWatch = new Stopwatch();
@@ -40,7 +51,7 @@ namespace YTMusicUploader.Providers.Repos
                                  SET StartWithWindows = @StartWithWindows, 
                                      ThrottleSpeed = @ThrottleSpeed,  
                                      AuthenticationCookie = @AuthenticationCookie
-                            WHERE Id = @Id",
+                              WHERE Id = @Id",
                             settings);
 
                 }

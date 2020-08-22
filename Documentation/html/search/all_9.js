@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['ibuttoncontrol_116',['IButtonControl',['../d0/d4a/class_i_button_control.html',1,'']]],
+  ['id_117',['Id',['../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a45783d70ba3f40303baaa2db9e980fd1',1,'YTMusicUploader.Providers.DbOperationResult.Id()'],['../d4/dcd/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_db_models.html#a5d0220c22661a2b211bf00a3664fd887',1,'YTMusicUploader.Providers.Models.DbModels.Id()'],['../d6/d20/interface_y_t_music_uploader_1_1_providers_1_1_models_1_1_i_db_model.html#ae432895d6599cc9d0945d373bcbcb3b4',1,'YTMusicUploader.Providers.Models.IDbModel.Id()']]],
+  ['idbmodel_118',['IDbModel',['../d6/d20/interface_y_t_music_uploader_1_1_providers_1_1_models_1_1_i_db_model.html',1,'YTMusicUploader::Providers::Models']]],
+  ['idbmodel_2ecs_119',['IDbModel.cs',['../d1/d60/_i_db_model_8cs.html',1,'']]],
+  ['idisposable_120',['IDisposable',['../d2/d55/class_i_disposable.html',1,'']]],
+  ['ienumerable_121',['IEnumerable',['../d5/d67/class_i_enumerable.html',1,'']]],
+  ['ienumerator_122',['IEnumerator',['../d9/d9d/class_i_enumerator.html',1,'']]],
+  ['image_123',['Image',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#aca5611d2def9bbcf3a9e2544b2a2cf48',1,'JBToolkit::WinForms::RoundButton']]],
+  ['inactive1_124',['Inactive1',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a8b25b541eed8444ea1e5f8649ba41ca6',1,'JBToolkit::WinForms::RoundButton']]],
+  ['inactive2_125',['Inactive2',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#aca08a819ce72c71d0ccb8be01553aa73',1,'JBToolkit::WinForms::RoundButton']]],
+  ['initialfilescount_126',['InitialFilesCount',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a4fd6a177b913039f66e8b686496f2f90',1,'YTMusicUploader::MainForm']]],
+  ['insert_127',['Insert',['../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a9cc3844a4925387a45d333f3b1e9d026',1,'YTMusicUploader.Providers.Repos.MusicFileRepo.Insert()'],['../de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html#a276572e4606d25da81865bcee0a7d5eb',1,'YTMusicUploader.Providers.Repos.WatchFolderRepo.Insert()']]],
+  ['intensitygenerator_128',['IntensityGenerator',['../dc/dff/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_generator.html',1,'JBToolkit::ColorHelper::ColourHelper']]],
+  ['intensityvalue_129',['IntensityValue',['../d7/d0c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_value.html',1,'JBToolkit.ColorHelper.ColourHelper.IntensityValue'],['../d7/d0c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_value.html#a7f95ac7d1c6eefdc2c833791f3df98b5',1,'JBToolkit.ColorHelper.ColourHelper.IntensityValue.IntensityValue()']]],
+  ['intensityvaluewalker_130',['IntensityValueWalker',['../d4/d54/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_value_walker.html',1,'JBToolkit.ColorHelper.ColourHelper.IntensityValueWalker'],['../d4/d54/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_value_walker.html#acaa5d3d6b8d662a7e691b01bd24704ac',1,'JBToolkit.ColorHelper.ColourHelper.IntensityValueWalker.IntensityValueWalker()']]],
+  ['isauthenticated_131',['IsAuthenticated',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5',1,'YTMusicUploader::Providers::Requests']]],
+  ['iserror_132',['IsError',['../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a60dd561656d2348349eb3b1b2fb36ac3',1,'YTMusicUploader::Providers::DbOperationResult']]],
+  ['isopen_133',['IsOpen',['../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#a07adbc4b43fdd6e7f1b10e3f4e180b29',1,'JBToolkit::StreamHelpers::SafeFileStream']]],
+  ['issuelog_134',['IssueLog',['../da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html',1,'YTMusicUploader.Dialogues.IssueLog'],['../da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html#a15b7115b56f2fe23f63ef927903b2e48',1,'YTMusicUploader.Dialogues.IssueLog.IssueLog()']]],
+  ['issuelog_2ecs_135',['IssueLog.cs',['../d5/dfb/_issue_log_8cs.html',1,'']]],
+  ['issuelog_2edesigner_2ecs_136',['IssueLog.Designer.cs',['../d0/d0f/_issue_log_8_designer_8cs.html',1,'']]],
+  ['issuelogform_137',['IssueLogForm',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#adfff97576c7330022c7f1ae1229bb058',1,'YTMusicUploader::MainForm']]]
+];

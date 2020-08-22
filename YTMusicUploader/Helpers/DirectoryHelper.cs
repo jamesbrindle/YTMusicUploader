@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace JBToolkit.Windows
 {
@@ -363,6 +364,19 @@ namespace JBToolkit.Windows
         public static byte[] ReadAllBytesEvenLocked(string filePath)
         {
             return StreamHelpers.SafeFileStream.GetBytes(filePath);
+        }
+
+        /// <summary>
+        /// Calculate the hash of a file with buffered read
+        /// </summary>
+        public static string GetFileHash(string path)
+        {
+            using (var stream = new BufferedStream(File.OpenRead(path), 1200000))
+            {
+                var sha = new SHA256Managed();
+                byte[] checksum = sha.ComputeHash(stream);
+                return BitConverter.ToString(checksum).Replace("-", string.Empty);
+            }
         }
 
         [DllImport("Shell32.dll")]

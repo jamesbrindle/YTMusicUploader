@@ -5,8 +5,14 @@ using System.Reflection;
 
 namespace YTMusicUploader
 {
+    /// <summary>
+    /// Globally accessible properties
+    /// </summary>
     public static class Global
     {
+        /// <summary>
+        /// Returns application's version from Assembly
+        /// </summary>
         public static string ApplicationVersion
         {
             get
@@ -15,6 +21,9 @@ namespace YTMusicUploader
             }
         }
 
+        /// <summary>
+        /// Returns user's specific AppData directory's YTMusicUploader folder
+        /// </summary>
         public static string AppDataLocation
         {
             get
@@ -23,6 +32,9 @@ namespace YTMusicUploader
             }
         }
 
+        /// <summary>
+        /// Returns folder where application .exe resides
+        /// </summary>
         public static string WorkingDirectory
         {
             get
@@ -31,19 +43,14 @@ namespace YTMusicUploader
             }
         }
 
+        /// <summary>
+        /// Returns array of YouTube Music upload support music file type extensions
+        /// </summary>
         public static string[] SupportedFiles
         {
             get
             {
                 return new string[] { ".flac", ".m4a", ".mp3", ".oga", ".wma" };
-            }
-        }
-
-        public static string SupportedFilesWilcard
-        {
-            get
-            {
-                return "*.flac;*.m4a;*.mp3;*.oga;*.wma";
             }
         }
     }

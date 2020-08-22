@@ -1,5 +1,4 @@
 ﻿using MetroFramework.Forms;
-using Microsoft.WindowsAPICodePack.Taskbar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -277,20 +276,6 @@ namespace JBToolkit.WinForms
             }
 
             return currentDPI;
-        }
-
-        #endregion
-
-        #region Taskbar Manager - Change Taskbar icon / Progress state
-
-        public TaskbarManager TaskManager = TaskbarManager.Instance;
-
-        /// <summary>
-        /// Set the taskbar percentage state
-        /// </summary>
-        public void SetTaskbarPercent(int current, int ofTotal)
-        {
-            TaskManager.SetProgressValue(current, ofTotal);
         }
 
         #endregion

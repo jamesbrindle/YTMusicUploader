@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Repos.MusicFileRepo.Insert" name="YTMusicUploader.Providers.Repos.MusicFileRepo.Insert">
+<area shape="rect" id="node1" title="Inserts a Music File entry into the database. If the entry already exists, but is flagged as &#39;removed..." alt="" coords="239,5,424,47"/>
+<area shape="rect" id="node2" href="$da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a7caf6c42bf65070cc7a42f23f748592c" title="Insert or update the database" alt="" coords="5,5,191,47"/>
+</map>

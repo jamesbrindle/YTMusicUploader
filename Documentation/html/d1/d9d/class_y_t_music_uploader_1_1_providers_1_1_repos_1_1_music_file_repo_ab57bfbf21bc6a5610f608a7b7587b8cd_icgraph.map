@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Providers.Repos.MusicFileRepo.GetMusicFileIdFromPath" name="YTMusicUploader.Providers.Repos.MusicFileRepo.GetMusicFileIdFromPath">
+<area shape="rect" id="node1" title="Returns the database ID of the music file by a give file path" alt="" coords="472,5,703,61"/>
+<area shape="rect" id="node2" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a9cc3844a4925387a45d333f3b1e9d026" title="Inserts a Music File entry into the database. If the entry already exists, but is flagged as &#39;removed..." alt="" coords="239,13,424,54"/>
+<area shape="rect" id="node3" href="$da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a7caf6c42bf65070cc7a42f23f748592c" title="Insert or update the database" alt="" coords="5,13,191,54"/>
+</map>

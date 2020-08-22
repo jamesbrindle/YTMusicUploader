@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Models.WatchFolder.Delete" name="YTMusicUploader.Providers.Models.WatchFolder.Delete">
+<area shape="rect" id="node1" title="Delete from the database" alt="" coords="5,5,191,47"/>
+<area shape="rect" id="node2" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html#a1954862b5a325644ca69ff7fa2896820" title="Deletes a library Watch Folder entry from the database of a given WatchFolder model object" alt="" coords="239,5,447,47"/>
+</map>

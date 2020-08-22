@@ -1,0 +1,147 @@
+\hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner}{}\doxysection{Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner Class Reference}
+\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner}\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+
+
+Responsive for scanning library music files and adding and managing discovered files to the database.  
+
+
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{d8/d3e/class_y_t_music_uploader_1_1_business_1_1_file_scanner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a528afcea10ff044180e7b847576d5421}{File\+Scanner}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form}{Main\+Form}} main\+Form)
+\item 
+void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac79b28d31e906a37a700c7574a7b6290}{Process}} ()
+\begin{DoxyCompactList}\small\item\em Executes the scan \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac6fbaca1fd66679b56ace361aae3718d}{Recount\+Library\+Files}} ()
+\begin{DoxyCompactList}\small\item\em Updates the \textquotesingle{}Discovered Files\textquotesingle{} count on the main form. Ideally used when updating the form while an upload process is taking place \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aca7c721e5249d14720bd65ac83b593f4}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets the properties, such as discovered file, current music files and hashes \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_j_b_toolkit_1_1_windows_1_1_file_data}{File\+Data}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ad4b59754c28220cff463fa809e3c605f}{New\+Files}} = new List$<$\mbox{\hyperlink{class_j_b_toolkit_1_1_windows_1_1_file_data}{File\+Data}}$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Hash\+Set$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ada6858504e4c2b7768861db0afc5e0b0}{New\+Files\+Hash}} = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Hash\+Set$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa45213ac30fb4ca0a724db3360dbc375}{Discovered\+Files\+Hash}} = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a1efea8966e2d7a8da44b19057804026e}{Music\+Files\+To\+Delete}} = new List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file}{Music\+File}}$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa9515774329587c06771d08f35a0b4cd}{Current\+Music\+Files}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Hash\+Set$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a59731bc58512f7b4c85c21b5b3854b14}{Current\+Music\+Files\+Hash}} = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Responsive for scanning library music files and adding and managing discovered files to the database. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a528afcea10ff044180e7b847576d5421}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a528afcea10ff044180e7b847576d5421}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!FileScanner@{FileScanner}}
+\index{FileScanner@{FileScanner}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{FileScanner()}{FileScanner()}}
+{\footnotesize\ttfamily Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+File\+Scanner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form}{Main\+Form}}}]{main\+Form }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac79b28d31e906a37a700c7574a7b6290}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac79b28d31e906a37a700c7574a7b6290}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!Process@{Process}}
+\index{Process@{Process}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{Process()}{Process()}}
+{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes the scan 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac79b28d31e906a37a700c7574a7b6290_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac6fbaca1fd66679b56ace361aae3718d}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac6fbaca1fd66679b56ace361aae3718d}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!RecountLibraryFiles@{RecountLibraryFiles}}
+\index{RecountLibraryFiles@{RecountLibraryFiles}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{RecountLibraryFiles()}{RecountLibraryFiles()}}
+{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Recount\+Library\+Files (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the \textquotesingle{}Discovered Files\textquotesingle{} count on the main form. Ideally used when updating the form while an upload process is taking place 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac6fbaca1fd66679b56ace361aae3718d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aca7c721e5249d14720bd65ac83b593f4}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aca7c721e5249d14720bd65ac83b593f4}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!Reset@{Reset}}
+\index{Reset@{Reset}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the properties, such as discovered file, current music files and hashes 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa9515774329587c06771d08f35a0b4cd}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa9515774329587c06771d08f35a0b4cd}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!CurrentMusicFiles@{CurrentMusicFiles}}
+\index{CurrentMusicFiles@{CurrentMusicFiles}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{CurrentMusicFiles}{CurrentMusicFiles}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Current\+Music\+Files\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a59731bc58512f7b4c85c21b5b3854b14}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a59731bc58512f7b4c85c21b5b3854b14}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!CurrentMusicFilesHash@{CurrentMusicFilesHash}}
+\index{CurrentMusicFilesHash@{CurrentMusicFilesHash}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{CurrentMusicFilesHash}{CurrentMusicFilesHash}}
+{\footnotesize\ttfamily Hash\+Set$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Current\+Music\+Files\+Hash = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa45213ac30fb4ca0a724db3360dbc375}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa45213ac30fb4ca0a724db3360dbc375}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!DiscoveredFilesHash@{DiscoveredFilesHash}}
+\index{DiscoveredFilesHash@{DiscoveredFilesHash}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{DiscoveredFilesHash}{DiscoveredFilesHash}}
+{\footnotesize\ttfamily Hash\+Set$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Discovered\+Files\+Hash = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a1efea8966e2d7a8da44b19057804026e}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a1efea8966e2d7a8da44b19057804026e}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!MusicFilesToDelete@{MusicFilesToDelete}}
+\index{MusicFilesToDelete@{MusicFilesToDelete}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{MusicFilesToDelete}{MusicFilesToDelete}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Music\+Files\+To\+Delete = new List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file}{Music\+File}}$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ad4b59754c28220cff463fa809e3c605f}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ad4b59754c28220cff463fa809e3c605f}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!NewFiles@{NewFiles}}
+\index{NewFiles@{NewFiles}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{NewFiles}{NewFiles}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_j_b_toolkit_1_1_windows_1_1_file_data}{File\+Data}}$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+New\+Files = new List$<$\mbox{\hyperlink{class_j_b_toolkit_1_1_windows_1_1_file_data}{File\+Data}}$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ada6858504e4c2b7768861db0afc5e0b0}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ada6858504e4c2b7768861db0afc5e0b0}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!NewFilesHash@{NewFilesHash}}
+\index{NewFilesHash@{NewFilesHash}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{NewFilesHash}{NewFilesHash}}
+{\footnotesize\ttfamily Hash\+Set$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+New\+Files\+Hash = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Business/\mbox{\hyperlink{_file_scanner_8cs}{File\+Scanner.\+cs}}\end{DoxyCompactItemize}

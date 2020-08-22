@@ -1,0 +1,63 @@
+.TH "YTMusicUploader.Providers.DataAccess" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.DataAccess \- Abastract database repository access class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\fP, \fBYTMusicUploader\&.Providers\&.Repos\&.SettingsRepo\fP, and \fBYTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\fP\&.
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBCheckAndCopyDatabaseFile\fP ()"
+.br
+.RI "Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder "
+.ti -1c
+.RI "static SQLiteConnection \fBDbConnection\fP ()"
+.br
+.RI "Create an SQLite connection to the database file in the users AppData path "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static string \fBDBLocation\fP\fC [get]\fP"
+.br
+.RI "Return the database file location in the users AppData path "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abastract database repository access class\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.CheckAndCopyDatabaseFile ()\fC [static]\fP"
+
+.PP
+Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder 
+.SS "static SQLiteConnection YTMusicUploader\&.Providers\&.DataAccess\&.DbConnection ()\fC [static]\fP"
+
+.PP
+Create an SQLite connection to the database file in the users AppData path 
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "string YTMusicUploader\&.Providers\&.DataAccess\&.DBLocation\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Return the database file location in the users AppData path 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

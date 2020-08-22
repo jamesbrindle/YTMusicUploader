@@ -1,0 +1,4 @@
+<map id="JBToolkit.StreamHelpers.SafeFileStream" name="JBToolkit.StreamHelpers.SafeFileStream">
+<area shape="rect" id="node1" title="This is a wrapper around a FileStream. While it is not a Stream itself, it can be cast to one (keep i..." alt="" coords="5,131,175,355"/>
+<area shape="rect" id="node2" href="$d2/d55/class_i_disposable.html" title=" " alt="" coords="45,5,135,83"/>
+</map>

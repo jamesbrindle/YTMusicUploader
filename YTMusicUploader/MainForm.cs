@@ -1,20 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using JBToolkit.Network;
+using JBToolkit.Culture;
 using JBToolkit.WinForms;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using YTMusicUploader.Business;
+using YTMusicUploader.Dialogues;
+using YTMusicUploader.Helpers;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.Models;
 using YTMusicUploader.Providers.Repos;
-using System.Threading;
-using YTMusicUploader.Dialogues;
-using YTMusicUploader.Business;
-using JBToolkit.Culture;
-using JBTookit.Network;
 
 namespace YTMusicUploader
 {
     public partial class MainForm : OptimisedMetroForm
     {
+        //
+        // Dialogues
+        //
+        public ConnectToYTMusic ConnectToYTMusicForm { get; set; }
+        public IssueLog IssueLogForm { get; set; } = null;
+        public UploadLog UploadLogForm { get; set; } = null;
+
         //
         // Repos
         //
@@ -27,7 +36,7 @@ namespace YTMusicUploader
         //
         public Settings Settings { get; set; }
         public List<WatchFolder> WatchFolders { get; set; }
-        public ConnectToYTMusic ConnectToYTMusicForm { get; set; }
+
 
         //
         // Business Classes
@@ -41,6 +50,8 @@ namespace YTMusicUploader
         public bool ConnectedToYTMusic { get; set; } = false;
         public System.Windows.Forms.Timer ThrottleTextChangedTimer { get; set; }
         public int InitialFilesCount { get; set; } = 0;
+        private List<FileSystemWatcher> FileSystemFolderWatchers { get; set; } = new List<FileSystemWatcher>();
+        private DateTime? LastFolderChangeTime { get; set; }
 
         public bool Aborting { get; set; } = false;
         public bool Queue { get; set; } = false;
@@ -48,15 +59,25 @@ namespace YTMusicUploader
         //
         // Threads
         //
+        private Thread _connectToYouTubeMusicThread;
         private Thread _scanAndUploadThread;
         private Thread _queueThread;
 
-        public MainForm() : base(formResizable: false)
+        public MainForm(bool hidden) : base(formResizable: false)
         {
             CultureHelper.GloballySetCultureToGB();
 
+            if (hidden)
+            {
+                ShowInTaskbar = false;
+                WindowState = FormWindowState.Minimized;
+            }
+
             InitializeComponent();
             SuspendDrawing(this);
+
+            lblIssues.GotFocus += LinkLabel_GotFocus;
+            lblDiscoveredFiles.GotFocus += LinkLabel_GotFocus;
 
             ConnectToYTMusicForm = new ConnectToYTMusic(this);
 
@@ -66,7 +87,9 @@ namespace YTMusicUploader
 
             InitialiseTimers();
             InitialiseTooltips();
+            InitialiseSystemTryIconMenuButtons();
 
+            ConnectToYouTube();
             LoadCheckAndProcess();
             StartQueueCheck();
         }
@@ -86,6 +109,12 @@ namespace YTMusicUploader
 
             };
             ThrottleTextChangedTimer.Tick += ThrottleTextChangedTimer_Elapsed;
+        }
+
+        private void InitialiseSystemTryIconMenuButtons()
+        {
+            tsmShow.Click += new EventHandler(TsmShow_Click);
+            tsmQuit.Click += new EventHandler(TsmQuit_Click);
         }
 
         private void InitialiseTooltips()
@@ -113,6 +142,58 @@ namespace YTMusicUploader
                 "\nYou are not connected to YouTube Music.\n\nPress the 'Connect to YouTube Music button and sign into YouTube Music.");
         }
 
+        private void InitialiseFolderWatchers()
+        {
+            FileSystemFolderWatchers.Clear();
+            foreach (var watchFolder in WatchFolders)
+            {
+                FileSystemFolderWatchers.Add(new FileSystemWatcher
+                {
+                    Path = watchFolder.Path,
+                    NotifyFilter = NotifyFilters.CreationTime |
+                                   NotifyFilters.FileName |
+                                   NotifyFilters.LastAccess |
+                                   NotifyFilters.LastWrite |
+                                   NotifyFilters.Size,
+                    Filter = "*.*",
+                    EnableRaisingEvents = true
+                });
+
+                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                    .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
+
+                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                    .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
+
+                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                    .Deleted += new FileSystemEventHandler(FolderWatcher_OnChanged);
+            }
+        }
+
+        private void ConnectToYouTube()
+        {
+            _connectToYouTubeMusicThread = new Thread((ThreadStart)delegate
+            {
+                while (Settings == null)
+                    Thread.Sleep(200);
+
+                SetStatusMessage("Connecting to YouTube Music");
+                while (!NetworkHelper.InternetConnectionIsUp())
+                    Thread.Sleep(5000);
+
+                while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
+                {
+                    SetConnectedToYouTubeMusic(false);
+                    Thread.Sleep(500);
+                    Settings = SettingsRepo.Load();
+                }
+
+                SetConnectedToYouTubeMusic(true);
+            });
+
+            _connectToYouTubeMusicThread.Start();
+        }
+
         private void LoadCheckAndProcess()
         {
             DataAccess.CheckAndCopyDatabaseFile();
@@ -128,38 +209,40 @@ namespace YTMusicUploader
                     }
 
                     FileScanner.Process();
-                    if (Aborting)
+                    while (!ConnectedToYTMusic)
                     {
-                        SetStatusMessage("Idle");
-                        return;
+                        if (Aborting)
+                        {
+                            SetStatusMessage("Idle");
+                            return;
+                        }
+
+                        Thread.Sleep(2000);
                     }
 
-                    SetStatusMessage("Connecting to YouTube Music");
                     while (!NetworkHelper.InternetConnectionIsUp())
+                    {
+                        SetStatusMessage("No internet connection");
                         Thread.Sleep(5000);
+                    }
 
                     while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
                     {
                         SetConnectedToYouTubeMusic(false);
-                        Thread.Sleep(5000);
+                        Thread.Sleep(500);
                         Settings = SettingsRepo.Load();
                     }
 
                     SetConnectedToYouTubeMusic(true);
-                    SetStatusMessage("Idle");
-
-                    if (Aborting)
-                    {
-                        SetStatusMessage("Idle");
-                        return;
-                    }
 
                     SetStatusMessage("Uploading");
+                    RepopulateAmountLables();
                     FileUploader.Process();
                     SetStatusMessage("Idle");
                 }
                 catch (Exception e)
                 {
+                    string _ = e.Message;
 #if DEBUG
                     Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
 #endif
@@ -169,10 +252,39 @@ namespace YTMusicUploader
             _scanAndUploadThread.Start();
         }
 
+        private void StartQueueCheck()
+        {
+            _queueThread = new Thread((ThreadStart)delegate
+            {
+                while (true)
+                {
+                    try
+                    {
+                        Thread.Sleep(1000);
+                        if (Queue)
+                        {
+                            while (!FileUploader.Stopped)
+                                Thread.Sleep(1000);
+
+                            Queue = false;
+                            Aborting = false;
+                            FileUploader.Stopped = true;
+                            FileScanner.Reset();
+                            LoadCheckAndProcess();
+                        }
+                    }
+                    catch { }
+                }
+            });
+
+            _queueThread.Start();
+        }
+
         private void LoadDb()
         {
             SetVersion("v" + Global.ApplicationVersion);
             Settings = SettingsRepo.Load();
+            RegistryHelper.SetStartWithWindows(Settings.StartWithWindows);
             SetThrottleSpeed(
                 Settings.ThrottleSpeed == 0 ||
                 Settings.ThrottleSpeed == -1
@@ -180,75 +292,26 @@ namespace YTMusicUploader
                     : (Convert.ToDouble(Settings.ThrottleSpeed) / 1000000).ToString());
 
             SetStartWithWindows(Settings.StartWithWindows);
-
             InitialFilesCount = MusicFileRepo.CountAll();
             SetDiscoveredFilesLabel(InitialFilesCount.ToString());
             SetIssuesLabel(MusicFileRepo.CountIssues().ToString());
             SetUploadedLabel(MusicFileRepo.CountUploaded().ToString());
 
             BindWatchFoldersList();
+            InitialiseFolderWatchers();
         }
 
-        private void StartQueueCheck()
+        public void RepopulateAmountLables()
         {
-            _queueThread = new Thread((ThreadStart)delegate
-            {
-                while (true)
-                {
-                    Thread.Sleep(1000);
-                    if (Queue)
-                    {
-                        while (!FileUploader.Stopped)
-                            Thread.Sleep(1000);
-                        
-                        Queue = false;
-                        Aborting = false;
-                        FileUploader.Stopped = true;
-                        FileScanner.Reset();
-                        LoadCheckAndProcess();
-                    }
-                }
-            });
-
-            _queueThread.Start();
+            SetIssuesLabel(MusicFileRepo.CountIssues().ToString());
+            SetUploadedLabel(MusicFileRepo.CountUploaded().ToString());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Aborting = true;
-            Thread.Sleep(500);
-
-            try
-            {
-                ConnectToYTMusicForm.BrowserControl.Dispose();
-            }
-            catch
-            {
-                Thread.Sleep(500);
-                try
-                {
-                    ConnectToYTMusicForm.BrowserControl.Dispose();
-                }
-                catch { }
-            }
-
-            try
-            {
-                _scanAndUploadThread.Interrupt();
-            }
-            catch { }
-
-            try
-            {
-                _scanAndUploadThread.Abort();
-            }
-            catch { }
-
-            try
-            {
-                Environment.Exit(0);
-            }
-            catch { }
+            e.Cancel = true;
+            WindowState = FormWindowState.Minimized;
+            ShowInTaskbar = false;
         }
     }
 }

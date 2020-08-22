@@ -1,0 +1,91 @@
+.TH "YTMusicUploader.Business.FileScanner" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Business.FileScanner \- Responsive for scanning library music files and adding and managing discovered files to the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFileScanner\fP (\fBMainForm\fP mainForm)"
+.br
+.ti -1c
+.RI "void \fBProcess\fP ()"
+.br
+.RI "Executes the scan "
+.ti -1c
+.RI "void \fBRecountLibraryFiles\fP ()"
+.br
+.RI "Updates the 'Discovered Files' count on the main form\&. Ideally used when updating the form while an upload process is taking place "
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "Resets the properties, such as discovered file, current music files and hashes "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "List< \fBFileData\fP > \fBNewFiles\fP = new List<\fBFileData\fP>()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "HashSet< string > \fBNewFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "HashSet< string > \fBDiscoveredFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "List< \fBMusicFile\fP > \fBMusicFilesToDelete\fP = new List<\fBMusicFile\fP>()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "List< \fBMusicFile\fP > \fBCurrentMusicFiles\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "HashSet< string > \fBCurrentMusicFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Responsive for scanning library music files and adding and managing discovered files to the database\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.Business\&.FileScanner\&.FileScanner (\fBMainForm\fP mainForm)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void YTMusicUploader\&.Business\&.FileScanner\&.Process ()"
+
+.PP
+Executes the scan 
+.SS "void YTMusicUploader\&.Business\&.FileScanner\&.RecountLibraryFiles ()"
+
+.PP
+Updates the 'Discovered Files' count on the main form\&. Ideally used when updating the form while an upload process is taking place 
+.SS "void YTMusicUploader\&.Business\&.FileScanner\&.Reset ()"
+
+.PP
+Resets the properties, such as discovered file, current music files and hashes 
+.SH "Property Documentation"
+.PP 
+.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.CurrentMusicFiles\fC [get]\fP, \fC [set]\fP"
+
+.SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.CurrentMusicFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
+
+.SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.DiscoveredFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
+
+.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.MusicFilesToDelete = new List<\fBMusicFile\fP>()\fC [get]\fP, \fC [set]\fP"
+
+.SS "List<\fBFileData\fP> YTMusicUploader\&.Business\&.FileScanner\&.NewFiles = new List<\fBFileData\fP>()\fC [get]\fP, \fC [set]\fP"
+
+.SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.NewFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

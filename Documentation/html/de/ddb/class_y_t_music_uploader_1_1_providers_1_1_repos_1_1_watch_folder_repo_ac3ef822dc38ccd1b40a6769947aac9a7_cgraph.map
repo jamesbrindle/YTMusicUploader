@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Repos.WatchFolderRepo.GetWatchFolderIdFromPath" name="YTMusicUploader.Providers.Repos.WatchFolderRepo.GetWatchFolderIdFromPath">
+<area shape="rect" id="node1" title="Returns the database ID of the library watch folder from a given full directory path" alt="" coords="5,5,236,61"/>
+<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="284,13,469,54"/>
+</map>

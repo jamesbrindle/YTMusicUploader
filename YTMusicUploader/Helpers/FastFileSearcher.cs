@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32.SafeHandles;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using Microsoft.Win32.SafeHandles;
 
 namespace JBToolkit.Windows
 {
@@ -521,7 +521,7 @@ namespace JBToolkit.Windows
                 //If the call to FindNextFile or FindFirstFile succeeded...
                 if (retval)
                 {
-                    if (((FileAttributes)m_win_find_data.dwFileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+                    if ((m_win_find_data.dwFileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
                     {
                         //Ignore folders for now.   We call MoveNext recursively here to 
                         // move to the next item that FindNextFile will return.

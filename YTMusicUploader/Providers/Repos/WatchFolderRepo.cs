@@ -7,8 +7,15 @@ using YTMusicUploader.Providers.Models;
 
 namespace YTMusicUploader.Providers.Repos
 {
-    public class WatchFolderRepo: DataAccess
+    /// <summary>
+    /// Library watch folders database repository access
+    /// </summary>
+    public class WatchFolderRepo : DataAccess
     {
+        /// <summary>
+        /// Loads a list of library watch folders from the database
+        /// </summary>
+        /// <returns>List of WatchFolder model objects</returns>
         public List<WatchFolder> Load()
         {
             using (var conn = DbConnection())
@@ -16,14 +23,19 @@ namespace YTMusicUploader.Providers.Repos
                 conn.Open();
                 var watchFolders = conn.Query<WatchFolder>(
                         @"SELECT 
-                            Id, 
-                            Path
-                        FROM WatchFolders
-                        ORDER BY Path").ToList();
+                              Id, 
+                              Path
+                          FROM WatchFolders
+                          ORDER BY Path").ToList();
                 return watchFolders;
             }
         }
 
+        /// <summary>
+        /// Returns the database ID of the library watch folder from a given full directory path
+        /// </summary>
+        /// <param name="path">Directory path of the watched library</param>
+        /// <returns>Database ID integer</returns>
         public int GetWatchFolderIdFromPath(string path)
         {
             using (var conn = DbConnection())
@@ -31,9 +43,9 @@ namespace YTMusicUploader.Providers.Repos
                 conn.Open();
                 var watchFolderId = conn.ExecuteScalar<int?>(
                         @"SELECT Id  
-                        FROM WatchFolders
-                        WHERE Path = @Path
-                        LIMIT 1",
+                          FROM WatchFolders
+                          WHERE Path = @Path
+                          LIMIT 1",
                         new { path });
 
                 if (watchFolderId != null)
@@ -42,6 +54,11 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object
+        /// </summary>
+        /// <param name="watchFolder">The given WatchFolder object</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public DbOperationResult Insert(WatchFolder watchFolder)
         {
             Stopwatch stopWatch = new Stopwatch();
@@ -56,10 +73,11 @@ namespace YTMusicUploader.Providers.Repos
                     {
                         conn.Open();
                         watchFolder.Id = (int)conn.Query<long>(
-                            @"INSERT INTO WatchFolders (
-                                Path) VALUES (
-                                    @Path);
-                            SELECT last_insert_rowid()",
+                            @"INSERT 
+                                INTO WatchFolders (
+                                        Path) 
+                                VALUES (@Path);
+                              SELECT last_insert_rowid()",
                             watchFolder).First();
                     }
                 }
@@ -79,11 +97,22 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Deletes a library Watch Folder entry from the database of a given WatchFolder model object
+        /// </summary>
+        /// <param name="watchFolder">The given WatchFolder object</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public DbOperationResult Delete(WatchFolder watchFolder)
         {
+          
             return Delete(watchFolder.Id);
         }
 
+        /// <summary>
+        /// Deletes a library Watch Folder entry from the database of a given WatchFolder database ID
+        /// </summary>
+        /// <param name="watchFolder">The given WatchFolder database ID</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public DbOperationResult Delete(int id)
         {
             Stopwatch stopWatch = new Stopwatch();
@@ -96,7 +125,7 @@ namespace YTMusicUploader.Providers.Repos
                     conn.Open();
                     conn.Execute(
                             @"DELETE FROM WatchFolders
-                            WHERE Id = @Id",
+                              WHERE Id = @Id",
                             new { id });
                 }
 
@@ -110,6 +139,11 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Deletes a library Watch Folder entry from the database of a given WatchFolder database full directory path
+        /// </summary>
+        /// <param name="watchFolder">The given WatchFolder full directory path</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public DbOperationResult Delete(string path)
         {
             Stopwatch stopWatch = new Stopwatch();
@@ -122,7 +156,7 @@ namespace YTMusicUploader.Providers.Repos
                     conn.Open();
                     conn.Execute(
                             @"DELETE FROM WatchFolders 
-                            WHERE Path = @Path",
+                              WHERE Path = @Path",
                             new { path });
                 }
 

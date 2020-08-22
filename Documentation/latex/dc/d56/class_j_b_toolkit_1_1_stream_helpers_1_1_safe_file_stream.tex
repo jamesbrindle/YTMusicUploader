@@ -1,0 +1,178 @@
+\hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream}{}\doxysection{J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream Class Reference}
+\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream}\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+
+
+This is a wrapper around a File\+Stream. While it is not a Stream itself, it can be cast to one (keep in mind that this might throw an exception). It\textquotesingle{}s a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again.  
+
+
+
+
+Inheritance diagram for J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{dd/d46/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{da/d3d/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a862db3726ca35bddff41b60945ae46d3}{Safe\+File\+Stream}} (string path, File\+Mode mode, File\+Access access, File\+Share share)
+\item 
+void \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a6052a296a71ccf4201e766ce56cbb54a}{Open}} ()
+\begin{DoxyCompactList}\small\item\em Opens the stream when it is not locked. If the file is locked, then \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_abc5ea76791c768bfe4a4d75b90185399}{Try\+Open}} (Time\+Span span)
+\item 
+void \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a8882b5d08e1469decbb3c6edb7ed2011}{Close}} ()
+\item 
+void \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a86f0320865f807f434ad43c7234e7470}{Dispose}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_add2f9e36586d660dd3e4f3c37921875b}{operator Stream}} (\mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream}{Safe\+File\+Stream}} sfs)
+\item 
+static string\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a2ac95a60ee4901fdb33234218dda7f72}{Read\+All\+Lines}} (string file\+Path)
+\begin{DoxyCompactList}\small\item\em Read text file and return lines without locking it. If it is locked it should read anyway \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_acca170671f3b26c9d691293f1586d4dc}{Read\+All\+Text}} (string file\+Path)
+\begin{DoxyCompactList}\small\item\em Read text file without locking it. If it is locked it should read anyway \end{DoxyCompactList}\item 
+static byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a5bfa359dcf590460743557d065a37cdd}{Get\+Bytes}} (string file\+Path)
+\begin{DoxyCompactList}\small\item\em Get bytes of file without locking it. If it is locked it should read anyway \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Stream \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a9fb67e187f7e74ffee7cebfa5ef381c0}{Underlying\+Stream}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a07adbc4b43fdd6e7f1b10e3f4e180b29}{Is\+Open}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is a wrapper around a File\+Stream. While it is not a Stream itself, it can be cast to one (keep in mind that this might throw an exception). It\textquotesingle{}s a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a862db3726ca35bddff41b60945ae46d3}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a862db3726ca35bddff41b60945ae46d3}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!SafeFileStream@{SafeFileStream}}
+\index{SafeFileStream@{SafeFileStream}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{SafeFileStream()}{SafeFileStream()}}
+{\footnotesize\ttfamily J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Safe\+File\+Stream (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{File\+Mode}]{mode,  }\item[{File\+Access}]{access,  }\item[{File\+Share}]{share }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a8882b5d08e1469decbb3c6edb7ed2011}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a8882b5d08e1469decbb3c6edb7ed2011}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!Close@{Close}}
+\index{Close@{Close}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a8882b5d08e1469decbb3c6edb7ed2011_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a86f0320865f807f434ad43c7234e7470}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a86f0320865f807f434ad43c7234e7470}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily void J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a86f0320865f807f434ad43c7234e7470_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a5bfa359dcf590460743557d065a37cdd}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a5bfa359dcf590460743557d065a37cdd}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!GetBytes@{GetBytes}}
+\index{GetBytes@{GetBytes}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{GetBytes()}{GetBytes()}}
+{\footnotesize\ttfamily static byte \mbox{[}$\,$\mbox{]} J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Get\+Bytes (\begin{DoxyParamCaption}\item[{string}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get bytes of file without locking it. If it is locked it should read anyway 
+
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a6052a296a71ccf4201e766ce56cbb54a}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a6052a296a71ccf4201e766ce56cbb54a}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!Open@{Open}}
+\index{Open@{Open}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{Open()}{Open()}}
+{\footnotesize\ttfamily void J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Opens the stream when it is not locked. If the file is locked, then 
+
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_add2f9e36586d660dd3e4f3c37921875b}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_add2f9e36586d660dd3e4f3c37921875b}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!operator Stream@{operator Stream}}
+\index{operator Stream@{operator Stream}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{operator Stream()}{operator Stream()}}
+{\footnotesize\ttfamily static J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+operator Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream}{Safe\+File\+Stream}}}]{sfs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a2ac95a60ee4901fdb33234218dda7f72}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a2ac95a60ee4901fdb33234218dda7f72}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!ReadAllLines@{ReadAllLines}}
+\index{ReadAllLines@{ReadAllLines}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{ReadAllLines()}{ReadAllLines()}}
+{\footnotesize\ttfamily static string \mbox{[}$\,$\mbox{]} J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Read\+All\+Lines (\begin{DoxyParamCaption}\item[{string}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Read text file and return lines without locking it. If it is locked it should read anyway 
+
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_acca170671f3b26c9d691293f1586d4dc}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_acca170671f3b26c9d691293f1586d4dc}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!ReadAllText@{ReadAllText}}
+\index{ReadAllText@{ReadAllText}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{ReadAllText()}{ReadAllText()}}
+{\footnotesize\ttfamily static string J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Read\+All\+Text (\begin{DoxyParamCaption}\item[{string}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Read text file without locking it. If it is locked it should read anyway 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_acca170671f3b26c9d691293f1586d4dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_abc5ea76791c768bfe4a4d75b90185399}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_abc5ea76791c768bfe4a4d75b90185399}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!TryOpen@{TryOpen}}
+\index{TryOpen@{TryOpen}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{TryOpen()}{TryOpen()}}
+{\footnotesize\ttfamily bool J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Try\+Open (\begin{DoxyParamCaption}\item[{Time\+Span}]{span }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a07adbc4b43fdd6e7f1b10e3f4e180b29}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a07adbc4b43fdd6e7f1b10e3f4e180b29}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!IsOpen@{IsOpen}}
+\index{IsOpen@{IsOpen}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{IsOpen}{IsOpen}}
+{\footnotesize\ttfamily bool J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Is\+Open\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a9fb67e187f7e74ffee7cebfa5ef381c0}\label{class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream_a9fb67e187f7e74ffee7cebfa5ef381c0}} 
+\index{JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}!UnderlyingStream@{UnderlyingStream}}
+\index{UnderlyingStream@{UnderlyingStream}!JBToolkit.StreamHelpers.SafeFileStream@{JBToolkit.StreamHelpers.SafeFileStream}}
+\doxysubsubsection{\texorpdfstring{UnderlyingStream}{UnderlyingStream}}
+{\footnotesize\ttfamily Stream J\+B\+Toolkit.\+Stream\+Helpers.\+Safe\+File\+Stream.\+Underlying\+Stream\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Helpers/\mbox{\hyperlink{_safe_file_stream_8cs}{Safe\+File\+Stream.\+cs}}\end{DoxyCompactItemize}

@@ -6,12 +6,24 @@ using System.Net;
 namespace YTMusicUploader.Providers
 {
     /// <summary>
+    /// HttpWebRequest POST request to send to YouTube to upload a music file.
+    /// 
     /// Thanks to: sigma67: 
     ///     https://ytmusicapi.readthedocs.io/en/latest/ 
     ///     https://github.com/sigma67/ytmusicapi
     /// </summary>
     public partial class Requests
     {
+        /// <summary>
+        /// HttpWebRequest POST request to send to YouTube to upload a music file.
+        /// 
+        /// </summary>
+        /// <param name="mainForm">Instance of the main form to utilise the public methods of and update status'</param>
+        /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
+        /// <param name="filePath">Full path to file we're uploading</param>
+        /// <param name="maxUploadSpeed">Throttle database bandwidth speed (bytes per second)</param>
+        /// <param name="error">OUTPUT error string</param>
+        /// <returns>True if the upload is successful, false otherwise</returns>
         public static bool UploadSong(
             MainForm mainForm,
             string cookieValue,
@@ -66,7 +78,7 @@ namespace YTMusicUploader.Providers
                                                             new MemoryStream(songBytes),
                                                             mainForm,
                                                             songBytes.Length,
-                                                            maxUploadSpeed == 0 || maxUploadSpeed == -1 
+                                                            maxUploadSpeed == 0 || maxUploadSpeed == -1
                                                                 ? int.MaxValue
                                                                 : maxUploadSpeed))
                         {

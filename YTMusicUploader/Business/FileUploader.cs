@@ -1,61 +1,136 @@
 ﻿using JBToolkit.Windows;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.Models;
 
 namespace YTMusicUploader.Business
 {
+    /// <summary>
+    /// Responsive for managing uploading music files to YouTube Music.
+    /// </summary>
     public class FileUploader
     {
         private MainForm MainForm;
         private List<MusicFile> MusicFiles;
         public bool Stopped { get; set; } = true;
 
+        private int _errors = 0;
+        private int _uploaded = 0;
+        private int _discoveredFiles = 0;
+
         public FileUploader(MainForm mainForm)
         {
             MainForm = mainForm;
         }
 
+        /// <summary>
+        /// Execute the upload process
+        /// </summary>
         public void Process()
         {
-            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true);     
+            _errors = MainForm.MusicFileRepo.CountIssues();
+            _uploaded = MainForm.MusicFileRepo.CountUploaded();
+            _discoveredFiles = MainForm.MusicFileRepo.CountAll();
+
+            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true);
             foreach (var musicFile in MusicFiles)
             {
-                if (MainForm.Aborting)
+                if (File.Exists(musicFile.Path))
                 {
-                    Stopped = true;
-                    MainForm.SetUploadingMessage("Uploading: N/A");
-                    return;
-                }
+                    musicFile.Hash = DirectoryHelper.GetFileHash(musicFile.Path);
 
-                MainForm.SetUploadingMessage("Uploading: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210));
+                    if (MainForm.Aborting)
+                    {
+                        Stopped = true;
+                        MainForm.SetUploadingMessage("Uploading: Idle");
+                        return;
+                    }
 
-                Stopped = false;
-                Requests.UploadSong(          
-                            MainForm,
-                            MainForm.Settings.AuthenticationCookie, 
-                            musicFile.Path, 
-                            MainForm.Settings.ThrottleSpeed,
-                            out string error);
+                    if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
+                    {
+                        MainForm.SetUploadingMessage("Updating: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210));
 
-                if (!string.IsNullOrEmpty(error))
-                {
-                    musicFile.Error = true;
-                    musicFile.ErrorReason = error;
-                    MainForm.SetIssuesLabel((MainForm.GetIssuesLabel().ToInt() + 1).ToString());
+                        existingMusicFile.Path = musicFile.Path;
+                        existingMusicFile.LastUpload = DateTime.Now;
+                        existingMusicFile.Removed = false;
+
+                        _uploaded++;
+                        MainForm.SetUploadedLabel(_uploaded.ToString());
+
+                        musicFile.Delete(true);
+                        existingMusicFile.Save();
+                    }
+                    else
+                    {
+                        MainForm.SetUploadingMessage("Uploading: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210));
+
+                        Stopped = false;
+                        Requests.UploadSong(
+                                    MainForm,
+                                    MainForm.Settings.AuthenticationCookie,
+                                    musicFile.Path,
+                                    MainForm.Settings.ThrottleSpeed,
+                                    out string error);
+
+                        if (!string.IsNullOrEmpty(error))
+                        {
+                            musicFile.Error = true;
+                            musicFile.ErrorReason = error;
+
+                            _errors++;
+                            MainForm.SetIssuesLabel(_errors.ToString());
+                        }
+                        else
+                        {
+                            musicFile.LastUpload = DateTime.Now;
+                            musicFile.Error = false;
+
+                            _uploaded++;
+                            MainForm.SetUploadedLabel(_uploaded.ToString());
+                        }
+
+                        musicFile.Save();
+                    }
                 }
                 else
                 {
-                    musicFile.LastUpload = DateTime.Now;
-                    MainForm.SetUploadedLabel((MainForm.GetUploadLabel().ToInt() + 1).ToString());
+                    _discoveredFiles--;
+                    MainForm.SetDiscoveredFilesLabel(_discoveredFiles.ToString());
+                    musicFile.Delete();
                 }
-               
-                musicFile.Save();
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
 
-            MainForm.SetUploadingMessage("Uploading: N/A");
+            MainForm.SetUploadingMessage("Uploading: Idle");
             Stopped = true;
+        }
+
+        /// <summary>
+        /// Accounts for if the user moves the music directory to another location
+        /// </summary>
+        private bool DoWeHaveAMusicFileWithTheSameHash(
+            MusicFile musicFile,
+            out MusicFile existingMusicFile)
+        {
+            existingMusicFile = null;
+
+            if (string.IsNullOrEmpty(musicFile.Hash))
+                return false;
+
+            string hash = DirectoryHelper.GetFileHash(musicFile.Path);
+            var existing = MainForm.MusicFileRepo.GetDuplicate(hash, musicFile.Path);
+
+            if (existing != null)
+            {
+                existingMusicFile = existing;
+                return true;
+            }
+
+            return false;
         }
     }
 }

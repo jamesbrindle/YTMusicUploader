@@ -2,6 +2,9 @@
 
 namespace JBToolkit.Culture
 {
+    /// <summary>
+    /// Current culture helper
+    /// </summary>
     public class CultureHelper
     {
         /// <summary>

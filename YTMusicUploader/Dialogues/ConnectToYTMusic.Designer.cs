@@ -65,7 +65,6 @@
             this.browser.MinimumSize = new System.Drawing.Size(988, 701);
             this.browser.Name = "browser";
             this.browser.Size = new System.Drawing.Size(988, 701);
-            this.browser.Source = new System.Uri("https://music.youtube.com/", System.UriKind.Absolute);
             this.browser.TabIndex = 0;
             this.browser.Text = "YouTube Music";
             this.browser.ZoomFactor = 1D;
@@ -107,7 +106,6 @@
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConnectToYTMusic_FormClosing);
             this.Load += new System.EventHandler(this.ConnectToYTMusic_Load);
-            this.Shown += new System.EventHandler(this.ConnectToYTMusic_Shown);
             this.pnlBrowser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbConnectSuccess)).EndInit();
             this.ResumeLayout(false);

@@ -5,6 +5,9 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README.md", "README.md", "{728DD5D2-8863-4B06-A106-B96759224B2C}"
 	ProjectSection(SolutionItems) = preProject
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -12,8 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YTMusicUploader", "YTMusicU
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OtherFiles", "OtherFiles", "{1C96871A-F78D-4ABA-BA58-B79B189D62D8}"
 	ProjectSection(SolutionItems) = preProject
-		Notes.txt = Notes.txt
+		Documentation\Doxyfile = Documentation\Doxyfile
+		NOTES.md = NOTES.md
 	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{E271348A-79E5-4CCB-AAF3-677065EDEC25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +43,12 @@ Global
 		{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}.Release|x64.Build.0 = Release|x64
 		{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}.Release|x86.ActiveCfg = Release|x86
 		{7EFDDDC7-F4D4-4BAC-8522-C34F13D449A6}.Release|x86.Build.0 = Release|x86
+		{E271348A-79E5-4CCB-AAF3-677065EDEC25}.Debug|Any CPU.ActiveCfg = Debug
+		{E271348A-79E5-4CCB-AAF3-677065EDEC25}.Debug|x64.ActiveCfg = Debug
+		{E271348A-79E5-4CCB-AAF3-677065EDEC25}.Debug|x86.ActiveCfg = Debug
+		{E271348A-79E5-4CCB-AAF3-677065EDEC25}.Release|Any CPU.ActiveCfg = Release
+		{E271348A-79E5-4CCB-AAF3-677065EDEC25}.Release|x64.ActiveCfg = Release
+		{E271348A-79E5-4CCB-AAF3-677065EDEC25}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

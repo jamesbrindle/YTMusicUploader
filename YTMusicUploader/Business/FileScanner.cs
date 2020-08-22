@@ -1,14 +1,17 @@
-﻿using JBToolkit.Windows;
+﻿using Dapper;
+using JBToolkit.Windows;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.Models;
-using System.Data.SQLite;
-using Dapper;
 
 namespace YTMusicUploader.Business
 {
+    /// <summary>
+    /// Responsive for scanning library music files and adding and managing discovered files to the database.
+    /// </summary>
     public class FileScanner
     {
         private MainForm MainForm { get; set; }
@@ -24,10 +27,12 @@ namespace YTMusicUploader.Business
             MainForm = mainForm;
         }
 
+        /// <summary>
+        /// Executes the scan
+        /// </summary>
         public void Process()
         {
-            MainForm.SetStatusMessage("Looking for new files...");
-
+            SetStatus();
             CurrentMusicFiles = MainForm.MusicFileRepo.LoadAll();
             foreach (var musicFile in CurrentMusicFiles)
                 CurrentMusicFilesHash.Add(musicFile.Path);
@@ -42,7 +47,7 @@ namespace YTMusicUploader.Business
             {
                 if (MainForm.Aborting)
                 {
-                    MainForm.SetStatusMessage("Idle");
+                    SetStatus("Idle");
                     return;
                 }
 
@@ -53,7 +58,7 @@ namespace YTMusicUploader.Business
                 {
                     if (MainForm.Aborting)
                     {
-                        MainForm.SetStatusMessage("Idle");
+                        SetStatus("Idle");
                         return;
                     }
 
@@ -81,7 +86,7 @@ namespace YTMusicUploader.Business
             {
                 if (MainForm.Aborting)
                 {
-                    MainForm.SetStatusMessage("Idle");
+                    SetStatus("Idle");
                     return;
                 }
 
@@ -91,6 +96,7 @@ namespace YTMusicUploader.Business
 
             using (var conn = new SQLiteConnection("Data Source=" + DataAccess.DBLocation))
             {
+                SetStatus();
                 conn.Open();
                 int count = 0;
                 foreach (var file in NewFiles)
@@ -106,12 +112,13 @@ namespace YTMusicUploader.Business
                         if (count % 100 == 0)
                             MainForm.SetDiscoveredFilesLabel(count.ToString());
 
+                    SetStatus();
                     AddToDB(conn, new MusicFile(file.Path));
                 }
 
                 if (MainForm.Aborting)
                 {
-                    MainForm.SetStatusMessage("Idle");
+                    SetStatus("Idle");
                     return;
                 }
 #if DEBUG
@@ -138,7 +145,39 @@ namespace YTMusicUploader.Business
 #endif
             }
 
-            MainForm.SetStatusMessage(MainForm.ConnectedToYTMusic ? "Ready" : "Not running");
+            SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Wainting for YouTube Music connection");
+        }
+
+        /// <summary>
+        /// Updates the 'Discovered Files' count on the main form. Ideally used when updating the form 
+        /// while an upload process is taking place
+        /// </summary>
+        public void RecountLibraryFiles()
+        {
+            int count = 0;
+            foreach (var watchFolder in MainForm.WatchFolders)
+            {
+                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(
+                                                                       watchFolder.Path,
+                                                                       "*.*",
+                                                                       SearchOption.AllDirectories))
+                {
+                    if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            MainForm.SetDiscoveredFilesLabel(count.ToString());
+        }
+
+        private void SetStatus(string statusText = null)
+        {
+            if (string.IsNullOrEmpty(statusText))
+                MainForm.SetStatusMessage("Looking for new files...");
+            else
+                MainForm.SetStatusMessage(statusText);
         }
 
         private void AddToDB(SQLiteConnection conn, MusicFile musicFile)
@@ -148,20 +187,45 @@ namespace YTMusicUploader.Business
 
             try
             {
-                conn.Execute(
-                          @"INSERT INTO MusicFiles (
-			                            Path, 
-			                            LastUpload, 
-			                            Error,
-			                            ErrorReason)
-                            SELECT @Path,
-	                               @LastUpload,
-	                               @Error,
-	                               @ErrorReason
-                            WHERE NOT EXISTS (SELECT Id FROM MusicFiles WHERE Path = @Path LIMIT 1)",
-                          musicFile);
+
+                int? id = conn.ExecuteScalar<int?>(
+                        @"SELECT Id  
+                          FROM MusicFiles
+                          WHERE Path = @Path
+                          LIMIT 1",
+                        new { musicFile.Path });
+
+                if (id == null || id == 0)
+                {
+                    conn.Execute(
+                              @"INSERT 
+                                    INTO MusicFiles (
+			                                Path, 
+                                            Hash,
+			                                LastUpload, 
+			                                Error,
+			                                ErrorReason
+                                            )
+                                    SELECT @Path,
+                                           @Hash,
+	                                       @LastUpload,
+	                                       @Error,
+	                                       @ErrorReason",
+                              musicFile);
+                }
+                else
+                {
+                    conn.Execute(
+                       @"UPDATE MusicFiles
+                            SET Removed = 0
+                         WHERE Id = @Id",
+                       new { id });
+                }
             }
-            catch { }
+            catch (Exception e)
+            {
+                Console.Out.WriteLine(e.Message);
+            }
         }
 
         private void RemoveFromDB(SQLiteConnection conn, string path)
@@ -172,13 +236,17 @@ namespace YTMusicUploader.Business
             try
             {
                 conn.Execute(
-                          @"DELETE FROM MusicFiles
+                          @"UPDATE MusicFiles
+                               SET Removed = 1
                             WHERE Path = @Path",
                           new { path });
             }
             catch { }
         }
 
+        /// <summary>
+        /// Resets the properties, such as discovered file, current music files and hashes
+        /// </summary>
         public void Reset()
         {
             NewFiles = new List<FileData>();

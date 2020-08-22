@@ -1,0 +1,269 @@
+\hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form}{}\doxysection{J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form Class Reference}
+\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form}\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+
+
+Abstract form to inherit that uses the Metro\+Forms styler, and optimises buffering, drawing, size grips, resizing shadow, allows custom tooltip for each control by putting a string in the control\textquotesingle{}s \textquotesingle{}Tag\textquotesingle{} property and handles client screen D\+PI not set to 100\% more effectively.  
+
+
+
+
+Inheritance diagram for J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{d7/d5c/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{d7/d23/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a094d83a3a415aa96865a5faf9b388011}{Send\+Message}} (Int\+Ptr h\+Wnd, Int32 w\+Msg, bool w\+Param, Int32 l\+Param)
+\item 
+static int \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2396f30e98c3679843a3a48e9b200806}{Get\+System\+Parameters\+Info}} (int u\+Action, int u\+Param, out int lpv\+Param, int fu\+Win\+Ini)
+\item 
+static int \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a4b1a40afef599f2a651b5cc7329c1fcc}{Set\+System\+Parameters\+Info}} (int u\+Action, int u\+Param, int lpv\+Param, int fu\+Win\+Ini)
+\item 
+void \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a29e384ba71753e3014f1ea23591461d4}{Set\+All\+Controls\+Double\+Buffered}} (\mbox{\hyperlink{class_control}{Control}} parent\+Control)
+\begin{DoxyCompactList}\small\item\em Iterates through all controls and ensure they\textquotesingle{}re set to double buffered \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a5478be1fa1025355a4fae6b4a8b90b19}{Send\+Message}} (Int\+Ptr h\+Wnd, int msg, int w\+Param, \mbox{[}Marshal\+As(Unmanaged\+Type.\+L\+P\+W\+Str)\mbox{]} string l\+Param)
+\item 
+void \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a27c09716f8e37025305a17f63c0a5142}{Set\+Text\+Box\+Cue\+Banner}} (Text\+Box textbox, string text)
+\item 
+int \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a15e704e7efeb004f4ecc578c267f9cb6}{Get\+Screen\+D\+PI}} ()
+\item 
+new void \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_aec527a96922fa9e51021f2da3b3f29e9}{On\+Load}} (Event\+Args \+\_\+)
+\item 
+\mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_aa360b4434e453b2a81054049b7a35611}{Optimised\+Metro\+Form}} (bool form\+Resizable=true, bool handle\+Custom\+Client\+D\+PI=false)
+\begin{DoxyCompactList}\small\item\em A pre-\/customised and optimised form using the Metro Style. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2d39e1d50ee60dc221e5e9645142a397}{Suspend\+Drawing}} (\mbox{\hyperlink{class_control}{Control}} parent)
+\begin{DoxyCompactList}\small\item\em Suspend the drawing of a control \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a13359eb7cee22371cc8748c68e536f96}{Resume\+Drawing}} (\mbox{\hyperlink{class_control}{Control}} parent)
+\begin{DoxyCompactList}\small\item\em Resume the drawing of a control \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a80c177996192e7bcc211ced789dae6e2}{E\+M\+\_\+\+S\+E\+T\+C\+U\+E\+B\+A\+N\+N\+ER}} = 0x1501
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a28d3ae10b5058644572f6a68dfae7148}{Wnd\+Proc}} (ref Message message)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+override Create\+Params \mbox{\hyperlink{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a72736ceadf0f13a0876fb22a69e0c76e}{Create\+Params}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract form to inherit that uses the Metro\+Forms styler, and optimises buffering, drawing, size grips, resizing shadow, allows custom tooltip for each control by putting a string in the control\textquotesingle{}s \textquotesingle{}Tag\textquotesingle{} property and handles client screen D\+PI not set to 100\% more effectively. 
+
+Be sure to call On\+Load(e) / On\+Load(null) in calling Form contructor or \textquotesingle{}Load\textquotesingle{} method.
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_aa360b4434e453b2a81054049b7a35611}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_aa360b4434e453b2a81054049b7a35611}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!OptimisedMetroForm@{OptimisedMetroForm}}
+\index{OptimisedMetroForm@{OptimisedMetroForm}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{OptimisedMetroForm()}{OptimisedMetroForm()}}
+{\footnotesize\ttfamily J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Optimised\+Metro\+Form (\begin{DoxyParamCaption}\item[{bool}]{form\+Resizable = {\ttfamily true},  }\item[{bool}]{handle\+Custom\+Client\+D\+PI = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+A pre-\/customised and optimised form using the Metro Style. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em form\+Resizable} & Set\textquotesingle{}s whether or not the form can be resized, and sets up certain properties and border appropriately\\
+\hline
+{\em control\+Tags\+As\+Tooltips} & Set\textquotesingle{}s whether or not any text in a control\textquotesingle{}s \textquotesingle{}Tag\textquotesingle{} property is converted to a tooltip -\/ for ease\\
+\hline
+{\em handle\+Custom\+Client\+D\+PI} & I.\+e. 125\% or 150\% -\/ \mbox{\hyperlink{namespace_j_b_toolkit_1_1_win_forms}{Win\+Forms}} isn\textquotesingle{}t that good at dealing with different display D\+PI settings, however setting this to true will \textquotesingle{}try\textquotesingle{} to make the form handle different D\+PI settings.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a15e704e7efeb004f4ecc578c267f9cb6}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a15e704e7efeb004f4ecc578c267f9cb6}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!GetScreenDPI@{GetScreenDPI}}
+\index{GetScreenDPI@{GetScreenDPI}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{GetScreenDPI()}{GetScreenDPI()}}
+{\footnotesize\ttfamily int J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Get\+Screen\+D\+PI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2396f30e98c3679843a3a48e9b200806}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2396f30e98c3679843a3a48e9b200806}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!GetSystemParametersInfo@{GetSystemParametersInfo}}
+\index{GetSystemParametersInfo@{GetSystemParametersInfo}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{GetSystemParametersInfo()}{GetSystemParametersInfo()}}
+{\footnotesize\ttfamily static int J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Get\+System\+Parameters\+Info (\begin{DoxyParamCaption}\item[{int}]{u\+Action,  }\item[{int}]{u\+Param,  }\item[{out int}]{lpv\+Param,  }\item[{int}]{fu\+Win\+Ini }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2396f30e98c3679843a3a48e9b200806_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_aec527a96922fa9e51021f2da3b3f29e9}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_aec527a96922fa9e51021f2da3b3f29e9}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!OnLoad@{OnLoad}}
+\index{OnLoad@{OnLoad}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{OnLoad()}{OnLoad()}}
+{\footnotesize\ttfamily new void J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+On\+Load (\begin{DoxyParamCaption}\item[{Event\+Args}]{\+\_\+ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_aec527a96922fa9e51021f2da3b3f29e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a13359eb7cee22371cc8748c68e536f96}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a13359eb7cee22371cc8748c68e536f96}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!ResumeDrawing@{ResumeDrawing}}
+\index{ResumeDrawing@{ResumeDrawing}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{ResumeDrawing()}{ResumeDrawing()}}
+{\footnotesize\ttfamily static void J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Resume\+Drawing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_control}{Control}}}]{parent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Resume the drawing of a control 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a13359eb7cee22371cc8748c68e536f96_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a13359eb7cee22371cc8748c68e536f96_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a5478be1fa1025355a4fae6b4a8b90b19}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a5478be1fa1025355a4fae6b4a8b90b19}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!SendMessage@{SendMessage}}
+\index{SendMessage@{SendMessage}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{SendMessage()}{SendMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static int J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Send\+Message (\begin{DoxyParamCaption}\item[{Int\+Ptr}]{h\+Wnd,  }\item[{int}]{msg,  }\item[{int}]{w\+Param,  }\item[{\mbox{[}\+Marshal\+As(\+Unmanaged\+Type.\+L\+P\+W\+Str)\mbox{]} string}]{l\+Param }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a094d83a3a415aa96865a5faf9b388011}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a094d83a3a415aa96865a5faf9b388011}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!SendMessage@{SendMessage}}
+\index{SendMessage@{SendMessage}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{SendMessage()}{SendMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static int J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Send\+Message (\begin{DoxyParamCaption}\item[{Int\+Ptr}]{h\+Wnd,  }\item[{Int32}]{w\+Msg,  }\item[{bool}]{w\+Param,  }\item[{Int32}]{l\+Param }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a094d83a3a415aa96865a5faf9b388011_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a29e384ba71753e3014f1ea23591461d4}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a29e384ba71753e3014f1ea23591461d4}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!SetAllControlsDoubleBuffered@{SetAllControlsDoubleBuffered}}
+\index{SetAllControlsDoubleBuffered@{SetAllControlsDoubleBuffered}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{SetAllControlsDoubleBuffered()}{SetAllControlsDoubleBuffered()}}
+{\footnotesize\ttfamily void J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Set\+All\+Controls\+Double\+Buffered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_control}{Control}}}]{parent\+Control }\end{DoxyParamCaption})}
+
+
+
+Iterates through all controls and ensure they\textquotesingle{}re set to double buffered 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a29e384ba71753e3014f1ea23591461d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a4b1a40afef599f2a651b5cc7329c1fcc}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a4b1a40afef599f2a651b5cc7329c1fcc}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!SetSystemParametersInfo@{SetSystemParametersInfo}}
+\index{SetSystemParametersInfo@{SetSystemParametersInfo}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{SetSystemParametersInfo()}{SetSystemParametersInfo()}}
+{\footnotesize\ttfamily static int J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Set\+System\+Parameters\+Info (\begin{DoxyParamCaption}\item[{int}]{u\+Action,  }\item[{int}]{u\+Param,  }\item[{int}]{lpv\+Param,  }\item[{int}]{fu\+Win\+Ini }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a4b1a40afef599f2a651b5cc7329c1fcc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a27c09716f8e37025305a17f63c0a5142}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a27c09716f8e37025305a17f63c0a5142}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!SetTextBoxCueBanner@{SetTextBoxCueBanner}}
+\index{SetTextBoxCueBanner@{SetTextBoxCueBanner}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{SetTextBoxCueBanner()}{SetTextBoxCueBanner()}}
+{\footnotesize\ttfamily void J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Set\+Text\+Box\+Cue\+Banner (\begin{DoxyParamCaption}\item[{Text\+Box}]{textbox,  }\item[{string}]{text }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a27c09716f8e37025305a17f63c0a5142_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2d39e1d50ee60dc221e5e9645142a397}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2d39e1d50ee60dc221e5e9645142a397}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!SuspendDrawing@{SuspendDrawing}}
+\index{SuspendDrawing@{SuspendDrawing}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{SuspendDrawing()}{SuspendDrawing()}}
+{\footnotesize\ttfamily static void J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Suspend\+Drawing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_control}{Control}}}]{parent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Suspend the drawing of a control 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a2d39e1d50ee60dc221e5e9645142a397_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a28d3ae10b5058644572f6a68dfae7148}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a28d3ae10b5058644572f6a68dfae7148}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!WndProc@{WndProc}}
+\index{WndProc@{WndProc}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{WndProc()}{WndProc()}}
+{\footnotesize\ttfamily override void J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Wnd\+Proc (\begin{DoxyParamCaption}\item[{ref Message}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a28d3ae10b5058644572f6a68dfae7148_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a80c177996192e7bcc211ced789dae6e2}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a80c177996192e7bcc211ced789dae6e2}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!EM\_SETCUEBANNER@{EM\_SETCUEBANNER}}
+\index{EM\_SETCUEBANNER@{EM\_SETCUEBANNER}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{EM\_SETCUEBANNER}{EM\_SETCUEBANNER}}
+{\footnotesize\ttfamily const int J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+E\+M\+\_\+\+S\+E\+T\+C\+U\+E\+B\+A\+N\+N\+ER = 0x1501\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a72736ceadf0f13a0876fb22a69e0c76e}\label{class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form_a72736ceadf0f13a0876fb22a69e0c76e}} 
+\index{JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}!CreateParams@{CreateParams}}
+\index{CreateParams@{CreateParams}!JBToolkit.WinForms.OptimisedMetroForm@{JBToolkit.WinForms.OptimisedMetroForm}}
+\doxysubsubsection{\texorpdfstring{CreateParams}{CreateParams}}
+{\footnotesize\ttfamily override Create\+Params J\+B\+Toolkit.\+Win\+Forms.\+Optimised\+Metro\+Form.\+Create\+Params\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Custom\+Controls/\mbox{\hyperlink{_optimised_metro_form_8cs}{Optimised\+Metro\+Form.\+cs}}\end{DoxyCompactItemize}

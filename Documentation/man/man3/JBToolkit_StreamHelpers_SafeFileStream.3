@@ -1,0 +1,105 @@
+.TH "JBToolkit.StreamHelpers.SafeFileStream" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JBToolkit.StreamHelpers.SafeFileStream \- This is a wrapper around a FileStream\&. While it is not a Stream itself, it can be cast to one (keep in mind that this might throw an exception)\&. It's a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBIDisposable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSafeFileStream\fP (string path, FileMode mode, FileAccess access, FileShare share)"
+.br
+.ti -1c
+.RI "void \fBOpen\fP ()"
+.br
+.RI "Opens the stream when it is not locked\&. If the file is locked, then "
+.ti -1c
+.RI "bool \fBTryOpen\fP (TimeSpan span)"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBoperator Stream\fP (\fBSafeFileStream\fP sfs)"
+.br
+.ti -1c
+.RI "static string[] \fBReadAllLines\fP (string filePath)"
+.br
+.RI "Read text file and return lines without locking it\&. If it is locked it should read anyway "
+.ti -1c
+.RI "static string \fBReadAllText\fP (string filePath)"
+.br
+.RI "Read text file without locking it\&. If it is locked it should read anyway "
+.ti -1c
+.RI "static byte[] \fBGetBytes\fP (string filePath)"
+.br
+.RI "Get bytes of file without locking it\&. If it is locked it should read anyway "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Stream \fBUnderlyingStream\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsOpen\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is a wrapper around a FileStream\&. While it is not a Stream itself, it can be cast to one (keep in mind that this might throw an exception)\&. It's a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JBToolkit\&.StreamHelpers\&.SafeFileStream\&.SafeFileStream (string path, FileMode mode, FileAccess access, FileShare share)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void JBToolkit\&.StreamHelpers\&.SafeFileStream\&.Close ()"
+
+.SS "void JBToolkit\&.StreamHelpers\&.SafeFileStream\&.Dispose ()"
+
+.SS "static byte [] JBToolkit\&.StreamHelpers\&.SafeFileStream\&.GetBytes (string filePath)\fC [static]\fP"
+
+.PP
+Get bytes of file without locking it\&. If it is locked it should read anyway 
+.SS "void JBToolkit\&.StreamHelpers\&.SafeFileStream\&.Open ()"
+
+.PP
+Opens the stream when it is not locked\&. If the file is locked, then 
+.SS "static JBToolkit\&.StreamHelpers\&.SafeFileStream\&.operator Stream (\fBSafeFileStream\fP sfs)\fC [explicit]\fP, \fC [static]\fP"
+
+.SS "static string [] JBToolkit\&.StreamHelpers\&.SafeFileStream\&.ReadAllLines (string filePath)\fC [static]\fP"
+
+.PP
+Read text file and return lines without locking it\&. If it is locked it should read anyway 
+.SS "static string JBToolkit\&.StreamHelpers\&.SafeFileStream\&.ReadAllText (string filePath)\fC [static]\fP"
+
+.PP
+Read text file without locking it\&. If it is locked it should read anyway 
+.SS "bool JBToolkit\&.StreamHelpers\&.SafeFileStream\&.TryOpen (TimeSpan span)"
+
+.SH "Property Documentation"
+.PP 
+.SS "bool JBToolkit\&.StreamHelpers\&.SafeFileStream\&.IsOpen\fC [get]\fP"
+
+.SS "Stream JBToolkit\&.StreamHelpers\&.SafeFileStream\&.UnderlyingStream\fC [get]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

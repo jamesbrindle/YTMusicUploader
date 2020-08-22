@@ -100,6 +100,7 @@ namespace YTMusicUploader
                 {
                     WatchFolderRepo.Delete(((WatchFolder)lbWatchFolders.SelectedItem).Id);
                     MusicFileRepo.DeleteWatchFolder(((WatchFolder)lbWatchFolders.SelectedItem).Path);
+                    RepopulateAmountLables();
                 }
             }
             catch { }
@@ -121,6 +122,29 @@ namespace YTMusicUploader
         private void BtnRemoveWatchFolder_MouseDown(object sender, MouseEventArgs e)
         {
             btnRemoveWatchFolder.Image = Properties.Resources.minus_down;
+        }
+
+        // Log dialogues
+
+        private void LblIssues_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (IssueLogForm == null)
+                IssueLogForm = new IssueLog(this);
+
+            IssueLogForm.ShowDialog();
+        }
+
+        private void LblUploaded_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (UploadLogForm == null)
+                UploadLogForm = new UploadLog(this);
+
+            UploadLogForm.ShowDialog();
+        }
+
+        private void LinkLabel_GotFocus(object sender, EventArgs e)
+        {
+            btnConnectToYoutube.Focus();
         }
 
         // About

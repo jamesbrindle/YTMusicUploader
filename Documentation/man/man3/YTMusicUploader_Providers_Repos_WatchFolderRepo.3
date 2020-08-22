@@ -1,0 +1,142 @@
+.TH "YTMusicUploader.Providers.Repos.WatchFolderRepo" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Repos.WatchFolderRepo \- Library watch folders database repository access  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "List< \fBWatchFolder\fP > \fBLoad\fP ()"
+.br
+.RI "Loads a list of library watch folders from the database "
+.ti -1c
+.RI "int \fBGetWatchFolderIdFromPath\fP (string path)"
+.br
+.RI "Returns the database ID of the library watch folder from a given full directory path "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBInsert\fP (\fBWatchFolder\fP watchFolder)"
+.br
+.RI "Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDelete\fP (\fBWatchFolder\fP watchFolder)"
+.br
+.RI "Deletes a library Watch Folder entry from the database of a given WatchFolder model object "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDelete\fP (int id)"
+.br
+.RI "Deletes a library Watch Folder entry from the database of a given WatchFolder database ID "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDelete\fP (string path)"
+.br
+.RI "Deletes a library Watch Folder entry from the database of a given WatchFolder database full directory path "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Library watch folders database repository access 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (int id)"
+
+.PP
+Deletes a library Watch Folder entry from the database of a given WatchFolder database ID 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwatchFolder\fP The given WatchFolder database ID
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (string path)"
+
+.PP
+Deletes a library Watch Folder entry from the database of a given WatchFolder database full directory path 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwatchFolder\fP The given WatchFolder full directory path
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (\fBWatchFolder\fP watchFolder)"
+
+.PP
+Deletes a library Watch Folder entry from the database of a given WatchFolder model object 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwatchFolder\fP The given WatchFolder object
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "int YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.GetWatchFolderIdFromPath (string path)"
+
+.PP
+Returns the database ID of the library watch folder from a given full directory path 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Directory path of the watched library
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Database ID integer
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Insert (\fBWatchFolder\fP watchFolder)"
+
+.PP
+Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwatchFolder\fP The given WatchFolder object
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "List<\fBWatchFolder\fP> YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Load ()"
+
+.PP
+Loads a list of library watch folders from the database 
+.PP
+\fBReturns\fP
+.RS 4
+List of WatchFolder model objects
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

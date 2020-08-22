@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace JBToolkit.WinForms
 {
+    /// <summary>
+    /// Adds better anti-aliasing to a label for better visuals
+    /// Warning: Can look fuzzy when used in certain places
+    /// </summary>
     public class AntiAliasedLabel : Label
     {
         protected override void OnPaint(PaintEventArgs e)

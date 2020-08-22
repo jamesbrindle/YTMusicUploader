@@ -1,0 +1,69 @@
+.TH "YTMusicUploader.Providers.DbOperationResult" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.DbOperationResult \- Database process execution and query result object\&. Contains if there's any errors and the time taken to perform the database operation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBDbOperationResult\fP \fBSuccess\fP (int id, TimeSpan executionTime)"
+.br
+.RI "Database process execution and query result object for 'success'\&. Contains the time taken to perform the database operation along with the scoped database entry ID "
+.ti -1c
+.RI "static \fBDbOperationResult\fP \fBFail\fP (string errorReason, TimeSpan executionTime)"
+.br
+.RI "Database process execution and query result object for 'failure'\&. Contains the error reason and the time taken to perform the database operation "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBId\fP = \-1\fC [get, set]\fP"
+.br
+.RI "Scoped datbase entry ID of the record inserted or updated "
+.ti -1c
+.RI "bool \fBIsError\fP = false\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBErrorReason\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBExecutionTime\fP = '0'\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Database process execution and query result object\&. Contains if there's any errors and the time taken to perform the database operation\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DbOperationResult\&.Fail (string errorReason, TimeSpan executionTime)\fC [static]\fP"
+
+.PP
+Database process execution and query result object for 'failure'\&. Contains the error reason and the time taken to perform the database operation 
+.SS "static \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DbOperationResult\&.Success (int id, TimeSpan executionTime)\fC [static]\fP"
+
+.PP
+Database process execution and query result object for 'success'\&. Contains the time taken to perform the database operation along with the scoped database entry ID 
+.SH "Property Documentation"
+.PP 
+.SS "string YTMusicUploader\&.Providers\&.DbOperationResult\&.ErrorReason\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DbOperationResult\&.ExecutionTime = '0'\fC [get]\fP, \fC [set]\fP"
+
+.SS "int YTMusicUploader\&.Providers\&.DbOperationResult\&.Id = \-1\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Scoped datbase entry ID of the record inserted or updated 
+.SS "bool YTMusicUploader\&.Providers\&.DbOperationResult\&.IsError = false\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

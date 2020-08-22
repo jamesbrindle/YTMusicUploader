@@ -1,0 +1,154 @@
+.TH "YTMusicUploader.Providers.Requests" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBIsAuthenticated\fP (string cookieValue)"
+.br
+.RI "HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. "
+.ti -1c
+.RI "static bool \fBUploadSong\fP (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)"
+.br
+.RI "HttpWebRequest POST request to send to YouTube to upload a music file\&. "
+.ti -1c
+.RI "static HttpWebRequest \fBAddStandardHeaders\fP (HttpWebRequest webRequest, string cookieValue)"
+.br
+.RI "Required headers for any YouTube music API request "
+.ti -1c
+.RI "static byte[] \fBGetPostBytes\fP (string stringToEncode)"
+.br
+.RI "Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static string \fBYouTubeBaseUrl\fP\fC [get]\fP"
+.br
+.RI "Main API URL for YouTube music "
+.ti -1c
+.RI "static string? \fBUploadUrl\fP\fC [get]\fP"
+.br
+.RI "Upload specific API URL "
+.ti -1c
+.RI "static string? \fBParams\fP\fC [get]\fP"
+.br
+.RI "Main URL parameters for typical YouTube music API calls "
+.in -1c
+.SH "Detailed Description"
+.PP 
+HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. 
+
+YouTube music HttpWebRequest abstract class
+.PP
+HttpWebRequest POST request to send to YouTube to upload a music file\&.
+.PP
+In this case, we're actually perform a request for personally uploaded music files
+.PP
+Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+.PP
+Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+.SH "Member Function Documentation"
+.PP 
+.SS "static HttpWebRequest YTMusicUploader\&.Providers\&.Requests\&.AddStandardHeaders (HttpWebRequest webRequest, string cookieValue)\fC [static]\fP"
+
+.PP
+Required headers for any YouTube music API request 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwebRequest\fP HttpWebRequest to add the headers to
+.br
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The same HttpWebReqest object with added default headers
+.RE
+.PP
+
+.SS "static byte [] YTMusicUploader\&.Providers\&.Requests\&.GetPostBytes (string stringToEncode)\fC [static]\fP"
+
+.PP
+Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstringToEncode\fP String to convert to a UTF8 encoded byte array
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+UTF8 encoded byte arra
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsAuthenticated (string cookieValue)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. In this case, we're actually perform a request for personally uploaded music files
+.PP
+Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if successfully authenticated, false otherwise
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.UploadSong (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YouTube to upload a music file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImainForm\fP Instance of the main form to utilise the public methods of and update status'
+.br
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIfilePath\fP Full path to file we're uploading
+.br
+\fImaxUploadSpeed\fP Throttle database bandwidth speed (bytes per second)
+.br
+\fIerror\fP OUTPUT error string
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if the upload is successful, false otherwise
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "string? YTMusicUploader\&.Providers\&.Requests\&.Params\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Main URL parameters for typical YouTube music API calls 
+.SS "string? YTMusicUploader\&.Providers\&.Requests\&.UploadUrl\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Upload specific API URL 
+.SS "string YTMusicUploader\&.Providers\&.Requests\&.YouTubeBaseUrl\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Main API URL for YouTube music 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

@@ -1,0 +1,112 @@
+\hypertarget{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{}\doxysection{Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result Class Reference}
+\label{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}\index{YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}}
+
+
+Database process execution and query result object. Contains if there\textquotesingle{}s any errors and the time taken to perform the database operation.  
+
+
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{dd/dcd/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a7d211fda363a2bc57c5bc92991d4b39d}{Success}} (int id, Time\+Span execution\+Time)
+\begin{DoxyCompactList}\small\item\em Database process execution and query result object for \textquotesingle{}success\textquotesingle{}. Contains the time taken to perform the database operation along with the scoped database entry ID \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a294611423979cc1924b6436a62a5333f}{Fail}} (string error\+Reason, Time\+Span execution\+Time)
+\begin{DoxyCompactList}\small\item\em Database process execution and query result object for \textquotesingle{}failure\textquotesingle{}. Contains the error reason and the time taken to perform the database operation \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a45783d70ba3f40303baaa2db9e980fd1}{Id}} = -\/1\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Scoped datbase entry ID of the record inserted or updated \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a60dd561656d2348349eb3b1b2fb36ac3}{Is\+Error}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a7f9263189ce3f35a6d626f2859889e03}{Error\+Reason}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_af66ee1b08d387e11cfae5c33b2a43fe4}{Execution\+Time}} = \char`\"{}0\char`\"{}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Database process execution and query result object. Contains if there\textquotesingle{}s any errors and the time taken to perform the database operation. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a294611423979cc1924b6436a62a5333f}\label{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a294611423979cc1924b6436a62a5333f}} 
+\index{YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}!Fail@{Fail}}
+\index{Fail@{Fail}!YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}}
+\doxysubsubsection{\texorpdfstring{Fail()}{Fail()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result.\+Fail (\begin{DoxyParamCaption}\item[{string}]{error\+Reason,  }\item[{Time\+Span}]{execution\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Database process execution and query result object for \textquotesingle{}failure\textquotesingle{}. Contains the error reason and the time taken to perform the database operation 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a294611423979cc1924b6436a62a5333f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a7d211fda363a2bc57c5bc92991d4b39d}\label{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a7d211fda363a2bc57c5bc92991d4b39d}} 
+\index{YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}!Success@{Success}}
+\index{Success@{Success}!YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}}
+\doxysubsubsection{\texorpdfstring{Success()}{Success()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result.\+Success (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{Time\+Span}]{execution\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Database process execution and query result object for \textquotesingle{}success\textquotesingle{}. Contains the time taken to perform the database operation along with the scoped database entry ID 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a7d211fda363a2bc57c5bc92991d4b39d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a7f9263189ce3f35a6d626f2859889e03}\label{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a7f9263189ce3f35a6d626f2859889e03}} 
+\index{YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}!ErrorReason@{ErrorReason}}
+\index{ErrorReason@{ErrorReason}!YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}}
+\doxysubsubsection{\texorpdfstring{ErrorReason}{ErrorReason}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result.\+Error\+Reason\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_af66ee1b08d387e11cfae5c33b2a43fe4}\label{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_af66ee1b08d387e11cfae5c33b2a43fe4}} 
+\index{YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}!ExecutionTime@{ExecutionTime}}
+\index{ExecutionTime@{ExecutionTime}!YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}}
+\doxysubsubsection{\texorpdfstring{ExecutionTime}{ExecutionTime}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result.\+Execution\+Time = \char`\"{}0\char`\"{}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a45783d70ba3f40303baaa2db9e980fd1}\label{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a45783d70ba3f40303baaa2db9e980fd1}} 
+\index{YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}!Id@{Id}}
+\index{Id@{Id}!YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}}
+\doxysubsubsection{\texorpdfstring{Id}{Id}}
+{\footnotesize\ttfamily int Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result.\+Id = -\/1\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Scoped datbase entry ID of the record inserted or updated 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a60dd561656d2348349eb3b1b2fb36ac3}\label{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result_a60dd561656d2348349eb3b1b2fb36ac3}} 
+\index{YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}!IsError@{IsError}}
+\index{IsError@{IsError}!YTMusicUploader.Providers.DbOperationResult@{YTMusicUploader.Providers.DbOperationResult}}
+\doxysubsubsection{\texorpdfstring{IsError}{IsError}}
+{\footnotesize\ttfamily bool Y\+T\+Music\+Uploader.\+Providers.\+Db\+Operation\+Result.\+Is\+Error = false\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\mbox{\hyperlink{_data_access_8cs}{Data\+Access.\+cs}}\end{DoxyCompactItemize}

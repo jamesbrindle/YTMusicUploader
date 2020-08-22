@@ -1,0 +1,8 @@
+<map id="YTMusicUploader.MainForm.RepopulateAmountLables" name="YTMusicUploader.MainForm.RepopulateAmountLables">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,196,145"/>
+<area shape="rect" id="node2" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#aabf2f84cca1920fd65c51072ec4d398d" title="Count all non&#45;removed Music File entries that have upload errors" alt="" coords="252,5,477,47"/>
+<area shape="rect" id="node4" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a5dbb406f1ef3e8beb7d00b41fdea62a8" title="Count all non&#45;removed Music File entries with upload success" alt="" coords="244,71,485,112"/>
+<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad05b1e32e260ce690cb699b11e23f51e" title=" " alt="" coords="269,136,460,177"/>
+<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a7e6d9ff608ac01f29412a13657854b1f" title=" " alt="" coords="269,201,460,243"/>
+<area shape="rect" id="node3" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="533,39,719,80"/>
+</map>

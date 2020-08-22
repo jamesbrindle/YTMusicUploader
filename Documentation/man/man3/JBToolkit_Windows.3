@@ -1,0 +1,154 @@
+.TH "JBToolkit.Windows" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JBToolkit.Windows
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDirectoryHelper\fP"
+.br
+.RI "Class containing methods to retrieve specific file system paths\&. "
+.ti -1c
+.RI "class \fBFastDirectoryEnumerator\fP"
+.br
+.RI "A fast enumerator of files in a directory\&. Use this if you need to get attributes for all files in a directory\&. "
+.ti -1c
+.RI "class \fBFileData\fP"
+.br
+.RI "Contains information about a file returned by the FastDirectoryEnumerator class\&. 
+.br
+ "
+.ti -1c
+.RI "class \fBWIN32_FIND_DATA\fP"
+.br
+.RI "Contains information about the file that is found by the FindFirstFile or FindNextFile functions\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBKnownFolder\fP { \fBKnownFolder\&.Contacts\fP, \fBKnownFolder\&.Desktop\fP, \fBKnownFolder\&.Documents\fP, \fBKnownFolder\&.Favorites\fP, \fBKnownFolder\&.Links\fP, \fBKnownFolder\&.Music\fP, \fBKnownFolder\&.Pictures\fP, \fBKnownFolder\&.SavedGames\fP, \fBKnownFolder\&.SavedSearches\fP, \fBKnownFolder\&.Videos\fP, \fBKnownFolder\&.Fonts\fP, \fBKnownFolder\&.PublicFolder\fP, \fBKnownFolder\&.ThreeDObjects\fP, \fBKnownFolder\&.OneDrive\fP, \fBKnownFolder\&.Downloads\fP, \fBKnownFolder\&.LocalAppData\fP, \fBKnownFolder\&.AddNewPrograms\fP, \fBKnownFolder\&.AdminTools\fP, \fBKnownFolder\&.CommonAdminTools\fP, \fBKnownFolder\&.CommonPrograms\fP, \fBKnownFolder\&.CommonStartMenu\fP, \fBKnownFolder\&.CommonStartup\fP, \fBKnownFolder\&.CommonTemplates\fP, \fBKnownFolder\&.Computer\fP, \fBKnownFolder\&.ControlPanel\fP, \fBKnownFolder\&.Games\fP, \fBKnownFolder\&.Network\fP, \fBKnownFolder\&.Printers\fP, \fBKnownFolder\&.ProgramData\fP, \fBKnownFolder\&.ProgramFiles\fP, \fBKnownFolder\&.ProgramFilesX64\fP, \fBKnownFolder\&.ProgramFilesX86\fP, \fBKnownFolder\&.Programs\fP, \fBKnownFolder\&.Public\fP, \fBKnownFolder\&.PublicDesktop\fP, \fBKnownFolder\&.PublicDocuments\fP, \fBKnownFolder\&.PublicDownloads\fP, \fBKnownFolder\&.PublicMusic\fP, \fBKnownFolder\&.PublicPictures\fP, \fBKnownFolder\&.PublicVideos\fP, \fBKnownFolder\&.QuickLaunch\fP, \fBKnownFolder\&.RecordedTV\fP, \fBKnownFolder\&.Recent\fP, \fBKnownFolder\&.RecycleBin\fP, \fBKnownFolder\&.RoamingAppData\fP, \fBKnownFolder\&.StartMenu\fP, \fBKnownFolder\&.Startup\fP, \fBKnownFolder\&.System\fP, \fBKnownFolder\&.SystemX86\fP, \fBKnownFolder\&.Templates\fP, \fBKnownFolder\&.UsersFiles\fP, \fBKnownFolder\&.Windows\fP }"
+.br
+.RI "Standard folders registered with the system\&. These folders are installed with Windows Vista and later operating systems, and a computer will have only folders appropriate to it installed\&. "
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBJBToolkit\&.Windows\&.KnownFolder\fP\fC [strong]\fP"
+
+.PP
+Standard folders registered with the system\&. These folders are installed with \fBWindows\fP Vista and later operating systems, and a computer will have only folders appropriate to it installed\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIContacts \fP\fP
+.TP
+\fB\fIDesktop \fP\fP
+.TP
+\fB\fIDocuments \fP\fP
+.TP
+\fB\fIFavorites \fP\fP
+.TP
+\fB\fILinks \fP\fP
+.TP
+\fB\fIMusic \fP\fP
+.TP
+\fB\fIPictures \fP\fP
+.TP
+\fB\fISavedGames \fP\fP
+.TP
+\fB\fISavedSearches \fP\fP
+.TP
+\fB\fIVideos \fP\fP
+.TP
+\fB\fIFonts \fP\fP
+.TP
+\fB\fIPublicFolder \fP\fP
+.TP
+\fB\fIThreeDObjects \fP\fP
+.TP
+\fB\fIOneDrive \fP\fP
+.TP
+\fB\fIDownloads \fP\fP
+.TP
+\fB\fILocalAppData \fP\fP
+.TP
+\fB\fIAddNewPrograms \fP\fP
+.TP
+\fB\fIAdminTools \fP\fP
+.TP
+\fB\fICommonAdminTools \fP\fP
+.TP
+\fB\fICommonPrograms \fP\fP
+.TP
+\fB\fICommonStartMenu \fP\fP
+.TP
+\fB\fICommonStartup \fP\fP
+.TP
+\fB\fICommonTemplates \fP\fP
+.TP
+\fB\fIComputer \fP\fP
+.TP
+\fB\fIControlPanel \fP\fP
+.TP
+\fB\fIGames \fP\fP
+.TP
+\fB\fINetwork \fP\fP
+.TP
+\fB\fIPrinters \fP\fP
+.TP
+\fB\fIProgramData \fP\fP
+.TP
+\fB\fIProgramFiles \fP\fP
+.TP
+\fB\fIProgramFilesX64 \fP\fP
+.TP
+\fB\fIProgramFilesX86 \fP\fP
+.TP
+\fB\fIPrograms \fP\fP
+.TP
+\fB\fIPublic \fP\fP
+.TP
+\fB\fIPublicDesktop \fP\fP
+.TP
+\fB\fIPublicDocuments \fP\fP
+.TP
+\fB\fIPublicDownloads \fP\fP
+.TP
+\fB\fIPublicMusic \fP\fP
+.TP
+\fB\fIPublicPictures \fP\fP
+.TP
+\fB\fIPublicVideos \fP\fP
+.TP
+\fB\fIQuickLaunch \fP\fP
+.TP
+\fB\fIRecordedTV \fP\fP
+.TP
+\fB\fIRecent \fP\fP
+.TP
+\fB\fIRecycleBin \fP\fP
+.TP
+\fB\fIRoamingAppData \fP\fP
+.TP
+\fB\fIStartMenu \fP\fP
+.TP
+\fB\fIStartup \fP\fP
+.TP
+\fB\fISystem \fP\fP
+.TP
+\fB\fISystemX86 \fP\fP
+.TP
+\fB\fITemplates \fP\fP
+.TP
+\fB\fIUsersFiles \fP\fP
+.TP
+\fB\fIWindows \fP\fP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

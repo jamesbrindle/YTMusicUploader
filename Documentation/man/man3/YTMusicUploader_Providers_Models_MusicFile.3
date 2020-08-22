@@ -1,0 +1,142 @@
+.TH "YTMusicUploader.Providers.Models.MusicFile" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Models.MusicFile \- Music library file and status  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.Providers\&.Models\&.DbModels\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMusicFile\fP ()"
+.br
+.RI "Music library file and status "
+.ti -1c
+.RI "\fBMusicFile\fP (string path, string hash)"
+.br
+.RI "Music library file and status "
+.ti -1c
+.RI "\fBMusicFile\fP (string path)"
+.br
+.RI "Music library file and status "
+.ti -1c
+.RI "override \fBDbOperationResult\fP \fBSave\fP ()"
+.br
+.RI "Insert or update the database "
+.ti -1c
+.RI "override \fBDbOperationResult\fP \fBDelete\fP ()"
+.br
+.RI "Delete from the database (for MusicFiles, it typically set the flag of 'Removed' but doesn't actually delete from the database\&. This is so the file (using a checksum hash) can be compared with others to identify an already uploaded file if the files music to a different path "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDelete\fP (bool destroy)"
+.br
+.RI "Delete from the database\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBPath\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBHash\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "DateTime \fBLastUpload\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBError\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBErrorReason\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBRemoved\fP = null\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Music library file and status 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.MusicFile ()"
+
+.PP
+Music library file and status 
+.SS "YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.MusicFile (string path, string hash)"
+
+.PP
+Music library file and status 
+.SS "YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.MusicFile (string path)"
+
+.PP
+Music library file and status 
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.Delete ()\fC [virtual]\fP"
+
+.PP
+Delete from the database (for MusicFiles, it typically set the flag of 'Removed' but doesn't actually delete from the database\&. This is so the file (using a checksum hash) can be compared with others to identify an already uploaded file if the files music to a different path the entry from the database
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.Providers\&.Models\&.DbModels\fP\&.
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.Delete (bool destroy)"
+
+.PP
+Delete from the database\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdestroy\fP False (default) just sets the flag to 'remove'\&. True (destroy) actually removes the entry from the database
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.Save ()\fC [virtual]\fP"
+
+.PP
+Insert or update the database 
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.Providers\&.Models\&.DbModels\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool? YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.Error\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.ErrorReason\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.Hash\fC [get]\fP, \fC [set]\fP"
+
+.SS "DateTime YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.LastUpload\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.Path\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool? YTMusicUploader\&.Providers\&.Models\&.MusicFile\&.Removed = null\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

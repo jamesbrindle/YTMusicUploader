@@ -3,13 +3,19 @@ using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader.Providers.Models
 {
+    /// <summary>
+    /// Selected libraries to scan and watch data
+    /// </summary>
     [Serializable]
-    public class WatchFolder
+    public class WatchFolder : DbModels
     {
-        public int Id { get; set; }
         public string Path { get; set; }
 
-        public DbOperationResult Save()
+        /// <summary>
+        /// Insert into the database
+        /// </summary>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
+        public override DbOperationResult Save()
         {
             var result = new WatchFolderRepo().Insert(this);
             if (!result.IsError)
@@ -18,7 +24,11 @@ namespace YTMusicUploader.Providers.Models
             return result;
         }
 
-        public DbOperationResult Delete()
+        /// <summary>
+        /// Delete from the database
+        /// </summary>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
+        public override DbOperationResult Delete()
         {
             var result = new WatchFolderRepo().Delete(this);
             if (!result.IsError)

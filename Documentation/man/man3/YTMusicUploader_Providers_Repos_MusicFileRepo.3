@@ -1,0 +1,354 @@
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Repos.MusicFileRepo \- Music File database repository access\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMusicFile\fP \fBLoad\fP (int id)"
+.br
+.RI "Load single MusicFile object by ID from the database "
+.ti -1c
+.RI "\fBMusicFile\fP \fBLoad\fP (string path)"
+.br
+.RI "Load single MusicFile object by file path from the database "
+.ti -1c
+.RI "\fBMusicFile\fP \fBGetDuplicate\fP (string hash, string path)"
+.br
+.RI "Load single MusicFile object by hash and from the database that doesn't match the given path (i\&.e\&. a duplicate hash) "
+.ti -1c
+.RI "List< \fBMusicFile\fP > \fBLoadAll\fP (bool includeErrorFiles=true, bool lastUploadAscending=false, bool ignoreRecentlyUploaded=false)"
+.br
+.RI "Loads a list of all MusicFiles objects with optional filter or order by criteria "
+.ti -1c
+.RI "List< \fBMusicFile\fP > \fBLoadIssues\fP ()"
+.br
+.RI "Loads a list of MusicFile objects with upload errors "
+.ti -1c
+.RI "List< \fBMusicFile\fP > \fBLoadUploaded\fP ()"
+.br
+.RI "Loads a list of MusicFile objects with a successful upload "
+.ti -1c
+.RI "int \fBCountAll\fP ()"
+.br
+.RI "Count all non-removed Music File entries "
+.ti -1c
+.RI "int \fBCountIssues\fP ()"
+.br
+.RI "Count all non-removed Music File entries that have upload errors "
+.ti -1c
+.RI "int \fBCountUploaded\fP ()"
+.br
+.RI "Count all non-removed Music File entries with upload success "
+.ti -1c
+.RI "int \fBGetMusicFileIdFromPath\fP (string path)"
+.br
+.RI "Returns the database ID of the music file by a give file path "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBInsert\fP (\fBMusicFile\fP musicFile)"
+.br
+.RI "Inserts a Music File entry into the database\&. If the entry already exists, but is flagged as 'removed', then the removed flag will be set to false "
+.ti -1c
+.RI "void \fBRestoreMusicFile\fP (int id)"
+.br
+.RI "Sets the 'removed' flag to false "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBUpdate\fP (\fBMusicFile\fP musicFile)"
+.br
+.RI "Updates the Music File entry in the database with the fields of the given MusicFile object "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDelete\fP (\fBMusicFile\fP musicFile, bool destroy=false)"
+.br
+.RI "Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDelete\fP (int id, bool destroy=false)"
+.br
+.RI "Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDelete\fP (string path)"
+.br
+.RI "Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDeleteWatchFolder\fP (string path)"
+.br
+.RI "Performs a bulk delete of Music File entries who's path starts with a certain file path\&. I\&.e\&. When bulk deleting because of the removal of a library watch folder "
+.ti -1c
+.RI "\fBDbOperationResult\fP \fBDeleteAll\fP ()"
+.br
+.RI "Deletes all Music File entries from the database "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Music File database repository access\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountAll ()"
+
+.PP
+Count all non-removed Music File entries 
+.PP
+\fBReturns\fP
+.RS 4
+Integer count
+.RE
+.PP
+
+.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountIssues ()"
+
+.PP
+Count all non-removed Music File entries that have upload errors 
+.PP
+\fBReturns\fP
+.RS 4
+Integer count
+.RE
+.PP
+
+.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountUploaded ()"
+
+.PP
+Count all non-removed Music File entries with upload success 
+.PP
+\fBReturns\fP
+.RS 4
+Integer count
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (int id, bool destroy = \fCfalse\fP)"
+
+.PP
+Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP Database ID of Music File entry
+.br
+\fIdestroy\fP If true, deletes from the database\&. If false, just sets the 'Removed' flag
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (\fBMusicFile\fP musicFile, bool destroy = \fCfalse\fP)"
+
+.PP
+Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database 
+.PP
+\fBParameters\fP
+.RS 4
+\fImusicFile\fP Given MusicFile object
+.br
+\fIdestroy\fP If true, deletes from the database\&. If false, just sets the 'Removed' flag
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (string path)"
+
+.PP
+Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Initial full file path of Music File entry
+.br
+\fIdestroy\fP If true, deletes from the database\&. If false, just sets the 'Removed' flag
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteAll ()"
+
+.PP
+Deletes all Music File entries from the database 
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteWatchFolder (string path)"
+
+.PP
+Performs a bulk delete of Music File entries who's path starts with a certain file path\&. I\&.e\&. When bulk deleting because of the removal of a library watch folder 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Beginning folder path to filter for
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBMusicFile\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetDuplicate (string hash, string path)"
+
+.PP
+Load single MusicFile object by hash and from the database that doesn't match the given path (i\&.e\&. a duplicate hash) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhash\fP Hash to look for
+.br
+\fIpath\fP Path of music file we're comparing (path to exlude)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
+.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetMusicFileIdFromPath (string path)"
+
+.PP
+Returns the database ID of the music file by a give file path 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Full inital path of file
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Integer database ID
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Insert (\fBMusicFile\fP musicFile)"
+
+.PP
+Inserts a Music File entry into the database\&. If the entry already exists, but is flagged as 'removed', then the removed flag will be set to false 
+.PP
+\fBParameters\fP
+.RS 4
+\fImusicFile\fP MusicFile object
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "\fBMusicFile\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Load (int id)"
+
+.PP
+Load single MusicFile object by ID from the database 
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
+.SS "\fBMusicFile\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Load (string path)"
+
+.PP
+Load single MusicFile object by file path from the database 
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
+.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadAll (bool includeErrorFiles = \fCtrue\fP, bool lastUploadAscending = \fCfalse\fP, bool ignoreRecentlyUploaded = \fCfalse\fP)"
+
+.PP
+Loads a list of all MusicFiles objects with optional filter or order by criteria 
+.PP
+\fBParameters\fP
+.RS 4
+\fIincludeErrorFiles\fP Include music files that have error in an upload
+.br
+\fIlastUploadAscending\fP Order by 'LastUpload' (date) in descending order
+.br
+\fIignoreRecentlyUploaded\fP Don't include entries with a 'LastUpload' date less than a month old
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+List of MusicFileObjects
+.RE
+.PP
+
+.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadIssues ()"
+
+.PP
+Loads a list of MusicFile objects with upload errors 
+.PP
+\fBReturns\fP
+.RS 4
+List of MusicFileObjects
+.RE
+.PP
+
+.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadUploaded ()"
+
+.PP
+Loads a list of MusicFile objects with a successful upload 
+.PP
+\fBReturns\fP
+.RS 4
+List of MusicFileObjects
+.RE
+.PP
+
+.SS "void YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
+
+.PP
+Sets the 'removed' flag to false 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP Database ID of music file
+.RE
+.PP
+
+.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Update (\fBMusicFile\fP musicFile)"
+
+.PP
+Updates the Music File entry in the database with the fields of the given MusicFile object 
+.PP
+\fBParameters\fP
+.RS 4
+\fImusicFile\fP Given MusicFile obejct to update with
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.
