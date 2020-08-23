@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['patterngenerator_384',['PatternGenerator',['../d2/d1c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_pattern_generator.html',1,'JBToolkit::ColorHelper::ColourHelper']]]
+  ['optimisedmetroform_389',['OptimisedMetroForm',['../da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html',1,'JBToolkit.WinForms.OptimisedMetroForm'],['../d3/df3/class_optimised_metro_form.html',1,'OptimisedMetroForm']]]
 ];

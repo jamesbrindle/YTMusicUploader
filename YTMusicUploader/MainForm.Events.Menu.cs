@@ -44,7 +44,7 @@ namespace YTMusicUploader
                                  (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
         }
 
-        private void QuitApplication()
+        public void QuitApplication()
         {
             Aborting = true;
             TrayIcon.Visible = false;

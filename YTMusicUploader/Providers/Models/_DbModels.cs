@@ -1,6 +1,6 @@
 ﻿namespace YTMusicUploader.Providers.Models
 {
-    public abstract class DbModels: IDbModel
+    public abstract class DbModels : IDbModel
     {
         public int Id { get; set; } = -1;
 

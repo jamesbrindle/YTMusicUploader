@@ -4,7 +4,9 @@
 
 \href{https://github.com/jamesbrindle/YTMusicUploader}{\texttt{ }} ~
 
-Automatically upload your local music personal library to You\+Tube music. ~ ~\hypertarget{index_autotoc_md1}{}\doxysubsection{Application}\label{index_autotoc_md1}
+Automatically upload your local music personal library to You\+Tube music. ~ ~
+
+{\bfseries{\href{https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.0}{\texttt{ Download Version 1.\+0 Installer}}}} ~ ~\hypertarget{index_autotoc_md1}{}\doxysubsection{Application}\label{index_autotoc_md1}
 This is a .Net application written in C\# that uploads your person music library to You\+Tube. It has a minimalistic UI for basic settings such as\+:
 
 
@@ -88,9 +90,9 @@ One thing to bear in mind, is that it required a writable location for cache fil
 \begin{DoxyCode}{0}
 \DoxyCodeLine{private async void InitializeBrowser()}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{        var env = await CoreWebView2Environment.CreateAsync(null, Global.AppDataLocation);}
-\DoxyCodeLine{        await browser.EnsureCoreWebView2Async(env);}
-\DoxyCodeLine{        browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);}
+\DoxyCodeLine{    var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);}
+\DoxyCodeLine{    await browser.EnsureCoreWebView2Async(env);}
+\DoxyCodeLine{    browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);}
 \DoxyCodeLine{\}}
 \end{DoxyCode}
 
@@ -113,14 +115,14 @@ Who knows... It\textquotesingle{}s dependent on You\+Tube Music / Google not cha
 I\textquotesingle{}m going to be using this application for personal use, so I\textquotesingle{}ll know straight aware when it\textquotesingle{}s not working and will attempt to update the A\+PI call implementation as soon as possible. ~ ~\hypertarget{index_autotoc_md10}{}\doxysubsection{Further Development Considerations}\label{index_autotoc_md10}
 
 \begin{DoxyItemize}
-\item Could do with the ability to see if a music file is already uploaded to You\+Tube Music or not. I could not find a way of requesting a file hash from You\+Tube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, which multiple \textquotesingle{}fuzzy / AI logic\textquotesingle{} result sets for \textquotesingle{}similar\textquotesingle{} songs.
+\item Could do with the ability to see if a music file is already uploaded to You\+Tube Music or not. I could not find a way of requesting a file hash from You\+Tube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple \textquotesingle{}fuzzy / AI logic\textquotesingle{} result sets for \textquotesingle{}similar\textquotesingle{} songs.
 \item Would like to add the ability to upload playlists $\ast$(\href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ sigma67}} has included this ability in his A\+PI so it\textquotesingle{}s definately do-\/able).$\ast$ ~ ~
 \end{DoxyItemize}\hypertarget{index_autotoc_md11}{}\doxysubsection{Special Thanks}\label{index_autotoc_md11}
 
 \begin{DoxyItemize}
 \item \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ sigma67}} -\/ Who created a Python You\+Tube Music A\+PI that I could reference. \href{https://github.com/sigma67/ytmusicapi}{\texttt{ sigma67\+: Github}}.
 \item \href{https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator}{\texttt{ wilsone8}} -\/ Who created a very fast Windows directory enumerator.
-\item \href{https://stackoverflow.com/users/984724/dave-thomas}{\texttt{ Dave Thomas}} -\/ Who worked out how to get the S\+A\+P\+I\+S\+ID hash from the the You\+Tube Music authentication cookie on post on \href{https://stackoverflow.com/a/32065323/5726546}{\texttt{ Stack\+Overflow}}.
-\item \href{https://stackoverflow.com/users/909365/0xdeadbeef}{\texttt{ 0x\+D\+E\+A\+D\+B\+E\+EF}} -\/ Who made a simple class to bandwidth strottle a byte stream on a post on \href{https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp}{\texttt{ Stack\+Overflow}}.
+\item \href{https://stackoverflow.com/users/984724/dave-thomas}{\texttt{ Dave Thomas}} -\/ Who worked out how to get the S\+A\+P\+I\+S\+ID hash from the the You\+Tube Music authentication cookie on a post on \href{https://stackoverflow.com/a/32065323/5726546}{\texttt{ Stack\+Overflow}}.
+\item \href{https://stackoverflow.com/users/909365/0xdeadbeef}{\texttt{ 0x\+D\+E\+A\+D\+B\+E\+EF}} -\/ Who made a simple class to bandwidth throttle a byte stream on a post on \href{https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp}{\texttt{ Stack\+Overflow}}.
 \item \href{https://github.com/DjSt3rios}{\texttt{ Dj\+St3rios}} -\/ For some Web\+View2 insight. 
 \end{DoxyItemize}

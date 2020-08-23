@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['optimisedmetroform_383',['OptimisedMetroForm',['../d3/df3/class_optimised_metro_form.html',1,'OptimisedMetroForm'],['../da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html',1,'JBToolkit.WinForms.OptimisedMetroForm']]]
+  ['mainform_385',['MainForm',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html',1,'YTMusicUploader']]],
+  ['metroform_386',['MetroForm',['../df/d0a/class_metro_form.html',1,'']]],
+  ['musicfile_387',['MusicFile',['../da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html',1,'YTMusicUploader::Providers::Models']]],
+  ['musicfilerepo_388',['MusicFileRepo',['../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html',1,'YTMusicUploader::Providers::Repos']]]
 ];

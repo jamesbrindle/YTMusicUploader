@@ -90,6 +90,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md_D"></a>:_OneDrive_Documents_Work_Repositories_YTMusicUploader_README</p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/yt_logo-64.png" alt="N|Solid" class="inline"/></a> &#160;</p>
 <p>Automatically upload your local music personal library to YouTube music. &#160; &#160;</p>
+<p><b><a href="https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.0">Download Version 1.0 Installer</a></b> &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Application</h2>
 <p>This is a .Net application written in C# that uploads your person music library to YouTube. It has a minimalistic UI for basic settings such as:</p>
@@ -159,9 +160,9 @@ Web Control</h2>
 <p>One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up <b>before</b> navigating to any URL: &#160;</p>
 <div class="fragment"><div class="line">private async void InitializeBrowser()</div>
 <div class="line">{</div>
-<div class="line">        var env = await CoreWebView2Environment.CreateAsync(null, Global.AppDataLocation);</div>
-<div class="line">        await browser.EnsureCoreWebView2Async(env);</div>
-<div class="line">        browser.Source = new Uri(&quot;https://music.youtube.com/&quot;, UriKind.Absolute);</div>
+<div class="line">    var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);</div>
+<div class="line">    await browser.EnsureCoreWebView2Async(env);</div>
+<div class="line">    browser.Source = new Uri(&quot;https://music.youtube.com/&quot;, UriKind.Absolute);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>Thank you <a href="https://github.com/DjSt3rios">DjSt3rios</a> for working that out: <a href="https://github.com/MicrosoftEdge/WebViewFeedback/issues/297">https://github.com/MicrosoftEdge/WebViewFeedback/issues/297</a></p>
 <p>Also, you need to wait for the ready state of the CoreWebView2WebResource context before trying to read any properties from it (like the request headers). This is easily achievable with events: &#160;</p>
@@ -177,7 +178,7 @@ How Long Will This Application Last?</h2>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Further Development Considerations</h2>
 <ul>
-<li>Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, which multiple 'fuzzy / AI logic' result sets for 'similar' songs.</li>
+<li>Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple 'fuzzy / AI logic' result sets for 'similar' songs.</li>
 <li>Would like to add the ability to upload playlists *(<a href="https://ytmusicapi.readthedocs.io/en/latest/">sigma67</a> has included this ability in his API so it's definately do-able).* &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md11"></a>
@@ -185,8 +186,8 @@ Special Thanks</h2>
 <ul>
 <li><a href="https://ytmusicapi.readthedocs.io/en/latest/">sigma67</a> - Who created a Python YouTube Music API that I could reference. <a href="https://github.com/sigma67/ytmusicapi">sigma67: Github</a>.</li>
 <li><a href="https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator">wilsone8</a> - Who created a very fast Windows directory enumerator.</li>
-<li><a href="https://stackoverflow.com/users/984724/dave-thomas">Dave Thomas</a> - Who worked out how to get the SAPISID hash from the the YouTube Music authentication cookie on post on <a href="https://stackoverflow.com/a/32065323/5726546">StackOverflow</a>.</li>
-<li><a href="https://stackoverflow.com/users/909365/0xdeadbeef">0xDEADBEEF</a> - Who made a simple class to bandwidth strottle a byte stream on a post on <a href="https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp">StackOverflow</a>.</li>
+<li><a href="https://stackoverflow.com/users/984724/dave-thomas">Dave Thomas</a> - Who worked out how to get the SAPISID hash from the the YouTube Music authentication cookie on a post on <a href="https://stackoverflow.com/a/32065323/5726546">StackOverflow</a>.</li>
+<li><a href="https://stackoverflow.com/users/909365/0xdeadbeef">0xDEADBEEF</a> - Who made a simple class to bandwidth throttle a byte stream on a post on <a href="https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp">StackOverflow</a>.</li>
 <li><a href="https://github.com/DjSt3rios">DjSt3rios</a> - For some WebView2 insight. </li>
 </ul>
 </div></div><!-- PageDoc -->

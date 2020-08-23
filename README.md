@@ -111,9 +111,9 @@ One thing to bear in mind, is that it required a writable location for cache fil
 ```
 private async void InitializeBrowser()
 {
-        var env = await CoreWebView2Environment.CreateAsync(null, Global.AppDataLocation);
-        await browser.EnsureCoreWebView2Async(env);
-        browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
+    var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);
+    await browser.EnsureCoreWebView2Async(env);
+    browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
 }
 ```
 

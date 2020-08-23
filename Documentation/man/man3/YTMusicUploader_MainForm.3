@@ -15,10 +15,19 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "\fBMainForm\fP (bool hidden)"
 .br
 .ti -1c
+.RI "void \fBInstallEdge\fP ()"
+.br
+.ti -1c
 .RI "void \fBRepopulateAmountLables\fP ()"
 .br
 .ti -1c
-.RI "void \fBSetStatusMessage\fP (string statusMessage)"
+.RI "void \fBShowMessageBox\fP (string title, string message, MessageBoxButtons buttons, MessageBoxIcon icon, int height)"
+.br
+.ti -1c
+.RI "void \fBSetStatusMessage\fP (string statusMessage, string systemTrayIconText=null)"
+.br
+.ti -1c
+.RI "void \fBSetSystemTrayIconText\fP (string text)"
 .br
 .ti -1c
 .RI "void \fBSetConnectedToYouTubeMusic\fP (bool connectedToYouTubeMusic)"
@@ -55,6 +64,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetConnectToYouTubeButtonEnabled\fP (bool enabled)"
+.br
+.ti -1c
+.RI "void \fBQuitApplication\fP ()"
 .br
 .in -1c
 .SS "Protected Member Functions"
@@ -137,6 +149,10 @@ Clean up any resources being used\&.
 
 .SS "string YTMusicUploader\&.MainForm\&.GetUploadLabel ()"
 
+.SS "void YTMusicUploader\&.MainForm\&.InstallEdge ()"
+
+.SS "void YTMusicUploader\&.MainForm\&.QuitApplication ()"
+
 .SS "void YTMusicUploader\&.MainForm\&.RepopulateAmountLables ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetConnectedToYouTubeMusic (bool connectedToYouTubeMusic)"
@@ -149,7 +165,9 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetStartWithWindows (bool startWithWindows)"
 
-.SS "void YTMusicUploader\&.MainForm\&.SetStatusMessage (string statusMessage)"
+.SS "void YTMusicUploader\&.MainForm\&.SetStatusMessage (string statusMessage, string systemTrayIconText = \fCnull\fP)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetSystemTrayIconText (string text)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetThrottleSpeed (string mbps)"
 
@@ -158,6 +176,8 @@ Clean up any resources being used\&.
 .SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetVersion (string version)"
+
+.SS "void YTMusicUploader\&.MainForm\&.ShowMessageBox (string title, string message, MessageBoxButtons buttons, MessageBoxIcon icon, int height)"
 
 .SH "Property Documentation"
 .PP 

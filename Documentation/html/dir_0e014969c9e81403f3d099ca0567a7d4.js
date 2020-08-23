@@ -12,6 +12,9 @@ var dir_0e014969c9e81403f3d099ca0567a7d4 =
       [ "CultureHelper", "df/d18/class_j_b_toolkit_1_1_culture_1_1_culture_helper.html", null ]
     ] ],
     [ "DirectoryHelper.cs", "d8/d15/_directory_helper_8cs.html", "d8/d15/_directory_helper_8cs" ],
+    [ "EdgeCoreHelper.cs", "df/d45/_edge_core_helper_8cs.html", [
+      [ "EdgeCoreHelper", "d0/ddc/class_y_t_music_uploader_1_1_helpers_1_1_edge_core_helper.html", "d0/ddc/class_y_t_music_uploader_1_1_helpers_1_1_edge_core_helper" ]
+    ] ],
     [ "Extensions.cs", "da/dc3/_extensions_8cs.html", null ],
     [ "FastFileSearcher.cs", "de/d14/_fast_file_searcher_8cs.html", [
       [ "FileData", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data" ]

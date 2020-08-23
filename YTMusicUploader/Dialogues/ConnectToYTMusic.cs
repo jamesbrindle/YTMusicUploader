@@ -3,6 +3,7 @@ using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace YTMusicUploader.Dialogues
@@ -43,13 +44,31 @@ namespace YTMusicUploader.Dialogues
 
         private async void InitializeBrowser()
         {
-            // Music create the environment and set the application data to somewhere writable. I.e. user's
+            // Must create the environment and set the application data to somewhere writable. I.e. user's
             // local AppData directory. And you must do this before attempting to navigate the browser to an
             // address.
 
-            var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);
-            await browser.EnsureCoreWebView2Async(env);
-            browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
+            try
+            {
+                var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);
+                await browser.EnsureCoreWebView2Async(env);
+                browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
+            }
+            catch
+            {
+                MainForm.SetConnectToYouTubeButtonEnabled(false);
+                MainForm.ShowMessageBox(
+                            "WebView2 Error",
+                            $"{Environment.NewLine}It looks like Canary Edge Core never finished installing. {Environment.NewLine}{Environment.NewLine}" +
+                            $"Please delete the folder: {Global.EdgeFolder} and then restart this application. " +
+                            $"{Environment.NewLine}{Environment.NewLine}The application will reinstall automatically once restarted." +
+                            $"{Environment.NewLine}{Environment.NewLine}YT Music Uploader will now exit.",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error,
+                            270);
+
+                Process.GetCurrentProcess().Kill();
+            }
         }
 
         private void ConnectToYTMusic_Load(object sender, EventArgs e)

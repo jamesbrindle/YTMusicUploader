@@ -5,44 +5,55 @@ namespace YTMusicUploader
 {
     public partial class MainForm
     {
-        delegate void SetStatusMessageDelegate(string statusMessage);
-        public void SetStatusMessage(string statusMessage)
+        delegate void SetStatusMessageDelegate(string statusMessage, string systemTrayIconText = null);
+        public void SetStatusMessage(string statusMessage, string systemTrayIconText = null)
         {
             if (lblStatus.InvokeRequired)
             {
                 SetStatusMessageDelegate d = new SetStatusMessageDelegate(SetStatusMessage);
-                Invoke(d, new object[] { statusMessage });
+                Invoke(d, new object[] { statusMessage, systemTrayIconText });
             }
             else
             {
                 lblStatus.Text = statusMessage;
+
+                if (!string.IsNullOrEmpty(systemTrayIconText))
+                    SetSystemTrayIconText(systemTrayIconText);
             }
+        }
+        public void SetSystemTrayIconText(string text)
+        {
+            TrayIcon.Text = "YT Music Uploader\r\n" + text;
         }
 
         delegate void SetConnectedToYouTubeMusicDelegate(bool connectedToYouTubeMusic);
         public void SetConnectedToYouTubeMusic(bool connectedToYouTubeMusic)
         {
-            ConnectedToYTMusic = connectedToYouTubeMusic;
+            try
+            {
+                ConnectedToYTMusic = connectedToYouTubeMusic;
 
-            if (pbConnectedToYoutube.InvokeRequired ||
-                pbNotConnectedToYoutube.InvokeRequired)
-            {
-                SetConnectedToYouTubeMusicDelegate d = new SetConnectedToYouTubeMusicDelegate(SetConnectedToYouTubeMusic);
-                Invoke(d, new object[] { connectedToYouTubeMusic });
-            }
-            else
-            {
-                if (connectedToYouTubeMusic)
+                if (pbConnectedToYoutube.InvokeRequired ||
+                    pbNotConnectedToYoutube.InvokeRequired)
                 {
-                    pbConnectedToYoutube.Visible = true;
-                    pbNotConnectedToYoutube.Visible = false;
+                    SetConnectedToYouTubeMusicDelegate d = new SetConnectedToYouTubeMusicDelegate(SetConnectedToYouTubeMusic);
+                    Invoke(d, new object[] { connectedToYouTubeMusic });
                 }
                 else
                 {
-                    pbConnectedToYoutube.Visible = false;
-                    pbNotConnectedToYoutube.Visible = true;
+                    if (connectedToYouTubeMusic)
+                    {
+                        pbConnectedToYoutube.Visible = true;
+                        pbNotConnectedToYoutube.Visible = false;
+                    }
+                    else
+                    {
+                        pbConnectedToYoutube.Visible = false;
+                        pbNotConnectedToYoutube.Visible = true;
+                    }
                 }
             }
+            catch { }
         }
 
         delegate void SetStartWithWindowsDelegate(bool startWithWindows);
@@ -207,7 +218,7 @@ namespace YTMusicUploader
         {
             if (btnConnectToYoutube.InvokeRequired)
             {
-                SetConnectToYouTubeButtonEnabledDelegate d = 
+                SetConnectToYouTubeButtonEnabledDelegate d =
                     new SetConnectToYouTubeButtonEnabledDelegate(SetConnectToYouTubeButtonEnabled);
                 Invoke(d, new object[] { enabled });
             }

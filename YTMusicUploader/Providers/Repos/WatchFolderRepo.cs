@@ -104,7 +104,7 @@ namespace YTMusicUploader.Providers.Repos
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public DbOperationResult Delete(WatchFolder watchFolder)
         {
-          
+
             return Delete(watchFolder.Id);
         }
 

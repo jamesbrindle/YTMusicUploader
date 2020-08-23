@@ -12,7 +12,5 @@ var searchData=
   ['antialiasedlabel_2ecs_10',['AntiAliasedLabel.cs',['../de/da9/_anti_aliased_label_8cs.html',1,'']]],
   ['assemblyinfo_2ecs_11',['AssemblyInfo.cs',['../d7/d2f/_assembly_info_8cs.html',1,'']]],
   ['attributes_12',['Attributes',['../d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html#a68753f85d87da47b3b6fa30ae5c2cbe1',1,'JBToolkit::Windows::FileData']]],
-  ['authenticationcookie_13',['AuthenticationCookie',['../de/d8c/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_settings.html#ae826c6fb785b2c564f123a5dfc25ead9',1,'YTMusicUploader::Providers::Models::Settings']]],
-  ['autofill_5flabeling_5ffeatures_2etxt_14',['autofill_labeling_features.txt',['../d8/de7/autofill__labeling__features_8txt.html',1,'']]],
-  ['autofill_5flabeling_5ffeatures_5femail_2etxt_15',['autofill_labeling_features_email.txt',['../d5/d22/autofill__labeling__features__email_8txt.html',1,'']]]
+  ['authenticationcookie_13',['AuthenticationCookie',['../de/d8c/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_settings.html#ae826c6fb785b2c564f123a5dfc25ead9',1,'YTMusicUploader::Providers::Models::Settings']]]
 ];

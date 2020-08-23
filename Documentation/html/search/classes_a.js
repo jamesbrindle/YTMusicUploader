@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['safefilestream_390',['SafeFileStream',['../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html',1,'JBToolkit::StreamHelpers']]],
-  ['safehandlezeroorminusoneisinvalid_391',['SafeHandleZeroOrMinusOneIsInvalid',['../db/d0f/class_safe_handle_zero_or_minus_one_is_invalid.html',1,'']]],
-  ['settings_392',['Settings',['../de/d8c/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_settings.html',1,'YTMusicUploader::Providers::Models']]],
-  ['settingsrepo_393',['SettingsRepo',['../d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html',1,'YTMusicUploader::Providers::Repos']]]
+  ['registryhelper_391',['RegistryHelper',['../d2/d8f/class_y_t_music_uploader_1_1_helpers_1_1_registry_helper.html',1,'YTMusicUploader::Helpers']]],
+  ['requests_392',['Requests',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html',1,'YTMusicUploader::Providers']]],
+  ['roundbutton_393',['RoundButton',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html',1,'JBToolkit::WinForms']]],
+  ['roundedrectanglef_394',['RoundedRectangleF',['../d0/de3/class_j_b_toolkit_1_1_win_forms_1_1_rounded_rectangle_f.html',1,'JBToolkit::WinForms']]],
+  ['roundtextbox_395',['RoundTextBox',['../d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html',1,'JBToolkit::WinForms']]]
 ];

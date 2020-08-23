@@ -221,6 +221,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="Helpers\ColourHelper.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
+    <Compile Include="Helpers\EdgeCoreHelper.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />

@@ -113,9 +113,12 @@ namespace JBToolkit.StreamHelpers
                 percentage = 100;
 
             double bytesPerSecond = processedTotal / stopWatch.Elapsed.TotalSeconds;
+
+            string speed = ((double)bytesPerSecond / 1048576).ToString("0.0") + " MB /s";
             mainForm.SetStatusMessage(
                         "Uploading: " + percentage.ToString("0") + "% " +
-                        "(" + ((double)bytesPerSecond / 1048576).ToString("0.0") + " MB /s" + ")");
+                        "(" + speed + ")",
+                        "Uploading " + speed);
         }
 
         #region Stream-Overrides

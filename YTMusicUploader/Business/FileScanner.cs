@@ -47,7 +47,7 @@ namespace YTMusicUploader.Business
             {
                 if (MainForm.Aborting)
                 {
-                    SetStatus("Idle");
+                    SetStatus("Idle", "Idle");
                     return;
                 }
 
@@ -58,7 +58,7 @@ namespace YTMusicUploader.Business
                 {
                     if (MainForm.Aborting)
                     {
-                        SetStatus("Idle");
+                        SetStatus("Idle", "Idle");
                         return;
                     }
 
@@ -86,7 +86,7 @@ namespace YTMusicUploader.Business
             {
                 if (MainForm.Aborting)
                 {
-                    SetStatus("Idle");
+                    SetStatus("Idle", "Idle");
                     return;
                 }
 
@@ -103,7 +103,7 @@ namespace YTMusicUploader.Business
                 {
                     if (MainForm.Aborting)
                     {
-                        MainForm.SetStatusMessage("Idle");
+                        MainForm.SetStatusMessage("Idle", "Idle");
                         return;
                     }
 
@@ -118,7 +118,7 @@ namespace YTMusicUploader.Business
 
                 if (MainForm.Aborting)
                 {
-                    SetStatus("Idle");
+                    SetStatus("Idle", "Idle");
                     return;
                 }
 #if DEBUG
@@ -129,7 +129,7 @@ namespace YTMusicUploader.Business
                 {
                     if (MainForm.Aborting)
                     {
-                        MainForm.SetStatusMessage("Idle");
+                        MainForm.SetStatusMessage("Idle", "Idle");
                         return;
                     }
 
@@ -145,7 +145,7 @@ namespace YTMusicUploader.Business
 #endif
             }
 
-            SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Waiting for YouTube Music connection");
+            SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Waiting for YouTube Music connection", "Waiting for YouTube Music connection");
         }
 
         /// <summary>
@@ -172,12 +172,15 @@ namespace YTMusicUploader.Business
             MainForm.SetDiscoveredFilesLabel(count.ToString());
         }
 
-        private void SetStatus(string statusText = null)
+        private void SetStatus(string statusText = null, string systemTrayIconText = null)
         {
             if (string.IsNullOrEmpty(statusText))
-                MainForm.SetStatusMessage("Looking for new files...");
+                MainForm.SetStatusMessage("Looking for new files...", "Looking for new files");
             else
                 MainForm.SetStatusMessage(statusText);
+
+            if (!string.IsNullOrEmpty(systemTrayIconText))
+                MainForm.SetSystemTrayIconText(systemTrayIconText);
         }
 
         private void AddToDB(SQLiteConnection conn, MusicFile musicFile)

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['update_580',['Update',['../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a2e6ade01ec899ac02ab4dc551dceeb4a',1,'YTMusicUploader.Providers.Repos.MusicFileRepo.Update()'],['../d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html#ada127ae43b20fe2c312e29985e898ced',1,'YTMusicUploader.Providers.Repos.SettingsRepo.Update()']]],
-  ['uploadlog_581',['UploadLog',['../d8/d32/class_y_t_music_uploader_1_1_dialogues_1_1_upload_log.html#a482bce27624b8f7fe54466b890ba341a',1,'YTMusicUploader::Dialogues::UploadLog']]],
-  ['uploadsong_582',['UploadSong',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807',1,'YTMusicUploader::Providers::Requests']]]
+  ['throttle_586',['Throttle',['../da/dd7/class_j_b_toolkit_1_1_stream_helpers_1_1_throttled_stream.html#a056da88aff4c4a987a524b207de132c0',1,'JBToolkit::StreamHelpers::ThrottledStream']]],
+  ['throttledstream_587',['ThrottledStream',['../da/dd7/class_j_b_toolkit_1_1_stream_helpers_1_1_throttled_stream.html#add881e7d20e3819a8acd59a23be37bb1',1,'JBToolkit::StreamHelpers::ThrottledStream']]],
+  ['tostring_588',['ToString',['../d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html#afb0ccd5fe44c36dce6586109ad7bb3ad',1,'JBToolkit::Windows::FileData']]],
+  ['tryopen_589',['TryOpen',['../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#abc5ea76791c768bfe4a4d75b90185399',1,'JBToolkit::StreamHelpers::SafeFileStream']]]
 ];

@@ -17,6 +17,7 @@ var hierarchy =
     ] ],
     [ "YTMusicUploader.Providers.DbOperationResult", "d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html", null ],
     [ "DynamicObject", "d4/ddd/class_dynamic_object.html", null ],
+    [ "YTMusicUploader.Helpers.EdgeCoreHelper", "d0/ddc/class_y_t_music_uploader_1_1_helpers_1_1_edge_core_helper.html", null ],
     [ "JBToolkit.Windows.FileData", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html", null ],
     [ "YTMusicUploader.Business.FileScanner", "dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html", null ],
     [ "YTMusicUploader.Business.FileUploader", "d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html", null ],
