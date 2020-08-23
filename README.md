@@ -13,10 +13,10 @@ Automatically upload your local music personal library to YouTube music.
 
 ### Application
 
-This is a .Net application written in C# that uploads your person music library to YouTube. It has a minimalistic UI for basic settings such as:
+This is a .Net application written in C# that uploads your personal music library to YouTube. It has a minimalistic UI for basic settings such as:
 
 - Choosing library folders.
-- Option to start the application with Windows (will start in hidden, accessible via the System Tray):
+- Option to start the application with Windows (will start hidden, accessible via the System Tray):
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc2.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
