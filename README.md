@@ -96,7 +96,7 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 
 Using the native WPF or WinForms web control or GeckoFX you just get a web page asking to update the browser. Using CefSharp you get a page telling you the browser isn't secure enough.
 
-I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the verison of [Microsoft Edge from the Canary channel:](https://www.microsoftedgeinsider.com/en-us/download)). **The YT Music Uploader installer contains the files needed for this dependency for convenience however.**
+I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the version of [Microsoft Edge from the Canary channel:](https://www.microsoftedgeinsider.com/en-us/download)). **The YT Music Uploader Application self-contains the files needed for this dependency for convenience so you shouldn't need to install anything else other than this app.**
 
 Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely.
 &nbsp;
