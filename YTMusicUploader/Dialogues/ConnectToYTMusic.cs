@@ -47,7 +47,7 @@ namespace YTMusicUploader.Dialogues
             // local AppData directory. And you must do this before attempting to navigate the browser to an
             // address.
 
-            var env = await CoreWebView2Environment.CreateAsync(null, Global.AppDataLocation);
+            var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);
             await browser.EnsureCoreWebView2Async(env);
             browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
         }

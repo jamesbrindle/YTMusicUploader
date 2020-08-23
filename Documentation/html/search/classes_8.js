@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['patterngenerator_381',['PatternGenerator',['../d2/d1c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_pattern_generator.html',1,'JBToolkit::ColorHelper::ColourHelper']]]
+  ['patterngenerator_384',['PatternGenerator',['../d2/d1c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_pattern_generator.html',1,'JBToolkit::ColorHelper::ColourHelper']]]
 ];

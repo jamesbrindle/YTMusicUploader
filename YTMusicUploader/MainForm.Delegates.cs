@@ -201,5 +201,20 @@ namespace YTMusicUploader
                 lbWatchFolders.ValueMember = "Id";
             }
         }
+
+        delegate void SetConnectToYouTubeButtonEnabledDelegate(bool enabled);
+        public void SetConnectToYouTubeButtonEnabled(bool enabled)
+        {
+            if (btnConnectToYoutube.InvokeRequired)
+            {
+                SetConnectToYouTubeButtonEnabledDelegate d = 
+                    new SetConnectToYouTubeButtonEnabledDelegate(SetConnectToYouTubeButtonEnabled);
+                Invoke(d, new object[] { enabled });
+            }
+            else
+            {
+                btnConnectToYoutube.Enabled = enabled;
+            }
+        }
     }
 }

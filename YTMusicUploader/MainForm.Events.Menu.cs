@@ -48,7 +48,6 @@ namespace YTMusicUploader
         {
             Aborting = true;
             TrayIcon.Visible = false;
-            Thread.Sleep(500);
 
             try
             {
@@ -66,6 +65,12 @@ namespace YTMusicUploader
 
             try
             {
+                _installingEdgeThread.Interrupt();
+            }
+            catch { }
+
+            try
+            {
                 _scanAndUploadThread.Interrupt();
             }
             catch { }
@@ -79,6 +84,12 @@ namespace YTMusicUploader
             try
             {
                 _queueThread.Interrupt();
+            }
+            catch { }
+
+            try
+            {
+                _installingEdgeThread.Abort();
             }
             catch { }
 

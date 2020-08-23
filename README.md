@@ -96,6 +96,7 @@ I believe I've managed to get it stable, although you do need the latest version
 
 Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely.
 &nbsp;
+&nbsp;
 
 **GOTCHAS**
 &nbsp;

@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_D"></a>:_OneDrive_Documents_Work_Repositories_YTMusicUploader_README</p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/yt_logo-64.png" alt="N|Solid" class="inline"/></a> &#160;</p>
-<p>Automatically upload your local music personal library to YouTube music. &#160;</p>
+<p>Automatically upload your local music personal library to YouTube music. &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Application</h2>
 <p>This is a .Net application written in C# that uploads your person music library to YouTube. It has a minimalistic UI for basic settings such as:</p>
@@ -103,7 +103,7 @@ Application</h2>
 </ul>
 <p>&#160;</p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1.png" alt="N|Solid" class="inline"/></a></p>
-<p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6.png" alt="N|Solid" class="inline"/></a> &#160;</p>
+<p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6.png" alt="N|Solid" class="inline"/></a> &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Reason for Creation</h2>
 <p>I used to have Google Play music and liked uploading my own content via its automatic library uploader application; I have a large library of music and you could stream your own uploaded songs from Google Play music without paying for a subscription...</p>
@@ -111,7 +111,7 @@ Reason for Creation</h2>
 <p>I got a subscription in the end, so some might consider this pointless in the world of streaming anything you want these days.. So I suppose the only real benefit is the ability to:</p>
 <ul>
 <li>Upload songs that aren't on YouTube music.</li>
-<li>Backup your songs *(you can't download them again from YouTube music, but you can use <a href="https://takeout.google.com/settings/takeout?pli=1">Google Takeout</a> to get them).* &#160;</li>
+<li>Backup your songs *(you can't download them again from YouTube music, but you can use <a href="https://takeout.google.com/settings/takeout?pli=1">Google Takeout</a> to get them).* &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md3"></a>
 How it Works</h2>
@@ -125,13 +125,13 @@ Technology</h2>
 <ul>
 <li>.Net 4.7.2</li>
 <li>WinForms</li>
-<li>SQLite &#160;</li>
+<li>SQLite &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md5"></a>
 IDE / Extensions</h2>
 <ul>
 <li>Microsoft Visual Studio 2019</li>
-<li>Microsoft Visual Studio Install Project</li>
+<li>Microsoft Visual Studio Install Project &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Libraries</h2>
@@ -139,47 +139,46 @@ Libraries</h2>
 <li><a href="https://www.nuget.org/packages/Brotli.NET">Brotli.Net (Decompress Google HTTP resonse body)</a></li>
 <li><a href="https://github.com/StackExchange/Dapper">Dapper</a></li>
 <li><a href="https://github.com/dennismagno/metroframework-modern-ui">Metro Framework (UI Styling)</a></li>
-<li><a href="http://www.ookii.org/software/dialogs">Ookii Dialogues</a> &#160;</li>
+<li><a href="http://www.ookii.org/software/dialogs">Ookii Dialogues</a> &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Tools</h2>
 <ul>
-<li><a href="https://www.doxygen.nl/index.html">Doxygen (Source code HTML documentation)</a> &#160;</li>
+<li><a href="https://www.doxygen.nl/index.html">Doxygen (Source code HTML documentation)</a> &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Web Control</h2>
 <ul>
-<li><a href="https://docs.microsoft.com/en-us/microsoft-edge/webview2/">WebView2</a></li>
+<li><a href="https://docs.microsoft.com/en-us/microsoft-edge/webview2/">WebView2</a> &#160;</li>
 </ul>
 <p><b>WebView2</b> is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing its still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.</p>
 <p>Using the native WPF or WinForms web control or GeckoFX you just get a web page asking to update the browser. Using CefSharp you get a page telling you the browser isn't secure enough.</p>
 <p>I believe I've managed to get it stable, although you do need the latest version of Microsoft Edge installed (or maybe even still the verison of <a href="https://www.microsoftedgeinsider.com/en-us/download">Microsoft Edge from the Canary channel:</a>). <b>The YT Music Uploader installer contains and installer for this a dependency for convenience.</b></p>
-<p>Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely. &#160;</p>
-<p><b>GOTCHAS</b> One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up <b>before</b> navigating to any URL: &#160;</p>
+<p>Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely. &#160; &#160;</p>
+<p><b>GOTCHAS</b> &#160;</p>
+<p>One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up <b>before</b> navigating to any URL: &#160;</p>
 <div class="fragment"><div class="line">private async void InitializeBrowser()</div>
 <div class="line">{</div>
 <div class="line">        var env = await CoreWebView2Environment.CreateAsync(null, Global.AppDataLocation);</div>
 <div class="line">        await browser.EnsureCoreWebView2Async(env);</div>
 <div class="line">        browser.Source = new Uri(&quot;https://music.youtube.com/&quot;, UriKind.Absolute);</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>&#160;</p>
-<p>Thank you <a href="https://github.com/DjSt3rios">DjSt3rios</a> for working that out: <a href="https://github.com/MicrosoftEdge/WebViewFeedback/issues/297">https://github.com/MicrosoftEdge/WebViewFeedback/issues/297</a></p>
+</div><!-- fragment --><p>Thank you <a href="https://github.com/DjSt3rios">DjSt3rios</a> for working that out: <a href="https://github.com/MicrosoftEdge/WebViewFeedback/issues/297">https://github.com/MicrosoftEdge/WebViewFeedback/issues/297</a></p>
 <p>Also, you need to wait for the ready state of the CoreWebView2WebResource context before trying to read any properties from it (like the request headers). This is easily achievable with events: &#160;</p>
 <div class="fragment"><div class="line">private void Browser_CoreWebView2Ready(object sender, EventArgs e)</div>
 <div class="line">{</div>
 <div class="line">    browser.CoreWebView2.AddWebResourceRequestedFilter(&quot;*&quot;, CoreWebView2WebResourceContext.All);</div>
 <div class="line">    browser.CoreWebView2.WebResourceRequested += CoreWebView2_WebResourceRequested;</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>&#160;</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 How Long Will This Application Last?</h2>
 <p>Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube music develops...</p>
-<p>I'm going to be using this application for personal use, so I'll know straight aware when it's not working and will attempt to update the API call implementation as soon as possible. &#160;</p>
+<p>I'm going to be using this application for personal use, so I'll know straight aware when it's not working and will attempt to update the API call implementation as soon as possible. &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Further Development Considerations</h2>
 <ul>
 <li>Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, which multiple 'fuzzy / AI logic' result sets for 'similar' songs.</li>
-<li>Would like to add the ability to upload playlists *(<a href="https://ytmusicapi.readthedocs.io/en/latest/">sigma67</a> has included this ability in his API so it's definately do-able).* &#160;</li>
+<li>Would like to add the ability to upload playlists *(<a href="https://ytmusicapi.readthedocs.io/en/latest/">sigma67</a> has included this ability in his API so it's definately do-able).* &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Special Thanks</h2>

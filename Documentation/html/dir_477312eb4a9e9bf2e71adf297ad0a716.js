@@ -1,5 +1,6 @@
 var dir_477312eb4a9e9bf2e71adf297ad0a716 =
 [
+    [ "bin", "dir_39249ee97cc038caac990f805ac6490b.html", "dir_39249ee97cc038caac990f805ac6490b" ],
     [ "Business", "dir_3ca9970b977984ba9d3e29a467acdfaa.html", "dir_3ca9970b977984ba9d3e29a467acdfaa" ],
     [ "CustomControls", "dir_1925e5d8ef399ae919aee33e7c1a3457.html", "dir_1925e5d8ef399ae919aee33e7c1a3457" ],
     [ "Dialogues", "dir_a9b9079c3e15122c62618c0bba510a94.html", "dir_a9b9079c3e15122c62618c0bba510a94" ],

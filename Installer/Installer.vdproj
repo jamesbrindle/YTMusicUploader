@@ -129,12 +129,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5C2BE5781AB6481DBA32037B298848E7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5D9AF3EC8F296C0FE98DB27A933311C7"
         "OwnerKey" = "8:_484F1A23AD674B5F8EBBC94D3EAA95DA"
         "MsmSig" = "8:_UNDEFINED"
@@ -257,12 +251,6 @@
         {
         "MsmKey" = "8:_9B73891C6D8042DF9B48F15AB696D813"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9B7E20109ADAE8C0A9DA5D316524DFA8"
-        "OwnerKey" = "8:_484F1A23AD674B5F8EBBC94D3EAA95DA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -393,12 +381,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E4D7B5281A4DDB71348064BED2917030"
-        "OwnerKey" = "8:_484F1A23AD674B5F8EBBC94D3EAA95DA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E9B89472ED688878D0E4C755F0D56CFF"
         "OwnerKey" = "8:_484F1A23AD674B5F8EBBC94D3EAA95DA"
         "MsmSig" = "8:_UNDEFINED"
@@ -407,6 +389,12 @@
         {
         "MsmKey" = "8:_F3A853C01BDD7CC8E85E162539D879C7"
         "OwnerKey" = "8:_68BDAF69CA5D9D51814376D760894B5F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F4405F0A4B2841F4ACD4D79C9D9A3126"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -423,38 +411,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FB046ABDB2EF431135E2A547B8088EB9"
-        "OwnerKey" = "8:_484F1A23AD674B5F8EBBC94D3EAA95DA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FB046ABDB2EF431135E2A547B8088EB9"
-        "OwnerKey" = "8:_E4D7B5281A4DDB71348064BED2917030"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_69A6E5A756914AE84E9B7FDC4D56D828"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_484F1A23AD674B5F8EBBC94D3EAA95DA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E4D7B5281A4DDB71348064BED2917030"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FB046ABDB2EF431135E2A547B8088EB9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -568,12 +526,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9B7E20109ADAE8C0A9DA5D316524DFA8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_022C5E55CC0DD9DAC55759CBAD8715EF"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -649,6 +601,12 @@
         "OwnerKey" = "8:_DCF0526C648408570596BE7B40BDF397"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_69A6E5A756914AE84E9B7FDC4D56D828"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -674,6 +632,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -713,20 +679,6 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_528110EC143B4A238E6E3FB6FC878CBF"
-            {
-            "Name" = "8:MicrosoftEdgeSetup.exe"
-            "Condition" = "8:"
-            "Object" = "8:_5C2BE5781AB6481DBA32037B298848E7"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:/Install"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_ED0C046B_6A17_4D8E_9BFA_90E5CB83BA37"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            }
         }
         "DefaultFeature"
         {
@@ -839,11 +791,6 @@
             "AssemblyAsmDisplayName" = "8:System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_0B4E4E130B7F5116C6C646FA118EDAC2"
-                    {
-                    "Name" = "8:System.Memory.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Memory.dll"
             "TargetName" = "8:"
@@ -1129,26 +1076,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5C2BE5781AB6481DBA32037B298848E7"
-            {
-            "SourcePath" = "8:..\\YTMusicUploader\\InstallerDependencies\\MicrosoftEdgeSetup.exe"
-            "TargetName" = "8:MicrosoftEdgeSetup.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_09BD2D6D86B04D0C92543026765E3E40"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5D9AF3EC8F296C0FE98DB27A933311C7"
             {
             "AssemblyRegister" = "3:1"
@@ -1300,11 +1227,6 @@
             "AssemblyAsmDisplayName" = "8:System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_72BF9C62E51B7E0A5F18DD1E156BD68F"
-                    {
-                    "Name" = "8:System.Numerics.Vectors.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Numerics.Vectors.dll"
             "TargetName" = "8:"
@@ -1597,37 +1519,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9B7E20109ADAE8C0A9DA5D316524DFA8"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_9B7E20109ADAE8C0A9DA5D316524DFA8"
-                    {
-                    "Name" = "8:Ionic.Zip.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Ionic.Zip.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A216205091541C7B1043665B7264A477"
@@ -2022,37 +1913,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E4D7B5281A4DDB71348064BED2917030"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_E4D7B5281A4DDB71348064BED2917030"
-                    {
-                    "Name" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E9B89472ED688878D0E4C755F0D56CFF"
             {
             "AssemblyRegister" = "3:1"
@@ -2115,23 +1975,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F688E0C4759401C56ED737546728746E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F4405F0A4B2841F4ACD4D79C9D9A3126"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F688E0C4759401C56ED737546728746E"
-                    {
-                    "Name" = "8:System.Buffers.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Buffers.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\84.0.522.63.7z"
+            "TargetName" = "8:84.0.522.63.7z"
             "Tag" = "8:"
-            "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"
+            "Folder" = "8:_F9CE9B9AADA94722AF0BDD1AEE39B4B4"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2143,23 +1992,18 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FB046ABDB2EF431135E2A547B8088EB9"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F688E0C4759401C56ED737546728746E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_FB046ABDB2EF431135E2A547B8088EB9"
-                    {
-                    "Name" = "8:Microsoft.WindowsAPICodePack.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
-            "SourcePath" = "8:Microsoft.WindowsAPICodePack.dll"
+            "SourcePath" = "8:System.Buffers.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"
@@ -2193,17 +2037,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_09BD2D6D86B04D0C92543026765E3E40"
-                    {
-                    "Name" = "8:Microsoft Edge Installer"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_10880AA1FFB64E8F9D274C6C719484B5"
-                        "Folders"
-                        {
-                        }
-                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_130D0AE968DA4F0FA69B8F431DB7D97A"
                     {
                     "Name" = "8:x86"
@@ -2355,7 +2188,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
         "ProductCode" = "8:{9B7BC612-4E94-4925-BC2B-55640F1FB22C}"
-        "PackageCode" = "8:{6833B39E-8B19-491F-942F-B0FF245952BE}"
+        "PackageCode" = "8:{A92EB4BE-F6E7-47FA-877C-9861165C6932}"
         "UpgradeCode" = "8:{1E18ED3F-C210-4589-BEB4-58E2680D3C71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2904,7 +2737,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_484F1A23AD674B5F8EBBC94D3EAA95DA"
             {
-            "SourcePath" = "8:..\\YTMusicUploader\\obj\\Release\\YTMusicUploader.exe"
+            "SourcePath" = "8:..\\YTMusicUploader\\obj\\Debug\\YTMusicUploader.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"

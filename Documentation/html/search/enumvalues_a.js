@@ -1,18 +1,18 @@
 var searchData=
 [
-  ['pictures_617',['Pictures',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ab11ddc7e1671c0bd22dc89dd757508d4',1,'JBToolkit::Windows']]],
-  ['printers_618',['Printers',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a60f1dce8720de1ea3748470cd7d4746e',1,'JBToolkit::Windows']]],
-  ['programdata_619',['ProgramData',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ad8d284ac3a243f3ee06cda4f58f98b08',1,'JBToolkit::Windows']]],
-  ['programfiles_620',['ProgramFiles',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a71566b665272d2a148350e95fc3f33b4',1,'JBToolkit::Windows']]],
-  ['programfilesx64_621',['ProgramFilesX64',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a59518a9b4fc88151f3a8d86e791dd7fb',1,'JBToolkit::Windows']]],
-  ['programfilesx86_622',['ProgramFilesX86',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8abe3c9f4b03f380d34038bc825a51fbd5',1,'JBToolkit::Windows']]],
-  ['programs_623',['Programs',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a975d1c13e7672fe6f144e3439bba958b',1,'JBToolkit::Windows']]],
-  ['public_624',['Public',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a3d067bedfe2f4677470dd6ccf64d05ed',1,'JBToolkit::Windows']]],
-  ['publicdesktop_625',['PublicDesktop',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ab7db088c6e81cfed994d72f3d167f257',1,'JBToolkit::Windows']]],
-  ['publicdocuments_626',['PublicDocuments',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a4c46faedb02069b826faade3471b1f0a',1,'JBToolkit::Windows']]],
-  ['publicdownloads_627',['PublicDownloads',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ae07d71cecd5ab33b28e3d9df8e6e0896',1,'JBToolkit::Windows']]],
-  ['publicfolder_628',['PublicFolder',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a22722a95048f6afdee8d713eb98c22a3',1,'JBToolkit::Windows']]],
-  ['publicmusic_629',['PublicMusic',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a8df1a03c3ea144f0ae009a0b511f50c3',1,'JBToolkit::Windows']]],
-  ['publicpictures_630',['PublicPictures',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8aec41413be7fde84a8d0ab8429cd3f557',1,'JBToolkit::Windows']]],
-  ['publicvideos_631',['PublicVideos',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a830614329d2e7c9f1c510c52d8ab8d5d',1,'JBToolkit::Windows']]]
+  ['pictures_623',['Pictures',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ab11ddc7e1671c0bd22dc89dd757508d4',1,'JBToolkit::Windows']]],
+  ['printers_624',['Printers',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a60f1dce8720de1ea3748470cd7d4746e',1,'JBToolkit::Windows']]],
+  ['programdata_625',['ProgramData',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ad8d284ac3a243f3ee06cda4f58f98b08',1,'JBToolkit::Windows']]],
+  ['programfiles_626',['ProgramFiles',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a71566b665272d2a148350e95fc3f33b4',1,'JBToolkit::Windows']]],
+  ['programfilesx64_627',['ProgramFilesX64',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a59518a9b4fc88151f3a8d86e791dd7fb',1,'JBToolkit::Windows']]],
+  ['programfilesx86_628',['ProgramFilesX86',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8abe3c9f4b03f380d34038bc825a51fbd5',1,'JBToolkit::Windows']]],
+  ['programs_629',['Programs',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a975d1c13e7672fe6f144e3439bba958b',1,'JBToolkit::Windows']]],
+  ['public_630',['Public',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a3d067bedfe2f4677470dd6ccf64d05ed',1,'JBToolkit::Windows']]],
+  ['publicdesktop_631',['PublicDesktop',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ab7db088c6e81cfed994d72f3d167f257',1,'JBToolkit::Windows']]],
+  ['publicdocuments_632',['PublicDocuments',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a4c46faedb02069b826faade3471b1f0a',1,'JBToolkit::Windows']]],
+  ['publicdownloads_633',['PublicDownloads',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ae07d71cecd5ab33b28e3d9df8e6e0896',1,'JBToolkit::Windows']]],
+  ['publicfolder_634',['PublicFolder',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a22722a95048f6afdee8d713eb98c22a3',1,'JBToolkit::Windows']]],
+  ['publicmusic_635',['PublicMusic',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a8df1a03c3ea144f0ae009a0b511f50c3',1,'JBToolkit::Windows']]],
+  ['publicpictures_636',['PublicPictures',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8aec41413be7fde84a8d0ab8429cd3f557',1,'JBToolkit::Windows']]],
+  ['publicvideos_637',['PublicVideos',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a830614329d2e7c9f1c510c52d8ab8d5d',1,'JBToolkit::Windows']]]
 ];

@@ -145,7 +145,7 @@ namespace YTMusicUploader.Business
 #endif
             }
 
-            SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Wainting for YouTube Music connection");
+            SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Waiting for YouTube Music connection");
         }
 
         /// <summary>

@@ -33,6 +33,17 @@ namespace YTMusicUploader
         }
 
         /// <summary>
+        /// Returns user's specific AppData directory's YTMusicUploader folder
+        /// </summary>
+        public static string EdgeFolder
+        {
+            get
+            {
+                return Path.Combine(AppDataLocation, @"84.0.522.63");
+            }
+        }
+
+        /// <summary>
         /// Returns folder where application .exe resides
         /// </summary>
         public static string WorkingDirectory

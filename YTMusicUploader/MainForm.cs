@@ -12,6 +12,9 @@ using YTMusicUploader.Helpers;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.Models;
 using YTMusicUploader.Providers.Repos;
+using SharpCompress.Archives.SevenZip;
+using SharpCompress.Readers;
+using SharpCompress.Common;
 
 namespace YTMusicUploader
 {
@@ -52,13 +55,14 @@ namespace YTMusicUploader
         public int InitialFilesCount { get; set; } = 0;
         private List<FileSystemWatcher> FileSystemFolderWatchers { get; set; } = new List<FileSystemWatcher>();
         private DateTime? LastFolderChangeTime { get; set; }
-
+        private bool InstallingEdge { get; set; }
         public bool Aborting { get; set; } = false;
         public bool Queue { get; set; } = false;
 
         //
         // Threads
         //
+        private Thread _installingEdgeThread;
         private Thread _connectToYouTubeMusicThread;
         private Thread _scanAndUploadThread;
         private Thread _queueThread;
@@ -79,10 +83,14 @@ namespace YTMusicUploader
             lblIssues.GotFocus += LinkLabel_GotFocus;
             lblDiscoveredFiles.GotFocus += LinkLabel_GotFocus;
 
-            ConnectToYTMusicForm = new ConnectToYTMusic(this);
+            if (!Directory.Exists(Global.EdgeFolder))
+                btnConnectToYoutube.Enabled = false;
+            else
+                ConnectToYTMusicForm = new ConnectToYTMusic(this);
+
+            InstallEdge();
 
             FileScanner = new FileScanner(this);
-            Thread.Sleep(2000);
             FileUploader = new FileUploader(this);
 
             InitialiseTimers();
@@ -170,16 +178,80 @@ namespace YTMusicUploader
             }
         }
 
+        private void InstallEdge()
+        {
+            if (!Directory.Exists(Global.EdgeFolder))
+            {
+                InstallingEdge = true;
+                _installingEdgeThread = new Thread((ThreadStart)delegate
+                {
+                    SetStatusMessage("Installing Canary Edge Core. This may take a couple of minutes...");
+
+                    try
+                    {
+                        using (var archive = SevenZipArchive.Open(Path.Combine(Global.WorkingDirectory, @"AppData\84.0.522.63.7z"),
+                                                    new ReaderOptions
+                                                    {
+                                                        LeaveStreamOpen = false
+                                                    }))
+                        {
+                            using (var reader = archive.ExtractAllEntries())
+                            {
+                                var options = new ExtractionOptions
+                                {
+                                    ExtractFullPath = true,
+                                    Overwrite = true
+                                };
+
+                                reader.WriteAllToDirectory(Global.EdgeFolder, options);
+                            }
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        Console.Out.WriteLine(e.Message);
+                    }
+
+                    InstallingEdge = false;
+                    ConnectToYTMusicForm = new ConnectToYTMusic(this);
+                    SetConnectToYouTubeButtonEnabled(true);
+                });
+
+                _installingEdgeThread.Start();
+            }
+        }
+
         private void ConnectToYouTube()
         {
             _connectToYouTubeMusicThread = new Thread((ThreadStart)delegate
             {
                 while (Settings == null)
-                    Thread.Sleep(200);
+                {
+                    try
+                    {
+                        Thread.Sleep(5000);
+                    }
+                    catch { }
+                }
+
+                while (InstallingEdge)
+                {
+                    try
+                    {
+                        Thread.Sleep(200);
+                    }
+                    catch { }
+                }
 
                 SetStatusMessage("Connecting to YouTube Music");
                 while (!NetworkHelper.InternetConnectionIsUp())
-                    Thread.Sleep(5000);
+                {
+                    try
+                    {
+                        Thread.Sleep(5000);
+                    }
+                    catch { }
+                }
 
                 while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
                 {
@@ -202,6 +274,16 @@ namespace YTMusicUploader
                 try
                 {
                     LoadDb();
+
+                    while (InstallingEdge)
+                    {
+                        try
+                        {
+                            Thread.Sleep(200);
+                        }
+                        catch { }
+                    }
+
                     if (Aborting)
                     {
                         SetStatusMessage("Idle");
@@ -217,13 +299,22 @@ namespace YTMusicUploader
                             return;
                         }
 
-                        Thread.Sleep(2000);
+                        try
+                        {
+                            Thread.Sleep(5000);
+                        }
+                        catch { }
                     }
 
                     while (!NetworkHelper.InternetConnectionIsUp())
                     {
                         SetStatusMessage("No internet connection");
-                        Thread.Sleep(5000);
+
+                        try
+                        {
+                            Thread.Sleep(5000);
+                        }
+                        catch { }                        
                     }
 
                     while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
@@ -234,7 +325,6 @@ namespace YTMusicUploader
                     }
 
                     SetConnectedToYouTubeMusic(true);
-
                     SetStatusMessage("Uploading");
                     RepopulateAmountLables();
                     FileUploader.Process();
@@ -256,6 +346,15 @@ namespace YTMusicUploader
         {
             _queueThread = new Thread((ThreadStart)delegate
             {
+                while (InstallingEdge)
+                {
+                    try
+                    {
+                        Thread.Sleep(200);
+                    }
+                    catch { }
+                }
+
                 while (true)
                 {
                     try
