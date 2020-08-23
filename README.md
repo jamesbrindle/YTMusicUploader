@@ -150,7 +150,7 @@ I'm going to be using this application for personal use, so I'll know straight a
 - [sigma67](https://ytmusicapi.readthedocs.io/en/latest/) - Who created a Python YouTube Music API that I could reference. [sigma67: Github](https://github.com/sigma67/ytmusicapi).
 - [wilsone8](https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator) - Who created a very fast Windows directory enumerator.
 - [Dave Thomas](https://stackoverflow.com/users/984724/dave-thomas) - Who worked out how to get the SAPISID hash from the the YouTube Music authentication cookie on a post on [StackOverflow](https://stackoverflow.com/a/32065323/5726546).
-- [0xDEADBEEF](https://stackoverflow.com/users/909365/0xdeadbeef) - Who made a simple class to bandwidth strottle a byte stream on a post on [StackOverflow](https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp).
+- [0xDEADBEEF](https://stackoverflow.com/users/909365/0xdeadbeef) - Who made a simple class to bandwidth throttle a byte stream on a post on [StackOverflow](https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp).
 - [DjSt3rios](https://github.com/DjSt3rios) - For some WebView2 insight.
 
 
