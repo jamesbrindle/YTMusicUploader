@@ -68,7 +68,7 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 ### IDE / Extensions
 
 - Microsoft Visual Studio 2019
-- Microsoft Visual Studio Install Project
+- Microsoft Visual Studio Installer Project
 &nbsp;
 &nbsp;
 
@@ -92,11 +92,11 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 - [WebView2](https://docs.microsoft.com/en-us/microsoft-edge/webview2/)
 &nbsp;
 
-**WebView2** is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing its still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.
+**WebView2** is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing it's still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.
 
 Using the native WPF or WinForms web control or GeckoFX you just get a web page asking to update the browser. Using CefSharp you get a page telling you the browser isn't secure enough.
 
-I believe I've managed to get it stable, although you do need the latest version of Microsoft Edge installed (or maybe even still the verison of [Microsoft Edge from the Canary channel:](https://www.microsoftedgeinsider.com/en-us/download)). **The YT Music Uploader installer contains and installer for this a dependency for convenience.**
+I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the verison of [Microsoft Edge from the Canary channel:](https://www.microsoftedgeinsider.com/en-us/download)). **The YT Music Uploader installer contains the files needed for this dependency for convenience however.**
 
 Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely.
 &nbsp;
@@ -140,7 +140,7 @@ I'm going to be using this application for personal use, so I'll know straight a
 
 ### Further Development Considerations
 
-- Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple 'fuzzy / AI logic' result sets for 'similar' songs.
+- Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only get a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple 'fuzzy / AI logic' result sets for 'similar' songs. I'll keep working on it.
 - Would like to add the ability to upload playlists *([sigma67](https://ytmusicapi.readthedocs.io/en/latest/) has included this ability in his API so it's definately do-able).*
 &nbsp;
 &nbsp;
