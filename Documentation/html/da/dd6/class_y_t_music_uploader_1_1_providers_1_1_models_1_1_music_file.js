@@ -10,6 +10,7 @@ var class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file =
     [ "ErrorReason", "da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#ae94b5de93ede5ba4cebba2171d3a8836", null ],
     [ "Hash", "da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a16109cfa690ebde338f2a3c33ebaa420", null ],
     [ "LastUpload", "da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a45d25ba8c09597b28385610d99078e6e", null ],
+    [ "MbId", "da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a408bbb7d9a584f46c61b799ec6ef2ab4", null ],
     [ "Path", "da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a57aa474509ec04d33ed49aa0e74505e0", null ],
     [ "Removed", "da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html#a8279a627c5d44c28db0e09cdbd0248ed", null ]
 ];

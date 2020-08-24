@@ -1,0 +1,3 @@
+<map id="YTMusicUploader.Business.MusicDataFetcher" name="YTMusicUploader.Business.MusicDataFetcher">
+<area shape="rect" id="node1" title="Gets meta data / tag information from the music file itself and looks up any missing data using a Mus..." alt="" coords="5,5,228,303"/>
+</map>

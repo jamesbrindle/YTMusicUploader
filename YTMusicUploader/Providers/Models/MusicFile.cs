@@ -33,6 +33,7 @@ namespace YTMusicUploader.Providers.Models
         }
 
         public string Path { get; set; }
+        public string MbId { get; set; }
         public string Hash { get; set; }
         public DateTime LastUpload { get; set; }
         public bool? Error { get; set; }

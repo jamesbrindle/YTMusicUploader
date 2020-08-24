@@ -44,6 +44,21 @@ namespace YTMusicUploader
         }
 
         /// <summary>
+        /// Request Cache Location
+        /// </summary>
+        public static string CacheLocation
+        {
+            get
+            {
+                string cacheDir = Path.Combine(AppDataLocation, @"Cache");
+                if (Directory.Exists(cacheDir))
+                    Directory.CreateDirectory(cacheDir);
+
+                return cacheDir;
+            }
+        }
+
+        /// <summary>
         /// Returns folder where application .exe resides
         /// </summary>
         public static string WorkingDirectory

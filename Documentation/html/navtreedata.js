@@ -27,16 +27,17 @@ var NAVTREE =
   [ "YT Music Uploader", "index.html", [
     [ "Packages", "namespaces.html", [
       [ "Application", "index.html#autotoc_md1", null ],
-      [ "Reason for Creation", "index.html#autotoc_md2", null ],
-      [ "How it Works", "index.html#autotoc_md3", null ],
-      [ "Technology", "index.html#autotoc_md4", null ],
-      [ "IDE / Extensions", "index.html#autotoc_md5", null ],
-      [ "Libraries", "index.html#autotoc_md6", null ],
-      [ "Tools", "index.html#autotoc_md7", null ],
-      [ "Web Control", "index.html#autotoc_md8", null ],
-      [ "How Long Will This Application Last?", "index.html#autotoc_md9", null ],
-      [ "Further Development Considerations", "index.html#autotoc_md10", null ],
-      [ "Special Thanks", "index.html#autotoc_md11", null ],
+      [ "Features", "index.html#autotoc_md2", null ],
+      [ "Reason for Creation", "index.html#autotoc_md3", null ],
+      [ "How it Works", "index.html#autotoc_md4", null ],
+      [ "Technology", "index.html#autotoc_md5", null ],
+      [ "IDE / Extensions", "index.html#autotoc_md6", null ],
+      [ "Libraries", "index.html#autotoc_md7", null ],
+      [ "Tools", "index.html#autotoc_md8", null ],
+      [ "Web Control", "index.html#autotoc_md9", null ],
+      [ "How Long Will This Application Last?", "index.html#autotoc_md10", null ],
+      [ "Further Development Considerations", "index.html#autotoc_md11", null ],
+      [ "Special Thanks", "index.html#autotoc_md12", null ],
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
@@ -51,7 +52,8 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
-        [ "Properties", "functions_prop.html", null ]
+        [ "Properties", "functions_prop.html", null ],
+        [ "Events", "functions_evnt.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -63,7 +65,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d8/da7/x86_2_debug_2_8_n_e_t_framework_00_version_0av4_87_82_8_assembly_attributes_8cs.html"
+"d8/d15/_directory_helper_8cs.html#ac86f51beabdfad7a3227bae5ea6367e8af79cd76b16e526d536ec5f9e3a3dbe9d",
+"dir_8ea71c51324ceecacba7446c1ccccb44.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

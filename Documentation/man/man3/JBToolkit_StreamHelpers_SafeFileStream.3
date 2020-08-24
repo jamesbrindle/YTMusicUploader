@@ -1,8 +1,8 @@
-.TH "JBToolkit.StreamHelpers.SafeFileStream" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "JBToolkit.StreamHelpers.SafeFileStream" 3 "Mon Aug 24 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-JBToolkit.StreamHelpers.SafeFileStream \- This is a wrapper around a FileStream\&. While it is not a Stream itself, it can be cast to one (keep in mind that this might throw an exception)\&. It's a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again\&.  
+JBToolkit.StreamHelpers.SafeFileStream \- This is a wrapper around a FileStream\&. While it is not a \fBStream\fP itself, it can be cast to one (keep in mind that this might throw an exception)\&. It's a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again\&.  
 
 .SH SYNOPSIS
 .br
@@ -52,7 +52,7 @@ Inherits \fBIDisposable\fP\&.
 
 .in +1c
 .ti -1c
-.RI "Stream \fBUnderlyingStream\fP\fC [get]\fP"
+.RI "\fBStream\fP \fBUnderlyingStream\fP\fC [get]\fP"
 .br
 .ti -1c
 .RI "bool \fBIsOpen\fP\fC [get]\fP"
@@ -60,7 +60,7 @@ Inherits \fBIDisposable\fP\&.
 .in -1c
 .SH "Detailed Description"
 .PP 
-This is a wrapper around a FileStream\&. While it is not a Stream itself, it can be cast to one (keep in mind that this might throw an exception)\&. It's a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again\&. 
+This is a wrapper around a FileStream\&. While it is not a \fBStream\fP itself, it can be cast to one (keep in mind that this might throw an exception)\&. It's a mechanism for creating a stream from a file without the issue if it still being used by the calling process later when you want to access it again\&. 
 
 
 .SH "Constructor & Destructor Documentation"
@@ -81,7 +81,7 @@ Get bytes of file without locking it\&. If it is locked it should read anyway
 
 .PP
 Opens the stream when it is not locked\&. If the file is locked, then 
-.SS "static JBToolkit\&.StreamHelpers\&.SafeFileStream\&.operator Stream (\fBSafeFileStream\fP sfs)\fC [explicit]\fP, \fC [static]\fP"
+.SS "static JBToolkit\&.StreamHelpers\&.SafeFileStream\&.operator \fBStream\fP (\fBSafeFileStream\fP sfs)\fC [explicit]\fP, \fC [static]\fP"
 
 .SS "static string [] JBToolkit\&.StreamHelpers\&.SafeFileStream\&.ReadAllLines (string filePath)\fC [static]\fP"
 
@@ -97,7 +97,7 @@ Read text file without locking it\&. If it is locked it should read anyway
 .PP 
 .SS "bool JBToolkit\&.StreamHelpers\&.SafeFileStream\&.IsOpen\fC [get]\fP"
 
-.SS "Stream JBToolkit\&.StreamHelpers\&.SafeFileStream\&.UnderlyingStream\fC [get]\fP"
+.SS "\fBStream\fP JBToolkit\&.StreamHelpers\&.SafeFileStream\&.UnderlyingStream\fC [get]\fP"
 
 
 .SH "Author"

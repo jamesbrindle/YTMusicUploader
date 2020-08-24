@@ -7,7 +7,8 @@ Abastract database repository access class.
 
 
 
-Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:\nopagebreak
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:\nopa
 \end{figure}
 
 
-Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:\nopagebreak
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,6 +30,8 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:\no
 \item 
 static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_access_a0f9bb7c069a72090c6f86048509fa343}{Check\+And\+Copy\+Database\+File}} ()
 \begin{DoxyCompactList}\small\item\em Checks if the database file is present in the users App\+Data path. If it\textquotesingle{}s not present it will copy over the template database file from the Program Files (or working directory) App\+Data folder \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08}{Perform\+Any\+Db\+Upgrades}} ()
+\item 
 static S\+Q\+Lite\+Connection \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_access_ac9ee0f646d725d0ccebc213c38d4b996}{Db\+Connection}} ()
 \begin{DoxyCompactList}\small\item\em Create an S\+Q\+Lite connection to the database file in the users App\+Data path \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Properties}
@@ -53,6 +57,14 @@ Abastract database repository access class.
 
 Checks if the database file is present in the users App\+Data path. If it\textquotesingle{}s not present it will copy over the template database file from the Program Files (or working directory) App\+Data folder 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a0f9bb7c069a72090c6f86048509fa343_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_access_ac9ee0f646d725d0ccebc213c38d4b996}\label{class_y_t_music_uploader_1_1_providers_1_1_data_access_ac9ee0f646d725d0ccebc213c38d4b996}} 
 \index{YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}!DbConnection@{DbConnection}}
 \index{DbConnection@{DbConnection}!YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}}
@@ -66,11 +78,34 @@ Create an S\+Q\+Lite connection to the database file in the users App\+Data path
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_ac9ee0f646d725d0ccebc213c38d4b996_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08}\label{class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08}} 
+\index{YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}!PerformAnyDbUpgrades@{PerformAnyDbUpgrades}}
+\index{PerformAnyDbUpgrades@{PerformAnyDbUpgrades}!YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}}
+\doxysubsubsection{\texorpdfstring{PerformAnyDbUpgrades()}{PerformAnyDbUpgrades()}}
+{\footnotesize\ttfamily static void Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access.\+Perform\+Any\+Db\+Upgrades (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08_icgraph}
 \end{center}
 \end{figure}
 

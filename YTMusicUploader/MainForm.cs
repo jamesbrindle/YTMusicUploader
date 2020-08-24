@@ -61,6 +61,18 @@ namespace YTMusicUploader
         public bool Queue { get; set; } = false;
 
         //
+        // MusicBrainz Access
+        //
+        public MusicDataFetcher MusicDataFetcher { get; set; }
+
+        //
+        // Tooltips
+        //
+        public ToolTip ArtWorkTooltip { get; set; }
+        public ToolTip ConnectSuccessTooltip { get; set; }
+        public ToolTip ConnectFailureTooltip { get; set; }
+
+        //
         // Threads
         //
         private Thread _installingEdgeThread;
@@ -80,6 +92,10 @@ namespace YTMusicUploader
 
             InitializeComponent();
             SuspendDrawing(this);
+
+            MusicDataFetcher = new MusicDataFetcher();
+
+            SetVersion("v" + Global.ApplicationVersion);
 
             lblIssues.GotFocus += LinkLabel_GotFocus;
             lblDiscoveredFiles.GotFocus += LinkLabel_GotFocus;
@@ -129,27 +145,36 @@ namespace YTMusicUploader
 
         private void InitialiseTooltips()
         {
-            ToolTip tyConnectSuccess = new ToolTip
+            ConnectSuccessTooltip = new ToolTip
             {
                 ToolTipTitle = "YouTube Music Connection",
-                ToolTipIcon = ToolTipIcon.Info,
+                UseFading = true,
                 IsBalloon = true,
                 InitialDelay = 750,
             };
+            ConnectSuccessTooltip.SetToolTip(pbConnectedToYoutube,
+                "\nYou are connected to YouTube Music and successfully authenticated.");
 
-            ToolTip tyConnectFailure = new ToolTip
+            ConnectFailureTooltip = new ToolTip
             {
                 ToolTipTitle = "YouTube Music Connection",
                 ToolTipIcon = ToolTipIcon.Warning,
+                UseFading = true,
+                IsBalloon = true,                
+                InitialDelay = 750,
+            };
+            ConnectFailureTooltip.SetToolTip(pbNotConnectedToYoutube,
+                "\nYou are not connected to YouTube Music.\n\nPress the 'Connect to YouTube Music button and sign into YouTube Music.");
+
+            ArtWorkTooltip = new ToolTip
+            {
+                ToolTipTitle = "Music File Meta Data",
+                UseFading = true,
                 IsBalloon = true,
                 InitialDelay = 750,
             };
-
-            tyConnectSuccess.SetToolTip(pbConnectedToYoutube,
-                "\nYou are connected to YouTube Music and successfully authenticated.");
-
-            tyConnectFailure.SetToolTip(pbNotConnectedToYoutube,
-                "\nYou are not connected to YouTube Music.\n\nPress the 'Connect to YouTube Music button and sign into YouTube Music.");
+            ArtWorkTooltip.SetToolTip(pbArtwork,
+                "\nNothing uploading");
         }
 
         private void InitialiseFolderWatchers()
@@ -309,7 +334,6 @@ namespace YTMusicUploader
                     while (!NetworkHelper.InternetConnectionIsUp())
                     {
                         SetStatusMessage("No internet connection", "No internet connection");
-
                         try
                         {
                             Thread.Sleep(5000);
@@ -385,12 +409,10 @@ namespace YTMusicUploader
 
         private void LoadDb()
         {
-            SetVersion("v" + Global.ApplicationVersion);
             Settings = SettingsRepo.Load();
             RegistryHelper.SetStartWithWindows(Settings.StartWithWindows);
             SetThrottleSpeed(
-                Settings.ThrottleSpeed == 0 ||
-                Settings.ThrottleSpeed == -1
+                Settings.ThrottleSpeed == 0 || Settings.ThrottleSpeed == -1
                     ? "-1"
                     : (Convert.ToDouble(Settings.ThrottleSpeed) / 1000000).ToString());
 
@@ -410,7 +432,12 @@ namespace YTMusicUploader
             SetUploadedLabel(MusicFileRepo.CountUploaded().ToString());
         }
 
-        public void ShowMessageBox(string title, string message, MessageBoxButtons buttons, MessageBoxIcon icon, int height)
+        public void ShowMessageBox(
+            string title,
+            string message,
+            MessageBoxButtons buttons,
+            MessageBoxIcon icon,
+            int height)
         {
             MetroMessageBox.Show(this, message, title, buttons, icon, height);
         }
@@ -420,6 +447,6 @@ namespace YTMusicUploader
             e.Cancel = true;
             WindowState = FormWindowState.Minimized;
             ShowInTaskbar = false;
-        }
+        }       
     }
 }

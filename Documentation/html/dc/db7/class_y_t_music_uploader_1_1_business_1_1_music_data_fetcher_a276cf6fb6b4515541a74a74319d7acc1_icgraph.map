@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Business.MusicDataFetcher.GetReleaseMbId" name="YTMusicUploader.Business.MusicDataFetcher.GetReleaseMbId">
+<area shape="rect" id="node1" title="First looks at the file meta data for the release MBID, then makes a request to MusicBrainz if it&#39;s n..." alt="" coords="571,13,799,54"/>
+<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#af48686aceec7ea58422eaaf5e160deda" title="Makes a requst to ConvertArchive to try and retrive the album art cover image" alt="" coords="288,5,523,61"/>
+<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#acbd143674b5684a49fad7d152965f8a6" title="Returns album artwork. First it will look at actual file to see if one is embedded,..." alt="" coords="5,13,240,54"/>
+</map>

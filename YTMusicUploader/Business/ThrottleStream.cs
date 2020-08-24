@@ -3,9 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Timers;
-using YTMusicUploader;
 
-namespace JBToolkit.StreamHelpers
+namespace YTMusicUploader.Business
 {
     /// <summary>
     /// Throttle a stream -> Very useful for throttle HttpWebRequest uploads / downloads.

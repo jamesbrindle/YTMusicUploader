@@ -1,31 +1,18 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using YTMusicUploader.Business.Pipes;
 
 namespace YTMusicUploader
 {
     static class Program
     {
-        private const int SW_RESTORE = 9;
-        private const uint SW_RESTORE_HEX = 0x09;
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-
-        [DllImport("user32.dll")]
-        private static extern int ShowWindow(IntPtr hWnd, uint Msg);
-
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, uint wParam, uint lParam);
-        const uint WM_SYSCOMMAND = 0x0112;
-        const uint SC_RESTORE = 0xF120;
+        /// <summary>
+        /// Basically used so a new instance of YTMusicUploader can just show / restore the existing process window
+        /// </summary>
+        internal static WcfServer WcfServer { get; set; } = new WcfServer("JBS_YTMusicUploader");
+        internal static MainForm MainForm = null;
 
         /// <summary>
         /// The main entry point for the application.
@@ -33,50 +20,74 @@ namespace YTMusicUploader
         [STAThread]
         static void Main(string[] args)
         {
+
             //
             // Don't allow 2 instances of application to open
             // Try and focus existing window instead
             //
-            using (new Mutex(true, "YTUploader", out bool createdNew))
+            using (new Mutex(true, "YTMusicUploader", out bool createdNew))
             {
                 if (createdNew)
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
 
-                    if (args.Contains("-hidden"))
-                        Application.Run(new MainForm(true));
-                    else
-                        Application.Run(new MainForm(false));
+                    WcfServer.Received += ProcessWcfMessage;
+                    WcfServer.Faulted += ServerFaulted;
+                    WcfServer.Start();
 
+                    if (args.Contains("-hidden"))
+                        MainForm = new MainForm(true);
+                    else
+                        MainForm = new MainForm(false);
+
+                    Application.Run(MainForm);
                 }
                 else
                 {
-                    var current = Process.GetCurrentProcess();
-                    var thisProgram = Process.GetProcessesByName(current.ProcessName);
+                    // Send a message to current process tellin it to show
 
-                    foreach (Process process in thisProgram)
+                    var wcfClient = new WcfClient("JBS_YTMusicUploader");
+                    int sleepCount = 0;
+
+                    while (true)
                     {
-                        SetForegroundWindow(process.MainWindowHandle);
-
                         try
                         {
-                            ShowWindowAsync(process.MainWindowHandle, SW_RESTORE);
-                            ShowWindow(process.MainWindowHandle, SW_RESTORE_HEX);
-
-                            ShowWindowAsync(process.Handle, SW_RESTORE);
-                            ShowWindow(process.Handle, SW_RESTORE_HEX);
-
-                            SendMessage(process.MainWindowHandle, WM_SYSCOMMAND, SC_RESTORE, 0);
-                            SetForegroundWindow(process.MainWindowHandle);
+                            wcfClient.Send("Show");
+                            break;
                         }
                         catch
                         {
-                            break;
+                            if (sleepCount > 7000)
+                                break;
+
+                            Thread.Sleep(50);
+                            sleepCount += 50;
+
+                            wcfClient = new WcfClient("JBS_YTMusicUploader");
                         }
                     }
                 }
             }
+        }
+
+        private static void ServerFaulted(object sender, EventArgs e)
+        {
+            if (MainForm != null)
+            {
+                WcfServer = new WcfServer("JBS_YTMusicUploader");
+                WcfServer.Received += ProcessWcfMessage;
+                WcfServer.Faulted += ServerFaulted;
+                WcfServer.Start();
+            }
+        }
+
+        private static void ProcessWcfMessage(object sender, DataReceivedEventArgs e)
+        {
+            if (e.Data == "Show")
+                if (MainForm != null)
+                    MainForm.ShowForm();
         }
     }
 }

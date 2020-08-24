@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business" 3 "Mon Aug 24 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,6 +6,16 @@ YTMusicUploader.Business
 .SH SYNOPSIS
 .br
 .PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBMusicBrainz\fP"
+.br
+.ti -1c
+.RI "namespace \fBPipes\fP"
+.br
+.in -1c
 .SS "Classes"
 
 .in +1c
@@ -17,6 +27,14 @@ YTMusicUploader.Business
 .RI "class \fBFileUploader\fP"
 .br
 .RI "Responsive for managing uploading music files to YouTube Music\&. "
+.ti -1c
+.RI "class \fBMusicDataFetcher\fP"
+.br
+.RI "Gets meta data / tag information from the music file itself and looks up any missing data using a \fBMusicBrainz\fP API implementation (for instance album cover art, in which it will lookup CoverArtArchive: https://coverartarchive.org/ "
+.ti -1c
+.RI "class \fBThrottledStream\fP"
+.br
+.RI "Throttle a stream -> Very useful for throttle HttpWebRequest uploads / downloads\&. "
 .in -1c
 .SH "Author"
 .PP 

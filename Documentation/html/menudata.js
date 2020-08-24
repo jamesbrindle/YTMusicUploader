@@ -99,6 +99,7 @@ var menudata={children:[
 {text:"u",url:"functions_prop.html#index_u"},
 {text:"v",url:"functions_prop.html#index_v"},
 {text:"w",url:"functions_prop.html#index_w"},
-{text:"y",url:"functions_prop.html#index_y"}]}]}]},
+{text:"y",url:"functions_prop.html#index_y"}]},
+{text:"Events",url:"functions_evnt.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"}]}]}

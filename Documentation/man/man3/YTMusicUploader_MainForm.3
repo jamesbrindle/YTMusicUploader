@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MainForm" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MainForm" 3 "Mon Aug 24 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -42,7 +42,10 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBSetVersion\fP (string version)"
 .br
 .ti -1c
-.RI "void \fBSetUploadingMessage\fP (string text)"
+.RI "void \fBSetUploadingMessage\fP (string text, string musicFilePath=null)"
+.br
+.ti -1c
+.RI "void \fBSetArtworkImage\fP (string songPath)"
 .br
 .ti -1c
 .RI "void \fBSetDiscoveredFilesLabel\fP (string text)"
@@ -64,6 +67,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetConnectToYouTubeButtonEnabled\fP (bool enabled)"
+.br
+.ti -1c
+.RI "void \fBShowForm\fP ()"
 .br
 .ti -1c
 .RI "void \fBQuitApplication\fP ()"
@@ -125,6 +131,18 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .ti -1c
 .RI "bool \fBQueue\fP = false\fC [get, set]\fP"
 .br
+.ti -1c
+.RI "\fBMusicDataFetcher\fP \fBMusicDataFetcher\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBArtWorkTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBConnectSuccessTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBConnectFailureTooltip\fP\fC [get, set]\fP"
+.br
 .in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
@@ -155,6 +173,8 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.RepopulateAmountLables ()"
 
+.SS "void YTMusicUploader\&.MainForm\&.SetArtworkImage (string songPath)"
+
 .SS "void YTMusicUploader\&.MainForm\&.SetConnectedToYouTubeMusic (bool connectedToYouTubeMusic)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetConnectToYouTubeButtonEnabled (bool enabled)"
@@ -173,9 +193,11 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetUploadedLabel (string text)"
 
-.SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text)"
+.SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text, string musicFilePath = \fCnull\fP)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetVersion (string version)"
+
+.SS "void YTMusicUploader\&.MainForm\&.ShowForm ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.ShowMessageBox (string title, string message, MessageBoxButtons buttons, MessageBoxIcon icon, int height)"
 
@@ -183,7 +205,13 @@ Clean up any resources being used\&.
 .PP 
 .SS "bool YTMusicUploader\&.MainForm\&.Aborting = false\fC [get]\fP, \fC [set]\fP"
 
+.SS "ToolTip YTMusicUploader\&.MainForm\&.ArtWorkTooltip\fC [get]\fP, \fC [set]\fP"
+
 .SS "bool YTMusicUploader\&.MainForm\&.ConnectedToYTMusic = false\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.ConnectFailureTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.ConnectSuccessTooltip\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBConnectToYTMusic\fP YTMusicUploader\&.MainForm\&.ConnectToYTMusicForm\fC [get]\fP, \fC [set]\fP"
 
@@ -194,6 +222,8 @@ Clean up any resources being used\&.
 .SS "int YTMusicUploader\&.MainForm\&.InitialFilesCount = 0\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBIssueLog\fP YTMusicUploader\&.MainForm\&.IssueLogForm = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBMusicDataFetcher\fP YTMusicUploader\&.MainForm\&.MusicDataFetcher\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBMusicFileRepo\fP YTMusicUploader\&.MainForm\&.MusicFileRepo = new \fBMusicFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
 

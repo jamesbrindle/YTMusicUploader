@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Dapper;
+using System;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 
 namespace YTMusicUploader.Providers
 {
@@ -51,6 +54,25 @@ namespace YTMusicUploader.Providers
                         File.Delete("ytuploader.db-wal");
                     }
                     catch { }
+                }
+
+                PerformAnyDbUpgrades();
+            }
+        }
+
+        public static void PerformAnyDbUpgrades()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var columns = conn.Query<string>(
+                        @"SELECT name FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+
+                if (!columns.Contains("MbId"))
+                {
+                    conn.Execute(
+                        @"ALTER TABLE MusicFiles
+                        ADD COLUMN MbId TEXT");
                 }
             }
         }

@@ -1,7 +1,7 @@
 <map id="YTMusicUploader.Providers.Models.DbModels" name="YTMusicUploader.Providers.Models.DbModels">
 <area shape="rect" id="node1" title=" " alt="" coords="215,145,400,252"/>
-<area shape="rect" id="node3" href="$da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html" title="Music library file and status" alt="" coords="5,300,191,539"/>
-<area shape="rect" id="node4" href="$de/d8c/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_settings.html" title="Application settings data" alt="" coords="215,351,400,487"/>
-<area shape="rect" id="node5" href="$d8/d67/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_watch_folder.html" title="Selected libraries to scan and watch data" alt="" coords="424,366,609,473"/>
+<area shape="rect" id="node3" href="$da/dd6/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_music_file.html" title="Music library file and status" alt="" coords="5,300,191,553"/>
+<area shape="rect" id="node4" href="$de/d8c/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_settings.html" title="Application settings data" alt="" coords="215,359,400,495"/>
+<area shape="rect" id="node5" href="$d8/d67/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_watch_folder.html" title="Selected libraries to scan and watch data" alt="" coords="424,373,609,480"/>
 <area shape="rect" id="node2" href="$d6/d20/interface_y_t_music_uploader_1_1_providers_1_1_models_1_1_i_db_model.html" title=" " alt="" coords="268,5,347,97"/>
 </map>

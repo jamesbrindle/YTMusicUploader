@@ -2,6 +2,7 @@ var dir_477312eb4a9e9bf2e71adf297ad0a716 =
 [
     [ "Business", "dir_3ca9970b977984ba9d3e29a467acdfaa.html", "dir_3ca9970b977984ba9d3e29a467acdfaa" ],
     [ "CustomControls", "dir_1925e5d8ef399ae919aee33e7c1a3457.html", "dir_1925e5d8ef399ae919aee33e7c1a3457" ],
+    [ "Dependencies", "dir_bf6e95631febcb8286f73d6513363315.html", "dir_bf6e95631febcb8286f73d6513363315" ],
     [ "Dialogues", "dir_a9b9079c3e15122c62618c0bba510a94.html", "dir_a9b9079c3e15122c62618c0bba510a94" ],
     [ "Helpers", "dir_0e014969c9e81403f3d099ca0567a7d4.html", "dir_0e014969c9e81403f3d099ca0567a7d4" ],
     [ "obj", "dir_5609850f376f02434e696ed18757b28c.html", "dir_5609850f376f02434e696ed18757b28c" ],

@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Business.MusicBrainz.FileRequestCache" name="YTMusicUploader.Business.MusicBrainz.FileRequestCache">
+<area shape="rect" id="node1" title="Caches requests to MusicBrainz API on disk." alt="" coords="5,131,209,296"/>
+<area shape="rect" id="node2" href="$d5/d22/class_i_request_cache.html" title=" " alt="" coords="52,5,163,83"/>
+</map>

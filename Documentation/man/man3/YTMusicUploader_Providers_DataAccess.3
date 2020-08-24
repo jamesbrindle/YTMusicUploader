@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataAccess" 3 "Sun Aug 23 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataAccess" 3 "Mon Aug 24 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,6 +16,9 @@ Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\fP, \fBYTMus
 .RI "static void \fBCheckAndCopyDatabaseFile\fP ()"
 .br
 .RI "Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder "
+.ti -1c
+.RI "static void \fBPerformAnyDbUpgrades\fP ()"
+.br
 .ti -1c
 .RI "static SQLiteConnection \fBDbConnection\fP ()"
 .br
@@ -50,6 +53,8 @@ Create an SQLite connection to the database file in the users AppData path
 
 .RE
 .PP
+
+.SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.PerformAnyDbUpgrades ()\fC [static]\fP"
 
 .SH "Property Documentation"
 .PP 

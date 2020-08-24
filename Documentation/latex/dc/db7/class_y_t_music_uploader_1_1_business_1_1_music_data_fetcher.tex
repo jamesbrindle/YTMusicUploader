@@ -1,0 +1,390 @@
+\hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{}\doxysection{Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher Class Reference}
+\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+
+
+Gets meta data / tag information from the music file itself and looks up any missing data using a \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI implementation (for instance album cover art, in which it will lookup Cover\+Art\+Archive\+: \href{https://coverartarchive.org/}{\texttt{ https\+://coverartarchive.\+org/}}  
+
+
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{d3/d4c/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a163f50300225a421e94d0ad9196eed57}{Music\+Data\+Fetcher}} ()
+\begin{DoxyCompactList}\small\item\em Gets meta data / tag information from the music file itself and looks up any missing data using a \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI implementation (for instance album cover art). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82}{Get\+Track\+Mb\+Id}} (string path)
+\begin{DoxyCompactList}\small\item\em First looks at the file meta data for the track M\+B\+ID then makes a request to \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} if it\textquotesingle{}s not found \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1}{Get\+Release\+Mb\+Id}} (string path)
+\begin{DoxyCompactList}\small\item\em First looks at the file meta data for the release M\+B\+ID, then makes a request to \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} if it\textquotesingle{}s not found \end{DoxyCompactList}\item 
+Recording \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad75f4d25f5348507742be3fa8578dc72}{Get\+Recording\+From\+Music\+Brainz\+With\+Album\+Name\+Variations}} (string artist, string album, string track)
+\begin{DoxyCompactList}\small\item\em Get the recording (track data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names. This method also tries different variations of the album name \end{DoxyCompactList}\item 
+Recording \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a7892203555b075bcf4bbb7da3a43ba0e}{Get\+Recording\+From\+Music\+Brainz}} (string artist, string album, string track)
+\begin{DoxyCompactList}\small\item\em Get the recording (track data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names \end{DoxyCompactList}\item 
+Release \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad7037855e8c1954f547b5a3ac66e4cb2}{Get\+Release\+From\+Music\+Brainz\+With\+Album\+Name\+Variations}} (string artist, string album)
+\begin{DoxyCompactList}\small\item\em Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names This method also tries different variations of the album name \end{DoxyCompactList}\item 
+Release \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ab9b74b81d70a6ddbddf6ef3f4ba76330}{Get\+Release\+From\+Music\+Brainz}} (string artist, string album)
+\begin{DoxyCompactList}\small\item\em Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6}{Get\+Album\+Artwork}} (string path)
+\begin{DoxyCompactList}\small\item\em Returns album artwork. First it will look at actual file to see if one is embedded, if not it will make a request to get the M\+B\+ID, then use that to make a requst to Convert\+Archive to try and retrive the album art cover image \end{DoxyCompactList}\item 
+Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda}{Get\+Album\+Artwork\+From\+Cover\+Art\+Archive}} (string path)
+\begin{DoxyCompactList}\small\item\em Makes a requst to Convert\+Archive to try and retrive the album art cover image \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066}{Get\+Music\+File\+Meta\+Data}} (string path)
+\begin{DoxyCompactList}\small\item\em Returns a single multi-\/line string of music file meta data such as\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Tag\+Lib.\+File \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb}{Get\+Music\+Tag\+Lib\+File}} (string path)
+\begin{DoxyCompactList}\small\item\em Gets a Tab\+Lib (Tab\+Lib library object of music file meta data) file object of a given music music file \end{DoxyCompactList}\item 
+static byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a9433e70a6a919cb93186739b92bb493e}{Get\+Image\+Bytes\+From\+Url}} (string url)
+\begin{DoxyCompactList}\small\item\em Peforms a H\+T\+TP web request and downloads an image \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Music\+Brainz\+Client \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a357eec8702b83277a5a28e27b09af95c}{Music\+Brainz\+Client}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em .Net implementation client of \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gets meta data / tag information from the music file itself and looks up any missing data using a \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI implementation (for instance album cover art, in which it will lookup Cover\+Art\+Archive\+: \href{https://coverartarchive.org/}{\texttt{ https\+://coverartarchive.\+org/}} 
+
+Thanks to\+: avatar29A \href{https://github.com/avatar29A/MusicBrainz}{\texttt{ https\+://github.\+com/avatar29\+A/\+Music\+Brainz}}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a163f50300225a421e94d0ad9196eed57}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a163f50300225a421e94d0ad9196eed57}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!MusicDataFetcher@{MusicDataFetcher}}
+\index{MusicDataFetcher@{MusicDataFetcher}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{MusicDataFetcher()}{MusicDataFetcher()}}
+{\footnotesize\ttfamily Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Music\+Data\+Fetcher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets meta data / tag information from the music file itself and looks up any missing data using a \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI implementation (for instance album cover art). 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetAlbumArtwork@{GetAlbumArtwork}}
+\index{GetAlbumArtwork@{GetAlbumArtwork}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetAlbumArtwork()}{GetAlbumArtwork()}}
+{\footnotesize\ttfamily Image Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Album\+Artwork (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Returns album artwork. First it will look at actual file to see if one is embedded, if not it will make a request to get the M\+B\+ID, then use that to make a requst to Convert\+Archive to try and retrive the album art cover image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Full path to the music file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Thumbnail image
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetAlbumArtworkFromCoverArtArchive@{GetAlbumArtworkFromCoverArtArchive}}
+\index{GetAlbumArtworkFromCoverArtArchive@{GetAlbumArtworkFromCoverArtArchive}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetAlbumArtworkFromCoverArtArchive()}{GetAlbumArtworkFromCoverArtArchive()}}
+{\footnotesize\ttfamily Image Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Album\+Artwork\+From\+Cover\+Art\+Archive (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Makes a requst to Convert\+Archive to try and retrive the album art cover image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Full path to the music file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Thumbnail image
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a9433e70a6a919cb93186739b92bb493e}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a9433e70a6a919cb93186739b92bb493e}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetImageBytesFromUrl@{GetImageBytesFromUrl}}
+\index{GetImageBytesFromUrl@{GetImageBytesFromUrl}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetImageBytesFromUrl()}{GetImageBytesFromUrl()}}
+{\footnotesize\ttfamily static byte \mbox{[}$\,$\mbox{]} Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Image\+Bytes\+From\+Url (\begin{DoxyParamCaption}\item[{string}]{url }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Peforms a H\+T\+TP web request and downloads an image 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a9433e70a6a919cb93186739b92bb493e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetMusicFileMetaData@{GetMusicFileMetaData}}
+\index{GetMusicFileMetaData@{GetMusicFileMetaData}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetMusicFileMetaData()}{GetMusicFileMetaData()}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Returns a single multi-\/line string of music file meta data such as\+: 
+
+
+\begin{DoxyItemize}
+\item Artist
+\item Album name
+\item Track name
+\item Duration
+\item Bitrate
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Full path to music file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Multi-\/line string
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetMusicTagLibFile@{GetMusicTagLibFile}}
+\index{GetMusicTagLibFile@{GetMusicTagLibFile}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetMusicTagLibFile()}{GetMusicTagLibFile()}}
+{\footnotesize\ttfamily static Tag\+Lib.\+File Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+Tag\+Lib\+File (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets a Tab\+Lib (Tab\+Lib library object of music file meta data) file object of a given music music file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a7892203555b075bcf4bbb7da3a43ba0e}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a7892203555b075bcf4bbb7da3a43ba0e}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetRecordingFromMusicBrainz@{GetRecordingFromMusicBrainz}}
+\index{GetRecordingFromMusicBrainz@{GetRecordingFromMusicBrainz}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetRecordingFromMusicBrainz()}{GetRecordingFromMusicBrainz()}}
+{\footnotesize\ttfamily Recording Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Recording\+From\+Music\+Brainz (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album,  }\item[{string}]{track }\end{DoxyParamCaption})}
+
+
+
+Get the recording (track data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Recording object
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a7892203555b075bcf4bbb7da3a43ba0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad75f4d25f5348507742be3fa8578dc72}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad75f4d25f5348507742be3fa8578dc72}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetRecordingFromMusicBrainzWithAlbumNameVariations@{GetRecordingFromMusicBrainzWithAlbumNameVariations}}
+\index{GetRecordingFromMusicBrainzWithAlbumNameVariations@{GetRecordingFromMusicBrainzWithAlbumNameVariations}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetRecordingFromMusicBrainzWithAlbumNameVariations()}{GetRecordingFromMusicBrainzWithAlbumNameVariations()}}
+{\footnotesize\ttfamily Recording Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Recording\+From\+Music\+Brainz\+With\+Album\+Name\+Variations (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album,  }\item[{string}]{track }\end{DoxyParamCaption})}
+
+
+
+Get the recording (track data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names. This method also tries different variations of the album name 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Recording object
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad75f4d25f5348507742be3fa8578dc72_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad75f4d25f5348507742be3fa8578dc72_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ab9b74b81d70a6ddbddf6ef3f4ba76330}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ab9b74b81d70a6ddbddf6ef3f4ba76330}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetReleaseFromMusicBrainz@{GetReleaseFromMusicBrainz}}
+\index{GetReleaseFromMusicBrainz@{GetReleaseFromMusicBrainz}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetReleaseFromMusicBrainz()}{GetReleaseFromMusicBrainz()}}
+{\footnotesize\ttfamily Release Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Release\+From\+Music\+Brainz (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album }\end{DoxyParamCaption})}
+
+
+
+Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Release object
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ab9b74b81d70a6ddbddf6ef3f4ba76330_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad7037855e8c1954f547b5a3ac66e4cb2}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad7037855e8c1954f547b5a3ac66e4cb2}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetReleaseFromMusicBrainzWithAlbumNameVariations@{GetReleaseFromMusicBrainzWithAlbumNameVariations}}
+\index{GetReleaseFromMusicBrainzWithAlbumNameVariations@{GetReleaseFromMusicBrainzWithAlbumNameVariations}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetReleaseFromMusicBrainzWithAlbumNameVariations()}{GetReleaseFromMusicBrainzWithAlbumNameVariations()}}
+{\footnotesize\ttfamily Release Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Release\+From\+Music\+Brainz\+With\+Album\+Name\+Variations (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album }\end{DoxyParamCaption})}
+
+
+
+Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names This method also tries different variations of the album name 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Release object
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad7037855e8c1954f547b5a3ac66e4cb2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad7037855e8c1954f547b5a3ac66e4cb2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetReleaseMbId@{GetReleaseMbId}}
+\index{GetReleaseMbId@{GetReleaseMbId}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetReleaseMbId()}{GetReleaseMbId()}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Release\+Mb\+Id (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+First looks at the file meta data for the release M\+B\+ID, then makes a request to \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} if it\textquotesingle{}s not found 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Full path to music file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} ID
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetTrackMbId@{GetTrackMbId}}
+\index{GetTrackMbId@{GetTrackMbId}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetTrackMbId()}{GetTrackMbId()}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Track\+Mb\+Id (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+First looks at the file meta data for the track M\+B\+ID then makes a request to \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} if it\textquotesingle{}s not found 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Full path to music file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} ID
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a357eec8702b83277a5a28e27b09af95c}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a357eec8702b83277a5a28e27b09af95c}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!MusicBrainzClient@{MusicBrainzClient}}
+\index{MusicBrainzClient@{MusicBrainzClient}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{MusicBrainzClient}{MusicBrainzClient}}
+{\footnotesize\ttfamily Music\+Brainz\+Client Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Music\+Brainz\+Client\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+.Net implementation client of \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Business/\mbox{\hyperlink{_music_data_fetcher_8cs}{Music\+Data\+Fetcher.\+cs}}\end{DoxyCompactItemize}

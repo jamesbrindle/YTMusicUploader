@@ -6,5 +6,6 @@ var namespace_j_b_toolkit_1_1_win_forms =
     [ "OptimisedMetroForm", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form" ],
     [ "RoundButton", "de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html", "de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button" ],
     [ "RoundedRectangleF", "d0/de3/class_j_b_toolkit_1_1_win_forms_1_1_rounded_rectangle_f.html", "d0/de3/class_j_b_toolkit_1_1_win_forms_1_1_rounded_rectangle_f" ],
+    [ "RoundPictureBox", "de/d6c/class_j_b_toolkit_1_1_win_forms_1_1_round_picture_box.html", "de/d6c/class_j_b_toolkit_1_1_win_forms_1_1_round_picture_box" ],
     [ "RoundTextBox", "d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html", "d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box" ]
 ];

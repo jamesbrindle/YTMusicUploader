@@ -44,17 +44,20 @@ namespace YTMusicUploader.Business
                     if (MainForm.Aborting)
                     {
                         Stopped = true;
-                        MainForm.SetUploadingMessage("Uploading: Idle");
+                        MainForm.SetUploadingMessage("Idle", "idle");
                         return;
                     }
 
                     if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
                     {
-                        MainForm.SetUploadingMessage("Updating: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210));
+                        MainForm.SetUploadingMessage("Updating: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
 
                         existingMusicFile.Path = musicFile.Path;
                         existingMusicFile.LastUpload = DateTime.Now;
                         existingMusicFile.Removed = false;
+                        existingMusicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
+                                                          ? MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
+                                                          : musicFile.MbId;
 
                         _uploaded++;
                         MainForm.SetUploadedLabel(_uploaded.ToString());
@@ -64,7 +67,7 @@ namespace YTMusicUploader.Business
                     }
                     else
                     {
-                        MainForm.SetUploadingMessage("Uploading: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210));
+                        MainForm.SetUploadingMessage(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
 
                         Stopped = false;
                         Requests.UploadSong(
@@ -86,6 +89,9 @@ namespace YTMusicUploader.Business
                         {
                             musicFile.LastUpload = DateTime.Now;
                             musicFile.Error = false;
+                            musicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
+                                                        ? MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
+                                                        : musicFile.MbId;
 
                             _uploaded++;
                             MainForm.SetUploadedLabel(_uploaded.ToString());
@@ -105,7 +111,7 @@ namespace YTMusicUploader.Business
                 GC.WaitForPendingFinalizers();
             }
 
-            MainForm.SetUploadingMessage("Uploading: Idle");
+            MainForm.SetUploadingMessage("Idle", "idle");
             Stopped = true;
         }
 

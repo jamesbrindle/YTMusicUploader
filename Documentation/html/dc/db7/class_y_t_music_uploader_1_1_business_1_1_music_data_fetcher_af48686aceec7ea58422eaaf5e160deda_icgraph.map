@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Business.MusicDataFetcher.GetAlbumArtworkFromCoverArtArchive" name="YTMusicUploader.Business.MusicDataFetcher.GetAlbumArtworkFromCoverArtArchive">
+<area shape="rect" id="node1" title="Makes a requst to ConvertArchive to try and retrive the album art cover image" alt="" coords="288,5,523,61"/>
+<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#acbd143674b5684a49fad7d152965f8a6" title="Returns album artwork. First it will look at actual file to see if one is embedded,..." alt="" coords="5,13,240,54"/>
+</map>

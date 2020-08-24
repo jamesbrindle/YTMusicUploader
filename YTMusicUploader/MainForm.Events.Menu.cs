@@ -30,14 +30,6 @@ namespace YTMusicUploader
             QuitApplication();
         }
 
-        private void ShowForm()
-        {
-            WindowState = FormWindowState.Normal;
-            CenterForm();
-            ShowInTaskbar = true;
-            Activate();
-        }
-
         private void CenterForm()
         {
             Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,

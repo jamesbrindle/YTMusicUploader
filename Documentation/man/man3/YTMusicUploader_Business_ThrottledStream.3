@@ -1,0 +1,132 @@
+.TH "YTMusicUploader.Business.ThrottledStream" 3 "Mon Aug 24 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Business.ThrottledStream \- Throttle a stream -> Very useful for throttle HttpWebRequest uploads / downloads\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBStream\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBThrottledStream\fP (\fBStream\fP parentStream, \fBMainForm\fP mainForm, int fileBytes, int maxBytesPerSecond=int\&.MaxValue)"
+.br
+.RI "Creates a new \fBStream\fP with Data bandwith cap "
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "override int \fBRead\fP (byte[] buffer, int offset, int count)"
+.br
+.ti -1c
+.RI "override long \fBSeek\fP (long offset, SeekOrigin origin)"
+.br
+.ti -1c
+.RI "override void \fBSetLength\fP (long value)"
+.br
+.ti -1c
+.RI "override void \fBWrite\fP (byte[] buffer, int offset, int count)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBThrottle\fP (int bytes)"
+.br
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBMaxBytesPerSecond\fP\fC [get, set]\fP"
+.br
+.RI "Number of Bytes that are allowed per second "
+.ti -1c
+.RI "override bool \fBCanRead\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBCanSeek\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBCanWrite\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override long \fBLength\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override long \fBPosition\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Throttle a stream -> Very useful for throttle HttpWebRequest uploads / downloads\&. 
+
+Thanks to: 0xDEADBEEF: https://stackoverflow.com/users/909365/0xdeadbeef
+.PP
+Usage:
+.PP
+var stream = request\&.GetRequestStream(); var throttledStream = new ThrottledStream(new MemoryStream(fileBytes), uploadSpeedInBytesPerSecond); throttledStream\&.CopyTo(stream); stream\&.Close();
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.Business\&.ThrottledStream\&.ThrottledStream (\fBStream\fP parentStream, \fBMainForm\fP mainForm, int fileBytes, int maxBytesPerSecond = \fCint\&.MaxValue\fP)"
+
+.PP
+Creates a new \fBStream\fP with Data bandwith cap 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparentStream\fP The original stream in which to throttle
+.br
+\fImaxBytesPerSecond\fP The maximum bytes per second allowed
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "override void YTMusicUploader\&.Business\&.ThrottledStream\&.Close ()"
+
+.SS "override void YTMusicUploader\&.Business\&.ThrottledStream\&.Dispose (bool disposing)\fC [protected]\fP"
+
+.SS "override void YTMusicUploader\&.Business\&.ThrottledStream\&.Flush ()"
+
+.SS "override int YTMusicUploader\&.Business\&.ThrottledStream\&.Read (byte[] buffer, int offset, int count)"
+
+.SS "override long YTMusicUploader\&.Business\&.ThrottledStream\&.Seek (long offset, SeekOrigin origin)"
+
+.SS "override void YTMusicUploader\&.Business\&.ThrottledStream\&.SetLength (long value)"
+
+.SS "void YTMusicUploader\&.Business\&.ThrottledStream\&.Throttle (int bytes)\fC [protected]\fP"
+
+.SS "override void YTMusicUploader\&.Business\&.ThrottledStream\&.Write (byte[] buffer, int offset, int count)"
+
+.SH "Property Documentation"
+.PP 
+.SS "override bool YTMusicUploader\&.Business\&.ThrottledStream\&.CanRead\fC [get]\fP"
+
+.SS "override bool YTMusicUploader\&.Business\&.ThrottledStream\&.CanSeek\fC [get]\fP"
+
+.SS "override bool YTMusicUploader\&.Business\&.ThrottledStream\&.CanWrite\fC [get]\fP"
+
+.SS "override long YTMusicUploader\&.Business\&.ThrottledStream\&.Length\fC [get]\fP"
+
+.SS "int YTMusicUploader\&.Business\&.ThrottledStream\&.MaxBytesPerSecond\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Number of Bytes that are allowed per second 
+.SS "override long YTMusicUploader\&.Business\&.ThrottledStream\&.Position\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

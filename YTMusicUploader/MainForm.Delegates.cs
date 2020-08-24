@@ -1,5 +1,7 @@
 ﻿using JBToolkit.Windows;
+using System.Threading;
 using System.Windows.Forms;
+using YTMusicUploader.Helpers;
 
 namespace YTMusicUploader
 {
@@ -103,17 +105,49 @@ namespace YTMusicUploader
             }
         }
 
-        delegate void SetUploadingMessageDelegate(string text);
-        public void SetUploadingMessage(string text)
+        delegate void SetUploadingMessageDelegate(string text, string songPath = null);
+        public void SetUploadingMessage(string text, string musicFilePath = null)
         {
             if (lblUploadingMessage.InvokeRequired)
             {
                 SetUploadingMessageDelegate d = new SetUploadingMessageDelegate(SetUploadingMessage);
-                Invoke(d, new object[] { text });
+                Invoke(d, new object[] { text, musicFilePath });
             }
             else
             {
                 lblUploadingMessage.Text = text;
+                if (!string.IsNullOrEmpty(musicFilePath))
+                {
+                    new Thread((ThreadStart)delegate
+                    {
+                        SetArtworkImage(musicFilePath);
+                    }).Start();
+                }
+            }
+        }
+
+        delegate void SetArtworkImageDelegate(string songPath);
+        public void SetArtworkImage(string songPath)
+        {
+            if (pbArtwork.InvokeRequired)
+            {
+                SetArtworkImageDelegate d = new SetArtworkImageDelegate(SetArtworkImage);
+                Invoke(d, new object[] { songPath });
+            }
+            else
+            {
+                if (songPath == "idle")
+                {
+                    pbArtwork.Visible = false;
+                    pbArtworkIdle.Visible = true;
+                }
+                else
+                {
+                    pbArtworkIdle.Visible = false;
+                    pbArtwork.Visible = true;
+                    pbArtwork.Image = MusicDataFetcher.GetAlbumArtwork(songPath);
+                    ArtWorkTooltip.SetToolTip(pbArtwork, MusicDataFetcher.GetMusicFileMetaData(songPath));
+                }
             }
         }
 
@@ -225,6 +259,32 @@ namespace YTMusicUploader
             else
             {
                 btnConnectToYoutube.Enabled = enabled;
+            }
+        }
+
+        delegate void ShowFormDelegate();
+        public void ShowForm()
+        {
+            if (InvokeRequired)
+            {
+                ShowFormDelegate d = new ShowFormDelegate(ShowForm);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                try
+                {
+                    WindowState = FormWindowState.Normal;
+                    CenterForm();
+                    ShowInTaskbar = true;
+                }
+                catch { }
+
+                try
+                {
+                    Activate();
+                }
+                catch { }
             }
         }
     }

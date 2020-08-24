@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Providers.DataAccess.CheckAndCopyDatabaseFile" name="YTMusicUploader.Providers.DataAccess.CheckAndCopyDatabaseFile">
+<area shape="rect" id="node1" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="5,5,268,47"/>
+<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a777fee8af9abfbafeb10f09327101e08" title=" " alt="" coords="316,5,552,47"/>
+<area shape="rect" id="node3" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="600,5,785,47"/>
+</map>

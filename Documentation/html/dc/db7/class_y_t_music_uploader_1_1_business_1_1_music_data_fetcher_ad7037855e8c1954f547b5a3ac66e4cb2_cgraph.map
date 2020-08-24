@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Business.MusicDataFetcher.GetReleaseFromMusicBrainzWithAlbumNameVariations" name="YTMusicUploader.Business.MusicDataFetcher.GetReleaseFromMusicBrainzWithAlbumNameVariations">
+<area shape="rect" id="node1" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="5,5,256,61"/>
+<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ab9b74b81d70a6ddbddf6ef3f4ba76330" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="304,5,535,61"/>
+</map>

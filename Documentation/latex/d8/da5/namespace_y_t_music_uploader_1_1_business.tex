@@ -1,9 +1,20 @@
 \hypertarget{namespace_y_t_music_uploader_1_1_business}{}\doxysection{Y\+T\+Music\+Uploader.\+Business Namespace Reference}
 \label{namespace_y_t_music_uploader_1_1_business}\index{YTMusicUploader.Business@{YTMusicUploader.Business}}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}}
+\item 
+namespace \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_pipes}{Pipes}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner}{File\+Scanner}}
 \begin{DoxyCompactList}\small\item\em Responsive for scanning library music files and adding and managing discovered files to the database. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_uploader}{File\+Uploader}}
-\begin{DoxyCompactList}\small\item\em Responsive for managing uploading music files to You\+Tube Music. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Responsive for managing uploading music files to You\+Tube Music. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}}
+\begin{DoxyCompactList}\small\item\em Gets meta data / tag information from the music file itself and looks up any missing data using a \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI implementation (for instance album cover art, in which it will lookup Cover\+Art\+Archive\+: \href{https://coverartarchive.org/}{\texttt{ https\+://coverartarchive.\+org/}} \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream}{Throttled\+Stream}}
+\begin{DoxyCompactList}\small\item\em Throttle a stream -\/$>$ Very useful for throttle Http\+Web\+Request uploads / downloads. \end{DoxyCompactList}\end{DoxyCompactItemize}

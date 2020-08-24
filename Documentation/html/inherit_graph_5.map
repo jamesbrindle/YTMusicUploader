@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d9/d9d/class_i_enumerator.html" title=" " alt="" coords="5,5,97,32"/>
+<area shape="rect" id="node1" href="$d2/d55/class_i_disposable.html" title=" " alt="" coords="5,46,95,73"/>
+<area shape="rect" id="node2" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html" title="This is a wrapper around a FileStream. While it is not a Stream itself, it can be cast to one (keep i..." alt="" coords="151,5,321,47"/>
+<area shape="rect" id="node3" href="$d0/df6/interface_y_t_music_uploader_1_1_business_1_1_pipes_1_1_i_ipc_server.html" title=" " alt="" coords="143,71,329,112"/>
 </map>

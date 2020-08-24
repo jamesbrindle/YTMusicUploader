@@ -89,23 +89,38 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_D"></a>:_OneDrive_Documents_Work_Repositories_YTMusicUploader_README</p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/yt_logo-64.png" alt="N|Solid" class="inline"/></a> &#160;</p>
-<p>Automatically upload your local music personal library to YouTube music. &#160; &#160;</p>
-<p><b><a href="https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.0">Download Version 1.0 Installer</a></b> &#160; &#160;</p>
+<p>Automatically upload your local music personal library to YouTube Music. &#160; &#160;</p>
+<p><b><a href="https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.2">Download Version 1.2 Installer</a></b> &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Application</h2>
-<p>This is a .Net application written in C# that uploads your person music library to YouTube. It has a minimalistic UI for basic settings such as:</p>
+<p>This is a .Net application written in C# that uploads your personal music library to YouTube. It has a minimalistic UI for basic settings such as:</p>
 <ul>
 <li>Choosing library folders.</li>
-<li>Option to start the application with windows (will start in hidden, accessible via the <a class="el" href="d8/dd0/namespace_system.html">System</a> Tray):</li>
+<li>Option to start the application with Windows (will start hidden, accessible via the <a class="el" href="d8/dd0/namespace_system.html">System</a> Tray):</li>
 </ul>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc2.png" alt="N|Solid" class="inline"/></a></p>
 <ul>
-<li>Option to throttle the upload speed to it doesn't use all your bandwidth.</li>
+<li>Option to throttle the upload speed so it doesn't use all your bandwidth.</li>
 </ul>
 <p>&#160;</p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1.png" alt="N|Solid" class="inline"/></a></p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6.png" alt="N|Solid" class="inline"/></a> &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
+Features</h2>
+<ul>
+<li>Connect and authenticate with YouTube Music.</li>
+<li>Upload songs to YouTube Music</li>
+<li>Add and remove library watch folders</li>
+<li>File system watcher to monitor for changes in watched folders</li>
+<li>Throttle upload bandwidth</li>
+<li>Start with Windows, minimized to the system tray area</li>
+<li>Reads music file tags, including cover art thumbnail</li>
+<li>If not all data is found in the tags of the music file, it will the MusicBrainz api to look it up (including the cover art thumbail) (Fetching the details is purely for UI purposes. It has now impact of uploading to YouTube).</li>
+<li>Show an upload log dialogue</li>
+<li>Show an issues log dialogue</li>
+</ul>
+<p>&#160; &#160;</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Reason for Creation</h2>
 <p>I used to have Google Play music and liked uploading my own content via its automatic library uploader application; I have a large library of music and you could stream your own uploaded songs from Google Play music without paying for a subscription...</p>
 <p>Google Play music is on its way out in December and its replacement, YouTube music doesn't currently have a library watcher application. You can only drag and drop manually into the browser for a limited number of songs... So, I decided to create one.</p>
@@ -114,47 +129,48 @@ Reason for Creation</h2>
 <li>Upload songs that aren't on YouTube music.</li>
 <li>Backup your songs *(you can't download them again from YouTube music, but you can use <a href="https://takeout.google.com/settings/takeout?pli=1">Google Takeout</a> to get them).* &#160; &#160;</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 How it Works</h2>
 <p>Since, as far as I'm aware, YouTube Music doesn't have an official API to utilise. Therefore this application mimics the HTTP request and responses from the YouTube music site uses (F12 in Firefox is your friend).</p>
 <p>YouTube Music uses an authentication cookie, and an authentication header consisting of a SAPISID hash from the cookie itself. Therefore, this application needs a browser so you can sign into YouTube in order to retrieve said cookie: &#160;</p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc3.png" alt="N|Solid" class="inline"/></a></p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc4.png" alt="N|Solid" class="inline"/></a></p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc5.png" alt="N|Solid" class="inline"/></a> &#160;</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Technology</h2>
 <ul>
 <li>.Net 4.7.2</li>
 <li>WinForms</li>
 <li>SQLite &#160; &#160;</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 IDE / Extensions</h2>
 <ul>
 <li>Microsoft Visual Studio 2019</li>
-<li>Microsoft Visual Studio Install Project &#160; &#160;</li>
+<li>Microsoft Visual Studio Installer Project &#160; &#160;</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Libraries</h2>
 <ul>
 <li><a href="https://www.nuget.org/packages/Brotli.NET">Brotli.Net (Decompress Google HTTP resonse body)</a></li>
 <li><a href="https://github.com/StackExchange/Dapper">Dapper</a></li>
 <li><a href="https://github.com/dennismagno/metroframework-modern-ui">Metro Framework (UI Styling)</a></li>
-<li><a href="http://www.ookii.org/software/dialogs">Ookii Dialogues</a> &#160; &#160;</li>
+<li><a href="http://www.ookii.org/software/dialogs">Ookii Dialogues</a></li>
+<li><a href="https://github.com/avatar29A/MusicBrainz">MusicBrainz API</a> &#160; &#160;</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Tools</h2>
 <ul>
 <li><a href="https://www.doxygen.nl/index.html">Doxygen (Source code HTML documentation)</a> &#160; &#160;</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Web Control</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/microsoft-edge/webview2/">WebView2</a> &#160;</li>
 </ul>
-<p><b>WebView2</b> is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing its still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.</p>
+<p><b>WebView2</b> is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing it's still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.</p>
 <p>Using the native WPF or WinForms web control or GeckoFX you just get a web page asking to update the browser. Using CefSharp you get a page telling you the browser isn't secure enough.</p>
-<p>I believe I've managed to get it stable, although you do need the latest version of Microsoft Edge installed (or maybe even still the verison of <a href="https://www.microsoftedgeinsider.com/en-us/download">Microsoft Edge from the Canary channel:</a>). <b>The YT Music Uploader installer contains and installer for this a dependency for convenience.</b></p>
+<p>I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the version of <a href="https://www.microsoftedgeinsider.com/en-us/download">Microsoft Edge from the Canary channel:</a>). <b>The YT Music Uploader Application self-contains the files needed for this dependency for convenience so you shouldn't need to install anything else other than this app.</b></p>
 <p>Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely. &#160; &#160;</p>
 <p><b>GOTCHAS</b> &#160;</p>
 <p>One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up <b>before</b> navigating to any URL: &#160;</p>
@@ -171,23 +187,24 @@ Web Control</h2>
 <div class="line">    browser.CoreWebView2.AddWebResourceRequestedFilter(&quot;*&quot;, CoreWebView2WebResourceContext.All);</div>
 <div class="line">    browser.CoreWebView2.WebResourceRequested += CoreWebView2_WebResourceRequested;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 How Long Will This Application Last?</h2>
 <p>Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube music develops...</p>
 <p>I'm going to be using this application for personal use, so I'll know straight aware when it's not working and will attempt to update the API call implementation as soon as possible. &#160; &#160;</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Further Development Considerations</h2>
 <ul>
-<li>Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only got a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple 'fuzzy / AI logic' result sets for 'similar' songs.</li>
+<li>Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only get a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple 'fuzzy / AI logic' result sets for 'similar' songs. I'll keep working on it.</li>
 <li>Would like to add the ability to upload playlists *(<a href="https://ytmusicapi.readthedocs.io/en/latest/">sigma67</a> has included this ability in his API so it's definately do-able).* &#160; &#160;</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Special Thanks</h2>
 <ul>
 <li><a href="https://ytmusicapi.readthedocs.io/en/latest/">sigma67</a> - Who created a Python YouTube Music API that I could reference. <a href="https://github.com/sigma67/ytmusicapi">sigma67: Github</a>.</li>
 <li><a href="https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator">wilsone8</a> - Who created a very fast Windows directory enumerator.</li>
 <li><a href="https://stackoverflow.com/users/984724/dave-thomas">Dave Thomas</a> - Who worked out how to get the SAPISID hash from the the YouTube Music authentication cookie on a post on <a href="https://stackoverflow.com/a/32065323/5726546">StackOverflow</a>.</li>
 <li><a href="https://stackoverflow.com/users/909365/0xdeadbeef">0xDEADBEEF</a> - Who made a simple class to bandwidth throttle a byte stream on a post on <a href="https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp">StackOverflow</a>.</li>
+<li><a href="https://github.com/avatar29A/MusicBrainz">avatar29A</a> - For the MusicBrainz .Net API implementation.</li>
 <li><a href="https://github.com/DjSt3rios">DjSt3rios</a> - For some WebView2 insight. </li>
 </ul>
 </div></div><!-- PageDoc -->

@@ -24,7 +24,8 @@ namespace YTMusicUploader.Providers.Repos
                 var musicFile = conn.Query<MusicFile>(
                         @"SELECT 
                               Id, 
-                              Path, 
+                              Path,
+                              MbId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -50,6 +51,7 @@ namespace YTMusicUploader.Providers.Repos
                         @"SELECT 
                               Id, 
                               Path, 
+                              MbId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -78,6 +80,7 @@ namespace YTMusicUploader.Providers.Repos
                         @"SELECT
                               Id, 
                               Path, 
+                              MbId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -109,6 +112,7 @@ namespace YTMusicUploader.Providers.Repos
                                 @"SELECT 
                                        Id, 
                                        Path, 
+                                       MbId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -142,6 +146,7 @@ namespace YTMusicUploader.Providers.Repos
                                 @"SELECT 
                                        Id, 
                                        Path, 
+                                       MbId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -169,6 +174,7 @@ namespace YTMusicUploader.Providers.Repos
                                 @"SELECT 
                                        Id, 
                                        Path, 
+                                       MbId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -287,11 +293,13 @@ namespace YTMusicUploader.Providers.Repos
                                 INTO MusicFiles (
                                         Path, 
                                         Hash,
+                                        MbId,
                                         LastUpload, 
                                         Error,
                                         ErrorReason) 
                                 VALUES (@Path, 
                                         @Hash,
+                                        @MbId,
                                         @LastUpload, 
                                         @Error,
                                         @ErrorReason);
@@ -348,6 +356,7 @@ namespace YTMusicUploader.Providers.Repos
                         @"UPDATE MusicFiles
                              SET Path = @Path,
                                  Hash = @Hash,
+                                 MbId = @MbId,
                                  LastUpload = @LastUpload, 
                                  Error = @Error,
                                  ErrorReason = @ErrorReason,

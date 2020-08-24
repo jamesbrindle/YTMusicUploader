@@ -1,0 +1,218 @@
+\hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream}{}\doxysection{Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream Class Reference}
+\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream}\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+
+
+Throttle a stream -\/$>$ Very useful for throttle Http\+Web\+Request uploads / downloads.  
+
+
+
+
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{d0/d81/class_y_t_music_uploader_1_1_business_1_1_throttled_stream__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{d9/d7d/class_y_t_music_uploader_1_1_business_1_1_throttled_stream__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a037c90217f2099e487a269bca809ece4}{Throttled\+Stream}} (\mbox{\hyperlink{class_stream}{Stream}} parent\+Stream, \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form}{Main\+Form}} main\+Form, int file\+Bytes, int max\+Bytes\+Per\+Second=int.\+Max\+Value)
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_stream}{Stream}} with Data bandwith cap \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a4d6b87da063d15f53db44a8656e3d174}{Close}} ()
+\item 
+override void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a0c80d7efc113a2c34efb506cb55ac25f}{Flush}} ()
+\item 
+override int \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a54210cec7befffc26b9acc2844a20855}{Read}} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
+\item 
+override long \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a3798cdefd1c1759f2f017bf4f9855d0e}{Seek}} (long offset, Seek\+Origin origin)
+\item 
+override void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a01181714c94f846d5534ff9a17be947b}{Set\+Length}} (long value)
+\item 
+override void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a2d5931b2f39a03380b6be5e628ce7f7c}{Write}} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_ad692883ad188d2bc089ba5027479b1d6}{Throttle}} (int bytes)
+\item 
+override void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_aec634946591fd2a20d8e8d624f99471c}{Dispose}} (bool disposing)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a0d2462d4cde553ebff36149ede57d8d2}{Max\+Bytes\+Per\+Second}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Number of Bytes that are allowed per second \end{DoxyCompactList}\item 
+override bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_ab32a733d5624864e2a94bddc06f0213a}{Can\+Read}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a78de3305c795e3cbf2fd28fc4033f8a2}{Can\+Seek}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a9d2df8cb6c5e3e3eafb4800e32e31a81}{Can\+Write}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override long \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a1adf131054795a6f1b64706afcceaea4}{Length}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override long \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a399d5cc5bd4af4eb601d6c4d10825729}{Position}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Throttle a stream -\/$>$ Very useful for throttle Http\+Web\+Request uploads / downloads. 
+
+Thanks to\+: 0x\+D\+E\+A\+D\+B\+E\+EF\+: \href{https://stackoverflow.com/users/909365/0xdeadbeef}{\texttt{ https\+://stackoverflow.\+com/users/909365/0xdeadbeef}}
+
+Usage\+:
+
+var stream = request.\+Get\+Request\+Stream(); var throttled\+Stream = new Throttled\+Stream(new Memory\+Stream(file\+Bytes), upload\+Speed\+In\+Bytes\+Per\+Second); throttled\+Stream.\+Copy\+To(stream); stream.\+Close();
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a037c90217f2099e487a269bca809ece4}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a037c90217f2099e487a269bca809ece4}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!ThrottledStream@{ThrottledStream}}
+\index{ThrottledStream@{ThrottledStream}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{ThrottledStream()}{ThrottledStream()}}
+{\footnotesize\ttfamily Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Throttled\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_stream}{Stream}}}]{parent\+Stream,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form}{Main\+Form}}}]{main\+Form,  }\item[{int}]{file\+Bytes,  }\item[{int}]{max\+Bytes\+Per\+Second = {\ttfamily int.MaxValue} }\end{DoxyParamCaption})}
+
+
+
+Creates a new \mbox{\hyperlink{class_stream}{Stream}} with Data bandwith cap 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Stream} & The original stream in which to throttle\\
+\hline
+{\em max\+Bytes\+Per\+Second} & The maximum bytes per second allowed\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a4d6b87da063d15f53db44a8656e3d174}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a4d6b87da063d15f53db44a8656e3d174}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Close@{Close}}
+\index{Close@{Close}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily override void Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_aec634946591fd2a20d8e8d624f99471c}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_aec634946591fd2a20d8e8d624f99471c}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily override void Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Dispose (\begin{DoxyParamCaption}\item[{bool}]{disposing }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a0c80d7efc113a2c34efb506cb55ac25f}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a0c80d7efc113a2c34efb506cb55ac25f}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Flush@{Flush}}
+\index{Flush@{Flush}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Flush()}{Flush()}}
+{\footnotesize\ttfamily override void Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a54210cec7befffc26b9acc2844a20855}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a54210cec7befffc26b9acc2844a20855}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Read@{Read}}
+\index{Read@{Read}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Read()}{Read()}}
+{\footnotesize\ttfamily override int Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Read (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{buffer,  }\item[{int}]{offset,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a54210cec7befffc26b9acc2844a20855_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a3798cdefd1c1759f2f017bf4f9855d0e}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a3798cdefd1c1759f2f017bf4f9855d0e}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Seek@{Seek}}
+\index{Seek@{Seek}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Seek()}{Seek()}}
+{\footnotesize\ttfamily override long Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Seek (\begin{DoxyParamCaption}\item[{long}]{offset,  }\item[{Seek\+Origin}]{origin }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a01181714c94f846d5534ff9a17be947b}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a01181714c94f846d5534ff9a17be947b}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!SetLength@{SetLength}}
+\index{SetLength@{SetLength}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{SetLength()}{SetLength()}}
+{\footnotesize\ttfamily override void Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Set\+Length (\begin{DoxyParamCaption}\item[{long}]{value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_ad692883ad188d2bc089ba5027479b1d6}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_ad692883ad188d2bc089ba5027479b1d6}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Throttle@{Throttle}}
+\index{Throttle@{Throttle}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Throttle()}{Throttle()}}
+{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Throttle (\begin{DoxyParamCaption}\item[{int}]{bytes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream_ad692883ad188d2bc089ba5027479b1d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a2d5931b2f39a03380b6be5e628ce7f7c}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a2d5931b2f39a03380b6be5e628ce7f7c}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Write@{Write}}
+\index{Write@{Write}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Write()}{Write()}}
+{\footnotesize\ttfamily override void Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Write (\begin{DoxyParamCaption}\item[{byte\mbox{[}$\,$\mbox{]}}]{buffer,  }\item[{int}]{offset,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a2d5931b2f39a03380b6be5e628ce7f7c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_ab32a733d5624864e2a94bddc06f0213a}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_ab32a733d5624864e2a94bddc06f0213a}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!CanRead@{CanRead}}
+\index{CanRead@{CanRead}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{CanRead}{CanRead}}
+{\footnotesize\ttfamily override bool Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Can\+Read\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a78de3305c795e3cbf2fd28fc4033f8a2}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a78de3305c795e3cbf2fd28fc4033f8a2}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!CanSeek@{CanSeek}}
+\index{CanSeek@{CanSeek}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{CanSeek}{CanSeek}}
+{\footnotesize\ttfamily override bool Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Can\+Seek\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a9d2df8cb6c5e3e3eafb4800e32e31a81}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a9d2df8cb6c5e3e3eafb4800e32e31a81}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!CanWrite@{CanWrite}}
+\index{CanWrite@{CanWrite}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{CanWrite}{CanWrite}}
+{\footnotesize\ttfamily override bool Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Can\+Write\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a1adf131054795a6f1b64706afcceaea4}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a1adf131054795a6f1b64706afcceaea4}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Length@{Length}}
+\index{Length@{Length}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Length}{Length}}
+{\footnotesize\ttfamily override long Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Length\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a0d2462d4cde553ebff36149ede57d8d2}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a0d2462d4cde553ebff36149ede57d8d2}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!MaxBytesPerSecond@{MaxBytesPerSecond}}
+\index{MaxBytesPerSecond@{MaxBytesPerSecond}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{MaxBytesPerSecond}{MaxBytesPerSecond}}
+{\footnotesize\ttfamily int Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Max\+Bytes\+Per\+Second\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Number of Bytes that are allowed per second 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a399d5cc5bd4af4eb601d6c4d10825729}\label{class_y_t_music_uploader_1_1_business_1_1_throttled_stream_a399d5cc5bd4af4eb601d6c4d10825729}} 
+\index{YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}!Position@{Position}}
+\index{Position@{Position}!YTMusicUploader.Business.ThrottledStream@{YTMusicUploader.Business.ThrottledStream}}
+\doxysubsubsection{\texorpdfstring{Position}{Position}}
+{\footnotesize\ttfamily override long Y\+T\+Music\+Uploader.\+Business.\+Throttled\+Stream.\+Position\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Business/\mbox{\hyperlink{_throttle_stream_8cs}{Throttle\+Stream.\+cs}}\end{DoxyCompactItemize}

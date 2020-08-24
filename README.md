@@ -27,6 +27,23 @@ This is a .Net application written in C# that uploads your personal music librar
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6.png)](https://github.com/jamesbrindle/YTMusicUploader)
+
+&nbsp;
+&nbsp;
+
+### Features
+
+- Connect and authenticate with YouTube Music.
+- Upload songs to YouTube Music
+- Add and remove library watch folders
+- File system watcher to monitor for changes in watched folders
+- Throttle upload bandwidth
+- Start with Windows, minimized to the system tray area
+- Reads music file tags, including cover art thumbnail
+- If not all data is found in the tags of the music file, it will the MusicBrainz api to look it up (including the cover art thumbail) (Fetching the details is purely for UI purposes. It has now impact of uploading to YouTube).
+- Show an upload log dialogue
+- Show an issues log dialogue
+
 &nbsp;
 &nbsp;
 
@@ -78,6 +95,7 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 - [Dapper](https://github.com/StackExchange/Dapper) 
 - [Metro Framework (UI Styling)](https://github.com/dennismagno/metroframework-modern-ui) 
 - [Ookii Dialogues](http://www.ookii.org/software/dialogs)
+- [MusicBrainz API](https://github.com/avatar29A/MusicBrainz)
 &nbsp;
 &nbsp;
 
@@ -151,6 +169,7 @@ I'm going to be using this application for personal use, so I'll know straight a
 - [wilsone8](https://www.codeproject.com/Articles/38959/A-Faster-Directory-Enumerator) - Who created a very fast Windows directory enumerator.
 - [Dave Thomas](https://stackoverflow.com/users/984724/dave-thomas) - Who worked out how to get the SAPISID hash from the the YouTube Music authentication cookie on a post on [StackOverflow](https://stackoverflow.com/a/32065323/5726546).
 - [0xDEADBEEF](https://stackoverflow.com/users/909365/0xdeadbeef) - Who made a simple class to bandwidth throttle a byte stream on a post on [StackOverflow](https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp).
+- [avatar29A](https://github.com/avatar29A/MusicBrainz) - For the MusicBrainz .Net API implementation.
 - [DjSt3rios](https://github.com/DjSt3rios) - For some WebView2 insight.
 
 
