@@ -12,7 +12,6 @@ using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Business;
 using YTMusicUploader.Dialogues;
-using YTMusicUploader.Helpers;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.Repos;
@@ -94,13 +93,12 @@ namespace YTMusicUploader
             SuspendDrawing(this);
 
             MusicDataFetcher = new MusicDataFetcher();
-
             SetVersion("v" + Global.ApplicationVersion);
 
             lblIssues.GotFocus += LinkLabel_GotFocus;
             lblDiscoveredFiles.GotFocus += LinkLabel_GotFocus;
 
-            if (!EdgeCoreHelper.CheckEdgeCoreFilesArePresentAndCorrect())
+            if (!EdgeDependencyChecker.CheckEdgeCoreFilesArePresentAndCorrect())
             {
                 btnConnectToYoutube.Enabled = false;
                 InstallEdge();
@@ -165,7 +163,7 @@ namespace YTMusicUploader
                 ToolTipTitle = "YouTube Music Connection",
                 ToolTipIcon = ToolTipIcon.Warning,
                 UseFading = true,
-                IsBalloon = true,                
+                IsBalloon = true,
                 InitialDelay = 750,
             };
             ConnectFailureTooltip.SetToolTip(pbNotConnectedToYoutube,
@@ -415,14 +413,15 @@ namespace YTMusicUploader
         private void LoadDb()
         {
             Settings = SettingsRepo.Load();
-            RegistryHelper.SetStartWithWindows(Settings.StartWithWindows);
+            RegistrySettings.SetStartWithWindows(Settings.StartWithWindows);
             SetThrottleSpeed(
                 Settings.ThrottleSpeed == 0 || Settings.ThrottleSpeed == -1
                     ? "-1"
                     : (Convert.ToDouble(Settings.ThrottleSpeed) / 1000000).ToString());
 
-            SetStartWithWindows(Settings.StartWithWindows);
             InitialFilesCount = MusicFileRepo.CountAll();
+
+            SetStartWithWindows(Settings.StartWithWindows);
             SetDiscoveredFilesLabel(InitialFilesCount.ToString());
             SetIssuesLabel(MusicFileRepo.CountIssues().ToString());
             SetUploadedLabel(MusicFileRepo.CountUploaded().ToString());
@@ -454,6 +453,6 @@ namespace YTMusicUploader
             e.Cancel = true;
             WindowState = FormWindowState.Minimized;
             ShowInTaskbar = false;
-        }       
+        }
     }
 }

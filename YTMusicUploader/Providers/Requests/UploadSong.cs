@@ -1,5 +1,4 @@
-﻿using JBToolkit.StreamHelpers;
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using YTMusicUploader.Business;
@@ -17,6 +16,10 @@ namespace YTMusicUploader.Providers
     {
         /// <summary>
         /// HttpWebRequest POST request to send to YouTube to upload a music file.
+        /// 
+        /// Thanks to: sigma67: 
+        ///     https://ytmusicapi.readthedocs.io/en/latest/ 
+        ///     https://github.com/sigma67/ytmusicapi
         /// 
         /// </summary>
         /// <param name="mainForm">Instance of the main form to utilise the public methods of and update status'</param>
@@ -42,7 +45,7 @@ namespace YTMusicUploader.Providers
                     return false;
                 }
 
-                var startUploadRequest = (HttpWebRequest)WebRequest.Create(UploadUrl);
+                var startUploadRequest = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicUploadUrl);
                 startUploadRequest = AddStandardHeaders(startUploadRequest, cookieValue);
 
                 startUploadRequest.ContentType = "application/x-www-form-urlencoded;charset=utf-8";

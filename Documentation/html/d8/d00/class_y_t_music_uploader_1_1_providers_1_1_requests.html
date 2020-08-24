@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('d8/d00/class_y_t_music_uploader_1_1_pr
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#properties">Properties</a> &#124;
 <a href="../../d0/ddb/class_y_t_music_uploader_1_1_providers_1_1_requests-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">YTMusicUploader.Providers.Requests Class Reference</div>  </div>
@@ -99,7 +98,7 @@ Collaboration diagram for YTMusicUploader.Providers.Requests:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/dee/class_y_t_music_uploader_1_1_providers_1_1_requests__coll__graph.png" border="0" usemap="#_y_t_music_uploader_8_providers_8_requests_coll__map" alt="Collaboration graph"/></div>
 <map name="_y_t_music_uploader_8_providers_8_requests_coll__map" id="_y_t_music_uploader_8_providers_8_requests_coll__map">
-<area shape="rect" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="5,5,216,229"/>
+<area shape="rect" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="5,5,216,200"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -126,18 +125,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c548db725ae9ec8fda7e4a2433d412c"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c">GetPostBytes</a> (string stringToEncode)</td></tr>
 <tr class="memdesc:a2c548db725ae9ec8fda7e4a2433d412c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded).  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c">More...</a><br /></td></tr>
 <tr class="separator:a2c548db725ae9ec8fda7e4a2433d412c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a5536a4abb3b71efb1000db33e41b3c03"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a5536a4abb3b71efb1000db33e41b3c03">YouTubeBaseUrl</a><code> [get]</code></td></tr>
-<tr class="memdesc:a5536a4abb3b71efb1000db33e41b3c03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main API URL for YouTube music  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a5536a4abb3b71efb1000db33e41b3c03">More...</a><br /></td></tr>
-<tr class="separator:a5536a4abb3b71efb1000db33e41b3c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0840525e7767a049fb22c5068658ad08"><td class="memItemLeft" align="right" valign="top">static string?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a0840525e7767a049fb22c5068658ad08">UploadUrl</a><code> [get]</code></td></tr>
-<tr class="memdesc:a0840525e7767a049fb22c5068658ad08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upload specific API URL  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a0840525e7767a049fb22c5068658ad08">More...</a><br /></td></tr>
-<tr class="separator:a0840525e7767a049fb22c5068658ad08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc1ce20e5cbbb8c9d167a081b6cf99ba"><td class="memItemLeft" align="right" valign="top">static string?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#abc1ce20e5cbbb8c9d167a081b6cf99ba">Params</a><code> [get]</code></td></tr>
-<tr class="memdesc:abc1ce20e5cbbb8c9d167a081b6cf99ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main URL parameters for typical YouTube music API calls  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#abc1ce20e5cbbb8c9d167a081b6cf99ba">More...</a><br /></td></tr>
-<tr class="separator:abc1ce20e5cbbb8c9d167a081b6cf99ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored. </p>
@@ -559,6 +546,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>HttpWebRequest POST request to send to YouTube to upload a music file. </p>
+<p>Thanks to: sigma67: <a href="https://ytmusicapi.readthedocs.io/en/latest/">https://ytmusicapi.readthedocs.io/en/latest/</a> <a href="https://github.com/sigma67/ytmusicapi">https://github.com/sigma67/ytmusicapi</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mainForm</td><td>Instance of the main form to utilise the public methods of and update status'</td></tr>
@@ -592,84 +580,11 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="abc1ce20e5cbbb8c9d167a081b6cf99ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc1ce20e5cbbb8c9d167a081b6cf99ba">&#9670;&nbsp;</a></span>Params</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string? YTMusicUploader.Providers.Requests.Params</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Main URL parameters for typical YouTube music API calls </p>
-
-</div>
-</div>
-<a id="a0840525e7767a049fb22c5068658ad08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0840525e7767a049fb22c5068658ad08">&#9670;&nbsp;</a></span>UploadUrl</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string? YTMusicUploader.Providers.Requests.UploadUrl</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Upload specific API URL </p>
-
-</div>
-</div>
-<a id="a5536a4abb3b71efb1000db33e41b3c03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5536a4abb3b71efb1000db33e41b3c03">&#9670;&nbsp;</a></span>YouTubeBaseUrl</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string YTMusicUploader.Providers.Requests.YouTubeBaseUrl</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Main API URL for YouTube music </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/Requests/<a class="el" href="../../db/d14/_check_authorisation_8cs.html">CheckAuthorisation.cs</a></li>
-<li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/<a class="el" href="../../d7/d81/_requests_8cs.html">Requests.cs</a></li>
 <li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/Requests/<a class="el" href="../../de/d5e/_check_uploaded_8cs.html">CheckUploaded.cs</a></li>
 <li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/Requests/<a class="el" href="../../d5/dc1/_upload_song_8cs.html">UploadSong.cs</a></li>
+<li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/<a class="el" href="../../d7/d81/_requests_8cs.html">Requests.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

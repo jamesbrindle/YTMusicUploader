@@ -4,9 +4,19 @@ using System.Collections.Generic;
 
 namespace YTMusicUploader.Providers.RequestModels
 {
+    /// <summary>
+    /// Deserialised HttpWebRequest body to send to YouTube Music to perform a search of uploaded songs
+    /// </summary>
     [Serializable]
-    public class SearchContext
+    public class SearchContext : IRequestModel
     {
+        public Context context { get; set; }
+
+        [JsonProperty("params")]
+        public string parameters { get; set; }
+        public string query { get; set; }
+
+
         [Serializable]
         public class ActivePlayers
         {
@@ -84,16 +94,6 @@ namespace YTMusicUploader.Providers.RequestModels
             public Client client { get; set; }
             public Request request { get; set; }
             public User user { get; set; }
-        }
-
-        [Serializable]
-        public class Root
-        {
-            public Context context { get; set; }
-
-            [JsonProperty("params")]
-            public string parameters { get; set; }
-            public string query { get; set; }
         }
     }
 }

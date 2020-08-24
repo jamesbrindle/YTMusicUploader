@@ -49,7 +49,7 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .ti -1c
 .RI "\fBMusicFileMetaData\fP \fBGetMusicFileMetaData\fP (string path)"
 .br
-.RI "Returns a single multi-line string of music file meta data such as: "
+.RI "Returns \fBMusicFileMetaData\fP object of music file meta data such as: "
 .ti -1c
 .RI "string \fBGetMusicFileMetaDataString\fP (string path)"
 .br
@@ -127,7 +127,7 @@ Peforms a HTTP web request and downloads an image
 .SS "\fBMusicFileMetaData\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaData (string path)"
 
 .PP
-Returns a single multi-line string of music file meta data such as: 
+Returns \fBMusicFileMetaData\fP object of music file meta data such as: 
 .IP "\(bu" 2
 Artist
 .IP "\(bu" 2
@@ -185,11 +185,12 @@ Gets a TabLib (TabLib library object of music file meta data) file object of a g
 .PP
 \fBParameters\fP
 .RS 4
-\fIpath\fP 
+\fIpath\fP Full path to music file
 .RE
 .PP
 \fBReturns\fP
 .RS 4
+TagLib File
 .RE
 .PP
 

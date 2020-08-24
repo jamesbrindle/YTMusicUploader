@@ -1,5 +1,5 @@
 ﻿using System;
-using YTMusicUploader.Helpers;
+using YTMusicUploader.Business;
 
 namespace YTMusicUploader
 {
@@ -9,7 +9,7 @@ namespace YTMusicUploader
         {
             Settings.StartWithWindows = cbStartWithWindows.Checked;
             Settings.Save();
-            RegistryHelper.SetStartWithWindows(cbStartWithWindows.Checked);
+            RegistrySettings.SetStartWithWindows(cbStartWithWindows.Checked);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using JBToolkit.Windows;
 using System.Threading;
 using System.Windows.Forms;
-using YTMusicUploader.Helpers;
 
 namespace YTMusicUploader
 {

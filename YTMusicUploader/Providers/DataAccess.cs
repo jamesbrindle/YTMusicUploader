@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using System;
-using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
@@ -13,28 +12,17 @@ namespace YTMusicUploader.Providers
     public abstract class DataAccess
     {
         /// <summary>
-        /// Return the database file location in the users AppData path
-        /// </summary>
-        public static string DBLocation
-        {
-            get
-            {
-                return Path.Combine(Global.AppDataLocation, @"ytuploader.db");
-            }
-        }
-
-        /// <summary>
         /// Checks if the database file is present in the users AppData path. If it's not 
         /// present it will copy over the template database file from the Program Files (or working directory) AppData folder
         /// </summary>
         public static void CheckAndCopyDatabaseFile()
         {
-            if (!File.Exists(DBLocation))
+            if (!File.Exists(Global.DbLocation))
             {
                 if (!Directory.Exists(Global.AppDataLocation))
                     Directory.CreateDirectory(Global.AppDataLocation);
 
-                File.Copy(Path.Combine(Global.WorkingDirectory, @"AppData\ytuploader.db"), DBLocation);
+                File.Copy(Path.Combine(Global.WorkingDirectory, @"AppData\ytuploader.db"), Global.DbLocation);
             }
             else
             {
@@ -60,6 +48,9 @@ namespace YTMusicUploader.Providers
             }
         }
 
+        /// <summary>
+        /// Runs on form load to ensure the database schema is at the latest version following an application upgrade
+        /// </summary>
         public static void PerformAnyDbUpgrades()
         {
             using (var conn = DbConnection())
@@ -83,7 +74,7 @@ namespace YTMusicUploader.Providers
         /// <returns></returns>
         public static SQLiteConnection DbConnection()
         {
-            return new SQLiteConnection("Data Source=" + DBLocation);
+            return new SQLiteConnection("Data Source=" + Global.DbLocation);
         }
     }
 
@@ -134,8 +125,10 @@ namespace YTMusicUploader.Providers
         private static string GetElapsedTime(TimeSpan timespan)
         {
             return string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                 timespan.Hours, timespan.Minutes, timespan.Seconds,
-                 timespan.Milliseconds / 10);
+                             timespan.Hours,
+                             timespan.Minutes,
+                             timespan.Seconds,
+                             timespan.Milliseconds / 10);
         }
     }
 }

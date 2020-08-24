@@ -13,18 +13,12 @@ var dir_0e014969c9e81403f3d099ca0567a7d4 =
       [ "CultureHelper", "df/d18/class_j_b_toolkit_1_1_culture_1_1_culture_helper.html", null ]
     ] ],
     [ "DirectoryHelper.cs", "d8/d15/_directory_helper_8cs.html", "d8/d15/_directory_helper_8cs" ],
-    [ "EdgeCoreHelper.cs", "df/d45/_edge_core_helper_8cs.html", [
-      [ "EdgeCoreHelper", "d0/ddc/class_y_t_music_uploader_1_1_helpers_1_1_edge_core_helper.html", "d0/ddc/class_y_t_music_uploader_1_1_helpers_1_1_edge_core_helper" ]
-    ] ],
     [ "Extensions.cs", "da/dc3/_extensions_8cs.html", null ],
     [ "FastFileSearcher.cs", "de/d14/_fast_file_searcher_8cs.html", [
       [ "FileData", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data" ]
     ] ],
     [ "FuzzyLogic.cs", "d5/da6/_fuzzy_logic_8cs.html", null ],
     [ "NetworkHelper.cs", "da/d30/_network_helper_8cs.html", null ],
-    [ "RegistryHelper.cs", "d3/d9a/_registry_helper_8cs.html", [
-      [ "RegistryHelper", "d2/d8f/class_y_t_music_uploader_1_1_helpers_1_1_registry_helper.html", null ]
-    ] ],
     [ "SafeFileStream.cs", "d4/d03/_safe_file_stream_8cs.html", [
       [ "SafeFileStream", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream" ]
     ] ],

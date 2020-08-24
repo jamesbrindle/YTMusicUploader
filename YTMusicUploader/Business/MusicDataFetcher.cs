@@ -60,8 +60,8 @@ namespace YTMusicUploader.Business
                 }
 
                 var result = GetRecordingFromMusicBrainzWithAlbumNameVariations(
-                                        tags.FirstAlbumArtist, 
-                                        tags.Album, 
+                                        tags.FirstAlbumArtist,
+                                        tags.Album,
                                         tags.Title);
                 if (result != null)
                     return result.Id;
@@ -299,7 +299,7 @@ namespace YTMusicUploader.Business
         }
 
         /// <summary>
-        /// Returns a single multi-line string of music file meta data such as:
+        /// Returns MusicFileMetaData object of music file meta data such as:
         ///   - Artist
         ///   - Album name
         ///   - Track name
@@ -312,7 +312,6 @@ namespace YTMusicUploader.Business
         {
             try
             {
-                var sb = new StringBuilder();
                 var tags = GetMusicTagLibFile(path);
 
                 string artist = string.Empty;
@@ -404,8 +403,8 @@ namespace YTMusicUploader.Business
         /// <summary>
         /// Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
+        /// <param name="path">Full path to music file</param>
+        /// <returns>TagLib File</returns>
         public static TagLib.File GetMusicTagLibFile(string path)
         {
             TagLib.File file = TagLib.File.Create(path);

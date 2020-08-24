@@ -27,7 +27,7 @@ var hierarchy =
     ] ],
     [ "YTMusicUploader.Providers.DbOperationResult", "d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html", null ],
     [ "DynamicObject", "d4/ddd/class_dynamic_object.html", null ],
-    [ "YTMusicUploader.Helpers.EdgeCoreHelper", "d0/ddc/class_y_t_music_uploader_1_1_helpers_1_1_edge_core_helper.html", null ],
+    [ "YTMusicUploader.Business.EdgeDependencyChecker", "d0/d3f/class_y_t_music_uploader_1_1_business_1_1_edge_dependency_checker.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.Endpoint", "d6/d3a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_endpoint.html", null ],
     [ "EventArgs", "d5/d6c/class_event_args.html", [
       [ "YTMusicUploader.Business.Pipes.DataReceivedEventArgs", "dd/d90/class_y_t_music_uploader_1_1_business_1_1_pipes_1_1_data_received_event_args.html", null ]
@@ -60,6 +60,10 @@ var hierarchy =
     [ "IRequestCache", "d5/d22/class_i_request_cache.html", [
       [ "YTMusicUploader.Business.MusicBrainz.FileRequestCache", "d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html", null ]
     ] ],
+    [ "YTMusicUploader.Providers.RequestModels.IRequestModel", "d4/d23/interface_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_i_request_model.html", [
+      [ "YTMusicUploader.Providers.RequestModels.SearchContext", "db/d9e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context.html", null ],
+      [ "YTMusicUploader.Providers.RequestModels.SearchResult", "d3/dad/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result.html", null ]
+    ] ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.ItemSectionRenderer", "d8/d96/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_item_section_renderer.html", null ],
     [ "Label", "d9/d06/class_label.html", [
       [ "JBToolkit.WinForms.AntiAliasedLabel", "d3/d4f/class_j_b_toolkit_1_1_win_forms_1_1_anti_aliased_label.html", null ]
@@ -83,19 +87,15 @@ var hierarchy =
     [ "PictureBox", "d3/d5d/class_picture_box.html", [
       [ "JBToolkit.WinForms.RoundPictureBox", "de/d6c/class_j_b_toolkit_1_1_win_forms_1_1_round_picture_box.html", null ]
     ] ],
-    [ "YTMusicUploader.Helpers.RegistryHelper", "d2/d8f/class_y_t_music_uploader_1_1_helpers_1_1_registry_helper.html", null ],
+    [ "YTMusicUploader.Business.RegistrySettings", "d7/d03/class_y_t_music_uploader_1_1_business_1_1_registry_settings.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchContext.Request", "df/db6/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_request.html", null ],
     [ "YTMusicUploader.Providers.Requests", "d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.ResponseContext", "d1/d82/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_response_context.html", null ],
-    [ "YTMusicUploader.Providers.RequestModels.SearchContext.Root", "d1/dc6/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_root.html", null ],
-    [ "YTMusicUploader.Providers.RequestModels.SearchResult.Root", "dc/d61/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_root.html", null ],
     [ "JBToolkit.WinForms.RoundedRectangleF", "d0/de3/class_j_b_toolkit_1_1_win_forms_1_1_rounded_rectangle_f.html", null ],
     [ "YTMusicUploader.CustomControls.RoundTooltip", "d1/d7e/class_y_t_music_uploader_1_1_custom_controls_1_1_round_tooltip.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.Run", "d5/dba/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_run.html", null ],
     [ "SafeHandleZeroOrMinusOneIsInvalid", "db/d0f/class_safe_handle_zero_or_minus_one_is_invalid.html", null ],
-    [ "YTMusicUploader.Providers.RequestModels.SearchContext", "db/d9e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.SearchEndpoint", "d3/da0/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_search_endpoint.html", null ],
-    [ "YTMusicUploader.Providers.RequestModels.SearchResult", "d3/dad/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.SectionListRenderer", "de/d99/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_section_list_renderer.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.ServiceTrackingParam", "d9/d04/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_service_tracking_param.html", null ],
     [ "Stream", "d1/d51/class_stream.html", [

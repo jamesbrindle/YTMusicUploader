@@ -25,7 +25,7 @@ namespace JBToolkit.Windows
 
         public DateTime CreationTime
         {
-            get { return this.CreationTimeUtc.ToLocalTime(); }
+            get { return CreationTimeUtc.ToLocalTime(); }
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace JBToolkit.Windows
         /// </summary>
         public DateTime LastAccesTime
         {
-            get { return this.LastAccessTimeUtc.ToLocalTime(); }
+            get { return LastAccessTimeUtc.ToLocalTime(); }
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace JBToolkit.Windows
         /// </summary>
         public DateTime LastWriteTime
         {
-            get { return this.LastWriteTimeUtc.ToLocalTime(); }
+            get { return LastWriteTimeUtc.ToLocalTime(); }
         }
 
         /// <summary>
@@ -93,22 +93,22 @@ namespace JBToolkit.Windows
         /// object wraps.</param>
         internal FileData(string dir, WIN32_FIND_DATA findData)
         {
-            this.Attributes = findData.dwFileAttributes;
+            Attributes = findData.dwFileAttributes;
 
 
-            this.CreationTimeUtc = ConvertDateTime(findData.ftCreationTime_dwHighDateTime,
-                                                findData.ftCreationTime_dwLowDateTime);
+            CreationTimeUtc = ConvertDateTime(findData.ftCreationTime_dwHighDateTime,
+                                              findData.ftCreationTime_dwLowDateTime);
 
-            this.LastAccessTimeUtc = ConvertDateTime(findData.ftLastAccessTime_dwHighDateTime,
+            LastAccessTimeUtc = ConvertDateTime(findData.ftLastAccessTime_dwHighDateTime,
                                                 findData.ftLastAccessTime_dwLowDateTime);
 
-            this.LastWriteTimeUtc = ConvertDateTime(findData.ftLastWriteTime_dwHighDateTime,
-                                                findData.ftLastWriteTime_dwLowDateTime);
+            LastWriteTimeUtc = ConvertDateTime(findData.ftLastWriteTime_dwHighDateTime,
+                                               findData.ftLastWriteTime_dwLowDateTime);
 
-            this.Size = CombineHighLowInts(findData.nFileSizeHigh, findData.nFileSizeLow);
+            Size = CombineHighLowInts(findData.nFileSizeHigh, findData.nFileSizeLow);
 
-            this.Name = findData.cFileName;
-            this.Path = System.IO.Path.Combine(dir, findData.cFileName);
+            Name = findData.cFileName;
+            Path = System.IO.Path.Combine(dir, findData.cFileName);
         }
 
         private static long CombineHighLowInts(uint high, uint low)
@@ -190,7 +190,7 @@ namespace JBToolkit.Windows
         /// </exception>
         public static IEnumerable<FileData> EnumerateFiles(string path)
         {
-            return FastDirectoryEnumerator.EnumerateFiles(path, "*");
+            return EnumerateFiles(path, "*");
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace JBToolkit.Windows
         /// </exception>
         public static IEnumerable<FileData> EnumerateFiles(string path, string searchPattern)
         {
-            return FastDirectoryEnumerator.EnumerateFiles(path, searchPattern, SearchOption.TopDirectoryOnly);
+            return EnumerateFiles(path, searchPattern, SearchOption.TopDirectoryOnly);
         }
 
         /// <summary>

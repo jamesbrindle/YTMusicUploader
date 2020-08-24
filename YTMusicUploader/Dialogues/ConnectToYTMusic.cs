@@ -8,8 +8,7 @@ using System.Windows.Forms;
 
 namespace YTMusicUploader.Dialogues
 {
-    /*
-    ## WARNING ####################################################################################
+    /*## WARNING ####################################################################################
     
      If  you change anything in the ConnectYTMusic layout, the .Desinger.cs will put the '.Source'
      property back into the WebView2 control. You need to make sure you remove the Source line
@@ -18,10 +17,7 @@ namespace YTMusicUploader.Dialogues
      If you don't then once deployed, the WebView2 control will try and use the exe folder location
      for cached files, which it doesn't have access to and so will fail to load.
 
-    ################################################################################################
-     */
-
-
+    ################################################################################################*/
 
     /// <summary>
     /// Shows a WebView2 control
@@ -69,7 +65,7 @@ namespace YTMusicUploader.Dialogues
                 await browser.EnsureCoreWebView2Async(env);
                 browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MainForm.SetConnectToYouTubeButtonEnabled(false);
                 MainForm.ShowMessageBox(

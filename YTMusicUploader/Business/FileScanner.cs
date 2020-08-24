@@ -94,7 +94,7 @@ namespace YTMusicUploader.Business
                     MusicFilesToDelete.Add(musicFile);
             }
 
-            using (var conn = new SQLiteConnection("Data Source=" + DataAccess.DBLocation))
+            using (var conn = new SQLiteConnection("Data Source=" + Global.DbLocation))
             {
                 SetStatus();
                 conn.Open();

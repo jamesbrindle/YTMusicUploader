@@ -370,7 +370,7 @@
             this.btnConnectToYoutube.TabIndex = 6;
             this.btnConnectToYoutube.Text = "Connect to YouTube Music";
             this.btnConnectToYoutube.Transparency = false;
-            this.btnConnectToYoutube.Click += new System.EventHandler(this.BtnConnectToYoutube_Click);
+            this.btnConnectToYoutube.Click += new System.EventHandler(this.BtnConnectToYouTube_Click);
             // 
             // lblVersion
             // 

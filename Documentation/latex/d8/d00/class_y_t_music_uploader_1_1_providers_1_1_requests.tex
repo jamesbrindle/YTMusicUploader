@@ -7,7 +7,8 @@ Http\+Web\+Request P\+O\+ST request to send to You\+Tube to check if the user\te
 
 
 
-Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Requests\+:\nopagebreak
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Requests\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,15 +32,6 @@ static Http\+Web\+Request \mbox{\hyperlink{class_y_t_music_uploader_1_1_provider
 \begin{DoxyCompactList}\small\item\em Required headers for any You\+Tube music A\+PI request \end{DoxyCompactList}\item 
 static byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a2c548db725ae9ec8fda7e4a2433d412c}{Get\+Post\+Bytes}} (string string\+To\+Encode)
 \begin{DoxyCompactList}\small\item\em Converts a string to a byte array for use in a Http\+Web\+Request upload stream (U\+T\+F8 encoded). \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Properties}
-\begin{DoxyCompactItemize}
-\item 
-static string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a5536a4abb3b71efb1000db33e41b3c03}{You\+Tube\+Base\+Url}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Main A\+PI U\+RL for You\+Tube music \end{DoxyCompactList}\item 
-static string? \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a0840525e7767a049fb22c5068658ad08}{Upload\+Url}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Upload specific A\+PI U\+RL \end{DoxyCompactList}\item 
-static string? \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_abc1ce20e5cbbb8c9d167a081b6cf99ba}{Params}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Main U\+RL parameters for typical You\+Tube music A\+PI calls \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -244,6 +236,8 @@ Here is the call graph for this function\+:\nopagebreak
 
 Http\+Web\+Request P\+O\+ST request to send to You\+Tube to upload a music file. 
 
+Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
+
 
 \begin{DoxyParams}{Parameters}
 {\em main\+Form} & Instance of the main form to utilise the public methods of and update status\textquotesingle{}\\
@@ -276,42 +270,9 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\doxysubsection{Property Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_abc1ce20e5cbbb8c9d167a081b6cf99ba}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_abc1ce20e5cbbb8c9d167a081b6cf99ba}} 
-\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!Params@{Params}}
-\index{Params@{Params}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
-\doxysubsubsection{\texorpdfstring{Params}{Params}}
-{\footnotesize\ttfamily string? Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Params\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
-
-
-
-Main U\+RL parameters for typical You\+Tube music A\+PI calls 
-
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a0840525e7767a049fb22c5068658ad08}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a0840525e7767a049fb22c5068658ad08}} 
-\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!UploadUrl@{UploadUrl}}
-\index{UploadUrl@{UploadUrl}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
-\doxysubsubsection{\texorpdfstring{UploadUrl}{UploadUrl}}
-{\footnotesize\ttfamily string? Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Upload\+Url\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
-
-
-
-Upload specific A\+PI U\+RL 
-
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a5536a4abb3b71efb1000db33e41b3c03}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a5536a4abb3b71efb1000db33e41b3c03}} 
-\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!YouTubeBaseUrl@{YouTubeBaseUrl}}
-\index{YouTubeBaseUrl@{YouTubeBaseUrl}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
-\doxysubsubsection{\texorpdfstring{YouTubeBaseUrl}{YouTubeBaseUrl}}
-{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+You\+Tube\+Base\+Url\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
-
-
-
-Main A\+PI U\+RL for You\+Tube music 
-
-
-
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\mbox{\hyperlink{_check_authorisation_8cs}{Check\+Authorisation.\+cs}}\item 
-D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\mbox{\hyperlink{_requests_8cs}{Requests.\+cs}}\item 
 D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\mbox{\hyperlink{_check_uploaded_8cs}{Check\+Uploaded.\+cs}}\item 
-D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\mbox{\hyperlink{_upload_song_8cs}{Upload\+Song.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\mbox{\hyperlink{_upload_song_8cs}{Upload\+Song.\+cs}}\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\mbox{\hyperlink{_requests_8cs}{Requests.\+cs}}\end{DoxyCompactItemize}

@@ -1,7 +1,7 @@
 <map id="OptimisedMetroForm" name="OptimisedMetroForm">
 <area shape="rect" id="node1" title=" " alt="" coords="348,5,492,83"/>
 <area shape="rect" id="node2" href="$d8/d24/class_y_t_music_uploader_1_1_dialogues_1_1_connect_to_y_t_music.html" title="Shows a WebView2 control https://docs.microsoft.com/en&#45;us/microsoft&#45;edge/webview2/" alt="" coords="5,255,195,391"/>
-<area shape="rect" id="node3" href="$da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html" title=" " alt="" coords="219,263,408,384"/>
+<area shape="rect" id="node3" href="$da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html" title="Dialogue" alt="" coords="219,263,408,384"/>
 <area shape="rect" id="node4" href="$d8/d32/class_y_t_music_uploader_1_1_dialogues_1_1_upload_log.html" title="Form to display upload successes. Data fetched from the local database." alt="" coords="432,263,621,384"/>
 <area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html" title=" " alt="" coords="645,131,869,516"/>
 </map>

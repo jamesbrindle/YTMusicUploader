@@ -12,7 +12,7 @@ namespace YTMusicUploader
     {
         // Connect to TY Music
 
-        private void BtnConnectToYoutube_Click(object sender, EventArgs e)
+        private void BtnConnectToYouTube_Click(object sender, EventArgs e)
         {
             try
             {
@@ -128,18 +128,34 @@ namespace YTMusicUploader
 
         private void LblIssues_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (IssueLogForm == null)
-                IssueLogForm = new IssueLog(this);
+            try
+            {
+                if (IssueLogForm == null)
+                    IssueLogForm = new IssueLog(this);
 
-            IssueLogForm.Show();
+                IssueLogForm.ShowDialog();
+            }
+            catch
+            {
+                IssueLogForm = new IssueLog(this);
+                IssueLogForm.ShowDialog();
+            }
         }
 
         private void LblUploaded_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (UploadLogForm == null)
-                UploadLogForm = new UploadLog(this);
+            try
+            {
+                if (UploadLogForm == null)
+                    UploadLogForm = new UploadLog(this);
 
-            UploadLogForm.Show();
+                UploadLogForm.ShowDialog();
+            }
+            catch
+            {
+                UploadLogForm = new UploadLog(this);
+                UploadLogForm.ShowDialog();
+            }
         }
 
         private void LinkLabel_GotFocus(object sender, EventArgs e)

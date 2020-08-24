@@ -39,22 +39,6 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .br
 .RI "Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)\&. "
 .in -1c
-.SS "Properties"
-
-.in +1c
-.ti -1c
-.RI "static string \fBYouTubeBaseUrl\fP\fC [get]\fP"
-.br
-.RI "Main API URL for YouTube music "
-.ti -1c
-.RI "static string? \fBUploadUrl\fP\fC [get]\fP"
-.br
-.RI "Upload specific API URL "
-.ti -1c
-.RI "static string? \fBParams\fP\fC [get]\fP"
-.br
-.RI "Main URL parameters for typical YouTube music API calls "
-.in -1c
 .SH "Detailed Description"
 .PP 
 HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. 
@@ -189,7 +173,7 @@ True if song is found, false otherwise
 .SS "static bool YTMusicUploader\&.Providers\&.Requests\&.UploadSong (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)\fC [static]\fP"
 
 .PP
-HttpWebRequest POST request to send to YouTube to upload a music file\&. 
+HttpWebRequest POST request to send to YouTube to upload a music file\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
 .PP
 \fBParameters\fP
 .RS 4
@@ -210,20 +194,6 @@ True if the upload is successful, false otherwise
 .RE
 .PP
 
-.SH "Property Documentation"
-.PP 
-.SS "string? YTMusicUploader\&.Providers\&.Requests\&.Params\fC [static]\fP, \fC [get]\fP"
-
-.PP
-Main URL parameters for typical YouTube music API calls 
-.SS "string? YTMusicUploader\&.Providers\&.Requests\&.UploadUrl\fC [static]\fP, \fC [get]\fP"
-
-.PP
-Upload specific API URL 
-.SS "string YTMusicUploader\&.Providers\&.Requests\&.YouTubeBaseUrl\fC [static]\fP, \fC [get]\fP"
-
-.PP
-Main API URL for YouTube music 
 
 .SH "Author"
 .PP 

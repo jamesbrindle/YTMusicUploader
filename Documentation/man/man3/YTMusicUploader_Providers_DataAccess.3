@@ -19,18 +19,11 @@ Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\fP, \fBYTMus
 .ti -1c
 .RI "static void \fBPerformAnyDbUpgrades\fP ()"
 .br
+.RI "Runs on form load to ensure the database schema is at the latest version following an application upgrade "
 .ti -1c
 .RI "static SQLiteConnection \fBDbConnection\fP ()"
 .br
 .RI "Create an SQLite connection to the database file in the users AppData path "
-.in -1c
-.SS "Properties"
-
-.in +1c
-.ti -1c
-.RI "static string \fBDBLocation\fP\fC [get]\fP"
-.br
-.RI "Return the database file location in the users AppData path "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -56,12 +49,8 @@ Create an SQLite connection to the database file in the users AppData path
 
 .SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.PerformAnyDbUpgrades ()\fC [static]\fP"
 
-.SH "Property Documentation"
-.PP 
-.SS "string YTMusicUploader\&.Providers\&.DataAccess\&.DBLocation\fC [static]\fP, \fC [get]\fP"
-
 .PP
-Return the database file location in the users AppData path 
+Runs on form load to ensure the database schema is at the latest version following an application upgrade 
 
 .SH "Author"
 .PP 

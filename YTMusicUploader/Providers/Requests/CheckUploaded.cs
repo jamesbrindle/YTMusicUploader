@@ -133,18 +133,20 @@ namespace YTMusicUploader.Providers
         {
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(YouTubeBaseUrl + "search" + Params);
+                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl + "search" + Global.YouTubeMusicParams);
                 request = AddStandardHeaders(request, cookieValue);
 
                 request.ContentType = "application/json; charset=UTF-8";
                 request.Headers["X-Goog-AuthUser"] = "0";
                 request.Headers["x-origin"] = "https://music.youtube.com";
-                request.Headers["X-Goog-Visitor-Id"] = "CgtvVTcxa1EtbV9hayiMu-P0BQ%3D%3D";
+                request.Headers["X-Goog-Visitor-Id"] = Global.GoogleVisitorId;
                 request.Headers["Authorization"] = GetAuthorisation(GetSAPISIDFromCookie(cookieValue));
 
-                var context = JsonConvert.DeserializeObject<SearchContext.Root>(
+                var context = JsonConvert.DeserializeObject<SearchContext>(
                                                 SafeFileStream.ReadAllText(
-                                                        Path.Combine(Global.WorkingDirectory, @"AppData\search_uploads_context.json")));
+                                                                    Path.Combine(
+                                                                            Global.WorkingDirectory,
+                                                                            @"AppData\search_uploads_context.json")));
 
                 context.query = string.Format("{0} {1} {2}", artist, album, track);
 
@@ -172,8 +174,8 @@ namespace YTMusicUploader.Providers
 
                     JObject jo = JObject.Parse(result);
                     List<JToken> runs = jo.Descendants()
-                                    .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
-                                    .Select(p => ((JProperty)p).Value).ToList();
+                                          .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
+                                          .Select(p => ((JProperty)p).Value).ToList();
 
                     float artistSimilarity = 0.0f;
                     float albumSimilartity = 0.0f;
@@ -218,9 +220,9 @@ namespace YTMusicUploader.Providers
                         }
                     }
 
-                    if (artistSimilarity > 0.8 &&
-                        albumSimilartity > 0.8 &&
-                        trackSimilarity > 0.8)
+                    if (artistSimilarity > 0.75 &&
+                        albumSimilartity > 0.75 &&
+                        trackSimilarity > 0.75)
                     {
                         return true;
                     }

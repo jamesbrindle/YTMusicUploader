@@ -77,6 +77,13 @@ namespace YTMusicUploader.Business
                         {
                             try
                             {
+                                if (MainForm.Aborting)
+                                {
+                                    Stopped = true;
+                                    MainForm.SetUploadingMessage("Idle", "idle");
+                                    return;
+                                }
+
                                 Thread.Sleep(1000);
                             }
                             catch { }

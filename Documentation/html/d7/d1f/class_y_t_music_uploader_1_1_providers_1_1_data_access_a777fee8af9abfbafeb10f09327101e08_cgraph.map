@@ -1,4 +1,4 @@
 <map id="YTMusicUploader.Providers.DataAccess.PerformAnyDbUpgrades" name="YTMusicUploader.Providers.DataAccess.PerformAnyDbUpgrades">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,241,47"/>
+<area shape="rect" id="node1" title="Runs on form load to ensure the database schema is at the latest version following an application upg..." alt="" coords="5,5,241,47"/>
 <area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="289,5,475,47"/>
 </map>

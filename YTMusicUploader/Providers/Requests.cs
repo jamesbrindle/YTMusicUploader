@@ -12,39 +12,6 @@ namespace YTMusicUploader.Providers
     public partial class Requests
     {
         /// <summary>
-        /// Main API URL for YouTube music
-        /// </summary>
-        public static string YouTubeBaseUrl
-        {
-            get
-            {
-                return "https://music.youtube.com/youtubei/v1/";
-            }
-        }
-
-        /// <summary>
-        /// Upload specific API URL
-        /// </summary>
-        public static string UploadUrl
-        {
-            get
-            {
-                return "https://upload.youtube.com/upload/usermusic/http?authuser=0";
-            }
-        }
-
-        /// <summary>
-        /// Main URL parameters for typical YouTube music API calls
-        /// </summary>
-        public static string Params
-        {
-            get
-            {
-                return "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
-            }
-        }
-
-        /// <summary>
         /// Required headers for any YouTube music API request
         /// </summary>
         /// <param name="webRequest">HttpWebRequest to add the headers to</param>

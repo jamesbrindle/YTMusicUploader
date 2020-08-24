@@ -33,13 +33,13 @@ namespace YTMusicUploader.Providers
         {
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(YouTubeBaseUrl + "browse" + Params);
+                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl + "browse" + Global.YouTubeMusicParams);
                 request = AddStandardHeaders(request, cookieValue);
 
                 request.ContentType = "application/json; charset=UTF-8";
                 request.Headers["X-Goog-AuthUser"] = "0";
                 request.Headers["x-origin"] = "https://music.youtube.com";
-                request.Headers["X-Goog-Visitor-Id"] = "CgtvVTcxa1EtbV9hayiMu-P0BQ%3D%3D";
+                request.Headers["X-Goog-Visitor-Id"] = Global.GoogleVisitorId;
                 request.Headers["Authorization"] = GetAuthorisation(GetSAPISIDFromCookie(cookieValue));
 
                 byte[] postBytes = GetPostBytes(

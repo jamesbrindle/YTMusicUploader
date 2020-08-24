@@ -141,6 +141,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.113.1\lib\net46\System.Data.SQLite.dll</HintPath>
@@ -256,13 +257,13 @@
     <Compile Include="Helpers\AsyncHelper.cs" />
     <Compile Include="Helpers\ColourHelper.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
-    <Compile Include="Helpers\EdgeCoreHelper.cs" />
+    <Compile Include="Business\EdgeDependencyChecker.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Business\MusicDataFetcher.cs" />
     <Compile Include="Helpers\FuzzyLogic.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
-    <Compile Include="Helpers\RegistryHelper.cs" />
+    <Compile Include="Business\RegistrySettings.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />
     <Compile Include="Business\ThrottleStream.cs" />
     <Compile Include="Helpers\VersionHelper.cs" />
@@ -304,6 +305,7 @@
     <Compile Include="Providers\DataAccess.cs" />
     <Compile Include="Providers\Repos\SettingsRepo.cs" />
     <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
+    <Compile Include="Providers\RequestModels\IRequestModel.cs" />
     <Compile Include="Providers\RequestModels\SearchContext.cs" />
     <Compile Include="Providers\RequestModels\SearchResults.cs" />
     <Compile Include="Providers\Requests.cs" />

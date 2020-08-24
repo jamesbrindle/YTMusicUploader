@@ -4,6 +4,9 @@ using System.Threading;
 
 namespace YTMusicUploader.Dialogues
 {
+    /// <summary>
+    /// Dialogue
+    /// </summary>
     public partial class IssueLog : OptimisedMetroForm
     {
         /// <summary>

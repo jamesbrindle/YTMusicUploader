@@ -2,6 +2,9 @@
 
 namespace YTMusicUploader.Helpers.FuzzyLogic
 {
+    /// <summary>
+    /// https://en.wikipedia.org/wiki/Levenshtein_distance
+    /// </summary>
     public static class Levenshtein
     {
         /// <summary>
@@ -40,7 +43,6 @@ namespace YTMusicUploader.Helpers.FuzzyLogic
             int n = s.Length;
             int m = t.Length;
             int[,] d = new int[n + 1, m + 1]; // matrix
-            int cost = 0;
 
             if (n == 0) return m;
             if (m == 0) return n;
@@ -54,7 +56,7 @@ namespace YTMusicUploader.Helpers.FuzzyLogic
             {
                 for (int j = 1; j <= m; j++)
                 {
-                    cost = (t.Substring(j - 1, 1) == s.Substring(i - 1, 1) ? 0 : 1);
+                    int cost = t.Substring(j - 1, 1) == s.Substring(i - 1, 1) ? 0 : 1;
                     d[i, j] = Math.Min(Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1), d[i - 1, j - 1] + cost);
                 }
             }

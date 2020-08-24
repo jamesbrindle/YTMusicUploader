@@ -1,10 +1,10 @@
 <map id="YTMusicUploader.MainForm.MainForm" name="YTMusicUploader.MainForm.MainForm">
 <area shape="rect" id="node1" title=" " alt="" coords="5,119,196,161"/>
-<area shape="rect" id="node2" href="$d0/ddc/class_y_t_music_uploader_1_1_helpers_1_1_edge_core_helper.html#a0e8b5b94c9afa8f6abd8e34ad7812dc2" title="Check all the required Edge Core files are present and are the right byte site (i...." alt="" coords="244,5,459,61"/>
-<area shape="rect" id="node3" href="$df/d18/class_j_b_toolkit_1_1_culture_1_1_culture_helper.html#ae97846e07d9657efb35e2c4b8cb9a2a3" title="GB uses the date format: dd&#45;MM&#45;yyyy" alt="" coords="249,86,453,127"/>
-<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a33b18473c12b74d584bb628356a820dc" title=" " alt="" coords="256,151,447,193"/>
-<area shape="rect" id="node8" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#af6b9517020cafac0a321d5c8fd64d11c" title=" " alt="" coords="256,217,447,258"/>
-<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ac08b0810ba0be3d71049f5ef937d98d9" title=" " alt="" coords="507,118,747,159"/>
-<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="531,183,722,225"/>
-<area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="795,183,985,225"/>
+<area shape="rect" id="node2" href="$d0/d3f/class_y_t_music_uploader_1_1_business_1_1_edge_dependency_checker.html#a644c708d5abb6ee7385a15684676cec2" title="Check all the required Edge Core files are present and are the right byte site (i...." alt="" coords="244,5,487,61"/>
+<area shape="rect" id="node3" href="$df/d18/class_j_b_toolkit_1_1_culture_1_1_culture_helper.html#ae97846e07d9657efb35e2c4b8cb9a2a3" title="GB uses the date format: dd&#45;MM&#45;yyyy" alt="" coords="263,86,467,127"/>
+<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a33b18473c12b74d584bb628356a820dc" title=" " alt="" coords="270,151,461,193"/>
+<area shape="rect" id="node8" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#af6b9517020cafac0a321d5c8fd64d11c" title=" " alt="" coords="270,217,461,258"/>
+<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ac08b0810ba0be3d71049f5ef937d98d9" title=" " alt="" coords="535,118,775,159"/>
+<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="559,183,750,225"/>
+<area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="823,183,1013,225"/>
 </map>

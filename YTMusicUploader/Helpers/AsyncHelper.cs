@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace JBToolkit.Synchronicity
 {
+    /// <summary>
+    /// Asynchronous method call helper
+    /// </summary>
     public static class AsyncHelper
     {
         /// <summary>
@@ -48,7 +51,7 @@ namespace JBToolkit.Synchronicity
             var oldContext = SynchronizationContext.Current;
             var synch = new ExclusiveSynchronizationContext();
             SynchronizationContext.SetSynchronizationContext(synch);
-            T ret = default(T);
+            T ret = default;
             synch.Post(async _ =>
             {
                 try

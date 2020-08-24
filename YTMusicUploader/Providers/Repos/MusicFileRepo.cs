@@ -124,7 +124,7 @@ namespace YTMusicUploader.Providers.Repos
                                     ? ""
                                     : "AND Error = 0",
                                 ignoreRecentlyUploaded
-                                    ? "AND LastUpload < '" + DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd HH:mm:ss") + "'"
+                                    ? "AND LastUpload < '" + DateTime.Now.AddDays(Global.RecheckForUploadedSongsInDays * -1).ToString("yyyy-MM-dd HH:mm:ss") + "'"
                                     : "",
                                 lastUploadAscending ? "ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
 

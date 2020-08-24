@@ -1,8 +1,0 @@
-.idea
-.vscode
-headers_auth.json
-docs/build
-**.cfg
-**.mp3
-.coverage
-**/__pycache__/
