@@ -26,8 +26,7 @@ This is a .Net application written in C# that uploads your personal music librar
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
-[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6.png)](https://github.com/jamesbrindle/YTMusicUploader)
-
+[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6a.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
 &nbsp;
 
@@ -43,7 +42,6 @@ This is a .Net application written in C# that uploads your personal music librar
 - If not all data is found in the tags of the music file, it will the MusicBrainz api to look it up (including the cover art thumbail) (Fetching the details is purely for UI purposes. It has now impact of uploading to YouTube).
 - Show an upload log dialogue
 - Show an issues log dialogue
-
 &nbsp;
 &nbsp;
 
