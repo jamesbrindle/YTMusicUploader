@@ -259,7 +259,6 @@
     <Compile Include="Helpers\EdgeCoreHelper.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="Helpers\FuzzyLogic.cs" />
     <Compile Include="Business\MusicDataFetcher.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Helpers\RegistryHelper.cs" />
