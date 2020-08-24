@@ -1,0 +1,58 @@
+﻿{
+  "context": {
+    "activePlayers": {},
+    "capabilities": {},
+    "clickTracking": { "clickTrackingParams": "CAEQ8JMBGAEiEwi3ocaZ7LPrAhUD-RYKHWIWAPs=" },
+    "client": {
+      "browserName": "Firefox",
+      "browserVersion": "79.0",
+      "clientName": "WEB_REMIX",
+      "clientVersion": "0.1",
+      "experimentIds": [],
+      "experimentsToken": "",
+      "gl": "GB",
+      "hl": "en-GB",
+      "locationInfo": { "locationPermissionAuthorizationStatus": "LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED" },
+      "musicAppInfo": {
+        "musicActivityMasterSwitch": "MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE",
+        "musicLocationMasterSwitch": "MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE",
+        "pwaInstallabilityStatus": "PWA_INSTALLABILITY_STATUS_UNKNOWN"
+      },
+      "osName": "Windows",
+      "osVersion": "10.0",
+      "utcOffsetMinutes": 60
+    },
+    "request": {
+      "internalExperimentFlags": [
+        {
+          "key": "force_music_enable_outertube_home_browse",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_playlist_detail_browse",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_search_suggestions",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_album_detail_browse",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_music_queue",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_tastebuilder_browse",
+          "value": "true"
+        }
+      ],
+      "sessionIndex": 0
+    },
+    "user": { "enableSafetyMode": false }
+  },
+  "params": "agIYAw%3D%3D",
+  "query": ""
+}
