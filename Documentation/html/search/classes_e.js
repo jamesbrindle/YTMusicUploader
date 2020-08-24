@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['watchfolder_475',['WatchFolder',['../d8/d67/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_watch_folder.html',1,'YTMusicUploader::Providers::Models']]],
-  ['watchfolderrepo_476',['WatchFolderRepo',['../de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html',1,'YTMusicUploader::Providers::Repos']]]
+  ['watchfolder_580',['WatchFolder',['../d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html',1,'YTMusicUploader::Providers::DataModels']]],
+  ['watchfolderrepo_581',['WatchFolderRepo',['../de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html',1,'YTMusicUploader::Providers::Repos']]]
 ];

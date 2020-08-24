@@ -30,18 +30,19 @@ This is a .Net application written in C\# that uploads your personal music libra
 
 \begin{DoxyItemize}
 \item Connect and authenticate with You\+Tube Music.
-\item Upload songs to You\+Tube Music
-\item Add and remove library watch folders
-\item File system watcher to monitor for changes in watched folders
-\item Throttle upload bandwidth
-\item Start with Windows, minimized to the system tray area
-\item Reads music file tags, including cover art thumbnail
-\item If not all data is found in the tags of the music file, it will the Music\+Brainz api to look it up (including the cover art thumbail) (Fetching the details is purely for UI purposes. It has now impact of uploading to You\+Tube).
-\item Show an upload log dialogue
-\item Show an issues log dialogue
+\item Upload music to You\+Tube Music.
+\item Checks You\+Tube Music to see if the music file has already been uploaded. {\itshape {\bfseries{It will perform this check once per month on all watched library files and is quite dependant on music file meta data being present and accurate.}}}
+\item Add and remove library watch folders.
+\item File system watcher to monitor for changes in watched folders.
+\item Throttle upload bandwidth.
+\item Start with Windows, minimized to the system tray area.
+\item Reads music file tags, including cover art thumbnail.
+\item If not all data is found in the tags of the music file, it will use the Music\+Brainz A\+PI to look it up (including the cover art thumbail) (Fetching the details is purely for UI purposes. It has now impact of uploading to You\+Tube and doesn\textquotesingle{}t write the results to the music file).
+\item Show an upload log dialogue.
+\item Show an issues log dialogue.
 \end{DoxyItemize}
 
-~ ~\hypertarget{index_autotoc_md3}{}\doxysubsection{Reason for Creation}\label{index_autotoc_md3}
+~ $\ast$$\ast$ $\ast$ This application does not send any telemetry data of any kind to its source.$\ast$$\ast$ $\ast$$\ast$ $\ast$ Valid file formats are the same as You\+Tube Music\+: .flac, .m4a, .mp3, .oga, .wma$\ast$$\ast$ ~ ~\hypertarget{index_autotoc_md3}{}\doxysubsection{Reason for Creation}\label{index_autotoc_md3}
 I used to have Google Play music and liked uploading my own content via its automatic library uploader application; I have a large library of music and you could stream your own uploaded songs from Google Play music without paying for a subscription...
 
 Google Play music is on its way out in December and its replacement, You\+Tube music doesn\textquotesingle{}t currently have a library watcher application. You can only drag and drop manually into the browser for a limited number of songs... So, I decided to create one.

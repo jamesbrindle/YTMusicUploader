@@ -44,7 +44,7 @@ namespace YTMusicUploader.Providers
 
                 byte[] postBytes = GetPostBytes(
                                         SafeFileStream.ReadAllText(
-                                                Path.Combine(Global.WorkingDirectory, @"AppData\context.json")));
+                                                Path.Combine(Global.WorkingDirectory, @"AppData\check_auth_context.json")));
                 request.ContentLength = postBytes.Length;
 
                 using (var requestStream = request.GetRequestStream())

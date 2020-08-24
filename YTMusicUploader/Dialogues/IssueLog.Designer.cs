@@ -31,12 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueLog));
             this.pnlIssueLog = new System.Windows.Forms.Panel();
+            this.dgvIssues = new JBToolkit.WinForms.FastScrollDataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
-            this.dgvIssues = new JBToolkit.WinForms.FastScrollDataGridView();
             this.pnlIssueLog.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlIssueLog
@@ -46,9 +46,30 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlIssueLog.Controls.Add(this.dgvIssues);
             this.pnlIssueLog.Location = new System.Drawing.Point(26, 76);
+            this.pnlIssueLog.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlIssueLog.Name = "pnlIssueLog";
-            this.pnlIssueLog.Size = new System.Drawing.Size(988, 701);
+            this.pnlIssueLog.Size = new System.Drawing.Size(988, 633);
             this.pnlIssueLog.TabIndex = 1;
+            // 
+            // dgvIssues
+            // 
+            this.dgvIssues.AllowUserToAddRows = false;
+            this.dgvIssues.AllowUserToDeleteRows = false;
+            this.dgvIssues.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvIssues.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvIssues.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvIssues.BackgroundColor = System.Drawing.Color.White;
+            this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIssues.DisableScroll = false;
+            this.dgvIssues.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvIssues.Location = new System.Drawing.Point(0, 0);
+            this.dgvIssues.MinimumSize = new System.Drawing.Size(600, 400);
+            this.dgvIssues.Name = "dgvIssues";
+            this.dgvIssues.ReadOnly = true;
+            this.dgvIssues.RowHeadersVisible = false;
+            this.dgvIssues.Size = new System.Drawing.Size(988, 633);
+            this.dgvIssues.TabIndex = 0;
             // 
             // lblTitle
             // 
@@ -69,41 +90,22 @@
             this.pbIssueLogIcon.TabIndex = 2;
             this.pbIssueLogIcon.TabStop = false;
             // 
-            // dgvIssues
-            // 
-            this.dgvIssues.AllowUserToAddRows = false;
-            this.dgvIssues.AllowUserToDeleteRows = false;
-            this.dgvIssues.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvIssues.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvIssues.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvIssues.BackgroundColor = System.Drawing.Color.White;
-            this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIssues.DisableScroll = false;
-            this.dgvIssues.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvIssues.Location = new System.Drawing.Point(0, 0);
-            this.dgvIssues.Name = "dgvIssues";
-            this.dgvIssues.ReadOnly = true;
-            this.dgvIssues.RowHeadersVisible = false;
-            this.dgvIssues.Size = new System.Drawing.Size(988, 701);
-            this.dgvIssues.TabIndex = 0;
-            // 
             // IssueLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 800);
+            this.ClientSize = new System.Drawing.Size(1037, 732);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
             this.Controls.Add(this.pnlIssueLog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(920, 800);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "IssueLog";
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Load += new System.EventHandler(this.IssueLog_Load);
             this.pnlIssueLog.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

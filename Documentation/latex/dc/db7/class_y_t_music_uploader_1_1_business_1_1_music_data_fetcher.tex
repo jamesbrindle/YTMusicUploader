@@ -7,8 +7,7 @@ Gets meta data / tag information from the music file itself and looks up any mis
 
 
 
-Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher\+:
-\nopagebreak
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -36,7 +35,9 @@ Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetc
 \begin{DoxyCompactList}\small\item\em Returns album artwork. First it will look at actual file to see if one is embedded, if not it will make a request to get the M\+B\+ID, then use that to make a requst to Convert\+Archive to try and retrive the album art cover image \end{DoxyCompactList}\item 
 Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda}{Get\+Album\+Artwork\+From\+Cover\+Art\+Archive}} (string path)
 \begin{DoxyCompactList}\small\item\em Makes a requst to Convert\+Archive to try and retrive the album art cover image \end{DoxyCompactList}\item 
-string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066}{Get\+Music\+File\+Meta\+Data}} (string path)
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c}{Get\+Music\+File\+Meta\+Data}} (string path)
+\begin{DoxyCompactList}\small\item\em Returns a single multi-\/line string of music file meta data such as\+: \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d}{Get\+Music\+File\+Meta\+Data\+String}} (string path)
 \begin{DoxyCompactList}\small\item\em Returns a single multi-\/line string of music file meta data such as\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -89,8 +90,7 @@ Returns album artwork. First it will look at actual file to see if one is embedd
 \begin{DoxyReturn}{Returns}
 Thumbnail image
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -115,16 +115,14 @@ Makes a requst to Convert\+Archive to try and retrive the album art cover image
 \begin{DoxyReturn}{Returns}
 Thumbnail image
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -141,19 +139,18 @@ Here is the caller graph for this function\+:
 
 Peforms a H\+T\+TP web request and downloads an image 
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a9433e70a6a919cb93186739b92bb493e_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c}} 
 \index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetMusicFileMetaData@{GetMusicFileMetaData}}
 \index{GetMusicFileMetaData@{GetMusicFileMetaData}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
 \doxysubsubsection{\texorpdfstring{GetMusicFileMetaData()}{GetMusicFileMetaData()}}
-{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}} Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
 
 
 
@@ -176,12 +173,45 @@ Returns a single multi-\/line string of music file meta data such as\+:
 \begin{DoxyReturn}{Returns}
 Multi-\/line string
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acb70a688ee886b9fbabc137208465066_cgraph}
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d}} 
+\index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetMusicFileMetaDataString@{GetMusicFileMetaDataString}}
+\index{GetMusicFileMetaDataString@{GetMusicFileMetaDataString}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
+\doxysubsubsection{\texorpdfstring{GetMusicFileMetaDataString()}{GetMusicFileMetaDataString()}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data\+String (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Returns a single multi-\/line string of music file meta data such as\+: 
+
+
+\begin{DoxyItemize}
+\item Artist
+\item Album name
+\item Track name
+\item Duration
+\item Bitrate
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Full path to music file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Multi-\/line string
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb}} 
@@ -202,8 +232,7 @@ Gets a Tab\+Lib (Tab\+Lib library object of music file meta data) file object of
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -223,8 +252,7 @@ Get the recording (track data) from \mbox{\hyperlink{namespace_y_t_music_uploade
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Recording object
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -244,16 +272,14 @@ Get the recording (track data) from \mbox{\hyperlink{namespace_y_t_music_uploade
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Recording object
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad75f4d25f5348507742be3fa8578dc72_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -273,8 +299,7 @@ Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Release object
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -294,16 +319,14 @@ Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} Release object
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ad7037855e8c1954f547b5a3ac66e4cb2_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -328,16 +351,14 @@ First looks at the file meta data for the release M\+B\+ID, then makes a request
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} ID
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -362,8 +383,7 @@ First looks at the file meta data for the track M\+B\+ID then makes a request to
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} ID
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

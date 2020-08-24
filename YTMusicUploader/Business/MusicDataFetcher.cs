@@ -308,7 +308,60 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to music file</param>
         /// <returns>Multi-line string</returns>
-        public string GetMusicFileMetaData(string path)
+        public MusicFileMetaData GetMusicFileMetaData(string path)
+        {
+            try
+            {
+                var sb = new StringBuilder();
+                var tags = GetMusicTagLibFile(path);
+
+                string artist = string.Empty;
+                string album = string.Empty;
+                string track = string.Empty;
+                TimeSpan? duration = null;
+                int bitsPerSecond = -1;
+
+                if (tags != null && tags.Tag != null)
+                {
+                    artist = tags.Tag.FirstPerformer ?? tags.Tag.FirstAlbumArtist;
+                    album = tags.Tag.Album;
+                    track = tags.Tag.Title;
+                    bitsPerSecond = tags.Properties.AudioBitrate;
+                    duration = tags.Properties.Duration;
+                }
+
+                if (string.IsNullOrEmpty(track) && !string.IsNullOrEmpty(album) && !string.IsNullOrEmpty(artist))
+                {
+                    var recording = GetReleaseFromMusicBrainzWithAlbumNameVariations(artist, album);
+                    track = recording.Title;
+                }
+
+                return new MusicFileMetaData
+                {
+                    Artist = artist,
+                    Album = album,
+                    Track = track,
+                    Duration = (TimeSpan)duration,
+                    Bitrate = bitsPerSecond
+                };
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Returns a single multi-line string of music file meta data such as:
+        ///   - Artist
+        ///   - Album name
+        ///   - Track name
+        ///   - Duration
+        ///   - Bitrate
+        /// </summary>
+        /// <param name="path">Full path to music file</param>
+        /// <returns>Multi-line string</returns>
+        public string GetMusicFileMetaDataString(string path)
         {
             var sb = new StringBuilder();
             var tags = GetMusicTagLibFile(path);
@@ -402,5 +455,17 @@ namespace YTMusicUploader.Business
 
             return result;
         }
+    }
+
+    /// <summary>
+    /// Custom music file meta tag object
+    /// </summary>
+    public class MusicFileMetaData
+    {
+        public string Artist { get; set; }
+        public string Album { get; set; }
+        public string Track { get; set; }
+        public TimeSpan Duration { get; set; }
+        public int Bitrate { get; set; }
     }
 }

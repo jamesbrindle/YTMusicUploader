@@ -1,6 +1,7 @@
 <map id="YTMusicUploader.Providers.Requests.AddStandardHeaders" name="YTMusicUploader.Providers.Requests.AddStandardHeaders">
-<area shape="rect" id="node1" title="Required headers for any YouTube music API request" alt="" coords="473,39,677,80"/>
+<area shape="rect" id="node1" title="Required headers for any YouTube music API request" alt="" coords="473,71,677,112"/>
 <area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="240,5,425,47"/>
-<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="240,71,425,112"/>
-<area shape="rect" id="node4" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="5,71,192,112"/>
+<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a29b0cb92831abcb3d82602141fc8be26" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="240,71,425,112"/>
+<area shape="rect" id="node4" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="240,136,425,177"/>
+<area shape="rect" id="node5" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="5,136,192,177"/>
 </map>

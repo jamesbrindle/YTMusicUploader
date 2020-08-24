@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tabbed_search_results_renderer =
+[
+    [ "tabs", "d7/d70/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tabbed_search_results_renderer.html#ae0146a1b6e685f01731e327b24543419", null ]
+];

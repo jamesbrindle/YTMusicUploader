@@ -99,7 +99,7 @@ Collaboration diagram for YTMusicUploader.Providers.Requests:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/dee/class_y_t_music_uploader_1_1_providers_1_1_requests__coll__graph.png" border="0" usemap="#_y_t_music_uploader_8_providers_8_requests_coll__map" alt="Collaboration graph"/></div>
 <map name="_y_t_music_uploader_8_providers_8_requests_coll__map" id="_y_t_music_uploader_8_providers_8_requests_coll__map">
-<area shape="rect" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="5,5,191,171"/>
+<area shape="rect" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="5,5,216,229"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -108,6 +108,15 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a999ef8b6818a6afda480211b7a36a0d5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5">IsAuthenticated</a> (string cookieValue)</td></tr>
 <tr class="memdesc:a999ef8b6818a6afda480211b7a36a0d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5">More...</a><br /></td></tr>
 <tr class="separator:a999ef8b6818a6afda480211b7a36a0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99562c8c5a51bb201bdb9e5169793959"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a99562c8c5a51bb201bdb9e5169793959">IsSongUploaded</a> (string musicFilePath, string cookieValue, <a class="el" href="../../dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html">MusicDataFetcher</a> musicDataFetcher=null)</td></tr>
+<tr class="memdesc:a99562c8c5a51bb201bdb9e5169793959"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a99562c8c5a51bb201bdb9e5169793959">More...</a><br /></td></tr>
+<tr class="separator:a99562c8c5a51bb201bdb9e5169793959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92c1572cd5f2fc98b78dc1e1a563b139"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a92c1572cd5f2fc98b78dc1e1a563b139">IsSongUploadedMulitpleAlbumNameVariations</a> (string artist, string album, string track, string cookieValue)</td></tr>
+<tr class="memdesc:a92c1572cd5f2fc98b78dc1e1a563b139"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a92c1572cd5f2fc98b78dc1e1a563b139">More...</a><br /></td></tr>
+<tr class="separator:a92c1572cd5f2fc98b78dc1e1a563b139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29b0cb92831abcb3d82602141fc8be26"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a29b0cb92831abcb3d82602141fc8be26">IsSongUploaded</a> (string artist, string album, string track, string cookieValue)</td></tr>
+<tr class="memdesc:a29b0cb92831abcb3d82602141fc8be26"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a29b0cb92831abcb3d82602141fc8be26">More...</a><br /></td></tr>
+<tr class="separator:a29b0cb92831abcb3d82602141fc8be26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15e0e7c11bb6158469a234cc8aab0807"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807">UploadSong</a> (<a class="el" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html">MainForm</a> mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)</td></tr>
 <tr class="memdesc:a15e0e7c11bb6158469a234cc8aab0807"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube to upload a music file.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807">More...</a><br /></td></tr>
 <tr class="separator:a15e0e7c11bb6158469a234cc8aab0807"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,6 +143,7 @@ Properties</h2></td></tr>
 <div class="textblock"><p>HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored. </p>
 <p>YouTube music HttpWebRequest abstract class</p>
 <p>HttpWebRequest POST request to send to YouTube to upload a music file.</p>
+<p>HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75.</p>
 <p>In this case, we're actually perform a request for personally uploaded music files</p>
 <p>Thanks to: sigma67: <a href="https://ytmusicapi.readthedocs.io/en/latest/">https://ytmusicapi.readthedocs.io/en/latest/</a> <a href="https://github.com/sigma67/ytmusicapi">https://github.com/sigma67/ytmusicapi</a></p>
 <p>Thanks to: sigma67: <a href="https://ytmusicapi.readthedocs.io/en/latest/">https://ytmusicapi.readthedocs.io/en/latest/</a> <a href="https://github.com/sigma67/ytmusicapi">https://github.com/sigma67/ytmusicapi</a></p>
@@ -186,10 +196,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a62dae7c90e360d88e8b3f495f3c683ec_icgraph.png" border="0" usemap="#d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a62dae7c90e360d88e8b3f495f3c683ec_icgraph" alt=""/></div>
 <map name="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a62dae7c90e360d88e8b3f495f3c683ec_icgraph" id="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a62dae7c90e360d88e8b3f495f3c683ec_icgraph">
-<area shape="rect" title="Required headers for any YouTube music API request" alt="" coords="473,39,677,80"/>
+<area shape="rect" title="Required headers for any YouTube music API request" alt="" coords="473,71,677,112"/>
 <area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="240,5,425,47"/>
-<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="240,71,425,112"/>
-<area shape="rect" href="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="5,71,192,112"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a29b0cb92831abcb3d82602141fc8be26" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="240,71,425,112"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="240,136,425,177"/>
+<area shape="rect" href="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="5,136,192,177"/>
 </map>
 </div>
 
@@ -232,10 +243,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a2c548db725ae9ec8fda7e4a2433d412c_icgraph.png" border="0" usemap="#d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a2c548db725ae9ec8fda7e4a2433d412c_icgraph" alt=""/></div>
 <map name="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a2c548db725ae9ec8fda7e4a2433d412c_icgraph" id="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a2c548db725ae9ec8fda7e4a2433d412c_icgraph">
-<area shape="rect" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="473,39,659,80"/>
+<area shape="rect" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="473,71,659,112"/>
 <area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="240,5,425,47"/>
-<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="240,71,425,112"/>
-<area shape="rect" href="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="5,71,192,112"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a29b0cb92831abcb3d82602141fc8be26" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="240,71,425,112"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="240,136,425,177"/>
+<area shape="rect" href="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="5,136,192,177"/>
 </map>
 </div>
 
@@ -284,6 +296,211 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="239,5,443,47"/>
 <area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="248,71,433,112"/>
 <area shape="rect" href="../../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="248,136,433,177"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a29b0cb92831abcb3d82602141fc8be26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29b0cb92831abcb3d82602141fc8be26">&#9670;&nbsp;</a></span>IsSongUploaded() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool YTMusicUploader.Providers.Requests.IsSongUploaded </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>artist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>album</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>track</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>cookieValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75. </p>
+<p>Thanks to: sigma67: <a href="https://ytmusicapi.readthedocs.io/en/latest/">https://ytmusicapi.readthedocs.io/en/latest/</a> <a href="https://github.com/sigma67/ytmusicapi">https://github.com/sigma67/ytmusicapi</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">artist</td><td>Artist name from music file meta tag</td></tr>
+    <tr><td class="paramname">album</td><td>Album name from music file meta tag</td></tr>
+    <tr><td class="paramname">track</td><td>Track or song name from music file meta tag</td></tr>
+    <tr><td class="paramname">cookieValue</td><td>Cookie from a previous YouTube Music sign in via this application (stored in the database)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if song is found, false otherwise</dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26_cgraph.png" border="0" usemap="#d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26_cgraph" alt=""/></div>
+<map name="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26_cgraph" id="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26_cgraph">
+<area shape="rect" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="5,71,191,112"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="239,5,443,47"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="248,71,433,112"/>
+<area shape="rect" href="../../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="248,136,433,177"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a99562c8c5a51bb201bdb9e5169793959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99562c8c5a51bb201bdb9e5169793959">&#9670;&nbsp;</a></span>IsSongUploaded() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool YTMusicUploader.Providers.Requests.IsSongUploaded </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>musicFilePath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>cookieValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html">MusicDataFetcher</a>&#160;</td>
+          <td class="paramname"><em>musicDataFetcher</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75. </p>
+<p>Thanks to: sigma67: <a href="https://ytmusicapi.readthedocs.io/en/latest/">https://ytmusicapi.readthedocs.io/en/latest/</a> <a href="https://github.com/sigma67/ytmusicapi">https://github.com/sigma67/ytmusicapi</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">musicFilePath</td><td>Path to music file to be uploaded</td></tr>
+    <tr><td class="paramname">cookieValue</td><td>Cookie from a previous YouTube Music sign in via this application (stored in the database)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if song is found, false otherwise</dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959_icgraph.png" border="0" usemap="#d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959_icgraph" alt=""/></div>
+<map name="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959_icgraph" id="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959_icgraph">
+<area shape="rect" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="273,50,459,91"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a92c1572cd5f2fc98b78dc1e1a563b139" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="5,5,225,61"/>
+<area shape="rect" href="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#ac51a91209e788af9a24ad02abe35cb40" title="Execute the upload process" alt="" coords="22,86,209,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a92c1572cd5f2fc98b78dc1e1a563b139"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92c1572cd5f2fc98b78dc1e1a563b139">&#9670;&nbsp;</a></span>IsSongUploadedMulitpleAlbumNameVariations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool YTMusicUploader.Providers.Requests.IsSongUploadedMulitpleAlbumNameVariations </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>artist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>album</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>track</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>cookieValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75. </p>
+<p>Thanks to: sigma67: <a href="https://ytmusicapi.readthedocs.io/en/latest/">https://ytmusicapi.readthedocs.io/en/latest/</a> <a href="https://github.com/sigma67/ytmusicapi">https://github.com/sigma67/ytmusicapi</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">artist</td><td>Artist name from music file meta tag</td></tr>
+    <tr><td class="paramname">album</td><td>Album name from music file meta tag</td></tr>
+    <tr><td class="paramname">track</td><td>Track or song name from music file meta tag</td></tr>
+    <tr><td class="paramname">cookieValue</td><td>Cookie from a previous YouTube Music sign in via this application (stored in the database)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if song is found, false otherwise</dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139_cgraph.png" border="0" usemap="#d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139_cgraph" alt=""/></div>
+<map name="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139_cgraph" id="d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139_cgraph">
+<area shape="rect" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="5,5,225,61"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a99562c8c5a51bb201bdb9e5169793959" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="273,13,459,54"/>
 </map>
 </div>
 
@@ -451,6 +668,7 @@ Here is the caller graph for this function:</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/Requests/<a class="el" href="../../db/d14/_check_authorisation_8cs.html">CheckAuthorisation.cs</a></li>
 <li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/<a class="el" href="../../d7/d81/_requests_8cs.html">Requests.cs</a></li>
+<li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/Requests/<a class="el" href="../../de/d5e/_check_uploaded_8cs.html">CheckUploaded.cs</a></li>
 <li>D:/OneDrive/Documents/Work/Repositories/YTMusicUploader/YTMusicUploader/Providers/Requests/<a class="el" href="../../d5/dc1/_upload_song_8cs.html">UploadSong.cs</a></li>
 </ul>
 </div><!-- contents -->

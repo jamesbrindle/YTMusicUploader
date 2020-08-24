@@ -8,6 +8,21 @@ using System.Windows.Forms;
 
 namespace YTMusicUploader.Dialogues
 {
+    /*
+    ## WARNING ####################################################################################
+    
+     If  you change anything in the ConnectYTMusic layout, the .Desinger.cs will put the '.Source'
+     property back into the WebView2 control. You need to make sure you remove the Source line
+     so that we can set the CoreWebView2Environment 'before' setting the source (known bug).
+
+     If you don't then once deployed, the WebView2 control will try and use the exe folder location
+     for cached files, which it doesn't have access to and so will fail to load.
+
+    ################################################################################################
+     */
+
+
+
     /// <summary>
     /// Shows a WebView2 control
     /// https://docs.microsoft.com/en-us/microsoft-edge/webview2/
@@ -54,18 +69,20 @@ namespace YTMusicUploader.Dialogues
                 await browser.EnsureCoreWebView2Async(env);
                 browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
             }
-            catch
+            catch(Exception e)
             {
                 MainForm.SetConnectToYouTubeButtonEnabled(false);
                 MainForm.ShowMessageBox(
                             "WebView2 Error",
                             $"{Environment.NewLine}It looks like Canary Edge Core never finished installing. {Environment.NewLine}{Environment.NewLine}" +
-                            $"Please delete the folder: {Global.EdgeFolder} and then restart this application. " +
+                            $"Please delete the folder: {Global.EdgeFolder} and then restart this application. If the error persists, then this application" +
+                            $"has been built wrong. Please see the 'WARNING' in file: 'Dialogues/ConnectToYTMusics." +
                             $"{Environment.NewLine}{Environment.NewLine}The application will reinstall automatically once restarted." +
+                            $"{Environment.NewLine}{Environment.NewLine}Exception: {e.Message}" +
                             $"{Environment.NewLine}{Environment.NewLine}YT Music Uploader will now exit.",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error,
-                            270);
+                            320);
 
                 Process.GetCurrentProcess().Kill();
             }

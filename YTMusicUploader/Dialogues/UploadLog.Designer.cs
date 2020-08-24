@@ -31,12 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UploadLog));
             this.pnlUploads = new System.Windows.Forms.Panel();
+            this.dgvUploads = new JBToolkit.WinForms.FastScrollDataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
-            this.dgvUploads = new JBToolkit.WinForms.FastScrollDataGridView();
             this.pnlUploads.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUploads)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlUploads
@@ -46,9 +46,30 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlUploads.Controls.Add(this.dgvUploads);
             this.pnlUploads.Location = new System.Drawing.Point(26, 76);
+            this.pnlUploads.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlUploads.Name = "pnlUploads";
-            this.pnlUploads.Size = new System.Drawing.Size(988, 701);
+            this.pnlUploads.Size = new System.Drawing.Size(988, 633);
             this.pnlUploads.TabIndex = 1;
+            // 
+            // dgvUploads
+            // 
+            this.dgvUploads.AllowUserToAddRows = false;
+            this.dgvUploads.AllowUserToDeleteRows = false;
+            this.dgvUploads.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvUploads.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUploads.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUploads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUploads.DisableScroll = false;
+            this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUploads.Location = new System.Drawing.Point(0, 0);
+            this.dgvUploads.MinimumSize = new System.Drawing.Size(600, 400);
+            this.dgvUploads.Name = "dgvUploads";
+            this.dgvUploads.ReadOnly = true;
+            this.dgvUploads.RowHeadersVisible = false;
+            this.dgvUploads.Size = new System.Drawing.Size(988, 633);
+            this.dgvUploads.TabIndex = 0;
             // 
             // lblTitle
             // 
@@ -69,41 +90,22 @@
             this.pbIssueLogIcon.TabIndex = 2;
             this.pbIssueLogIcon.TabStop = false;
             // 
-            // dgvUploads
-            // 
-            this.dgvUploads.AllowUserToAddRows = false;
-            this.dgvUploads.AllowUserToDeleteRows = false;
-            this.dgvUploads.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvUploads.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvUploads.BackgroundColor = System.Drawing.Color.White;
-            this.dgvUploads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUploads.DisableScroll = false;
-            this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUploads.Location = new System.Drawing.Point(0, 0);
-            this.dgvUploads.Name = "dgvUploads";
-            this.dgvUploads.ReadOnly = true;
-            this.dgvUploads.RowHeadersVisible = false;
-            this.dgvUploads.Size = new System.Drawing.Size(988, 701);
-            this.dgvUploads.TabIndex = 0;
-            // 
             // UploadLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 800);
+            this.ClientSize = new System.Drawing.Size(1037, 732);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
             this.Controls.Add(this.pnlUploads);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(920, 800);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "UploadLog";
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Load += new System.EventHandler(this.IssueLog_Load);
             this.pnlUploads.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUploads)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

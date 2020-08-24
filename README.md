@@ -7,7 +7,7 @@ Automatically upload your local music personal library to YouTube Music.
 &nbsp;
 &nbsp;
 
-**[Download Version 1.2 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.2)**
+**[Download Version 1.3 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3)**
 &nbsp;
 &nbsp;
 
@@ -24,7 +24,7 @@ This is a .Net application written in C# that uploads your personal music librar
 
 &nbsp;
 
-[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1.png)](https://github.com/jamesbrindle/YTMusicUploader)
+[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1a.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6a.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
@@ -33,15 +33,21 @@ This is a .Net application written in C# that uploads your personal music librar
 ### Features
 
 - Connect and authenticate with YouTube Music.
-- Upload songs to YouTube Music
-- Add and remove library watch folders
-- File system watcher to monitor for changes in watched folders
-- Throttle upload bandwidth
-- Start with Windows, minimized to the system tray area
-- Reads music file tags, including cover art thumbnail
-- If not all data is found in the tags of the music file, it will the MusicBrainz api to look it up (including the cover art thumbail) (Fetching the details is purely for UI purposes. It has now impact of uploading to YouTube).
-- Show an upload log dialogue
-- Show an issues log dialogue
+- Upload music to YouTube Music.
+- Checks YouTube Music to see if the music file has already been uploaded. ***It will perform this check once per month on all watched library files and is quite dependant on music file meta data being present and accurate.***
+- Add and remove library watch folders.
+- File system watcher to monitor for changes in watched folders.
+- Throttle upload bandwidth.
+- Start with Windows, minimized to the system tray area.
+- Reads music file tags, including cover art thumbnail.
+- If not all data is found in the tags of the music file, it will use the MusicBrainz API to look it up (including the cover art thumbail) (Fetching the details is purely for UI purposes. It has now impact of uploading to YouTube and doesn't write the results to the music file).
+- Show an upload log dialogue.
+- Show an issues log dialogue.
+
+
+&nbsp;
+** * This application does not send any telemetry data of any kind to its source.**
+** * Valid file formats are the same as YouTube Music:  .flac, .m4a, .mp3, .oga, .wma**
 &nbsp;
 &nbsp;
 

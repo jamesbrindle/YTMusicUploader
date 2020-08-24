@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['settings_841',['Settings',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a1162b09bb41c7dd7632e0dcd3568644b',1,'YTMusicUploader::MainForm']]],
-  ['settingsrepo_842',['SettingsRepo',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#abd20163f15bbe453a23d5453dae19eb4',1,'YTMusicUploader::MainForm']]],
-  ['startwithwindows_843',['StartWithWindows',['../de/d8c/class_y_t_music_uploader_1_1_providers_1_1_models_1_1_settings.html#a6673a012cade4be0e8db8c8147bfa172',1,'YTMusicUploader::Providers::Models::Settings']]],
-  ['stopped_844',['Stopped',['../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a2a1303fffdb56ad60248d03bfbe4172e',1,'YTMusicUploader::Business::FileUploader']]],
-  ['stroke_845',['Stroke',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#ab2554e9be9e8cab65e1447d28dd8a53f',1,'JBToolkit::WinForms::RoundButton']]],
-  ['strokecolor_846',['StrokeColor',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a55d6c8df865f2e8b50b1ad57e8834e14',1,'JBToolkit::WinForms::RoundButton']]]
+  ['paramaters_977',['paramaters',['../d9/d04/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_service_tracking_param.html#a0ee38ac15bc918ab9af3d503fd0e9ce7',1,'YTMusicUploader.Providers.RequestModels.SearchResult.ServiceTrackingParam.paramaters()'],['../d3/da0/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_search_endpoint.html#a3ade87510a8cf3652aae1081405d15ef',1,'YTMusicUploader.Providers.RequestModels.SearchResult.SearchEndpoint.paramaters()']]],
+  ['parameters_978',['parameters',['../d1/dc6/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_root.html#a48f0c6f6f65170c2d6e009b57a0f4ecd',1,'YTMusicUploader::Providers::RequestModels::SearchContext::Root']]],
+  ['params_979',['Params',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#abc1ce20e5cbbb8c9d167a081b6cf99ba',1,'YTMusicUploader::Providers::Requests']]],
+  ['parent_980',['Parent',['../d7/d0c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_value.html#a276fe11a367c4b471f5fc8001384436d',1,'JBToolkit::ColorHelper::ColourHelper::IntensityValue']]],
+  ['passwordchar_981',['PasswordChar',['../d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html#a38c372f70e16cb81b50247ef70aae269',1,'JBToolkit::WinForms::RoundTextBox']]],
+  ['path_982',['Path',['../d0/de3/class_j_b_toolkit_1_1_win_forms_1_1_rounded_rectangle_f.html#acf6a92e66bc02ee8c62e18e8a72fba69',1,'JBToolkit.WinForms.RoundedRectangleF.Path()'],['../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html#ac03241b9ffc249f4b4a2520b326425bd',1,'YTMusicUploader.Providers.DataModels.MusicFile.Path()'],['../d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html#ae80fbef73ffbb2be7951efe54ea12fd3',1,'YTMusicUploader.Providers.DataModels.WatchFolder.Path()']]],
+  ['position_983',['Position',['../da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream.html#a399d5cc5bd4af4eb601d6c4d10825729',1,'YTMusicUploader::Business::ThrottledStream']]],
+  ['pwainstallabilitystatus_984',['pwaInstallabilityStatus',['../da/d0f/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_music_app_info.html#a8e29435678eaf48592ff88204dfab421',1,'YTMusicUploader::Providers::RequestModels::SearchContext::MusicAppInfo']]]
 ];

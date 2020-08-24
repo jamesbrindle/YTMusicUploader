@@ -4,7 +4,7 @@ using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Dialogues;
 using YTMusicUploader.Providers;
-using YTMusicUploader.Providers.Models;
+using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader
 {
@@ -16,7 +16,7 @@ namespace YTMusicUploader
         {
             try
             {
-                ConnectToYTMusicForm.ShowDialog();
+                ConnectToYTMusicForm.Show();
                 new Thread((ThreadStart)delegate
                 {
                     SetConnectedToYouTubeMusic(Requests.IsAuthenticated(Settings.AuthenticationCookie));
@@ -32,7 +32,7 @@ namespace YTMusicUploader
                     ConnectToYTMusicForm.Dispose();
                     ConnectToYTMusicForm = new ConnectToYTMusic(this);
 
-                    ConnectToYTMusicForm.ShowDialog();
+                    ConnectToYTMusicForm.Show();
                     new Thread((ThreadStart)delegate
                     {
                         SetConnectedToYouTubeMusic(Requests.IsAuthenticated(Settings.AuthenticationCookie));
@@ -131,7 +131,7 @@ namespace YTMusicUploader
             if (IssueLogForm == null)
                 IssueLogForm = new IssueLog(this);
 
-            IssueLogForm.ShowDialog();
+            IssueLogForm.Show();
         }
 
         private void LblUploaded_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -139,7 +139,7 @@ namespace YTMusicUploader
             if (UploadLogForm == null)
                 UploadLogForm = new UploadLog(this);
 
-            UploadLogForm.ShowDialog();
+            UploadLogForm.Show();
         }
 
         private void LinkLabel_GotFocus(object sender, EventArgs e)

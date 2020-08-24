@@ -54,17 +54,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBrowser.Controls.Add(this.browser);
             this.pnlBrowser.Location = new System.Drawing.Point(26, 76);
+            this.pnlBrowser.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlBrowser.Name = "pnlBrowser";
-            this.pnlBrowser.Size = new System.Drawing.Size(988, 701);
+            this.pnlBrowser.Size = new System.Drawing.Size(988, 633);
             this.pnlBrowser.TabIndex = 1;
             // 
             // browser
             // 
             this.browser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browser.Location = new System.Drawing.Point(0, 0);
-            this.browser.MinimumSize = new System.Drawing.Size(988, 701);
+            this.browser.MinimumSize = new System.Drawing.Size(600, 400);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(988, 701);
+            this.browser.Size = new System.Drawing.Size(988, 633);
             this.browser.TabIndex = 0;
             this.browser.Text = "YouTube Music";
             this.browser.ZoomFactor = 1D;
@@ -95,13 +96,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 800);
+            this.ClientSize = new System.Drawing.Size(1037, 732);
             this.Controls.Add(this.lblConnectSuccess);
             this.Controls.Add(this.pbConnectSuccess);
             this.Controls.Add(this.pnlBrowser);
             this.Controls.Add(this.lblSignInMessage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(920, 800);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "ConnectToYTMusic";
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConnectToYTMusic_FormClosing);

@@ -1,9 +1,11 @@
-﻿using JBToolkit.Windows;
+﻿using JBToolkit.Network;
+using JBToolkit.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using YTMusicUploader.Providers;
-using YTMusicUploader.Providers.Models;
+using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Business
 {
@@ -50,7 +52,8 @@ namespace YTMusicUploader.Business
 
                     if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
                     {
-                        MainForm.SetUploadingMessage("Updating: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
+                        MainForm.SetUploadingMessage("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
+                        MainForm.SetStatusMessage("Updating database for existing uploads");
 
                         existingMusicFile.Path = musicFile.Path;
                         existingMusicFile.LastUpload = DateTime.Now;
@@ -68,25 +71,22 @@ namespace YTMusicUploader.Business
                     else
                     {
                         MainForm.SetUploadingMessage(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
-
                         Stopped = false;
-                        Requests.UploadSong(
-                                    MainForm,
-                                    MainForm.Settings.AuthenticationCookie,
-                                    musicFile.Path,
-                                    MainForm.Settings.ThrottleSpeed,
-                                    out string error);
 
-                        if (!string.IsNullOrEmpty(error))
+                        while (!NetworkHelper.InternetConnectionIsUp())
                         {
-                            musicFile.Error = true;
-                            musicFile.ErrorReason = error;
-
-                            _errors++;
-                            MainForm.SetIssuesLabel(_errors.ToString());
+                            try
+                            {
+                                Thread.Sleep(1000);
+                            }
+                            catch { }
                         }
-                        else
+
+                        if (Requests.IsSongUploaded(musicFile.Path, MainForm.Settings.AuthenticationCookie, MainForm.MusicDataFetcher))
                         {
+                            MainForm.SetUploadingMessage("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
+                            MainForm.SetStatusMessage("Updating database for existing uploads");
+
                             musicFile.LastUpload = DateTime.Now;
                             musicFile.Error = false;
                             musicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
@@ -95,6 +95,38 @@ namespace YTMusicUploader.Business
 
                             _uploaded++;
                             MainForm.SetUploadedLabel(_uploaded.ToString());
+                        }
+                        else
+                        {
+                            Requests.UploadSong(
+                                        MainForm,
+                                        MainForm.Settings.AuthenticationCookie,
+                                        musicFile.Path,
+                                        MainForm.Settings.ThrottleSpeed,
+                                        out string error);
+
+                            if (!string.IsNullOrEmpty(error))
+                            {
+                                musicFile.Error = true;
+                                musicFile.ErrorReason = error;
+
+                                _errors++;
+                                MainForm.SetIssuesLabel(_errors.ToString());
+                            }
+                            else
+                            {
+                                musicFile.LastUpload = DateTime.Now;
+                                musicFile.Error = false;
+                                musicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
+                                                            ? MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
+                                                            : musicFile.MbId;
+
+                                _uploaded++;
+                                MainForm.SetUploadedLabel(_uploaded.ToString());
+                            }
+
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
                         }
 
                         musicFile.Save();
@@ -106,9 +138,6 @@ namespace YTMusicUploader.Business
                     MainForm.SetDiscoveredFilesLabel(_discoveredFiles.ToString());
                     musicFile.Delete();
                 }
-
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
             }
 
             MainForm.SetUploadingMessage("Idle", "idle");

@@ -47,7 +47,11 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .br
 .RI "Makes a requst to ConvertArchive to try and retrive the album art cover image "
 .ti -1c
-.RI "string \fBGetMusicFileMetaData\fP (string path)"
+.RI "\fBMusicFileMetaData\fP \fBGetMusicFileMetaData\fP (string path)"
+.br
+.RI "Returns a single multi-line string of music file meta data such as: "
+.ti -1c
+.RI "string \fBGetMusicFileMetaDataString\fP (string path)"
 .br
 .RI "Returns a single multi-line string of music file meta data such as: "
 .in -1c
@@ -120,7 +124,34 @@ Thumbnail image
 
 .PP
 Peforms a HTTP web request and downloads an image 
-.SS "string YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaData (string path)"
+.SS "\fBMusicFileMetaData\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaData (string path)"
+
+.PP
+Returns a single multi-line string of music file meta data such as: 
+.IP "\(bu" 2
+Artist
+.IP "\(bu" 2
+Album name
+.IP "\(bu" 2
+Track name
+.IP "\(bu" 2
+Duration
+.IP "\(bu" 2
+Bitrate
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Full path to music file
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Multi-line string
+.RE
+.PP
+
+.SS "string YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaDataString (string path)"
 
 .PP
 Returns a single multi-line string of music file meta data such as: 

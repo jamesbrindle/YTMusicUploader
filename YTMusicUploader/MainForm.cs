@@ -14,7 +14,7 @@ using YTMusicUploader.Business;
 using YTMusicUploader.Dialogues;
 using YTMusicUploader.Helpers;
 using YTMusicUploader.Providers;
-using YTMusicUploader.Providers.Models;
+using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader
@@ -118,6 +118,11 @@ namespace YTMusicUploader
             ConnectToYouTube();
             LoadCheckAndProcess();
             StartQueueCheck();
+        }
+
+        private void RunDebugCommands()
+        {
+            // Placeholder for running any debug tests
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -424,6 +429,8 @@ namespace YTMusicUploader
 
             BindWatchFoldersList();
             InitialiseFolderWatchers();
+
+            RunDebugCommands();
         }
 
         public void RepopulateAmountLables()

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using YTMusicUploader.Providers;
-using YTMusicUploader.Providers.Models;
+using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Business
 {

@@ -11,7 +11,8 @@ var dir_3ca9970b977984ba9d3e29a467acdfaa =
       [ "FileUploader", "d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html", "d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader" ]
     ] ],
     [ "MusicDataFetcher.cs", "d6/df0/_music_data_fetcher_8cs.html", [
-      [ "MusicDataFetcher", "dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html", "dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher" ]
+      [ "MusicDataFetcher", "dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html", "dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher" ],
+      [ "MusicFileMetaData", "dd/dd5/class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data.html", "dd/dd5/class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data" ]
     ] ],
     [ "ThrottleStream.cs", "db/d5f/_throttle_stream_8cs.html", [
       [ "ThrottledStream", "da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream.html", "da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream" ]

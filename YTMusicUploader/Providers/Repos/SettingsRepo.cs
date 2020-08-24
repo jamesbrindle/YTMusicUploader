@@ -2,7 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using YTMusicUploader.Providers.Models;
+using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Providers.Repos
 {

@@ -146,7 +146,7 @@ namespace YTMusicUploader
                     pbArtworkIdle.Visible = false;
                     pbArtwork.Visible = true;
                     pbArtwork.Image = MusicDataFetcher.GetAlbumArtwork(songPath);
-                    ArtWorkTooltip.SetToolTip(pbArtwork, MusicDataFetcher.GetMusicFileMetaData(songPath));
+                    ArtWorkTooltip.SetToolTip(pbArtwork, MusicDataFetcher.GetMusicFileMetaDataString(songPath));
                 }
             }
         }

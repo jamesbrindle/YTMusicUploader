@@ -15,6 +15,18 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .br
 .RI "HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. "
 .ti -1c
+.RI "static bool \fBIsSongUploaded\fP (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
+.br
+.RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
+.ti -1c
+.RI "static bool \fBIsSongUploadedMulitpleAlbumNameVariations\fP (string artist, string album, string track, string cookieValue)"
+.br
+.RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
+.ti -1c
+.RI "static bool \fBIsSongUploaded\fP (string artist, string album, string track, string cookieValue)"
+.br
+.RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
+.ti -1c
 .RI "static bool \fBUploadSong\fP (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to upload a music file\&. "
@@ -50,6 +62,8 @@ HttpWebRequest POST request to send to YouTube to check if the user's is authent
 YouTube music HttpWebRequest abstract class
 .PP
 HttpWebRequest POST request to send to YouTube to upload a music file\&.
+.PP
+HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&.
 .PP
 In this case, we're actually perform a request for personally uploaded music files
 .PP
@@ -107,6 +121,68 @@ Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.
 \fBReturns\fP
 .RS 4
 True if successfully authenticated, false otherwise
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string artist, string album, string track, string cookieValue)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+.PP
+\fBParameters\fP
+.RS 4
+\fIartist\fP Artist name from music file meta tag
+.br
+\fIalbum\fP Album name from music file meta tag
+.br
+\fItrack\fP Track or song name from music file meta tag
+.br
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if song is found, false otherwise
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+.PP
+\fBParameters\fP
+.RS 4
+\fImusicFilePath\fP Path to music file to be uploaded
+.br
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if song is found, false otherwise
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploadedMulitpleAlbumNameVariations (string artist, string album, string track, string cookieValue)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+.PP
+\fBParameters\fP
+.RS 4
+\fIartist\fP Artist name from music file meta tag
+.br
+\fIalbum\fP Album name from music file meta tag
+.br
+\fItrack\fP Track or song name from music file meta tag
+.br
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if song is found, false otherwise
 .RE
 .PP
 

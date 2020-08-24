@@ -1,0 +1,7 @@
+<map id="YTMusicUploader.Providers.DataModels.IDbModel" name="YTMusicUploader.Providers.DataModels.IDbModel">
+<area shape="rect" id="node1" title=" " alt="" coords="215,5,400,112"/>
+<area shape="rect" id="node2" href="$d5/df5/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models.html" title=" " alt="" coords="215,160,400,267"/>
+<area shape="rect" id="node3" href="$df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html" title="Music library file and status" alt="" coords="5,315,191,568"/>
+<area shape="rect" id="node4" href="$dc/d52/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_settings.html" title="Application settings data" alt="" coords="215,373,400,509"/>
+<area shape="rect" id="node5" href="$d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html" title="Selected libraries to scan and watch data" alt="" coords="424,388,609,495"/>
+</map>
