@@ -27,6 +27,7 @@ This is a .Net application written in C# that uploads your personal music librar
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6.png)](https://github.com/jamesbrindle/YTMusicUploader)
+
 &nbsp;
 &nbsp;
 
