@@ -18,6 +18,7 @@ var dir_0e014969c9e81403f3d099ca0567a7d4 =
       [ "FileData", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data" ]
     ] ],
     [ "FuzzyLogic.cs", "d5/da6/_fuzzy_logic_8cs.html", null ],
+    [ "ImageHelper.cs", "d6/d98/_image_helper_8cs.html", null ],
     [ "NetworkHelper.cs", "da/d30/_network_helper_8cs.html", null ],
     [ "SafeFileStream.cs", "d4/d03/_safe_file_stream_8cs.html", [
       [ "SafeFileStream", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream" ]

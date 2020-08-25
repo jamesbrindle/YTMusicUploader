@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MainForm" 3 "Mon Aug 24 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MainForm" 3 "Tue Aug 25 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -43,6 +43,12 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetUploadingMessage\fP (string text, string musicFilePath=null)"
+.br
+.ti -1c
+.RI "void \fBSetArtworkBasicImage\fP (Image image)"
+.br
+.ti -1c
+.RI "Image \fBGetCurrentArtworkImage\fP ()"
 .br
 .ti -1c
 .RI "void \fBSetArtworkImage\fP (string songPath)"
@@ -129,6 +135,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "bool \fBAborting\fP = false\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "bool \fBAbortArtFetchThread\fP = false\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "bool \fBQueue\fP = false\fC [get, set]\fP"
 .br
 .ti -1c
@@ -163,6 +172,8 @@ Clean up any resources being used\&.
 .RE
 .PP
 
+.SS "Image YTMusicUploader\&.MainForm\&.GetCurrentArtworkImage ()"
+
 .SS "string YTMusicUploader\&.MainForm\&.GetIssuesLabel ()"
 
 .SS "string YTMusicUploader\&.MainForm\&.GetUploadLabel ()"
@@ -172,6 +183,8 @@ Clean up any resources being used\&.
 .SS "void YTMusicUploader\&.MainForm\&.QuitApplication ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.RepopulateAmountLables ()"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetArtworkBasicImage (Image image)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetArtworkImage (string songPath)"
 
@@ -203,6 +216,8 @@ Clean up any resources being used\&.
 
 .SH "Property Documentation"
 .PP 
+.SS "bool YTMusicUploader\&.MainForm\&.AbortArtFetchThread = false\fC [get]\fP, \fC [set]\fP"
+
 .SS "bool YTMusicUploader\&.MainForm\&.Aborting = false\fC [get]\fP, \fC [set]\fP"
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.ArtWorkTooltip\fC [get]\fP, \fC [set]\fP"

@@ -262,6 +262,7 @@
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Business\MusicDataFetcher.cs" />
     <Compile Include="Helpers\FuzzyLogic.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Business\RegistrySettings.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />

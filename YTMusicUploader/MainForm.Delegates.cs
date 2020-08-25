@@ -1,6 +1,8 @@
 ﻿using JBToolkit.Windows;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using YTMusicUploader.Helpers;
 
 namespace YTMusicUploader
 {
@@ -117,11 +119,63 @@ namespace YTMusicUploader
                 lblUploadingMessage.Text = text;
                 if (!string.IsNullOrEmpty(musicFilePath))
                 {
-                    new Thread((ThreadStart)delegate
+                    if (_artworkFetchThread != null)
                     {
-                        SetArtworkImage(musicFilePath);
-                    }).Start();
+                        AbortArtFetchThread = true;
+                        new Thread((ThreadStart)delegate {
+                            try
+                            {
+                                var currentImage = GetCurrentArtworkImage();
+                                if (currentImage == null || !ImageHelper.IsSameImage(currentImage, Properties.Resources.default_artwork))
+                                    SetArtworkBasicImage(Properties.Resources.default_artwork);
+                            }
+                            catch { }
+                        }).Start();                      
+
+                        try
+                        {
+                            _artworkFetchThread.Abort();
+                        }
+                        catch { }
+                    }
+
+                    ThreadStart artFetchThreadStart = () => { SetArtworkImage(musicFilePath); };
+                    artFetchThreadStart += () => { _artworkFetchThread = null; };
+                    _artworkFetchThread = new Thread(artFetchThreadStart)
+                    {
+                        IsBackground = true,
+                        Priority = ThreadPriority.BelowNormal
+                    };
+                    _artworkFetchThread.Start();
                 }
+            }
+        }
+
+        delegate void SetArtworkImageBasicDelegate(Image image);
+        public void SetArtworkBasicImage(Image image)
+        {
+            if (pbArtwork.InvokeRequired)
+            {
+                SetArtworkImageBasicDelegate d = new SetArtworkImageBasicDelegate(SetArtworkBasicImage);
+                Invoke(d, new object[] { image });
+            }
+            else
+            {
+                pbArtwork.Image = image;
+            }
+        }
+
+        delegate Image GetCurrentArtworkImageDelegate();
+        public Image GetCurrentArtworkImage()
+        {
+            if (pbArtwork.InvokeRequired)
+            {
+                GetCurrentArtworkImageDelegate d = new GetCurrentArtworkImageDelegate(GetCurrentArtworkImage);
+                return (Image)Invoke(d, new object[] { });
+            }
+            else
+            {
+                return pbArtwork.Image;
             }
         }
 
@@ -142,10 +196,30 @@ namespace YTMusicUploader
                 }
                 else
                 {
+                    ArtWorkTooltip.SetToolTip(pbArtwork, MusicDataFetcher.GetMusicFileMetaDataString(songPath));
+
+                    if (AbortArtFetchThread)
+                    {
+                        AbortArtFetchThread = false;
+                        return;
+                    }
+
                     pbArtworkIdle.Visible = false;
                     pbArtwork.Visible = true;
-                    pbArtwork.Image = MusicDataFetcher.GetAlbumArtwork(songPath);
-                    ArtWorkTooltip.SetToolTip(pbArtwork, MusicDataFetcher.GetMusicFileMetaDataString(songPath));
+
+                    var newImage = MusicDataFetcher.GetAlbumArtwork(songPath);
+                    if (AbortArtFetchThread)
+                    {
+                        AbortArtFetchThread = false;
+                        return;
+                    }
+
+                    var currentImage = pbArtwork.Image;
+                    if (currentImage == null || !ImageHelper.IsSameImage(newImage, currentImage))
+                        pbArtwork.Image = newImage;
+
+                    if (AbortArtFetchThread)
+                        AbortArtFetchThread = false;
                 }
             }
         }

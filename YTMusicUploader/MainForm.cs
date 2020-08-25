@@ -57,6 +57,7 @@ namespace YTMusicUploader
         private DateTime? LastFolderChangeTime { get; set; }
         private bool InstallingEdge { get; set; }
         public bool Aborting { get; set; } = false;
+        public bool AbortArtFetchThread { get; set; } = false;
         public bool Queue { get; set; } = false;
 
         //
@@ -78,9 +79,13 @@ namespace YTMusicUploader
         private Thread _connectToYouTubeMusicThread;
         private Thread _scanAndUploadThread;
         private Thread _queueThread;
+        private Thread _artworkFetchThread;
 
         public MainForm(bool hidden) : base(formResizable: false)
         {
+#if RELEASE
+            CheckForIllegalCrossThreadCalls = false;
+#endif
             CultureHelper.GloballySetCultureToGB();
 
             if (hidden)
@@ -329,7 +334,7 @@ namespace YTMusicUploader
 
                         try
                         {
-                            Thread.Sleep(5000);
+                            Thread.Sleep(1000);
                         }
                         catch { }
                     }

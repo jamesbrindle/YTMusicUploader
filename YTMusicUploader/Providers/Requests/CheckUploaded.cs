@@ -67,9 +67,7 @@ namespace YTMusicUploader.Providers
                     return result;
 
                 album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-                result = IsSongUploaded(artist, album, track, cookieValue);
-
-                return result;
+                return IsSongUploaded(artist, album, track, cookieValue);                
             }
             catch
             {
@@ -107,9 +105,7 @@ namespace YTMusicUploader.Providers
                 return result;
 
             album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-            result = IsSongUploaded(artist, album, track, cookieValue);
-
-            return result;
+            return IsSongUploaded(artist, album, track, cookieValue);
         }
 
 
@@ -149,7 +145,6 @@ namespace YTMusicUploader.Providers
                                                                             @"AppData\search_uploads_context.json")));
 
                 context.query = string.Format("{0} {1} {2}", artist, album, track);
-
                 byte[] postBytes = GetPostBytes(JsonConvert.SerializeObject(context));
                 request.ContentLength = postBytes.Length;
 

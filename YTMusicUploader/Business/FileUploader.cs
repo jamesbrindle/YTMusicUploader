@@ -53,7 +53,7 @@ namespace YTMusicUploader.Business
                     if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
                     {
                         MainForm.SetUploadingMessage("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
-                        MainForm.SetStatusMessage("Updating database for existing uploads");
+                        MainForm.SetStatusMessage("Comparing file system against database for existing uploads", "Comparing file system against the DB");
 
                         existingMusicFile.Path = musicFile.Path;
                         existingMusicFile.LastUpload = DateTime.Now;
@@ -92,7 +92,7 @@ namespace YTMusicUploader.Business
                         if (Requests.IsSongUploaded(musicFile.Path, MainForm.Settings.AuthenticationCookie, MainForm.MusicDataFetcher))
                         {
                             MainForm.SetUploadingMessage("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
-                            MainForm.SetStatusMessage("Updating database for existing uploads");
+                            MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
 
                             musicFile.LastUpload = DateTime.Now;
                             musicFile.Error = false;

@@ -419,11 +419,10 @@ namespace YTMusicUploader.Business
             byte[] buf;
             try
             {
-                WebProxy myProxy = new WebProxy();
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-
-                HttpWebResponse response = (HttpWebResponse)req.GetResponse();
-                Stream stream = response.GetResponseStream();
+                var myProxy = new WebProxy();
+                var req = (HttpWebRequest)WebRequest.Create(url);
+                var response = (HttpWebResponse)req.GetResponse();
+                var stream = response.GetResponseStream();
 
                 using (BinaryReader br = new BinaryReader(stream))
                 {

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
-using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Business
@@ -52,9 +51,9 @@ namespace YTMusicUploader.Business
                 }
 
                 foreach (var file in FastDirectoryEnumerator.EnumerateFiles(
-                                                                        watchFolder.Path,
-                                                                        "*.*",
-                                                                        SearchOption.AllDirectories))
+                                                                watchFolder.Path,
+                                                                "*.*",
+                                                                SearchOption.AllDirectories))
                 {
                     if (MainForm.Aborting)
                     {
@@ -76,9 +75,6 @@ namespace YTMusicUploader.Business
                 }
             }
 
-#if DEBUG
-            Console.Out.WriteLine("File scan complete: " + NewFiles.Count + " files found.");
-#endif
             //
             // Get files to delete - Cross reference with the DB
             //
@@ -121,9 +117,7 @@ namespace YTMusicUploader.Business
                     SetStatus("Idle", "Idle");
                     return;
                 }
-#if DEBUG
-                Console.Out.WriteLine("Insert new music files complete: " + count + " files inserted");
-#endif
+
                 count = 0;
                 foreach (var musicFile in MusicFilesToDelete)
                 {
@@ -139,10 +133,6 @@ namespace YTMusicUploader.Business
                 };
 
                 MainForm.SetDiscoveredFilesLabel(MainForm.MusicFileRepo.CountAll().ToString());
-
-#if DEBUG
-                Console.Out.WriteLine("Delete removed music files complete: " + count + " files inserted");
-#endif
             }
 
             SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Waiting for YouTube Music connection", "Waiting for YouTube Music connection");

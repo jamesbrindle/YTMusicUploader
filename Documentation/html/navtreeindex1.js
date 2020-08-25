@@ -1,5 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"d7/d81/_requests_8cs.html":[2,0,0,6,5],
+"d7/de1/_main_form_8_events_8_text_boxes_8cs.html":[2,0,0,16],
+"d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html":[1,0,1,0,0,0],
+"d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#a2072af1f717277cb8e1f34f39b6a2132":[1,0,1,0,0,0,6],
 "d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#a244f3ce6e90e3031e5121f1f27b8ed58":[1,0,1,0,0,0,4],
 "d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#a6b89d035cd0efdbeca0645d2c20c59c6":[1,0,1,0,0,0,5],
 "d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#a779b05726ef075d5586bef66f38aa657":[1,0,1,0,0,0,2],
@@ -79,8 +83,8 @@ var NAVTREEINDEX1 =
 "d8/d76/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_message_renderer.html#a1b0182f87e7aaa9960347dbe41d2a7d5":[1,0,1,4,2,2,7,0],
 "d8/d76/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_message_renderer.html#a49f92df546739298635fe81a2d7b2174":[1,0,1,4,2,2,7,1],
 "d8/d76/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_message_renderer.html#a653f585ec321b09d5c4149f26862d367":[1,0,1,4,2,2,7,2],
-"d8/d77/namespace_y_t_music_uploader_1_1_providers_1_1_repos.html":[0,12,2,5,1],
 "d8/d77/namespace_y_t_music_uploader_1_1_providers_1_1_repos.html":[1,0,1,4,1],
+"d8/d77/namespace_y_t_music_uploader_1_1_providers_1_1_repos.html":[0,12,2,5,1],
 "d8/d96/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_item_section_renderer.html":[1,0,1,4,2,2,6],
 "d8/d96/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_item_section_renderer.html#a25e4722c05cd2b38ca525fa6be4844e4":[1,0,1,4,2,2,6,1],
 "d8/d96/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_item_section_renderer.html#a2ade77a84f1b109d8ca232b88d7f5278":[1,0,1,4,2,2,6,0],
@@ -148,7 +152,7 @@ var NAVTREEINDEX1 =
 "da/d21/namespace_j_b_toolkit_1_1_windows.html":[1,0,0,3],
 "da/d21/namespace_j_b_toolkit_1_1_windows.html":[0,12,0,6],
 "da/d27/_file_scanner_8cs.html":[2,0,0,0,3],
-"da/d30/_network_helper_8cs.html":[2,0,0,3,7],
+"da/d30/_network_helper_8cs.html":[2,0,0,3,8],
 "da/d39/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_text.html":[1,0,1,4,2,2,17],
 "da/d39/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_text.html#a4c3254213eae3a73e42a0c8b859aea89":[1,0,1,4,2,2,17,0],
 "da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html":[1,0,1,2,1],
@@ -181,7 +185,7 @@ var NAVTREEINDEX1 =
 "db/d06/namespace_y_t_music_uploader_1_1_providers.html":[1,0,1,4],
 "db/d0f/class_safe_handle_zero_or_minus_one_is_invalid.html":[1,0,16],
 "db/d14/_check_authorisation_8cs.html":[2,0,0,6,3,0],
-"db/d30/_version_helper_8cs.html":[2,0,0,3,9],
+"db/d30/_version_helper_8cs.html":[2,0,0,3,10],
 "db/d50/namespace_j_b_toolkit_1_1_assemblies.html":[0,12,0,0],
 "db/d5a/namespace_j_b_toolkit.html":[0,12,0],
 "db/d5a/namespace_j_b_toolkit.html":[1,0,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX1 =
 "dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#a25075016405a4dd372995cec3ee4b9e1":[1,0,1,0,3,7],
 "dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#a528afcea10ff044180e7b847576d5421":[1,0,1,0,3,0],
 "dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#a59731bc58512f7b4c85c21b5b3854b14":[1,0,1,0,3,5],
-"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#aa45213ac30fb4ca0a724db3360dbc375":[1,0,1,0,3,6],
-"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#aa9515774329587c06771d08f35a0b4cd":[1,0,1,0,3,4],
-"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ac6fbaca1fd66679b56ace361aae3718d":[1,0,1,0,3,2],
-"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ac79b28d31e906a37a700c7574a7b6290":[1,0,1,0,3,1],
-"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#aca7c721e5249d14720bd65ac83b593f4":[1,0,1,0,3,3]
+"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#aa45213ac30fb4ca0a724db3360dbc375":[1,0,1,0,3,6]
 };
