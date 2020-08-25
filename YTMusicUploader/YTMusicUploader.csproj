@@ -369,9 +369,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Raw\YT Music Uploader - Social Image.psd" />
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Logo\YT Music Uploader - Social Image.png" />
     <None Include="Resources\Raw\idle.svg" />
     <None Include="Resources\idle.png" />
     <None Include="Resources\path855-7.png" />

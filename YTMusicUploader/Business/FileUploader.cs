@@ -36,7 +36,8 @@ namespace YTMusicUploader.Business
             var uploadedCount = await MainForm.MusicFileRepo.CountUploaded();
             var discoveredFilesCount = await MainForm.MusicFileRepo.CountAll();
 
-            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;
+            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;            
+
             foreach (var musicFile in MusicFiles)
             {
                 if (File.Exists(musicFile.Path))
