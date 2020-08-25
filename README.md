@@ -128,7 +128,7 @@ Despite some of the issues found using this control, it is actually a very good 
 **GOTCHAS**
 &nbsp;
 
-One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up **before** navigating to any URL:
+One thing to bear in mind, is that it requires a writable location for cache files (and other random files), and you need to set this up **before** navigating to any URL:
 &nbsp;
 
 ```
