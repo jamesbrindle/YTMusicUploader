@@ -373,6 +373,8 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ytmusic_aicon.png" />
+    <None Include="Resources\Header.png" />
     <None Include="Resources\Logo\YT Music Uploader - Social Image.png" />
     <None Include="Resources\Raw\idle.svg" />
     <None Include="Resources\idle.png" />

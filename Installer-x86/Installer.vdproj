@@ -466,6 +466,12 @@
         "Entry"
         {
         "MsmKey" = "8:_68BDAF69CA5D9D51814376D760894B5F"
+        "OwnerKey" = "8:_8B2903561F2CDA75966C77C63818A44E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_68BDAF69CA5D9D51814376D760894B5F"
         "OwnerKey" = "8:_94B1860005BE129EECC4B7BF31BABB39"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -568,6 +574,12 @@
         "Entry"
         {
         "MsmKey" = "8:_864D3EA78AABBA5C6067EC2BD592F3AC"
+        "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8B2903561F2CDA75966C77C63818A44E"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4506,6 +4518,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8B2903561F2CDA75966C77C63818A44E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Collections.Immutable, Version=1.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_8B2903561F2CDA75966C77C63818A44E"
+                    {
+                    "Name" = "8:System.Collections.Immutable.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Collections.Immutable.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8C17A7A789B3101992EC5A1D0C2DA347"
             {
             "AssemblyRegister" = "3:1"
@@ -7055,15 +7098,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{DD63244A-560F-4FE4-8984-D8088E5B6DE2}"
-        "PackageCode" = "8:{D0C34C84-0779-4336-9BA1-6504DD5159A2}"
+        "ProductCode" = "8:{606777CE-3F4B-43B7-9B53-9A78EDFCBA64}"
+        "PackageCode" = "8:{359F5A6B-68AC-42EB-AF66-636C1C9340C8}"
         "UpgradeCode" = "8:{1E18ED3F-C210-4589-BEB4-58E2680D3C71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.3.0"
+        "ProductVersion" = "8:1.3.3"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"

@@ -93,6 +93,16 @@ namespace YTMusicUploader.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Header {
+            get {
+                object obj = ResourceManager.GetObject("Header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap idle {
             get {
                 object obj = ResourceManager.GetObject("idle", resourceCulture);
@@ -216,6 +226,16 @@ namespace YTMusicUploader.Properties {
         internal static System.Drawing.Bitmap yt_logo {
             get {
                 object obj = ResourceManager.GetObject("yt_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ytmusic_aicon {
+            get {
+                object obj = ResourceManager.GetObject("ytmusic_aicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
