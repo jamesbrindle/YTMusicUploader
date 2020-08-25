@@ -119,9 +119,9 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 
 Using the native WPF or WinForms web control or GeckoFX you just get a web page asking to update the browser. Using CefSharp you get a page telling you the browser isn't secure enough.
 
-I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the version of [Microsoft Edge from the Canary channel:](https://www.microsoftedgeinsider.com/en-us/download)). **The YT Music Uploader Application self-contains the files needed for this dependency for convenience so you shouldn't need to install anything else other than this app.**
+I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the version of [Microsoft Edge from the Canary Channel:](https://www.microsoftedgeinsider.com/en-us/download)). **The YT Music Uploader Application self-contains the files needed for this dependency for convenience so you shouldn't need to install anything else other than this app.**
 
-Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely.
+Despite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely.
 &nbsp;
 &nbsp;
 
@@ -155,7 +155,7 @@ private void Browser_CoreWebView2Ready(object sender, EventArgs e)
 
 ### How Long Will This Application Last?
 
-Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube music develops...
+Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube Music develops...
 
 I'm going to be using this application for personal use, so I'll know straight aware when it's not working and will attempt to update the API call implementation as soon as possible.
 &nbsp;
@@ -163,7 +163,6 @@ I'm going to be using this application for personal use, so I'll know straight a
 
 ### Further Development Considerations
 
-- Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only get a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple 'fuzzy / AI logic' result sets for 'similar' songs. I'll keep working on it.
 - Would like to add the ability to upload playlists *([sigma67](https://ytmusicapi.readthedocs.io/en/latest/) has included this ability in his API so it's definately do-able).*
 &nbsp;
 &nbsp;
