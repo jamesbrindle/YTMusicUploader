@@ -46,8 +46,8 @@ This is a .Net application written in C# that uploads your personal music librar
 
 
 &nbsp;
-** * This application does not send any telemetry data of any kind to its source.**
-** * Valid file formats are the same as YouTube Music:  .flac, .m4a, .mp3, .oga, .wma**
+- **This application does not send any telemetry data of any kind to its source.**
+- **Valid file formats are the same as YouTube Music:  .flac, .m4a, .mp3, .oga, .wma**
 &nbsp;
 &nbsp;
 
