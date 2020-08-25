@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Providers.Repos
@@ -15,11 +16,12 @@ namespace YTMusicUploader.Providers.Repos
         /// Loads the application settings data from the database
         /// </summary>
         /// <returns>Setting model object</returns>
-        public Settings Load()
+        public async Task<Settings> Load()
         {
             using (var conn = DbConnection())
             {
                 conn.Open();
+
                 var settings = conn.Query<Settings>(
                         @"SELECT 
                               Id, 
@@ -27,7 +29,8 @@ namespace YTMusicUploader.Providers.Repos
                               ThrottleSpeed, 
                               AuthenticationCookie
                           FROM Settings").FirstOrDefault();
-                return settings;
+
+                return await Task.FromResult(settings);
             }
         }
 
@@ -36,7 +39,7 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="settings">Settings model object</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Update(Settings settings)
+        public async Task<DbOperationResult> Update(Settings settings)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -57,12 +60,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(1, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(1, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
     }

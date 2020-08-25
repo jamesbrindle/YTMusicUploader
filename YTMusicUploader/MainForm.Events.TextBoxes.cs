@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace YTMusicUploader
@@ -62,14 +63,13 @@ namespace YTMusicUploader
                 else
                     Settings.ThrottleSpeed = -1;
 
-                Settings.Save();
+                Task.Run(async () => await Settings.Save());
             }
         }
 
         private void RemoveDoublePoints()
         {
             tbThrottleSpeed.Text = tbThrottleSpeed.Text.Replace("..", ".").Replace("..", ".");
-
             while (tbThrottleSpeed.Text.CountSubstringOccurrences(".") > 1)
             {
                 int lastPointCharIndex = tbThrottleSpeed.Text.LastIndexOf(".");

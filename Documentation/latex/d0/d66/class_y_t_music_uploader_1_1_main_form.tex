@@ -41,13 +41,7 @@ void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_abbfdd7b0c4b8f3d70a
 \item 
 void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_af6b9517020cafac0a321d5c8fd64d11c}{Set\+Version}} (string version)
 \item 
-void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a1d4ce47117bff11a3b748972df45a132}{Set\+Uploading\+Message}} (string text, string music\+File\+Path=null)
-\item 
-void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_af0ce09023a7bf75ab880b03d56d2d1a7}{Set\+Artwork\+Basic\+Image}} (Image image)
-\item 
-Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a5d4d9be200e6859974e21cc85ea20b12}{Get\+Current\+Artwork\+Image}} ()
-\item 
-void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a785c14fd7fc60a3d0e824bac45c218c5}{Set\+Artwork\+Image}} (string song\+Path)
+void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a8a6b5f35ff37227ceb31962ce6c20c27}{Set\+Uploading\+Message}} (string text, string tooltip\+Text=null, Image artwork\+Image=null, bool changing\+Artwork\+Image=false)
 \item 
 void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_ad5af0ba57a68f99474530af52999381b}{Set\+Discovered\+Files\+Label}} (string text)
 \item 
@@ -59,7 +53,7 @@ void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a7e6d9ff608ac01f294
 \item 
 string \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_afcdba5b0a1c859f1d87069a21c695990}{Get\+Upload\+Label}} ()
 \item 
-void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_ac79bcbf0e7f2935119838366637abf32}{Bind\+Watch\+Folders\+List}} ()
+async Task \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a882f453349e3e2938f7bf06da421c1b7}{Bind\+Watch\+Folders\+List}} ()
 \item 
 void \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_ac08b0810ba0be3d71049f5ef937d98d9}{Set\+Connect\+To\+You\+Tube\+Button\+Enabled}} (bool enabled)
 \item 
@@ -103,11 +97,11 @@ int \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a4fd6a177b913039f66e
 \item 
 bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a79a6190cca4fa800df878bc41817cb9a}{Aborting}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
-bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a11bb0ef06db0b42c864d020c95e16648}{Abort\+Art\+Fetch\+Thread}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\item 
 bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a1d6fe5987f8979d0b3867854824aef21}{Queue}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a33270c020374caf08b809e6082d87d6c}{Music\+Data\+Fetcher}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_afaa55ef1985fa41783f3518d11f4bca5}{Artwork\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 Tool\+Tip \mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form_a8ce9a2cba42c16d282117ccd8016537e}{Art\+Work\+Tooltip}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
@@ -134,11 +128,11 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_ac79bcbf0e7f2935119838366637abf32}\label{class_y_t_music_uploader_1_1_main_form_ac79bcbf0e7f2935119838366637abf32}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a882f453349e3e2938f7bf06da421c1b7}\label{class_y_t_music_uploader_1_1_main_form_a882f453349e3e2938f7bf06da421c1b7}} 
 \index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!BindWatchFoldersList@{BindWatchFoldersList}}
 \index{BindWatchFoldersList@{BindWatchFoldersList}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
 \doxysubsubsection{\texorpdfstring{BindWatchFoldersList()}{BindWatchFoldersList()}}
-{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Main\+Form.\+Bind\+Watch\+Folders\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task Y\+T\+Music\+Uploader.\+Main\+Form.\+Bind\+Watch\+Folders\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_aa2d837832d634c52c44cf4af20401ea6}\label{class_y_t_music_uploader_1_1_main_form_aa2d837832d634c52c44cf4af20401ea6}} 
 \index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!Dispose@{Dispose}}
@@ -155,19 +149,6 @@ Clean up any resources being used.
 {\em disposing} & true if managed resources should be disposed; otherwise, false.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a5d4d9be200e6859974e21cc85ea20b12}\label{class_y_t_music_uploader_1_1_main_form_a5d4d9be200e6859974e21cc85ea20b12}} 
-\index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!GetCurrentArtworkImage@{GetCurrentArtworkImage}}
-\index{GetCurrentArtworkImage@{GetCurrentArtworkImage}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
-\doxysubsubsection{\texorpdfstring{GetCurrentArtworkImage()}{GetCurrentArtworkImage()}}
-{\footnotesize\ttfamily Image Y\+T\+Music\+Uploader.\+Main\+Form.\+Get\+Current\+Artwork\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_a5d4d9be200e6859974e21cc85ea20b12_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a78f25257779ad6833c4d44d3c247bf7d}\label{class_y_t_music_uploader_1_1_main_form_a78f25257779ad6833c4d44d3c247bf7d}} 
 \index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!GetIssuesLabel@{GetIssuesLabel}}
 \index{GetIssuesLabel@{GetIssuesLabel}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
@@ -217,32 +198,6 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_a783cb437f0df94d309dfc475448f87d6_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_af0ce09023a7bf75ab880b03d56d2d1a7}\label{class_y_t_music_uploader_1_1_main_form_af0ce09023a7bf75ab880b03d56d2d1a7}} 
-\index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!SetArtworkBasicImage@{SetArtworkBasicImage}}
-\index{SetArtworkBasicImage@{SetArtworkBasicImage}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
-\doxysubsubsection{\texorpdfstring{SetArtworkBasicImage()}{SetArtworkBasicImage()}}
-{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Main\+Form.\+Set\+Artwork\+Basic\+Image (\begin{DoxyParamCaption}\item[{Image}]{image }\end{DoxyParamCaption})}
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_af0ce09023a7bf75ab880b03d56d2d1a7_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a785c14fd7fc60a3d0e824bac45c218c5}\label{class_y_t_music_uploader_1_1_main_form_a785c14fd7fc60a3d0e824bac45c218c5}} 
-\index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!SetArtworkImage@{SetArtworkImage}}
-\index{SetArtworkImage@{SetArtworkImage}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
-\doxysubsubsection{\texorpdfstring{SetArtworkImage()}{SetArtworkImage()}}
-{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Main\+Form.\+Set\+Artwork\+Image (\begin{DoxyParamCaption}\item[{string}]{song\+Path }\end{DoxyParamCaption})}
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_a785c14fd7fc60a3d0e824bac45c218c5_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a7ed493021b05b1cd1373c44082413d4f}\label{class_y_t_music_uploader_1_1_main_form_a7ed493021b05b1cd1373c44082413d4f}} 
@@ -348,24 +303,17 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_a7e6d9ff608ac01f29412a13657854b1f_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a1d4ce47117bff11a3b748972df45a132}\label{class_y_t_music_uploader_1_1_main_form_a1d4ce47117bff11a3b748972df45a132}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a8a6b5f35ff37227ceb31962ce6c20c27}\label{class_y_t_music_uploader_1_1_main_form_a8a6b5f35ff37227ceb31962ce6c20c27}} 
 \index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!SetUploadingMessage@{SetUploadingMessage}}
 \index{SetUploadingMessage@{SetUploadingMessage}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
 \doxysubsubsection{\texorpdfstring{SetUploadingMessage()}{SetUploadingMessage()}}
-{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Main\+Form.\+Set\+Uploading\+Message (\begin{DoxyParamCaption}\item[{string}]{text,  }\item[{string}]{music\+File\+Path = {\ttfamily null} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Main\+Form.\+Set\+Uploading\+Message (\begin{DoxyParamCaption}\item[{string}]{text,  }\item[{string}]{tooltip\+Text = {\ttfamily null},  }\item[{Image}]{artwork\+Image = {\ttfamily null},  }\item[{bool}]{changing\+Artwork\+Image = {\ttfamily false} }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_a1d4ce47117bff11a3b748972df45a132_cgraph}
-\end{center}
-\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_a1d4ce47117bff11a3b748972df45a132_icgraph}
+\includegraphics[width=350pt]{d0/d66/class_y_t_music_uploader_1_1_main_form_a8a6b5f35ff37227ceb31962ce6c20c27_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_af6b9517020cafac0a321d5c8fd64d11c}\label{class_y_t_music_uploader_1_1_main_form_af6b9517020cafac0a321d5c8fd64d11c}} 
@@ -396,17 +344,17 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Property Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a11bb0ef06db0b42c864d020c95e16648}\label{class_y_t_music_uploader_1_1_main_form_a11bb0ef06db0b42c864d020c95e16648}} 
-\index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!AbortArtFetchThread@{AbortArtFetchThread}}
-\index{AbortArtFetchThread@{AbortArtFetchThread}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
-\doxysubsubsection{\texorpdfstring{AbortArtFetchThread}{AbortArtFetchThread}}
-{\footnotesize\ttfamily bool Y\+T\+Music\+Uploader.\+Main\+Form.\+Abort\+Art\+Fetch\+Thread = false\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
-
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a79a6190cca4fa800df878bc41817cb9a}\label{class_y_t_music_uploader_1_1_main_form_a79a6190cca4fa800df878bc41817cb9a}} 
 \index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!Aborting@{Aborting}}
 \index{Aborting@{Aborting}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
 \doxysubsubsection{\texorpdfstring{Aborting}{Aborting}}
 {\footnotesize\ttfamily bool Y\+T\+Music\+Uploader.\+Main\+Form.\+Aborting = false\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_afaa55ef1985fa41783f3518d11f4bca5}\label{class_y_t_music_uploader_1_1_main_form_afaa55ef1985fa41783f3518d11f4bca5}} 
+\index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!ArtworkImage@{ArtworkImage}}
+\index{ArtworkImage@{ArtworkImage}!YTMusicUploader.MainForm@{YTMusicUploader.MainForm}}
+\doxysubsubsection{\texorpdfstring{ArtworkImage}{ArtworkImage}}
+{\footnotesize\ttfamily Image Y\+T\+Music\+Uploader.\+Main\+Form.\+Artwork\+Image\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_main_form_a8ce9a2cba42c16d282117ccd8016537e}\label{class_y_t_music_uploader_1_1_main_form_a8ce9a2cba42c16d282117ccd8016537e}} 
 \index{YTMusicUploader.MainForm@{YTMusicUploader.MainForm}!ArtWorkTooltip@{ArtWorkTooltip}}

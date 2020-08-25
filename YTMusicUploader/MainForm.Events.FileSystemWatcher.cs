@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JBToolkit.Threads;
+using System;
 using System.IO;
 using System.Threading;
 
@@ -22,13 +23,7 @@ namespace YTMusicUploader
             new Thread((ThreadStart)delegate
             {
                 while (LastFolderChangeTime > DateTime.Now.AddSeconds(-10))
-                {
-                    try
-                    {
-                        Thread.Sleep(1000);
-                    }
-                    catch { }
-                }
+                    ThreadHelper.SafeSleep(1000);
 
                 LastFolderChangeTime = null;
                 FileScanner.RecountLibraryFiles();

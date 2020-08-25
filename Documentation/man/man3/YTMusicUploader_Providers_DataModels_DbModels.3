@@ -14,10 +14,10 @@ Inherited by \fBYTMusicUploader\&.Providers\&.DataModels\&.MusicFile\fP, \fBYTMu
 
 .in +1c
 .ti -1c
-.RI "abstract \fBDbOperationResult\fP \fBSave\fP ()"
+.RI "abstract Task< \fBDbOperationResult\fP > \fBSave\fP ()"
 .br
 .ti -1c
-.RI "abstract \fBDbOperationResult\fP \fBDelete\fP ()"
+.RI "abstract Task< \fBDbOperationResult\fP > \fBDelete\fP ()"
 .br
 .in -1c
 .SS "Properties"
@@ -29,13 +29,13 @@ Inherited by \fBYTMusicUploader\&.Providers\&.DataModels\&.MusicFile\fP, \fBYTMu
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "abstract \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.DbModels\&.Delete ()\fC [pure virtual]\fP"
+.SS "abstract Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.DbModels\&.Delete ()\fC [pure virtual]\fP"
 
 .PP
 Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.IDbModel\fP\&.
 .PP
 Implemented in \fBYTMusicUploader\&.Providers\&.DataModels\&.MusicFile\fP, \fBYTMusicUploader\&.Providers\&.DataModels\&.WatchFolder\fP, and \fBYTMusicUploader\&.Providers\&.DataModels\&.Settings\fP\&.
-.SS "abstract \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.DbModels\&.Save ()\fC [pure virtual]\fP"
+.SS "abstract Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.DbModels\&.Save ()\fC [pure virtual]\fP"
 
 .PP
 Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.IDbModel\fP\&.

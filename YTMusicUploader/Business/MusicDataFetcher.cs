@@ -1,6 +1,5 @@
 ﻿using Hqub.MusicBrainz.API;
 using Hqub.MusicBrainz.API.Entities;
-using JBToolkit.Synchronicity;
 using System;
 using System.Drawing;
 using System.IO;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using YTMusicUploader.Business.MusicBrainz;
 
 namespace YTMusicUploader.Business
@@ -46,7 +46,7 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to music file</param>
         /// <returns>MusicBrainz ID</returns>
-        public string GetTrackMbId(string path)
+        public async Task<string> GetTrackMbId(string path)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace YTMusicUploader.Business
                                         tags.Album,
                                         tags.Title);
                 if (result != null)
-                    return result.Id;
+                    return await Task.FromResult(result.Id);
             }
             catch { }
 
@@ -142,7 +142,9 @@ namespace YTMusicUploader.Business
                     { "recording", track }
                 };
 
-                var recordings = AsyncHelper.RunSync(() => MusicBrainzClient.Recordings.SearchAsync(query));
+                //   var recordings = AsyncHelper.RunSync(() => MusicBrainzClient.Recordings.SearchAsync(query));
+
+                var recordings = Task.Run(async () => await MusicBrainzClient.Recordings.SearchAsync(query)).Result;
                 var matches = recordings.Items.Where(r => r.Title == track && r.Releases.Any(s => s.Title == album));
 
                 // Get the best match (in this case, we use the recording that has the most releases associated).
@@ -188,7 +190,8 @@ namespace YTMusicUploader.Business
         {
             try
             {
-                var artists = AsyncHelper.RunSync(() => MusicBrainzClient.Artists.SearchAsync(artist.Quote()));
+                //var artists = AsyncHelper.RunSync(() => MusicBrainzClient.Artists.SearchAsync(artist.Quote()));
+                var artists = Task.Run(async () => await MusicBrainzClient.Artists.SearchAsync(artist.Quote())).Result;
                 if (artists != null && artists.Items.Count > 0)
                 {
                     var query = new QueryParameters<Release>()
@@ -200,7 +203,8 @@ namespace YTMusicUploader.Business
                         };
 
                     // Search for a release by title.
-                    var releases = AsyncHelper.RunSync(() => MusicBrainzClient.Releases.SearchAsync(query));
+                    //var releases = AsyncHelper.RunSync(() => MusicBrainzClient.Releases.SearchAsync(query));
+                    var releases = Task.Run(async () => await MusicBrainzClient.Releases.SearchAsync(query)).Result;
 
                     // Get the oldest release (remember to sort out items with no date set).
                     if (releases != null && releases.Items.Count > 0)
@@ -230,7 +234,7 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to the music file</param>
         /// <returns>Thumbnail image</returns>
-        public Image GetAlbumArtwork(string path)
+        public async Task<Image> GetAlbumArtwork(string path, bool tryMusicBrainz = true)
         {
             try
             {
@@ -244,23 +248,26 @@ namespace YTMusicUploader.Business
                         stream.Write(pData, 0, Convert.ToInt32(pData.Length));
                         var bmp = new Bitmap(stream, false);
 
-                        return ResizeBitmap(bmp);
+                        return await Task.FromResult(ResizeBitmap(bmp));
                     }
                     else
                     {
                         // Use online CoverArtArchive to get album artwork
 
-                        var coverImage = GetAlbumArtworkFromCoverArtArchive(path);
-                        if (coverImage != null)
-                            return coverImage;
+                        if (tryMusicBrainz)
+                        {
+                            var coverImage = GetAlbumArtworkFromCoverArtArchive(path);
+                            if (coverImage != null)
+                                return coverImage;
+                        }
 
-                        return Properties.Resources.default_artwork;
+                        return await Task.FromResult(Properties.Resources.default_artwork);
                     }
                 }
             }
             catch
             {
-                return Properties.Resources.default_artwork;
+                return await Task.FromResult(Properties.Resources.default_artwork);
             }
         }
 
@@ -308,7 +315,7 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to music file</param>
         /// <returns>Multi-line string</returns>
-        public MusicFileMetaData GetMusicFileMetaData(string path)
+        public MusicFileMetaData GetMusicFileMetaData(string path, bool tryMusicBrainz = true)
         {
             try
             {
@@ -329,7 +336,10 @@ namespace YTMusicUploader.Business
                     duration = tags.Properties.Duration;
                 }
 
-                if (string.IsNullOrEmpty(track) && !string.IsNullOrEmpty(album) && !string.IsNullOrEmpty(artist))
+                if (string.IsNullOrEmpty(track) &&
+                    !string.IsNullOrEmpty(album) &&
+                    !string.IsNullOrEmpty(artist) &&
+                    tryMusicBrainz)
                 {
                     var recording = GetReleaseFromMusicBrainzWithAlbumNameVariations(artist, album);
                     track = recording.Title;
@@ -360,7 +370,7 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to music file</param>
         /// <returns>Multi-line string</returns>
-        public string GetMusicFileMetaDataString(string path)
+        public async Task<string> GetMusicFileMetaDataString(string path, bool tryMusicBrainz = true)
         {
             var sb = new StringBuilder();
             var tags = GetMusicTagLibFile(path);
@@ -384,7 +394,10 @@ namespace YTMusicUploader.Business
 
             }
 
-            if (string.IsNullOrEmpty(track) && !string.IsNullOrEmpty(album) && !string.IsNullOrEmpty(artist))
+            if (string.IsNullOrEmpty(track) &&
+                !string.IsNullOrEmpty(album) &&
+                !string.IsNullOrEmpty(artist) &&
+                tryMusicBrainz)
             {
                 var recording = GetReleaseFromMusicBrainzWithAlbumNameVariations(artist, album);
                 track = recording.Title;
@@ -397,7 +410,7 @@ namespace YTMusicUploader.Business
             sb.AppendLine("Duration: " + (string.IsNullOrEmpty(duration) ? "-" : duration));
             sb.AppendLine("Bitrate: " + (string.IsNullOrEmpty(bitsPerSecond) ? "-" : bitsPerSecond));
 
-            return sb.ToString();
+            return await Task.FromResult(sb.ToString());
         }
 
         /// <summary>
@@ -416,23 +429,29 @@ namespace YTMusicUploader.Business
         /// </summary>
         public static byte[] GetImageBytesFromUrl(string url)
         {
-            byte[] buf;
+            byte[] buf = null;
             try
             {
-                var myProxy = new WebProxy();
                 var req = (HttpWebRequest)WebRequest.Create(url);
                 var response = (HttpWebResponse)req.GetResponse();
-                var stream = response.GetResponseStream();
 
-                using (BinaryReader br = new BinaryReader(stream))
+                if (response != null)
                 {
-                    int len = (int)(response.ContentLength);
-                    buf = br.ReadBytes(len);
-                    br.Close();
-                }
+                    var stream = response.GetResponseStream();
+                    if (stream != null)
+                    {
+                        using (BinaryReader br = new BinaryReader(stream))
+                        {
+                            int len = (int)response.ContentLength;
+                            buf = br.ReadBytes(len);
+                            br.Close();
+                        }
 
-                stream.Close();
-                response.Close();
+                        stream.Close();
+                    }
+
+                    response.Close();
+                }
             }
             catch (Exception)
             {

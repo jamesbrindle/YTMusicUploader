@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Providers.Repos
@@ -16,7 +17,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Loads a list of library watch folders from the database
         /// </summary>
         /// <returns>List of WatchFolder model objects</returns>
-        public List<WatchFolder> Load()
+        public async Task<List<WatchFolder>> Load()
         {
             using (var conn = DbConnection())
             {
@@ -27,7 +28,7 @@ namespace YTMusicUploader.Providers.Repos
                               Path
                           FROM WatchFolders
                           ORDER BY Path").ToList();
-                return watchFolders;
+                return await Task.FromResult(watchFolders);
             }
         }
 
@@ -36,7 +37,7 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="path">Directory path of the watched library</param>
         /// <returns>Database ID integer</returns>
-        public int GetWatchFolderIdFromPath(string path)
+        public async Task<int> GetWatchFolderIdFromPath(string path)
         {
             using (var conn = DbConnection())
             {
@@ -49,7 +50,7 @@ namespace YTMusicUploader.Providers.Repos
                         new { path });
 
                 if (watchFolderId != null)
-                    return (int)watchFolderId;
+                    return await Task.FromResult((int)watchFolderId);
                 return -1;
             }
         }
@@ -59,14 +60,14 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="watchFolder">The given WatchFolder object</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Insert(WatchFolder watchFolder)
+        public async Task<DbOperationResult> Insert(WatchFolder watchFolder)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
             {
-                int existingMusicFileId = GetWatchFolderIdFromPath(watchFolder.Path);
+                int existingMusicFileId = GetWatchFolderIdFromPath(watchFolder.Path).Result;
                 if (existingMusicFileId == -1)
                 {
                     using (var conn = DbConnection())
@@ -84,16 +85,16 @@ namespace YTMusicUploader.Providers.Repos
                 else
                 {
                     stopWatch.Stop();
-                    return DbOperationResult.Success(existingMusicFileId, stopWatch.Elapsed);
+                    return await Task.FromResult(DbOperationResult.Success(existingMusicFileId, stopWatch.Elapsed));
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(watchFolder.Id, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(watchFolder.Id, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 
@@ -102,10 +103,9 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="watchFolder">The given WatchFolder object</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Delete(WatchFolder watchFolder)
+        public async Task<DbOperationResult> Delete(WatchFolder watchFolder)
         {
-
-            return Delete(watchFolder.Id);
+            return await Delete(watchFolder.Id);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="watchFolder">The given WatchFolder database ID</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Delete(int id)
+        public async Task<DbOperationResult> Delete(int id)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -130,12 +130,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(-1, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 
@@ -144,7 +144,7 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="watchFolder">The given WatchFolder full directory path</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Delete(string path)
+        public async Task<DbOperationResult> Delete(string path)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -161,12 +161,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(-1, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
     }

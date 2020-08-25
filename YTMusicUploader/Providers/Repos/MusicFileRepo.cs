@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Providers.Repos
@@ -16,7 +17,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Load single MusicFile object by ID from the database
         /// </summary>
         /// <returns>MusicFile object</returns>
-        public MusicFile Load(int id)
+        public async Task<MusicFile> Load(int id)
         {
             using (var conn = DbConnection())
             {
@@ -34,7 +35,7 @@ namespace YTMusicUploader.Providers.Repos
                           WHERE Id = @Id
                           AND (Removed IS NULL OR Removed != 1)",
                         new { id }).FirstOrDefault();
-                return musicFile;
+                return await Task.FromResult(musicFile);
             }
         }
 
@@ -42,7 +43,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Load single MusicFile object by file path from the database
         /// </summary>
         /// <returns>MusicFile object</returns>
-        public MusicFile Load(string path)
+        public async Task<MusicFile> Load(string path)
         {
             using (var conn = DbConnection())
             {
@@ -60,7 +61,7 @@ namespace YTMusicUploader.Providers.Repos
                           WHERE Path = @Path
                           AND (Removed IS NULL OR Removed != 1)",
                         new { path }).FirstOrDefault();
-                return musicFile;
+                return await Task.FromResult(musicFile);
             }
         }
 
@@ -71,7 +72,7 @@ namespace YTMusicUploader.Providers.Repos
         /// <param name="hash">Hash to look for</param>
         /// <param name="path">Path of music file we're comparing (path to exlude)</param>
         /// <returns>MusicFile object</returns>
-        public MusicFile GetDuplicate(string hash, string path)
+        public Task<MusicFile> GetDuplicate(string hash, string path)
         {
             using (var conn = DbConnection())
             {
@@ -90,7 +91,7 @@ namespace YTMusicUploader.Providers.Repos
                           AND Path != @Path
                           LIMIT 1",
                         new { hash, path }).FirstOrDefault();
-                return musicFile;
+                return Task.FromResult(musicFile);
             }
         }
 
@@ -101,7 +102,7 @@ namespace YTMusicUploader.Providers.Repos
         /// <param name="lastUploadAscending">Order by 'LastUpload' (date) in descending order</param>
         /// <param name="ignoreRecentlyUploaded">Don't include entries with a 'LastUpload' date less than a month old</param>
         /// <returns>List of MusicFileObjects</returns>
-        public List<MusicFile> LoadAll(
+        public async Task<List<MusicFile>> LoadAll(
             bool includeErrorFiles = true,
             bool lastUploadAscending = false,
             bool ignoreRecentlyUploaded = false)
@@ -130,7 +131,7 @@ namespace YTMusicUploader.Providers.Repos
 
                 conn.Open();
                 var musicFiles = conn.Query<MusicFile>(cmd).ToList();
-                return musicFiles;
+                return await Task.FromResult(musicFiles);
             }
         }
 
@@ -138,7 +139,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Loads a list of MusicFile objects with upload errors
         /// </summary>
         /// <returns>List of MusicFileObjects</returns>
-        public List<MusicFile> LoadIssues()
+        public Task<List<MusicFile>> LoadIssues()
         {
             using (var conn = DbConnection())
             {
@@ -158,7 +159,7 @@ namespace YTMusicUploader.Providers.Repos
 
                 conn.Open();
                 var musicFiles = conn.Query<MusicFile>(cmd).ToList();
-                return musicFiles;
+                return Task.FromResult(musicFiles);
             }
         }
 
@@ -166,7 +167,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Loads a list of MusicFile objects with a successful upload
         /// </summary>
         /// <returns>List of MusicFileObjects</returns>
-        public List<MusicFile> LoadUploaded()
+        public async Task<List<MusicFile>> LoadUploaded()
         {
             using (var conn = DbConnection())
             {
@@ -188,7 +189,7 @@ namespace YTMusicUploader.Providers.Repos
 
                 conn.Open();
                 var musicFiles = conn.Query<MusicFile>(cmd).ToList();
-                return musicFiles;
+                return await Task.FromResult(musicFiles);
             }
         }
 
@@ -196,7 +197,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Count all non-removed Music File entries
         /// </summary>
         /// <returns>Integer count</returns>
-        public int CountAll()
+        public async Task<int> CountAll()
         {
             using (var conn = DbConnection())
             {
@@ -205,7 +206,7 @@ namespace YTMusicUploader.Providers.Repos
                         @"SELECT COUNT(Id) 
                           FROM MusicFiles
                           WHERE (Removed IS NULL OR Removed != 1)").FirstOrDefault();
-                return count;
+                return await Task.FromResult(count);
             }
         }
 
@@ -213,7 +214,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Count all non-removed Music File entries that have upload errors
         /// </summary>
         /// <returns>Integer count</returns>
-        public int CountIssues()
+        public async Task<int> CountIssues()
         {
             using (var conn = DbConnection())
             {
@@ -223,7 +224,7 @@ namespace YTMusicUploader.Providers.Repos
                           FROM MusicFiles
                           WHERE Error = 1
                           AND (Removed IS NULL OR Removed != 1)").FirstOrDefault();
-                return count;
+                return await Task.FromResult(count);
             }
         }
 
@@ -231,7 +232,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Count all non-removed Music File entries with upload success
         /// </summary>
         /// <returns>Integer count</returns>
-        public int CountUploaded()
+        public async Task<int> CountUploaded()
         {
             using (var conn = DbConnection())
             {
@@ -242,7 +243,7 @@ namespace YTMusicUploader.Providers.Repos
                           WHERE LastUpload IS NOT NULL AND LastUpload != '0001-01-01 00:00:00'
                           AND LastUpload != ''
                           AND (Removed IS NULL OR Removed != 1)").FirstOrDefault();
-                return count;
+                return await Task.FromResult(count);
             }
         }
 
@@ -251,7 +252,7 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="path">Full inital path of file</param>
         /// <returns>Integer database ID</returns>
-        public int GetMusicFileIdFromPath(string path)
+        public async Task<int> GetMusicFileIdFromPath(string path)
         {
             using (var conn = DbConnection())
             {
@@ -264,7 +265,7 @@ namespace YTMusicUploader.Providers.Repos
                         new { path });
 
                 if (musicFileId != null)
-                    return (int)musicFileId;
+                    return await Task.FromResult((int)musicFileId);
                 return -1;
             }
         }
@@ -275,14 +276,14 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="musicFile">MusicFile object</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Insert(MusicFile musicFile)
+        public async Task<DbOperationResult> Insert(MusicFile musicFile)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
             {
-                int existingMusicFileId = GetMusicFileIdFromPath(musicFile.Path);
+                int existingMusicFileId = await GetMusicFileIdFromPath(musicFile.Path);
                 if (existingMusicFileId == -1)
                 {
                     using (var conn = DbConnection())
@@ -308,15 +309,15 @@ namespace YTMusicUploader.Providers.Repos
                     }
                 }
                 else
-                    RestoreMusicFile(existingMusicFileId);
+                    await RestoreMusicFile(existingMusicFileId);
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(musicFile.Id, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(musicFile.Id, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 
@@ -324,7 +325,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Sets the 'removed' flag to false
         /// </summary>
         /// <param name="id">Database ID of music file</param>
-        public void RestoreMusicFile(int id)
+        public async Task RestoreMusicFile(int id)
         {
             using (var conn = DbConnection())
             {
@@ -335,6 +336,8 @@ namespace YTMusicUploader.Providers.Repos
                           WHERE Id = @Id",
                         new { id });
             }
+
+            await Task.Run(() => { });
         }
 
         /// <summary>
@@ -342,7 +345,7 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="musicFile">Given MusicFile obejct to update with</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Update(MusicFile musicFile)
+        public async Task<DbOperationResult> Update(MusicFile musicFile)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -367,12 +370,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(musicFile.Id, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(musicFile.Id, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 
@@ -383,9 +386,9 @@ namespace YTMusicUploader.Providers.Repos
         /// <param name="musicFile">Given MusicFile object</param>
         /// <param name="destroy">If true, deletes from the database. If false, just sets the 'Removed' flag</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Delete(MusicFile musicFile, bool destroy = false)
+        public async Task<DbOperationResult> Delete(MusicFile musicFile, bool destroy = false)
         {
-            return Delete(musicFile.Id, destroy);
+            return await Delete(musicFile.Id, destroy);
         }
 
         /// <summary>
@@ -395,7 +398,7 @@ namespace YTMusicUploader.Providers.Repos
         /// <param name="id">Database ID of Music File entry</param>
         /// <param name="destroy">If true, deletes from the database. If false, just sets the 'Removed' flag</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Delete(int id, bool destroy = false)
+        public async Task<DbOperationResult> Delete(int id, bool destroy = false)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -425,12 +428,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(-1, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 
@@ -441,7 +444,7 @@ namespace YTMusicUploader.Providers.Repos
         /// <param name="path">Initial full file path of Music File entry</param>
         /// <param name="destroy">If true, deletes from the database. If false, just sets the 'Removed' flag</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Delete(string path)
+        public async Task<DbOperationResult> Delete(string path)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -459,12 +462,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(-1, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 
@@ -474,7 +477,7 @@ namespace YTMusicUploader.Providers.Repos
         /// </summary>
         /// <param name="path">Beginning folder path to filter for</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult DeleteWatchFolder(string path)
+        public async Task<DbOperationResult> DeleteWatchFolder(string path)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -492,12 +495,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(-1, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 
@@ -505,7 +508,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Deletes all Music File entries from the database
         /// </summary>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult DeleteAll()
+        public async Task<DbOperationResult> DeleteAll()
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -521,12 +524,12 @@ namespace YTMusicUploader.Providers.Repos
                 }
 
                 stopWatch.Stop();
-                return DbOperationResult.Success(-1, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
                 stopWatch.Stop();
-                return DbOperationResult.Fail(e.Message, stopWatch.Elapsed);
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
     }

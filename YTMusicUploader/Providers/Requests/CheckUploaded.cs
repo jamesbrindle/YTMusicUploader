@@ -1,4 +1,5 @@
-﻿using JBToolkit.StreamHelpers;
+﻿using JBToolkit.FuzzyLogic;
+using JBToolkit.StreamHelpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -7,8 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using YTMusicUploader.Business;
-using YTMusicUploader.Helpers.FuzzyLogic;
 using YTMusicUploader.Providers.RequestModels;
 
 namespace YTMusicUploader.Providers
@@ -67,6 +68,22 @@ namespace YTMusicUploader.Providers
                     return result;
 
                 album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
+                result = IsSongUploaded(artist, album, track, cookieValue);
+
+                if (result)
+                    return result;
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(track) && track.Substring(0, 2).IsNumeric())
+                    {
+                        track = track.Substring(2).Trim();
+                        if (track.StartsWith("_") || track.StartsWith("-") || track.StartsWith("."))
+                            track = track.Substring(1).Trim();
+                    }
+                }
+                catch { }
+
                 return IsSongUploaded(artist, album, track, cookieValue);
             }
             catch
@@ -105,9 +122,24 @@ namespace YTMusicUploader.Providers
                 return result;
 
             album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
+            result = IsSongUploaded(artist, album, track, cookieValue);
+
+            if (result)
+                return result;
+
+            try
+            {
+                if (!string.IsNullOrEmpty(track) && track.Substring(0, 2).IsNumeric())
+                {
+                    track = track.Substring(2).Trim();
+                    if (track.StartsWith("_") || track.StartsWith("-") || track.StartsWith("."))
+                        track = track.Substring(1).Trim();
+                }
+            }
+            catch { }
+
             return IsSongUploaded(artist, album, track, cookieValue);
         }
-
 
         /// <summary>
         /// HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists
@@ -172,6 +204,7 @@ namespace YTMusicUploader.Providers
                                           .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
                                           .Select(p => ((JProperty)p).Value).ToList();
 
+                    float matchSuccess = Global.YouTubeUploadedSimilarityPercentageForMatch;
                     float artistSimilarity = 0.0f;
                     float albumSimilartity = 0.0f;
                     float trackSimilarity = 0.0f;
@@ -187,37 +220,51 @@ namespace YTMusicUploader.Providers
                                     return false;
                                 else
                                 {
-                                    foreach (var runElement in runArray)
+                                    Parallel.ForEach(runArray, (runElement) =>
                                     {
-                                        float _artistSimilarity = Levenshtein.Similarity(runElement.text, artist);
-                                        if (_artistSimilarity > 0.75)
-                                        {
-                                            if (artistSimilarity < _artistSimilarity)
-                                                artistSimilarity = _artistSimilarity;
-                                        }
+                                        float _artistSimilarity = 0.0f;
+                                        float _albumSimilartity = 0.0f;
+                                        float _trackSimilarity = 0.0f;
 
-                                        float _albumSimilartity = Levenshtein.Similarity(runElement.text, album);
-                                        if (_albumSimilartity > 0.75)
+                                        Parallel.For(0, 3, (i, state) =>
                                         {
-                                            if (albumSimilartity < _albumSimilartity)
-                                                albumSimilartity = _albumSimilartity;
-                                        }
+                                            switch (i)
+                                            {
+                                                case 0:
+                                                    if (artistSimilarity < matchSuccess)
+                                                        _artistSimilarity = Levenshtein.Similarity(runElement.text, artist);
+                                                    break;
+                                                case 1:
+                                                    if (_albumSimilartity < matchSuccess)
+                                                        _albumSimilartity = Levenshtein.Similarity(runElement.text, album);
+                                                    break;
+                                                case 2:
+                                                    if (_trackSimilarity < matchSuccess)
+                                                        _trackSimilarity = Levenshtein.Similarity(runElement.text, track);
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        });
 
-                                        float _trackSimilarity = Levenshtein.Similarity(runElement.text, track);
-                                        if (_trackSimilarity > 0.75)
-                                        {
-                                            if (trackSimilarity < _trackSimilarity)
-                                                trackSimilarity = _trackSimilarity;
-                                        }
-                                    }
+                                        if (artistSimilarity < _artistSimilarity)
+                                            artistSimilarity = _artistSimilarity;
+
+                                        if (albumSimilartity < _albumSimilartity)
+                                            albumSimilartity = _albumSimilartity;
+
+                                        if (trackSimilarity < _trackSimilarity)
+                                            trackSimilarity = _trackSimilarity;
+
+                                    });
                                 }
                             }
                         }
                     }
 
-                    if (artistSimilarity > 0.75 &&
-                        albumSimilartity > 0.75 &&
-                        trackSimilarity > 0.75)
+                    if (artistSimilarity >= matchSuccess &&
+                        albumSimilartity >= matchSuccess &&
+                        trackSimilarity >= matchSuccess)
                     {
                         return true;
                     }

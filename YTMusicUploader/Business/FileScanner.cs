@@ -32,12 +32,12 @@ namespace YTMusicUploader.Business
         public void Process()
         {
             SetStatus();
-            CurrentMusicFiles = MainForm.MusicFileRepo.LoadAll();
+            CurrentMusicFiles = MainForm.MusicFileRepo.LoadAll().Result;
             foreach (var musicFile in CurrentMusicFiles)
                 CurrentMusicFilesHash.Add(musicFile.Path);
 
             if (MainForm.WatchFolders.Count == 0)
-                MainForm.MusicFileRepo.DeleteAll();
+                MainForm.MusicFileRepo.DeleteAll().Wait();
 
             //
             // Get files to add - Cross reference with the DB
@@ -132,7 +132,7 @@ namespace YTMusicUploader.Business
 
                 };
 
-                MainForm.SetDiscoveredFilesLabel(MainForm.MusicFileRepo.CountAll().ToString());
+                MainForm.SetDiscoveredFilesLabel(MainForm.MusicFileRepo.CountAll().Result.ToString());
             }
 
             SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Waiting for YouTube Music connection", "Waiting for YouTube Music connection");
@@ -153,9 +153,7 @@ namespace YTMusicUploader.Business
                                                                        SearchOption.AllDirectories))
                 {
                     if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
-                    {
                         count++;
-                    }
                 }
             }
 
@@ -165,7 +163,14 @@ namespace YTMusicUploader.Business
         private void SetStatus(string statusText = null, string systemTrayIconText = null)
         {
             if (string.IsNullOrEmpty(statusText))
-                MainForm.SetStatusMessage("Looking for new files...", "Looking for new files");
+            {
+                MainForm.SetUploadingMessage("Idle", null, null, true);
+
+                if (MainForm.WatchFolders.Count > 0)
+                    MainForm.SetStatusMessage("Looking for new files...", "Looking for new files");
+                else
+                    MainForm.SetStatusMessage("Updating database...", "Updating database");
+            }
             else
                 MainForm.SetStatusMessage(statusText);
 
@@ -180,7 +185,6 @@ namespace YTMusicUploader.Business
 
             try
             {
-
                 int? id = conn.ExecuteScalar<int?>(
                         @"SELECT Id  
                           FROM MusicFiles

@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Repos.MusicFileRepo.RestoreMusicFile" name="YTMusicUploader.Providers.Repos.MusicFileRepo.RestoreMusicFile">
+<area shape="rect" id="node1" title="Sets the &#39;removed&#39; flag to false" alt="" coords="5,5,260,47"/>
+<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="308,5,493,47"/>
+</map>

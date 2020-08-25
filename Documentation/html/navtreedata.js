@@ -65,8 +65,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d81/_requests_8cs.html",
-"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#aa9515774329587c06771d08f35a0b4cd"
+"d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#ab4f638a17cf0f8ff5d119e594b6f469c",
+"dd/dd5/class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

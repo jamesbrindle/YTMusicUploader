@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace JBToolkit.Windows
 {
@@ -369,13 +370,13 @@ namespace JBToolkit.Windows
         /// <summary>
         /// Calculate the hash of a file with buffered read
         /// </summary>
-        public static string GetFileHash(string path)
+        public static async Task<string> GetFileHash(string path)
         {
             using (var stream = new BufferedStream(File.OpenRead(path), 1200000))
             {
                 var sha = new SHA256Managed();
                 byte[] checksum = sha.ComputeHash(stream);
-                return BitConverter.ToString(checksum).Replace("-", string.Empty);
+                return await Task.FromResult(BitConverter.ToString(checksum).Replace("-", string.Empty));
             }
         }
 

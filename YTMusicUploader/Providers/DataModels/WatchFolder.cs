@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader.Providers.DataModels
@@ -15,9 +16,9 @@ namespace YTMusicUploader.Providers.DataModels
         /// Insert into the database
         /// </summary>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public override DbOperationResult Save()
+        public async override Task<DbOperationResult> Save()
         {
-            var result = new WatchFolderRepo().Insert(this);
+            var result = await new WatchFolderRepo().Insert(this);
             if (!result.IsError)
                 Id = result.Id;
 
@@ -28,9 +29,9 @@ namespace YTMusicUploader.Providers.DataModels
         /// Delete from the database
         /// </summary>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public override DbOperationResult Delete()
+        public async override Task<DbOperationResult> Delete()
         {
-            var result = new WatchFolderRepo().Delete(this);
+            var result = await new WatchFolderRepo().Delete(this);
             if (!result.IsError)
                 Id = -1;
 

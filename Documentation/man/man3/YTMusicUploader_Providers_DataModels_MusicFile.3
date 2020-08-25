@@ -25,15 +25,15 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .br
 .RI "Music library file and status "
 .ti -1c
-.RI "override \fBDbOperationResult\fP \fBSave\fP ()"
+.RI "async override Task< \fBDbOperationResult\fP > \fBSave\fP ()"
 .br
 .RI "Insert or update the database "
 .ti -1c
-.RI "override \fBDbOperationResult\fP \fBDelete\fP ()"
+.RI "async override Task< \fBDbOperationResult\fP > \fBDelete\fP ()"
 .br
 .RI "Delete from the database (for MusicFiles, it typically set the flag of 'Removed' but doesn't actually delete from the database\&. This is so the file (using a checksum hash) can be compared with others to identify an already uploaded file if the files music to a different path "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDelete\fP (bool destroy)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (bool destroy)"
 .br
 .RI "Delete from the database\&. "
 .in -1c
@@ -83,7 +83,7 @@ Music library file and status
 Music library file and status 
 .SH "Member Function Documentation"
 .PP 
-.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Delete ()\fC [virtual]\fP"
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Delete ()\fC [virtual]\fP"
 
 .PP
 Delete from the database (for MusicFiles, it typically set the flag of 'Removed' but doesn't actually delete from the database\&. This is so the file (using a checksum hash) can be compared with others to identify an already uploaded file if the files music to a different path the entry from the database
@@ -96,7 +96,7 @@ Delete from the database (for MusicFiles, it typically set the flag of 'Removed'
 
 .PP
 Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Delete (bool destroy)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Delete (bool destroy)"
 
 .PP
 Delete from the database\&. 
@@ -112,7 +112,7 @@ Delete from the database\&.
 .RE
 .PP
 
-.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Save ()\fC [virtual]\fP"
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Save ()\fC [virtual]\fP"
 
 .PP
 Insert or update the database 

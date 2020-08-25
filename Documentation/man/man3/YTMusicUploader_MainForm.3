@@ -42,16 +42,7 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBSetVersion\fP (string version)"
 .br
 .ti -1c
-.RI "void \fBSetUploadingMessage\fP (string text, string musicFilePath=null)"
-.br
-.ti -1c
-.RI "void \fBSetArtworkBasicImage\fP (Image image)"
-.br
-.ti -1c
-.RI "Image \fBGetCurrentArtworkImage\fP ()"
-.br
-.ti -1c
-.RI "void \fBSetArtworkImage\fP (string songPath)"
+.RI "void \fBSetUploadingMessage\fP (string text, string tooltipText=null, Image artworkImage=null, bool changingArtworkImage=false)"
 .br
 .ti -1c
 .RI "void \fBSetDiscoveredFilesLabel\fP (string text)"
@@ -69,7 +60,7 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "string \fBGetUploadLabel\fP ()"
 .br
 .ti -1c
-.RI "void \fBBindWatchFoldersList\fP ()"
+.RI "async Task \fBBindWatchFoldersList\fP ()"
 .br
 .ti -1c
 .RI "void \fBSetConnectToYouTubeButtonEnabled\fP (bool enabled)"
@@ -135,13 +126,13 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "bool \fBAborting\fP = false\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "bool \fBAbortArtFetchThread\fP = false\fC [get, set]\fP"
-.br
-.ti -1c
 .RI "bool \fBQueue\fP = false\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "\fBMusicDataFetcher\fP \fBMusicDataFetcher\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "Image \fBArtworkImage\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "ToolTip \fBArtWorkTooltip\fP\fC [get, set]\fP"
@@ -159,7 +150,7 @@ Inherits \fBOptimisedMetroForm\fP\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "void YTMusicUploader\&.MainForm\&.BindWatchFoldersList ()"
+.SS "async Task YTMusicUploader\&.MainForm\&.BindWatchFoldersList ()"
 
 .SS "override void YTMusicUploader\&.MainForm\&.Dispose (bool disposing)\fC [protected]\fP"
 
@@ -172,8 +163,6 @@ Clean up any resources being used\&.
 .RE
 .PP
 
-.SS "Image YTMusicUploader\&.MainForm\&.GetCurrentArtworkImage ()"
-
 .SS "string YTMusicUploader\&.MainForm\&.GetIssuesLabel ()"
 
 .SS "string YTMusicUploader\&.MainForm\&.GetUploadLabel ()"
@@ -183,10 +172,6 @@ Clean up any resources being used\&.
 .SS "void YTMusicUploader\&.MainForm\&.QuitApplication ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.RepopulateAmountLables ()"
-
-.SS "void YTMusicUploader\&.MainForm\&.SetArtworkBasicImage (Image image)"
-
-.SS "void YTMusicUploader\&.MainForm\&.SetArtworkImage (string songPath)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetConnectedToYouTubeMusic (bool connectedToYouTubeMusic)"
 
@@ -206,7 +191,7 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetUploadedLabel (string text)"
 
-.SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text, string musicFilePath = \fCnull\fP)"
+.SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text, string tooltipText = \fCnull\fP, Image artworkImage = \fCnull\fP, bool changingArtworkImage = \fCfalse\fP)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetVersion (string version)"
 
@@ -216,9 +201,9 @@ Clean up any resources being used\&.
 
 .SH "Property Documentation"
 .PP 
-.SS "bool YTMusicUploader\&.MainForm\&.AbortArtFetchThread = false\fC [get]\fP, \fC [set]\fP"
-
 .SS "bool YTMusicUploader\&.MainForm\&.Aborting = false\fC [get]\fP, \fC [set]\fP"
+
+.SS "Image YTMusicUploader\&.MainForm\&.ArtworkImage\fC [get]\fP, \fC [set]\fP"
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.ArtWorkTooltip\fC [get]\fP, \fC [set]\fP"
 

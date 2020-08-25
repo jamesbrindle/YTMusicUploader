@@ -1,7 +1,6 @@
-﻿using JBToolkit.Imaging;
-using JBToolkit.Windows;
+﻿using JBToolkit.Windows;
 using System.Drawing;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace YTMusicUploader
@@ -106,121 +105,48 @@ namespace YTMusicUploader
             }
         }
 
-        delegate void SetUploadingMessageDelegate(string text, string songPath = null);
-        public void SetUploadingMessage(string text, string musicFilePath = null)
+        delegate void SetUploadingMessageDelegate(
+                        string text,
+                        string tooltipText = null,
+                        Image artworkImage = null,
+                        bool changingArtworkImage = false);
+        public void SetUploadingMessage(
+                        string text,
+                        string tooltipText = null,
+                        Image artworkImage = null,
+                        bool changingArtworkImage = false)
         {
-            if (lblUploadingMessage.InvokeRequired)
+            if (lblUploadingMessage.InvokeRequired ||
+                pbArtwork.InvokeRequired ||
+                pbArtworkIdle.InvokeRequired)
             {
                 SetUploadingMessageDelegate d = new SetUploadingMessageDelegate(SetUploadingMessage);
-                Invoke(d, new object[] { text, musicFilePath });
+                Invoke(d, new object[] { text, tooltipText, artworkImage, changingArtworkImage });
             }
             else
             {
                 lblUploadingMessage.Text = text;
-                if (!string.IsNullOrEmpty(musicFilePath))
+
+                if (artworkImage == null && changingArtworkImage)
                 {
-                    if (_artworkFetchThread != null)
-                    {
-                        AbortArtFetchThread = true;
-                        new Thread((ThreadStart)delegate
-                        {
-                            try
-                            {
-                                var currentImage = GetCurrentArtworkImage();
-                                if (currentImage == null || !ImageHelper.IsSameImage(currentImage, Properties.Resources.default_artwork))
-                                    SetArtworkBasicImage(Properties.Resources.default_artwork);
-                            }
-                            catch { }
-                        }).Start();
-
-                        try
-                        {
-                            _artworkFetchThread.Abort();
-                        }
-                        catch { }
-                    }
-
-                    ThreadStart artFetchThreadStart = () => { SetArtworkImage(musicFilePath); };
-                    artFetchThreadStart += () => { _artworkFetchThread = null; };
-                    _artworkFetchThread = new Thread(artFetchThreadStart)
-                    {
-                        IsBackground = true,
-                        Priority = ThreadPriority.BelowNormal
-                    };
-                    _artworkFetchThread.Start();
-                }
-            }
-        }
-
-        delegate void SetArtworkImageBasicDelegate(Image image);
-        public void SetArtworkBasicImage(Image image)
-        {
-            if (pbArtwork.InvokeRequired)
-            {
-                SetArtworkImageBasicDelegate d = new SetArtworkImageBasicDelegate(SetArtworkBasicImage);
-                Invoke(d, new object[] { image });
-            }
-            else
-            {
-                pbArtwork.Image = image;
-            }
-        }
-
-        delegate Image GetCurrentArtworkImageDelegate();
-        public Image GetCurrentArtworkImage()
-        {
-            if (pbArtwork.InvokeRequired)
-            {
-                GetCurrentArtworkImageDelegate d = new GetCurrentArtworkImageDelegate(GetCurrentArtworkImage);
-                return (Image)Invoke(d, new object[] { });
-            }
-            else
-            {
-                return pbArtwork.Image;
-            }
-        }
-
-        delegate void SetArtworkImageDelegate(string songPath);
-        public void SetArtworkImage(string songPath)
-        {
-            if (pbArtwork.InvokeRequired)
-            {
-                SetArtworkImageDelegate d = new SetArtworkImageDelegate(SetArtworkImage);
-                Invoke(d, new object[] { songPath });
-            }
-            else
-            {
-                if (songPath == "idle")
-                {
+                    ArtworkImage = null;
                     pbArtwork.Visible = false;
                     pbArtworkIdle.Visible = true;
                 }
-                else
+                else if (artworkImage != null && changingArtworkImage)
                 {
-                    ArtWorkTooltip.SetToolTip(pbArtwork, MusicDataFetcher.GetMusicFileMetaDataString(songPath));
-
-                    if (AbortArtFetchThread)
-                    {
-                        AbortArtFetchThread = false;
-                        return;
-                    }
-
                     pbArtworkIdle.Visible = false;
                     pbArtwork.Visible = true;
+                    ArtworkImage = artworkImage;
+                    pbArtwork.Image = artworkImage;
 
-                    var newImage = MusicDataFetcher.GetAlbumArtwork(songPath);
-                    if (AbortArtFetchThread)
-                    {
-                        AbortArtFetchThread = false;
-                        return;
-                    }
-
-                    var currentImage = pbArtwork.Image;
-                    if (currentImage == null || !ImageHelper.IsSameImage(newImage, currentImage))
-                        pbArtwork.Image = newImage;
-
-                    if (AbortArtFetchThread)
-                        AbortArtFetchThread = false;
+                    if (tooltipText != null)
+                        ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
+                }
+                else
+                {
+                    if (tooltipText != null)
+                        ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
                 }
             }
         }
@@ -295,11 +221,9 @@ namespace YTMusicUploader
             }
         }
 
-        delegate void BindWatchFoldersListDelegate();
-        public void BindWatchFoldersList()
+        delegate Task BindWatchFoldersListDelegate();
+        public async Task BindWatchFoldersList()
         {
-            WatchFolders = WatchFolderRepo.Load();
-
             if (lbWatchFolders.InvokeRequired)
             {
                 BindWatchFoldersListDelegate d = new BindWatchFoldersListDelegate(BindWatchFoldersList);
@@ -307,6 +231,7 @@ namespace YTMusicUploader
             }
             else
             {
+                WatchFolders = await WatchFolderRepo.Load();
                 foreach (var watchFolder in WatchFolders)
                 {
                     if (watchFolder.Path == @"%USERPROFILE%\Music")

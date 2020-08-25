@@ -98,10 +98,6 @@ var hierarchy =
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.SearchEndpoint", "d3/da0/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_search_endpoint.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.SectionListRenderer", "de/d99/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_section_list_renderer.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.ServiceTrackingParam", "d9/d04/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_service_tracking_param.html", null ],
-    [ "Stream", "d1/d51/class_stream.html", [
-      [ "YTMusicUploader.Business.ThrottledStream", "da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream.html", null ]
-    ] ],
-    [ "SynchronizationContext", "de/d78/class_synchronization_context.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.Tab", "d3/dd4/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tab.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.TabbedSearchResultsRenderer", "d7/d70/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tabbed_search_results_renderer.html", null ],
     [ "YTMusicUploader.Providers.RequestModels.SearchResult.TabRenderer", "d4/d77/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tab_renderer.html", null ],
@@ -109,5 +105,8 @@ var hierarchy =
     [ "TypeDescriptionProvider", "d0/d67/class_type_description_provider.html", [
       [ "JBToolkit.WinForms.AbstractControlDescriptionProvider< TAbstract, TBase >", "db/d7d/class_j_b_toolkit_1_1_win_forms_1_1_abstract_control_description_provider.html", null ]
     ] ],
-    [ "YTMusicUploader.Providers.RequestModels.SearchContext.User", "d7/d70/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_user.html", null ]
+    [ "YTMusicUploader.Providers.RequestModels.SearchContext.User", "d7/d70/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_user.html", null ],
+    [ "Stream", null, [
+      [ "YTMusicUploader.Business.ThrottledStream", "da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream.html", null ]
+    ] ]
 ];

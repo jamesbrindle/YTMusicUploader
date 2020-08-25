@@ -17,7 +17,5 @@ var annotated_dup =
     [ "OptimisedMetroForm", "d3/df3/class_optimised_metro_form.html", null ],
     [ "PictureBox", "d3/d5d/class_picture_box.html", null ],
     [ "SafeHandleZeroOrMinusOneIsInvalid", "db/d0f/class_safe_handle_zero_or_minus_one_is_invalid.html", null ],
-    [ "Stream", "d1/d51/class_stream.html", null ],
-    [ "SynchronizationContext", "de/d78/class_synchronization_context.html", null ],
     [ "TypeDescriptionProvider", "d0/d67/class_type_description_provider.html", null ]
 ];

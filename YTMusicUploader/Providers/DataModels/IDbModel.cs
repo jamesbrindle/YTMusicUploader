@@ -1,11 +1,13 @@
-﻿namespace YTMusicUploader.Providers.DataModels
+﻿using System.Threading.Tasks;
+
+namespace YTMusicUploader.Providers.DataModels
 {
     public interface IDbModel
     {
         int Id { get; set; }
 
-        DbOperationResult Save();
+        Task<DbOperationResult> Save();
 
-        DbOperationResult Delete();
+        Task<DbOperationResult> Delete();
     }
 }

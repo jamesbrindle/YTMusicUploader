@@ -11,7 +11,7 @@ YTMusicUploader.Business.RegistrySettings \- Windows registry helper methods
 
 .in +1c
 .ti -1c
-.RI "static void \fBSetStartWithWindows\fP (bool startWithWindows)"
+.RI "static async Task \fBSetStartWithWindows\fP (bool startWithWindows)"
 .br
 .RI "For setting whether the app starts with Windows or not\&. Uses the 'CurrentVersion\\Run' sub key in the users key "
 .in -1c
@@ -22,7 +22,7 @@ Windows registry helper methods
 
 .SH "Member Function Documentation"
 .PP 
-.SS "static void YTMusicUploader\&.Business\&.RegistrySettings\&.SetStartWithWindows (bool startWithWindows)\fC [static]\fP"
+.SS "static async Task YTMusicUploader\&.Business\&.RegistrySettings\&.SetStartWithWindows (bool startWithWindows)\fC [static]\fP"
 
 .PP
 For setting whether the app starts with Windows or not\&. Uses the 'CurrentVersion\\Run' sub key in the users key 

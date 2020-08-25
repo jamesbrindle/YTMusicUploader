@@ -1,9 +1,12 @@
-﻿using JBToolkit.Network;
+﻿using JBToolkit.Imaging;
+using JBToolkit.Network;
+using JBToolkit.Threads;
 using JBToolkit.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 
@@ -17,10 +20,7 @@ namespace YTMusicUploader.Business
         private MainForm MainForm;
         private List<MusicFile> MusicFiles;
         public bool Stopped { get; set; } = true;
-
-        private int _errors = 0;
-        private int _uploaded = 0;
-        private int _discoveredFiles = 0;
+        private Thread _artworkFetchThread = null;
 
         public FileUploader(MainForm mainForm)
         {
@@ -30,18 +30,18 @@ namespace YTMusicUploader.Business
         /// <summary>
         /// Execute the upload process
         /// </summary>
-        public void Process()
+        public async Task Process()
         {
-            _errors = MainForm.MusicFileRepo.CountIssues();
-            _uploaded = MainForm.MusicFileRepo.CountUploaded();
-            _discoveredFiles = MainForm.MusicFileRepo.CountAll();
+            var errorsCount = await MainForm.MusicFileRepo.CountIssues();
+            var uploadedCount = await MainForm.MusicFileRepo.CountUploaded();
+            var discoveredFilesCount = await MainForm.MusicFileRepo.CountAll();
 
-            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true);
+            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;
             foreach (var musicFile in MusicFiles)
             {
                 if (File.Exists(musicFile.Path))
                 {
-                    musicFile.Hash = DirectoryHelper.GetFileHash(musicFile.Path);
+                    musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);
 
                     if (MainForm.Aborting)
                     {
@@ -52,56 +52,56 @@ namespace YTMusicUploader.Business
 
                     if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
                     {
-                        MainForm.SetUploadingMessage("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
+                        await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false);
+                        await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true);
                         MainForm.SetStatusMessage("Comparing file system against database for existing uploads", "Comparing file system against the DB");
 
                         existingMusicFile.Path = musicFile.Path;
                         existingMusicFile.LastUpload = DateTime.Now;
                         existingMusicFile.Removed = false;
                         existingMusicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
-                                                          ? MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
+                                                          ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
                                                           : musicFile.MbId;
 
-                        _uploaded++;
-                        MainForm.SetUploadedLabel(_uploaded.ToString());
+                        uploadedCount++;
+                        MainForm.SetUploadedLabel(uploadedCount.ToString());
 
-                        musicFile.Delete(true);
-                        existingMusicFile.Save();
+                        musicFile.Delete(true).Wait();
+                        await existingMusicFile.Save();
                     }
                     else
                     {
-                        MainForm.SetUploadingMessage(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
                         Stopped = false;
+                        await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false);
+                        await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true);
 
                         while (!NetworkHelper.InternetConnectionIsUp())
                         {
-                            try
+                            if (MainForm.Aborting)
                             {
-                                if (MainForm.Aborting)
-                                {
-                                    Stopped = true;
-                                    MainForm.SetUploadingMessage("Idle", "idle");
-                                    return;
-                                }
-
-                                Thread.Sleep(1000);
+                                Stopped = true;
+                                MainForm.SetUploadingMessage("Idle", "idle");
+                                return;
                             }
-                            catch { }
+
+                            ThreadHelper.SafeSleep(1000);
                         }
 
                         if (Requests.IsSongUploaded(musicFile.Path, MainForm.Settings.AuthenticationCookie, MainForm.MusicDataFetcher))
                         {
-                            MainForm.SetUploadingMessage("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path);
+                            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false);
+                            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true);
+
                             MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
 
                             musicFile.LastUpload = DateTime.Now;
                             musicFile.Error = false;
                             musicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
-                                                        ? MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
+                                                        ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
                                                         : musicFile.MbId;
 
-                            _uploaded++;
-                            MainForm.SetUploadedLabel(_uploaded.ToString());
+                            uploadedCount++;
+                            MainForm.SetUploadedLabel(uploadedCount.ToString());
                         }
                         else
                         {
@@ -117,38 +117,122 @@ namespace YTMusicUploader.Business
                                 musicFile.Error = true;
                                 musicFile.ErrorReason = error;
 
-                                _errors++;
-                                MainForm.SetIssuesLabel(_errors.ToString());
+                                errorsCount++;
+                                MainForm.SetIssuesLabel(errorsCount.ToString());
                             }
                             else
                             {
                                 musicFile.LastUpload = DateTime.Now;
                                 musicFile.Error = false;
                                 musicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
-                                                            ? MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
+                                                            ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
                                                             : musicFile.MbId;
 
-                                _uploaded++;
-                                MainForm.SetUploadedLabel(_uploaded.ToString());
+                                uploadedCount++;
+                                MainForm.SetUploadedLabel(uploadedCount.ToString());
                             }
 
                             GC.Collect();
                             GC.WaitForPendingFinalizers();
                         }
 
-                        musicFile.Save();
+                        await musicFile.Save();
                     }
                 }
                 else
                 {
-                    _discoveredFiles--;
-                    MainForm.SetDiscoveredFilesLabel(_discoveredFiles.ToString());
-                    musicFile.Delete();
+                    discoveredFilesCount--;
+                    MainForm.SetDiscoveredFilesLabel(discoveredFilesCount.ToString());
+                    await musicFile.Delete();
                 }
             }
 
             MainForm.SetUploadingMessage("Idle", "idle");
             Stopped = true;
+        }
+
+        private async Task SetUploadDetails(string message, string musicPath, bool setArtworkImage)
+        {
+            string initialTooltipText = await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath, false);
+            if (!setArtworkImage)
+            {
+                // just set the text
+
+                MainForm.SetUploadingMessage(
+                   message,
+                   initialTooltipText,
+                   null,
+                   false);
+
+                await Task.Run(() => { });
+            }
+            else
+            {
+                // Thread to set the cover artwork image, because this can take some unwanted time when
+                // checking lots of music files to see if they're already uploaded to YouTube Music
+                // and we want to cancel the thread if it's still running on the next track check
+                // and just display the default cover artwork
+
+                if (_artworkFetchThread != null)
+                {
+                    try
+                    {
+                        _artworkFetchThread.Abort();
+                    }
+                    catch
+                    { }
+
+                    if (MainForm.ArtworkImage != null && ImageHelper.IsSameImage(MainForm.ArtworkImage, Properties.Resources.default_artwork))
+                    {
+                        MainForm.SetUploadingMessage(
+                              message,
+                              initialTooltipText,
+                              null,
+                              false);
+                    }
+                    else
+                    {
+                        MainForm.SetUploadingMessage(
+                            message,
+                            initialTooltipText,
+                            Properties.Resources.default_artwork,
+                            true);
+                    }
+                }
+
+                var threadStarter = new ThreadStart(async () =>
+                {
+                    var image = await MainForm.MusicDataFetcher.GetAlbumArtwork(musicPath);
+                    var finalTooltipText = await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath);
+
+                    if (image != null && MainForm.ArtworkImage != null && ImageHelper.IsSameImage(image, MainForm.ArtworkImage))
+                    {
+                        MainForm.SetUploadingMessage(
+                            message,
+                            finalTooltipText,
+                            null,
+                            false);
+                    }
+                    else
+                    {
+                        MainForm.SetUploadingMessage(
+                            message,
+                            finalTooltipText,
+                            image,
+                            true);
+                    }
+                });
+
+                threadStarter += () =>
+                {
+                    _artworkFetchThread = null;
+                };
+
+                _artworkFetchThread = new Thread(threadStarter);
+                _artworkFetchThread.Start();
+
+                await Task.Run(() => { });
+            }
         }
 
         /// <summary>
@@ -163,8 +247,8 @@ namespace YTMusicUploader.Business
             if (string.IsNullOrEmpty(musicFile.Hash))
                 return false;
 
-            string hash = DirectoryHelper.GetFileHash(musicFile.Path);
-            var existing = MainForm.MusicFileRepo.GetDuplicate(hash, musicFile.Path);
+            string hash = DirectoryHelper.GetFileHash(musicFile.Path).Result;
+            var existing = MainForm.MusicFileRepo.GetDuplicate(hash, musicFile.Path).Result;
 
             if (existing != null)
             {

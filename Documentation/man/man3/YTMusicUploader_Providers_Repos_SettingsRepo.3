@@ -13,11 +13,11 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBSettings\fP \fBLoad\fP ()"
+.RI "async Task< \fBSettings\fP > \fBLoad\fP ()"
 .br
 .RI "Loads the application settings data from the database "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBUpdate\fP (\fBSettings\fP settings)"
+.RI "async Task< \fBDbOperationResult\fP > \fBUpdate\fP (\fBSettings\fP settings)"
 .br
 .RI "Updates the application settings data in the database "
 .in -1c
@@ -29,7 +29,7 @@ Application settings database repository access\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "\fBSettings\fP YTMusicUploader\&.Providers\&.Repos\&.SettingsRepo\&.Load ()"
+.SS "async Task<\fBSettings\fP> YTMusicUploader\&.Providers\&.Repos\&.SettingsRepo\&.Load ()"
 
 .PP
 Loads the application settings data from the database 
@@ -40,7 +40,7 @@ Setting model object
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.SettingsRepo\&.Update (\fBSettings\fP settings)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.SettingsRepo\&.Update (\fBSettings\fP settings)"
 
 .PP
 Updates the application settings data in the database 

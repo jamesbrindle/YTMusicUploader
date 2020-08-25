@@ -43,7 +43,7 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
-                dgvUploads.DataSource = MainForm.MusicFileRepo.LoadUploaded();
+                dgvUploads.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
                 dgvUploads.Columns["Removed"].Visible = false;
                 dgvUploads.Columns["Error"].Visible = false;
                 dgvUploads.Columns["ErrorReason"].Visible = false;

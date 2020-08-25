@@ -13,27 +13,27 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 
 .in +1c
 .ti -1c
-.RI "List< \fBWatchFolder\fP > \fBLoad\fP ()"
+.RI "async Task< List< \fBWatchFolder\fP > > \fBLoad\fP ()"
 .br
 .RI "Loads a list of library watch folders from the database "
 .ti -1c
-.RI "int \fBGetWatchFolderIdFromPath\fP (string path)"
+.RI "async Task< int > \fBGetWatchFolderIdFromPath\fP (string path)"
 .br
 .RI "Returns the database ID of the library watch folder from a given full directory path "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBInsert\fP (\fBWatchFolder\fP watchFolder)"
+.RI "async Task< \fBDbOperationResult\fP > \fBInsert\fP (\fBWatchFolder\fP watchFolder)"
 .br
 .RI "Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDelete\fP (\fBWatchFolder\fP watchFolder)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (\fBWatchFolder\fP watchFolder)"
 .br
 .RI "Deletes a library Watch Folder entry from the database of a given WatchFolder model object "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDelete\fP (int id)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (int id)"
 .br
 .RI "Deletes a library Watch Folder entry from the database of a given WatchFolder database ID "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDelete\fP (string path)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (string path)"
 .br
 .RI "Deletes a library Watch Folder entry from the database of a given WatchFolder database full directory path "
 .in -1c
@@ -45,7 +45,7 @@ Library watch folders database repository access
 
 .SH "Member Function Documentation"
 .PP 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (int id)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (int id)"
 
 .PP
 Deletes a library Watch Folder entry from the database of a given WatchFolder database ID 
@@ -61,7 +61,7 @@ Deletes a library Watch Folder entry from the database of a given WatchFolder da
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (string path)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (string path)"
 
 .PP
 Deletes a library Watch Folder entry from the database of a given WatchFolder database full directory path 
@@ -77,7 +77,7 @@ Deletes a library Watch Folder entry from the database of a given WatchFolder da
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (\fBWatchFolder\fP watchFolder)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Delete (\fBWatchFolder\fP watchFolder)"
 
 .PP
 Deletes a library Watch Folder entry from the database of a given WatchFolder model object 
@@ -93,7 +93,7 @@ Deletes a library Watch Folder entry from the database of a given WatchFolder mo
 .RE
 .PP
 
-.SS "int YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.GetWatchFolderIdFromPath (string path)"
+.SS "async Task<int> YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.GetWatchFolderIdFromPath (string path)"
 
 .PP
 Returns the database ID of the library watch folder from a given full directory path 
@@ -109,7 +109,7 @@ Database ID integer
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Insert (\fBWatchFolder\fP watchFolder)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Insert (\fBWatchFolder\fP watchFolder)"
 
 .PP
 Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object 
@@ -125,7 +125,7 @@ Inserts a library Watch Folder entry into the database from the fields of a Watc
 .RE
 .PP
 
-.SS "List<\fBWatchFolder\fP> YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Load ()"
+.SS "async Task<List<\fBWatchFolder\fP> > YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Load ()"
 
 .PP
 Loads a list of library watch folders from the database 

@@ -32,11 +32,11 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Mus
 \begin{DoxyCompactList}\small\item\em Music library file and status \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_affdcdee8c0013e003b37f3dda1f69320}{Music\+File}} (string path)
 \begin{DoxyCompactList}\small\item\em Music library file and status \end{DoxyCompactList}\item 
-override \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_afd659e361c8b2dd4fc73ad761cd6fa92}{Save}} ()
+async override Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a6d852cd37ed75db01fb143d2bebc0244}{Save}} ()
 \begin{DoxyCompactList}\small\item\em Insert or update the database \end{DoxyCompactList}\item 
-override \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a8ba37a196297e7d72f086a96699e886e}{Delete}} ()
+async override Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a75fd9bf5dd8e1688a3051024379aacc1}{Delete}} ()
 \begin{DoxyCompactList}\small\item\em Delete from the database (for Music\+Files, it typically set the flag of \textquotesingle{}Removed\textquotesingle{} but doesn\textquotesingle{}t actually delete from the database. This is so the file (using a checksum hash) can be compared with others to identify an already uploaded file if the files music to a different path \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_af8fa87b06c365bc8084c0fc7e73f3982}{Delete}} (bool destroy)
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a485e64ee3a1ef3b5742799105187d4b4}{Delete}} (bool destroy)
 \begin{DoxyCompactList}\small\item\em Delete from the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Properties}
 \begin{DoxyCompactItemize}
@@ -96,11 +96,11 @@ Music library file and status
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a8ba37a196297e7d72f086a96699e886e}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a8ba37a196297e7d72f086a96699e886e}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a75fd9bf5dd8e1688a3051024379aacc1}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a75fd9bf5dd8e1688a3051024379aacc1}} 
 \index{YTMusicUploader.Providers.DataModels.MusicFile@{YTMusicUploader.Providers.DataModels.MusicFile}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.DataModels.MusicFile@{YTMusicUploader.Providers.DataModels.MusicFile}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily override \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Music\+File.\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily async override Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Music\+File.\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -113,20 +113,20 @@ the entry from the database
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models_a443d5f02e9215007728549092a2e3583}{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Db\+Models}}.
+Implements \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models_a55925b71c9b3c144f69345657936f1c6}{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Db\+Models}}.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a8ba37a196297e7d72f086a96699e886e_cgraph}
+\includegraphics[width=350pt]{df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a75fd9bf5dd8e1688a3051024379aacc1_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_af8fa87b06c365bc8084c0fc7e73f3982}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_af8fa87b06c365bc8084c0fc7e73f3982}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a485e64ee3a1ef3b5742799105187d4b4}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a485e64ee3a1ef3b5742799105187d4b4}} 
 \index{YTMusicUploader.Providers.DataModels.MusicFile@{YTMusicUploader.Providers.DataModels.MusicFile}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.DataModels.MusicFile@{YTMusicUploader.Providers.DataModels.MusicFile}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Music\+File.\+Delete (\begin{DoxyParamCaption}\item[{bool}]{destroy }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Music\+File.\+Delete (\begin{DoxyParamCaption}\item[{bool}]{destroy }\end{DoxyParamCaption})}
 
 
 
@@ -144,14 +144,14 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_af8fa87b06c365bc8084c0fc7e73f3982_cgraph}
+\includegraphics[width=350pt]{df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a485e64ee3a1ef3b5742799105187d4b4_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_afd659e361c8b2dd4fc73ad761cd6fa92}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_afd659e361c8b2dd4fc73ad761cd6fa92}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a6d852cd37ed75db01fb143d2bebc0244}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a6d852cd37ed75db01fb143d2bebc0244}} 
 \index{YTMusicUploader.Providers.DataModels.MusicFile@{YTMusicUploader.Providers.DataModels.MusicFile}!Save@{Save}}
 \index{Save@{Save}!YTMusicUploader.Providers.DataModels.MusicFile@{YTMusicUploader.Providers.DataModels.MusicFile}}
 \doxysubsubsection{\texorpdfstring{Save()}{Save()}}
-{\footnotesize\ttfamily override \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Music\+File.\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily async override Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Music\+File.\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
@@ -162,13 +162,13 @@ Insert or update the database
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models_aebecd4973426948afa858738bd38db9f}{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Db\+Models}}.
+Implements \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models_a2ba8d26b0274aed160098bdc3cd676b2}{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Db\+Models}}.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_afd659e361c8b2dd4fc73ad761cd6fa92_cgraph}
+\includegraphics[width=350pt]{df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file_a6d852cd37ed75db01fb143d2bebc0244_cgraph}
 \end{center}
 \end{figure}
 

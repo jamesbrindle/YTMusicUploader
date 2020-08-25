@@ -23,6 +23,7 @@ namespace YTMusicUploader
         private static string _youTubeMusicUploadUrl = null;
         private static string _youTubeMusicParams = null;
         private static int? _recheckForUploadedSongsInDays = null;
+        private static float? _youTubeUploadedSimilarityPercentageForMatch = null;
         private static string _workingDirectory = null;
         private static string[] _supportedFiles = null;
 
@@ -217,6 +218,28 @@ namespace YTMusicUploader
 
                 _recheckForUploadedSongsInDays = 30;
                 return (int)_recheckForUploadedSongsInDays;
+            }
+        }
+
+        /// <summary>
+        /// Levenstein similarity match success value (as float type) to match against already uploaded YouTube Music files
+        /// </summary>
+        public static float YouTubeUploadedSimilarityPercentageForMatch
+        {
+            get
+            {
+                if (_youTubeUploadedSimilarityPercentageForMatch != null)
+                    return (float)_youTubeUploadedSimilarityPercentageForMatch;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YouTubeUploadedSimilarityPercentageForMatch"] != null)
+                        _youTubeUploadedSimilarityPercentageForMatch = float.Parse(ConfigurationManager.AppSettings["YouTubeUploadedSimilarityPercentageForMatch"]);
+                }
+                catch { }
+
+                _youTubeUploadedSimilarityPercentageForMatch = 0.75f;
+                return (float)_youTubeUploadedSimilarityPercentageForMatch;
             }
         }
 

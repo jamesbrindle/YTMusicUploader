@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JBToolkit.Threads;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -62,7 +63,7 @@ namespace YTMusicUploader
                             if (sleepCount > 7000)
                                 break;
 
-                            Thread.Sleep(50);
+                            ThreadHelper.SafeSleep(50);
                             sleepCount += 50;
 
                             wcfClient = new WcfClient("JBS_YTMusicUploader");

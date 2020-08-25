@@ -13,11 +13,11 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 
 .in +1c
 .ti -1c
-.RI "override \fBDbOperationResult\fP \fBSave\fP ()"
+.RI "async override Task< \fBDbOperationResult\fP > \fBSave\fP ()"
 .br
 .RI "Insert into the database "
 .ti -1c
-.RI "override \fBDbOperationResult\fP \fBDelete\fP ()"
+.RI "async override Task< \fBDbOperationResult\fP > \fBDelete\fP ()"
 .br
 .RI "Delete from the database "
 .in -1c
@@ -35,7 +35,7 @@ Selected libraries to scan and watch data
 
 .SH "Member Function Documentation"
 .PP 
-.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.WatchFolder\&.Delete ()\fC [virtual]\fP"
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.WatchFolder\&.Delete ()\fC [virtual]\fP"
 
 .PP
 Delete from the database 
@@ -48,7 +48,7 @@ Delete from the database
 
 .PP
 Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
-.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.WatchFolder\&.Save ()\fC [virtual]\fP"
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.WatchFolder\&.Save ()\fC [virtual]\fP"
 
 .PP
 Insert into the database 

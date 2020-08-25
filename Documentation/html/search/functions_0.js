@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['abstractcontroldescriptionprovider_676',['AbstractControlDescriptionProvider',['../db/d7d/class_j_b_toolkit_1_1_win_forms_1_1_abstract_control_description_provider.html#a8a5bfd84a3f47d729d320bbd1cdf988a',1,'JBToolkit::WinForms::AbstractControlDescriptionProvider']]],
-  ['add_677',['Add',['../d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#a779b05726ef075d5586bef66f38aa657',1,'YTMusicUploader::Business::MusicBrainz::FileRequestCache']]],
-  ['addstandardheaders_678',['AddStandardHeaders',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec',1,'YTMusicUploader::Providers::Requests']]],
-  ['adjustbrightness_679',['AdjustBrightness',['../d9/d17/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper.html#a38c5b930a1ca787ec15dbeb533fd2fc1',1,'JBToolkit::ColorHelper::ColourHelper']]]
+  ['abstractcontroldescriptionprovider_667',['AbstractControlDescriptionProvider',['../db/d7d/class_j_b_toolkit_1_1_win_forms_1_1_abstract_control_description_provider.html#a8a5bfd84a3f47d729d320bbd1cdf988a',1,'JBToolkit::WinForms::AbstractControlDescriptionProvider']]],
+  ['add_668',['Add',['../d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#a779b05726ef075d5586bef66f38aa657',1,'YTMusicUploader::Business::MusicBrainz::FileRequestCache']]],
+  ['addstandardheaders_669',['AddStandardHeaders',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec',1,'YTMusicUploader::Providers::Requests']]],
+  ['adjustbrightness_670',['AdjustBrightness',['../d9/d17/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper.html#a38c5b930a1ca787ec15dbeb533fd2fc1',1,'JBToolkit::ColorHelper::ColourHelper']]]
 ];

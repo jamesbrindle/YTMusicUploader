@@ -13,11 +13,11 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 
 .in +1c
 .ti -1c
-.RI "override \fBDbOperationResult\fP \fBSave\fP ()"
+.RI "async override Task< \fBDbOperationResult\fP > \fBSave\fP ()"
 .br
 .RI "Updates the database "
 .ti -1c
-.RI "override \fBDbOperationResult\fP \fBDelete\fP ()"
+.RI "async override Task< \fBDbOperationResult\fP > \fBDelete\fP ()"
 .br
 .RI "Not implemented for the '\fBSettings\fP' model "
 .in -1c
@@ -41,13 +41,13 @@ Application settings data
 
 .SH "Member Function Documentation"
 .PP 
-.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.Delete ()\fC [virtual]\fP"
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.Delete ()\fC [virtual]\fP"
 
 .PP
 Not implemented for the '\fBSettings\fP' model 
 .PP
 Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
-.SS "override \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.Save ()\fC [virtual]\fP"
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.Save ()\fC [virtual]\fP"
 
 .PP
 Updates the database 

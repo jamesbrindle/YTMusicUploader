@@ -13,75 +13,75 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBMusicFile\fP \fBLoad\fP (int id)"
+.RI "async Task< \fBMusicFile\fP > \fBLoad\fP (int id)"
 .br
 .RI "Load single MusicFile object by ID from the database "
 .ti -1c
-.RI "\fBMusicFile\fP \fBLoad\fP (string path)"
+.RI "async Task< \fBMusicFile\fP > \fBLoad\fP (string path)"
 .br
 .RI "Load single MusicFile object by file path from the database "
 .ti -1c
-.RI "\fBMusicFile\fP \fBGetDuplicate\fP (string hash, string path)"
+.RI "Task< \fBMusicFile\fP > \fBGetDuplicate\fP (string hash, string path)"
 .br
 .RI "Load single MusicFile object by hash and from the database that doesn't match the given path (i\&.e\&. a duplicate hash) "
 .ti -1c
-.RI "List< \fBMusicFile\fP > \fBLoadAll\fP (bool includeErrorFiles=true, bool lastUploadAscending=false, bool ignoreRecentlyUploaded=false)"
+.RI "async Task< List< \fBMusicFile\fP > > \fBLoadAll\fP (bool includeErrorFiles=true, bool lastUploadAscending=false, bool ignoreRecentlyUploaded=false)"
 .br
 .RI "Loads a list of all MusicFiles objects with optional filter or order by criteria "
 .ti -1c
-.RI "List< \fBMusicFile\fP > \fBLoadIssues\fP ()"
+.RI "Task< List< \fBMusicFile\fP > > \fBLoadIssues\fP ()"
 .br
 .RI "Loads a list of MusicFile objects with upload errors "
 .ti -1c
-.RI "List< \fBMusicFile\fP > \fBLoadUploaded\fP ()"
+.RI "async Task< List< \fBMusicFile\fP > > \fBLoadUploaded\fP ()"
 .br
 .RI "Loads a list of MusicFile objects with a successful upload "
 .ti -1c
-.RI "int \fBCountAll\fP ()"
+.RI "async Task< int > \fBCountAll\fP ()"
 .br
 .RI "Count all non-removed Music File entries "
 .ti -1c
-.RI "int \fBCountIssues\fP ()"
+.RI "async Task< int > \fBCountIssues\fP ()"
 .br
 .RI "Count all non-removed Music File entries that have upload errors "
 .ti -1c
-.RI "int \fBCountUploaded\fP ()"
+.RI "async Task< int > \fBCountUploaded\fP ()"
 .br
 .RI "Count all non-removed Music File entries with upload success "
 .ti -1c
-.RI "int \fBGetMusicFileIdFromPath\fP (string path)"
+.RI "async Task< int > \fBGetMusicFileIdFromPath\fP (string path)"
 .br
 .RI "Returns the database ID of the music file by a give file path "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBInsert\fP (\fBMusicFile\fP musicFile)"
+.RI "async Task< \fBDbOperationResult\fP > \fBInsert\fP (\fBMusicFile\fP musicFile)"
 .br
 .RI "Inserts a Music File entry into the database\&. If the entry already exists, but is flagged as 'removed', then the removed flag will be set to false "
 .ti -1c
-.RI "void \fBRestoreMusicFile\fP (int id)"
+.RI "async Task \fBRestoreMusicFile\fP (int id)"
 .br
 .RI "Sets the 'removed' flag to false "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBUpdate\fP (\fBMusicFile\fP musicFile)"
+.RI "async Task< \fBDbOperationResult\fP > \fBUpdate\fP (\fBMusicFile\fP musicFile)"
 .br
 .RI "Updates the Music File entry in the database with the fields of the given MusicFile object "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDelete\fP (\fBMusicFile\fP musicFile, bool destroy=false)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (\fBMusicFile\fP musicFile, bool destroy=false)"
 .br
 .RI "Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDelete\fP (int id, bool destroy=false)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (int id, bool destroy=false)"
 .br
 .RI "Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDelete\fP (string path)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (string path)"
 .br
 .RI "Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDeleteWatchFolder\fP (string path)"
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteWatchFolder\fP (string path)"
 .br
 .RI "Performs a bulk delete of Music File entries who's path starts with a certain file path\&. I\&.e\&. When bulk deleting because of the removal of a library watch folder "
 .ti -1c
-.RI "\fBDbOperationResult\fP \fBDeleteAll\fP ()"
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteAll\fP ()"
 .br
 .RI "Deletes all Music File entries from the database "
 .in -1c
@@ -93,7 +93,7 @@ Music File database repository access\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountAll ()"
+.SS "async Task<int> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountAll ()"
 
 .PP
 Count all non-removed Music File entries 
@@ -104,7 +104,7 @@ Integer count
 .RE
 .PP
 
-.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountIssues ()"
+.SS "async Task<int> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountIssues ()"
 
 .PP
 Count all non-removed Music File entries that have upload errors 
@@ -115,7 +115,7 @@ Integer count
 .RE
 .PP
 
-.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountUploaded ()"
+.SS "async Task<int> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountUploaded ()"
 
 .PP
 Count all non-removed Music File entries with upload success 
@@ -126,7 +126,7 @@ Integer count
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (int id, bool destroy = \fCfalse\fP)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (int id, bool destroy = \fCfalse\fP)"
 
 .PP
 Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database 
@@ -144,7 +144,7 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (\fBMusicFile\fP musicFile, bool destroy = \fCfalse\fP)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (\fBMusicFile\fP musicFile, bool destroy = \fCfalse\fP)"
 
 .PP
 Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database 
@@ -162,7 +162,7 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (string path)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Delete (string path)"
 
 .PP
 Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database 
@@ -180,7 +180,7 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteAll ()"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteAll ()"
 
 .PP
 Deletes all Music File entries from the database 
@@ -191,7 +191,7 @@ Deletes all Music File entries from the database
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteWatchFolder (string path)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteWatchFolder (string path)"
 
 .PP
 Performs a bulk delete of Music File entries who's path starts with a certain file path\&. I\&.e\&. When bulk deleting because of the removal of a library watch folder 
@@ -207,7 +207,7 @@ Performs a bulk delete of Music File entries who's path starts with a certain fi
 .RE
 .PP
 
-.SS "\fBMusicFile\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetDuplicate (string hash, string path)"
+.SS "Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetDuplicate (string hash, string path)"
 
 .PP
 Load single MusicFile object by hash and from the database that doesn't match the given path (i\&.e\&. a duplicate hash) 
@@ -225,7 +225,7 @@ MusicFile object
 .RE
 .PP
 
-.SS "int YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetMusicFileIdFromPath (string path)"
+.SS "async Task<int> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetMusicFileIdFromPath (string path)"
 
 .PP
 Returns the database ID of the music file by a give file path 
@@ -241,7 +241,7 @@ Integer database ID
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Insert (\fBMusicFile\fP musicFile)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Insert (\fBMusicFile\fP musicFile)"
 
 .PP
 Inserts a Music File entry into the database\&. If the entry already exists, but is flagged as 'removed', then the removed flag will be set to false 
@@ -257,7 +257,7 @@ Inserts a Music File entry into the database\&. If the entry already exists, but
 .RE
 .PP
 
-.SS "\fBMusicFile\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Load (int id)"
+.SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Load (int id)"
 
 .PP
 Load single MusicFile object by ID from the database 
@@ -268,7 +268,7 @@ MusicFile object
 .RE
 .PP
 
-.SS "\fBMusicFile\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Load (string path)"
+.SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Load (string path)"
 
 .PP
 Load single MusicFile object by file path from the database 
@@ -279,7 +279,7 @@ MusicFile object
 .RE
 .PP
 
-.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadAll (bool includeErrorFiles = \fCtrue\fP, bool lastUploadAscending = \fCfalse\fP, bool ignoreRecentlyUploaded = \fCfalse\fP)"
+.SS "async Task<List<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadAll (bool includeErrorFiles = \fCtrue\fP, bool lastUploadAscending = \fCfalse\fP, bool ignoreRecentlyUploaded = \fCfalse\fP)"
 
 .PP
 Loads a list of all MusicFiles objects with optional filter or order by criteria 
@@ -299,7 +299,7 @@ List of MusicFileObjects
 .RE
 .PP
 
-.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadIssues ()"
+.SS "Task<List<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadIssues ()"
 
 .PP
 Loads a list of MusicFile objects with upload errors 
@@ -310,7 +310,7 @@ List of MusicFileObjects
 .RE
 .PP
 
-.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadUploaded ()"
+.SS "async Task<List<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadUploaded ()"
 
 .PP
 Loads a list of MusicFile objects with a successful upload 
@@ -321,7 +321,7 @@ List of MusicFileObjects
 .RE
 .PP
 
-.SS "void YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
+.SS "async Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
 
 .PP
 Sets the 'removed' flag to false 
@@ -332,7 +332,7 @@ Sets the 'removed' flag to false
 .RE
 .PP
 
-.SS "\fBDbOperationResult\fP YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Update (\fBMusicFile\fP musicFile)"
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Update (\fBMusicFile\fP musicFile)"
 
 .PP
 Updates the Music File entry in the database with the fields of the given MusicFile object 

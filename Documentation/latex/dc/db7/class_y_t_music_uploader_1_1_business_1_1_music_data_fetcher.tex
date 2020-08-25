@@ -19,7 +19,7 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetche
 \item 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a163f50300225a421e94d0ad9196eed57}{Music\+Data\+Fetcher}} ()
 \begin{DoxyCompactList}\small\item\em Gets meta data / tag information from the music file itself and looks up any missing data using a \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} A\+PI implementation (for instance album cover art). \end{DoxyCompactList}\item 
-string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82}{Get\+Track\+Mb\+Id}} (string path)
+async Task$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2ced6f2256638bc5ef6a292edb20ea5c}{Get\+Track\+Mb\+Id}} (string path)
 \begin{DoxyCompactList}\small\item\em First looks at the file meta data for the track M\+B\+ID then makes a request to \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} if it\textquotesingle{}s not found \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1}{Get\+Release\+Mb\+Id}} (string path)
 \begin{DoxyCompactList}\small\item\em First looks at the file meta data for the release M\+B\+ID, then makes a request to \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} if it\textquotesingle{}s not found \end{DoxyCompactList}\item 
@@ -31,13 +31,13 @@ Release \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fe
 \begin{DoxyCompactList}\small\item\em Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names This method also tries different variations of the album name \end{DoxyCompactList}\item 
 Release \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_ab9b74b81d70a6ddbddf6ef3f4ba76330}{Get\+Release\+From\+Music\+Brainz}} (string artist, string album)
 \begin{DoxyCompactList}\small\item\em Get the release (typically, the album data) from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_music_brainz}{Music\+Brainz}} via query using the artist, album an track names \end{DoxyCompactList}\item 
-Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6}{Get\+Album\+Artwork}} (string path)
+async Task$<$ Image $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2627f8f48ebb5018d313f8428f3be26b}{Get\+Album\+Artwork}} (string path, bool try\+Music\+Brainz=true)
 \begin{DoxyCompactList}\small\item\em Returns album artwork. First it will look at actual file to see if one is embedded, if not it will make a request to get the M\+B\+ID, then use that to make a requst to Convert\+Archive to try and retrive the album art cover image \end{DoxyCompactList}\item 
 Image \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda}{Get\+Album\+Artwork\+From\+Cover\+Art\+Archive}} (string path)
 \begin{DoxyCompactList}\small\item\em Makes a requst to Convert\+Archive to try and retrive the album art cover image \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c}{Get\+Music\+File\+Meta\+Data}} (string path)
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a05736cc44f5a730f22c5858d6ae37210}{Get\+Music\+File\+Meta\+Data}} (string path, bool try\+Music\+Brainz=true)
 \begin{DoxyCompactList}\small\item\em Returns \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}} object of music file meta data such as\+: \end{DoxyCompactList}\item 
-string \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d}{Get\+Music\+File\+Meta\+Data\+String}} (string path)
+async Task$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a4d9577d5c20e1e16a3491c426cc13126}{Get\+Music\+File\+Meta\+Data\+String}} (string path, bool try\+Music\+Brainz=true)
 \begin{DoxyCompactList}\small\item\em Returns a single multi-\/line string of music file meta data such as\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -72,11 +72,11 @@ Gets meta data / tag information from the music file itself and looks up any mis
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2627f8f48ebb5018d313f8428f3be26b}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2627f8f48ebb5018d313f8428f3be26b}} 
 \index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetAlbumArtwork@{GetAlbumArtwork}}
 \index{GetAlbumArtwork@{GetAlbumArtwork}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
 \doxysubsubsection{\texorpdfstring{GetAlbumArtwork()}{GetAlbumArtwork()}}
-{\footnotesize\ttfamily Image Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Album\+Artwork (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$Image$>$ Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Album\+Artwork (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{bool}]{try\+Music\+Brainz = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 
@@ -94,7 +94,7 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_acbd143674b5684a49fad7d152965f8a6_cgraph}
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2627f8f48ebb5018d313f8428f3be26b_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_af48686aceec7ea58422eaaf5e160deda}} 
@@ -146,11 +146,11 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a9433e70a6a919cb93186739b92bb493e_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a05736cc44f5a730f22c5858d6ae37210}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a05736cc44f5a730f22c5858d6ae37210}} 
 \index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetMusicFileMetaData@{GetMusicFileMetaData}}
 \index{GetMusicFileMetaData@{GetMusicFileMetaData}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
 \doxysubsubsection{\texorpdfstring{GetMusicFileMetaData()}{GetMusicFileMetaData()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}} Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}} Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{bool}]{try\+Music\+Brainz = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 
@@ -177,14 +177,14 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a43170b48c1c9469ccb685fcd0baf011c_cgraph}
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a05736cc44f5a730f22c5858d6ae37210_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a4d9577d5c20e1e16a3491c426cc13126}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a4d9577d5c20e1e16a3491c426cc13126}} 
 \index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetMusicFileMetaDataString@{GetMusicFileMetaDataString}}
 \index{GetMusicFileMetaDataString@{GetMusicFileMetaDataString}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
 \doxysubsubsection{\texorpdfstring{GetMusicFileMetaDataString()}{GetMusicFileMetaDataString()}}
-{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data\+String (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Music\+File\+Meta\+Data\+String (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{bool}]{try\+Music\+Brainz = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 
@@ -211,7 +211,7 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a6640c2b0f4ee28edb9ef5666f99a0a8d_cgraph}
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a4d9577d5c20e1e16a3491c426cc13126_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a50e0a63ee984508b8677e836e27ca4cb}} 
@@ -365,11 +365,11 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a276cf6fb6b4515541a74a74319d7acc1_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2ced6f2256638bc5ef6a292edb20ea5c}\label{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2ced6f2256638bc5ef6a292edb20ea5c}} 
 \index{YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}!GetTrackMbId@{GetTrackMbId}}
 \index{GetTrackMbId@{GetTrackMbId}!YTMusicUploader.Business.MusicDataFetcher@{YTMusicUploader.Business.MusicDataFetcher}}
 \doxysubsubsection{\texorpdfstring{GetTrackMbId()}{GetTrackMbId()}}
-{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Track\+Mb\+Id (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+Music\+Data\+Fetcher.\+Get\+Track\+Mb\+Id (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
 
 
 
@@ -387,7 +387,7 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a85110a7860754b942af9468b0d480a82_cgraph}
+\includegraphics[width=350pt]{dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher_a2ced6f2256638bc5ef6a292edb20ea5c_cgraph}
 \end{center}
 \end{figure}
 

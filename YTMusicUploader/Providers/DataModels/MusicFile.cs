@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader.Providers.DataModels
@@ -44,15 +45,15 @@ namespace YTMusicUploader.Providers.DataModels
         /// Insert or update the database
         /// </summary>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public override DbOperationResult Save()
+        public async override Task<DbOperationResult> Save()
         {
             if (Id > 0)
             {
-                return new MusicFileRepo().Update(this);
+                return await new MusicFileRepo().Update(this);
             }
             else
             {
-                var result = new MusicFileRepo().Insert(this);
+                var result = await new MusicFileRepo().Insert(this);
                 if (!result.IsError)
                     Id = result.Id;
 
@@ -67,9 +68,9 @@ namespace YTMusicUploader.Providers.DataModels
         /// </summary>
         /// the entry from the database</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public override DbOperationResult Delete()
+        public async override Task<DbOperationResult> Delete()
         {
-            var result = new MusicFileRepo().Delete(this, false);
+            var result = await new MusicFileRepo().Delete(this, false);
             if (!result.IsError)
                 Id = -1;
 
@@ -82,9 +83,9 @@ namespace YTMusicUploader.Providers.DataModels
         /// <param name="destroy">False (default) just sets the flag to 'remove'. True (destroy) actually removes
         /// the entry from the database</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public DbOperationResult Delete(bool destroy)
+        public async Task<DbOperationResult> Delete(bool destroy)
         {
-            var result = new MusicFileRepo().Delete(this, destroy);
+            var result = await new MusicFileRepo().Delete(this, destroy);
             if (!result.IsError)
                 Id = -1;
 

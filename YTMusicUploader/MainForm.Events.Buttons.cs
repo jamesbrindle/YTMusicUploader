@@ -1,6 +1,7 @@
 ﻿using MetroFramework;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using YTMusicUploader.Dialogues;
 using YTMusicUploader.Providers;
@@ -60,17 +61,19 @@ namespace YTMusicUploader
             if (openResult == DialogResult.OK)
             {
                 Aborting = true;
-
-                WatchFolderRepo.Insert(new WatchFolder
-                {
-                    Path = FolderSelector.SelectedPath
-                });
-
-                WatchFolders = WatchFolderRepo.Load();
-                BindWatchFoldersList();
-
-                Queue = true;
+                Task.Run(async () => await AddWatchFolder());
             }
+        }
+
+        private async Task AddWatchFolder()
+        {
+            WatchFolderRepo.Insert(new WatchFolder
+            {
+                Path = FolderSelector.SelectedPath
+            }).Wait();
+
+            await BindWatchFoldersList();
+            Queue = true;
         }
 
         private void BtnAddWatchFolder_MouseEnter(object sender, EventArgs e)
@@ -93,19 +96,23 @@ namespace YTMusicUploader
         private void BtnRemoveWatchFolder_Click(object sender, EventArgs e)
         {
             Aborting = true;
+            Task.Run(async () => await RemoveWachFolder());
+        }
 
+        private async Task RemoveWachFolder()
+        {
             try
             {
                 if ((WatchFolder)lbWatchFolders.SelectedItem != null)
                 {
-                    WatchFolderRepo.Delete(((WatchFolder)lbWatchFolders.SelectedItem).Id);
-                    MusicFileRepo.DeleteWatchFolder(((WatchFolder)lbWatchFolders.SelectedItem).Path);
+                    await WatchFolderRepo.Delete(((WatchFolder)lbWatchFolders.SelectedItem).Id);
+                    await MusicFileRepo.DeleteWatchFolder(((WatchFolder)lbWatchFolders.SelectedItem).Path);
                     RepopulateAmountLables();
                 }
             }
             catch { }
 
-            BindWatchFoldersList();
+            await BindWatchFoldersList();
             Queue = true;
         }
 

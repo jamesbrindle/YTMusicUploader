@@ -15,7 +15,7 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .br
 .RI "Gets meta data / tag information from the music file itself and looks up any missing data using a \fBMusicBrainz\fP API implementation (for instance album cover art)\&. "
 .ti -1c
-.RI "string \fBGetTrackMbId\fP (string path)"
+.RI "async Task< string > \fBGetTrackMbId\fP (string path)"
 .br
 .RI "First looks at the file meta data for the track MBID then makes a request to \fBMusicBrainz\fP if it's not found "
 .ti -1c
@@ -39,7 +39,7 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .br
 .RI "Get the release (typically, the album data) from \fBMusicBrainz\fP via query using the artist, album an track names "
 .ti -1c
-.RI "Image \fBGetAlbumArtwork\fP (string path)"
+.RI "async Task< Image > \fBGetAlbumArtwork\fP (string path, bool tryMusicBrainz=true)"
 .br
 .RI "Returns album artwork\&. First it will look at actual file to see if one is embedded, if not it will make a request to get the MBID, then use that to make a requst to ConvertArchive to try and retrive the album art cover image "
 .ti -1c
@@ -47,11 +47,11 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .br
 .RI "Makes a requst to ConvertArchive to try and retrive the album art cover image "
 .ti -1c
-.RI "\fBMusicFileMetaData\fP \fBGetMusicFileMetaData\fP (string path)"
+.RI "\fBMusicFileMetaData\fP \fBGetMusicFileMetaData\fP (string path, bool tryMusicBrainz=true)"
 .br
 .RI "Returns \fBMusicFileMetaData\fP object of music file meta data such as: "
 .ti -1c
-.RI "string \fBGetMusicFileMetaDataString\fP (string path)"
+.RI "async Task< string > \fBGetMusicFileMetaDataString\fP (string path, bool tryMusicBrainz=true)"
 .br
 .RI "Returns a single multi-line string of music file meta data such as: "
 .in -1c
@@ -88,7 +88,7 @@ Thanks to: avatar29A https://github.com/avatar29A/MusicBrainz
 Gets meta data / tag information from the music file itself and looks up any missing data using a \fBMusicBrainz\fP API implementation (for instance album cover art)\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "Image YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetAlbumArtwork (string path)"
+.SS "async Task<Image> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetAlbumArtwork (string path, bool tryMusicBrainz = \fCtrue\fP)"
 
 .PP
 Returns album artwork\&. First it will look at actual file to see if one is embedded, if not it will make a request to get the MBID, then use that to make a requst to ConvertArchive to try and retrive the album art cover image 
@@ -124,7 +124,7 @@ Thumbnail image
 
 .PP
 Peforms a HTTP web request and downloads an image 
-.SS "\fBMusicFileMetaData\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaData (string path)"
+.SS "\fBMusicFileMetaData\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaData (string path, bool tryMusicBrainz = \fCtrue\fP)"
 
 .PP
 Returns \fBMusicFileMetaData\fP object of music file meta data such as: 
@@ -151,7 +151,7 @@ Multi-line string
 .RE
 .PP
 
-.SS "string YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaDataString (string path)"
+.SS "async Task<string> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaDataString (string path, bool tryMusicBrainz = \fCtrue\fP)"
 
 .PP
 Returns a single multi-line string of music file meta data such as: 
@@ -254,7 +254,7 @@ First looks at the file meta data for the release MBID, then makes a request to 
 .RE
 .PP
 
-.SS "string YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetTrackMbId (string path)"
+.SS "async Task<string> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetTrackMbId (string path)"
 
 .PP
 First looks at the file meta data for the track MBID then makes a request to \fBMusicBrainz\fP if it's not found 

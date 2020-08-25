@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using YTMusicUploader.Business;
 
 namespace YTMusicUploader
@@ -8,8 +9,8 @@ namespace YTMusicUploader
         private void CbStartWithWindows_CheckedChanged(object sender, EventArgs e)
         {
             Settings.StartWithWindows = cbStartWithWindows.Checked;
-            Settings.Save();
-            RegistrySettings.SetStartWithWindows(cbStartWithWindows.Checked);
+            Task.Run(async () => await Settings.Save());
+            Task.Run(async () => await RegistrySettings.SetStartWithWindows(cbStartWithWindows.Checked));
         }
     }
 }

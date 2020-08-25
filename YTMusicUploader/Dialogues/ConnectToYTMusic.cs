@@ -4,6 +4,7 @@ using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace YTMusicUploader.Dialogues
@@ -114,7 +115,7 @@ namespace YTMusicUploader.Dialogues
                         cookieValue.Contains("LOGIN_INFO"))
                     {
                         MainForm.Settings.AuthenticationCookie = cookieValue;
-                        MainForm.Settings.Save();
+                        Task.Run(async () => await MainForm.Settings.Save());
 
                         lblSignInMessage.Visible = false;
                         pbConnectSuccess.Visible = true;

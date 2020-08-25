@@ -8,14 +8,14 @@ YTMusicUploader.Business.ThrottledStream \- Throttle a stream -> Very useful for
 .br
 .PP
 .PP
-Inherits \fBStream\fP\&.
+Inherits Stream\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBThrottledStream\fP (\fBStream\fP parentStream, \fBMainForm\fP mainForm, int fileBytes, int maxBytesPerSecond=int\&.MaxValue)"
+.RI "\fBThrottledStream\fP (Stream parentStream, \fBMainForm\fP mainForm, int fileBytes, int maxBytesPerSecond=int\&.MaxValue)"
 .br
-.RI "Creates a new \fBStream\fP with Data bandwith cap "
+.RI "Creates a new Stream with Data bandwith cap "
 .ti -1c
 .RI "override void \fBClose\fP ()"
 .br
@@ -79,10 +79,10 @@ Usage:
 var stream = request\&.GetRequestStream(); var throttledStream = new ThrottledStream(new MemoryStream(fileBytes), uploadSpeedInBytesPerSecond); throttledStream\&.CopyTo(stream); stream\&.Close();
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "YTMusicUploader\&.Business\&.ThrottledStream\&.ThrottledStream (\fBStream\fP parentStream, \fBMainForm\fP mainForm, int fileBytes, int maxBytesPerSecond = \fCint\&.MaxValue\fP)"
+.SS "YTMusicUploader\&.Business\&.ThrottledStream\&.ThrottledStream (Stream parentStream, \fBMainForm\fP mainForm, int fileBytes, int maxBytesPerSecond = \fCint\&.MaxValue\fP)"
 
 .PP
-Creates a new \fBStream\fP with Data bandwith cap 
+Creates a new Stream with Data bandwith cap 
 .PP
 \fBParameters\fP
 .RS 4

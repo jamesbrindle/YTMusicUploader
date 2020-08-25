@@ -26,17 +26,17 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Fol
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a9841f35855709d0255597caff284c64a}{Load}} ()
+async Task$<$ List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac18f0d293fb211f7050912a9686990a0}{Load}} ()
 \begin{DoxyCompactList}\small\item\em Loads a list of library watch folders from the database \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac3ef822dc38ccd1b40a6769947aac9a7}{Get\+Watch\+Folder\+Id\+From\+Path}} (string path)
+async Task$<$ int $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ad7233cac0a66364b1f41eac7249f43ed}{Get\+Watch\+Folder\+Id\+From\+Path}} (string path)
 \begin{DoxyCompactList}\small\item\em Returns the database ID of the library watch folder from a given full directory path \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a276572e4606d25da81865bcee0a7d5eb}{Insert}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}} watch\+Folder)
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1f9227c99b942929b14102f873c9da2a}{Insert}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}} watch\+Folder)
 \begin{DoxyCompactList}\small\item\em Inserts a library Watch Folder entry into the database from the fields of a Watch\+Folder model object \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1954862b5a325644ca69ff7fa2896820}{Delete}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}} watch\+Folder)
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a275498f649f6620f63ac9cd3d7d95d6b}{Delete}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}} watch\+Folder)
 \begin{DoxyCompactList}\small\item\em Deletes a library Watch Folder entry from the database of a given Watch\+Folder model object \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_afff4f3dd39e330258443b77b893fdb05}{Delete}} (int id)
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a7e87eb13681b23a62f268d45295e9311}{Delete}} (int id)
 \begin{DoxyCompactList}\small\item\em Deletes a library Watch Folder entry from the database of a given Watch\+Folder database ID \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a316b1caf24a20bcc504b92e2e7f464bd}{Delete}} (string path)
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a4399a6ff554426e2e38c473e616854ca}{Delete}} (string path)
 \begin{DoxyCompactList}\small\item\em Deletes a library Watch Folder entry from the database of a given Watch\+Folder database full directory path \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -47,11 +47,11 @@ Library watch folders database repository access
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_afff4f3dd39e330258443b77b893fdb05}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_afff4f3dd39e330258443b77b893fdb05}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a7e87eb13681b23a62f268d45295e9311}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a7e87eb13681b23a62f268d45295e9311}} 
 \index{YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Delete (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Delete (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
 
 
 
@@ -69,14 +69,14 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_afff4f3dd39e330258443b77b893fdb05_cgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a7e87eb13681b23a62f268d45295e9311_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a316b1caf24a20bcc504b92e2e7f464bd}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a316b1caf24a20bcc504b92e2e7f464bd}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a4399a6ff554426e2e38c473e616854ca}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a4399a6ff554426e2e38c473e616854ca}} 
 \index{YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Delete (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Delete (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
 
 
 
@@ -94,14 +94,14 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a316b1caf24a20bcc504b92e2e7f464bd_cgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a4399a6ff554426e2e38c473e616854ca_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1954862b5a325644ca69ff7fa2896820}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1954862b5a325644ca69ff7fa2896820}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a275498f649f6620f63ac9cd3d7d95d6b}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a275498f649f6620f63ac9cd3d7d95d6b}} 
 \index{YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}}
 \doxysubsubsection{\texorpdfstring{Delete()}{Delete()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}}}]{watch\+Folder }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}}}]{watch\+Folder }\end{DoxyParamCaption})}
 
 
 
@@ -119,14 +119,14 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1954862b5a325644ca69ff7fa2896820_icgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a275498f649f6620f63ac9cd3d7d95d6b_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac3ef822dc38ccd1b40a6769947aac9a7}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac3ef822dc38ccd1b40a6769947aac9a7}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ad7233cac0a66364b1f41eac7249f43ed}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ad7233cac0a66364b1f41eac7249f43ed}} 
 \index{YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}!GetWatchFolderIdFromPath@{GetWatchFolderIdFromPath}}
 \index{GetWatchFolderIdFromPath@{GetWatchFolderIdFromPath}!YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}}
 \doxysubsubsection{\texorpdfstring{GetWatchFolderIdFromPath()}{GetWatchFolderIdFromPath()}}
-{\footnotesize\ttfamily int Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Get\+Watch\+Folder\+Id\+From\+Path (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$int$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Get\+Watch\+Folder\+Id\+From\+Path (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
 
 
 
@@ -144,21 +144,21 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac3ef822dc38ccd1b40a6769947aac9a7_cgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ad7233cac0a66364b1f41eac7249f43ed_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac3ef822dc38ccd1b40a6769947aac9a7_icgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ad7233cac0a66364b1f41eac7249f43ed_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a276572e4606d25da81865bcee0a7d5eb}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a276572e4606d25da81865bcee0a7d5eb}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1f9227c99b942929b14102f873c9da2a}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1f9227c99b942929b14102f873c9da2a}} 
 \index{YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}!Insert@{Insert}}
 \index{Insert@{Insert}!YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}}
 \doxysubsubsection{\texorpdfstring{Insert()}{Insert()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}}}]{watch\+Folder }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}}}]{watch\+Folder }\end{DoxyParamCaption})}
 
 
 
@@ -176,21 +176,21 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a276572e4606d25da81865bcee0a7d5eb_cgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1f9227c99b942929b14102f873c9da2a_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a276572e4606d25da81865bcee0a7d5eb_icgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a1f9227c99b942929b14102f873c9da2a_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a9841f35855709d0255597caff284c64a}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a9841f35855709d0255597caff284c64a}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac18f0d293fb211f7050912a9686990a0}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac18f0d293fb211f7050912a9686990a0}} 
 \index{YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}!Load@{Load}}
 \index{Load@{Load}!YTMusicUploader.Providers.Repos.WatchFolderRepo@{YTMusicUploader.Providers.Repos.WatchFolderRepo}}
 \doxysubsubsection{\texorpdfstring{Load()}{Load()}}
-{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder}{Watch\+Folder}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Watch\+Folder\+Repo.\+Load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -203,7 +203,7 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_a9841f35855709d0255597caff284c64a_cgraph}
+\includegraphics[width=350pt]{de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo_ac18f0d293fb211f7050912a9686990a0_cgraph}
 \end{center}
 \end{figure}
 

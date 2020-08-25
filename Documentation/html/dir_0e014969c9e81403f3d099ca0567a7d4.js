@@ -1,6 +1,5 @@
 var dir_0e014969c9e81403f3d099ca0567a7d4 =
 [
-    [ "AsyncHelper.cs", "d3/d06/_async_helper_8cs.html", null ],
     [ "ColourHelper.cs", "d0/d18/_colour_helper_8cs.html", [
       [ "ColourHelper", "d9/d17/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper.html", "d9/d17/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper" ],
       [ "ColourGenerator", "df/d6a/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_colour_generator.html", "df/d6a/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_colour_generator" ],
@@ -23,5 +22,6 @@ var dir_0e014969c9e81403f3d099ca0567a7d4 =
     [ "SafeFileStream.cs", "d4/d03/_safe_file_stream_8cs.html", [
       [ "SafeFileStream", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream" ]
     ] ],
+    [ "ThreadHelper.cs", "d5/d9d/_thread_helper_8cs.html", null ],
     [ "VersionHelper.cs", "db/d30/_version_helper_8cs.html", null ]
 ];

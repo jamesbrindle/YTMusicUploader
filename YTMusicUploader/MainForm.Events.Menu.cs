@@ -1,6 +1,6 @@
-﻿using System;
+﻿using JBToolkit.Threads;
+using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace YTMusicUploader
@@ -39,6 +39,7 @@ namespace YTMusicUploader
         public void QuitApplication()
         {
             Aborting = true;
+            FileUploader.Stopped = true;
             TrayIcon.Visible = false;
 
             try
@@ -48,36 +49,7 @@ namespace YTMusicUploader
             catch
             { }
 
-            try
-            {
-                Thread.Sleep(500);
-            }
-
-            catch { }
-
-            try
-            {
-                _installingEdgeThread.Interrupt();
-            }
-            catch { }
-
-            try
-            {
-                _scanAndUploadThread.Interrupt();
-            }
-            catch { }
-
-            try
-            {
-                _connectToYouTubeMusicThread.Interrupt();
-            }
-            catch { }
-
-            try
-            {
-                _queueThread.Interrupt();
-            }
-            catch { }
+            ThreadHelper.SafeSleep(500);
 
             try
             {
@@ -96,7 +68,6 @@ namespace YTMusicUploader
                 _connectToYouTubeMusicThread.Abort();
             }
             catch { }
-
 
             try
             {

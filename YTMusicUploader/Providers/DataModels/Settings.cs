@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader.Providers.DataModels
@@ -17,15 +18,17 @@ namespace YTMusicUploader.Providers.DataModels
         /// Updates the database
         /// </summary>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public override DbOperationResult Save()
+        public async override Task<DbOperationResult> Save()
         {
-            return new SettingsRepo().Update(this);
+            return await new SettingsRepo().Update(this);
         }
 
         /// <summary>
         /// Not implemented for the 'Settings' model
         /// </summary>
-        public override DbOperationResult Delete()
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public async override Task<DbOperationResult> Delete()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             throw new NotImplementedException();
         }
