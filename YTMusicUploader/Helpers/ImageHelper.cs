@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace YTMusicUploader.Helpers
+namespace JBToolkit.Imaging
 {
     /// <summary>
     /// Image helper methods

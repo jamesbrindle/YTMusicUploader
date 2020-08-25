@@ -67,7 +67,7 @@ namespace YTMusicUploader.Providers
                     return result;
 
                 album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-                return IsSongUploaded(artist, album, track, cookieValue);                
+                return IsSongUploaded(artist, album, track, cookieValue);
             }
             catch
             {

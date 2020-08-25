@@ -1,8 +1,8 @@
-﻿using JBToolkit.Windows;
+﻿using JBToolkit.Imaging;
+using JBToolkit.Windows;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using YTMusicUploader.Helpers;
 
 namespace YTMusicUploader
 {
@@ -122,7 +122,8 @@ namespace YTMusicUploader
                     if (_artworkFetchThread != null)
                     {
                         AbortArtFetchThread = true;
-                        new Thread((ThreadStart)delegate {
+                        new Thread((ThreadStart)delegate
+                        {
                             try
                             {
                                 var currentImage = GetCurrentArtworkImage();
@@ -130,7 +131,7 @@ namespace YTMusicUploader
                                     SetArtworkBasicImage(Properties.Resources.default_artwork);
                             }
                             catch { }
-                        }).Start();                      
+                        }).Start();
 
                         try
                         {
