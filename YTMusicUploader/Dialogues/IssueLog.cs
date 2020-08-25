@@ -49,6 +49,7 @@ namespace YTMusicUploader.Dialogues
                 dgvIssues.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
                 dgvIssues.Columns["Hash"].Visible = false;
                 dgvIssues.Columns["Removed"].Visible = false;
+                dgvIssues.Columns["MbId"].Visible = false;
                 dgvIssues.Columns["Id"].Width = 55;
                 dgvIssues.Columns["Error"].Width = 45;
                 dgvIssues.Columns["Path"].FillWeight = 300;
