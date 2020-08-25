@@ -3,7 +3,7 @@
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/yt_logo-64.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
 
-Automatically upload your local music personal library to YouTube Music.
+Automatically upload your local personal music library to YouTube Music.
 &nbsp;
 &nbsp;
 
