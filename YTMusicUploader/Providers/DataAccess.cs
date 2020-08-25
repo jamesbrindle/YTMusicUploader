@@ -57,13 +57,14 @@ namespace YTMusicUploader.Providers
             {
                 conn.Open();
                 var columns = conn.Query<string>(
-                        @"SELECT name FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+                        @"SELECT name 
+                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
 
                 if (!columns.Contains("MbId"))
                 {
                     conn.Execute(
                         @"ALTER TABLE MusicFiles
-                        ADD COLUMN MbId TEXT");
+                         ADD COLUMN MbId TEXT");
                 }
             }
         }

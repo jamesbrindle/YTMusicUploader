@@ -138,6 +138,5 @@ namespace YTMusicUploader.Providers.RequestModels
         {
             public TabbedSearchResultsRenderer tabbedSearchResultsRenderer { get; set; }
         }
-
     }
 }
