@@ -41,14 +41,19 @@ namespace YTMusicUploader.Providers
         /// <param name="musicFilePath">Path to music file to be uploaded</param>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static bool IsSongUploaded(string musicFilePath, string cookieValue, MusicDataFetcher musicDataFetcher = null)
+        public static async Task<bool> IsSongUploaded(string musicFilePath, string cookieValue, MusicDataFetcher musicDataFetcher = null)
         {
             if (musicDataFetcher == null)
                 musicDataFetcher = new MusicDataFetcher();
 
             var musicFileMetaData = musicDataFetcher.GetMusicFileMetaData(musicFilePath);
-            if (musicFileMetaData == null)
+            if (musicFileMetaData == null || 
+                musicFileMetaData.Artist == null || 
+                musicFileMetaData.Album == null || 
+                musicFileMetaData.Track == null) 
+            {
                 return false;
+            }
 
             string artist = musicFileMetaData.Artist;
             string album = musicFileMetaData.Album;
@@ -56,19 +61,19 @@ namespace YTMusicUploader.Providers
 
             try
             {
-                bool result = IsSongUploaded(artist, album, track, cookieValue);
+                bool result = await IsSongUploaded(artist, album, track, cookieValue);
 
                 if (result)
                     return result;
 
                 album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
-                result = IsSongUploaded(artist, album, track, cookieValue);
+                result = await IsSongUploaded(artist, album, track, cookieValue);
 
                 if (result)
                     return result;
 
                 album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-                result = IsSongUploaded(artist, album, track, cookieValue);
+                result = await IsSongUploaded(artist, album, track, cookieValue);
 
                 if (result)
                     return result;
@@ -84,7 +89,7 @@ namespace YTMusicUploader.Providers
                 }
                 catch { }
 
-                return IsSongUploaded(artist, album, track, cookieValue);
+                return await IsSongUploaded(artist, album, track, cookieValue);
             }
             catch
             {
@@ -108,21 +113,21 @@ namespace YTMusicUploader.Providers
         /// <param name="track">Track or song name from music file meta tag</param>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static bool IsSongUploadedMulitpleAlbumNameVariations(string artist, string album, string track, string cookieValue)
+        public static async Task<bool> IsSongUploadedMulitpleAlbumNameVariations(string artist, string album, string track, string cookieValue)
         {
-            bool result = IsSongUploaded(artist, album, track, cookieValue);
+            bool result = await IsSongUploaded(artist, album, track, cookieValue);
 
             if (result)
                 return result;
 
             album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
-            result = IsSongUploaded(artist, album, track, cookieValue);
+            result = await IsSongUploaded(artist, album, track, cookieValue);
 
             if (result)
                 return result;
 
             album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-            result = IsSongUploaded(artist, album, track, cookieValue);
+            result = await IsSongUploaded(artist, album, track, cookieValue);
 
             if (result)
                 return result;
@@ -138,7 +143,7 @@ namespace YTMusicUploader.Providers
             }
             catch { }
 
-            return IsSongUploaded(artist, album, track, cookieValue);
+            return await IsSongUploaded(artist, album, track, cookieValue);
         }
 
         /// <summary>
@@ -157,7 +162,7 @@ namespace YTMusicUploader.Providers
         /// <param name="track">Track or song name from music file meta tag</param>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static bool IsSongUploaded(string artist, string album, string track, string cookieValue)
+        public static async Task<bool> IsSongUploaded(string artist, string album, string track, string cookieValue)
         {
             try
             {
@@ -217,11 +222,14 @@ namespace YTMusicUploader.Providers
                             if (runArray.Length > 0)
                             {
                                 if (runArray[0].text.ToLower().Contains("no results found"))
-                                    return false;
+                                    return await Task.FromResult(true);
                                 else
                                 {
                                     Parallel.ForEach(runArray, (runElement) =>
                                     {
+                                        if (runElement.text == null)
+                                            runElement.text = string.Empty;
+
                                         float _artistSimilarity = 0.0f;
                                         float _albumSimilartity = 0.0f;
                                         float _trackSimilarity = 0.0f;
@@ -255,7 +263,6 @@ namespace YTMusicUploader.Providers
 
                                         if (trackSimilarity < _trackSimilarity)
                                             trackSimilarity = _trackSimilarity;
-
                                     });
                                 }
                             }
@@ -266,15 +273,15 @@ namespace YTMusicUploader.Providers
                         albumSimilartity >= matchSuccess &&
                         trackSimilarity >= matchSuccess)
                     {
-                        return true;
+                        return await Task.FromResult(true);
                     }
 
-                    return false;
+                    return await Task.FromResult(false);
                 }
             }
             catch (Exception)
             {
-                return false;
+                return await Task.FromResult(true);
             }
         }
     }

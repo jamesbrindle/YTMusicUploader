@@ -36,14 +36,12 @@ namespace YTMusicUploader.Business
             var uploadedCount = await MainForm.MusicFileRepo.CountUploaded();
             var discoveredFilesCount = await MainForm.MusicFileRepo.CountAll();
 
-            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;            
-
+            MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;      
             foreach (var musicFile in MusicFiles)
             {
                 if (File.Exists(musicFile.Path))
                 {
                     musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);
-
                     if (MainForm.Aborting)
                     {
                         Stopped = true;
@@ -88,8 +86,24 @@ namespace YTMusicUploader.Business
                             ThreadHelper.SafeSleep(1000);
                         }
 
-                        if (Requests.IsSongUploaded(musicFile.Path, MainForm.Settings.AuthenticationCookie, MainForm.MusicDataFetcher))
+                        //
+                        // HACK: 30 seconds to complete this operations, it's been know to get stuck?
+                        //
+                        var checkUploadedTask = Requests.IsSongUploaded(musicFile.Path, MainForm.Settings.AuthenticationCookie, MainForm.MusicDataFetcher);
+                        bool trackAlreadyUploaded = false;
+                        if (await Task.WhenAny(checkUploadedTask, Task.Delay(30000)) == checkUploadedTask)
+                            if (checkUploadedTask.Result == true)
+                                trackAlreadyUploaded = true;
+
+                        if (trackAlreadyUploaded)
                         {
+                            if (MainForm.Aborting)
+                            {
+                                Stopped = true;
+                                MainForm.SetUploadingMessage("Idle", "idle");
+                                return;
+                            }
+
                             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false);
                             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true);
 
@@ -106,6 +120,13 @@ namespace YTMusicUploader.Business
                         }
                         else
                         {
+                            if (MainForm.Aborting)
+                            {
+                                Stopped = true;
+                                MainForm.SetUploadingMessage("Idle", "idle");
+                                return;
+                            }
+
                             Requests.UploadSong(
                                         MainForm,
                                         MainForm.Settings.AuthenticationCookie,
