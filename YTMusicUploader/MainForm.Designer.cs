@@ -326,7 +326,7 @@
             // pbConnectedToYoutube
             // 
             this.pbConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.tick;
-            this.pbConnectedToYoutube.Location = new System.Drawing.Point(632, 263);
+            this.pbConnectedToYoutube.Location = new System.Drawing.Point(633, 263);
             this.pbConnectedToYoutube.Name = "pbConnectedToYoutube";
             this.pbConnectedToYoutube.Size = new System.Drawing.Size(14, 14);
             this.pbConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -364,7 +364,7 @@
             // pbNotConnectedToYoutube
             // 
             this.pbNotConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.cross;
-            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(632, 265);
+            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(633, 265);
             this.pbNotConnectedToYoutube.Name = "pbNotConnectedToYoutube";
             this.pbNotConnectedToYoutube.Size = new System.Drawing.Size(12, 12);
             this.pbNotConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -386,7 +386,7 @@
             this.btnConnectToYoutube.Location = new System.Drawing.Point(445, 257);
             this.btnConnectToYoutube.Name = "btnConnectToYoutube";
             this.btnConnectToYoutube.Radius = 4;
-            this.btnConnectToYoutube.Size = new System.Drawing.Size(174, 26);
+            this.btnConnectToYoutube.Size = new System.Drawing.Size(178, 26);
             this.btnConnectToYoutube.Stroke = true;
             this.btnConnectToYoutube.StrokeColor = System.Drawing.Color.LightCoral;
             this.btnConnectToYoutube.TabIndex = 6;
