@@ -34,9 +34,11 @@
             this.dgvUploads = new JBToolkit.WinForms.FastScrollDataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
+            this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pnlUploads.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUploads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlUploads
@@ -90,11 +92,27 @@
             this.pbIssueLogIcon.TabIndex = 2;
             this.pbIssueLogIcon.TabStop = false;
             // 
+            // pbRefresh
+            // 
+            this.pbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbRefresh.Image = global::YTMusicUploader.Properties.Resources.refresh;
+            this.pbRefresh.Location = new System.Drawing.Point(989, 38);
+            this.pbRefresh.Name = "pbRefresh";
+            this.pbRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbRefresh.TabIndex = 5;
+            this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
+            this.pbRefresh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseDown);
+            this.pbRefresh.MouseEnter += new System.EventHandler(this.PbRefresh_MouseEnter);
+            this.pbRefresh.MouseLeave += new System.EventHandler(this.PbRefresh_MouseLeave);
+            // 
             // UploadLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.Controls.Add(this.pbRefresh);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
             this.Controls.Add(this.pnlUploads);
@@ -106,6 +124,7 @@
             this.pnlUploads.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUploads)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,5 +135,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbIssueLogIcon;
         private JBToolkit.WinForms.FastScrollDataGridView dgvUploads;
+        private System.Windows.Forms.PictureBox pbRefresh;
     }
 }

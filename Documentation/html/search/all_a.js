@@ -1,14 +1,15 @@
 var searchData=
 [
-  ['assemblies_207',['Assemblies',['../db/d50/namespace_j_b_toolkit_1_1_assemblies.html',1,'JBToolkit']]],
-  ['colorhelper_208',['ColorHelper',['../d8/d1a/namespace_j_b_toolkit_1_1_color_helper.html',1,'JBToolkit']]],
-  ['culture_209',['Culture',['../dd/def/namespace_j_b_toolkit_1_1_culture.html',1,'JBToolkit']]],
-  ['fuzzylogic_210',['FuzzyLogic',['../de/df8/namespace_j_b_toolkit_1_1_fuzzy_logic.html',1,'JBToolkit']]],
-  ['imaging_211',['Imaging',['../dd/df0/namespace_j_b_toolkit_1_1_imaging.html',1,'JBToolkit']]],
-  ['jbtoolkit_212',['JBToolkit',['../db/d5a/namespace_j_b_toolkit.html',1,'']]],
-  ['network_213',['Network',['../d8/de5/namespace_j_b_toolkit_1_1_network.html',1,'JBToolkit']]],
-  ['streamhelpers_214',['StreamHelpers',['../dd/dee/namespace_j_b_toolkit_1_1_stream_helpers.html',1,'JBToolkit']]],
-  ['threads_215',['Threads',['../dc/dc3/namespace_j_b_toolkit_1_1_threads.html',1,'JBToolkit']]],
-  ['windows_216',['Windows',['../da/d21/namespace_j_b_toolkit_1_1_windows.html',1,'JBToolkit']]],
-  ['winforms_217',['WinForms',['../d8/d9d/namespace_j_b_toolkit_1_1_win_forms.html',1,'JBToolkit']]]
+  ['assemblies_263',['Assemblies',['../db/d50/namespace_j_b_toolkit_1_1_assemblies.html',1,'JBToolkit']]],
+  ['colorhelper_264',['ColorHelper',['../d8/d1a/namespace_j_b_toolkit_1_1_color_helper.html',1,'JBToolkit']]],
+  ['culture_265',['Culture',['../dd/def/namespace_j_b_toolkit_1_1_culture.html',1,'JBToolkit']]],
+  ['fuzzylogic_266',['FuzzyLogic',['../de/df8/namespace_j_b_toolkit_1_1_fuzzy_logic.html',1,'JBToolkit']]],
+  ['imaging_267',['Imaging',['../dd/df0/namespace_j_b_toolkit_1_1_imaging.html',1,'JBToolkit']]],
+  ['jbtoolkit_268',['JBToolkit',['../db/d5a/namespace_j_b_toolkit.html',1,'']]],
+  ['joinphrase_269',['JoinPhrase',['../de/d51/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_name_credit.html#aa936007bd169e2976dd36fa1b01bef00',1,'YTMusicUploader::MusicBrainz::API::Entities::NameCredit']]],
+  ['network_270',['Network',['../d8/de5/namespace_j_b_toolkit_1_1_network.html',1,'JBToolkit']]],
+  ['streamhelpers_271',['StreamHelpers',['../dd/dee/namespace_j_b_toolkit_1_1_stream_helpers.html',1,'JBToolkit']]],
+  ['threads_272',['Threads',['../dc/dc3/namespace_j_b_toolkit_1_1_threads.html',1,'JBToolkit']]],
+  ['windows_273',['Windows',['../da/d21/namespace_j_b_toolkit_1_1_windows.html',1,'JBToolkit']]],
+  ['winforms_274',['WinForms',['../d8/d9d/namespace_j_b_toolkit_1_1_win_forms.html',1,'JBToolkit']]]
 ];

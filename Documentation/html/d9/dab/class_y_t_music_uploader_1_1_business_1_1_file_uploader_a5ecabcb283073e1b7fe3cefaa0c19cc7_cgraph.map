@@ -1,13 +1,6 @@
 <map id="YTMusicUploader.Business.FileUploader.Process" name="YTMusicUploader.Business.FileUploader.Process">
-<area shape="rect" id="node1" title="Execute the upload process" alt="" coords="5,201,192,243"/>
-<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a99562c8c5a51bb201bdb9e5169793959" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="243,5,428,47"/>
-<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="240,71,431,112"/>
-<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad05b1e32e260ce690cb699b11e23f51e" title=" " alt="" coords="240,136,431,177"/>
-<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="240,201,431,243"/>
-<area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a7e6d9ff608ac01f29412a13657854b1f" title=" " alt="" coords="240,267,431,308"/>
-<area shape="rect" id="node8" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a8a6b5f35ff37227ceb31962ce6c20c27" title=" " alt="" coords="240,332,431,373"/>
-<area shape="rect" id="node9" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="243,397,428,439"/>
-<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="485,201,676,243"/>
-<area shape="rect" id="node10" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="479,364,683,405"/>
-<area shape="rect" id="node11" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="488,429,673,471"/>
+<area shape="rect" id="node1" title="Execute the upload process" alt="" coords="5,71,192,112"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6510e6b094491b7947d8922bf6dfc009" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="261,5,447,47"/>
+<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,71,449,112"/>
+<area shape="rect" id="node4" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,137,468,193"/>
 </map>

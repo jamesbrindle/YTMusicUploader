@@ -1,0 +1,163 @@
+.TH "YTMusicUploader.MusicBrainz.API.Services.ReleaseService" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Services.ReleaseService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IReleaseService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReleaseService\fP (\fBMusicBrainzClient\fP client, \fBUrlBuilder\fP builder)"
+.br
+.ti -1c
+.RI "async Task< \fBRelease\fP > \fBGetAsync\fP (string id, params string[] inc)"
+.br
+.RI "Lookup a release in the \fBMusicBrainz\fP database\&. "
+.ti -1c
+.RI "async Task< \fBReleaseList\fP > \fBSearchAsync\fP (string query, int limit=25, int offset=0)"
+.br
+.RI "Search for a release in the \fBMusicBrainz\fP database, matching the given query\&. "
+.ti -1c
+.RI "async Task< \fBReleaseList\fP > \fBSearchAsync\fP (\fBQueryParameters\fP< \fBRelease\fP > query, int limit=25, int offset=0)"
+.br
+.RI "Search for a release in the \fBMusicBrainz\fP database, matching the given query\&. "
+.ti -1c
+.RI "async Task< \fBReleaseList\fP > \fBBrowseAsync\fP (string entity, string id, int limit=25, int offset=0, params string[] inc)"
+.br
+.RI "Browse all the releases in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. "
+.ti -1c
+.RI "async Task< \fBReleaseList\fP > \fBBrowseAsync\fP (string entity, string id, string type, string status=null, int limit=25, int offset=0, params string[] inc)"
+.br
+.RI "Browse all the releases in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. "
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ReleaseService\&.ReleaseService (\fBMusicBrainzClient\fP client, \fBUrlBuilder\fP builder)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "async Task<\fBReleaseList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ReleaseService\&.BrowseAsync (string entity, string id, int limit = \fC25\fP, int offset = \fC0\fP, params string[] inc)"
+
+.PP
+Browse all the releases in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIentity\fP The name of the related entity\&.
+.br
+\fIid\fP The id of the related entity\&.
+.br
+\fIlimit\fP The maximum number of releases to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the releases list (enables paging, default = 0)\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IReleaseService\fP\&.
+.SS "async Task<\fBReleaseList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ReleaseService\&.BrowseAsync (string entity, string id, string type, string status = \fCnull\fP, int limit = \fC25\fP, int offset = \fC0\fP, params string[] inc)"
+
+.PP
+Browse all the releases in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIentity\fP The name of the related entity\&.
+.br
+\fIid\fP The id of the related entity\&.
+.br
+\fItype\fP If releases or release-groups are included in the result, filter by type (for example 'album')\&.
+.br
+\fIstatus\fP If releases are included in the result, filter by status (for example 'official', default = null)\&.
+.br
+\fIlimit\fP The maximum number of releases to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the releases list (enables paging, default = 0)\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+.PP
+See http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#Release_Type_and_Status for supported values of type and status\&. 
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IReleaseService\fP\&.
+.SS "async Task<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ReleaseService\&.GetAsync (string id, params string[] inc)"
+
+.PP
+Lookup a release in the \fBMusicBrainz\fP database\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP The release \fBMusicBrainz\fP id\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IReleaseService\fP\&.
+.SS "async Task<\fBReleaseList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ReleaseService\&.SearchAsync (\fBQueryParameters\fP< \fBRelease\fP > query, int limit = \fC25\fP, int offset = \fC0\fP)"
+
+.PP
+Search for a release in the \fBMusicBrainz\fP database, matching the given query\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIquery\fP The query parameters\&.
+.br
+\fIlimit\fP The maximum number of releases to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the releases list (enables paging, default = 0)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IReleaseService\fP\&.
+.SS "async Task<\fBReleaseList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ReleaseService\&.SearchAsync (string query, int limit = \fC25\fP, int offset = \fC0\fP)"
+
+.PP
+Search for a release in the \fBMusicBrainz\fP database, matching the given query\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIquery\fP The query string\&.
+.br
+\fIlimit\fP The maximum number of releases to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the releases list (enables paging, default = 0)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IReleaseService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

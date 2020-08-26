@@ -1,0 +1,144 @@
+.TH "YTMusicUploader.MusicBrainz.API.Entities.Release" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Entities.Release \- A \fBMusicBrainz\fP release represents the unique release (i\&.e\&. issuing) of a product on a specific date with specific release information such as the country, label, barcode and packaging\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBScore\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the score (only available in search results)\&. "
+.ti -1c
+.RI "string \fBId\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the \fBMusicBrainz\fP id\&. "
+.ti -1c
+.RI "string \fBTitle\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the title\&. "
+.ti -1c
+.RI "string \fBStatus\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the status\&. "
+.ti -1c
+.RI "string \fBQuality\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the quality\&. "
+.ti -1c
+.RI "\fBTextRepresentation\fP \fBTextRepresentation\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the text-representation\&. "
+.ti -1c
+.RI "string \fBDate\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the date\&. "
+.ti -1c
+.RI "string \fBCountry\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the country\&. "
+.ti -1c
+.RI "string \fBBarcode\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the barcode\&. "
+.ti -1c
+.RI "\fBReleaseGroup\fP \fBReleaseGroup\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the release-group\&. "
+.ti -1c
+.RI "\fBCoverArtArchive\fP \fBCoverArtArchive\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the cover-art-archive\&. "
+.ti -1c
+.RI "List< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of artists associated to this release\&. "
+.ti -1c
+.RI "List< \fBLabelInfo\fP > \fBLabels\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of labels associated to this release\&. "
+.ti -1c
+.RI "List< \fBMedium\fP > \fBMedia\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of media/tracks associated to this release\&. "
+.ti -1c
+.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of relations associated to this release\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBMusicBrainz\fP release represents the unique release (i\&.e\&. issuing) of a product on a specific date with specific release information such as the country, label, barcode and packaging\&. 
+
+
+.SH "Property Documentation"
+.PP 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Barcode\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the barcode\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Country\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the country\&. 
+.SS "\fBCoverArtArchive\fP YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.CoverArtArchive\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the cover-art-archive\&. 
+.SS "List<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Credits\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of artists associated to this release\&. var e = await Release\&.GetAsync(mbid, 'artists'); 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Date\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the date\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Id\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBMusicBrainz\fP id\&. 
+.SS "List<\fBLabelInfo\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Labels\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of labels associated to this release\&. var e = await Release\&.GetAsync(mbid, 'labels'); 
+.SS "List<\fBMedium\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Media\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of media/tracks associated to this release\&. var e = await Release\&.GetAsync(mbid, 'recordings'); 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Quality\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the quality\&. 
+.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Relations\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of relations associated to this release\&. var e = await Release\&.GetAsync(mbid, 'url-rels'); 
+.SS "\fBReleaseGroup\fP YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.ReleaseGroup\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the release-group\&. 
+.SS "int YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Score\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the score (only available in search results)\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Status\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the status\&. 
+.SS "\fBTextRepresentation\fP YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.TextRepresentation\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the text-representation\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Title\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the title\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

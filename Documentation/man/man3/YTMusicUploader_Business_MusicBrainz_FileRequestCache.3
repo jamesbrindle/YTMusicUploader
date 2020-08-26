@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business.MusicBrainz.FileRequestCache" 3 "Tue Aug 25 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business.MusicBrainz.FileRequestCache" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,7 +8,7 @@ YTMusicUploader.Business.MusicBrainz.FileRequestCache \- Caches requests to \fBM
 .br
 .PP
 .PP
-Inherits \fBIRequestCache\fP\&.
+Inherits \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -21,9 +21,11 @@ Inherits \fBIRequestCache\fP\&.
 .ti -1c
 .RI "async Task \fBAdd\fP (string request, Stream response)"
 .br
+.RI "Add a request and its response to the cache\&. "
 .ti -1c
 .RI "Task< bool > \fBTryGetCachedItem\fP (string request, out Stream stream)"
 .br
+.RI "Add a request and its response to the cache\&. "
 .ti -1c
 .RI "int \fBCleanup\fP ()"
 .br
@@ -54,12 +56,27 @@ Caches requests to \fBMusicBrainz\fP API on disk\&.
 .PP 
 .SS "async Task YTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\&.Add (string request, Stream response)"
 
+.PP
+Add a request and its response to the cache\&. 
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\fP\&.
 .SS "int YTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\&.Cleanup ()"
 
 .SS "void YTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\&.Clear ()"
 
 .SS "Task<bool> YTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\&.TryGetCachedItem (string request, out Stream stream)"
 
+.PP
+Add a request and its response to the cache\&. 
+.PP
+\fBReturns\fP
+.RS 4
+True, if a cache entry matching the request was found\&.
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\fP\&.
 .SH "Property Documentation"
 .PP 
 .SS "TimeSpan YTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\&.Timeout\fC [get]\fP, \fC [set]\fP"

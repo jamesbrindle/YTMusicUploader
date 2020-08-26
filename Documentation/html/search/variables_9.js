@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['taskmanager_592',['TaskManager',['../da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#af87036e5f8199a262dbbee5166e89e56',1,'JBToolkit::WinForms::OptimisedMetroForm']]]
+  ['uri_1099',['Uri',['../df/de3/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_web_service_exception.html#a937939115bd905e1c9080783d1999eae',1,'YTMusicUploader::MusicBrainz::API::WebServiceException']]]
 ];

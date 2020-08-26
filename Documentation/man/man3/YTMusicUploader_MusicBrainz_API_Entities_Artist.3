@@ -1,0 +1,160 @@
+.TH "YTMusicUploader.MusicBrainz.API.Entities.Artist" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Entities.Artist \- An artist is generally a musician (or musician persona), group of musicians or other music professional (like a producer or engineer)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBScore\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the score (only available in search results)\&. "
+.ti -1c
+.RI "string \fBId\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the \fBMusicBrainz\fP id\&. "
+.ti -1c
+.RI "string \fBType\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the type\&. "
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the name\&. "
+.ti -1c
+.RI "string \fBSortName\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the sort name\&. "
+.ti -1c
+.RI "string \fBGender\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the gender\&. "
+.ti -1c
+.RI "\fBLifeSpan\fP \fBLifeSpan\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the life-span\&. "
+.ti -1c
+.RI "\fBArea\fP \fBArea\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the area\&. "
+.ti -1c
+.RI "string \fBCountry\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the country\&. "
+.ti -1c
+.RI "string \fBDisambiguation\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the disambiguation\&. "
+.ti -1c
+.RI "\fBRating\fP \fBRating\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the rating\&. "
+.ti -1c
+.RI "List< \fBRecording\fP > \fBRecordings\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of recordings associated to this artist\&. "
+.ti -1c
+.RI "List< \fBReleaseGroup\fP > \fBReleaseGroups\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of release-groups associated to this artist\&. "
+.ti -1c
+.RI "List< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of releases associated to this artist\&. "
+.ti -1c
+.RI "List< \fBWork\fP > \fBWorks\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of works associated to this artist\&. "
+.ti -1c
+.RI "List< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of tags associated to this artist\&. "
+.ti -1c
+.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of relations associated to this artist\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An artist is generally a musician (or musician persona), group of musicians or other music professional (like a producer or engineer)\&. 
+
+
+.SH "Property Documentation"
+.PP 
+.SS "\fBArea\fP YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Area\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the area\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Country\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the country\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Disambiguation\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the disambiguation\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Gender\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the gender\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Id\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBMusicBrainz\fP id\&. 
+.SS "\fBLifeSpan\fP YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.LifeSpan\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the life-span\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name\&. 
+.SS "\fBRating\fP YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Rating\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the rating\&. 
+.SS "List<\fBRecording\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Recordings\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of recordings associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'recordings'); 
+.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Relations\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of relations associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'url-rels', 'artist-rels'); 
+.SS "List<\fBReleaseGroup\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.ReleaseGroups\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of release-groups associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'release-groups'); 
+.SS "List<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Releases\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of releases associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'releases'); 
+.SS "int YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Score\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the score (only available in search results)\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.SortName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the sort name\&. 
+.SS "List<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Tags\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of tags associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'tags'); 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Type\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type\&. 
+.SS "List<\fBWork\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Works\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of works associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'works'); 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

@@ -14,16 +14,31 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Requests\+:\nopage
 \includegraphics[width=238pt]{dd/dee/class_y_t_music_uploader_1_1_providers_1_1_requests__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Upload\+Check\+Check\+Cache}
+\begin{DoxyCompactList}\small\item\em Object to store pre fetched already uploaded check results \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Upload\+Check\+Result}} \{ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea3f6dd2f10d0feb46f79e8f8890c6eff3}{Upload\+Check\+Result.\+Not\+Present}}, 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea45ad1f24bc22e10d56bd3636f0856e71}{Upload\+Check\+Result.\+Present\+\_\+\+From\+Cache}}, 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea50de085f64803269847678359f5eae8f}{Upload\+Check\+Result.\+Present\+\_\+\+New\+Request}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a999ef8b6818a6afda480211b7a36a0d5}{Is\+Authenticated}} (string cookie\+Value)
-\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube to check if the user\textquotesingle{}s is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored. \end{DoxyCompactList}\item 
-static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959}{Is\+Song\+Uploaded}} (string music\+File\+Path, string cookie\+Value, \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}} music\+Data\+Fetcher=null)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube to check if the user\textquotesingle{}s is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored. /// In this case, we\textquotesingle{}re actually perform a request for personally uploaded music files \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a3d6ca2f67b1b9f6e978e8386ab5abc55}{Start\+Prefetching\+Uploaded\+Files\+Check}} (List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ music\+Files\+List, string cookie\+Value, \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}} music\+Data\+Fetcher=null)
+\begin{DoxyCompactList}\small\item\em Starts a new thread which loops through Music\+Files to check if they\textquotesingle{}ve already been uploaded to You\+Tube Music ahead of time and stores them in a cache to speed up the upload checker. \end{DoxyCompactList}\item 
+static async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Upload\+Check\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a6510e6b094491b7947d8922bf6dfc009}{Is\+Song\+Uploaded}} (string music\+File\+Path, string cookie\+Value, \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}} music\+Data\+Fetcher=null)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we\textquotesingle{}re trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file\textquotesingle{}s meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it\textquotesingle{}s above 0.\+75. \end{DoxyCompactList}\item 
-static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139}{Is\+Song\+Uploaded\+Mulitple\+Album\+Name\+Variations}} (string artist, string album, string track, string cookie\+Value)
+static async Task$<$ bool $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a6e74e451701907e8c9a57aa7ad13b422}{Is\+Song\+Uploaded\+Mulitple\+Album\+Name\+Variations}} (string artist, string album, string track, string cookie\+Value)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we\textquotesingle{}re trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file\textquotesingle{}s meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it\textquotesingle{}s above 0.\+75. \end{DoxyCompactList}\item 
-static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26}{Is\+Song\+Uploaded}} (string artist, string album, string track, string cookie\+Value)
+static async Task$<$ bool $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_af9ba7a8278b7ebb7861b4eee81e472c3}{Is\+Song\+Uploaded}} (string artist, string album, string track, string cookie\+Value)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we\textquotesingle{}re trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file\textquotesingle{}s meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it\textquotesingle{}s above 0.\+75. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a15e0e7c11bb6158469a234cc8aab0807}{Upload\+Song}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form}{Main\+Form}} main\+Form, string cookie\+Value, string file\+Path, int max\+Upload\+Speed, out string error)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube to upload a music file. \end{DoxyCompactList}\item 
@@ -31,6 +46,13 @@ static Http\+Web\+Request \mbox{\hyperlink{class_y_t_music_uploader_1_1_provider
 \begin{DoxyCompactList}\small\item\em Required headers for any You\+Tube music A\+PI request \end{DoxyCompactList}\item 
 static byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a2c548db725ae9ec8fda7e4a2433d412c}{Get\+Post\+Bytes}} (string string\+To\+Encode)
 \begin{DoxyCompactList}\small\item\em Converts a string to a byte array for use in a Http\+Web\+Request upload stream (U\+T\+F8 encoded). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static Thread \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_acbe3b60cc98df76ac57a1e8739f22dd7}{Upload\+Check\+Preloader\+Thread}} = null\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+static Thread \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a6869366584419951c9bae52218e767e1}{Upload\+Check\+Preloader\+Sleep\+Thread}} = null\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -47,6 +69,29 @@ In this case, we\textquotesingle{}re actually perform a request for personally u
 Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
 
 Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}} 
+\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!UploadCheckResult@{UploadCheckResult}}
+\index{UploadCheckResult@{UploadCheckResult}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
+\doxysubsubsection{\texorpdfstring{UploadCheckResult}{UploadCheckResult}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Upload\+Check\+Result}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NotPresent@{NotPresent}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!NotPresent@{NotPresent}}}\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea3f6dd2f10d0feb46f79e8f8890c6eff3}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea3f6dd2f10d0feb46f79e8f8890c6eff3}} 
+Not\+Present&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Present\_FromCache@{Present\_FromCache}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!Present\_FromCache@{Present\_FromCache}}}\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea45ad1f24bc22e10d56bd3636f0856e71}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea45ad1f24bc22e10d56bd3636f0856e71}} 
+Present\+\_\+\+From\+Cache&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Present\_NewRequest@{Present\_NewRequest}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!Present\_NewRequest@{Present\_NewRequest}}}\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea50de085f64803269847678359f5eae8f}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ecea50de085f64803269847678359f5eae8f}} 
+Present\+\_\+\+New\+Request&\\
+\hline
+
+\end{DoxyEnumFields}
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a62dae7c90e360d88e8b3f495f3c683ec}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a62dae7c90e360d88e8b3f495f3c683ec}} 
@@ -109,11 +154,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Http\+Web\+Request P\+O\+ST request to send to You\+Tube to check if the user\textquotesingle{}s is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored. 
-
-In this case, we\textquotesingle{}re actually perform a request for personally uploaded music files
-
-Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
+Http\+Web\+Request P\+O\+ST request to send to You\+Tube to check if the user\textquotesingle{}s is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored. /// In this case, we\textquotesingle{}re actually perform a request for personally uploaded music files 
 
 
 \begin{DoxyParams}{Parameters}
@@ -130,17 +171,15 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a999ef8b6818a6afda480211b7a36a0d5_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_af9ba7a8278b7ebb7861b4eee81e472c3}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_af9ba7a8278b7ebb7861b4eee81e472c3}} 
 \index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!IsSongUploaded@{IsSongUploaded}}
 \index{IsSongUploaded@{IsSongUploaded}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
 \doxysubsubsection{\texorpdfstring{IsSongUploaded()}{IsSongUploaded()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album,  }\item[{string}]{track,  }\item[{string}]{cookie\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static async Task$<$bool$>$ Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album,  }\item[{string}]{track,  }\item[{string}]{cookie\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we\textquotesingle{}re trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file\textquotesingle{}s meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it\textquotesingle{}s above 0.\+75. 
-
-Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -160,26 +199,26 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a29b0cb92831abcb3d82602141fc8be26_cgraph}
+\includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_af9ba7a8278b7ebb7861b4eee81e472c3_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a6510e6b094491b7947d8922bf6dfc009}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a6510e6b094491b7947d8922bf6dfc009}} 
 \index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!IsSongUploaded@{IsSongUploaded}}
 \index{IsSongUploaded@{IsSongUploaded}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
 \doxysubsubsection{\texorpdfstring{IsSongUploaded()}{IsSongUploaded()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded (\begin{DoxyParamCaption}\item[{string}]{music\+File\+Path,  }\item[{string}]{cookie\+Value,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}}}]{music\+Data\+Fetcher = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Upload\+Check\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded (\begin{DoxyParamCaption}\item[{string}]{music\+File\+Path,  }\item[{string}]{cookie\+Value,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}}}]{music\+Data\+Fetcher = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we\textquotesingle{}re trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file\textquotesingle{}s meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it\textquotesingle{}s above 0.\+75. 
-
-Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
 
 
 \begin{DoxyParams}{Parameters}
 {\em music\+File\+Path} & Path to music file to be uploaded\\
 \hline
 {\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+{\em music\+Data\+Fetcher} & You can pass an existing Music\+Data\+Fetcher object, or one will be created if left blank\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -189,20 +228,18 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a99562c8c5a51bb201bdb9e5169793959_icgraph}
+\includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a6510e6b094491b7947d8922bf6dfc009_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a6e74e451701907e8c9a57aa7ad13b422}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a6e74e451701907e8c9a57aa7ad13b422}} 
 \index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!IsSongUploadedMulitpleAlbumNameVariations@{IsSongUploadedMulitpleAlbumNameVariations}}
 \index{IsSongUploadedMulitpleAlbumNameVariations@{IsSongUploadedMulitpleAlbumNameVariations}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
 \doxysubsubsection{\texorpdfstring{IsSongUploadedMulitpleAlbumNameVariations()}{IsSongUploadedMulitpleAlbumNameVariations()}}
-{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded\+Mulitple\+Album\+Name\+Variations (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album,  }\item[{string}]{track,  }\item[{string}]{cookie\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static async Task$<$bool$>$ Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded\+Mulitple\+Album\+Name\+Variations (\begin{DoxyParamCaption}\item[{string}]{artist,  }\item[{string}]{album,  }\item[{string}]{track,  }\item[{string}]{cookie\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we\textquotesingle{}re trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file\textquotesingle{}s meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it\textquotesingle{}s above 0.\+75. 
-
-Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -218,11 +255,30 @@ Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\tex
 \begin{DoxyReturn}{Returns}
 True if song is found, false otherwise
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a3d6ca2f67b1b9f6e978e8386ab5abc55}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a3d6ca2f67b1b9f6e978e8386ab5abc55}} 
+\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!StartPrefetchingUploadedFilesCheck@{StartPrefetchingUploadedFilesCheck}}
+\index{StartPrefetchingUploadedFilesCheck@{StartPrefetchingUploadedFilesCheck}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
+\doxysubsubsection{\texorpdfstring{StartPrefetchingUploadedFilesCheck()}{StartPrefetchingUploadedFilesCheck()}}
+{\footnotesize\ttfamily static void Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Start\+Prefetching\+Uploaded\+Files\+Check (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$}]{music\+Files\+List,  }\item[{string}]{cookie\+Value,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}}}]{music\+Data\+Fetcher = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Starts a new thread which loops through Music\+Files to check if they\textquotesingle{}ve already been uploaded to You\+Tube Music ahead of time and stores them in a cache to speed up the upload checker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em music\+Files\+List} & Path to music file to be uploaded\\
+\hline
+{\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+{\em music\+Data\+Fetcher} & You can pass an existing Music\+Data\+Fetcher object, or one will be created if left blank\\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a92c1572cd5f2fc98b78dc1e1a563b139_cgraph}
+\includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a3d6ca2f67b1b9f6e978e8386ab5abc55_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a15e0e7c11bb6158469a234cc8aab0807}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a15e0e7c11bb6158469a234cc8aab0807}} 
@@ -234,8 +290,6 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 Http\+Web\+Request P\+O\+ST request to send to You\+Tube to upload a music file. 
-
-Thanks to\+: sigma67\+: \href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ https\+://ytmusicapi.\+readthedocs.\+io/en/latest/}} \href{https://github.com/sigma67/ytmusicapi}{\texttt{ https\+://github.\+com/sigma67/ytmusicapi}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -260,13 +314,21 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a15e0e7c11bb6158469a234cc8aab0807_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a15e0e7c11bb6158469a234cc8aab0807_icgraph}
-\end{center}
-\end{figure}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a6869366584419951c9bae52218e767e1}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a6869366584419951c9bae52218e767e1}} 
+\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!UploadCheckPreloaderSleepThread@{UploadCheckPreloaderSleepThread}}
+\index{UploadCheckPreloaderSleepThread@{UploadCheckPreloaderSleepThread}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
+\doxysubsubsection{\texorpdfstring{UploadCheckPreloaderSleepThread}{UploadCheckPreloaderSleepThread}}
+{\footnotesize\ttfamily Thread Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Upload\+Check\+Preloader\+Sleep\+Thread = null\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_acbe3b60cc98df76ac57a1e8739f22dd7}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_acbe3b60cc98df76ac57a1e8739f22dd7}} 
+\index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!UploadCheckPreloaderThread@{UploadCheckPreloaderThread}}
+\index{UploadCheckPreloaderThread@{UploadCheckPreloaderThread}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
+\doxysubsubsection{\texorpdfstring{UploadCheckPreloaderThread}{UploadCheckPreloaderThread}}
+{\footnotesize\ttfamily Thread Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Upload\+Check\+Preloader\+Thread = null\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}, {\ttfamily [set]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

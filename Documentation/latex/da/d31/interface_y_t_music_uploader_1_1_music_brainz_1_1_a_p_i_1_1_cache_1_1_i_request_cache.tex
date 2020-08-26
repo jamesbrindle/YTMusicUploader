@@ -1,0 +1,76 @@
+\hypertarget{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache}{}\doxysection{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Cache.\+I\+Request\+Cache Interface Reference}
+\label{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache}\index{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache@{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache}}
+
+
+A simple cache interface.  
+
+
+
+
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Cache.\+I\+Request\+Cache\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/d55/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Cache.\+I\+Request\+Cache\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{d7/d65/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Task \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache_ae058650293006b7c661b6627784a3788}{Add}} (string request, Stream response)
+\begin{DoxyCompactList}\small\item\em Add a request and its response to the cache. \end{DoxyCompactList}\item 
+Task$<$ bool $>$ \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache_ac6bacb215fbc19909d3ff56d3104f423}{Try\+Get\+Cached\+Item}} (string request, out Stream stream)
+\begin{DoxyCompactList}\small\item\em Add a request and its response to the cache. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple cache interface. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache_ae058650293006b7c661b6627784a3788}\label{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache_ae058650293006b7c661b6627784a3788}} 
+\index{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache@{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache}!Add@{Add}}
+\index{Add@{Add}!YTMusicUploader.MusicBrainz.API.Cache.IRequestCache@{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily Task Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Cache.\+I\+Request\+Cache.\+Add (\begin{DoxyParamCaption}\item[{string}]{request,  }\item[{Stream}]{response }\end{DoxyParamCaption})}
+
+
+
+Add a request and its response to the cache. 
+
+
+
+Implemented in \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache_a779b05726ef075d5586bef66f38aa657}{Y\+T\+Music\+Uploader.\+Business.\+Music\+Brainz.\+File\+Request\+Cache}}, and \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_null_cache_a72bbd54695a63bac00069b0539ba0269}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Cache.\+Null\+Cache}}.
+
+\mbox{\Hypertarget{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache_ac6bacb215fbc19909d3ff56d3104f423}\label{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_i_request_cache_ac6bacb215fbc19909d3ff56d3104f423}} 
+\index{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache@{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache}!TryGetCachedItem@{TryGetCachedItem}}
+\index{TryGetCachedItem@{TryGetCachedItem}!YTMusicUploader.MusicBrainz.API.Cache.IRequestCache@{YTMusicUploader.MusicBrainz.API.Cache.IRequestCache}}
+\doxysubsubsection{\texorpdfstring{TryGetCachedItem()}{TryGetCachedItem()}}
+{\footnotesize\ttfamily Task$<$bool$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Cache.\+I\+Request\+Cache.\+Try\+Get\+Cached\+Item (\begin{DoxyParamCaption}\item[{string}]{request,  }\item[{out Stream}]{stream }\end{DoxyParamCaption})}
+
+
+
+Add a request and its response to the cache. 
+
+\begin{DoxyReturn}{Returns}
+True, if a cache entry matching the request was found.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache_a6b89d035cd0efdbeca0645d2c20c59c6}{Y\+T\+Music\+Uploader.\+Business.\+Music\+Brainz.\+File\+Request\+Cache}}, and \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_null_cache_a6189990e3feaf784eaf8e54c54cd8705}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Cache.\+Null\+Cache}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Music\+Brainz/\+Cache/\mbox{\hyperlink{_i_request_cache_8cs}{I\+Request\+Cache.\+cs}}\end{DoxyCompactItemize}

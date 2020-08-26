@@ -4,9 +4,9 @@
 
 \href{https://github.com/jamesbrindle/YTMusicUploader}{\texttt{ }} ~
 
-Automatically upload your local music personal library to You\+Tube Music. ~ ~
+Automatically upload your local personal music library to You\+Tube Music. ~ ~
 
-{\bfseries{\href{https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3.1}{\texttt{ Download Version 1.\+3 Installer}}}} ~ ~\hypertarget{index_autotoc_md1}{}\doxysubsection{Application}\label{index_autotoc_md1}
+{\bfseries{\href{https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3.4}{\texttt{ Download Version 1.\+3.\+4 Installer}}}} ~ ~\hypertarget{index_autotoc_md1}{}\doxysubsection{Application}\label{index_autotoc_md1}
 This is a .Net application written in C\# that uploads your personal music library to You\+Tube. It has a minimalistic UI for basic settings such as\+:
 
 
@@ -42,7 +42,13 @@ This is a .Net application written in C\# that uploads your personal music libra
 \item Show an issues log dialogue.
 \end{DoxyItemize}
 
-~ $\ast$$\ast$ $\ast$ This application does not send any telemetry data of any kind to its source.$\ast$$\ast$ $\ast$$\ast$ $\ast$ Valid file formats are the same as You\+Tube Music\+: .flac, .m4a, .mp3, .oga, .wma$\ast$$\ast$ ~ ~\hypertarget{index_autotoc_md3}{}\doxysubsection{Reason for Creation}\label{index_autotoc_md3}
+~
+\begin{DoxyItemize}
+\item {\bfseries{This application does not send any telemetry data of any kind to its source.}}
+\item {\bfseries{Valid file formats are the same as You\+Tube Music\+: .flac, .m4a, .mp3, .oga, .wma}} ~
+\end{DoxyItemize}
+
+~\hypertarget{index_autotoc_md3}{}\doxysubsection{Reason for Creation}\label{index_autotoc_md3}
 I used to have Google Play music and liked uploading my own content via its automatic library uploader application; I have a large library of music and you could stream your own uploaded songs from Google Play music without paying for a subscription...
 
 Google Play music is on its way out in December and its replacement, You\+Tube music doesn\textquotesingle{}t currently have a library watcher application. You can only drag and drop manually into the browser for a limited number of songs... So, I decided to create one.
@@ -77,10 +83,14 @@ You\+Tube Music uses an authentication cookie, and an authentication header cons
 
 \begin{DoxyItemize}
 \item \href{https://www.nuget.org/packages/Brotli.NET}{\texttt{ Brotli.\+Net (Decompress Google H\+T\+TP resonse body)}}
+\item \href{https://www.nuget.org/packages/System.Data.HashFunction.xxHash/}{\texttt{ xx\+Hash -\/ Fast file hash generator}}
 \item \href{https://github.com/StackExchange/Dapper}{\texttt{ Dapper}}
 \item \href{https://github.com/dennismagno/metroframework-modern-ui}{\texttt{ Metro Framework (UI Styling)}}
 \item \href{http://www.ookii.org/software/dialogs}{\texttt{ Ookii Dialogues}}
-\item \href{https://github.com/avatar29A/MusicBrainz}{\texttt{ Music\+Brainz A\+PI}} ~ ~
+\item \href{https://github.com/Zastai/MetaBrainz.Common.Json}{\texttt{ Music\+Brainz A\+PI -\/ Zastai}}
+\item \href{https://github.com/Zastai/MetaBrainz.MusicBrainz.CoverArt}{\texttt{ Music\+Brainz Cover\+Art -\/ Zastai}}
+\item \href{https://github.com/avatar29A/MusicBrainz}{\texttt{ Music\+Brainz A\+PI implementation}}
+\item \href{https://www.nuget.org/packages/TagLibSharp/}{\texttt{ Tag\+Lib\+Sharp -\/ Read music gile tags}} ~ ~
 \end{DoxyItemize}\hypertarget{index_autotoc_md8}{}\doxysubsection{Tools}\label{index_autotoc_md8}
 
 \begin{DoxyItemize}
@@ -95,13 +105,13 @@ You\+Tube Music uses an authentication cookie, and an authentication header cons
 
 Using the native W\+PF or Win\+Forms web control or Gecko\+FX you just get a web page asking to update the browser. Using Cef\+Sharp you get a page telling you the browser isn\textquotesingle{}t secure enough.
 
-I believe I\textquotesingle{}ve managed to get it stable, technically you need the latest Edge or maybe even still the version of \href{https://www.microsoftedgeinsider.com/en-us/download}{\texttt{ Microsoft Edge from the Canary channel\+:}}). {\bfseries{The YT Music Uploader Application self-\/contains the files needed for this dependency for convenience so you shouldn\textquotesingle{}t need to install anything else other than this app.}}
+I believe I\textquotesingle{}ve managed to get it stable, technically you need the latest Edge or maybe even still the version of \href{https://www.microsoftedgeinsider.com/en-us/download}{\texttt{ Microsoft Edge from the Canary Channel\+:}}). {\bfseries{The YT Music Uploader Application self-\/contains the files needed for this dependency for convenience so you shouldn\textquotesingle{}t need to install anything else other than this app.}}
 
-Dispite some of the issues found using this control, it is actually a very good browser control. It\textquotesingle{}s fast, uses little system resources and renders everything very nicely. ~ ~
+Despite some of the issues found using this control, it is actually a very good browser control. It\textquotesingle{}s fast, uses little system resources and renders everything very nicely. ~ ~
 
 {\bfseries{G\+O\+T\+C\+H\+AS}} ~
 
-One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up {\bfseries{before}} navigating to any U\+RL\+: ~
+One thing to bear in mind, is that it requires a writable location for cache files (and other random files), and you need to set this up {\bfseries{before}} navigating to any U\+RL\+: ~
 
 
 \begin{DoxyCode}{0}
@@ -127,12 +137,11 @@ Also, you need to wait for the ready state of the Core\+Web\+View2\+Web\+Resourc
 \DoxyCodeLine{\}}
 \end{DoxyCode}
 \hypertarget{index_autotoc_md10}{}\doxysubsection{How Long Will This Application Last?}\label{index_autotoc_md10}
-Who knows... It\textquotesingle{}s dependent on You\+Tube Music / Google not changing how their \textquotesingle{}non-\/public\textquotesingle{} A\+PI methods are stuctured and work. Considering You\+Tube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it\textquotesingle{}s likely to change as You\+Tube music develops...
+Who knows... It\textquotesingle{}s dependent on You\+Tube Music / Google not changing how their \textquotesingle{}non-\/public\textquotesingle{} A\+PI methods are stuctured and work. Considering You\+Tube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it\textquotesingle{}s likely to change as You\+Tube Music develops...
 
 I\textquotesingle{}m going to be using this application for personal use, so I\textquotesingle{}ll know straight aware when it\textquotesingle{}s not working and will attempt to update the A\+PI call implementation as soon as possible. ~ ~\hypertarget{index_autotoc_md11}{}\doxysubsection{Further Development Considerations}\label{index_autotoc_md11}
 
 \begin{DoxyItemize}
-\item Could do with the ability to see if a music file is already uploaded to You\+Tube Music or not. I could not find a way of requesting a file hash from You\+Tube Music. I could only get a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple \textquotesingle{}fuzzy / AI logic\textquotesingle{} result sets for \textquotesingle{}similar\textquotesingle{} songs. I\textquotesingle{}ll keep working on it.
 \item Would like to add the ability to upload playlists $\ast$(\href{https://ytmusicapi.readthedocs.io/en/latest/}{\texttt{ sigma67}} has included this ability in his A\+PI so it\textquotesingle{}s definately do-\/able).$\ast$ ~ ~
 \end{DoxyItemize}\hypertarget{index_autotoc_md12}{}\doxysubsection{Special Thanks}\label{index_autotoc_md12}
 

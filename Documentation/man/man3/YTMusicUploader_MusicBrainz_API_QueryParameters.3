@@ -1,0 +1,80 @@
+.TH "YTMusicUploader.MusicBrainz.API.QueryParameters< T >" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.QueryParameters< T > \- Helper for building \fBMusicBrainz\fP query strings\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBIEnumerable< QueryParameters< T >\&.Node >\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBNode\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryParameters\fP ()"
+.br
+.RI "Initializes a new instance of the \fBQueryParameters<T>\fP class\&. "
+.ti -1c
+.RI "void \fBAdd\fP (string key, string value, bool negate=false)"
+.br
+.RI "Add a field to the query paramaters\&. "
+.ti -1c
+.RI "\fBIEnumerator\fP< \fBNode\fP > \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper for building \fBMusicBrainz\fP query strings\&. 
+
+
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIT\fP The entity type to search for\&.
+.RE
+.PP
+.PP
+See https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2/Search 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBYTMusicUploader\&.MusicBrainz\&.API\&.QueryParameters\fP< T >\&.\fBQueryParameters\fP ()"
+
+.PP
+Initializes a new instance of the \fBQueryParameters<T>\fP class\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBYTMusicUploader\&.MusicBrainz\&.API\&.QueryParameters\fP< T >\&.Add (string key, string value, bool negate = \fCfalse\fP)"
+
+.PP
+Add a field to the query paramaters\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP The field key\&.
+.br
+\fIvalue\fP The field value\&.
+.br
+\fInegate\fP Negate the field (will result in 'AND NOT key:value')
+.RE
+.PP
+
+.SS "\fBIEnumerator\fP<\fBNode\fP> \fBYTMusicUploader\&.MusicBrainz\&.API\&.QueryParameters\fP< T >\&.GetEnumerator ()"
+
+.SS "override string \fBYTMusicUploader\&.MusicBrainz\&.API\&.QueryParameters\fP< T >\&.ToString ()"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

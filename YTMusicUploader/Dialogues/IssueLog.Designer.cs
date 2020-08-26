@@ -31,11 +31,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueLog));
             this.pnlIssueLog = new System.Windows.Forms.Panel();
-            this.dgvIssues = new JBToolkit.WinForms.FastScrollDataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.dgvIssues = new JBToolkit.WinForms.FastScrollDataGridView();
+            this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
             this.pnlIssueLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +52,15 @@
             this.pnlIssueLog.Name = "pnlIssueLog";
             this.pnlIssueLog.Size = new System.Drawing.Size(988, 633);
             this.pnlIssueLog.TabIndex = 1;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(73, 34);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(106, 13);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.Text = "Issue Log. Loading...";
             // 
             // dgvIssues
             // 
@@ -71,14 +82,20 @@
             this.dgvIssues.Size = new System.Drawing.Size(988, 633);
             this.dgvIssues.TabIndex = 0;
             // 
-            // lblTitle
+            // pbRefresh
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(73, 34);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(106, 13);
-            this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "Issue Log. Loading...";
+            this.pbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbRefresh.Image = global::YTMusicUploader.Properties.Resources.refresh;
+            this.pbRefresh.Location = new System.Drawing.Point(989, 38);
+            this.pbRefresh.Name = "pbRefresh";
+            this.pbRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbRefresh.TabIndex = 4;
+            this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
+            this.pbRefresh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseDown);
+            this.pbRefresh.MouseEnter += new System.EventHandler(this.PbRefresh_MouseEnter);
+            this.pbRefresh.MouseLeave += new System.EventHandler(this.PbRefresh_MouseLeave);
             // 
             // pbIssueLogIcon
             // 
@@ -95,6 +112,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.Controls.Add(this.pbRefresh);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
             this.Controls.Add(this.pnlIssueLog);
@@ -105,6 +123,7 @@
             this.Load += new System.EventHandler(this.IssueLog_Load);
             this.pnlIssueLog.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,5 +135,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbIssueLogIcon;
         private JBToolkit.WinForms.FastScrollDataGridView dgvIssues;
+        private System.Windows.Forms.PictureBox pbRefresh;
     }
 }

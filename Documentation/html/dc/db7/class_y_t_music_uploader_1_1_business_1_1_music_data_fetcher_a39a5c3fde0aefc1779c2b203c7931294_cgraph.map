@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainz" name="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainz">
+<area shape="rect" id="node1" title="Get the recording (track data) from MusicBrainz via the MBID" alt="" coords="5,5,247,61"/>
+<area shape="rect" id="node2" href="$db/d6f/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_recording_service.html#a20af4ff5461c8bb51fb52577cf025271" title="Lookup an recording in the MusicBrainz database." alt="" coords="295,5,501,61"/>
+</map>

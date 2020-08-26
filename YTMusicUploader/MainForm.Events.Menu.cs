@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using YTMusicUploader.Providers;
 
 namespace YTMusicUploader
 {
@@ -39,6 +40,7 @@ namespace YTMusicUploader
         public void QuitApplication()
         {
             Aborting = true;
+            Requests.UploadCheckCheckCache.CleanUp = true;
             FileUploader.Stopped = true;
             TrayIcon.Visible = false;
 
@@ -54,6 +56,18 @@ namespace YTMusicUploader
             try
             {
                 _installingEdgeThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                Requests.UploadCheckPreloaderThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                Requests.UploadCheckPreloaderSleepThread.Abort();
             }
             catch { }
 

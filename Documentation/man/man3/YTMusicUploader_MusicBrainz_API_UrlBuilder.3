@@ -1,0 +1,63 @@
+.TH "YTMusicUploader.MusicBrainz.API.UrlBuilder" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.UrlBuilder \- Helper class to build \fBMusicBrainz\fP webservice urls\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUrlBuilder\fP (bool clientSideValidation)"
+.br
+.ti -1c
+.RI "string \fBCreateLookupUrl\fP (string entity, string mbid, params string[] inc)"
+.br
+.RI "Creates a webservice lookup template\&. "
+.ti -1c
+.RI "string \fBCreateBrowseUrl\fP (string entity, string relatedEntity, string mbid, int limit, int offset, params string[] inc)"
+.br
+.RI "Creates a webservice browse template\&. "
+.ti -1c
+.RI "string \fBCreateBrowseUrl\fP (string entity, string relatedEntity, string mbid, string type, string status, int limit, int offset, params string[] inc)"
+.br
+.RI "Creates a webservice browse template\&. "
+.ti -1c
+.RI "string \fBCreateSearchUrl\fP (string entity, string query, int limit, int offset)"
+.br
+.RI "Creates a webservice search template\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class to build \fBMusicBrainz\fP webservice urls\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.UrlBuilder\&.UrlBuilder (bool clientSideValidation)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.UrlBuilder\&.CreateBrowseUrl (string entity, string relatedEntity, string mbid, int limit, int offset, params string[] inc)"
+
+.PP
+Creates a webservice browse template\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.UrlBuilder\&.CreateBrowseUrl (string entity, string relatedEntity, string mbid, string type, string status, int limit, int offset, params string[] inc)"
+
+.PP
+Creates a webservice browse template\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.UrlBuilder\&.CreateLookupUrl (string entity, string mbid, params string[] inc)"
+
+.PP
+Creates a webservice lookup template\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.UrlBuilder\&.CreateSearchUrl (string entity, string query, int limit, int offset)"
+
+.PP
+Creates a webservice search template\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

@@ -1,5 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d2/d55/class_i_disposable.html" title=" " alt="" coords="5,46,95,73"/>
-<area shape="rect" id="node2" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html" title="This is a wrapper around a FileStream. While it is not a Stream itself, it can be cast to one (keep i..." alt="" coords="151,5,321,47"/>
-<area shape="rect" id="node3" href="$d0/df6/interface_y_t_music_uploader_1_1_business_1_1_pipes_1_1_i_ipc_server.html" title=" " alt="" coords="143,71,329,112"/>
+<area shape="rect" id="node1" href="$d7/d49/class_control.html" title=" " alt="" coords="26,71,89,98"/>
+<area shape="rect" id="node2" href="$de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html" title="Nicer looking &#39;round&#39; edge button" alt="" coords="157,5,337,47"/>
+<area shape="rect" id="node3" href="$d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html" title="Nicer looking &#39;round&#39; edge text box" alt="" coords="157,71,337,112"/>
+<area shape="rect" id="node4" href="$d0/d4a/class_i_button_control.html" title=" " alt="" coords="5,13,109,39"/>
 </map>

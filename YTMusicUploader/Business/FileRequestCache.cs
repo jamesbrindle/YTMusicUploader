@@ -1,4 +1,4 @@
-﻿using Hqub.MusicBrainz.API.Cache;
+﻿using YTMusicUploader.MusicBrainz.API.Cache;
 using System;
 using System.IO;
 using System.Security.Cryptography;

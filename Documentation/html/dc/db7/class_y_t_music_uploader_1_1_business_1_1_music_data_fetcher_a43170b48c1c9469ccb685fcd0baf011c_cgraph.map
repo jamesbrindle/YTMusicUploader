@@ -1,6 +1,4 @@
 <map id="YTMusicUploader.Business.MusicDataFetcher.GetMusicFileMetaData" name="YTMusicUploader.Business.MusicDataFetcher.GetMusicFileMetaData">
-<area shape="rect" id="node1" title="Returns MusicFileMetaData object of music file meta data such as:" alt="" coords="5,43,271,84"/>
-<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a50e0a63ee984508b8677e836e27ca4cb" title="Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file" alt="" coords="321,5,567,47"/>
-<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ad7037855e8c1954f547b5a3ac66e4cb2" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="319,71,569,127"/>
-<area shape="rect" id="node4" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ab9b74b81d70a6ddbddf6ef3f4ba76330" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="617,71,848,127"/>
+<area shape="rect" id="node1" title="Returns MusicFileMetaData object of music file meta data such as:" alt="" coords="5,5,271,47"/>
+<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a50e0a63ee984508b8677e836e27ca4cb" title="Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file" alt="" coords="319,5,565,47"/>
 </map>

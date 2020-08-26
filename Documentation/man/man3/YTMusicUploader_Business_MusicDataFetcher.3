@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business.MusicDataFetcher" 3 "Tue Aug 25 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business.MusicDataFetcher" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,35 +23,43 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .br
 .RI "First looks at the file meta data for the release MBID, then makes a request to \fBMusicBrainz\fP if it's not found "
 .ti -1c
-.RI "Recording \fBGetRecordingFromMusicBrainzWithAlbumNameVariations\fP (string artist, string album, string track)"
+.RI "\fBRecording\fP \fBGetRecordingFromMusicBrainzWithAlbumNameVariations\fP (string artist, string album, string track)"
 .br
 .RI "Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names\&. This method also tries different variations of the album name "
 .ti -1c
-.RI "Recording \fBGetRecordingFromMusicBrainz\fP (string artist, string album, string track)"
+.RI "\fBRecording\fP \fBGetRecordingFromMusicBrainz\fP (string artist, string album, string track)"
 .br
 .RI "Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names "
 .ti -1c
-.RI "Release \fBGetReleaseFromMusicBrainzWithAlbumNameVariations\fP (string artist, string album)"
+.RI "\fBRecording\fP \fBGetRecordingFromMusicBrainz\fP (string mbId)"
+.br
+.RI "Get the recording (track data) from \fBMusicBrainz\fP via the MBID "
+.ti -1c
+.RI "\fBRelease\fP \fBGetReleaseFromMusicBrainzWithAlbumNameVariations\fP (string artist, string album)"
 .br
 .RI "Get the release (typically, the album data) from \fBMusicBrainz\fP via query using the artist, album an track names This method also tries different variations of the album name "
 .ti -1c
-.RI "Release \fBGetReleaseFromMusicBrainz\fP (string artist, string album)"
+.RI "\fBRelease\fP \fBGetReleaseFromMusicBrainz\fP (string artist, string album)"
 .br
 .RI "Get the release (typically, the album data) from \fBMusicBrainz\fP via query using the artist, album an track names "
+.ti -1c
+.RI "\fBRelease\fP \fBGetReleaseFromMusicBrainz\fP (string mbid)"
+.br
+.RI "Get the release (typically, the album data) from \fBMusicBrainz\fP via the MBID "
 .ti -1c
 .RI "async Task< Image > \fBGetAlbumArtwork\fP (string path, bool tryMusicBrainz=true)"
 .br
 .RI "Returns album artwork\&. First it will look at actual file to see if one is embedded, if not it will make a request to get the MBID, then use that to make a requst to ConvertArchive to try and retrive the album art cover image "
 .ti -1c
-.RI "Image \fBGetAlbumArtworkFromCoverArtArchive\fP (string path)"
+.RI "Image \fBGetAlbumArtworkFromCoverArtArchive\fP (string pathOrMbid, bool isPath)"
 .br
 .RI "Makes a requst to ConvertArchive to try and retrive the album art cover image "
 .ti -1c
-.RI "\fBMusicFileMetaData\fP \fBGetMusicFileMetaData\fP (string path, bool tryMusicBrainz=true)"
+.RI "\fBMusicFileMetaData\fP \fBGetMusicFileMetaData\fP (string path)"
 .br
 .RI "Returns \fBMusicFileMetaData\fP object of music file meta data such as: "
 .ti -1c
-.RI "async Task< string > \fBGetMusicFileMetaDataString\fP (string path, bool tryMusicBrainz=true)"
+.RI "async Task< string > \fBGetMusicFileMetaDataString\fP (string path)"
 .br
 .RI "Returns a single multi-line string of music file meta data such as: "
 .in -1c
@@ -71,7 +79,7 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 
 .in +1c
 .ti -1c
-.RI "MusicBrainzClient \fBMusicBrainzClient\fP\fC [get, set]\fP"
+.RI "\fBMusicBrainzClient\fP \fBMusicBrainzClient\fP\fC [get, set]\fP"
 .br
 .RI "\&.Net implementation client of \fBMusicBrainz\fP API "
 .in -1c
@@ -104,7 +112,7 @@ Thumbnail image
 .RE
 .PP
 
-.SS "Image YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetAlbumArtworkFromCoverArtArchive (string path)"
+.SS "Image YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetAlbumArtworkFromCoverArtArchive (string pathOrMbid, bool isPath)"
 
 .PP
 Makes a requst to ConvertArchive to try and retrive the album art cover image 
@@ -124,7 +132,7 @@ Thumbnail image
 
 .PP
 Peforms a HTTP web request and downloads an image 
-.SS "\fBMusicFileMetaData\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaData (string path, bool tryMusicBrainz = \fCtrue\fP)"
+.SS "\fBMusicFileMetaData\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaData (string path)"
 
 .PP
 Returns \fBMusicFileMetaData\fP object of music file meta data such as: 
@@ -151,7 +159,7 @@ Multi-line string
 .RE
 .PP
 
-.SS "async Task<string> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaDataString (string path, bool tryMusicBrainz = \fCtrue\fP)"
+.SS "async Task<string> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetMusicFileMetaDataString (string path)"
 
 .PP
 Returns a single multi-line string of music file meta data such as: 
@@ -194,7 +202,7 @@ TagLib File
 .RE
 .PP
 
-.SS "Recording YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainz (string artist, string album, string track)"
+.SS "\fBRecording\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainz (string artist, string album, string track)"
 
 .PP
 Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names 
@@ -205,7 +213,18 @@ Get the recording (track data) from \fBMusicBrainz\fP via query using the artist
 .RE
 .PP
 
-.SS "Recording YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainzWithAlbumNameVariations (string artist, string album, string track)"
+.SS "\fBRecording\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainz (string mbId)"
+
+.PP
+Get the recording (track data) from \fBMusicBrainz\fP via the MBID 
+.PP
+\fBReturns\fP
+.RS 4
+\fBMusicBrainz\fP Recording object
+.RE
+.PP
+
+.SS "\fBRecording\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainzWithAlbumNameVariations (string artist, string album, string track)"
 
 .PP
 Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names\&. This method also tries different variations of the album name 
@@ -216,7 +235,7 @@ Get the recording (track data) from \fBMusicBrainz\fP via query using the artist
 .RE
 .PP
 
-.SS "Release YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseFromMusicBrainz (string artist, string album)"
+.SS "\fBRelease\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseFromMusicBrainz (string artist, string album)"
 
 .PP
 Get the release (typically, the album data) from \fBMusicBrainz\fP via query using the artist, album an track names 
@@ -227,7 +246,18 @@ Get the release (typically, the album data) from \fBMusicBrainz\fP via query usi
 .RE
 .PP
 
-.SS "Release YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseFromMusicBrainzWithAlbumNameVariations (string artist, string album)"
+.SS "\fBRelease\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseFromMusicBrainz (string mbid)"
+
+.PP
+Get the release (typically, the album data) from \fBMusicBrainz\fP via the MBID 
+.PP
+\fBReturns\fP
+.RS 4
+\fBMusicBrainz\fP Release object
+.RE
+.PP
+
+.SS "\fBRelease\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseFromMusicBrainzWithAlbumNameVariations (string artist, string album)"
 
 .PP
 Get the release (typically, the album data) from \fBMusicBrainz\fP via query using the artist, album an track names This method also tries different variations of the album name 
@@ -272,7 +302,7 @@ First looks at the file meta data for the track MBID then makes a request to \fB
 
 .SH "Property Documentation"
 .PP 
-.SS "MusicBrainzClient YTMusicUploader\&.Business\&.MusicDataFetcher\&.MusicBrainzClient\fC [get]\fP, \fC [set]\fP"
+.SS "\fBMusicBrainzClient\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.MusicBrainzClient\fC [get]\fP, \fC [set]\fP"
 
 .PP
 \&.Net implementation client of \fBMusicBrainz\fP API 

@@ -16,11 +16,6 @@ namespace YTMusicUploader.Providers
     {
         /// <summary>
         /// HttpWebRequest POST request to send to YouTube to upload a music file.
-        /// 
-        /// Thanks to: sigma67: 
-        ///     https://ytmusicapi.readthedocs.io/en/latest/ 
-        ///     https://github.com/sigma67/ytmusicapi
-        /// 
         /// </summary>
         /// <param name="mainForm">Instance of the main form to utilise the public methods of and update status'</param>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>

@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Requests.StartPrefetchingUploadedFilesCheck" name="YTMusicUploader.Providers.Requests.StartPrefetchingUploadedFilesCheck">
+<area shape="rect" id="node1" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,5,468,61"/>
+<area shape="rect" id="node2" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="5,13,192,54"/>
+</map>

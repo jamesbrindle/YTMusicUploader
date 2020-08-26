@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.HashFunction.xxHash;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace JBToolkit.Windows
@@ -12,6 +12,9 @@ namespace JBToolkit.Windows
     /// </summary>
     public static class DirectoryHelper
     {
+        private static xxHashConfig XxHashConfig = new xxHashConfig() { HashSizeInBits = 64 };
+        private static IxxHash XxHashFactory = xxHashFactory.Instance.Create(XxHashConfig);
+
         private static readonly string[] _knownFolderGuids = new string[]
         {
             "{56784854-C6CB-462B-8169-88E350ACB882}", // Contacts            
@@ -373,10 +376,9 @@ namespace JBToolkit.Windows
         public static async Task<string> GetFileHash(string path)
         {
             using (var stream = new BufferedStream(File.OpenRead(path), 1200000))
-            {
-                var sha = new SHA256Managed();
-                byte[] checksum = sha.ComputeHash(stream);
-                return await Task.FromResult(BitConverter.ToString(checksum).Replace("-", string.Empty));
+            {                
+                byte[] hashedValue = XxHashFactory.ComputeHash(stream).Hash;
+                return await Task.FromResult(BitConverter.ToString(hashedValue));                
             }
         }
 

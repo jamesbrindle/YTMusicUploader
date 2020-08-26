@@ -1,0 +1,104 @@
+.TH "YTMusicUploader.MusicBrainz.API.Entities.Recording" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Entities.Recording \- A recording is an entity in \fBMusicBrainz\fP which can be linked to tracks on releases\&. Each track must always be associated with a single recording, but a recording can be linked to any number of tracks\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBScore\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the score (only available in search results)\&. "
+.ti -1c
+.RI "string \fBId\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the \fBMusicBrainz\fP id\&. "
+.ti -1c
+.RI "string \fBTitle\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the title\&. "
+.ti -1c
+.RI "int? \fBLength\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the length\&. "
+.ti -1c
+.RI "string \fBDisambiguation\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the disambiguation\&. "
+.ti -1c
+.RI "\fBRating\fP \fBRating\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the rating\&. "
+.ti -1c
+.RI "List< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of artists associated to this recording\&. "
+.ti -1c
+.RI "List< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of releases associated to this recording\&. "
+.ti -1c
+.RI "List< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of tags associated to this recording\&. "
+.ti -1c
+.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of relations associated to this recording\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A recording is an entity in \fBMusicBrainz\fP which can be linked to tracks on releases\&. Each track must always be associated with a single recording, but a recording can be linked to any number of tracks\&. 
+
+
+.SH "Property Documentation"
+.PP 
+.SS "List<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Credits\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of artists associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'artists'); 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Disambiguation\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the disambiguation\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Id\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBMusicBrainz\fP id\&. 
+.SS "int? YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Length\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the length\&. 
+.SS "\fBRating\fP YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Rating\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the rating\&. 
+.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Relations\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of relations associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'url-rels'); 
+.SS "List<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Releases\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of releases associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'releases'); 
+.SS "int YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Score\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the score (only available in search results)\&. 
+.SS "List<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Tags\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of tags associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'tags'); 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Title\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the title\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

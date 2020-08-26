@@ -1,0 +1,7 @@
+var namespace_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections =
+[
+    [ "ArtistList", "d2/de2/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list.html", "d2/de2/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list" ],
+    [ "RecordingList", "dc/d65/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_recording_list.html", "dc/d65/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_recording_list" ],
+    [ "ReleaseGroupList", "d9/db7/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list.html", "d9/db7/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list" ],
+    [ "ReleaseList", "d2/d2b/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_list.html", "d2/d2b/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_list" ]
+];

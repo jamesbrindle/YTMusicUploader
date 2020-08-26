@@ -1,0 +1,152 @@
+\hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording}{}\doxysection{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording Class Reference}
+\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording}\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+
+
+A recording is an entity in \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} which can be linked to tracks on releases. Each track must always be associated with a single recording, but a recording can be linked to any number of tracks.  
+
+
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{da/db6/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aec1af1096c6a671d52e4563c9a1755aa}{Score}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the score (only available in search results). \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a76e56054c488d73fd4dd390d00a8bc54}{Id}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} id. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a6187f6cd4a35e882b65874bb326ceca6}{Title}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the title. \end{DoxyCompactList}\item 
+int? \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_af4d5569825e235c0bf9d38ac44ebe4a1}{Length}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the length. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a425f75830a24cac92994c5fd19f932b0}{Disambiguation}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the disambiguation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_rating}{Rating}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a29cbcd9e50e460b97b910724adf3d577}{Rating}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the rating. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_name_credit}{Name\+Credit}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a577f1af7cd392dc7e0da7f9b599a0b46}{Credits}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a list of artists associated to this recording. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release}{Release}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aff2dafb8c6acad70d2adaea29535b39d}{Releases}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a list of releases associated to this recording. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_tag}{Tag}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aec5e8468707d33e9d8ae7fb5159f83f9}{Tags}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a list of tags associated to this recording. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_relation}{Relation}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_adce1fbfdf4d349c9d09a0715d051ff73}{Relations}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a list of relations associated to this recording. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A recording is an entity in \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} which can be linked to tracks on releases. Each track must always be associated with a single recording, but a recording can be linked to any number of tracks. 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a577f1af7cd392dc7e0da7f9b599a0b46}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a577f1af7cd392dc7e0da7f9b599a0b46}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Credits@{Credits}}
+\index{Credits@{Credits}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Credits}{Credits}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_name_credit}{Name\+Credit}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Credits\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets a list of artists associated to this recording. 
+
+var e = await Recording.\+Get\+Async(mbid, \char`\"{}artists\char`\"{}); \mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a425f75830a24cac92994c5fd19f932b0}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a425f75830a24cac92994c5fd19f932b0}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Disambiguation@{Disambiguation}}
+\index{Disambiguation@{Disambiguation}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Disambiguation}{Disambiguation}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Disambiguation\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the disambiguation. 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a76e56054c488d73fd4dd390d00a8bc54}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a76e56054c488d73fd4dd390d00a8bc54}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Id@{Id}}
+\index{Id@{Id}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Id}{Id}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Id\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} id. 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_af4d5569825e235c0bf9d38ac44ebe4a1}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_af4d5569825e235c0bf9d38ac44ebe4a1}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Length@{Length}}
+\index{Length@{Length}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Length}{Length}}
+{\footnotesize\ttfamily int? Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Length\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the length. 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a29cbcd9e50e460b97b910724adf3d577}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a29cbcd9e50e460b97b910724adf3d577}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Rating@{Rating}}
+\index{Rating@{Rating}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Rating}{Rating}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_rating}{Rating}} Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Rating\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the rating. 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_adce1fbfdf4d349c9d09a0715d051ff73}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_adce1fbfdf4d349c9d09a0715d051ff73}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Relations@{Relations}}
+\index{Relations@{Relations}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Relations}{Relations}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_relation}{Relation}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Relations\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets a list of relations associated to this recording. 
+
+var e = await Recording.\+Get\+Async(mbid, \char`\"{}url-\/rels\char`\"{}); \mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aff2dafb8c6acad70d2adaea29535b39d}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aff2dafb8c6acad70d2adaea29535b39d}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Releases@{Releases}}
+\index{Releases@{Releases}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Releases}{Releases}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release}{Release}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Releases\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets a list of releases associated to this recording. 
+
+var e = await Recording.\+Get\+Async(mbid, \char`\"{}releases\char`\"{}); \mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aec1af1096c6a671d52e4563c9a1755aa}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aec1af1096c6a671d52e4563c9a1755aa}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Score@{Score}}
+\index{Score@{Score}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Score}{Score}}
+{\footnotesize\ttfamily int Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Score\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the score (only available in search results). 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aec5e8468707d33e9d8ae7fb5159f83f9}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_aec5e8468707d33e9d8ae7fb5159f83f9}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Tags@{Tags}}
+\index{Tags@{Tags}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Tags}{Tags}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_tag}{Tag}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Tags\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets a list of tags associated to this recording. 
+
+var e = await Recording.\+Get\+Async(mbid, \char`\"{}tags\char`\"{}); \mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a6187f6cd4a35e882b65874bb326ceca6}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording_a6187f6cd4a35e882b65874bb326ceca6}} 
+\index{YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}!Title@{Title}}
+\index{Title@{Title}!YTMusicUploader.MusicBrainz.API.Entities.Recording@{YTMusicUploader.MusicBrainz.API.Entities.Recording}}
+\doxysubsubsection{\texorpdfstring{Title}{Title}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Entities.\+Recording.\+Title\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the title. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Music\+Brainz/\+Entities/\mbox{\hyperlink{_recording_8cs}{Recording.\+cs}}\end{DoxyCompactItemize}

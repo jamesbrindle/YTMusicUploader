@@ -5,5 +5,5 @@ var namespace_y_t_music_uploader_1_1_providers =
     [ "RequestModels", "de/d63/namespace_y_t_music_uploader_1_1_providers_1_1_request_models.html", "de/d63/namespace_y_t_music_uploader_1_1_providers_1_1_request_models" ],
     [ "DataAccess", "d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html", null ],
     [ "DbOperationResult", "d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html", "d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result" ],
-    [ "Requests", "d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html", null ]
+    [ "Requests", "d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html", "d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests" ]
 ];

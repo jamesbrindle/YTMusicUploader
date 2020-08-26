@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Requests.IsSongUploaded" name="YTMusicUploader.Providers.Requests.IsSongUploaded">
+<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="5,5,191,47"/>
+<area shape="rect" id="node2" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="239,5,424,47"/>
+</map>

@@ -92,9 +92,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Hqub.MusicBrainz.API, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MusicBrainzAPI.2.2.0-dev-2\lib\net45\Hqub.MusicBrainz.API.dll</HintPath>
-    </Reference>
     <Reference Include="MetaBrainz.Common.Json, Version=3.0.0.0, Culture=neutral, PublicKeyToken=be12cbb629c03021, processorArchitecture=MSIL">
       <HintPath>..\packages\MetaBrainz.Common.Json.3.0.0\lib\net472\MetaBrainz.Common.Json.dll</HintPath>
     </Reference>
@@ -146,6 +143,15 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.HashFunction.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.HashFunction.Core.2.0.0\lib\net45\System.Data.HashFunction.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.HashFunction.Interfaces, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.HashFunction.Interfaces.2.0.0\lib\net45\System.Data.HashFunction.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.HashFunction.xxHash, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.HashFunction.xxHash.2.0.0\lib\net45\System.Data.HashFunction.xxHash.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.113.1\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
@@ -304,6 +310,56 @@
     <Compile Include="Providers\DataModels\Settings.cs" />
     <Compile Include="Providers\DataModels\WatchFolder.cs" />
     <Compile Include="Providers\DataModels\_DbModels.cs" />
+    <Compile Include="Providers\MusicBrainz\Cache\IRequestCache.cs" />
+    <Compile Include="Providers\MusicBrainz\Cache\NullCache.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Area.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Artist.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Collections\ArtistList.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Collections\RecordingList.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Collections\ReleaseGroupList.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Collections\ReleaseList.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\CoverArtArchive.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Disc.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Label.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\LabelInfo.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\LifeSpan.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Medium.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\NameCredit.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Rating.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Recording.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Relation.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Release.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\ReleaseGroup.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Tag.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\TextRepresentation.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Track.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Url.cs" />
+    <Compile Include="Providers\MusicBrainz\Entities\Work.cs" />
+    <Compile Include="Providers\MusicBrainz\MusicBrainzClient.cs" />
+    <Compile Include="Providers\MusicBrainz\QueryParameters.cs" />
+    <Compile Include="Providers\MusicBrainz\QueryResult.cs" />
+    <Compile Include="Providers\MusicBrainz\Resources\Constants.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Constants.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\MusicBrainz\Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\MusicBrainz\Services\ArtistService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\IArtistService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\IRecordingService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\IReleaseGroupService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\IReleaseService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\IWorkService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\RecordingService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\ReleaseGroupService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\ReleaseService.cs" />
+    <Compile Include="Providers\MusicBrainz\Services\WorkService.cs" />
+    <Compile Include="Providers\MusicBrainz\UrlBuilder.cs" />
+    <Compile Include="Providers\MusicBrainz\WebServiceException.cs" />
     <Compile Include="Providers\Repos\MusicFileRepo.cs" />
     <Compile Include="Providers\DataModels\MusicFile.cs" />
     <Compile Include="Providers\DataAccess.cs" />
@@ -342,6 +398,18 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Providers\MusicBrainz\Resources\Constants.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Constants.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>YTMusicUploader.MusicBrainz.API.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Providers\MusicBrainz\Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>YTMusicUploader.MusicBrainz.API.Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <None Include="AppData\check_auth_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -373,6 +441,9 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\refresh_down.png" />
+    <None Include="Resources\refresh_hover.png" />
+    <None Include="Resources\refresh.png" />
     <None Include="Resources\ytmusic_aicon.png" />
     <None Include="Resources\Header.png" />
     <None Include="Resources\Logo\YT Music Uploader - Social Image.png" />

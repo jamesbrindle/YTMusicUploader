@@ -1,0 +1,166 @@
+.TH "YTMusicUploader.MusicBrainz.API.MusicBrainzClient" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.MusicBrainzClient \- \fBMusicBrainz\fP client\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBIDisposable\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBResponseError\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMusicBrainzClient\fP ()"
+.br
+.RI "Initializes a new instance of the \fBMusicBrainzClient\fP class\&. "
+.ti -1c
+.RI "\fBMusicBrainzClient\fP (IWebProxy proxy)"
+.br
+.RI "Initializes a new instance of the \fBMusicBrainzClient\fP class\&. "
+.ti -1c
+.RI "\fBMusicBrainzClient\fP (string baseAddress)"
+.br
+.RI "Initializes a new instance of the \fBMusicBrainzClient\fP class\&. "
+.ti -1c
+.RI "\fBMusicBrainzClient\fP (string baseAddress, IWebProxy proxy)"
+.br
+.RI "Initializes a new instance of the \fBMusicBrainzClient\fP class\&. "
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "Disposes the HTTP client\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static string \fBServiceBaseAddress\fP = Global\&.MusicBrainzBaseUrl"
+.br
+.RI "The default address of the \fBMusicBrainz\fP webservice\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIArtistService\fP \fBArtists\fP\fC [get]\fP"
+.br
+.RI "Gets the artists entity service\&. "
+.ti -1c
+.RI "\fBIRecordingService\fP \fBRecordings\fP\fC [get]\fP"
+.br
+.RI "Gets the recordings entity service\&. "
+.ti -1c
+.RI "\fBIReleaseService\fP \fBReleases\fP\fC [get]\fP"
+.br
+.RI "Gets the releases entity service\&. "
+.ti -1c
+.RI "\fBIReleaseGroupService\fP \fBReleaseGroups\fP\fC [get]\fP"
+.br
+.RI "Gets the release-groups entity service\&. "
+.ti -1c
+.RI "\fBIWorkService\fP \fBWork\fP\fC [get]\fP"
+.br
+.RI "Gets the work entity service\&. "
+.ti -1c
+.RI "\fBIRequestCache\fP \fBCache\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the IRequestCache implementation\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBMusicBrainz\fP client\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.MusicBrainzClient ()"
+
+.PP
+Initializes a new instance of the \fBMusicBrainzClient\fP class\&. 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.MusicBrainzClient (IWebProxy proxy)"
+
+.PP
+Initializes a new instance of the \fBMusicBrainzClient\fP class\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIproxy\fP The IWebProxy used to connect to the webservice\&.
+.RE
+.PP
+
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.MusicBrainzClient (string baseAddress)"
+
+.PP
+Initializes a new instance of the \fBMusicBrainzClient\fP class\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbaseAddress\fP The base address of the webservice (default = \fBServiceBaseAddress\fP)\&.
+.RE
+.PP
+
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.MusicBrainzClient (string baseAddress, IWebProxy proxy)"
+
+.PP
+Initializes a new instance of the \fBMusicBrainzClient\fP class\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbaseAddress\fP The base address of the webservice (default = \fBServiceBaseAddress\fP)\&.
+.br
+\fIproxy\fP The IWebProxy used to connect to the webservice\&.
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.Dispose ()"
+
+.PP
+Disposes the HTTP client\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.ServiceBaseAddress = Global\&.MusicBrainzBaseUrl\fC [static]\fP"
+
+.PP
+The default address of the \fBMusicBrainz\fP webservice\&. 
+.SH "Property Documentation"
+.PP 
+.SS "\fBIArtistService\fP YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.Artists\fC [get]\fP"
+
+.PP
+Gets the artists entity service\&. 
+.SS "\fBIRequestCache\fP YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.Cache\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the IRequestCache implementation\&. 
+.SS "\fBIRecordingService\fP YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.Recordings\fC [get]\fP"
+
+.PP
+Gets the recordings entity service\&. 
+.SS "\fBIReleaseGroupService\fP YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.ReleaseGroups\fC [get]\fP"
+
+.PP
+Gets the release-groups entity service\&. 
+.SS "\fBIReleaseService\fP YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.Releases\fC [get]\fP"
+
+.PP
+Gets the releases entity service\&. 
+.SS "\fBIWorkService\fP YTMusicUploader\&.MusicBrainz\&.API\&.MusicBrainzClient\&.Work\fC [get]\fP"
+
+.PP
+Gets the work entity service\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

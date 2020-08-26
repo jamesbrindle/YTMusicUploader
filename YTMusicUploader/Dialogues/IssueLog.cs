@@ -72,5 +72,25 @@ namespace YTMusicUploader.Dialogues
                 lblTitle.Text = text;
             }
         }
+
+        private void PbRefresh_Click(object sender, EventArgs e)
+        {
+            dgvIssues.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+        }
+
+        private void PbRefresh_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            pbRefresh.Image = Properties.Resources.refresh_down;
+        }
+
+        private void PbRefresh_MouseEnter(object sender, EventArgs e)
+        {
+            pbRefresh.Image = Properties.Resources.refresh_hover;
+        }
+
+        private void PbRefresh_MouseLeave(object sender, EventArgs e)
+        {
+            pbRefresh.Image = Properties.Resources.refresh;
+        }
     }
 }

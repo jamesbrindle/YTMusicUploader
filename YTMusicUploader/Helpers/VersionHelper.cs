@@ -24,7 +24,7 @@ namespace JBToolkit.Assemblies
         public static string GetVersionFull()
         {
             string[] parts = Assembly.GetCallingAssembly().GetName().Version.ToString().Split('.');
-            return parts[0] + "." + parts[1] + "." + parts[2] + "." + parts[4];
+            return parts[0] + "." + parts[1] + "." + parts[2];
         }
 
         /// <summary>

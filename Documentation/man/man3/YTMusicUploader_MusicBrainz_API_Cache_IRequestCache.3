@@ -1,0 +1,53 @@
+.TH "YTMusicUploader.MusicBrainz.API.Cache.IRequestCache" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Cache.IRequestCache \- A simple cache interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBYTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\fP, and \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.NullCache\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Task \fBAdd\fP (string request, Stream response)"
+.br
+.RI "Add a request and its response to the cache\&. "
+.ti -1c
+.RI "Task< bool > \fBTryGetCachedItem\fP (string request, out Stream stream)"
+.br
+.RI "Add a request and its response to the cache\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A simple cache interface\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "Task YTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\&.Add (string request, Stream response)"
+
+.PP
+Add a request and its response to the cache\&. 
+.PP
+Implemented in \fBYTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\fP, and \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.NullCache\fP\&.
+.SS "Task<bool> YTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\&.TryGetCachedItem (string request, out Stream stream)"
+
+.PP
+Add a request and its response to the cache\&. 
+.PP
+\fBReturns\fP
+.RS 4
+True, if a cache entry matching the request was found\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBYTMusicUploader\&.Business\&.MusicBrainz\&.FileRequestCache\fP, and \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.NullCache\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

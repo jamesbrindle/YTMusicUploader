@@ -1,12 +1,20 @@
 var searchData=
 [
-  ['name_267',['Name',['../d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html#a2e49629d3ce6ab67d08044c3d9e6ac9a',1,'JBToolkit::Windows::FileData']]],
-  ['network_268',['Network',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8aeec89088ee408b80387155272b113256',1,'JBToolkit::Windows']]],
-  ['networkhelper_2ecs_269',['NetworkHelper.cs',['../da/d30/_network_helper_8cs.html',1,'']]],
-  ['newfiles_270',['NewFiles',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ad4b59754c28220cff463fa809e3c605f',1,'YTMusicUploader::Business::FileScanner']]],
-  ['newfileshash_271',['NewFilesHash',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ada6858504e4c2b7768861db0afc5e0b0',1,'YTMusicUploader::Business::FileScanner']]],
-  ['nextcolour_272',['NextColour',['../df/d6a/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_colour_generator.html#af1e9dd0dc9409a66de2e45c77de7d659',1,'JBToolkit::ColorHelper::ColourHelper::ColourGenerator']]],
-  ['nextintensity_273',['NextIntensity',['../dc/dff/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_generator.html#a33d62bb72fc8f2aec0aea3b0f9727e62',1,'JBToolkit::ColorHelper::ColourHelper::IntensityGenerator']]],
-  ['nextpattern_274',['NextPattern',['../d2/d1c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_pattern_generator.html#ad831ab3cf6c5977600cf413d183ea8fe',1,'JBToolkit::ColorHelper::ColourHelper::PatternGenerator']]],
-  ['notifydefault_275',['NotifyDefault',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a9641d1fb28ce445de27bf328b6752b1e',1,'JBToolkit::WinForms::RoundButton']]]
+  ['name_339',['Name',['../d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html#a2e49629d3ce6ab67d08044c3d9e6ac9a',1,'JBToolkit.Windows.FileData.Name()'],['../dc/d9f/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_area.html#a24f3767e45c463a2d931ab6374da1c35',1,'YTMusicUploader.MusicBrainz.API.Entities.Area.Name()'],['../dd/d71/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_artist.html#a971f3d541bd98b79b4796df4a9ccb874',1,'YTMusicUploader.MusicBrainz.API.Entities.Artist.Name()'],['../da/d30/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_label.html#a7277fe1024ac7407c5aef08469e056f3',1,'YTMusicUploader.MusicBrainz.API.Entities.Label.Name()'],['../de/d51/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_name_credit.html#ad852f45f39282e695dbc67c8153fc304',1,'YTMusicUploader.MusicBrainz.API.Entities.NameCredit.Name()'],['../df/d75/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_tag.html#ad2df4aa57630d14031f6e585a94b643e',1,'YTMusicUploader.MusicBrainz.API.Entities.Tag.Name()']]],
+  ['namecredit_340',['NameCredit',['../de/d51/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_name_credit.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
+  ['namecredit_2ecs_341',['NameCredit.cs',['../db/d4c/_name_credit_8cs.html',1,'']]],
+  ['negate_342',['Negate',['../db/df4/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters_1_1_node.html#a2fb43bdff2ace7186794ef0aa26a94b8',1,'YTMusicUploader::MusicBrainz::API::QueryParameters::Node']]],
+  ['network_343',['Network',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8aeec89088ee408b80387155272b113256',1,'JBToolkit::Windows']]],
+  ['networkhelper_2ecs_344',['NetworkHelper.cs',['../da/d30/_network_helper_8cs.html',1,'']]],
+  ['newfiles_345',['NewFiles',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ad4b59754c28220cff463fa809e3c605f',1,'YTMusicUploader::Business::FileScanner']]],
+  ['newfileshash_346',['NewFilesHash',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ada6858504e4c2b7768861db0afc5e0b0',1,'YTMusicUploader::Business::FileScanner']]],
+  ['nextcolour_347',['NextColour',['../df/d6a/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_colour_generator.html#af1e9dd0dc9409a66de2e45c77de7d659',1,'JBToolkit::ColorHelper::ColourHelper::ColourGenerator']]],
+  ['nextintensity_348',['NextIntensity',['../dc/dff/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_intensity_generator.html#a33d62bb72fc8f2aec0aea3b0f9727e62',1,'JBToolkit::ColorHelper::ColourHelper::IntensityGenerator']]],
+  ['nextpattern_349',['NextPattern',['../d2/d1c/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper_1_1_pattern_generator.html#ad831ab3cf6c5977600cf413d183ea8fe',1,'JBToolkit::ColorHelper::ColourHelper::PatternGenerator']]],
+  ['node_350',['Node',['../db/df4/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters_1_1_node.html',1,'YTMusicUploader.MusicBrainz.API.QueryParameters&lt; T &gt;.Node'],['../db/df4/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters_1_1_node.html#a33e56c1e29296fa126fe665e30f3240b',1,'YTMusicUploader.MusicBrainz.API.QueryParameters.Node.Node()']]],
+  ['notifydefault_351',['NotifyDefault',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a9641d1fb28ce445de27bf328b6752b1e',1,'JBToolkit::WinForms::RoundButton']]],
+  ['notpresent_352',['NotPresent',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a72eb54f3b45a371d5ae1969d5b750ecea3f6dd2f10d0feb46f79e8f8890c6eff3',1,'YTMusicUploader::Providers::Requests']]],
+  ['nullcache_353',['NullCache',['../d2/dcb/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_null_cache.html',1,'YTMusicUploader::MusicBrainz::API::Cache']]],
+  ['nullcache_2ecs_354',['NullCache.cs',['../d7/dcc/_null_cache_8cs.html',1,'']]],
+  ['number_355',['Number',['../d1/dd9/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_track.html#a68585d3550d518b1be2b5541f1cc6f4d',1,'YTMusicUploader::MusicBrainz::API::Entities::Track']]]
 ];

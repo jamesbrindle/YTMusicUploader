@@ -1,0 +1,173 @@
+\hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service}{}\doxysection{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service Class Reference}
+\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service}\index{YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}}
+
+
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{d5/d33/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{d4/d53/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_ac00ef233326d92ac0ff3a0072b00d575}{Artist\+Service}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_music_brainz_client}{Music\+Brainz\+Client}} client, \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder}{Url\+Builder}} builder)
+\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_artist}{Artist}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_aca0836f62bb2d097acd4f463bc5c7147}{Get\+Async}} (string id, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Lookup an artist in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list}{Artist\+List}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_a5ff56a870d3d245589b0d85c43f52bb0}{Search\+Async}} (string query, int limit=25, int offset=0)
+\begin{DoxyCompactList}\small\item\em Search for an artist in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list}{Artist\+List}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_ac33c2b150f9243a6ac8bd29b3edcbab5}{Search\+Async}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters}{Query\+Parameters}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_artist}{Artist}} $>$ query, int limit=25, int offset=0)
+\begin{DoxyCompactList}\small\item\em Search for an artist in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list}{Artist\+List}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_addf418ecb4590d50b4b44143cc44e095}{Browse\+Async}} (string entity, string id, int limit=25, int offset=0, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Browse all the artists in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, which are directly linked to the entity with given id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_ac00ef233326d92ac0ff3a0072b00d575}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_ac00ef233326d92ac0ff3a0072b00d575}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}!ArtistService@{ArtistService}}
+\index{ArtistService@{ArtistService}!YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}}
+\doxysubsubsection{\texorpdfstring{ArtistService()}{ArtistService()}}
+{\footnotesize\ttfamily Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service.\+Artist\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_music_brainz_client}{Music\+Brainz\+Client}}}]{client,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder}{Url\+Builder}}}]{builder }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_addf418ecb4590d50b4b44143cc44e095}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_addf418ecb4590d50b4b44143cc44e095}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}!BrowseAsync@{BrowseAsync}}
+\index{BrowseAsync@{BrowseAsync}!YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}}
+\doxysubsubsection{\texorpdfstring{BrowseAsync()}{BrowseAsync()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list}{Artist\+List}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service.\+Browse\+Async (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{id,  }\item[{int}]{limit = {\ttfamily 25},  }\item[{int}]{offset = {\ttfamily 0},  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Browse all the artists in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, which are directly linked to the entity with given id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The name of the related entity.\\
+\hline
+{\em id} & The id of the related entity.\\
+\hline
+{\em limit} & The maximum number of artists to return (default = 25).\\
+\hline
+{\em offset} & The offset to the artists list (enables paging, default = 0).\\
+\hline
+{\em inc} & A list of entities to include (subqueries).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_artist_service_a5f029571c340705fb0881d8bd3300a34}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Artist\+Service}}.
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_aca0836f62bb2d097acd4f463bc5c7147}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_aca0836f62bb2d097acd4f463bc5c7147}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}!GetAsync@{GetAsync}}
+\index{GetAsync@{GetAsync}!YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}}
+\doxysubsubsection{\texorpdfstring{GetAsync()}{GetAsync()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_artist}{Artist}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service.\+Get\+Async (\begin{DoxyParamCaption}\item[{string}]{id,  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Lookup an artist in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The artist \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} id.\\
+\hline
+{\em inc} & A list of entities to include (subqueries).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_artist_service_a9618b4bbd7ba24f836c93ceb48914ca4}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Artist\+Service}}.
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_ac33c2b150f9243a6ac8bd29b3edcbab5}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_ac33c2b150f9243a6ac8bd29b3edcbab5}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}!SearchAsync@{SearchAsync}}
+\index{SearchAsync@{SearchAsync}!YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}}
+\doxysubsubsection{\texorpdfstring{SearchAsync()}{SearchAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list}{Artist\+List}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service.\+Search\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters}{Query\+Parameters}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_artist}{Artist}} $>$}]{query,  }\item[{int}]{limit = {\ttfamily 25},  }\item[{int}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Search for an artist in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The query parameters.\\
+\hline
+{\em limit} & The maximum number of artists to return (default = 25).\\
+\hline
+{\em offset} & The offset to the artists list (enables paging, default = 0).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_artist_service_a3c6a15ae70c213ac1b3b82b9f0925873}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Artist\+Service}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d88/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_ac33c2b150f9243a6ac8bd29b3edcbab5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_a5ff56a870d3d245589b0d85c43f52bb0}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_a5ff56a870d3d245589b0d85c43f52bb0}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}!SearchAsync@{SearchAsync}}
+\index{SearchAsync@{SearchAsync}!YTMusicUploader.MusicBrainz.API.Services.ArtistService@{YTMusicUploader.MusicBrainz.API.Services.ArtistService}}
+\doxysubsubsection{\texorpdfstring{SearchAsync()}{SearchAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_artist_list}{Artist\+List}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Artist\+Service.\+Search\+Async (\begin{DoxyParamCaption}\item[{string}]{query,  }\item[{int}]{limit = {\ttfamily 25},  }\item[{int}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Search for an artist in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The query string.\\
+\hline
+\end{DoxyParams}
+6 
+\begin{DoxyParams}{Parameters}
+{\em limit} & The maximum number of artists to return (default = 25).\\
+\hline
+{\em offset} & The offset to the artists list (enables paging, default = 0).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_artist_service_ac6a557bc948999cc191351e634be1d20}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Artist\+Service}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d88/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service_a5ff56a870d3d245589b0d85c43f52bb0_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Music\+Brainz/\+Services/\mbox{\hyperlink{_artist_service_8cs}{Artist\+Service.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,105 @@
+\hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder}{}\doxysection{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Url\+Builder Class Reference}
+\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder}\index{YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}}
+
+
+Helper class to build \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} webservice urls.  
+
+
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Url\+Builder\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{d5/d6e/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ab7609c2c6eaedd13e67bb6f8a581011a}{Url\+Builder}} (bool client\+Side\+Validation)
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_a902c5c9c9a5dc61b9e1aa9b37131072c}{Create\+Lookup\+Url}} (string entity, string mbid, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Creates a webservice lookup template. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_a8d3a0731a5d4bde88ec04e52dfce6517}{Create\+Browse\+Url}} (string entity, string related\+Entity, string mbid, int limit, int offset, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Creates a webservice browse template. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ab6dd14c1f564cb7b7f4ec796bd5f6982}{Create\+Browse\+Url}} (string entity, string related\+Entity, string mbid, string type, string status, int limit, int offset, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Creates a webservice browse template. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ad7f608c5e2a3203b1b2ae1fd424c37a2}{Create\+Search\+Url}} (string entity, string query, int limit, int offset)
+\begin{DoxyCompactList}\small\item\em Creates a webservice search template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helper class to build \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} webservice urls. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ab7609c2c6eaedd13e67bb6f8a581011a}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ab7609c2c6eaedd13e67bb6f8a581011a}} 
+\index{YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}!UrlBuilder@{UrlBuilder}}
+\index{UrlBuilder@{UrlBuilder}!YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}}
+\doxysubsubsection{\texorpdfstring{UrlBuilder()}{UrlBuilder()}}
+{\footnotesize\ttfamily Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Url\+Builder.\+Url\+Builder (\begin{DoxyParamCaption}\item[{bool}]{client\+Side\+Validation }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_a8d3a0731a5d4bde88ec04e52dfce6517}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_a8d3a0731a5d4bde88ec04e52dfce6517}} 
+\index{YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}!CreateBrowseUrl@{CreateBrowseUrl}}
+\index{CreateBrowseUrl@{CreateBrowseUrl}!YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}}
+\doxysubsubsection{\texorpdfstring{CreateBrowseUrl()}{CreateBrowseUrl()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Url\+Builder.\+Create\+Browse\+Url (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{related\+Entity,  }\item[{string}]{mbid,  }\item[{int}]{limit,  }\item[{int}]{offset,  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Creates a webservice browse template. 
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d42/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_a8d3a0731a5d4bde88ec04e52dfce6517_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ab6dd14c1f564cb7b7f4ec796bd5f6982}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ab6dd14c1f564cb7b7f4ec796bd5f6982}} 
+\index{YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}!CreateBrowseUrl@{CreateBrowseUrl}}
+\index{CreateBrowseUrl@{CreateBrowseUrl}!YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}}
+\doxysubsubsection{\texorpdfstring{CreateBrowseUrl()}{CreateBrowseUrl()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Url\+Builder.\+Create\+Browse\+Url (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{related\+Entity,  }\item[{string}]{mbid,  }\item[{string}]{type,  }\item[{string}]{status,  }\item[{int}]{limit,  }\item[{int}]{offset,  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Creates a webservice browse template. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d42/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ab6dd14c1f564cb7b7f4ec796bd5f6982_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_a902c5c9c9a5dc61b9e1aa9b37131072c}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_a902c5c9c9a5dc61b9e1aa9b37131072c}} 
+\index{YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}!CreateLookupUrl@{CreateLookupUrl}}
+\index{CreateLookupUrl@{CreateLookupUrl}!YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}}
+\doxysubsubsection{\texorpdfstring{CreateLookupUrl()}{CreateLookupUrl()}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Url\+Builder.\+Create\+Lookup\+Url (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{mbid,  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Creates a webservice lookup template. 
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ad7f608c5e2a3203b1b2ae1fd424c37a2}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder_ad7f608c5e2a3203b1b2ae1fd424c37a2}} 
+\index{YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}!CreateSearchUrl@{CreateSearchUrl}}
+\index{CreateSearchUrl@{CreateSearchUrl}!YTMusicUploader.MusicBrainz.API.UrlBuilder@{YTMusicUploader.MusicBrainz.API.UrlBuilder}}
+\doxysubsubsection{\texorpdfstring{CreateSearchUrl()}{CreateSearchUrl()}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Url\+Builder.\+Create\+Search\+Url (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{query,  }\item[{int}]{limit,  }\item[{int}]{offset }\end{DoxyParamCaption})}
+
+
+
+Creates a webservice search template. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Music\+Brainz/\mbox{\hyperlink{_url_builder_8cs}{Url\+Builder.\+cs}}\end{DoxyCompactItemize}

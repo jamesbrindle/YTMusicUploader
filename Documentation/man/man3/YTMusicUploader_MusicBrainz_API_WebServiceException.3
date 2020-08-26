@@ -1,0 +1,101 @@
+.TH "YTMusicUploader.MusicBrainz.API.WebServiceException" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.WebServiceException \- \fBException\fP containing error information returned by the \fBMusicBrainz\fP webservice\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWebServiceException\fP ()"
+.br
+.RI "Initializes a new instance of the \fBWebServiceException\fP class\&. "
+.ti -1c
+.RI "\fBWebServiceException\fP (string message)"
+.br
+.RI "Initializes a new instance of the \fBWebServiceException\fP class\&. "
+.ti -1c
+.RI "\fBWebServiceException\fP (string message, \fBException\fP innerException)"
+.br
+.RI "Initializes a new instance of the \fBWebServiceException\fP class\&. "
+.ti -1c
+.RI "\fBWebServiceException\fP (string message, HttpStatusCode statusCode, string uri)"
+.br
+.RI "Initializes a new instance of the \fBWebServiceException\fP class\&. "
+.ti -1c
+.RI "override void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "Sets the SerializationInfo with information about the exception\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly HttpStatusCode \fBStatusCode\fP"
+.br
+.RI "Gets the response HTTP status code\&. "
+.ti -1c
+.RI "readonly string \fBUri\fP"
+.br
+.RI "Gets the requested uri\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBException\fP containing error information returned by the \fBMusicBrainz\fP webservice\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.WebServiceException\&.WebServiceException ()"
+
+.PP
+Initializes a new instance of the \fBWebServiceException\fP class\&. 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.WebServiceException\&.WebServiceException (string message)"
+
+.PP
+Initializes a new instance of the \fBWebServiceException\fP class\&. 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.WebServiceException\&.WebServiceException (string message, \fBException\fP innerException)"
+
+.PP
+Initializes a new instance of the \fBWebServiceException\fP class\&. 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.WebServiceException\&.WebServiceException (string message, HttpStatusCode statusCode, string uri)"
+
+.PP
+Initializes a new instance of the \fBWebServiceException\fP class\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstatusCode\fP The response HTTP status code\&.
+.br
+\fIuri\fP The requested uri\&.
+.br
+\fImessage\fP The error message\&.
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "override void YTMusicUploader\&.MusicBrainz\&.API\&.WebServiceException\&.GetObjectData (SerializationInfo info, StreamingContext context)"
+
+.PP
+Sets the SerializationInfo with information about the exception\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly HttpStatusCode YTMusicUploader\&.MusicBrainz\&.API\&.WebServiceException\&.StatusCode"
+
+.PP
+Gets the response HTTP status code\&. 
+.SS "readonly string YTMusicUploader\&.MusicBrainz\&.API\&.WebServiceException\&.Uri"
+
+.PP
+Gets the requested uri\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

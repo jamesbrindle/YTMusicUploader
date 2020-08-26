@@ -1,0 +1,60 @@
+.TH "YTMusicUploader.MusicBrainz.API.Cache.NullCache" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Cache.NullCache \- A cache that does not cache anything\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Task \fBAdd\fP (string request, Stream response)"
+.br
+.RI "Add a request and its response to the cache\&. "
+.ti -1c
+.RI "Task< bool > \fBTryGetCachedItem\fP (string request, out Stream stream)"
+.br
+.RI "Add a request and its response to the cache\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static \fBNullCache\fP \fBDefault\fP = new \fBNullCache\fP()\fC [get]\fP"
+.br
+.RI "Gets the default \fBNullCache\fP instance\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A cache that does not cache anything\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "Task YTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.NullCache\&.Add (string request, Stream response)"
+
+.PP
+Add a request and its response to the cache\&. 
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\fP\&.
+.SS "Task<bool> YTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.NullCache\&.TryGetCachedItem (string request, out Stream stream)"
+
+.PP
+Add a request and its response to the cache\&. 
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.IRequestCache\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBNullCache\fP YTMusicUploader\&.MusicBrainz\&.API\&.Cache\&.NullCache\&.Default = new \fBNullCache\fP()\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the default \fBNullCache\fP instance\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

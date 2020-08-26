@@ -7,7 +7,7 @@ Automatically upload your local personal music library to YouTube Music.
 &nbsp;
 &nbsp;
 
-**[Download Version 1.3.3 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3.3)**
+**[Download Version 1.3.4 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3.4)**
 &nbsp;
 &nbsp;
 
@@ -97,10 +97,14 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 ### Libraries
 
 - [Brotli.Net (Decompress Google HTTP resonse body)](https://www.nuget.org/packages/Brotli.NET) 
+- [xxHash - Fast file hash generator](https://www.nuget.org/packages/System.Data.HashFunction.xxHash/)
 - [Dapper](https://github.com/StackExchange/Dapper) 
 - [Metro Framework (UI Styling)](https://github.com/dennismagno/metroframework-modern-ui) 
 - [Ookii Dialogues](http://www.ookii.org/software/dialogs)
-- [MusicBrainz API](https://github.com/avatar29A/MusicBrainz)
+- [MusicBrainz API - Zastai](https://github.com/Zastai/MetaBrainz.Common.Json)
+- [MusicBrainz CoverArt - Zastai](https://github.com/Zastai/MetaBrainz.MusicBrainz.CoverArt)
+- [MusicBrainz API implementation](https://github.com/avatar29A/MusicBrainz)
+- [TagLibSharp - Read music file tags](https://www.nuget.org/packages/TagLibSharp/)
 &nbsp;
 &nbsp;
 

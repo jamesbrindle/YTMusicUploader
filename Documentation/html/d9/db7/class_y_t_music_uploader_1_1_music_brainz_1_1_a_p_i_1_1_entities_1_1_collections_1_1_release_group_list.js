@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list =
+[
+    [ "Items", "d9/db7/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list.html#ada839ad5e14c5a4bab678634a5d74bf7", null ]
+];

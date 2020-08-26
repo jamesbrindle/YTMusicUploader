@@ -1,0 +1,80 @@
+.TH "YTMusicUploader.MusicBrainz.API.Entities.Work" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Entities.Work \- In \fBMusicBrainz\fP terminology, a work is a distinct intellectual or artistic creation, which can be expressed in the form of one or more audio recordings\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBId\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the \fBMusicBrainz\fP id\&. "
+.ti -1c
+.RI "string \fBLanguage\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the language\&. "
+.ti -1c
+.RI "string \fBType\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the type\&. "
+.ti -1c
+.RI "string \fBTitle\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the title\&. "
+.ti -1c
+.RI "string \fBISWC\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the ISW code\&. "
+.ti -1c
+.RI "string \fBDisambiguation\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the disambiguation\&. "
+.ti -1c
+.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a list of relations associated to this work\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+In \fBMusicBrainz\fP terminology, a work is a distinct intellectual or artistic creation, which can be expressed in the form of one or more audio recordings\&. 
+
+
+.SH "Property Documentation"
+.PP 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Work\&.Disambiguation\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the disambiguation\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Work\&.Id\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBMusicBrainz\fP id\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Work\&.ISWC\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the ISW code\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Work\&.Language\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the language\&. 
+.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Work\&.Relations\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a list of relations associated to this work\&. var e = await Work\&.GetAsync(mbid, 'url-rels'); 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Work\&.Title\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the title\&. 
+.SS "string YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Work\&.Type\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

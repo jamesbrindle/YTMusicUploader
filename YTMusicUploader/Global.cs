@@ -15,6 +15,7 @@ namespace YTMusicUploader
     {
         private static string _applicationVersion = null;
         private static string _appDataLocation = null;
+        private static bool? _multiThreadedRequests = null;
         private static string _dbLocation = null;
         private static string _edgeFolder = null;
         private static string _edgeVersion = null;
@@ -22,6 +23,8 @@ namespace YTMusicUploader
         private static string _youTubeBaseUrl = null;
         private static string _youTubeMusicUploadUrl = null;
         private static string _youTubeMusicParams = null;
+        private static string _musicBrainzBaseUrl = null;
+        private static string _musicBrainzUserAgent = null;
         private static int? _recheckForUploadedSongsInDays = null;
         private static float? _youTubeUploadedSimilarityPercentageForMatch = null;
         private static string _workingDirectory = null;
@@ -37,7 +40,7 @@ namespace YTMusicUploader
                 if (_applicationVersion != null)
                     return _applicationVersion;
 
-                _applicationVersion = VersionHelper.GetVersionShort();
+                _applicationVersion = VersionHelper.GetVersionFull();
                 return _applicationVersion;
             }
         }
@@ -102,9 +105,11 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["EdgeVersion"] != null)
                         _edgeVersion = ConfigurationManager.AppSettings["EdgeVersion"];
                 }
-                catch { }
+                catch
+                {
+                    _edgeVersion = "84.0.522.63";
+                }
 
-                _edgeVersion = "84.0.522.63";
                 return _edgeVersion;
             }
         }
@@ -124,9 +129,11 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["GoogleVisitorId"] != null)
                         _googleVisitorId = ConfigurationManager.AppSettings["GoogleVisitorId"];
                 }
-                catch { }
+                catch
+                {
+                    _googleVisitorId = "CgtvVTcxa1EtbV9hayiMu-P0BQ%3D%3D";
+                }
 
-                _googleVisitorId = "CgtvVTcxa1EtbV9hayiMu-P0BQ%3D%3D";
                 return _googleVisitorId;
             }
         }
@@ -146,9 +153,11 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["YouTubeMusicBaseUrl"] != null)
                         _youTubeBaseUrl = ConfigurationManager.AppSettings["YouTubeMusicBaseUrl"];
                 }
-                catch { }
+                catch
+                {
+                    _youTubeBaseUrl = "https://music.youtube.com/youtubei/v1/";
+                }
 
-                _youTubeBaseUrl = "https://music.youtube.com/youtubei/v1/";
                 return _youTubeBaseUrl;
             }
         }
@@ -168,10 +177,11 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["YouTubeMusicUploadUrl"] != null)
                         _youTubeMusicUploadUrl = ConfigurationManager.AppSettings["YouTubeMusicUploadUrl"];
                 }
-                catch { }
+                catch
+                {
+                    _youTubeMusicUploadUrl = "https://upload.youtube.com/upload/usermusic/http?authuser=0";
+                }
 
-
-                _youTubeMusicUploadUrl = "https://upload.youtube.com/upload/usermusic/http?authuser=0";
                 return _youTubeMusicUploadUrl;
             }
         }
@@ -191,10 +201,103 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["YouTubeMusicParams"] != null)
                         _youTubeMusicParams = ConfigurationManager.AppSettings["YouTubeMusicParams"];
                 }
-                catch { }
+                catch
+                {
+                    _youTubeMusicParams = "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
+                }
 
-                _youTubeMusicParams = "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
                 return _youTubeMusicParams;
+            }
+        }
+
+        /// <summary>
+        /// Check already uploaded tracks with YouTube Music in parallel
+        /// </summary>
+        public static bool MultiThreadedRequests
+        {
+            get
+            {
+                if (_multiThreadedRequests != null)
+                    return (bool)_multiThreadedRequests;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["MultiThreadedRequests"] != null)
+                        _multiThreadedRequests = ConfigurationManager.AppSettings["MultiThreadedRequests"].ToBool();
+                }
+                catch
+                {
+                    _multiThreadedRequests = true;
+                }
+
+                return (bool)_multiThreadedRequests;
+            }
+        }
+
+        /// <summary>
+        /// MusicBrainz API Base URL
+        /// </summary>
+        public static string MusicBrainzBaseUrl
+        {
+            get
+            {
+                if (_musicBrainzBaseUrl != null)
+                    return _musicBrainzBaseUrl;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["MusicBrainsBaseUrl"] != null)
+                        _musicBrainzBaseUrl = ConfigurationManager.AppSettings["MusicBrainsBaseUrl"];
+                }
+                catch
+                {
+                    _musicBrainzBaseUrl = "https://musicbrainz.org/ws/2/";
+                }
+
+                return _musicBrainzBaseUrl;
+            }
+        }
+
+
+        /// <summary>
+        /// Custom MusicBrainz User-Agent header
+        /// </summary>
+        public static string MusicBrainzUserAgent
+        {
+            get
+            {
+                if (_musicBrainzUserAgent != null)
+                    return _musicBrainzUserAgent;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["MusicBrainsUserAgent"] != null)
+                        _musicBrainzUserAgent =
+                            ConfigurationManager.AppSettings["MusicBrainsUserAgent"]
+                            + @"/" + ApplicationVersion + " ( " + "jamie.brindle7@gmail.com" + " )";
+                }
+                catch
+                {
+                    _musicBrainzUserAgent = "YTMusicUploader"
+                                + @"/" + ApplicationVersion + " ( " + "jamie.brindle7@gmail.com" + " )";
+                }
+
+                return _musicBrainzUserAgent;
+            }
+        }
+
+        /// <summary>
+        /// MusicBrainz Request cache Location
+        /// </summary>
+        public static string CacheLocation
+        {
+            get
+            {
+                string cacheDir = Path.Combine(AppDataLocation, @"Cache");
+                if (Directory.Exists(cacheDir))
+                    Directory.CreateDirectory(cacheDir);
+
+                return cacheDir;
             }
         }
 
@@ -214,9 +317,11 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["RecheckForUploadedSongsInDays"] != null)
                         _recheckForUploadedSongsInDays = ConfigurationManager.AppSettings["RecheckForUploadedSongsInDays"].ToInt();
                 }
-                catch { }
+                catch
+                {
+                    _recheckForUploadedSongsInDays = 30;
+                }
 
-                _recheckForUploadedSongsInDays = 30;
                 return (int)_recheckForUploadedSongsInDays;
             }
         }
@@ -236,25 +341,12 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["YouTubeUploadedSimilarityPercentageForMatch"] != null)
                         _youTubeUploadedSimilarityPercentageForMatch = float.Parse(ConfigurationManager.AppSettings["YouTubeUploadedSimilarityPercentageForMatch"]);
                 }
-                catch { }
+                catch
+                {
+                    _youTubeUploadedSimilarityPercentageForMatch = 0.75f;
+                }
 
-                _youTubeUploadedSimilarityPercentageForMatch = 0.75f;
                 return (float)_youTubeUploadedSimilarityPercentageForMatch;
-            }
-        }
-
-        /// <summary>
-        /// MusicBrainz Request cache Location
-        /// </summary>
-        public static string CacheLocation
-        {
-            get
-            {
-                string cacheDir = Path.Combine(AppDataLocation, @"Cache");
-                if (Directory.Exists(cacheDir))
-                    Directory.CreateDirectory(cacheDir);
-
-                return cacheDir;
             }
         }
 
@@ -288,9 +380,11 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["GoogleVisitorId"] != null)
                         _supportedFiles = ConfigurationManager.AppSettings["SupportedFileTypes"].Split(';');
                 }
-                catch { }
+                catch
+                {
+                    _supportedFiles = new string[] { ".flac", ".m4a", ".mp3", ".oga", ".wma" };
+                }
 
-                _supportedFiles = new string[] { ".flac", ".m4a", ".mp3", ".oga", ".wma" };
                 return _supportedFiles;
             }
         }

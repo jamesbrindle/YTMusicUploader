@@ -19,13 +19,8 @@ namespace YTMusicUploader.Providers
     {
         /// <summary>
         /// HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining 
-        /// if a generic request is successful given the current authentication cookie value we have stored.
-        /// 
+        /// if a generic request is successful given the current authentication cookie value we have stored.        /// 
         /// In this case, we're actually perform a request for personally uploaded music files
-        /// 
-        /// Thanks to: sigma67: 
-        ///     https://ytmusicapi.readthedocs.io/en/latest/ 
-        ///     https://github.com/sigma67/ytmusicapi
         /// </summary>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
         /// <returns>True if successfully authenticated, false otherwise</returns>

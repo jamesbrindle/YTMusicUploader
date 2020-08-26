@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using System.Data.HashFunction.xxHash;
+using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace JBToolkit.Imaging
 {
@@ -9,15 +9,17 @@ namespace JBToolkit.Imaging
     /// </summary>
     public static class ImageHelper
     {
+        private static xxHashConfig XxHashConfig = new xxHashConfig() { HashSizeInBits = 32 };
+        private static IxxHash XxHashFactory = xxHashFactory.Instance.Create(XxHashConfig);
+
         /// <summary>
-        /// Get a SHA hash of an image (useful for comparing)
+        /// Get a 32bit xxHash of an image (useful for comparing)
         /// </summary>
-        public static byte[] ShaHash(this Image image)
+        public static byte[] XxHash(this Image image)
         {
             var bytes = new byte[1];
-            bytes = (byte[])(new ImageConverter()).ConvertTo(image, bytes.GetType());
-
-            return (new SHA256Managed()).ComputeHash(bytes);
+            bytes = (byte[])new ImageConverter().ConvertTo(image, bytes.GetType());
+            return XxHashFactory.ComputeHash(bytes).Hash;
         }
 
         /// <summary>
@@ -31,8 +33,8 @@ namespace JBToolkit.Imaging
             if (imageA.Width != imageB.Width) return false;
             if (imageA.Height != imageB.Height) return false;
 
-            var hashA = imageA.ShaHash();
-            var hashB = imageB.ShaHash();
+            var hashA = imageA.XxHash();
+            var hashB = imageB.XxHash();
 
             return !hashA
                 .Where((nextByte, index) => nextByte != hashB[index])

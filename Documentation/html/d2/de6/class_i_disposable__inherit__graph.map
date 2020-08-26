@@ -1,6 +1,7 @@
 <map id="IDisposable" name="IDisposable">
-<area shape="rect" id="node1" title=" " alt="" coords="147,5,236,83"/>
-<area shape="rect" id="node2" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html" title="This is a wrapper around a FileStream. While it is not a Stream itself, it can be cast to one (keep i..." alt="" coords="5,131,175,355"/>
-<area shape="rect" id="node3" href="$d0/df6/interface_y_t_music_uploader_1_1_business_1_1_pipes_1_1_i_ipc_server.html" title=" " alt="" coords="199,189,386,296"/>
-<area shape="rect" id="node4" title="WCF Named pipe server &#45; To receive data fro, an existing YTMusicUploader process" alt="" coords="199,403,386,524"/>
+<area shape="rect" id="node1" title=" " alt="" coords="248,5,337,83"/>
+<area shape="rect" id="node2" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html" title="This is a wrapper around a FileStream. While it is not a Stream itself, it can be cast to one (keep i..." alt="" coords="5,145,175,369"/>
+<area shape="rect" id="node3" href="$d0/df6/interface_y_t_music_uploader_1_1_business_1_1_pipes_1_1_i_ipc_server.html" title=" " alt="" coords="199,204,386,311"/>
+<area shape="rect" id="node5" href="$d7/d6e/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_music_brainz_client.html" title="MusicBrainz client." alt="" coords="411,131,615,384"/>
+<area shape="rect" id="node4" title="WCF Named pipe server &#45; To receive data fro, an existing YTMusicUploader process" alt="" coords="199,432,386,553"/>
 </map>

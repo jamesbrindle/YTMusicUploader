@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -434,6 +435,36 @@ namespace System
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Similar to 'Parallel.ForEach' but maintains the order in which the collection is iterated / processed.
+        /// It doesn't guarentee the the actions will finish in the same order, just that they're iterated over
+        /// in order.
+        /// 
+        /// Usage:  
+        ///     orderedElements.AsParallel().ForAllInApproximateOrder(e => DoSomething(e ) );
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="action"></param>
+        public static void ForAllInApproximateOrder<TSource>(this ParallelQuery<TSource> source, Action<TSource> action, int? maxDegreesOfParallelism = null)
+        {
+            if (maxDegreesOfParallelism == null)
+            {
+                Partitioner.Create(source)
+                           .AsParallel()
+                           .AsOrdered()
+                           .ForAll(e => action(e));
+            }
+            else
+            {
+                Partitioner.Create(source)
+                           .AsParallel()
+                           .AsOrdered()
+                           .WithDegreeOfParallelism((int)maxDegreesOfParallelism)
+                           .ForAll(e => action(e));
+            }
         }
 
         /// <summary>

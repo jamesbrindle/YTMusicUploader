@@ -89,8 +89,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_D"></a>:_OneDrive_Documents_Work_Repositories_YTMusicUploader_README</p>
 <p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/yt_logo-64.png" alt="N|Solid" class="inline"/></a> &#160;</p>
-<p>Automatically upload your local music personal library to YouTube Music. &#160; &#160;</p>
-<p><b><a href="https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3.1">Download Version 1.3 Installer</a></b> &#160; &#160;</p>
+<p>Automatically upload your local personal music library to YouTube Music. &#160; &#160;</p>
+<p><b><a href="https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3.4">Download Version 1.3.4 Installer</a></b> &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Application</h2>
 <p>This is a .Net application written in C# that uploads your personal music library to YouTube. It has a minimalistic UI for basic settings such as:</p>
@@ -103,8 +103,8 @@ Application</h2>
 <li>Option to throttle the upload speed so it doesn't use all your bandwidth.</li>
 </ul>
 <p>&#160;</p>
-<p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1a.png" alt="N|Solid" class="inline"/></a></p>
-<p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6a.png" alt="N|Solid" class="inline"/></a> &#160; &#160;</p>
+<p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1b.png" alt="N|Solid" class="inline"/></a></p>
+<p><a href="https://github.com/jamesbrindle/YTMusicUploader"><img src="https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6b.png" alt="N|Solid" class="inline"/></a> &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Features</h2>
 <ul>
@@ -120,7 +120,11 @@ Features</h2>
 <li>Show an upload log dialogue.</li>
 <li>Show an issues log dialogue.</li>
 </ul>
-<p>&#160; ** * This application does not send any telemetry data of any kind to its source.** ** * Valid file formats are the same as YouTube Music: .flac, .m4a, .mp3, .oga, .wma** &#160; &#160;</p>
+<p>&#160;</p><ul>
+<li><b>This application does not send any telemetry data of any kind to its source.</b></li>
+<li><b>Valid file formats are the same as YouTube Music: .flac, .m4a, .mp3, .oga, .wma</b> &#160;</li>
+</ul>
+<p>&#160;</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Reason for Creation</h2>
 <p>I used to have Google Play music and liked uploading my own content via its automatic library uploader application; I have a large library of music and you could stream your own uploaded songs from Google Play music without paying for a subscription...</p>
@@ -154,10 +158,14 @@ IDE / Extensions</h2>
 Libraries</h2>
 <ul>
 <li><a href="https://www.nuget.org/packages/Brotli.NET">Brotli.Net (Decompress Google HTTP resonse body)</a></li>
+<li><a href="https://www.nuget.org/packages/System.Data.HashFunction.xxHash/">xxHash - Fast file hash generator</a></li>
 <li><a href="https://github.com/StackExchange/Dapper">Dapper</a></li>
 <li><a href="https://github.com/dennismagno/metroframework-modern-ui">Metro Framework (UI Styling)</a></li>
 <li><a href="http://www.ookii.org/software/dialogs">Ookii Dialogues</a></li>
-<li><a href="https://github.com/avatar29A/MusicBrainz">MusicBrainz API</a> &#160; &#160;</li>
+<li><a href="https://github.com/Zastai/MetaBrainz.Common.Json">MusicBrainz API - Zastai</a></li>
+<li><a href="https://github.com/Zastai/MetaBrainz.MusicBrainz.CoverArt">MusicBrainz CoverArt - Zastai</a></li>
+<li><a href="https://github.com/avatar29A/MusicBrainz">MusicBrainz API implementation</a></li>
+<li><a href="https://www.nuget.org/packages/TagLibSharp/">TagLibSharp - Read music gile tags</a> &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Tools</h2>
@@ -171,10 +179,10 @@ Web Control</h2>
 </ul>
 <p><b>WebView2</b> is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing it's still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.</p>
 <p>Using the native WPF or WinForms web control or GeckoFX you just get a web page asking to update the browser. Using CefSharp you get a page telling you the browser isn't secure enough.</p>
-<p>I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the version of <a href="https://www.microsoftedgeinsider.com/en-us/download">Microsoft Edge from the Canary channel:</a>). <b>The YT Music Uploader Application self-contains the files needed for this dependency for convenience so you shouldn't need to install anything else other than this app.</b></p>
-<p>Dispite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely. &#160; &#160;</p>
+<p>I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the version of <a href="https://www.microsoftedgeinsider.com/en-us/download">Microsoft Edge from the Canary Channel:</a>). <b>The YT Music Uploader Application self-contains the files needed for this dependency for convenience so you shouldn't need to install anything else other than this app.</b></p>
+<p>Despite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely. &#160; &#160;</p>
 <p><b>GOTCHAS</b> &#160;</p>
-<p>One thing to bear in mind, is that it required a writable location for cache files (and other random files), and you need to set this up <b>before</b> navigating to any URL: &#160;</p>
+<p>One thing to bear in mind, is that it requires a writable location for cache files (and other random files), and you need to set this up <b>before</b> navigating to any URL: &#160;</p>
 <div class="fragment"><div class="line">private async void InitializeBrowser()</div>
 <div class="line">{</div>
 <div class="line">    var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);</div>
@@ -190,12 +198,11 @@ Web Control</h2>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 How Long Will This Application Last?</h2>
-<p>Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube music develops...</p>
+<p>Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube Music develops...</p>
 <p>I'm going to be using this application for personal use, so I'll know straight aware when it's not working and will attempt to update the API call implementation as soon as possible. &#160; &#160;</p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Further Development Considerations</h2>
 <ul>
-<li>Could do with the ability to see if a music file is already uploaded to YouTube Music or not. I could not find a way of requesting a file hash from YouTube Music. I could only get a json object back with a typical free text search of the song title and artist and found it not reliable enough, with multiple 'fuzzy / AI logic' result sets for 'similar' songs. I'll keep working on it.</li>
 <li>Would like to add the ability to upload playlists *(<a href="https://ytmusicapi.readthedocs.io/en/latest/">sigma67</a> has included this ability in his API so it's definately do-able).* &#160; &#160;</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md12"></a>

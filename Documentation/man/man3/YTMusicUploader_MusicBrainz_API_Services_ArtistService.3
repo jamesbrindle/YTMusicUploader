@@ -1,0 +1,134 @@
+.TH "YTMusicUploader.MusicBrainz.API.Services.ArtistService" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Services.ArtistService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBArtistService\fP (\fBMusicBrainzClient\fP client, \fBUrlBuilder\fP builder)"
+.br
+.ti -1c
+.RI "async Task< \fBArtist\fP > \fBGetAsync\fP (string id, params string[] inc)"
+.br
+.RI "Lookup an artist in the \fBMusicBrainz\fP database\&. "
+.ti -1c
+.RI "async Task< \fBArtistList\fP > \fBSearchAsync\fP (string query, int limit=25, int offset=0)"
+.br
+.RI "Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. "
+.ti -1c
+.RI "async Task< \fBArtistList\fP > \fBSearchAsync\fP (\fBQueryParameters\fP< \fBArtist\fP > query, int limit=25, int offset=0)"
+.br
+.RI "Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. "
+.ti -1c
+.RI "async Task< \fBArtistList\fP > \fBBrowseAsync\fP (string entity, string id, int limit=25, int offset=0, params string[] inc)"
+.br
+.RI "Browse all the artists in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. "
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\&.ArtistService (\fBMusicBrainzClient\fP client, \fBUrlBuilder\fP builder)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "async Task<\fBArtistList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\&.BrowseAsync (string entity, string id, int limit = \fC25\fP, int offset = \fC0\fP, params string[] inc)"
+
+.PP
+Browse all the artists in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIentity\fP The name of the related entity\&.
+.br
+\fIid\fP The id of the related entity\&.
+.br
+\fIlimit\fP The maximum number of artists to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the artists list (enables paging, default = 0)\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\fP\&.
+.SS "async Task<\fBArtist\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\&.GetAsync (string id, params string[] inc)"
+
+.PP
+Lookup an artist in the \fBMusicBrainz\fP database\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP The artist \fBMusicBrainz\fP id\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\fP\&.
+.SS "async Task<\fBArtistList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\&.SearchAsync (\fBQueryParameters\fP< \fBArtist\fP > query, int limit = \fC25\fP, int offset = \fC0\fP)"
+
+.PP
+Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIquery\fP The query parameters\&.
+.br
+\fIlimit\fP The maximum number of artists to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the artists list (enables paging, default = 0)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\fP\&.
+.SS "async Task<\fBArtistList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\&.SearchAsync (string query, int limit = \fC25\fP, int offset = \fC0\fP)"
+
+.PP
+Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIquery\fP The query string\&.
+.RE
+.PP
+6 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlimit\fP The maximum number of artists to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the artists list (enables paging, default = 0)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

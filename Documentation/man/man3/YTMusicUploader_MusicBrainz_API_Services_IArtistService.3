@@ -1,0 +1,128 @@
+.TH "YTMusicUploader.MusicBrainz.API.Services.IArtistService" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Services.IArtistService \- Interface defining the artist service\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Task< \fBArtist\fP > \fBGetAsync\fP (string id, params string[] inc)"
+.br
+.RI "Lookup an artist in the \fBMusicBrainz\fP database\&. "
+.ti -1c
+.RI "Task< \fBArtistList\fP > \fBSearchAsync\fP (string query, int limit=25, int offset=0)"
+.br
+.RI "Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. "
+.ti -1c
+.RI "Task< \fBArtistList\fP > \fBSearchAsync\fP (\fBQueryParameters\fP< \fBArtist\fP > query, int limit=25, int offset=0)"
+.br
+.RI "Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. "
+.ti -1c
+.RI "Task< \fBArtistList\fP > \fBBrowseAsync\fP (string entity, string id, int limit=25, int offset=0, params string[] inc)"
+.br
+.RI "Browse all the artists in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface defining the artist service\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "Task<\fBArtistList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\&.BrowseAsync (string entity, string id, int limit = \fC25\fP, int offset = \fC0\fP, params string[] inc)"
+
+.PP
+Browse all the artists in the \fBMusicBrainz\fP database, which are directly linked to the entity with given id\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIentity\fP The name of the related entity\&.
+.br
+\fIid\fP The id of the related entity\&.
+.br
+\fIlimit\fP The maximum number of artists to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the artists list (enables paging, default = 0)\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\fP\&.
+.SS "Task<\fBArtist\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\&.GetAsync (string id, params string[] inc)"
+
+.PP
+Lookup an artist in the \fBMusicBrainz\fP database\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP The artist \fBMusicBrainz\fP id\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\fP\&.
+.SS "Task<\fBArtistList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\&.SearchAsync (\fBQueryParameters\fP< \fBArtist\fP > query, int limit = \fC25\fP, int offset = \fC0\fP)"
+
+.PP
+Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIquery\fP The query parameters\&.
+.br
+\fIlimit\fP The maximum number of artists to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the artists list (enables paging, default = 0)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\fP\&.
+.SS "Task<\fBArtistList\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IArtistService\&.SearchAsync (string query, int limit = \fC25\fP, int offset = \fC0\fP)"
+
+.PP
+Search for an artist in the \fBMusicBrainz\fP database, matching the given query\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIquery\fP The query string\&.
+.br
+\fIlimit\fP The maximum number of artists to return (default = 25)\&.
+.br
+\fIoffset\fP The offset to the artists list (enables paging, default = 0)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.ArtistService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

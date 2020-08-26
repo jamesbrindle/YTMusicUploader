@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Requests" 3 "Tue Aug 25 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Requests" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,23 +7,42 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .SH SYNOPSIS
 .br
 .PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBUploadCheckCheckCache\fP"
+.br
+.RI "Object to store pre fetched already uploaded check results "
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBUploadCheckResult\fP { \fBUploadCheckResult\&.NotPresent\fP, \fBUploadCheckResult\&.Present_FromCache\fP, \fBUploadCheckResult\&.Present_NewRequest\fP }"
+.br
+.in -1c
 .SS "Static Public Member Functions"
 
 .in +1c
 .ti -1c
 .RI "static bool \fBIsAuthenticated\fP (string cookieValue)"
 .br
-.RI "HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. "
+.RI "HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. /// In this case, we're actually perform a request for personally uploaded music files "
 .ti -1c
-.RI "static bool \fBIsSongUploaded\fP (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
+.RI "static void \fBStartPrefetchingUploadedFilesCheck\fP (List< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
+.br
+.RI "Starts a new thread which loops through MusicFiles to check if they've already been uploaded to YouTube Music ahead of time and stores them in a cache to speed up the upload checker\&. "
+.ti -1c
+.RI "static async Task< \fBUploadCheckResult\fP > \fBIsSongUploaded\fP (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
 .ti -1c
-.RI "static bool \fBIsSongUploadedMulitpleAlbumNameVariations\fP (string artist, string album, string track, string cookieValue)"
+.RI "static async Task< bool > \fBIsSongUploadedMulitpleAlbumNameVariations\fP (string artist, string album, string track, string cookieValue)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
 .ti -1c
-.RI "static bool \fBIsSongUploaded\fP (string artist, string album, string track, string cookieValue)"
+.RI "static async Task< bool > \fBIsSongUploaded\fP (string artist, string album, string track, string cookieValue)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
 .ti -1c
@@ -38,6 +57,16 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .RI "static byte[] \fBGetPostBytes\fP (string stringToEncode)"
 .br
 .RI "Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static Thread \fBUploadCheckPreloaderThread\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "static Thread \fBUploadCheckPreloaderSleepThread\fP = null\fC [get, set]\fP"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -54,6 +83,19 @@ In this case, we're actually perform a request for personally uploaded music fil
 Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
 .PP
 Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBYTMusicUploader\&.Providers\&.Requests\&.UploadCheckResult\fP\fC [strong]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINotPresent \fP\fP
+.TP
+\fB\fIPresent_FromCache \fP\fP
+.TP
+\fB\fIPresent_NewRequest \fP\fP
 .SH "Member Function Documentation"
 .PP 
 .SS "static HttpWebRequest YTMusicUploader\&.Providers\&.Requests\&.AddStandardHeaders (HttpWebRequest webRequest, string cookieValue)\fC [static]\fP"
@@ -93,9 +135,7 @@ UTF8 encoded byte arra
 .SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsAuthenticated (string cookieValue)\fC [static]\fP"
 
 .PP
-HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. In this case, we're actually perform a request for personally uploaded music files
-.PP
-Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. /// In this case, we're actually perform a request for personally uploaded music files 
 .PP
 \fBParameters\fP
 .RS 4
@@ -108,10 +148,10 @@ True if successfully authenticated, false otherwise
 .RE
 .PP
 
-.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string artist, string album, string track, string cookieValue)\fC [static]\fP"
+.SS "static async Task<bool> YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string artist, string album, string track, string cookieValue)\fC [static]\fP"
 
 .PP
-HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -130,16 +170,18 @@ True if song is found, false otherwise
 .RE
 .PP
 
-.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
+.SS "static async Task<\fBUploadCheckResult\fP> YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
 
 .PP
-HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. 
 .PP
 \fBParameters\fP
 .RS 4
 \fImusicFilePath\fP Path to music file to be uploaded
 .br
 \fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fImusicDataFetcher\fP You can pass an existing MusicDataFetcher object, or one will be created if left blank
 .RE
 .PP
 \fBReturns\fP
@@ -148,10 +190,10 @@ True if song is found, false otherwise
 .RE
 .PP
 
-.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploadedMulitpleAlbumNameVariations (string artist, string album, string track, string cookieValue)\fC [static]\fP"
+.SS "static async Task<bool> YTMusicUploader\&.Providers\&.Requests\&.IsSongUploadedMulitpleAlbumNameVariations (string artist, string album, string track, string cookieValue)\fC [static]\fP"
 
 .PP
-HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -170,10 +212,25 @@ True if song is found, false otherwise
 .RE
 .PP
 
+.SS "static void YTMusicUploader\&.Providers\&.Requests\&.StartPrefetchingUploadedFilesCheck (List< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
+
+.PP
+Starts a new thread which loops through MusicFiles to check if they've already been uploaded to YouTube Music ahead of time and stores them in a cache to speed up the upload checker\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImusicFilesList\fP Path to music file to be uploaded
+.br
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fImusicDataFetcher\fP You can pass an existing MusicDataFetcher object, or one will be created if left blank
+.RE
+.PP
+
 .SS "static bool YTMusicUploader\&.Providers\&.Requests\&.UploadSong (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)\fC [static]\fP"
 
 .PP
-HttpWebRequest POST request to send to YouTube to upload a music file\&. Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
+HttpWebRequest POST request to send to YouTube to upload a music file\&. 
 .PP
 \fBParameters\fP
 .RS 4
@@ -193,6 +250,12 @@ HttpWebRequest POST request to send to YouTube to upload a music file\&. Thanks 
 True if the upload is successful, false otherwise
 .RE
 .PP
+
+.SH "Property Documentation"
+.PP 
+.SS "Thread YTMusicUploader\&.Providers\&.Requests\&.UploadCheckPreloaderSleepThread = null\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.SS "Thread YTMusicUploader\&.Providers\&.Requests\&.UploadCheckPreloaderThread = null\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

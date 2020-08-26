@@ -1,0 +1,50 @@
+.TH "YTMusicUploader.MusicBrainz.API.Services.WorkService" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.MusicBrainz.API.Services.WorkService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IWorkService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWorkService\fP (\fBMusicBrainzClient\fP client, \fBUrlBuilder\fP builder)"
+.br
+.ti -1c
+.RI "async Task< \fBWork\fP > \fBGetAsync\fP (string id, params string[] inc)"
+.br
+.RI "Lookup a work in the \fBMusicBrainz\fP database\&. "
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.WorkService\&.WorkService (\fBMusicBrainzClient\fP client, \fBUrlBuilder\fP builder)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "async Task<\fBWork\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Services\&.WorkService\&.GetAsync (string id, params string[] inc)"
+
+.PP
+Lookup a work in the \fBMusicBrainz\fP database\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP The work \fBMusicBrainz\fP id\&.
+.br
+\fIinc\fP A list of entities to include (subqueries)\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.MusicBrainz\&.API\&.Services\&.IWorkService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

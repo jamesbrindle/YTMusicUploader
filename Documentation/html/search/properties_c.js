@@ -1,5 +1,16 @@
 var searchData=
 [
-  ['newfiles_968',['NewFiles',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ad4b59754c28220cff463fa809e3c605f',1,'YTMusicUploader::Business::FileScanner']]],
-  ['newfileshash_969',['NewFilesHash',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ada6858504e4c2b7768861db0afc5e0b0',1,'YTMusicUploader::Business::FileScanner']]]
+  ['maxbytespersecond_1269',['MaxBytesPerSecond',['../da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream.html#a0d2462d4cde553ebff36149ede57d8d2',1,'YTMusicUploader::Business::ThrottledStream']]],
+  ['mbid_1270',['MbId',['../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html#a5ab83faad0bea65d92a04065e804df58',1,'YTMusicUploader.Providers.DataModels.MusicFile.MbId()'],['../dd/dc0/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_upload_check_check_cache_1_1_music_file_cache_object.html#aa6fb83d95bc4b58aaeb9a08fc5be5628',1,'YTMusicUploader.Providers.Requests.UploadCheckCheckCache.MusicFileCacheObject.MbId()']]],
+  ['media_1271',['Media',['../da/dd6/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release.html#ad31d1b0cc77162d24f08a1ec265a9880',1,'YTMusicUploader::MusicBrainz::API::Entities::Release']]],
+  ['message_1272',['Message',['../d4/dab/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_music_brainz_client_1_1_response_error.html#a79388795515760b1f034db56fbcfdc69',1,'YTMusicUploader::MusicBrainz::API::MusicBrainzClient::ResponseError']]],
+  ['messagerenderer_1273',['messageRenderer',['../d0/d1b/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_content3.html#a11a1a8038016fe8976879212e907361c',1,'YTMusicUploader::Providers::RequestModels::SearchResult::Content3']]],
+  ['musicactivitymasterswitch_1274',['musicActivityMasterSwitch',['../da/d0f/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_music_app_info.html#aaae7c1040c80260dffcb7bef928f49c9',1,'YTMusicUploader::Providers::RequestModels::SearchContext::MusicAppInfo']]],
+  ['musicappinfo_1275',['musicAppInfo',['../d4/d93/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_client.html#aba3d74ebe7e8ee979dbea9610162725c',1,'YTMusicUploader::Providers::RequestModels::SearchContext::Client']]],
+  ['musicbrainzclient_1276',['MusicBrainzClient',['../dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a357eec8702b83277a5a28e27b09af95c',1,'YTMusicUploader::Business::MusicDataFetcher']]],
+  ['musicdatafetcher_1277',['MusicDataFetcher',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a33270c020374caf08b809e6082d87d6c',1,'YTMusicUploader::MainForm']]],
+  ['musicfilepath_1278',['MusicFilePath',['../dd/dc0/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_upload_check_check_cache_1_1_music_file_cache_object.html#a96b22e13bd02c4b0d13065bb0fb544d5',1,'YTMusicUploader::Providers::Requests::UploadCheckCheckCache::MusicFileCacheObject']]],
+  ['musicfilerepo_1279',['MusicFileRepo',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae09966bdecc9001ca57f1883f613d2a2',1,'YTMusicUploader::MainForm']]],
+  ['musicfilestodelete_1280',['MusicFilesToDelete',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#a1efea8966e2d7a8da44b19057804026e',1,'YTMusicUploader::Business::FileScanner']]],
+  ['musiclocationmasterswitch_1281',['musicLocationMasterSwitch',['../da/d0f/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_music_app_info.html#a24efbc42ececb87c526d803fc592b64a',1,'YTMusicUploader::Providers::RequestModels::SearchContext::MusicAppInfo']]]
 ];

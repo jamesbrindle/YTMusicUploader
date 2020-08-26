@@ -1,14 +1,20 @@
 var searchData=
 [
-  ['business_588',['Business',['../d8/da5/namespace_y_t_music_uploader_1_1_business.html',1,'YTMusicUploader']]],
-  ['customcontrols_589',['CustomControls',['../d5/d6e/namespace_y_t_music_uploader_1_1_custom_controls.html',1,'YTMusicUploader']]],
-  ['datamodels_590',['DataModels',['../db/d7b/namespace_y_t_music_uploader_1_1_providers_1_1_data_models.html',1,'YTMusicUploader::Providers']]],
-  ['dialogues_591',['Dialogues',['../db/da0/namespace_y_t_music_uploader_1_1_dialogues.html',1,'YTMusicUploader']]],
-  ['musicbrainz_592',['MusicBrainz',['../d2/dfd/namespace_y_t_music_uploader_1_1_business_1_1_music_brainz.html',1,'YTMusicUploader::Business']]],
-  ['pipes_593',['Pipes',['../de/dbe/namespace_y_t_music_uploader_1_1_business_1_1_pipes.html',1,'YTMusicUploader::Business']]],
-  ['properties_594',['Properties',['../d9/d9a/namespace_y_t_music_uploader_1_1_properties.html',1,'YTMusicUploader']]],
-  ['providers_595',['Providers',['../db/d06/namespace_y_t_music_uploader_1_1_providers.html',1,'YTMusicUploader']]],
-  ['repos_596',['Repos',['../d8/d77/namespace_y_t_music_uploader_1_1_providers_1_1_repos.html',1,'YTMusicUploader::Providers']]],
-  ['requestmodels_597',['RequestModels',['../de/d63/namespace_y_t_music_uploader_1_1_providers_1_1_request_models.html',1,'YTMusicUploader::Providers']]],
-  ['ytmusicuploader_598',['YTMusicUploader',['../da/dc6/namespace_y_t_music_uploader.html',1,'']]]
+  ['api_792',['API',['../df/d82/namespace_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i.html',1,'YTMusicUploader::MusicBrainz']]],
+  ['business_793',['Business',['../d8/da5/namespace_y_t_music_uploader_1_1_business.html',1,'YTMusicUploader']]],
+  ['cache_794',['Cache',['../d4/d7c/namespace_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache.html',1,'YTMusicUploader::MusicBrainz::API']]],
+  ['collections_795',['Collections',['../dc/dae/namespace_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
+  ['customcontrols_796',['CustomControls',['../d5/d6e/namespace_y_t_music_uploader_1_1_custom_controls.html',1,'YTMusicUploader']]],
+  ['datamodels_797',['DataModels',['../db/d7b/namespace_y_t_music_uploader_1_1_providers_1_1_data_models.html',1,'YTMusicUploader::Providers']]],
+  ['dialogues_798',['Dialogues',['../db/da0/namespace_y_t_music_uploader_1_1_dialogues.html',1,'YTMusicUploader']]],
+  ['entities_799',['Entities',['../d1/da4/namespace_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities.html',1,'YTMusicUploader::MusicBrainz::API']]],
+  ['musicbrainz_800',['MusicBrainz',['../d2/dfd/namespace_y_t_music_uploader_1_1_business_1_1_music_brainz.html',1,'YTMusicUploader.Business.MusicBrainz'],['../db/d3b/namespace_y_t_music_uploader_1_1_music_brainz.html',1,'YTMusicUploader.MusicBrainz']]],
+  ['pipes_801',['Pipes',['../de/dbe/namespace_y_t_music_uploader_1_1_business_1_1_pipes.html',1,'YTMusicUploader::Business']]],
+  ['properties_802',['Properties',['../d9/d9a/namespace_y_t_music_uploader_1_1_properties.html',1,'YTMusicUploader']]],
+  ['providers_803',['Providers',['../db/d06/namespace_y_t_music_uploader_1_1_providers.html',1,'YTMusicUploader']]],
+  ['repos_804',['Repos',['../d8/d77/namespace_y_t_music_uploader_1_1_providers_1_1_repos.html',1,'YTMusicUploader::Providers']]],
+  ['requestmodels_805',['RequestModels',['../de/d63/namespace_y_t_music_uploader_1_1_providers_1_1_request_models.html',1,'YTMusicUploader::Providers']]],
+  ['resources_806',['Resources',['../d4/dbc/namespace_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_resources.html',1,'YTMusicUploader::MusicBrainz::API']]],
+  ['services_807',['Services',['../de/d0a/namespace_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services.html',1,'YTMusicUploader::MusicBrainz::API']]],
+  ['ytmusicuploader_808',['YTMusicUploader',['../da/dc6/namespace_y_t_music_uploader.html',1,'']]]
 ];

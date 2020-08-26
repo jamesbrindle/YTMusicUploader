@@ -1,9 +1,25 @@
 var searchData=
 [
-  ['tab_566',['Tab',['../d3/dd4/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tab.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['tabbedsearchresultsrenderer_567',['TabbedSearchResultsRenderer',['../d7/d70/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tabbed_search_results_renderer.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['tabrenderer_568',['TabRenderer',['../d4/d77/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tab_renderer.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['text_569',['Text',['../da/d39/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_text.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['throttledstream_570',['ThrottledStream',['../da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream.html',1,'YTMusicUploader::Business']]],
-  ['typedescriptionprovider_571',['TypeDescriptionProvider',['../d0/d67/class_type_description_provider.html',1,'']]]
+  ['rating_731',['Rating',['../d3/ddc/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_rating.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
+  ['recording_732',['Recording',['../d6/dd6/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_recording.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
+  ['recordinglist_733',['RecordingList',['../dc/d65/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_recording_list.html',1,'YTMusicUploader::MusicBrainz::API::Entities::Collections']]],
+  ['recordingservice_734',['RecordingService',['../d5/d51/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_recording_service.html',1,'YTMusicUploader::MusicBrainz::API::Services']]],
+  ['registrysettings_735',['RegistrySettings',['../d7/d03/class_y_t_music_uploader_1_1_business_1_1_registry_settings.html',1,'YTMusicUploader::Business']]],
+  ['relation_736',['Relation',['../d6/d09/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_relation.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
+  ['release_737',['Release',['../da/dd6/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
+  ['releasegroup_738',['ReleaseGroup',['../d2/d43/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release_group.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
+  ['releasegrouplist_739',['ReleaseGroupList',['../d9/db7/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list.html',1,'YTMusicUploader::MusicBrainz::API::Entities::Collections']]],
+  ['releasegroupservice_740',['ReleaseGroupService',['../dc/d55/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service.html',1,'YTMusicUploader::MusicBrainz::API::Services']]],
+  ['releaselist_741',['ReleaseList',['../d2/d2b/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_list.html',1,'YTMusicUploader::MusicBrainz::API::Entities::Collections']]],
+  ['releaseservice_742',['ReleaseService',['../d6/d8b/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_service.html',1,'YTMusicUploader::MusicBrainz::API::Services']]],
+  ['request_743',['Request',['../df/db6/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_request.html',1,'YTMusicUploader::Providers::RequestModels::SearchContext']]],
+  ['requests_744',['Requests',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html',1,'YTMusicUploader::Providers']]],
+  ['responsecontext_745',['ResponseContext',['../d1/d82/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_response_context.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
+  ['responseerror_746',['ResponseError',['../d4/dab/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_music_brainz_client_1_1_response_error.html',1,'YTMusicUploader::MusicBrainz::API::MusicBrainzClient']]],
+  ['roundbutton_747',['RoundButton',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html',1,'JBToolkit::WinForms']]],
+  ['roundedrectanglef_748',['RoundedRectangleF',['../d0/de3/class_j_b_toolkit_1_1_win_forms_1_1_rounded_rectangle_f.html',1,'JBToolkit::WinForms']]],
+  ['roundpicturebox_749',['RoundPictureBox',['../de/d6c/class_j_b_toolkit_1_1_win_forms_1_1_round_picture_box.html',1,'JBToolkit::WinForms']]],
+  ['roundtextbox_750',['RoundTextBox',['../d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html',1,'JBToolkit::WinForms']]],
+  ['roundtooltip_751',['RoundTooltip',['../d1/d7e/class_y_t_music_uploader_1_1_custom_controls_1_1_round_tooltip.html',1,'YTMusicUploader::CustomControls']]],
+  ['run_752',['Run',['../d5/dba/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_run.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]]
 ];

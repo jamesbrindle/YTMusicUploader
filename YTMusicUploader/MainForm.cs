@@ -333,7 +333,7 @@ namespace YTMusicUploader
                     RepopulateAmountLables();
                     FileUploader.Process().Wait();
                     SetStatusMessage("Idle", "Idle");
-                    SetUploadingMessage("Idle", "Idle", Properties.Resources.idle, true);
+                    SetUploadingMessage("Idle", "Idle", null, true);
                 }
                 catch (Exception e)
                 {
@@ -366,6 +366,7 @@ namespace YTMusicUploader
 
                             Queue = false;
                             Aborting = false;
+                            Requests.UploadCheckCheckCache.CleanUp = true;
                             FileUploader.Stopped = true;
                             FileScanner.Reset();
                             StartMainProcess();
@@ -422,9 +423,16 @@ namespace YTMusicUploader
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
+            if (e.CloseReason == CloseReason.WindowsShutDown)
+            {
+                QuitApplication();
+            }
+            else
+            {
+                e.Cancel = true;
+                WindowState = FormWindowState.Minimized;
+                ShowInTaskbar = false;
+            }
         }
     }
 }

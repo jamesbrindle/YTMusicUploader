@@ -1,0 +1,206 @@
+\hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service}{}\doxysection{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service Class Reference}
+\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service}\index{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}}
+
+
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{d9/db4/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{de/ddd/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ac162216d16bf6be9ceb1a62108467dc2}{Release\+Group\+Service}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_music_brainz_client}{Music\+Brainz\+Client}} client, \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder}{Url\+Builder}} builder)
+\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release_group}{Release\+Group}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a2ba083565b53936db82af829ed913e73}{Get\+Async}} (string id, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Lookup a release-\/group in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ad7f924d7a979b3732ca2c4a6ff8530f0}{Search\+Async}} (string query, int limit=25, int offset=0)
+\begin{DoxyCompactList}\small\item\em Search for a release-\/group in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a5b432244e5f6ada4eadb06b8055aee65}{Search\+Async}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters}{Query\+Parameters}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release_group}{Release\+Group}} $>$ query, int limit=25, int offset=0)
+\begin{DoxyCompactList}\small\item\em Search for a release-\/group in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a8c966cb712e15d58d210f0115751afb3}{Browse\+Async}} (string entity, string id, int limit=25, int offset=0, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Browse all the release-\/groups in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, which are directly linked to the entity with given id. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ae11ba7326480f42769c90f49225f03ec}{Browse\+Async}} (string entity, string id, string type, int limit=25, int offset=0, params string\mbox{[}$\,$\mbox{]} inc)
+\begin{DoxyCompactList}\small\item\em Browse all the release-\/groups in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, which are directly linked to the entity with given id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ac162216d16bf6be9ceb1a62108467dc2}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ac162216d16bf6be9ceb1a62108467dc2}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}!ReleaseGroupService@{ReleaseGroupService}}
+\index{ReleaseGroupService@{ReleaseGroupService}!YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}}
+\doxysubsubsection{\texorpdfstring{ReleaseGroupService()}{ReleaseGroupService()}}
+{\footnotesize\ttfamily Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service.\+Release\+Group\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_music_brainz_client}{Music\+Brainz\+Client}}}]{client,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_url_builder}{Url\+Builder}}}]{builder }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a8c966cb712e15d58d210f0115751afb3}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a8c966cb712e15d58d210f0115751afb3}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}!BrowseAsync@{BrowseAsync}}
+\index{BrowseAsync@{BrowseAsync}!YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}}
+\doxysubsubsection{\texorpdfstring{BrowseAsync()}{BrowseAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service.\+Browse\+Async (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{id,  }\item[{int}]{limit = {\ttfamily 25},  }\item[{int}]{offset = {\ttfamily 0},  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Browse all the release-\/groups in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, which are directly linked to the entity with given id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The name of the related entity.\\
+\hline
+{\em id} & The id of the related entity.\\
+\hline
+{\em limit} & The maximum number of release-\/groups to return (default = 25).\\
+\hline
+{\em offset} & The offset to the release-\/groups list (enables paging, default = 0).\\
+\hline
+{\em inc} & A list of entities to include (subqueries).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_group_service_a716d579e18d5550554048b366108ff85}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Release\+Group\+Service}}.
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ae11ba7326480f42769c90f49225f03ec}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ae11ba7326480f42769c90f49225f03ec}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}!BrowseAsync@{BrowseAsync}}
+\index{BrowseAsync@{BrowseAsync}!YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}}
+\doxysubsubsection{\texorpdfstring{BrowseAsync()}{BrowseAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service.\+Browse\+Async (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{id,  }\item[{string}]{type,  }\item[{int}]{limit = {\ttfamily 25},  }\item[{int}]{offset = {\ttfamily 0},  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Browse all the release-\/groups in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, which are directly linked to the entity with given id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The name of the related entity.\\
+\hline
+{\em id} & The id of the related entity.\\
+\hline
+{\em type} & If releases or release-\/groups are included in the result, filter by type (for example \textquotesingle{}album\textquotesingle{}).\\
+\hline
+{\em limit} & The maximum number of release-\/groups to return (default = 25).\\
+\hline
+{\em offset} & The offset to the release-\/groups list (enables paging, default = 0).\\
+\hline
+{\em inc} & A list of entities to include (subqueries).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+See \href{http://musicbrainz.org/doc/Development/XML_Web_Service/Version_2\#Release_Type_and_Status}{\texttt{ http\+://musicbrainz.\+org/doc/\+Development/\+X\+M\+L\+\_\+\+Web\+\_\+\+Service/\+Version\+\_\+2\#\+Release\+\_\+\+Type\+\_\+and\+\_\+\+Status}} for supported values of type and status. 
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_group_service_abf7516250556b278644eb383f3b97bff}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Release\+Group\+Service}}.
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a2ba083565b53936db82af829ed913e73}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a2ba083565b53936db82af829ed913e73}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}!GetAsync@{GetAsync}}
+\index{GetAsync@{GetAsync}!YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}}
+\doxysubsubsection{\texorpdfstring{GetAsync()}{GetAsync()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release_group}{Release\+Group}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service.\+Get\+Async (\begin{DoxyParamCaption}\item[{string}]{id,  }\item[{params string\mbox{[}$\,$\mbox{]}}]{inc }\end{DoxyParamCaption})}
+
+
+
+Lookup a release-\/group in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The release-\/group \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} id.\\
+\hline
+{\em inc} & A list of entities to include (subqueries).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_group_service_a550207c1b62ca5627ae4217c6417c602}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Release\+Group\+Service}}.
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a5b432244e5f6ada4eadb06b8055aee65}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a5b432244e5f6ada4eadb06b8055aee65}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}!SearchAsync@{SearchAsync}}
+\index{SearchAsync@{SearchAsync}!YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}}
+\doxysubsubsection{\texorpdfstring{SearchAsync()}{SearchAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service.\+Search\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters}{Query\+Parameters}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_release_group}{Release\+Group}} $>$}]{query,  }\item[{int}]{limit = {\ttfamily 25},  }\item[{int}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Search for a release-\/group in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The query parameters.\\
+\hline
+{\em limit} & The maximum number of release-\/groups to return (default = 25).\\
+\hline
+{\em offset} & The offset to the release-\/groups list (enables paging, default = 0).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_group_service_aba7f5dba812b74d483be4174f32a166d}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Release\+Group\+Service}}.
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d55/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_a5b432244e5f6ada4eadb06b8055aee65_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ad7f924d7a979b3732ca2c4a6ff8530f0}\label{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ad7f924d7a979b3732ca2c4a6ff8530f0}} 
+\index{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}!SearchAsync@{SearchAsync}}
+\index{SearchAsync@{SearchAsync}!YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService@{YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService}}
+\doxysubsubsection{\texorpdfstring{SearchAsync()}{SearchAsync()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_collections_1_1_release_group_list}{Release\+Group\+List}}$>$ Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+Release\+Group\+Service.\+Search\+Async (\begin{DoxyParamCaption}\item[{string}]{query,  }\item[{int}]{limit = {\ttfamily 25},  }\item[{int}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Search for a release-\/group in the \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} database, matching the given query. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The query string.\\
+\hline
+{\em limit} & The maximum number of release-\/groups to return (default = 25).\\
+\hline
+{\em offset} & The offset to the release-\/groups list (enables paging, default = 0).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_group_service_ab139aaf0698873ef72484b102c4cb041}{Y\+T\+Music\+Uploader.\+Music\+Brainz.\+A\+P\+I.\+Services.\+I\+Release\+Group\+Service}}.
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d55/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service_ad7f924d7a979b3732ca2c4a6ff8530f0_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Music\+Brainz/\+Services/\mbox{\hyperlink{_release_group_service_8cs}{Release\+Group\+Service.\+cs}}\end{DoxyCompactItemize}

@@ -50,9 +50,10 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
-        [ "Properties", "functions_prop.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Properties", "functions_prop.html", "functions_prop" ],
         [ "Events", "functions_evnt.html", null ]
       ] ]
     ] ],
@@ -65,8 +66,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/dfa/class_y_t_music_uploader_1_1_business_1_1_music_brainz_1_1_file_request_cache.html#ab4f638a17cf0f8ff5d119e594b6f469c",
-"dd/dd5/class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data.html"
+"d5/d6e/namespace_y_t_music_uploader_1_1_custom_controls.html",
+"d9/d02/_i_release_group_service_8cs.html",
+"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#a528afcea10ff044180e7b847576d5421",
+"index.html#autotoc_md12"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

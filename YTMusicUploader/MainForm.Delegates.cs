@@ -127,27 +127,31 @@ namespace YTMusicUploader
             {
                 lblUploadingMessage.Text = text;
 
-                if (artworkImage == null && changingArtworkImage)
+                try
                 {
-                    ArtworkImage = null;
-                    pbArtwork.Visible = false;
-                    pbArtworkIdle.Visible = true;
-                }
-                else if (artworkImage != null && changingArtworkImage)
-                {
-                    pbArtworkIdle.Visible = false;
-                    pbArtwork.Visible = true;
-                    ArtworkImage = artworkImage;
-                    pbArtwork.Image = artworkImage;
+                    if (artworkImage == null && changingArtworkImage)
+                    {
+                        ArtworkImage = null;
+                        pbArtwork.Visible = false;
+                        pbArtworkIdle.Visible = true;
+                    }
+                    else if (artworkImage != null && changingArtworkImage)
+                    {
+                        pbArtworkIdle.Visible = false;
+                        pbArtwork.Visible = true;
+                        ArtworkImage = artworkImage;
+                        pbArtwork.Image = artworkImage;
 
-                    if (tooltipText != null)
-                        ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
+                        if (tooltipText != null)
+                            ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
+                    }
+                    else
+                    {
+                        if (tooltipText != null)
+                            ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
+                    }
                 }
-                else
-                {
-                    if (tooltipText != null)
-                        ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
-                }
+                catch { }
             }
         }
 

@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['uploadlog_2ecs_657',['UploadLog.cs',['../d5/dae/_upload_log_8cs.html',1,'']]],
-  ['uploadlog_2edesigner_2ecs_658',['UploadLog.Designer.cs',['../de/dc3/_upload_log_8_designer_8cs.html',1,'']]],
-  ['uploadsong_2ecs_659',['UploadSong.cs',['../d5/dc1/_upload_song_8cs.html',1,'']]]
+  ['safefilestream_2ecs_893',['SafeFileStream.cs',['../d4/d03/_safe_file_stream_8cs.html',1,'']]],
+  ['searchcontext_2ecs_894',['SearchContext.cs',['../d0/d84/_search_context_8cs.html',1,'']]],
+  ['searchresults_2ecs_895',['SearchResults.cs',['../d4/d4a/_search_results_8cs.html',1,'']]],
+  ['settings_2ecs_896',['Settings.cs',['../d2/d74/_settings_8cs.html',1,'']]],
+  ['settings_2edesigner_2ecs_897',['Settings.Designer.cs',['../d1/d1c/_settings_8_designer_8cs.html',1,'']]],
+  ['settingsrepo_2ecs_898',['SettingsRepo.cs',['../d9/d8f/_settings_repo_8cs.html',1,'']]]
 ];

@@ -1,8 +1,7 @@
 <map id="YTMusicUploader.MainForm.SetSystemTrayIconText" name="YTMusicUploader.MainForm.SetSystemTrayIconText">
-<area shape="rect" id="node1" title=" " alt="" coords="721,71,912,112"/>
-<area shape="rect" id="node2" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="483,71,673,112"/>
+<area shape="rect" id="node1" title=" " alt="" coords="721,39,912,80"/>
+<area shape="rect" id="node2" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="483,39,673,80"/>
 <area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a33b18473c12b74d584bb628356a820dc" title=" " alt="" coords="244,5,435,47"/>
 <area shape="rect" id="node5" href="$dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ac79b28d31e906a37a700c7574a7b6290" title="Executes the scan" alt="" coords="246,71,433,112"/>
-<area shape="rect" id="node6" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="246,136,433,177"/>
 <area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="5,5,196,47"/>
 </map>

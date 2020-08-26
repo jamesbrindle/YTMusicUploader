@@ -1,14 +1,14 @@
-﻿using Hqub.MusicBrainz.API;
-using Hqub.MusicBrainz.API.Entities;
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
-using YTMusicUploader.Business.MusicBrainz;
+using YTMusicUploader.MusicBrainz.API;
+using YTMusicUploader.MusicBrainz.API.Entities;
 
 namespace YTMusicUploader.Business
 {
@@ -28,6 +28,8 @@ namespace YTMusicUploader.Business
         /// </summary>
         public MusicBrainzClient MusicBrainzClient { get; set; }
 
+        private DateTime MusicBrainzLastRequest { get; set; } = DateTime.Now;
+
         /// <summary>
         /// Gets meta data / tag information from the music file itself and looks up any missing data
         /// using a MusicBrainz API implementation (for instance album cover art).
@@ -35,10 +37,12 @@ namespace YTMusicUploader.Business
         public MusicDataFetcher()
         {
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
-            MusicBrainzClient = new MusicBrainzClient()
-            {
-                Cache = new FileRequestCache(Global.CacheLocation)
-            };
+            MusicBrainzClient = new MusicBrainzClient();
+        }
+
+        private bool IsLastRequestTooSoon()
+        {
+            return MusicBrainzLastRequest < DateTime.Now.AddMilliseconds(-1100);
         }
 
         /// <summary>
@@ -53,20 +57,33 @@ namespace YTMusicUploader.Business
                 // Get tags from file
                 var tags = GetMusicTagLibFile(path).Tag;
 
-                if (!string.IsNullOrEmpty(tags.MusicBrainzTrackId) &&
+                if (tags != null &&
+                    tags.MusicBrainzTrackId != null &&
+                    tags.MusicBrainzReleaseId != null &&
                     !tags.MusicBrainzReleaseId.ToLower().Contains("usicbrainz"))
                 {
                     return tags.MusicBrainzTrackId;
                 }
 
-                var result = GetRecordingFromMusicBrainzWithAlbumNameVariations(
-                                        tags.FirstAlbumArtist,
-                                        tags.Album,
-                                        tags.Title);
-                if (result != null)
-                    return await Task.FromResult(result.Id);
+                if ((tags.FirstPerformer ?? tags.FirstAlbumArtist) != null &&
+                    tags.Album != null &&
+                    tags.Title != null)
+                {
+                    var result = GetRecordingFromMusicBrainzWithAlbumNameVariations(
+                                            tags.FirstPerformer ?? tags.FirstAlbumArtist,
+                                            tags.Album,
+                                            tags.Title);
+                    if (result != null)
+                        return await Task.FromResult(result.Id);
+                }
             }
-            catch { }
+            catch (Exception e)
+            {
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetTrackMbId: " + e.Message);
+#endif
+            }
 
             return null;
         }
@@ -89,13 +106,25 @@ namespace YTMusicUploader.Business
                     return tags.MusicBrainzReleaseId;
                 }
 
-                var result = GetReleaseFromMusicBrainzWithAlbumNameVariations(
-                                        tags.FirstPerformer ?? tags.FirstAlbumArtist ?? "",
-                                        tags.Album);
-                if (result != null)
-                    return result.Id;
+                if ((tags.FirstPerformer ?? tags.FirstAlbumArtist) != null &&
+                    tags.Album != null &&
+                    tags.Title != null)
+                {
+
+                    var result = GetReleaseFromMusicBrainzWithAlbumNameVariations(
+                                            tags.FirstPerformer ?? tags.FirstAlbumArtist ?? "",
+                                            tags.Album);
+                    if (result != null)
+                        return result.Id;
+                }
             }
-            catch { }
+            catch (Exception e)
+            {
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetReleaseMbId: " + e.Message);
+#endif
+            }
 
             return null;
         }
@@ -107,24 +136,48 @@ namespace YTMusicUploader.Business
         /// <returns>MusicBrainz Recording object</returns>
         public Recording GetRecordingFromMusicBrainzWithAlbumNameVariations(string artist, string album, string track)
         {
-            var recording = GetRecordingFromMusicBrainz(artist, album, track);
+            // MusicBrainz capped at 1 request per second
 
-            if (recording != null)
-                return recording;
+            // var recording = GetRecordingFromMusicBrainz(artist, album, track);
+
+            //if (recording != null)
+            //    return recording;
 
             album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
-            recording = GetRecordingFromMusicBrainz(artist, album, track);
+            // recording = GetRecordingFromMusicBrainz(artist, album, track);
 
-            if (recording != null)
-                return recording;
+            //if (recording != null)
+            //    return recording;
 
             album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-            recording = GetRecordingFromMusicBrainz(artist, album, track);
+            //recording = GetRecordingFromMusicBrainz(artist, album, track);
 
-            if (recording != null)
-                return recording;
+            //if (recording != null)
+            //    return recording;
 
-            return null;
+            try
+            {
+                if (!string.IsNullOrEmpty(track) && track.Substring(0, 2).IsNumeric())
+                {
+                    track = track.Substring(2).Trim();
+                    if (track.StartsWith("_") || track.StartsWith("-") || track.StartsWith("."))
+                        track = track.Substring(1).Trim();
+                }
+            }
+            catch (Exception e)
+            {
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetRecordingFromMusicBrainzWithAlbumNameVariations: " + e.Message);
+#endif
+            }
+
+            //recording = GetRecordingFromMusicBrainz(artist, album, track);
+            //if (recording != null)
+            //    return recording;
+
+            track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
+            return GetRecordingFromMusicBrainz(artist, album, track);
         }
 
         /// <summary>
@@ -135,22 +188,60 @@ namespace YTMusicUploader.Business
         {
             try
             {
-                var query = new QueryParameters<Recording>()
+                if (!IsLastRequestTooSoon())
                 {
-                    { "artist", artist },
-                    { "release", album },
-                    { "recording", track }
-                };
+                    var query = new QueryParameters<Recording>()
+                    {
+                        { "artist", artist },
+                        { "release", album },
+                        { "recording", track }
+                    };
 
-                //   var recordings = AsyncHelper.RunSync(() => MusicBrainzClient.Recordings.SearchAsync(query));
-
-                var recordings = Task.Run(async () => await MusicBrainzClient.Recordings.SearchAsync(query)).Result;
-                var matches = recordings.Items.Where(r => r.Title == track && r.Releases.Any(s => s.Title == album));
-
-                // Get the best match (in this case, we use the recording that has the most releases associated).
-                return matches.OrderByDescending(r => r.Releases.Count).FirstOrDefault();
+                    MusicBrainzLastRequest = DateTime.Now;
+                    var recordings = MusicBrainzClient.Recordings.SearchAsync(query).GetAwaiter().GetResult();
+                    if (recordings != null && recordings.Count > 0)
+                    {
+                        var matches = recordings.Items.Where(r => r.Title == track && r.Releases.Any(s => s.Title == album));
+                        if (matches != null && matches.Count() > 0)
+                        {
+                            // Get the best match (in this case, we use the recording that has the most releases associated).
+                            return matches.OrderByDescending(r => r.Releases.Count).FirstOrDefault();
+                        }
+                    }
+                }
             }
-            catch { }
+            catch (Exception e)
+            {
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetRecordingFromMusicBrainz: " + e.Message);
+#endif
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Get the recording (track data) from MusicBrainz via the MBID
+        /// </summary>
+        /// <returns>MusicBrainz Recording object</returns>
+        public Recording GetRecordingFromMusicBrainz(string mbId)
+        {
+            try
+            {
+                if (!IsLastRequestTooSoon())
+                {
+                    MusicBrainzLastRequest = DateTime.Now;
+                    return MusicBrainzClient.Recordings.GetAsync(mbId).GetAwaiter().GetResult();
+                }
+            }
+            catch (Exception e)
+            {
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetRecordingFromMusicBrainz: " + e.Message);
+#endif
+            }
 
             return null;
         }
@@ -162,22 +253,33 @@ namespace YTMusicUploader.Business
         /// <returns>MusicBrainz Release object</returns>
         public Release GetReleaseFromMusicBrainzWithAlbumNameVariations(string artist, string album)
         {
-            var release = GetReleaseFromMusicBrainz(artist, album);
+            // MusicBrainz capped at 1 request per second
 
-            if (release != null)
-                return release;
+            try
+            {
+                //var release = GetReleaseFromMusicBrainz(artist, album);
 
-            album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
-            release = GetReleaseFromMusicBrainz(artist, album);
+                //if (release != null)
+                //    return release;
 
-            if (release != null)
-                return release;
+                album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
 
-            album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-            release = GetReleaseFromMusicBrainz(artist, album);
+                //release = GetReleaseFromMusicBrainz(artist, album);
 
-            if (release != null)
-                return release;
+                //if (release != null)
+                //    return release;
+
+                album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
+                return GetReleaseFromMusicBrainz(artist, album);
+
+            }
+            catch (Exception e)
+            {
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetReleaseFromMusicBrainzWithAlbumNameVariations: " + e.Message);
+#endif
+            }
 
             return null;
         }
@@ -190,30 +292,64 @@ namespace YTMusicUploader.Business
         {
             try
             {
-                //var artists = AsyncHelper.RunSync(() => MusicBrainzClient.Artists.SearchAsync(artist.Quote()));
-                var artists = Task.Run(async () => await MusicBrainzClient.Artists.SearchAsync(artist.Quote())).Result;
-                if (artists != null && artists.Items.Count > 0)
+                if (!IsLastRequestTooSoon())
                 {
-                    var query = new QueryParameters<Release>()
+                    MusicBrainzLastRequest = DateTime.Now;
+                    var artists = MusicBrainzClient.Artists.SearchAsync(artist.Quote()).GetAwaiter().GetResult();
+                    if (artists != null && artists.Items.Count > 0)
+                    {
+                        var query = new QueryParameters<Release>()
                         {
-                            { "arid", artists.FirstOrDefault().Id },
+                            { "arid", artists.Items.FirstOrDefault().Id },
                             { "release", album },
                             { "type", "album" },
                             { "status", "official" }
                         };
 
-                    // Search for a release by title.
-                    //var releases = AsyncHelper.RunSync(() => MusicBrainzClient.Releases.SearchAsync(query));
-                    var releases = Task.Run(async () => await MusicBrainzClient.Releases.SearchAsync(query)).Result;
+                        // Music brains only allows 1 request per second!
+                        Thread.Sleep(1100);
 
-                    // Get the oldest release (remember to sort out items with no date set).
-                    if (releases != null && releases.Items.Count > 0)
-                        return releases.Items.Where(r => r.Date != null && IsCompactDisc(r)).OrderBy(r => r.Date).First();
+                        // Search for a release by title.
+                        //var releases = AsyncHelper.RunSync(() => MusicBrainzClient.Releases.SearchAsync(query));
+                        var releases = MusicBrainzClient.Releases.SearchAsync(query).GetAwaiter().GetResult();
+
+                        // Get the oldest release (remember to sort out items with no date set).
+                        if (releases != null && releases.Items.Count > 0)
+                            return releases.Items.Where(r => r.Date != null && IsCompactDisc(r)).OrderBy(r => r.Date).First();
+                    }
                 }
             }
             catch (Exception e)
             {
-                Console.Out.WriteLine(e);
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetReleaseFromMusicBrainz: " + e.Message);
+#endif
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Get the release (typically, the album data) from MusicBrainz via the MBID
+        /// </summary>
+        /// <returns>MusicBrainz Release object</returns>
+        public Release GetReleaseFromMusicBrainz(string mbid)
+        {
+            try
+            {
+                if (!IsLastRequestTooSoon())
+                {
+                    MusicBrainzLastRequest = DateTime.Now;
+                    return MusicBrainzClient.Releases.GetAsync(mbid).GetAwaiter().GetResult();
+                }
+            }
+            catch (Exception e)
+            {
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetReleaseFromMusicBrainz: " + e.Message);
+#endif
             }
 
             return null;
@@ -256,9 +392,17 @@ namespace YTMusicUploader.Business
 
                         if (tryMusicBrainz)
                         {
-                            var coverImage = GetAlbumArtworkFromCoverArtArchive(path);
-                            if (coverImage != null)
-                                return coverImage;
+                            if (!string.IsNullOrEmpty(file.Tag.MusicBrainzReleaseId) &&
+                                !file.Tag.MusicBrainzReleaseId.ToLower().Contains("usicbrainz"))
+                            {
+                                var coverImage1 = GetAlbumArtworkFromCoverArtArchive(file.Tag.MusicBrainzReleaseId, false);
+                                if (coverImage1 != null)
+                                    return await Task.FromResult(coverImage1);
+                            }
+
+                            var coverImage2 = GetAlbumArtworkFromCoverArtArchive(path, true);
+                            if (coverImage2 != null)
+                                return await Task.FromResult(coverImage2);
                         }
 
                         return await Task.FromResult(Properties.Resources.default_artwork);
@@ -276,11 +420,11 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to the music file</param>
         /// <returns>Thumbnail image</returns>
-        public Image GetAlbumArtworkFromCoverArtArchive(string path)
+        public Image GetAlbumArtworkFromCoverArtArchive(string pathOrMbid, bool isPath)
         {
             try
             {
-                string mbid = GetReleaseMbId(path);
+                string mbid = isPath ? GetReleaseMbId(pathOrMbid) : pathOrMbid;
                 if (!string.IsNullOrEmpty(mbid))
                 {
                     var uri = CoverArtArchive.GetCoverArtUri(mbid);
@@ -315,7 +459,7 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to music file</param>
         /// <returns>Multi-line string</returns>
-        public MusicFileMetaData GetMusicFileMetaData(string path, bool tryMusicBrainz = true)
+        public MusicFileMetaData GetMusicFileMetaData(string path)
         {
             try
             {
@@ -336,15 +480,6 @@ namespace YTMusicUploader.Business
                     duration = tags.Properties.Duration;
                 }
 
-                if (string.IsNullOrEmpty(track) &&
-                    !string.IsNullOrEmpty(album) &&
-                    !string.IsNullOrEmpty(artist) &&
-                    tryMusicBrainz)
-                {
-                    var recording = GetReleaseFromMusicBrainzWithAlbumNameVariations(artist, album);
-                    track = recording.Title;
-                }
-
                 return new MusicFileMetaData
                 {
                     Artist = artist,
@@ -354,10 +489,15 @@ namespace YTMusicUploader.Business
                     Bitrate = bitsPerSecond
                 };
             }
-            catch
+            catch (Exception e)
             {
-                return null;
+                var _ = e;
+#if DEBUG
+                Console.Out.WriteLine("GetMusicFileMetaData: " + e.Message);
+#endif
             }
+
+            return null;
         }
 
         /// <summary>
@@ -370,7 +510,7 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to music file</param>
         /// <returns>Multi-line string</returns>
-        public async Task<string> GetMusicFileMetaDataString(string path, bool tryMusicBrainz = true)
+        public async Task<string> GetMusicFileMetaDataString(string path)
         {
             var sb = new StringBuilder();
             var tags = GetMusicTagLibFile(path);
@@ -392,15 +532,6 @@ namespace YTMusicUploader.Business
                                          tags.Properties.Duration.Minutes,
                                          tags.Properties.Duration.Seconds);
 
-            }
-
-            if (string.IsNullOrEmpty(track) &&
-                !string.IsNullOrEmpty(album) &&
-                !string.IsNullOrEmpty(artist) &&
-                tryMusicBrainz)
-            {
-                var recording = GetReleaseFromMusicBrainzWithAlbumNameVariations(artist, album);
-                track = recording.Title;
             }
 
             sb.AppendLine();
@@ -453,7 +584,7 @@ namespace YTMusicUploader.Business
                     response.Close();
                 }
             }
-            catch (Exception)
+            catch
             {
                 buf = null;
             }
