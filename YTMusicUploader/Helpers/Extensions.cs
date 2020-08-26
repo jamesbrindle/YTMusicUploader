@@ -91,7 +91,7 @@ namespace System
         }
 
         /// <summary>
-        /// Adds quote around string
+        /// Adds quotes around string
         /// </summary>
         public static string Quote(this string s)
         {

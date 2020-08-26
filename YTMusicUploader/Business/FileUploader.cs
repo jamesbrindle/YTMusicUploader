@@ -45,7 +45,7 @@ namespace YTMusicUploader.Business
                     if (MainForm.Aborting)
                     {
                         Stopped = true;
-                        MainForm.SetUploadingMessage("Idle", "idle");
+                        await SetUploadDetails("Idle", null, true);
                         return;
                     }
 
@@ -79,7 +79,7 @@ namespace YTMusicUploader.Business
                             if (MainForm.Aborting)
                             {
                                 Stopped = true;
-                                MainForm.SetUploadingMessage("Idle", "idle");
+                                await SetUploadDetails("Idle", null, true);
                                 return;
                             }
 
@@ -100,7 +100,7 @@ namespace YTMusicUploader.Business
                             if (MainForm.Aborting)
                             {
                                 Stopped = true;
-                                MainForm.SetUploadingMessage("Idle", "idle");
+                                await SetUploadDetails("Idle", null, true);
                                 return;
                             }
 
@@ -123,7 +123,7 @@ namespace YTMusicUploader.Business
                             if (MainForm.Aborting)
                             {
                                 Stopped = true;
-                                MainForm.SetUploadingMessage("Idle", "idle");
+                                await SetUploadDetails("Idle", null, true);
                                 return;
                             }
 
@@ -169,13 +169,19 @@ namespace YTMusicUploader.Business
                 }
             }
 
-            MainForm.SetUploadingMessage("Idle", "idle");
+            await SetUploadDetails("Idle", null, true);
             Stopped = true;
         }
 
         private async Task SetUploadDetails(string message, string musicPath, bool setArtworkImage)
         {
-            string initialTooltipText = await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath, false);
+            string initialTooltipText = string.Empty;
+
+            if (string.IsNullOrEmpty(musicPath))
+                initialTooltipText = "Idle";
+            else
+                await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath, false);
+
             if (!setArtworkImage)
             {
                 // just set the text
@@ -214,44 +220,58 @@ namespace YTMusicUploader.Business
                     }
                     else
                     {
-                        MainForm.SetUploadingMessage(
-                            message,
-                            initialTooltipText,
-                            Properties.Resources.default_artwork,
-                            true);
+                        if (string.IsNullOrEmpty(musicPath))
+                        {
+                            MainForm.SetUploadingMessage(
+                                message,
+                                initialTooltipText,
+                                Properties.Resources.idle,
+                                true);
+                        }
+                        else
+                        {
+                            MainForm.SetUploadingMessage(
+                                message,
+                                initialTooltipText,
+                                Properties.Resources.default_artwork,
+                                true);
+                        }
                     }
                 }
 
-                var threadStarter = new ThreadStart(async () =>
+                if (!string.IsNullOrEmpty(musicPath))
                 {
-                    var image = await MainForm.MusicDataFetcher.GetAlbumArtwork(musicPath);
-                    var finalTooltipText = await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath);
-
-                    if (image != null && MainForm.ArtworkImage != null && ImageHelper.IsSameImage(image, MainForm.ArtworkImage))
+                    var threadStarter = new ThreadStart(async () =>
                     {
-                        MainForm.SetUploadingMessage(
-                            message,
-                            finalTooltipText,
-                            null,
-                            false);
-                    }
-                    else
+                        var image = await MainForm.MusicDataFetcher.GetAlbumArtwork(musicPath);
+                        var finalTooltipText = await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath);
+
+                        if (image != null && MainForm.ArtworkImage != null && ImageHelper.IsSameImage(image, MainForm.ArtworkImage))
+                        {
+                            MainForm.SetUploadingMessage(
+                                message,
+                                finalTooltipText,
+                                null,
+                                false);
+                        }
+                        else
+                        {
+                            MainForm.SetUploadingMessage(
+                                message,
+                                finalTooltipText,
+                                image,
+                                true);
+                        }
+                    });
+
+                    threadStarter += () =>
                     {
-                        MainForm.SetUploadingMessage(
-                            message,
-                            finalTooltipText,
-                            image,
-                            true);
-                    }
-                });
+                        _artworkFetchThread = null;
+                    };
 
-                threadStarter += () =>
-                {
-                    _artworkFetchThread = null;
-                };
-
-                _artworkFetchThread = new Thread(threadStarter);
-                _artworkFetchThread.Start();
+                    _artworkFetchThread = new Thread(threadStarter);
+                    _artworkFetchThread.Start();
+                }
 
                 await Task.Run(() => { });
             }

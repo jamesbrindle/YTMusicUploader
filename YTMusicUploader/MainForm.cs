@@ -333,6 +333,7 @@ namespace YTMusicUploader
                     RepopulateAmountLables();
                     FileUploader.Process().Wait();
                     SetStatusMessage("Idle", "Idle");
+                    SetUploadingMessage("Idle", "Idle", Properties.Resources.idle, true);
                 }
                 catch (Exception e)
                 {
