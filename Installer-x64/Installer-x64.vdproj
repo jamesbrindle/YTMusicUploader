@@ -69,6 +69,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0F94AD261FA17D82C3447EA9F960133A"
+        "OwnerKey" = "8:_79EEE78B263E2A6AABCB5B2D536121E7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0F94AD261FA17D82C3447EA9F960133A"
+        "OwnerKey" = "8:_F6766840D4DE6EAA8A2BD31EF0409C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0F94AD261FA17D82C3447EA9F960133A"
+        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1049578F08C81CE1BB91660384A02E8B"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
@@ -226,12 +244,6 @@
         "Entry"
         {
         "MsmKey" = "8:_31BEEF9DBCADADFD1FB51DD4F47A1FF8"
-        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_32981E07A4D0204103F36B4D8FAA8650"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -533,6 +545,18 @@
         {
         "MsmKey" = "8:_79067E588DD5EF3D1665EE34D9199324"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_79EEE78B263E2A6AABCB5B2D536121E7"
+        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_79EEE78B263E2A6AABCB5B2D536121E7"
+        "OwnerKey" = "8:_F6766840D4DE6EAA8A2BD31EF0409C9E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1042,12 +1066,6 @@
         "Entry"
         {
         "MsmKey" = "8:_DA2CE3DDB5A4B51E0B303797D4FA7863"
-        "OwnerKey" = "8:_32981E07A4D0204103F36B4D8FAA8650"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DA2CE3DDB5A4B51E0B303797D4FA7863"
         "OwnerKey" = "8:_655A6746DB27E8D343926C4F5414ACA7"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1167,6 +1185,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F6766840D4DE6EAA8A2BD31EF0409C9E"
+        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F6D0197110428653B4992F3D906A9AD0"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
@@ -1252,6 +1276,24 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F6766840D4DE6EAA8A2BD31EF0409C9E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_79EEE78B263E2A6AABCB5B2D536121E7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0F94AD261FA17D82C3447EA9F960133A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_74B86FF284FF4BCA920B9D14E7174BEB"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1271,12 +1313,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C86EC18900774D313FCF6860D77BD9C1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_32981E07A4D0204103F36B4D8FAA8650"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2414,6 +2450,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0F94AD261FA17D82C3447EA9F960133A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Data.HashFunction.Interfaces, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0F94AD261FA17D82C3447EA9F960133A"
+                    {
+                    "Name" = "8:System.Data.HashFunction.Interfaces.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Data.HashFunction.Interfaces.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1049578F08C81CE1BB91660384A02E8B"
             {
             "AssemblyRegister" = "3:1"
@@ -3234,37 +3301,6 @@
                     }
                 }
             "SourcePath" = "8:System.Threading.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_32981E07A4D0204103F36B4D8FAA8650"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Hqub.MusicBrainz.API, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_32981E07A4D0204103F36B4D8FAA8650"
-                    {
-                    "Name" = "8:Hqub.MusicBrainz.API.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Hqub.MusicBrainz.API.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
@@ -4430,6 +4466,37 @@
                     }
                 }
             "SourcePath" = "8:System.Security.Principal.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_79EEE78B263E2A6AABCB5B2D536121E7"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Data.HashFunction.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_79EEE78B263E2A6AABCB5B2D536121E7"
+                    {
+                    "Name" = "8:System.Data.HashFunction.Core.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Data.HashFunction.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
@@ -6768,6 +6835,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F6766840D4DE6EAA8A2BD31EF0409C9E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Data.HashFunction.xxHash, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F6766840D4DE6EAA8A2BD31EF0409C9E"
+                    {
+                    "Name" = "8:System.Data.HashFunction.xxHash.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Data.HashFunction.xxHash.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F6D0197110428653B4992F3D906A9AD0"
             {
             "AssemblyRegister" = "3:1"
@@ -7098,15 +7196,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{1264BD7A-6EC2-4680-8B3E-9C31A96FCC56}"
-        "PackageCode" = "8:{DA752D6E-9A4F-46C4-93E7-1D262C74EAF7}"
+        "ProductCode" = "8:{780C95E2-844A-4E9B-AC7D-C67E75F9D16C}"
+        "PackageCode" = "8:{F05911E8-A01B-41B8-ADD1-AA2CB90D52E8}"
         "UpgradeCode" = "8:{AB84D0C0-CDF7-4BDF-90B0-C4808DB11DAB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.3.3"
+        "ProductVersion" = "8:1.3.4"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"
