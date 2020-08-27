@@ -28,6 +28,8 @@ namespace JBToolkit.WinForms
 
         private const int WM_SETREDRAW = 11;
 
+        private static int WM_QUERYENDSESSION = 0x11;
+
         /// <summary>
         /// Suspend the drawing of a control
         /// </summary>
@@ -53,77 +55,89 @@ namespace JBToolkit.WinForms
         {
             try
             {
-                if (message.Msg == WM_SYSCOMMAND && (message.WParam.ToInt32() & 0xfff0) == SC_SIZE)
+                if (message.Msg == WM_QUERYENDSESSION)
                 {
-                    if (FormResizable)
-                    {
-                        GetSystemParametersInfo(SPI_GETDRAGFULLWINDOWS, 0, out int isDragFullWindow, 0);
+                    Environment.Exit(0);
 
-                        if (isDragFullWindow != 0)
-                        {
-                            SetSystemParametersInfo(SPI_SETDRAGFULLWINDOWS, 0, 0, 0);
-                        }
-
-                        base.WndProc(ref message);
-
-                        if (isDragFullWindow != 0)
-                        {
-                            SetSystemParametersInfo(SPI_SETDRAGFULLWINDOWS, 1, 0, 0);
-                        }
-                    }
+                    // If this is WM_QUERYENDSESSION, the closing event should be
+                    // raised in the base WndProc.
+                    base.WndProc(ref message);
                 }
                 else
                 {
-                    if (message.Msg == 0x84) // WM_NCHITTEST
+
+                    if (message.Msg == WM_SYSCOMMAND && (message.WParam.ToInt32() & 0xfff0) == SC_SIZE)
                     {
                         if (FormResizable)
                         {
-                            // Always add grid styles regardless of border type
+                            GetSystemParametersInfo(SPI_GETDRAGFULLWINDOWS, 0, out int isDragFullWindow, 0);
 
-                            var cursor = PointToClient(Cursor.Position);
+                            if (isDragFullWindow != 0)
+                            {
+                                SetSystemParametersInfo(SPI_SETDRAGFULLWINDOWS, 0, 0, 0);
+                            }
 
-                            if (TopLeft.Contains(cursor))
+                            base.WndProc(ref message);
+
+                            if (isDragFullWindow != 0)
                             {
-                                message.Result = (IntPtr)HTTOPLEFT;
+                                SetSystemParametersInfo(SPI_SETDRAGFULLWINDOWS, 1, 0, 0);
                             }
-                            else if (TopRight.Contains(cursor))
-                            {
-                                message.Result = (IntPtr)HTTOPRIGHT;
-                            }
-                            else if (BottomLeft.Contains(cursor))
-                            {
-                                message.Result = (IntPtr)HTBOTTOMLEFT;
-                            }
-                            else if (BottomRight.Contains(cursor))
-                            {
-                                message.Result = (IntPtr)HTBOTTOMRIGHT;
-                            }
-                            else if (Top.Contains(cursor))
-                            {
-                                message.Result = (IntPtr)HTTOP;
-                            }
-                            else if (Left.Contains(cursor))
-                            {
-                                message.Result = (IntPtr)HTLEFT;
-                            }
-                            else if (Right.Contains(cursor))
-                            {
-                                message.Result = (IntPtr)HTRIGHT;
-                            }
-                            else if (Bottom.Contains(cursor))
-                            {
-                                message.Result = (IntPtr)HTBOTTOM;
-                            }
-                        }
-                        else
-                        {
-                            Cursor.Current = Cursors.Arrow;
-                            message.Result = (IntPtr)1;  // Processed6
-                            return;
                         }
                     }
+                    else
+                    {
+                        if (message.Msg == 0x84) // WM_NCHITTEST
+                        {
+                            if (FormResizable)
+                            {
+                                // Always add grid styles regardless of border type
 
-                    base.WndProc(ref message);
+                                var cursor = PointToClient(Cursor.Position);
+
+                                if (TopLeft.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTTOPLEFT;
+                                }
+                                else if (TopRight.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTTOPRIGHT;
+                                }
+                                else if (BottomLeft.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTBOTTOMLEFT;
+                                }
+                                else if (BottomRight.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTBOTTOMRIGHT;
+                                }
+                                else if (Top.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTTOP;
+                                }
+                                else if (Left.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTLEFT;
+                                }
+                                else if (Right.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTRIGHT;
+                                }
+                                else if (Bottom.Contains(cursor))
+                                {
+                                    message.Result = (IntPtr)HTBOTTOM;
+                                }
+                            }
+                            else
+                            {
+                                Cursor.Current = Cursors.Arrow;
+                                message.Result = (IntPtr)1;  // Processed6
+                                return;
+                            }
+                        }
+
+                        base.WndProc(ref message);
+                    }
                 }
             }
             catch (Exception e)
