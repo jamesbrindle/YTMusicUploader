@@ -42,7 +42,7 @@ namespace YTMusicUploader.Providers
         /// <summary>
         /// Object to store pre fetched already uploaded check results
         /// </summary>
-        public static class UploadCheckCheckCache
+        public static class UploadCheckCache
         {
             public static List<MusicFileCacheObject> CachedObjects { get; set; } = new List<MusicFileCacheObject>();
             public static bool Sleep { get; set; } = false;
@@ -69,9 +69,9 @@ namespace YTMusicUploader.Providers
             string cookieValue,
             MusicDataFetcher musicDataFetcher = null)
         {
-            UploadCheckCheckCache.CleanUp = false;
-            UploadCheckCheckCache.CachedObjects.Clear();
-            UploadCheckCheckCache.CachedObjectHash.Clear();
+            UploadCheckCache.CleanUp = false;
+            UploadCheckCache.CachedObjects.Clear();
+            UploadCheckCache.CachedObjectHash.Clear();
 
             try
             {
@@ -82,16 +82,16 @@ namespace YTMusicUploader.Providers
 
             UploadCheckPreloaderThread = new Thread((ThreadStart)delegate
             {
-                while (!UploadCheckCheckCache.CleanUp)
+                while (!UploadCheckCache.CleanUp)
                 {
-                    UploadCheckCheckCache.Sleep = true;
+                    UploadCheckCache.Sleep = true;
                     Thread.Sleep(100);
-                    UploadCheckCheckCache.Sleep = false;
+                    UploadCheckCache.Sleep = false;
                     Thread.Sleep(1000);
                 }
 
-                UploadCheckCheckCache.CachedObjects.Clear();
-                UploadCheckCheckCache.CachedObjectHash.Clear();
+                UploadCheckCache.CachedObjects.Clear();
+                UploadCheckCache.CachedObjectHash.Clear();
             });
             UploadCheckPreloaderThread.Start();
 
@@ -99,20 +99,22 @@ namespace YTMusicUploader.Providers
             {
                 musicFilesList.AsParallel().ForAllInApproximateOrder(cacheObject =>
                 {
-                    if (!UploadCheckCheckCache.CleanUp)
+                    if (!UploadCheckCache.CleanUp)
                     {
-                        while (UploadCheckCheckCache.Sleep)
+                        while (UploadCheckCache.Sleep)
                             Thread.Sleep(2);
 
-                        UploadCheckCheckCache.CachedObjects.Add(new UploadCheckCheckCache.MusicFileCacheObject
+                        UploadCheckCache.CachedObjects.Add(new UploadCheckCache.MusicFileCacheObject
                         {
                             MusicFilePath = cacheObject.Path,
+                            Result = IsSongUploaded(cacheObject.Path, cookieValue, musicDataFetcher).Result == UploadCheckResult.Present_NewRequest,
                             MbId = !string.IsNullOrEmpty(cacheObject.MbId)
-                                        ? cacheObject.MbId
-                                        : musicDataFetcher.GetTrackMbId(cacheObject.Path).Result,
-                            Result = IsSongUploaded(cacheObject.Path, cookieValue, musicDataFetcher).Result == UploadCheckResult.Present_NewRequest
+                                                ? cacheObject.MbId
+                                                : musicDataFetcher.GetTrackMbId(cacheObject.Path).Result,
+                            
                         });
-                        UploadCheckCheckCache.CachedObjectHash.Add(cacheObject.Path);
+
+                        UploadCheckCache.CachedObjectHash.Add(cacheObject.Path);
                     }
                     else
                     {
@@ -122,7 +124,7 @@ namespace YTMusicUploader.Providers
                         }
                         catch { }
                     }
-                }, 4 /* Max degrees of parallelism */ );
+                }, Global.MaxDegreesOfParallelism );
             });
 
             UploadCheckPreloaderThread.Start();
@@ -144,10 +146,10 @@ namespace YTMusicUploader.Providers
             string cookieValue,
             MusicDataFetcher musicDataFetcher = null)
         {
-            if (UploadCheckCheckCache.CachedObjectHash.Contains(musicFilePath))
+            if (UploadCheckCache.CachedObjectHash.Contains(musicFilePath))
             {
                 return await Task.FromResult(
-                                    UploadCheckCheckCache.CachedObjects
+                                    UploadCheckCache.CachedObjects
                                                          .Where(m => m.MusicFilePath == musicFilePath)
                                                          .FirstOrDefault()
                                                          .Result

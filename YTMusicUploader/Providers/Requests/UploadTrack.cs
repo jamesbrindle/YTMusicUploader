@@ -23,7 +23,7 @@ namespace YTMusicUploader.Providers
         /// <param name="maxUploadSpeed">Throttle database bandwidth speed (bytes per second)</param>
         /// <param name="error">OUTPUT error string</param>
         /// <returns>True if the upload is successful, false otherwise</returns>
-        public static bool UploadSong(
+        public static bool UploadTrack(
             MainForm mainForm,
             string cookieValue,
             string filePath,

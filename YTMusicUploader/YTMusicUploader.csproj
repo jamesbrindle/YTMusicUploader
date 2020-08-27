@@ -370,7 +370,7 @@
     <Compile Include="Providers\RequestModels\SearchResults.cs" />
     <Compile Include="Providers\Requests.cs" />
     <Compile Include="Providers\Requests\CheckUploaded.cs" />
-    <Compile Include="Providers\Requests\UploadSong.cs" />
+    <Compile Include="Providers\Requests\UploadTrack.cs" />
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
     <EmbeddedResource Include="Dialogues\UploadLog.resx">
       <DependentUpon>UploadLog.cs</DependentUpon>
@@ -441,6 +441,7 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Raw\refresh.svg" />
     <None Include="Resources\refresh_down.png" />
     <None Include="Resources\refresh_hover.png" />
     <None Include="Resources\refresh.png" />

@@ -56,6 +56,11 @@ namespace YTMusicUploader.Providers
             using (var conn = DbConnection())
             {
                 conn.Open();
+
+                //
+                // Added Mbid Column to MusicFiles Table in v1.2
+                //
+
                 var columns = conn.Query<string>(
                         @"SELECT name 
                           FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
@@ -66,6 +71,10 @@ namespace YTMusicUploader.Providers
                         @"ALTER TABLE MusicFiles
                          ADD COLUMN MbId TEXT");
                 }
+
+                //
+                // End
+                //
             }
         }
 

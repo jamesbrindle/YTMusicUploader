@@ -32,6 +32,7 @@ namespace YTMusicUploader.Business
         public void Process()
         {
             SetStatus();
+
             CurrentMusicFiles = MainForm.MusicFileRepo.LoadAll().Result;
             foreach (var musicFile in CurrentMusicFiles)
                 CurrentMusicFilesHash.Add(musicFile.Path);

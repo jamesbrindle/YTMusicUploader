@@ -40,7 +40,7 @@ namespace YTMusicUploader
         public void QuitApplication()
         {
             Aborting = true;
-            Requests.UploadCheckCheckCache.CleanUp = true;
+            Requests.UploadCheckCache.CleanUp = true;
             FileUploader.Stopped = true;
             TrayIcon.Visible = false;
 

@@ -326,7 +326,7 @@
             // pbConnectedToYoutube
             // 
             this.pbConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.tick;
-            this.pbConnectedToYoutube.Location = new System.Drawing.Point(633, 263);
+            this.pbConnectedToYoutube.Location = new System.Drawing.Point(634, 263);
             this.pbConnectedToYoutube.Name = "pbConnectedToYoutube";
             this.pbConnectedToYoutube.Size = new System.Drawing.Size(14, 14);
             this.pbConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -364,7 +364,7 @@
             // pbNotConnectedToYoutube
             // 
             this.pbNotConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.cross;
-            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(633, 265);
+            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(634, 265);
             this.pbNotConnectedToYoutube.Name = "pbNotConnectedToYoutube";
             this.pbNotConnectedToYoutube.Size = new System.Drawing.Size(12, 12);
             this.pbNotConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -386,7 +386,7 @@
             this.btnConnectToYoutube.Location = new System.Drawing.Point(445, 257);
             this.btnConnectToYoutube.Name = "btnConnectToYoutube";
             this.btnConnectToYoutube.Radius = 4;
-            this.btnConnectToYoutube.Size = new System.Drawing.Size(178, 26);
+            this.btnConnectToYoutube.Size = new System.Drawing.Size(180, 26);
             this.btnConnectToYoutube.Stroke = true;
             this.btnConnectToYoutube.StrokeColor = System.Drawing.Color.LightCoral;
             this.btnConnectToYoutube.TabIndex = 6;
@@ -398,7 +398,7 @@
             // 
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(679, 1);
+            this.lblVersion.Location = new System.Drawing.Point(680, 1);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(35, 20);
             this.lblVersion.TabIndex = 14;

@@ -77,55 +77,15 @@ namespace YTMusicUploader.Business
 
                         try
                         {
-                            var alreadyUploaded = await Requests.IsSongUploaded(
-                                                                    musicFile.Path,
-                                                                    MainForm.Settings.AuthenticationCookie,
-                                                                    MainForm.MusicDataFetcher);
-
-                            if (alreadyUploaded == Requests.UploadCheckResult.Present_FromCache ||
-                                alreadyUploaded == Requests.UploadCheckResult.Present_NewRequest)
-                            {
-                                if (ThreadIsAborting())
-                                    return;
-
-                                await HandleFileAlreadyUploaded(
-                                            musicFile, 
-                                            alreadyUploaded == Requests.UploadCheckResult.Present_FromCache);
-                            }
-                            else
-                            {
-                                if (ThreadIsAborting())
-                                    return;
-
-                                await HandleFileNeedsUploading(musicFile);
-                            }
+                            await TryHandleFileAlreadyUploaded(musicFile);
                         }
                         catch
                         {
+                            // Try 1 more time
+                            Thread.Sleep(1000);
                             try
                             {
-                                var alreadyUploaded = await Requests.IsSongUploaded(
-                                                                    musicFile.Path,
-                                                                    MainForm.Settings.AuthenticationCookie,
-                                                                    MainForm.MusicDataFetcher);
-
-                                if (alreadyUploaded == Requests.UploadCheckResult.Present_FromCache ||
-                                    alreadyUploaded == Requests.UploadCheckResult.Present_NewRequest)
-                                {
-                                    if (ThreadIsAborting())
-                                        return;
-
-                                    await HandleFileAlreadyUploaded(
-                                                musicFile,
-                                                alreadyUploaded == Requests.UploadCheckResult.Present_FromCache);
-                                }
-                                else
-                                {
-                                    if (ThreadIsAborting())
-                                        return;
-
-                                    await HandleFileNeedsUploading(musicFile);
-                                }
+                                await TryHandleFileAlreadyUploaded(musicFile);
                             }
                             catch
                             {
@@ -172,6 +132,31 @@ namespace YTMusicUploader.Business
             await existingMusicFile.Save();
         }
 
+        private async Task TryHandleFileAlreadyUploaded(MusicFile musicFile)
+        {
+            var alreadyUploaded = await Requests.IsSongUploaded(musicFile.Path,
+                                                                MainForm.Settings.AuthenticationCookie,
+                                                                MainForm.MusicDataFetcher);
+
+            if (alreadyUploaded == Requests.UploadCheckResult.Present_FromCache ||
+                alreadyUploaded == Requests.UploadCheckResult.Present_NewRequest)
+            {
+                if (ThreadIsAborting())
+                    return;
+
+                await HandleFileAlreadyUploaded(
+                            musicFile,
+                            alreadyUploaded == Requests.UploadCheckResult.Present_FromCache);
+            }
+            else
+            {
+                if (ThreadIsAborting())
+                    return;
+
+                await HandleFileNeedsUploading(musicFile);
+            }
+        }
+
         private async Task HandleFileAlreadyUploaded(MusicFile musicFile, bool fromCache)
         {
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
@@ -182,9 +167,9 @@ namespace YTMusicUploader.Business
             musicFile.Error = false;
             musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
                                         ? musicFile.MbId
-                                        : (!Requests.UploadCheckCheckCache.CachedObjectHash.Contains(musicFile.Path)
+                                        : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
                                                 ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
-                                                : Requests.UploadCheckCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
+                                                : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
                                                                                               .FirstOrDefault()
                                                                                               .MbId);
 
@@ -197,7 +182,7 @@ namespace YTMusicUploader.Business
             await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
             await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true);
 
-            Requests.UploadSong(
+            Requests.UploadTrack(
                         MainForm,
                         MainForm.Settings.AuthenticationCookie,
                         musicFile.Path,
@@ -218,9 +203,9 @@ namespace YTMusicUploader.Business
                 musicFile.Error = false;
                 musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
                                         ? musicFile.MbId
-                                        : (!Requests.UploadCheckCheckCache.CachedObjectHash.Contains(musicFile.Path)
+                                        : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
                                                 ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
-                                                : Requests.UploadCheckCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
+                                                : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
                                                                                               .FirstOrDefault()
                                                                                               .MbId);
 
@@ -419,7 +404,7 @@ namespace YTMusicUploader.Business
             {
                 Stopped = true;
                 SetUploadDetails("Idle", null, true, false).Wait();
-                Requests.UploadCheckCheckCache.CleanUp = true;
+                Requests.UploadCheckCache.CleanUp = true;
                 return true;
             }
 

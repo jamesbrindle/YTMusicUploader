@@ -118,9 +118,9 @@ namespace YTMusicUploader
 
             InitialiseTimers();
             InitialiseTooltips();
-            InitialiseSystemTryIconMenuButtons();
+            InitialiseSystemTrayIconMenuButtons();
 
-            ConnectToYouTube();
+            ConnectToYouTubeMusic();
             StartMainProcess();
             StartQueueCheck();
         }
@@ -147,7 +147,7 @@ namespace YTMusicUploader
             ThrottleTextChangedTimer.Tick += ThrottleTextChangedTimer_Elapsed;
         }
 
-        private void InitialiseSystemTryIconMenuButtons()
+        private void InitialiseSystemTrayIconMenuButtons()
         {
             tsmShow.Click += new EventHandler(TsmShow_Click);
             tsmQuit.Click += new EventHandler(TsmQuit_Click);
@@ -227,7 +227,7 @@ namespace YTMusicUploader
 
                 try
                 {
-                    using (var archive = SevenZipArchive.Open(Path.Combine(Global.WorkingDirectory, @"AppData\84.0.522.63.7z")))
+                    using (var archive = SevenZipArchive.Open(Path.Combine(Global.WorkingDirectory, $"AppData\\{Global.EdgeVersion}.7z")))
                     {
                         using (var reader = archive.ExtractAllEntries())
                         {
@@ -254,7 +254,7 @@ namespace YTMusicUploader
             _installingEdgeThread.Start();
         }
 
-        private void ConnectToYouTube()
+        private void ConnectToYouTubeMusic()
         {
             _connectToYouTubeMusicThread = new Thread((ThreadStart)delegate
             {
@@ -334,6 +334,7 @@ namespace YTMusicUploader
                     FileUploader.Process().Wait();
                     SetStatusMessage("Idle", "Idle");
                     SetUploadingMessage("Idle", "Idle", null, true);
+                    RepopulateAmountLables(true);
                 }
                 catch (Exception e)
                 {
@@ -366,7 +367,7 @@ namespace YTMusicUploader
 
                             Queue = false;
                             Aborting = false;
-                            Requests.UploadCheckCheckCache.CleanUp = true;
+                            Requests.UploadCheckCache.CleanUp = true;
                             FileUploader.Stopped = true;
                             FileScanner.Reset();
                             StartMainProcess();
@@ -405,10 +406,16 @@ namespace YTMusicUploader
             RunDebugCommands();
         }
 
-        public void RepopulateAmountLables()
+        public void RepopulateAmountLables(bool includeDiscoveredFiles = false)
         {
             SetIssuesLabel(MusicFileRepo.CountIssues().Result.ToString());
             SetUploadedLabel(MusicFileRepo.CountUploaded().Result.ToString());
+
+            if (includeDiscoveredFiles)
+            {
+                InitialFilesCount = MusicFileRepo.CountAll().Result;
+                SetDiscoveredFilesLabel(InitialFilesCount.ToString());
+            }
         }
 
         public void ShowMessageBox(

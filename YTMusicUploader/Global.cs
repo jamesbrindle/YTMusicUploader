@@ -16,6 +16,7 @@ namespace YTMusicUploader
         private static string _applicationVersion = null;
         private static string _appDataLocation = null;
         private static bool? _multiThreadedRequests = null;
+        private static int? _maxDegreesOfParallelism = 4;
         private static string _dbLocation = null;
         private static string _edgeFolder = null;
         private static string _edgeVersion = null;
@@ -235,6 +236,30 @@ namespace YTMusicUploader
         }
 
         /// <summary>
+        /// Check already uploaded tracks with YouTube Music in parallel
+        /// </summary>
+        public static int MaxDegreesOfParallelism
+        {
+            get
+            {
+                if (_maxDegreesOfParallelism != null)
+                    return (int)_maxDegreesOfParallelism;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["MaxDegreesOfParallelism"] != null)
+                        _maxDegreesOfParallelism = ConfigurationManager.AppSettings["MaxDegreesOfParallelism"].ToInt();
+                }
+                catch
+                {
+                    _maxDegreesOfParallelism = 4;
+                }
+
+                return (int)_maxDegreesOfParallelism;
+            }
+        }
+
+        /// <summary>
         /// MusicBrainz API Base URL
         /// </summary>
         public static string MusicBrainzBaseUrl
@@ -274,12 +299,12 @@ namespace YTMusicUploader
                     if (ConfigurationManager.AppSettings["MusicBrainsUserAgent"] != null)
                         _musicBrainzUserAgent =
                             ConfigurationManager.AppSettings["MusicBrainsUserAgent"]
-                            + @"/" + ApplicationVersion + " ( " + "jamie.brindle7@gmail.com" + " )";
+                            + @"/" + ApplicationVersion + " ( " + "james.brindle@jb-net.co.uk" + " )";
                 }
                 catch
                 {
                     _musicBrainzUserAgent = "YTMusicUploader"
-                                + @"/" + ApplicationVersion + " ( " + "jamie.brindle7@gmail.com" + " )";
+                                + @"/" + ApplicationVersion + " ( " + "james.brindle@jb-net.co.uk" + " )";
                 }
 
                 return _musicBrainzUserAgent;

@@ -110,7 +110,6 @@ namespace YTMusicUploader.Business
                     tags.Album != null &&
                     tags.Title != null)
                 {
-
                     var result = GetReleaseFromMusicBrainzWithAlbumNameVariations(
                                             tags.FirstPerformer ?? tags.FirstAlbumArtist ?? "",
                                             tags.Album);
