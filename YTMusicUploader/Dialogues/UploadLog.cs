@@ -88,5 +88,10 @@ namespace YTMusicUploader.Dialogues
         {
             pbRefresh.Image = Properties.Resources.refresh;
         }
+
+        private void PbRefresh_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            pbRefresh.Image = Properties.Resources.refresh_hover;
+        }
     }
 }

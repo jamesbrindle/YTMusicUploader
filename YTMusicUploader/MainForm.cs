@@ -8,6 +8,7 @@ using SharpCompress.Common;
 using SharpCompress.Readers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -89,6 +90,7 @@ namespace YTMusicUploader
             CheckForIllegalCrossThreadCalls = false;
 #endif
             CultureHelper.GloballySetCultureToGB();
+            MainFormInstance = this;
 
             if (hidden)
             {
@@ -249,9 +251,37 @@ namespace YTMusicUploader
                 InstallingEdge = false;
                 ConnectToYTMusicForm = new ConnectToYTMusic(this);
                 SetConnectToYouTubeButtonEnabled(true);
-            });
-
+            })
+            {
+                IsBackground = true
+            };
             _installingEdgeThread.Start();
+        }
+
+        private async Task LoadDb()
+        {
+            Settings = SettingsRepo.Load().Result;
+
+            SetThrottleSpeed(
+                Settings.ThrottleSpeed == 0 || Settings.ThrottleSpeed == -1
+                    ? "-1"
+                    : (Convert.ToDouble(Settings.ThrottleSpeed) / 1000000).ToString());
+
+            var initialFilesCount = await MusicFileRepo.CountAll();
+            var issueCount = await MusicFileRepo.CountIssues();
+            var uploadsCount = await MusicFileRepo.CountUploaded();
+
+            await RegistrySettings.SetStartWithWindows(Settings.StartWithWindows);
+            SetStartWithWindows(Settings.StartWithWindows);
+            SetDiscoveredFilesLabel(InitialFilesCount.ToString());
+            await BindWatchFoldersList();
+            await InitialiseFolderWatchers();
+
+            InitialFilesCount = Task.FromResult(initialFilesCount).Result;
+            SetIssuesLabel(Task.FromResult(issueCount).Result.ToString());
+            SetUploadedLabel(Task.FromResult(uploadsCount).Result.ToString());
+
+            RunDebugCommands();
         }
 
         private void ConnectToYouTubeMusic()
@@ -276,8 +306,10 @@ namespace YTMusicUploader
                 }
 
                 SetConnectedToYouTubeMusic(true);
-            });
-
+            })
+            {
+                IsBackground = true
+            };
             _connectToYouTubeMusicThread.Start();
         }
 
@@ -343,8 +375,10 @@ namespace YTMusicUploader
                     Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
 #endif
                 }
-            });
-
+            })
+            {
+                IsBackground = true
+            };
             _scanAndUploadThread.Start();
         }
 
@@ -375,35 +409,11 @@ namespace YTMusicUploader
                     }
                     catch { }
                 }
-            });
-
+            })
+            {
+                IsBackground = true
+            };
             _queueThread.Start();
-        }
-
-        private async Task LoadDb()
-        {
-            Settings = SettingsRepo.Load().Result;
-
-            SetThrottleSpeed(
-                Settings.ThrottleSpeed == 0 || Settings.ThrottleSpeed == -1
-                    ? "-1"
-                    : (Convert.ToDouble(Settings.ThrottleSpeed) / 1000000).ToString());
-
-            var initialFilesCount = await MusicFileRepo.CountAll();
-            var issueCount = await MusicFileRepo.CountIssues();
-            var uploadsCount = await MusicFileRepo.CountUploaded();
-
-            await RegistrySettings.SetStartWithWindows(Settings.StartWithWindows);
-            SetStartWithWindows(Settings.StartWithWindows);
-            SetDiscoveredFilesLabel(InitialFilesCount.ToString());
-            await BindWatchFoldersList();
-            await InitialiseFolderWatchers();
-
-            InitialFilesCount = Task.FromResult(initialFilesCount).Result;
-            SetIssuesLabel(Task.FromResult(issueCount).Result.ToString());
-            SetUploadedLabel(Task.FromResult(uploadsCount).Result.ToString());
-
-            RunDebugCommands();
         }
 
         public void RepopulateAmountLables(bool includeDiscoveredFiles = false)
@@ -430,16 +440,93 @@ namespace YTMusicUploader
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.WindowsShutDown)
-            {
-                QuitApplication();
-            }
-            else
-            {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {               
                 e.Cancel = true;
                 WindowState = FormWindowState.Minimized;
                 ShowInTaskbar = false;
+              
             }
+            else
+            {
+                QuitApplication();
+            }
+        }
+
+        public void QuitApplication()
+        {
+            Aborting = true;
+            Requests.UploadCheckCache.CleanUp = true;
+            FileUploader.Stopped = true;
+            TrayIcon.Visible = false;
+
+            try
+            {
+                ConnectToYTMusicForm.BrowserControl.Dispose();
+            }
+            catch
+            { }
+
+            try
+            {
+                ConnectToYTMusicForm.Dispose();
+            }
+            catch
+            { }
+
+            try
+            {
+                _installingEdgeThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                Requests.UploadCheckPreloaderThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                Requests.UploadCheckPreloaderSleepThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                _scanAndUploadThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                _connectToYouTubeMusicThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                _queueThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                Application.Exit();
+            }
+            catch { }
+
+            try
+            {
+                Environment.Exit(0);
+            }
+            catch { }
+
+            try
+            {
+                Process.GetCurrentProcess().Kill();
+            }
+            catch { }
         }
     }
 }

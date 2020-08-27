@@ -92,7 +92,10 @@ namespace YTMusicUploader.Providers
 
                 UploadCheckCache.CachedObjects.Clear();
                 UploadCheckCache.CachedObjectHash.Clear();
-            });
+            })
+            {
+                IsBackground = true
+            };
             UploadCheckPreloaderThread.Start();
 
             UploadCheckPreloaderThread = new Thread((ThreadStart)delegate
@@ -111,7 +114,7 @@ namespace YTMusicUploader.Providers
                             MbId = !string.IsNullOrEmpty(cacheObject.MbId)
                                                 ? cacheObject.MbId
                                                 : musicDataFetcher.GetTrackMbId(cacheObject.Path).Result,
-                            
+
                         });
 
                         UploadCheckCache.CachedObjectHash.Add(cacheObject.Path);
@@ -124,9 +127,11 @@ namespace YTMusicUploader.Providers
                         }
                         catch { }
                     }
-                }, Global.MaxDegreesOfParallelism );
-            });
-
+                }, Global.MaxDegreesOfParallelism);
+            })
+            {
+                IsBackground = true
+            };
             UploadCheckPreloaderThread.Start();
         }
 

@@ -106,6 +106,7 @@
             this.pbRefresh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseDown);
             this.pbRefresh.MouseEnter += new System.EventHandler(this.PbRefresh_MouseEnter);
             this.pbRefresh.MouseLeave += new System.EventHandler(this.PbRefresh_MouseLeave);
+            this.pbRefresh.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseUp);
             // 
             // UploadLog
             // 

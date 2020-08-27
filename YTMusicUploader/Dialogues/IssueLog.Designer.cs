@@ -31,8 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueLog));
             this.pnlIssueLog = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.dgvIssues = new JBToolkit.WinForms.FastScrollDataGridView();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
             this.pnlIssueLog.SuspendLayout();
@@ -52,15 +52,6 @@
             this.pnlIssueLog.Name = "pnlIssueLog";
             this.pnlIssueLog.Size = new System.Drawing.Size(988, 633);
             this.pnlIssueLog.TabIndex = 1;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(73, 34);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(106, 13);
-            this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "Issue Log. Loading...";
             // 
             // dgvIssues
             // 
@@ -82,6 +73,15 @@
             this.dgvIssues.Size = new System.Drawing.Size(988, 633);
             this.dgvIssues.TabIndex = 0;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(73, 34);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(106, 13);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.Text = "Issue Log. Loading...";
+            // 
             // pbRefresh
             // 
             this.pbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -96,6 +96,7 @@
             this.pbRefresh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseDown);
             this.pbRefresh.MouseEnter += new System.EventHandler(this.PbRefresh_MouseEnter);
             this.pbRefresh.MouseLeave += new System.EventHandler(this.PbRefresh_MouseLeave);
+            this.pbRefresh.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseUp);
             // 
             // pbIssueLogIcon
             // 

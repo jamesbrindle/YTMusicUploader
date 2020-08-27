@@ -91,10 +91,26 @@ namespace YTMusicUploader.Dialogues
             ResumeDrawing(this);
         }
 
+        public void CloseForm()
+        {
+            try
+            {
+                Close();
+            }
+            catch { }
+        }
+
         private void ConnectToYTMusic_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            Hide();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+            else
+            {
+                CloseForm();
+            }
         }
 
         private void CoreWebView2_WebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs e)

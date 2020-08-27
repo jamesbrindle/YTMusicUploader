@@ -1,8 +1,6 @@
-﻿using JBToolkit.Threads;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using YTMusicUploader.Providers;
 
 namespace YTMusicUploader
 {
@@ -35,65 +33,6 @@ namespace YTMusicUploader
         {
             Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                                  (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
-        }
-
-        public void QuitApplication()
-        {
-            Aborting = true;
-            Requests.UploadCheckCache.CleanUp = true;
-            FileUploader.Stopped = true;
-            TrayIcon.Visible = false;
-
-            try
-            {
-                ConnectToYTMusicForm.BrowserControl.Dispose();
-            }
-            catch
-            { }
-
-            ThreadHelper.SafeSleep(500);
-
-            try
-            {
-                _installingEdgeThread.Abort();
-            }
-            catch { }
-
-            try
-            {
-                Requests.UploadCheckPreloaderThread.Abort();
-            }
-            catch { }
-
-            try
-            {
-                Requests.UploadCheckPreloaderSleepThread.Abort();
-            }
-            catch { }
-
-            try
-            {
-                _scanAndUploadThread.Abort();
-            }
-            catch { }
-
-            try
-            {
-                _connectToYouTubeMusicThread.Abort();
-            }
-            catch { }
-
-            try
-            {
-                _queueThread.Abort();
-            }
-            catch { }
-
-            try
-            {
-                Environment.Exit(0);
-            }
-            catch { }
-        }
+        }       
     }
 }

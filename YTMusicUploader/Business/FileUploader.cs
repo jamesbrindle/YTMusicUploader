@@ -369,7 +369,10 @@ namespace YTMusicUploader.Business
                     _artworkFetchThread = null;
                 };
 
-                _artworkFetchThread = new Thread(threadStarter);
+                _artworkFetchThread = new Thread(threadStarter)
+                {
+                    IsBackground = true
+                };
                 _artworkFetchThread.Start();
             }
         }
