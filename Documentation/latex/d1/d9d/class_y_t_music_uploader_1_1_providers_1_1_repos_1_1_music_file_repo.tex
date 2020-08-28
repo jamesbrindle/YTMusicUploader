@@ -7,20 +7,22 @@ Music File database repository access.
 
 
 
-Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:\nopagebreak
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=236pt]{d8/da9/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__inherit__graph}
+\includegraphics[width=286pt]{d8/da9/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:\nopagebreak
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=236pt]{d4/d25/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__coll__graph}
+\includegraphics[width=286pt]{d4/d25/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -32,6 +34,10 @@ async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_m
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by file path from the database \end{DoxyCompactList}\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1c9cb64300bd688e1d751ec5720dd216}{Get\+Duplicate}} (string hash, string path)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by hash and from the database that doesn\textquotesingle{}t match the given path (i.\+e. a duplicate hash) \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd}{Get\+Randmon\+Music\+File\+With\+Missing\+Mb\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Gets a random music file from the database that\textquotesingle{}s been uploaded but has a missing Mb\+Id for the purposes of retreiving it from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} when the application is in \textquotesingle{}idle\textquotesingle{} state \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f}{Get\+Randmon\+Music\+File\+With\+Missing\+Entity\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Gets a random music file from the database that\textquotesingle{}s been uploaded but has a missing the You\+Tube Music entity\+Id for the purposes of retreiving it when the application is in \textquotesingle{}idle\textquotesingle{} state \end{DoxyCompactList}\item 
 async Task$<$ List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a39d2da3fb475240cc9bedef41b3375b9}{Load\+All}} (bool include\+Error\+Files=true, bool last\+Upload\+Ascending=false, bool ignore\+Recently\+Uploaded=false)
 \begin{DoxyCompactList}\small\item\em Loads a list of all Music\+Files objects with optional filter or order by criteria \end{DoxyCompactList}\item 
 Task$<$ List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1332e55e11b634ee3814a7946aec8ca1}{Load\+Issues}} ()
@@ -91,6 +97,14 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountIssues@{CountIssues}}
 \index{CountIssues@{CountIssues}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -111,7 +125,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -138,7 +153,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -328,6 +344,48 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a6b28e8ade807403313478427a669d81b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!GetRandmonMusicFileWithMissingEntityId@{GetRandmonMusicFileWithMissingEntityId}}
+\index{GetRandmonMusicFileWithMissingEntityId@{GetRandmonMusicFileWithMissingEntityId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{GetRandmonMusicFileWithMissingEntityId()}{GetRandmonMusicFileWithMissingEntityId()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Get\+Randmon\+Music\+File\+With\+Missing\+Entity\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets a random music file from the database that\textquotesingle{}s been uploaded but has a missing the You\+Tube Music entity\+Id for the purposes of retreiving it when the application is in \textquotesingle{}idle\textquotesingle{} state 
+
+\begin{DoxyReturn}{Returns}
+Music\+File object
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!GetRandmonMusicFileWithMissingMbId@{GetRandmonMusicFileWithMissingMbId}}
+\index{GetRandmonMusicFileWithMissingMbId@{GetRandmonMusicFileWithMissingMbId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{GetRandmonMusicFileWithMissingMbId()}{GetRandmonMusicFileWithMissingMbId()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Get\+Randmon\+Music\+File\+With\+Missing\+Mb\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets a random music file from the database that\textquotesingle{}s been uploaded but has a missing Mb\+Id for the purposes of retreiving it from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} when the application is in \textquotesingle{}idle\textquotesingle{} state 
+
+\begin{DoxyReturn}{Returns}
+Music\+File object
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a2157133d88ff435ce8873f4b4aa369f1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a2157133d88ff435ce8873f4b4aa369f1}} 

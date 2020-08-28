@@ -1,6 +1,6 @@
 <map id="YTMusicUploader.Providers.DataAccess" name="YTMusicUploader.Providers.DataAccess">
-<area shape="rect" id="node1" title="Abastract database repository access class." alt="" coords="205,5,413,127"/>
-<area shape="rect" id="node2" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html" title="Music File database repository access." alt="" coords="5,175,192,413"/>
-<area shape="rect" id="node3" href="$d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html" title="Application settings database repository access." alt="" coords="217,241,402,347"/>
-<area shape="rect" id="node4" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html" title="Library watch folders database repository access" alt="" coords="426,211,630,377"/>
+<area shape="rect" id="node1" title="Abastract database repository access class." alt="" coords="293,5,501,127"/>
+<area shape="rect" id="node2" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html" title="Music File database repository access." alt="" coords="5,175,280,428"/>
+<area shape="rect" id="node3" href="$d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html" title="Application settings database repository access." alt="" coords="305,248,490,355"/>
+<area shape="rect" id="node4" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html" title="Library watch folders database repository access" alt="" coords="514,219,718,384"/>
 </map>

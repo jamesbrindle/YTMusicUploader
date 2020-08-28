@@ -1,0 +1,50 @@
+.TH "YTMusicUploader.Business.QueueChecker" 3 "Fri Aug 28 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Business.QueueChecker \- Constantly watches for the folder watcher state changed variable (Queue) in order to queue a new process when the music library changes (file added, deleted etc)  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueueChecker\fP (\fBMainForm\fP mainForm)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBQueue\fP = false\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBStopped\fP = false\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "Thread \fBQueueCheckerThread\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Constantly watches for the folder watcher state changed variable (Queue) in order to queue a new process when the music library changes (file added, deleted etc) 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.Business\&.QueueChecker\&.QueueChecker (\fBMainForm\fP mainForm)"
+
+.SH "Property Documentation"
+.PP 
+.SS "bool YTMusicUploader\&.Business\&.QueueChecker\&.Queue = false\fC [get]\fP, \fC [set]\fP"
+
+.SS "Thread YTMusicUploader\&.Business\&.QueueChecker\&.QueueCheckerThread\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.Business\&.QueueChecker\&.Stopped = false\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

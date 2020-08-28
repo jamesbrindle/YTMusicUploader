@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business.MusicDataFetcher" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business.MusicDataFetcher" 3 "Fri Aug 28 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,6 +7,13 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .SH SYNOPSIS
 .br
 .PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBTrackAndReleaseMbId\fP"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
@@ -15,17 +22,25 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .br
 .RI "Gets meta data / tag information from the music file itself and looks up any missing data using a \fBMusicBrainz\fP API implementation (for instance album cover art)\&. "
 .ti -1c
-.RI "async Task< string > \fBGetTrackMbId\fP (string path)"
+.RI "async Task< string > \fBGetTrackMbId\fP (string path, bool tryMusicBrainz)"
 .br
 .RI "First looks at the file meta data for the track MBID then makes a request to \fBMusicBrainz\fP if it's not found "
 .ti -1c
-.RI "string \fBGetReleaseMbId\fP (string path)"
+.RI "async Task< string > \fBGetReleaseMbId\fP (string path, bool tryMusicBrainz)"
 .br
 .RI "First looks at the file meta data for the release MBID, then makes a request to \fBMusicBrainz\fP if it's not found "
 .ti -1c
-.RI "\fBRecording\fP \fBGetRecordingFromMusicBrainzWithAlbumNameVariations\fP (string artist, string album, string track)"
+.RI "\fBTrackAndReleaseMbId\fP \fBGetTrackAndReleaseMbId\fP (string path, bool tryWithMusicBrainz)"
+.br
+.RI "Get just the track MBID and ReleaseMBID from the music file or optionally from \fBMusicBrainz\fP if not present "
+.ti -1c
+.RI "\fBRecording\fP \fBGetRecordingFromMusicBrainzWithAlbumNameVariation\fP (string artist, string album, string track)"
 .br
 .RI "Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names\&. This method also tries different variations of the album name "
+.ti -1c
+.RI "\fBRecording\fP \fBGetRecordingFromMusicBrainzWithAlbumNameVariation\fP (string path)"
+.br
+.RI "Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names from the music file meta data This method also tries different variations of the album name "
 .ti -1c
 .RI "\fBRecording\fP \fBGetRecordingFromMusicBrainz\fP (string artist, string album, string track)"
 .br
@@ -35,7 +50,7 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 .br
 .RI "Get the recording (track data) from \fBMusicBrainz\fP via the MBID "
 .ti -1c
-.RI "\fBRelease\fP \fBGetReleaseFromMusicBrainzWithAlbumNameVariations\fP (string artist, string album)"
+.RI "\fBRelease\fP \fBGetReleaseFromMusicBrainzWithAlbumNameVariation\fP (string artist, string album)"
 .br
 .RI "Get the release (typically, the album data) from \fBMusicBrainz\fP via query using the artist, album an track names This method also tries different variations of the album name "
 .ti -1c
@@ -88,6 +103,8 @@ YTMusicUploader.Business.MusicDataFetcher \- Gets meta data / tag information fr
 Gets meta data / tag information from the music file itself and looks up any missing data using a \fBMusicBrainz\fP API implementation (for instance album cover art, in which it will lookup CoverArtArchive: https://coverartarchive.org/ 
 
 Thanks to: avatar29A https://github.com/avatar29A/MusicBrainz
+.PP
+NOTE: Only 1 request per second allowed via \fBMusicBrainz\fP API, hence plenty of 'Thread\&.Sleep(1100)' commands\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "YTMusicUploader\&.Business\&.MusicDataFetcher\&.MusicDataFetcher ()"
@@ -104,6 +121,8 @@ Returns album artwork\&. First it will look at actual file to see if one is embe
 \fBParameters\fP
 .RS 4
 \fIpath\fP Full path to the music file
+.br
+\fItryMusicBrainz\fP Use \fBMusicBrainz\fP as a fallback
 .RE
 .PP
 \fBReturns\fP
@@ -224,10 +243,21 @@ Get the recording (track data) from \fBMusicBrainz\fP via the MBID
 .RE
 .PP
 
-.SS "\fBRecording\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainzWithAlbumNameVariations (string artist, string album, string track)"
+.SS "\fBRecording\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainzWithAlbumNameVariation (string artist, string album, string track)"
 
 .PP
 Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names\&. This method also tries different variations of the album name 
+.PP
+\fBReturns\fP
+.RS 4
+\fBMusicBrainz\fP Recording object
+.RE
+.PP
+
+.SS "\fBRecording\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetRecordingFromMusicBrainzWithAlbumNameVariation (string path)"
+
+.PP
+Get the recording (track data) from \fBMusicBrainz\fP via query using the artist, album an track names from the music file meta data This method also tries different variations of the album name 
 .PP
 \fBReturns\fP
 .RS 4
@@ -257,7 +287,7 @@ Get the release (typically, the album data) from \fBMusicBrainz\fP via the MBID
 .RE
 .PP
 
-.SS "\fBRelease\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseFromMusicBrainzWithAlbumNameVariations (string artist, string album)"
+.SS "\fBRelease\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseFromMusicBrainzWithAlbumNameVariation (string artist, string album)"
 
 .PP
 Get the release (typically, the album data) from \fBMusicBrainz\fP via query using the artist, album an track names This method also tries different variations of the album name 
@@ -268,7 +298,7 @@ Get the release (typically, the album data) from \fBMusicBrainz\fP via query usi
 .RE
 .PP
 
-.SS "string YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseMbId (string path)"
+.SS "async Task<string> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetReleaseMbId (string path, bool tryMusicBrainz)"
 
 .PP
 First looks at the file meta data for the release MBID, then makes a request to \fBMusicBrainz\fP if it's not found 
@@ -276,6 +306,8 @@ First looks at the file meta data for the release MBID, then makes a request to 
 \fBParameters\fP
 .RS 4
 \fIpath\fP Full path to music file
+.br
+\fItryMusicBrainz\fP Use \fBMusicBrainz\fP as a fallback
 .RE
 .PP
 \fBReturns\fP
@@ -284,7 +316,25 @@ First looks at the file meta data for the release MBID, then makes a request to 
 .RE
 .PP
 
-.SS "async Task<string> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetTrackMbId (string path)"
+.SS "\fBTrackAndReleaseMbId\fP YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetTrackAndReleaseMbId (string path, bool tryWithMusicBrainz)"
+
+.PP
+Get just the track MBID and ReleaseMBID from the music file or optionally from \fBMusicBrainz\fP if not present 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Path to music file
+.br
+\fItryWithMusicBrainz\fP Try to get the data from \fBMusicBrainz\fP if not present
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBTrackAndReleaseMbId\fP object
+.RE
+.PP
+
+.SS "async Task<string> YTMusicUploader\&.Business\&.MusicDataFetcher\&.GetTrackMbId (string path, bool tryMusicBrainz)"
 
 .PP
 First looks at the file meta data for the track MBID then makes a request to \fBMusicBrainz\fP if it's not found 
@@ -292,6 +342,8 @@ First looks at the file meta data for the track MBID then makes a request to \fB
 \fBParameters\fP
 .RS 4
 \fIpath\fP Full path to music file
+.br
+\fItryMusicBrainz\fP Use \fBMusicBrainz\fP as a fallback
 .RE
 .PP
 \fBReturns\fP

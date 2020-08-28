@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Requests" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Requests" 3 "Fri Aug 28 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -11,7 +11,7 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 
 .in +1c
 .ti -1c
-.RI "class \fBUploadCheckCheckCache\fP"
+.RI "class \fBUploadCheckCache\fP"
 .br
 .RI "Object to store pre fetched already uploaded check results "
 .in -1c
@@ -34,19 +34,19 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .br
 .RI "Starts a new thread which loops through MusicFiles to check if they've already been uploaded to YouTube Music ahead of time and stores them in a cache to speed up the upload checker\&. "
 .ti -1c
-.RI "static async Task< \fBUploadCheckResult\fP > \fBIsSongUploaded\fP (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
+.RI "static \fBUploadCheckResult\fP \fBIsSongUploaded\fP (string musicFilePath, string cookieValue, out string entityId, \fBMusicDataFetcher\fP musicDataFetcher=null, bool checkCheck=true)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
 .ti -1c
-.RI "static async Task< bool > \fBIsSongUploadedMulitpleAlbumNameVariations\fP (string artist, string album, string track, string cookieValue)"
+.RI "static bool \fBIsSongUploadedMulitpleAlbumNameVariation\fP (string artist, string album, string track, string cookieValue, out string entityId)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
 .ti -1c
-.RI "static async Task< bool > \fBIsSongUploaded\fP (string artist, string album, string track, string cookieValue)"
+.RI "static bool \fBIsSongUploaded\fP (string artist, string album, string track, string cookieValue, out string entityId)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
 .ti -1c
-.RI "static bool \fBUploadSong\fP (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)"
+.RI "static bool \fBUploadTrack\fP (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to upload a music file\&. "
 .ti -1c
@@ -148,7 +148,7 @@ True if successfully authenticated, false otherwise
 .RE
 .PP
 
-.SS "static async Task<bool> YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string artist, string album, string track, string cookieValue)\fC [static]\fP"
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string artist, string album, string track, string cookieValue, out string entityId)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. 
@@ -162,6 +162,8 @@ HttpWebRequest POST request to send to YouTube to determine if the song about to
 \fItrack\fP Track or song name from music file meta tag
 .br
 \fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIentityId\fP Output YouTube Music song entity ID if found
 .RE
 .PP
 \fBReturns\fP
@@ -170,7 +172,7 @@ True if song is found, false otherwise
 .RE
 .PP
 
-.SS "static async Task<\fBUploadCheckResult\fP> YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string musicFilePath, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
+.SS "static \fBUploadCheckResult\fP YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string musicFilePath, string cookieValue, out string entityId, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP, bool checkCheck = \fCtrue\fP)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. 
@@ -181,16 +183,21 @@ HttpWebRequest POST request to send to YouTube to determine if the song about to
 .br
 \fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
 .br
+\fIentityId\fP Output YouTube Music song entity ID if found
+.br
 \fImusicDataFetcher\fP You can pass an existing MusicDataFetcher object, or one will be created if left blank
-.RE
+.br
+\fIcheckCheck\fP Whether or not to refer to cache for lookup (only useful while scanning)/param> 
 .PP
 \fBReturns\fP
 .RS 4
 True if song is found, false otherwise
 .RE
 .PP
+.RE
+.PP
 
-.SS "static async Task<bool> YTMusicUploader\&.Providers\&.Requests\&.IsSongUploadedMulitpleAlbumNameVariations (string artist, string album, string track, string cookieValue)\fC [static]\fP"
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.IsSongUploadedMulitpleAlbumNameVariation (string artist, string album, string track, string cookieValue, out string entityId)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. 
@@ -204,6 +211,8 @@ HttpWebRequest POST request to send to YouTube to determine if the song about to
 \fItrack\fP Track or song name from music file meta tag
 .br
 \fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIentityId\fP Output YouTube Music song entity ID if found
 .RE
 .PP
 \fBReturns\fP
@@ -227,7 +236,7 @@ Starts a new thread which loops through MusicFiles to check if they've already b
 .RE
 .PP
 
-.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.UploadSong (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)\fC [static]\fP"
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.UploadTrack (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to YouTube to upload a music file\&. 

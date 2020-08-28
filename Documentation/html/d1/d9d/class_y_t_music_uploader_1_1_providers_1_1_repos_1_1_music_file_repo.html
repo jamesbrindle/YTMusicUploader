@@ -98,8 +98,8 @@ Inheritance diagram for YTMusicUploader.Providers.Repos.MusicFileRepo:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/da9/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__inherit__graph.png" border="0" usemap="#_y_t_music_uploader_8_providers_8_repos_8_music_file_repo_inherit__map" alt="Inheritance graph"/></div>
 <map name="_y_t_music_uploader_8_providers_8_repos_8_music_file_repo_inherit__map" id="_y_t_music_uploader_8_providers_8_repos_8_music_file_repo_inherit__map">
-<area shape="rect" title="Music File database repository access." alt="" coords="16,160,203,399"/>
-<area shape="rect" href="../../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html" title="Abastract database repository access class." alt="" coords="5,5,213,112"/>
+<area shape="rect" title="Music File database repository access." alt="" coords="5,160,280,413"/>
+<area shape="rect" href="../../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html" title="Abastract database repository access class." alt="" coords="39,5,247,112"/>
 </map>
 </div>
 <div class="dynheader">
@@ -107,8 +107,8 @@ Collaboration diagram for YTMusicUploader.Providers.Repos.MusicFileRepo:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d25/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__coll__graph.png" border="0" usemap="#_y_t_music_uploader_8_providers_8_repos_8_music_file_repo_coll__map" alt="Collaboration graph"/></div>
 <map name="_y_t_music_uploader_8_providers_8_repos_8_music_file_repo_coll__map" id="_y_t_music_uploader_8_providers_8_repos_8_music_file_repo_coll__map">
-<area shape="rect" title="Music File database repository access." alt="" coords="16,160,203,399"/>
-<area shape="rect" href="../../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html" title="Abastract database repository access class." alt="" coords="5,5,213,112"/>
+<area shape="rect" title="Music File database repository access." alt="" coords="5,160,280,413"/>
+<area shape="rect" href="../../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html" title="Abastract database repository access class." alt="" coords="39,5,247,112"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -123,6 +123,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c9cb64300bd688e1d751ec5720dd216"><td class="memItemLeft" align="right" valign="top">Task&lt; <a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a1c9cb64300bd688e1d751ec5720dd216">GetDuplicate</a> (string hash, string path)</td></tr>
 <tr class="memdesc:a1c9cb64300bd688e1d751ec5720dd216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load single MusicFile object by hash and from the database that doesn't match the given path (i.e. a duplicate hash)  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a1c9cb64300bd688e1d751ec5720dd216">More...</a><br /></td></tr>
 <tr class="separator:a1c9cb64300bd688e1d751ec5720dd216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bf14ba9910311720ffcf6c9a1a429fd"><td class="memItemLeft" align="right" valign="top">Task&lt; <a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a8bf14ba9910311720ffcf6c9a1a429fd">GetRandmonMusicFileWithMissingMbId</a> ()</td></tr>
+<tr class="memdesc:a8bf14ba9910311720ffcf6c9a1a429fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a random music file from the database that's been uploaded but has a missing MbId for the purposes of retreiving it from <a class="el" href="../../db/d3b/namespace_y_t_music_uploader_1_1_music_brainz.html">MusicBrainz</a> when the application is in 'idle' state  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a8bf14ba9910311720ffcf6c9a1a429fd">More...</a><br /></td></tr>
+<tr class="separator:a8bf14ba9910311720ffcf6c9a1a429fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7030a19fb0ec9cc8c75ab7ef6019c36f"><td class="memItemLeft" align="right" valign="top">Task&lt; <a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a7030a19fb0ec9cc8c75ab7ef6019c36f">GetRandmonMusicFileWithMissingEntityId</a> ()</td></tr>
+<tr class="memdesc:a7030a19fb0ec9cc8c75ab7ef6019c36f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a random music file from the database that's been uploaded but has a missing the YouTube Music entityId for the purposes of retreiving it when the application is in 'idle' state  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a7030a19fb0ec9cc8c75ab7ef6019c36f">More...</a><br /></td></tr>
+<tr class="separator:a7030a19fb0ec9cc8c75ab7ef6019c36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39d2da3fb475240cc9bedef41b3375b9"><td class="memItemLeft" align="right" valign="top">async Task&lt; List&lt; <a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a39d2da3fb475240cc9bedef41b3375b9">LoadAll</a> (bool includeErrorFiles=true, bool lastUploadAscending=false, bool ignoreRecentlyUploaded=false)</td></tr>
 <tr class="memdesc:a39d2da3fb475240cc9bedef41b3375b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a list of all MusicFiles objects with optional filter or order by criteria  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a39d2da3fb475240cc9bedef41b3375b9">More...</a><br /></td></tr>
 <tr class="separator:a39d2da3fb475240cc9bedef41b3375b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,6 +217,18 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="256,5,441,47"/>
 </map>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph" alt=""/></div>
+<map name="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph" id="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph">
+<area shape="rect" title="Count all non&#45;removed Music File entries" alt="" coords="729,39,932,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92" title=" " alt="" coords="491,39,681,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723" title=" " alt="" coords="252,39,443,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="9,5,200,47"/>
+<area shape="rect" href="../../df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,71,204,112"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -245,8 +263,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph" alt=""/></div>
 <map name="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph" id="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph">
-<area shape="rect" title="Count all non&#45;removed Music File entries that have upload errors" alt="" coords="244,5,469,47"/>
-<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a783cb437f0df94d309dfc475448f87d6" title=" " alt="" coords="5,5,196,47"/>
+<area shape="rect" title="Count all non&#45;removed Music File entries that have upload errors" alt="" coords="729,39,955,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92" title=" " alt="" coords="491,39,681,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723" title=" " alt="" coords="252,39,443,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="9,5,200,47"/>
+<area shape="rect" href="../../df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,71,204,112"/>
 </map>
 </div>
 
@@ -283,8 +304,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph" alt=""/></div>
 <map name="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph" id="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph">
-<area shape="rect" title="Count all non&#45;removed Music File entries with upload success" alt="" coords="244,5,485,47"/>
-<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a783cb437f0df94d309dfc475448f87d6" title=" " alt="" coords="5,5,196,47"/>
+<area shape="rect" title="Count all non&#45;removed Music File entries with upload success" alt="" coords="729,39,971,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92" title=" " alt="" coords="491,39,681,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723" title=" " alt="" coords="252,39,443,80"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="9,5,200,47"/>
+<area shape="rect" href="../../df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,71,204,112"/>
 </map>
 </div>
 
@@ -582,6 +606,64 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Returns the database ID of the music file by a give file path" alt="" coords="472,5,703,61"/>
 <area shape="rect" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a2157133d88ff435ce8873f4b4aa369f1" title="Inserts a Music File entry into the database. If the entry already exists, but is flagged as &#39;removed..." alt="" coords="239,13,424,54"/>
 <area shape="rect" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html#a6d852cd37ed75db01fb143d2bebc0244" title="Insert or update the database" alt="" coords="5,13,191,54"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7030a19fb0ec9cc8c75ab7ef6019c36f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7030a19fb0ec9cc8c75ab7ef6019c36f">&#9670;&nbsp;</a></span>GetRandmonMusicFileWithMissingEntityId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Task&lt;<a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a>&gt; YTMusicUploader.Providers.Repos.MusicFileRepo.GetRandmonMusicFileWithMissingEntityId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a random music file from the database that's been uploaded but has a missing the YouTube Music entityId for the purposes of retreiving it when the application is in 'idle' state </p>
+<dl class="section return"><dt>Returns</dt><dd>MusicFile object</dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f_cgraph" alt=""/></div>
+<map name="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f_cgraph" id="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f_cgraph">
+<area shape="rect" title="Gets a random music file from the database that&#39;s been uploaded but has a missing the YouTube Music e..." alt="" coords="5,5,235,61"/>
+<area shape="rect" href="../../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="283,13,468,54"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8bf14ba9910311720ffcf6c9a1a429fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bf14ba9910311720ffcf6c9a1a429fd">&#9670;&nbsp;</a></span>GetRandmonMusicFileWithMissingMbId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Task&lt;<a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a>&gt; YTMusicUploader.Providers.Repos.MusicFileRepo.GetRandmonMusicFileWithMissingMbId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a random music file from the database that's been uploaded but has a missing MbId for the purposes of retreiving it from <a class="el" href="../../db/d3b/namespace_y_t_music_uploader_1_1_music_brainz.html">MusicBrainz</a> when the application is in 'idle' state </p>
+<dl class="section return"><dt>Returns</dt><dd>MusicFile object</dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd_cgraph" alt=""/></div>
+<map name="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd_cgraph" id="d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd_cgraph">
+<area shape="rect" title="Gets a random music file from the database that&#39;s been uploaded but has a missing MbId for the purpos..." alt="" coords="5,5,235,61"/>
+<area shape="rect" href="../../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="283,13,468,54"/>
 </map>
 </div>
 

@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_musicresponsivelistitemflexcolumnrenderer =
+[
+    [ "displayPriority", "df/dfc/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_musicresponsivelistitemflexcolumnrenderer.html#a7acf061c5872dec1d9dda9c9868b6a3a", null ],
+    [ "text", "df/dfc/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_musicresponsivelistitemflexcolumnrenderer.html#a91d9a8fbc1961ebe5ffa16bc9e3ec34b", null ]
+];

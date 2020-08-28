@@ -1,6 +1,5 @@
 <map id="YTMusicUploader.Business.FileUploader.Process" name="YTMusicUploader.Business.FileUploader.Process">
-<area shape="rect" id="node1" title="Execute the upload process" alt="" coords="5,71,192,112"/>
-<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6510e6b094491b7947d8922bf6dfc009" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="261,5,447,47"/>
-<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,71,449,112"/>
-<area shape="rect" id="node4" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,137,468,193"/>
+<area shape="rect" id="node1" title="Execute the upload process" alt="" coords="5,43,192,84"/>
+<area shape="rect" id="node2" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,5,449,47"/>
+<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,71,468,127"/>
 </map>

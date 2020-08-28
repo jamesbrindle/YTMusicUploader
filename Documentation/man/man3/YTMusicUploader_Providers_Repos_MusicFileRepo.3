@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Fri Aug 28 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,6 +24,14 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .RI "Task< \fBMusicFile\fP > \fBGetDuplicate\fP (string hash, string path)"
 .br
 .RI "Load single MusicFile object by hash and from the database that doesn't match the given path (i\&.e\&. a duplicate hash) "
+.ti -1c
+.RI "Task< \fBMusicFile\fP > \fBGetRandmonMusicFileWithMissingMbId\fP ()"
+.br
+.RI "Gets a random music file from the database that's been uploaded but has a missing MbId for the purposes of retreiving it from \fBMusicBrainz\fP when the application is in 'idle' state "
+.ti -1c
+.RI "Task< \fBMusicFile\fP > \fBGetRandmonMusicFileWithMissingEntityId\fP ()"
+.br
+.RI "Gets a random music file from the database that's been uploaded but has a missing the YouTube Music entityId for the purposes of retreiving it when the application is in 'idle' state "
 .ti -1c
 .RI "async Task< List< \fBMusicFile\fP > > \fBLoadAll\fP (bool includeErrorFiles=true, bool lastUploadAscending=false, bool ignoreRecentlyUploaded=false)"
 .br
@@ -238,6 +246,28 @@ Returns the database ID of the music file by a give file path
 \fBReturns\fP
 .RS 4
 Integer database ID
+.RE
+.PP
+
+.SS "Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetRandmonMusicFileWithMissingEntityId ()"
+
+.PP
+Gets a random music file from the database that's been uploaded but has a missing the YouTube Music entityId for the purposes of retreiving it when the application is in 'idle' state 
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
+.SS "Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.GetRandmonMusicFileWithMissingMbId ()"
+
+.PP
+Gets a random music file from the database that's been uploaded but has a missing MbId for the purposes of retreiving it from \fBMusicBrainz\fP when the application is in 'idle' state 
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
 .RE
 .PP
 

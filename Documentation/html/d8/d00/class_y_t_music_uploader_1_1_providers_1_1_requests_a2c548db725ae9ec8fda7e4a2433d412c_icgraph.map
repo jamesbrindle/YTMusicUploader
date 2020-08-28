@@ -1,5 +1,8 @@
 <map id="YTMusicUploader.Providers.Requests.GetPostBytes" name="YTMusicUploader.Providers.Requests.GetPostBytes">
-<area shape="rect" id="node1" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="239,39,424,80"/>
-<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="5,5,191,47"/>
-<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a15e0e7c11bb6158469a234cc8aab0807" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="5,71,191,112"/>
+<area shape="rect" id="node1" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="724,72,909,113"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a999ef8b6818a6afda480211b7a36a0d5" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="491,39,676,80"/>
+<area shape="rect" id="node6" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#ad946e013b93cd1edbe8e0fb9f8a62e17" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="491,104,676,145"/>
+<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723" title=" " alt="" coords="252,39,443,80"/>
+<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="9,5,200,47"/>
+<area shape="rect" id="node5" href="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,71,204,112"/>
 </map>

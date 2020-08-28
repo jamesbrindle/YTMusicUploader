@@ -12,5 +12,6 @@ var class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form =
     [ "WndProc", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a28d3ae10b5058644572f6a68dfae7148", null ],
     [ "CreateParams", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a72736ceadf0f13a0876fb22a69e0c76e", null ],
     [ "FormResizable", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a306fc8d5fe9fe29d4ef9c4dbb27fc0fc", null ],
-    [ "HandleCustomClientDPI", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a18f4385b53feb48261337f84fb81ebc2", null ]
+    [ "HandleCustomClientDPI", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a18f4385b53feb48261337f84fb81ebc2", null ],
+    [ "MainFormInstance", "da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#ad2c2aade673a0e9debe92e5c08244090", null ]
 ];

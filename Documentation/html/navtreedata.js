@@ -66,10 +66,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d5/d6e/namespace_y_t_music_uploader_1_1_custom_controls.html",
-"d9/d02/_i_release_group_service_8cs.html",
-"dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#a528afcea10ff044180e7b847576d5421",
-"index.html#autotoc_md12"
+"d3/dc3/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_text4.html",
+"d7/d70/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context_1_1_user.html",
+"da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a27c09716f8e37025305a17f63c0a5142",
+"dd/db6/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters.html#ab4bb39b561849871726a21cc3b9475f5",
+"functions_n.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

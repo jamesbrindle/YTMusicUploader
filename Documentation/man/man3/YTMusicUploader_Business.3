@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business" 3 "Fri Aug 28 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -9,9 +9,6 @@ YTMusicUploader.Business
 .SS "Namespaces"
 
 .in +1c
-.ti -1c
-.RI "namespace \fBMusicBrainz\fP"
-.br
 .ti -1c
 .RI "namespace \fBPipes\fP"
 .br
@@ -32,6 +29,10 @@ YTMusicUploader.Business
 .br
 .RI "Responsive for managing uploading music files to YouTube Music\&. "
 .ti -1c
+.RI "class \fBIdleProcessor\fP"
+.br
+.RI "Performs operations while the application is in idle state, such as retreiving data from \fBMusicBrainz\fP and updating the MusicFile database entries with the retreived data "
+.ti -1c
 .RI "class \fBMusicDataFetcher\fP"
 .br
 .RI "Gets meta data / tag information from the music file itself and looks up any missing data using a \fBMusicBrainz\fP API implementation (for instance album cover art, in which it will lookup CoverArtArchive: https://coverartarchive.org/ "
@@ -39,6 +40,10 @@ YTMusicUploader.Business
 .RI "class \fBMusicFileMetaData\fP"
 .br
 .RI "Custom music file meta tag object "
+.ti -1c
+.RI "class \fBQueueChecker\fP"
+.br
+.RI "Constantly watches for the folder watcher state changed variable (Queue) in order to queue a new process when the music library changes (file added, deleted etc) "
 .ti -1c
 .RI "class \fBRegistrySettings\fP"
 .br

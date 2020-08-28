@@ -1,5 +1,4 @@
 <map id="YTMusicUploader.Providers.RequestModels.IRequestModel" name="YTMusicUploader.Providers.RequestModels.IRequestModel">
-<area shape="rect" id="node1" title=" " alt="" coords="116,5,319,97"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,208,97"/>
 <area shape="rect" id="node2" href="$db/d9e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context.html" title="Deserialised HttpWebRequest body to send to YouTube Music to perform a search of uploaded songs" alt="" coords="5,145,208,267"/>
-<area shape="rect" id="node3" href="$d3/dad/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result.html" title="Deserialised HttpWebRequest response body send by YouTube Music of search results" alt="" coords="232,145,427,267"/>
 </map>

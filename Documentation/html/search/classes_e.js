@@ -1,12 +1,16 @@
 var searchData=
 [
-  ['tab_762',['Tab',['../d3/dd4/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tab.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['tabbedsearchresultsrenderer_763',['TabbedSearchResultsRenderer',['../d7/d70/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tabbed_search_results_renderer.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['tabrenderer_764',['TabRenderer',['../d4/d77/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tab_renderer.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['tag_765',['Tag',['../df/d75/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_tag.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
-  ['text_766',['Text',['../da/d39/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_text.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
-  ['textrepresentation_767',['TextRepresentation',['../d0/d7a/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_text_representation.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
-  ['throttledstream_768',['ThrottledStream',['../da/d0e/class_y_t_music_uploader_1_1_business_1_1_throttled_stream.html',1,'YTMusicUploader::Business']]],
-  ['track_769',['Track',['../d1/dd9/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_track.html',1,'YTMusicUploader::MusicBrainz::API::Entities']]],
-  ['typedescriptionprovider_770',['TypeDescriptionProvider',['../d0/d67/class_type_description_provider.html',1,'']]]
+  ['safefilestream_958',['SafeFileStream',['../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html',1,'JBToolkit::StreamHelpers']]],
+  ['safehandlezeroorminusoneisinvalid_959',['SafeHandleZeroOrMinusOneIsInvalid',['../db/d0f/class_safe_handle_zero_or_minus_one_is_invalid.html',1,'']]],
+  ['searchcontext_960',['SearchContext',['../db/d9e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context.html',1,'YTMusicUploader::Providers::RequestModels']]],
+  ['searchendpoint_961',['Searchendpoint',['../d9/dfa/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_searchendpoint.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
+  ['searchresult_962',['SearchResult',['../d3/dad/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result.html',1,'YTMusicUploader::Providers::RequestModels']]],
+  ['sectionlistrenderer_963',['Sectionlistrenderer',['../d6/d82/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_sectionlistrenderer.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
+  ['serviceendpoint_964',['Serviceendpoint',['../d9/dd6/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_serviceendpoint.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
+  ['serviceendpoint1_965',['Serviceendpoint1',['../db/dc0/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_serviceendpoint1.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
+  ['servicetrackingparam_966',['Servicetrackingparam',['../dc/dd3/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_servicetrackingparam.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
+  ['settings_967',['Settings',['../dc/d52/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_settings.html',1,'YTMusicUploader::Providers::DataModels']]],
+  ['settingsrepo_968',['SettingsRepo',['../d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html',1,'YTMusicUploader::Providers::Repos']]],
+  ['shelfdivider_969',['Shelfdivider',['../da/d98/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_shelfdivider.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]],
+  ['successresponsetext_970',['Successresponsetext',['../d8/d2a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_successresponsetext.html',1,'YTMusicUploader::Providers::RequestModels::SearchResult']]]
 ];

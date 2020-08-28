@@ -10,6 +10,8 @@ var class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo =
     [ "DeleteWatchFolder", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a0cb6e5cbf85b9568b1d66f37e4ce0eca", null ],
     [ "GetDuplicate", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a1c9cb64300bd688e1d751ec5720dd216", null ],
     [ "GetMusicFileIdFromPath", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a6b28e8ade807403313478427a669d81b", null ],
+    [ "GetRandmonMusicFileWithMissingEntityId", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a7030a19fb0ec9cc8c75ab7ef6019c36f", null ],
+    [ "GetRandmonMusicFileWithMissingMbId", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a8bf14ba9910311720ffcf6c9a1a429fd", null ],
     [ "Insert", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a2157133d88ff435ce8873f4b4aa369f1", null ],
     [ "Load", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#af96c85bc0698ec0a576deb97e81084d1", null ],
     [ "Load", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#aa109b7154007a69cbe1a4f2b611b524d", null ],

@@ -1,4 +1,7 @@
 <map id="YTMusicUploader.Providers.DataAccess.PerformAnyDbUpgrades" name="YTMusicUploader.Providers.DataAccess.PerformAnyDbUpgrades">
-<area shape="rect" id="node1" title="Runs on form load to ensure the database schema is at the latest version following an application upg..." alt="" coords="316,5,552,47"/>
-<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a0f9bb7c069a72090c6f86048509fa343" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="5,5,268,47"/>
+<area shape="rect" id="node1" title="Runs on form load to ensure the database schema is at the latest version following an application upg..." alt="" coords="801,39,1037,80"/>
+<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a0f9bb7c069a72090c6f86048509fa343" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="491,39,753,80"/>
+<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723" title=" " alt="" coords="252,39,443,80"/>
+<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="9,5,200,47"/>
+<area shape="rect" id="node5" href="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,71,204,112"/>
 </map>

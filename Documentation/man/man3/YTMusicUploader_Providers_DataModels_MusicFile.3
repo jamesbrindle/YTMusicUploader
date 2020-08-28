@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataModels.MusicFile" 3 "Wed Aug 26 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataModels.MusicFile" 3 "Fri Aug 28 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -45,6 +45,12 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .br
 .ti -1c
 .RI "string \fBMbId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBReleaseMbId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityId\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "string \fBHash\fP\fC [get, set]\fP"
@@ -127,6 +133,8 @@ Insert or update the database
 Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .SH "Property Documentation"
 .PP 
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.EntityId\fC [get]\fP, \fC [set]\fP"
+
 .SS "bool? YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Error\fC [get]\fP, \fC [set]\fP"
 
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.ErrorReason\fC [get]\fP, \fC [set]\fP"
@@ -138,6 +146,8 @@ Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.MbId\fC [get]\fP, \fC [set]\fP"
 
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Path\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.ReleaseMbId\fC [get]\fP, \fC [set]\fP"
 
 .SS "bool? YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Removed = null\fC [get]\fP, \fC [set]\fP"
 

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5fdbmodels_2ecs_0',['_DbModels.cs',['../d4/de5/___db_models_8cs.html',1,'']]]
+  ['_5fdbmodels_2ecs_0',['_DbModels.cs',['../d4/de5/___db_models_8cs.html',1,'']]],
+  ['_5fparams_1',['_params',['../dc/dd3/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_servicetrackingparam.html#a7273109c276ca456f4e55904d132b02e',1,'YTMusicUploader.Providers.RequestModels.SearchResult.Servicetrackingparam._params()'],['../d9/dfa/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_searchendpoint.html#ad3ae6e9e55434a552def957a2edd22de',1,'YTMusicUploader.Providers.RequestModels.SearchResult.Searchendpoint._params()'],['../d8/db7/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_watchendpoint.html#ae88cd363266f0a7ec057f87fcc80780c',1,'YTMusicUploader.Providers.RequestModels.SearchResult.Watchendpoint._params()'],['../da/db2/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_watchplaylistendpoint1.html#a57b8ba34735efc42f4cc9f92f5c79fbb',1,'YTMusicUploader.Providers.RequestModels.SearchResult.Watchplaylistendpoint1._params()']]]
 ];
