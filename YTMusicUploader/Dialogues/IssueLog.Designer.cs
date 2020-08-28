@@ -57,6 +57,7 @@
             // 
             this.dgvIssues.AllowUserToAddRows = false;
             this.dgvIssues.AllowUserToDeleteRows = false;
+            this.dgvIssues.AllowUserToOrderColumns = true;
             this.dgvIssues.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgvIssues.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -72,6 +73,7 @@
             this.dgvIssues.RowHeadersVisible = false;
             this.dgvIssues.Size = new System.Drawing.Size(988, 633);
             this.dgvIssues.TabIndex = 0;
+            this.dgvIssues.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvUploads_ColumnHeaderMouseClick);
             // 
             // lblTitle
             // 

@@ -1,10 +1,8 @@
 ﻿
 namespace YTMusicUploader.MusicBrainz.API.Entities
 {
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// An artist is generally a musician (or musician persona), group of musicians

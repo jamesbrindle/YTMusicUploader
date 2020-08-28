@@ -27,6 +27,8 @@ namespace YTMusicUploader.Providers.Repos
                               Id, 
                               Path,
                               MbId,
+                              ReleaseMbId,
+                              EntityId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -53,6 +55,8 @@ namespace YTMusicUploader.Providers.Repos
                               Id, 
                               Path, 
                               MbId,
+                              ReleaseMbId,
+                              EntityId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -82,6 +86,8 @@ namespace YTMusicUploader.Providers.Repos
                               Id, 
                               Path, 
                               MbId,
+                              ReleaseMbId,
+                              EntityId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -91,6 +97,68 @@ namespace YTMusicUploader.Providers.Repos
                           AND Path != @Path
                           LIMIT 1",
                         new { hash, path }).FirstOrDefault();
+                return Task.FromResult(musicFile);
+            }
+        }
+
+        /// <summary>
+        /// Gets a random music file from the database that's been uploaded but has a missing MbId
+        /// for the purposes of retreiving it from MusicBrainz when the application is in 'idle' state
+        /// </summary>
+        /// <returns>MusicFile object</returns>
+        public Task<MusicFile> GetRandmonMusicFileWithMissingMbId()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var musicFile = conn.Query<MusicFile>(
+                        @"SELECT
+                              Id, 
+                              Path, 
+                              MbId,
+                              ReleaseMbId,
+                              EntityId,
+                              Hash,
+                              LastUpload, 
+                              Error,
+                              ErrorReason
+                          FROM MusicFiles
+                          WHERE (Error = 0 OR Error IS NULL)
+                          AND (MbId = '' OR MbId IS NULL)
+                          AND LastUpload > '0001-01-01 00:00:00'
+                          ORDER BY RANDOM()
+                          LIMIT 1").FirstOrDefault();
+                return Task.FromResult(musicFile);
+            }
+        }
+
+        /// <summary>
+        /// Gets a random music file from the database that's been uploaded but has a missing the YouTube Music
+        /// entityId for the purposes of retreiving it when the application is in 'idle' state
+        /// </summary>
+        /// <returns>MusicFile object</returns>
+        public Task<MusicFile> GetRandmonMusicFileWithMissingEntityId()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var musicFile = conn.Query<MusicFile>(
+                        @"SELECT
+                              Id, 
+                              Path, 
+                              MbId,
+                              ReleaseMbId,
+                              EntityId,
+                              Hash,
+                              LastUpload, 
+                              Error,
+                              ErrorReason
+                          FROM MusicFiles
+                          WHERE (Error = 0 OR Error IS NULL)
+                          AND (EntityId = '' OR EntityId IS NULL)
+                          AND LastUpload > '0001-01-01 00:00:00'
+                          ORDER BY RANDOM()
+                          LIMIT 1").FirstOrDefault();
                 return Task.FromResult(musicFile);
             }
         }
@@ -114,6 +182,8 @@ namespace YTMusicUploader.Providers.Repos
                                        Id, 
                                        Path, 
                                        MbId,
+                                       ReleaseMbId,
+                                       EntityId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -125,7 +195,10 @@ namespace YTMusicUploader.Providers.Repos
                                     ? ""
                                     : "AND Error = 0",
                                 ignoreRecentlyUploaded
-                                    ? "AND LastUpload < '" + DateTime.Now.AddDays(Global.RecheckForUploadedSongsInDays * -1).ToString("yyyy-MM-dd HH:mm:ss") + "'"
+                                    ? "AND (LastUpload < '" + DateTime.Now.AddDays(Global.RecheckForUploadedSongsInDays * -1).ToString("yyyy-MM-dd HH:mm:ss") + "'" +
+                                       (includeErrorFiles
+                                           ? " OR Error = 1"
+                                           : "") + ")"
                                     : "",
                                 lastUploadAscending ? "ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
 
@@ -148,6 +221,8 @@ namespace YTMusicUploader.Providers.Repos
                                        Id, 
                                        Path, 
                                        MbId,
+                                       ReleaseMbId,
+                                       EntityId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -176,6 +251,8 @@ namespace YTMusicUploader.Providers.Repos
                                        Id, 
                                        Path, 
                                        MbId,
+                                       ReleaseMbId,
+                                       EntityId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -241,6 +318,7 @@ namespace YTMusicUploader.Providers.Repos
                         @"SELECT COUNT(Id) 
                           FROM MusicFiles
                           WHERE LastUpload IS NOT NULL AND LastUpload != '0001-01-01 00:00:00'
+                          AND (Error IS NULL OR Error = 0)
                           AND LastUpload != ''
                           AND (Removed IS NULL OR Removed != 1)").FirstOrDefault();
                 return await Task.FromResult(count);
@@ -295,6 +373,8 @@ namespace YTMusicUploader.Providers.Repos
                                         Path, 
                                         Hash,
                                         MbId,
+                                        ReleaseMbId,
+                                        EntityId,
                                         LastUpload, 
                                         Error,
                                         ErrorReason) 
@@ -360,6 +440,8 @@ namespace YTMusicUploader.Providers.Repos
                              SET Path = @Path,
                                  Hash = @Hash,
                                  MbId = @MbId,
+                                 ReleaseMbId = @ReleaseMbId,
+                                 EntityId = @EntityId,
                                  LastUpload = @LastUpload, 
                                  Error = @Error,
                                  ErrorReason = @ErrorReason,
@@ -421,8 +503,8 @@ namespace YTMusicUploader.Providers.Repos
                     {
                         conn.Execute(
                                @"UPDATE MusicFiles
-                                SET Removed = 1
-                              WHERE Id = @Id",
+                                    SET Removed = 1
+                                 WHERE Id = @Id",
                                new { id });
                     }
                 }

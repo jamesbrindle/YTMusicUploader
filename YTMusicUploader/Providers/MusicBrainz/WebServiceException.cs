@@ -20,7 +20,7 @@ namespace YTMusicUploader.MusicBrainz.API
         /// Gets the requested uri.
         /// </summary>
         public readonly string Uri;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WebServiceException"/> class.
         /// </summary>
@@ -56,7 +56,7 @@ namespace YTMusicUploader.MusicBrainz.API
             StatusCode = statusCode;
             Uri = uri;
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WebServiceException"/> class.
         /// </summary>

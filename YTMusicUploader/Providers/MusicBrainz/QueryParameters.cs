@@ -60,7 +60,7 @@ namespace YTMusicUploader.MusicBrainz.API
         private string BuildQueryString()
         {
             var sb = new StringBuilder();
-            
+
             foreach (var item in nodes)
             {
                 // Append operator.

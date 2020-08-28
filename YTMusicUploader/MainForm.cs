@@ -44,12 +44,13 @@ namespace YTMusicUploader
         public Settings Settings { get; set; }
         public List<WatchFolder> WatchFolders { get; set; }
 
-
         //
         // Business Classes
         //
         public FileScanner FileScanner { get; set; }
         public FileUploader FileUploader { get; set; }
+        public QueueChecker QueueChecker { get; set; }
+        public IdleProcessor IdleProcessor { get; set; }
 
         //
         // Checkers
@@ -59,9 +60,8 @@ namespace YTMusicUploader
         public int InitialFilesCount { get; set; } = 0;
         private List<FileSystemWatcher> FileSystemFolderWatchers { get; set; } = new List<FileSystemWatcher>();
         private DateTime? LastFolderChangeTime { get; set; }
-        private bool InstallingEdge { get; set; }
+        public bool InstallingEdge { get; set; }
         public bool Aborting { get; set; } = false;
-        public bool Queue { get; set; } = false;
 
         //
         // MusicBrainz Access
@@ -82,7 +82,6 @@ namespace YTMusicUploader
         private Thread _installingEdgeThread;
         private Thread _connectToYouTubeMusicThread;
         private Thread _scanAndUploadThread;
-        private Thread _queueThread;
 
         public MainForm(bool hidden) : base(formResizable: false)
         {
@@ -117,6 +116,8 @@ namespace YTMusicUploader
 
             FileScanner = new FileScanner(this);
             FileUploader = new FileUploader(this);
+            IdleProcessor = new IdleProcessor(this);
+            QueueChecker = new QueueChecker(this);
 
             InitialiseTimers();
             InitialiseTooltips();
@@ -124,7 +125,6 @@ namespace YTMusicUploader
 
             ConnectToYouTubeMusic();
             StartMainProcess();
-            StartQueueCheck();
         }
 
         private void RunDebugCommands()
@@ -313,8 +313,9 @@ namespace YTMusicUploader
             _connectToYouTubeMusicThread.Start();
         }
 
-        private void StartMainProcess()
+        public void StartMainProcess()
         {
+            IdleProcessor.Paused = true;
             DataAccess.CheckAndCopyDatabaseFile();
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {
@@ -375,45 +376,13 @@ namespace YTMusicUploader
                     Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
 #endif
                 }
+
+                IdleProcessor.Paused = false;
             })
             {
                 IsBackground = true
             };
             _scanAndUploadThread.Start();
-        }
-
-        private void StartQueueCheck()
-        {
-            _queueThread = new Thread((ThreadStart)delegate
-            {
-                while (InstallingEdge)
-                    ThreadHelper.SafeSleep(200);
-
-                while (true)
-                {
-                    try
-                    {
-                        ThreadHelper.SafeSleep(1000);
-                        if (Queue)
-                        {
-                            while (!FileUploader.Stopped)
-                                ThreadHelper.SafeSleep(1000);
-
-                            Queue = false;
-                            Aborting = false;
-                            Requests.UploadCheckCache.CleanUp = true;
-                            FileUploader.Stopped = true;
-                            FileScanner.Reset();
-                            StartMainProcess();
-                        }
-                    }
-                    catch { }
-                }
-            })
-            {
-                IsBackground = true
-            };
-            _queueThread.Start();
         }
 
         public void RepopulateAmountLables(bool includeDiscoveredFiles = false)
@@ -441,11 +410,11 @@ namespace YTMusicUploader
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
-            {               
+            {
                 e.Cancel = true;
                 WindowState = FormWindowState.Minimized;
                 ShowInTaskbar = false;
-              
+
             }
             else
             {
@@ -457,6 +426,8 @@ namespace YTMusicUploader
         {
             Aborting = true;
             Requests.UploadCheckCache.CleanUp = true;
+            IdleProcessor.Stopped = true;
+            QueueChecker.Stopped = true;
             FileUploader.Stopped = true;
             TrayIcon.Visible = false;
 
@@ -494,6 +465,12 @@ namespace YTMusicUploader
 
             try
             {
+                IdleProcessor.IdleProcessorThread.Abort();
+            }
+            catch { }
+
+            try
+            {
                 _scanAndUploadThread.Abort();
             }
             catch { }
@@ -506,7 +483,7 @@ namespace YTMusicUploader
 
             try
             {
-                _queueThread.Abort();
+                QueueChecker.QueueCheckerThread.Abort();
             }
             catch { }
 

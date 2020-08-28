@@ -1,9 +1,7 @@
 ﻿namespace YTMusicUploader.MusicBrainz.API.Services
 {
-    using System;
     using System.Threading.Tasks;
     using YTMusicUploader.MusicBrainz.API.Entities;
-    using YTMusicUploader.MusicBrainz.API.Entities.Collections;
 
     public interface IWorkService
     {

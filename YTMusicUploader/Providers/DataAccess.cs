@@ -73,8 +73,34 @@ namespace YTMusicUploader.Providers
                 }
 
                 //
-                // End
+                // Added ReleaseMbId Column to MusicFiles Table in v1.3.6
                 //
+
+                columns = conn.Query<string>(
+                        @"SELECT name 
+                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+
+                if (!columns.Contains("ReleaseMbId"))
+                {
+                    conn.Execute(
+                        @"ALTER TABLE MusicFiles
+                         ADD COLUMN ReleaseMbId TEXT");
+                }
+
+                //
+                // Added EntityId Column to MusicFiles Table in v1.3.6
+                //
+
+                columns = conn.Query<string>(
+                        @"SELECT name 
+                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+
+                if (!columns.Contains("EntityId"))
+                {
+                    conn.Execute(
+                        @"ALTER TABLE MusicFiles
+                         ADD COLUMN EntityId TEXT");
+                }
             }
         }
 

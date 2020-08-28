@@ -1,10 +1,8 @@
 ﻿
 namespace YTMusicUploader.MusicBrainz.API.Entities
 {
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// In MusicBrainz terminology, a work is a distinct intellectual or artistic creation,

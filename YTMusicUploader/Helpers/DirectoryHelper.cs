@@ -376,9 +376,9 @@ namespace JBToolkit.Windows
         public static async Task<string> GetFileHash(string path)
         {
             using (var stream = new BufferedStream(File.OpenRead(path), 1200000))
-            {                
+            {
                 byte[] hashedValue = XxHashFactory.ComputeHash(stream).Hash;
-                return await Task.FromResult(BitConverter.ToString(hashedValue));                
+                return await Task.FromResult(BitConverter.ToString(hashedValue));
             }
         }
 

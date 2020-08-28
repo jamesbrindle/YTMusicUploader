@@ -1,6 +1,10 @@
 ﻿using JBToolkit.WinForms;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
+using System.Windows.Forms;
+using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Dialogues
 {
@@ -9,6 +13,9 @@ namespace YTMusicUploader.Dialogues
     /// </summary>
     public partial class UploadLog : OptimisedMetroForm
     {
+        private int _previousIndex;
+        private bool _sortDirection;
+
         private MainForm MainForm { get; set; }
 
         /// <summary>
@@ -44,6 +51,9 @@ namespace YTMusicUploader.Dialogues
             else
             {
                 dgvUploads.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
+                dgvUploads.Columns["ReleaseMbId"].Visible = false;
+                dgvUploads.Columns["EntityId"].Visible = false;
+                dgvUploads.Columns["Hash"].Visible = false;
                 dgvUploads.Columns["Removed"].Visible = false;
                 dgvUploads.Columns["Error"].Visible = false;
                 dgvUploads.Columns["ErrorReason"].Visible = false;
@@ -92,6 +102,24 @@ namespace YTMusicUploader.Dialogues
         private void PbRefresh_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             pbRefresh.Image = Properties.Resources.refresh_hover;
+        }
+
+        private void DgvUploads_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == _previousIndex)
+                _sortDirection ^= true; // toggle direction
+
+            dgvUploads.DataSource = SortData(
+                (List<MusicFile>)dgvUploads.DataSource, dgvUploads.Columns[e.ColumnIndex].Name, _sortDirection);
+
+            _previousIndex = e.ColumnIndex;
+        }
+
+        public List<MusicFile> SortData(List<MusicFile> list, string column, bool ascending)
+        {
+            return ascending ?
+                list.OrderBy(_ => _.GetType().GetProperty(column).GetValue(_)).ToList() :
+                list.OrderByDescending(_ => _.GetType().GetProperty(column).GetValue(_)).ToList();
         }
     }
 }

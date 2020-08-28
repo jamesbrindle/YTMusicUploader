@@ -27,7 +27,7 @@ namespace YTMusicUploader
 
                 LastFolderChangeTime = null;
                 FileScanner.RecountLibraryFiles();
-                Queue = true;
+                QueueChecker.Queue = true;
 
             }).Start();
         }

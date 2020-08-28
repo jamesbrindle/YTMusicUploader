@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
+using static YTMusicUploader.Business.MusicDataFetcher;
 
 namespace YTMusicUploader.Business
 {
@@ -77,20 +78,11 @@ namespace YTMusicUploader.Business
 
                         try
                         {
-                            await TryHandleFileAlreadyUploaded(musicFile);
+                            TryProcess(musicFile).Wait();
                         }
                         catch
                         {
-                            // Try 1 more time
-                            Thread.Sleep(1000);
-                            try
-                            {
-                                await TryHandleFileAlreadyUploaded(musicFile);
-                            }
-                            catch
-                            {
-                                await HandleFileNeedsUploading(musicFile);
-                            }
+                            HandleFileNeedsUploading(musicFile).Wait();
                         }
 
                         await musicFile.Save();
@@ -121,9 +113,24 @@ namespace YTMusicUploader.Business
             existingMusicFile.Path = musicFile.Path;
             existingMusicFile.LastUpload = DateTime.Now;
             existingMusicFile.Removed = false;
-            existingMusicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
-                                              ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
-                                              : musicFile.MbId;
+
+            TrackAndReleaseMbId trackAndReleaseMbId = null;
+            if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
+                trackAndReleaseMbId = MainForm.MusicDataFetcher.GetTrackAndReleaseMbId(musicFile.Path, false);
+
+            if (string.IsNullOrEmpty(existingMusicFile.MbId))
+                existingMusicFile.MbId = string.IsNullOrEmpty(musicFile.MbId)
+                                                  ? string.IsNullOrEmpty(trackAndReleaseMbId.MbId)
+                                                                ? existingMusicFile.MbId
+                                                                : trackAndReleaseMbId.MbId
+                                                  : musicFile.MbId;
+
+            if (string.IsNullOrEmpty(existingMusicFile.ReleaseMbId))
+                existingMusicFile.ReleaseMbId = string.IsNullOrEmpty(musicFile.ReleaseMbId)
+                                                  ? string.IsNullOrEmpty(trackAndReleaseMbId.ReleaseMbId)
+                                                                ? existingMusicFile.ReleaseMbId
+                                                                : trackAndReleaseMbId.ReleaseMbId
+                                                  : musicFile.MbId;
 
             _uploadedCount++;
             MainForm.SetUploadedLabel(_uploadedCount.ToString());
@@ -132,21 +139,21 @@ namespace YTMusicUploader.Business
             await existingMusicFile.Save();
         }
 
-        private async Task TryHandleFileAlreadyUploaded(MusicFile musicFile)
+        private async Task TryProcess(MusicFile musicFile)
         {
-            var alreadyUploaded = await Requests.IsSongUploaded(musicFile.Path,
-                                                                MainForm.Settings.AuthenticationCookie,
-                                                                MainForm.MusicDataFetcher);
+            var alreadyUploaded = Requests.IsSongUploaded(musicFile.Path,
+                                                          MainForm.Settings.AuthenticationCookie,
+                                                          out string entityId,
+                                                          MainForm.MusicDataFetcher);
 
-            if (alreadyUploaded == Requests.UploadCheckResult.Present_FromCache ||
-                alreadyUploaded == Requests.UploadCheckResult.Present_NewRequest)
+            if (alreadyUploaded != Requests.UploadCheckResult.NotPresent)
             {
                 if (ThreadIsAborting())
                     return;
 
                 await HandleFileAlreadyUploaded(
                             musicFile,
-                            alreadyUploaded == Requests.UploadCheckResult.Present_FromCache);
+                            entityId);
             }
             else
             {
@@ -157,21 +164,34 @@ namespace YTMusicUploader.Business
             }
         }
 
-        private async Task HandleFileAlreadyUploaded(MusicFile musicFile, bool fromCache)
+        private async Task HandleFileAlreadyUploaded(MusicFile musicFile, string entityId)
         {
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, !fromCache);
+            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
             MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
+
+            TrackAndReleaseMbId trackAndReleaseMbId = null;
+            if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
+                trackAndReleaseMbId = MainForm.MusicDataFetcher.GetTrackAndReleaseMbId(musicFile.Path, false);
 
             musicFile.LastUpload = DateTime.Now;
             musicFile.Error = false;
+            musicFile.EntityId = entityId;
             musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
                                         ? musicFile.MbId
                                         : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
-                                                ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
+                                                ? trackAndReleaseMbId.MbId
                                                 : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
-                                                                                              .FirstOrDefault()
-                                                                                              .MbId);
+                                                                                         .FirstOrDefault()
+                                                                                         .MbId);
+
+            musicFile.ReleaseMbId = !string.IsNullOrEmpty(musicFile.ReleaseMbId)
+                                                ? musicFile.ReleaseMbId
+                                                : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
+                                                        ? trackAndReleaseMbId.ReleaseMbId
+                                                        : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
+                                                                                                 .FirstOrDefault()
+                                                                                                 .ReleaseMbId);
 
             _uploadedCount++;
             MainForm.SetUploadedLabel(_uploadedCount.ToString());
@@ -180,7 +200,7 @@ namespace YTMusicUploader.Business
         private async Task HandleFileNeedsUploading(MusicFile musicFile)
         {
             await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-            await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true);
+            await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
 
             Requests.UploadTrack(
                         MainForm,
@@ -199,15 +219,37 @@ namespace YTMusicUploader.Business
             }
             else
             {
+                TrackAndReleaseMbId trackAndReleaseMbId = null;
+                if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
+                    trackAndReleaseMbId = MainForm.MusicDataFetcher.GetTrackAndReleaseMbId(musicFile.Path, true);
+
                 musicFile.LastUpload = DateTime.Now;
                 musicFile.Error = false;
                 musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
-                                        ? musicFile.MbId
-                                        : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
-                                                ? await MainForm.MusicDataFetcher.GetTrackMbId(musicFile.Path)
-                                                : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
-                                                                                              .FirstOrDefault()
-                                                                                              .MbId);
+                                            ? musicFile.MbId
+                                            : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
+                                                    ? trackAndReleaseMbId.MbId
+                                                    : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
+                                                                                             .FirstOrDefault()
+                                                                                             .MbId);
+
+                musicFile.ReleaseMbId = !string.IsNullOrEmpty(musicFile.ReleaseMbId)
+                                                    ? musicFile.ReleaseMbId
+                                                    : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
+                                                            ? trackAndReleaseMbId.ReleaseMbId
+                                                            : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
+                                                                                                     .FirstOrDefault()
+                                                                                                     .ReleaseMbId);
+
+                // We've uploaded it, so now see if we can get the YouTube Music entityId
+                if (Requests.IsSongUploaded(musicFile.Path,
+                                            MainForm.Settings.AuthenticationCookie,
+                                            out string entityId,
+                                            MainForm.MusicDataFetcher,
+                                            false) != Requests.UploadCheckResult.NotPresent)
+                {
+                    musicFile.EntityId = entityId;
+                }
 
                 _uploadedCount++;
                 MainForm.SetUploadedLabel(_uploadedCount.ToString());
@@ -287,6 +329,7 @@ namespace YTMusicUploader.Business
                 }
                 else
                 {
+                    // Only used for when 'uploading' a track - Will attempt to get info for MusicBrainz (i.e. cover image)
                     SetCoverArtImageThreaded(message, tooltipText, musicPath);
                 }
 
@@ -385,7 +428,6 @@ namespace YTMusicUploader.Business
             out MusicFile existingMusicFile)
         {
             existingMusicFile = null;
-
             if (string.IsNullOrEmpty(musicFile.Hash))
                 return false;
 

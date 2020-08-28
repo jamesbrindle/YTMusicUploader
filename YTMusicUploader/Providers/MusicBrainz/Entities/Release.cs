@@ -1,10 +1,8 @@
 ﻿
 namespace YTMusicUploader.MusicBrainz.API.Entities
 {
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// A MusicBrainz release represents the unique release (i.e. issuing) of a product on a specific

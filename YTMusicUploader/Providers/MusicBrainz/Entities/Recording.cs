@@ -1,10 +1,8 @@
 ﻿
 namespace YTMusicUploader.MusicBrainz.API.Entities
 {
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// A recording is an entity in MusicBrainz which can be linked to tracks on releases. Each track must always

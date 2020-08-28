@@ -28,7 +28,7 @@ namespace YTMusicUploader.MusicBrainz.API.Entities
         /// </summary>
         [DataMember(Name = "position")]
         public int Position { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the length.
         /// </summary>

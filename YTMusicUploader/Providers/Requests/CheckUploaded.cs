@@ -1,5 +1,6 @@
 ﻿using JBToolkit.FuzzyLogic;
 using JBToolkit.StreamHelpers;
+using JBToolkit.Threads;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -53,6 +54,8 @@ namespace YTMusicUploader.Providers
             {
                 public string MusicFilePath { get; set; }
                 public string MbId { get; set; }
+                public string ReleaseMbId { get; set; }
+                public string EntityId { get; set; }
                 public bool Result { get; set; }
             }
         }
@@ -85,9 +88,9 @@ namespace YTMusicUploader.Providers
                 while (!UploadCheckCache.CleanUp)
                 {
                     UploadCheckCache.Sleep = true;
-                    Thread.Sleep(100);
+                    ThreadHelper.SafeSleep(100);
                     UploadCheckCache.Sleep = false;
-                    Thread.Sleep(1000);
+                    ThreadHelper.SafeSleep(1000);
                 }
 
                 UploadCheckCache.CachedObjects.Clear();
@@ -105,15 +108,21 @@ namespace YTMusicUploader.Providers
                     if (!UploadCheckCache.CleanUp)
                     {
                         while (UploadCheckCache.Sleep)
-                            Thread.Sleep(2);
+                            ThreadHelper.SafeSleep(2);
 
                         UploadCheckCache.CachedObjects.Add(new UploadCheckCache.MusicFileCacheObject
                         {
                             MusicFilePath = cacheObject.Path,
-                            Result = IsSongUploaded(cacheObject.Path, cookieValue, musicDataFetcher).Result == UploadCheckResult.Present_NewRequest,
+                            Result = IsSongUploaded(cacheObject.Path, cookieValue, out string entityId, musicDataFetcher, false) != UploadCheckResult.NotPresent,
+                            EntityId = entityId,
+
                             MbId = !string.IsNullOrEmpty(cacheObject.MbId)
                                                 ? cacheObject.MbId
-                                                : musicDataFetcher.GetTrackMbId(cacheObject.Path).Result,
+                                                : musicDataFetcher.GetTrackMbId(cacheObject.Path, false).Result,
+
+                            ReleaseMbId = !string.IsNullOrEmpty(cacheObject.MbId)
+                                                       ? cacheObject.ReleaseMbId
+                                                       : musicDataFetcher.GetReleaseMbId(cacheObject.Path, false).Result
 
                         });
 
@@ -144,22 +153,28 @@ namespace YTMusicUploader.Providers
         /// </summary>
         /// <param name="musicFilePath">Path to music file to be uploaded</param>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
+        /// <param name="entityId">Output YouTube Music song entity ID if found</param>
         /// <param name="musicDataFetcher">You can pass an existing MusicDataFetcher object, or one will be created if left blank</param>
+        /// <param name="checkCheck">Whether or not to refer to cache for lookup (only useful while scanning)/param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static async Task<UploadCheckResult> IsSongUploaded(
+        public static UploadCheckResult IsSongUploaded(
             string musicFilePath,
             string cookieValue,
-            MusicDataFetcher musicDataFetcher = null)
+            out string entityId,
+            MusicDataFetcher musicDataFetcher = null,
+            bool checkCheck = true)
         {
-            if (UploadCheckCache.CachedObjectHash.Contains(musicFilePath))
+            entityId = string.Empty;
+            if (checkCheck && UploadCheckCache.CachedObjectHash.Contains(musicFilePath))
             {
-                return await Task.FromResult(
-                                    UploadCheckCache.CachedObjects
-                                                         .Where(m => m.MusicFilePath == musicFilePath)
-                                                         .FirstOrDefault()
-                                                         .Result
-                                                                ? UploadCheckResult.Present_FromCache
-                                                                : UploadCheckResult.NotPresent);
+                var cache = UploadCheckCache.CachedObjects
+                                            .Where(m => m.MusicFilePath == musicFilePath)
+                                            .FirstOrDefault();
+
+                entityId = cache.EntityId;
+                return cache.Result
+                                ? UploadCheckResult.Present_FromCache
+                                : UploadCheckResult.NotPresent;
             }
             else
             {
@@ -169,10 +184,9 @@ namespace YTMusicUploader.Providers
                 var musicFileMetaData = musicDataFetcher.GetMusicFileMetaData(musicFilePath);
                 if (musicFileMetaData == null ||
                     musicFileMetaData.Artist == null ||
-                    musicFileMetaData.Album == null ||
                     musicFileMetaData.Track == null)
                 {
-                    return await Task.FromResult(UploadCheckResult.NotPresent);
+                    return UploadCheckResult.NotPresent;
                 }
 
                 string artist = musicFileMetaData.Artist;
@@ -181,13 +195,13 @@ namespace YTMusicUploader.Providers
 
                 try
                 {
-                    return await IsSongUploadedMulitpleAlbumNameVariations(artist, album, track, cookieValue)
+                    return IsSongUploadedMulitpleAlbumNameVariation(artist, album, track, cookieValue, out entityId)
                                     ? UploadCheckResult.Present_NewRequest
                                     : UploadCheckResult.NotPresent;
                 }
                 catch
                 {
-                    return await Task.FromResult(UploadCheckResult.NotPresent);
+                    return UploadCheckResult.NotPresent;
                 }
             }
         }
@@ -203,47 +217,95 @@ namespace YTMusicUploader.Providers
         /// <param name="album">Album name from music file meta tag</param>
         /// <param name="track">Track or song name from music file meta tag</param>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
+        /// <param name="entityId">Output YouTube Music song entity ID if found</param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static async Task<bool> IsSongUploadedMulitpleAlbumNameVariations(
+        public static bool IsSongUploadedMulitpleAlbumNameVariation(
             string artist,
             string album,
             string track,
-            string cookieValue)
+            string cookieValue,
+            out string entityId)
         {
-            bool result = await IsSongUploaded(artist, album, track, cookieValue);
+            // Make sure they're not null
+            artist = artist ?? "";
+            album = album ?? "";
+            track = track ?? "";
 
+            string originalAlbum = album;
+            string originalTrack = track;
+
+            bool result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
             if (result)
                 return result;
 
-            album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
-            result = await IsSongUploaded(artist, album, track, cookieValue);
+            if (!string.IsNullOrEmpty(album))
+            {
+                try
+                {
+                    album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
 
-            if (result)
-                return result;
+                    // Don't bother trying the exact same search
+                    if (album != originalAlbum)
+                    {
+                        result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                        if (result)
+                            return result;
+                    }
 
-            album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-            result = await IsSongUploaded(artist, album, track, cookieValue);
+                    originalAlbum = album;
+                }
+                catch { }
 
-            if (result)
-                return result;
+                try
+                {
+                    album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
+
+                    // Don't bother trying the exact same search
+                    if (album != originalAlbum)
+                    {
+                        result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                        if (result)
+                            return result;
+                    }
+                }
+                catch { }
+            }
 
             try
             {
-                if (!string.IsNullOrEmpty(track) && track.Substring(0, 2).IsNumeric())
+                if (!string.IsNullOrEmpty(track) && track.Length > 2 && track.Substring(0, 2).IsNumeric())
                 {
-                    track = track.Substring(2).Trim();
-                    if (track.StartsWith("_") || track.StartsWith("-") || track.StartsWith("."))
-                        track = track.Substring(1).Trim();
+                    try
+                    {
+                        track = track.Substring(2).Trim();
+                        if (track.StartsWith("_") || track.StartsWith("-") || track.StartsWith("."))
+                            track = track.Substring(1).Trim();
+                    }
+                    catch { }
                 }
             }
             catch { }
 
-            result = await IsSongUploaded(artist, album, track, cookieValue);
-            if (result)
-                return result;
+            // Don't bother trying the exact same search
+            if (track != originalTrack)
+            {
+                result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                if (result)
+                    return result;
+            }
 
+            originalTrack = track;
             track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
-            return await IsSongUploaded(artist, album, track, cookieValue);
+
+            // Don't bother trying the exact same search
+            if (track != originalTrack)
+            {
+                result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                if (result)
+                    return result;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -257,13 +319,17 @@ namespace YTMusicUploader.Providers
         /// <param name="album">Album name from music file meta tag</param>
         /// <param name="track">Track or song name from music file meta tag</param>
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
+        /// <param name="entityId">Output YouTube Music song entity ID if found</param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static async Task<bool> IsSongUploaded(
+        public static bool IsSongUploaded(
             string artist,
             string album,
             string track,
-            string cookieValue)
+            string cookieValue,
+            out string entityId)
         {
+            entityId = string.Empty;
+
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl + "search" + Global.YouTubeMusicParams);
@@ -281,7 +347,11 @@ namespace YTMusicUploader.Providers
                                                                             Global.WorkingDirectory,
                                                                             @"AppData\search_uploads_context.json")));
 
-                context.query = string.Format("{0} {1} {2}", artist, album, track);
+                if (!string.IsNullOrEmpty(album))
+                    context.query = string.Format("{0} {1} {2}", artist, album, track);
+                else
+                    context.query = string.Format("{0} {1}", artist, track);
+
                 byte[] postBytes = GetPostBytes(JsonConvert.SerializeObject(context));
                 request.ContentLength = postBytes.Length;
 
@@ -304,15 +374,17 @@ namespace YTMusicUploader.Providers
                         result = streamReader.ReadToEnd();
                     }
 
-                    JObject jo = JObject.Parse(result);
-                    List<JToken> runs = jo.Descendants()
+                    JObject runObject = JObject.Parse(result);
+                    List<JToken> runs = runObject.Descendants()
                                           .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
                                           .Select(p => ((JProperty)p).Value).ToList();
 
-                    float matchSuccess = Global.YouTubeUploadedSimilarityPercentageForMatch;
+                    float matchSuccessMinimum = Global.YouTubeUploadedSimilarityPercentageForMatch;
                     float artistSimilarity = 0.0f;
                     float albumSimilartity = 0.0f;
                     float trackSimilarity = 0.0f;
+
+                    bool foundTrack = false;
 
                     foreach (JToken run in runs)
                     {
@@ -322,7 +394,7 @@ namespace YTMusicUploader.Providers
                             if (runArray.Length > 0)
                             {
                                 if (runArray[0].text.ToLower().Contains("no results found"))
-                                    return await Task.FromResult(true);
+                                    return true;
                                 else
                                 {
                                     Parallel.ForEach(runArray, (runElement) =>
@@ -339,15 +411,15 @@ namespace YTMusicUploader.Providers
                                             switch (i)
                                             {
                                                 case 0:
-                                                    if (artistSimilarity < matchSuccess)
+                                                    if (artistSimilarity < matchSuccessMinimum)
                                                         _artistSimilarity = Levenshtein.Similarity(runElement.text, artist);
                                                     break;
                                                 case 1:
-                                                    if (_albumSimilartity < matchSuccess)
+                                                    if (_albumSimilartity < matchSuccessMinimum)
                                                         _albumSimilartity = Levenshtein.Similarity(runElement.text, album);
                                                     break;
                                                 case 2:
-                                                    if (_trackSimilarity < matchSuccess)
+                                                    if (_trackSimilarity < matchSuccessMinimum)
                                                         _trackSimilarity = Levenshtein.Similarity(runElement.text, track);
                                                     break;
                                                 default:
@@ -362,26 +434,79 @@ namespace YTMusicUploader.Providers
                                             albumSimilartity = _albumSimilartity;
 
                                         if (trackSimilarity < _trackSimilarity)
+                                        {
+                                            foundTrack = true;
                                             trackSimilarity = _trackSimilarity;
+                                        }
                                     });
+
+                                    if (foundTrack && string.IsNullOrEmpty(entityId))
+                                    {
+                                        // We're getting the YouTube Music file 'entityId' for no particular reason at this stage,
+                                        // but could come in very handy if we find a use for it in the future, like more accurate
+                                        // search results, or if we want to 'delete' an uploaded song, which you do via the entityId
+
+                                        if (run.ToString().ToLower().Contains("delete song"))
+                                        {
+                                            if (!string.IsNullOrEmpty(album))
+                                            {
+                                                if (artistSimilarity >= matchSuccessMinimum &&
+                                                    albumSimilartity >= matchSuccessMinimum &&
+                                                    trackSimilarity >= matchSuccessMinimum)
+                                                {
+
+                                                    var deleteRuns = run.Parent.Parent.Parent.Parent.Descendants()
+                                                                        .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "entityId")
+                                                                        .Select(p => ((JProperty)p).Value).ToList();
+
+                                                    if (deleteRuns.Count > 0)
+                                                        entityId = deleteRuns[0].ToString();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (artistSimilarity >= matchSuccessMinimum &&
+                                                    trackSimilarity >= matchSuccessMinimum)
+                                                {
+                                                    var deleteRuns = run.Parent.Parent.Parent.Parent.Descendants()
+                                                                        .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "entityId")
+                                                                        .Select(p => ((JProperty)p).Value).ToList();
+
+                                                    if (deleteRuns.Count > 0)
+                                                        entityId = deleteRuns[0].ToString();
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
 
-                    if (artistSimilarity >= matchSuccess &&
-                        albumSimilartity >= matchSuccess &&
-                        trackSimilarity >= matchSuccess)
+                    if (!string.IsNullOrEmpty(album))
                     {
-                        return await Task.FromResult(true);
+                        if (artistSimilarity >= matchSuccessMinimum &&
+                            albumSimilartity >= matchSuccessMinimum &&
+                            trackSimilarity >= matchSuccessMinimum)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (artistSimilarity >= matchSuccessMinimum &&
+                            trackSimilarity >= matchSuccessMinimum)
+                        {
+                            return true;
+                        }
                     }
 
-                    return await Task.FromResult(false);
+                    return false;
                 }
             }
             catch (Exception)
             {
-                return await Task.FromResult(true);
+                return true;
             }
         }
     }

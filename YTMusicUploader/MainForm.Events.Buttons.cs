@@ -73,7 +73,7 @@ namespace YTMusicUploader
             }).Wait();
 
             await BindWatchFoldersList();
-            Queue = true;
+            QueueChecker.Queue = true;
         }
 
         private void BtnAddWatchFolder_MouseEnter(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace YTMusicUploader
             catch { }
 
             await BindWatchFoldersList();
-            Queue = true;
+            QueueChecker.Queue = true;
         }
 
         private void BtnRemoveWatchFolder_MouseEnter(object sender, EventArgs e)

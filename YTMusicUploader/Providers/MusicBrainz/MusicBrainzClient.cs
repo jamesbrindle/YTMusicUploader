@@ -1,7 +1,5 @@
 ﻿namespace YTMusicUploader.MusicBrainz.API
 {
-    using YTMusicUploader.MusicBrainz.API.Cache;
-    using YTMusicUploader.MusicBrainz.API.Services;
     using System;
     using System.IO;
     using System.Net;
@@ -9,6 +7,8 @@
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
     using System.Threading.Tasks;
+    using YTMusicUploader.MusicBrainz.API.Cache;
+    using YTMusicUploader.MusicBrainz.API.Services;
 
     /// <summary>
     /// MusicBrainz client.

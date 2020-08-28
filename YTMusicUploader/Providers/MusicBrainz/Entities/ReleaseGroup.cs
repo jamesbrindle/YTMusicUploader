@@ -1,10 +1,8 @@
 ﻿
 namespace YTMusicUploader.MusicBrainz.API.Entities
 {
-    using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// A release group is used to group several different releases into a single logical entity.

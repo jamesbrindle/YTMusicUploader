@@ -20,6 +20,15 @@ namespace JBToolkit.FuzzyLogic
         /// <returns>A floating point value between 0.0 and 1.0</returns>
         public static float Similarity(string s, string t)
         {
+            if (s == null && t == null)
+                return 1.0f;
+
+            if (s == null && t != null)
+                return 0.0f;
+
+            else if (s != null && t == null)
+                return 0.0f;
+
             int maxLen = Math.Max(s.Length, t.Length);
 
             if (maxLen == 0)
