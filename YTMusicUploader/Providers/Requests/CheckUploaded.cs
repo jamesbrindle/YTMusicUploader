@@ -11,6 +11,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using YTMusicUploader.Business;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.RequestModels;
@@ -98,10 +99,13 @@ namespace YTMusicUploader.Providers
             {
                 while (!UploadCheckCache.CleanUp)
                 {
+                    // The pretecher runs in parallel and doesn't leave any time
+                    // for the normal requests... So every second grant a full 100ms
+
                     UploadCheckCache.Sleep = true;
-                    ThreadHelper.SafeSleep(200);
+                    ThreadHelper.SafeSleep(100);
                     UploadCheckCache.Sleep = false;
-                    ThreadHelper.SafeSleep(3000);
+                    ThreadHelper.SafeSleep(1000);
                 }
 
                 UploadCheckCache.CachedObjects.Clear();
