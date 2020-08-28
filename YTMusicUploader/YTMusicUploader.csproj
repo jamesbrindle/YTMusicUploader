@@ -313,6 +313,7 @@
     <Compile Include="Providers\DataModels\_DbModels.cs" />
     <Compile Include="Providers\MusicBrainz\Cache\IRequestCache.cs" />
     <Compile Include="Providers\MusicBrainz\Cache\NullCache.cs" />
+    <Compile Include="Providers\MusicBrainz\Cache\FileRequestCache.cs" />
     <Compile Include="Providers\MusicBrainz\Entities\Area.cs" />
     <Compile Include="Providers\MusicBrainz\Entities\Artist.cs" />
     <Compile Include="Providers\MusicBrainz\Entities\Collections\ArtistList.cs" />
