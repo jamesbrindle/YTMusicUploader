@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_tab1 =
+[
+    [ "itemSectionTabRenderer", "d9/d99/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_tab1.html#a9eaf0fa1198bbc53d17ec818c3ac5604", null ]
+];

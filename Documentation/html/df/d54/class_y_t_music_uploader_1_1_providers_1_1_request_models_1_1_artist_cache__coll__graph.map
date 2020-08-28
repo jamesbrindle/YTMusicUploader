@@ -1,0 +1,3 @@
+<map id="YTMusicUploader.Providers.RequestModels.ArtistCache" name="YTMusicUploader.Providers.RequestModels.ArtistCache">
+<area shape="rect" id="node1" title="Used to store temporary artist details from YouTube Music to be used for lookups" alt="" coords="5,5,191,112"/>
+</map>

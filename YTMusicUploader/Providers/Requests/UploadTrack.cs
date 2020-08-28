@@ -6,7 +6,7 @@ using YTMusicUploader.Business;
 namespace YTMusicUploader.Providers
 {
     /// <summary>
-    /// HttpWebRequest POST request to send to YouTube to upload a music file.
+    /// YouTube Music API Request Methods
     /// 
     /// Thanks to: sigma67: 
     ///     https://ytmusicapi.readthedocs.io/en/latest/ 

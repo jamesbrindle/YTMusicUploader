@@ -99,7 +99,7 @@ Collaboration diagram for YTMusicUploader.Business.FileUploader:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d25/class_y_t_music_uploader_1_1_business_1_1_file_uploader__coll__graph.png" border="0" usemap="#_y_t_music_uploader_8_business_8_file_uploader_coll__map" alt="Collaboration graph"/></div>
 <map name="_y_t_music_uploader_8_business_8_file_uploader_coll__map" id="_y_t_music_uploader_8_business_8_file_uploader_coll__map">
-<area shape="rect" title="Responsive for managing uploading music files to YouTube Music." alt="" coords="5,5,192,112"/>
+<area shape="rect" title="Responsive for managing uploading music files to YouTube Music." alt="" coords="5,5,192,127"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -115,6 +115,8 @@ Public Member Functions</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a2a1303fffdb56ad60248d03bfbe4172e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a2a1303fffdb56ad60248d03bfbe4172e">Stopped</a> = true<code> [get, set]</code></td></tr>
 <tr class="separator:a2a1303fffdb56ad60248d03bfbe4172e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a456a0ba1c1321368f0718a22e84f4abf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d84/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_artist_cache.html">ArtistCache</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a456a0ba1c1321368f0718a22e84f4abf">ArtistCache</a><code> [get, set]</code></td></tr>
+<tr class="separator:a456a0ba1c1321368f0718a22e84f4abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Responsive for managing uploading music files to YouTube Music. </p>
@@ -159,9 +161,16 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader_a5ecabcb283073e1b7fe3cefaa0c19cc7_cgraph.png" border="0" usemap="#d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader_a5ecabcb283073e1b7fe3cefaa0c19cc7_cgraph" alt=""/></div>
 <map name="d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader_a5ecabcb283073e1b7fe3cefaa0c19cc7_cgraph" id="d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader_a5ecabcb283073e1b7fe3cefaa0c19cc7_cgraph">
-<area shape="rect" title="Execute the upload process" alt="" coords="5,43,192,84"/>
-<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,5,449,47"/>
-<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,71,468,127"/>
+<area shape="rect" title="Execute the upload process" alt="" coords="5,169,192,211"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6d2af40a5d91cfd94e42095a2fb0fb82" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="261,71,447,112"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,136,449,177"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="259,201,449,243"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,267,468,323"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#adf7c70fd9af5014904ba52e5d4d12f64" title="HttpWebRequest POST request &#45; Recursively fetches all the artists from YouTube Music&#39;s &#39;Upload&#39; secti..." alt="" coords="519,71,704,112"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="755,5,959,47"/>
+<area shape="rect" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="764,71,949,112"/>
+<area shape="rect" href="../../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="764,136,949,177"/>
+<area shape="rect" href="../../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="516,201,707,243"/>
 </map>
 </div>
 <div class="dynheader">
@@ -179,6 +188,28 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="a456a0ba1c1321368f0718a22e84f4abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a456a0ba1c1321368f0718a22e84f4abf">&#9670;&nbsp;</a></span>ArtistCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d84/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_artist_cache.html">ArtistCache</a> YTMusicUploader.Business.FileUploader.ArtistCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2a1303fffdb56ad60248d03bfbe4172e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a1303fffdb56ad60248d03bfbe4172e">&#9670;&nbsp;</a></span>Stopped</h2>
 

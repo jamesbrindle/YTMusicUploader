@@ -1,5 +1,12 @@
 <map id="YTMusicUploader.Business.FileUploader.Process" name="YTMusicUploader.Business.FileUploader.Process">
-<area shape="rect" id="node1" title="Execute the upload process" alt="" coords="5,43,192,84"/>
-<area shape="rect" id="node2" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,5,449,47"/>
-<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,71,468,127"/>
+<area shape="rect" id="node1" title="Execute the upload process" alt="" coords="5,169,192,211"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6d2af40a5d91cfd94e42095a2fb0fb82" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="261,71,447,112"/>
+<area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,136,449,177"/>
+<area shape="rect" id="node8" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="259,201,449,243"/>
+<area shape="rect" id="node10" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,267,468,323"/>
+<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#adf7c70fd9af5014904ba52e5d4d12f64" title="HttpWebRequest POST request &#45; Recursively fetches all the artists from YouTube Music&#39;s &#39;Upload&#39; secti..." alt="" coords="519,71,704,112"/>
+<area shape="rect" id="node4" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="755,5,959,47"/>
+<area shape="rect" id="node5" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="764,71,949,112"/>
+<area shape="rect" id="node6" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="764,136,949,177"/>
+<area shape="rect" id="node9" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="516,201,707,243"/>
 </map>

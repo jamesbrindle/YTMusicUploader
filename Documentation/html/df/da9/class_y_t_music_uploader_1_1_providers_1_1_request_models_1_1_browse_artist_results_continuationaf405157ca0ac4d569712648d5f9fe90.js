@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationaf405157ca0ac4d569712648d5f9fe90 =
+[
+    [ "watchEndpointMusicConfig", "df/da9/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationaf405157ca0ac4d569712648d5f9fe90.html#a83dd19ce2db9c69aba92bda613fb1990", null ]
+];

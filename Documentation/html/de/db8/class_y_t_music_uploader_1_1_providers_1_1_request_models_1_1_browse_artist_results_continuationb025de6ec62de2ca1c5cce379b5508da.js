@@ -1,0 +1,7 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationb025de6ec62de2ca1c5cce379b5508da =
+[
+    [ "icon", "de/db8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationb025de6ec62de2ca1c5cce379b5508da.html#ac6141e1a5876dfcfae9da170d22943e9", null ],
+    [ "navigationEndpoint", "de/db8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationb025de6ec62de2ca1c5cce379b5508da.html#a764851c93b29eccebc7ffca12752ac74", null ],
+    [ "text", "de/db8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationb025de6ec62de2ca1c5cce379b5508da.html#a7a2beeb8dd3dc2a7bb3d6a92617bdffa", null ],
+    [ "trackingParams", "de/db8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationb025de6ec62de2ca1c5cce379b5508da.html#ace30010bb73cb9671f333d931275b443", null ]
+];

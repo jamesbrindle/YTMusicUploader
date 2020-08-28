@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_shareentityendpoint =
+[
+    [ "serializedShareEntity", "d0/de9/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_shareentityendpoint.html#a4d1e2f44e9c48f526a419dd26ddc2ee3", null ]
+];

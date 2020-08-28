@@ -367,10 +367,18 @@
     <Compile Include="Providers\DataAccess.cs" />
     <Compile Include="Providers\Repos\SettingsRepo.cs" />
     <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
+    <Compile Include="Providers\RequestModels\BrowseArtistRequestContext.cs" />
+    <Compile Include="Providers\RequestModels\BrowseArtistResultsContinuationContext.cs" />
+    <Compile Include="Providers\RequestModels\BrowseArtistResultsContext.cs" />
+    <Compile Include="Providers\RequestModels\BrowseArtistsResultsContinuationContext.cs" />
+    <Compile Include="Providers\RequestModels\BrowseArtistsResultsContext.cs" />
+    <Compile Include="Providers\RequestModels\ArtistCache.cs" />
     <Compile Include="Providers\RequestModels\IRequestModel.cs" />
     <Compile Include="Providers\RequestModels\SearchContext.cs" />
-    <Compile Include="Providers\RequestModels\SearchResults.cs" />
+    <Compile Include="Providers\RequestModels\SearchResultsContext.cs" />
     <Compile Include="Providers\Requests.cs" />
+    <Compile Include="Providers\Requests\GetArtistSongs.cs" />
+    <Compile Include="Providers\Requests\GetArtists.cs" />
     <Compile Include="Providers\Requests\CheckUploaded.cs" />
     <Compile Include="Providers\Requests\UploadTrack.cs" />
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
@@ -412,7 +420,13 @@
       <SubType>Designer</SubType>
       <CustomToolNamespace>YTMusicUploader.MusicBrainz.API.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="AppData\get_artists_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="AppData\check_auth_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AppData\get_artist_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\search_uploads_context.json">

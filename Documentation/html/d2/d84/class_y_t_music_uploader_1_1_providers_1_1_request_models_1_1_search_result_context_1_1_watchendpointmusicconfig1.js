@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_watchendpointmusicconfig1 =
+[
+    [ "musicVideoType", "d2/d84/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_watchendpointmusicconfig1.html#a22ed98562200c61adbaeb59a12e4b1f8", null ]
+];

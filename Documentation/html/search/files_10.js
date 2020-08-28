@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['tag_2ecs_1131',['Tag.cs',['../df/da2/_tag_8cs.html',1,'']]],
-  ['textrepresentation_2ecs_1132',['TextRepresentation.cs',['../d1/d51/_text_representation_8cs.html',1,'']]],
-  ['threadhelper_2ecs_1133',['ThreadHelper.cs',['../d5/d9d/_thread_helper_8cs.html',1,'']]],
-  ['throttlestream_2ecs_1134',['ThrottleStream.cs',['../db/d5f/_throttle_stream_8cs.html',1,'']]],
-  ['track_2ecs_1135',['Track.cs',['../d8/d40/_track_8cs.html',1,'']]]
+  ['safefilestream_2ecs_1336',['SafeFileStream.cs',['../d4/d03/_safe_file_stream_8cs.html',1,'']]],
+  ['searchcontext_2ecs_1337',['SearchContext.cs',['../d0/d84/_search_context_8cs.html',1,'']]],
+  ['searchresultscontext_2ecs_1338',['SearchResultsContext.cs',['../dc/d92/_search_results_context_8cs.html',1,'']]],
+  ['settings_2ecs_1339',['Settings.cs',['../d2/d74/_settings_8cs.html',1,'']]],
+  ['settings_2edesigner_2ecs_1340',['Settings.Designer.cs',['../d1/d1c/_settings_8_designer_8cs.html',1,'']]],
+  ['settingsrepo_2ecs_1341',['SettingsRepo.cs',['../d9/d8f/_settings_repo_8cs.html',1,'']]]
 ];

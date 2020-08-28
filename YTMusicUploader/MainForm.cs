@@ -19,6 +19,7 @@ using YTMusicUploader.Dialogues;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.Repos;
+using YTMusicUploader.Providers.RequestModels;
 
 namespace YTMusicUploader
 {

@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_likeendpoint =
+[
+    [ "status", "d7/def/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_likeendpoint.html#a48dbb8446ac7b2cab56e5ac2815aca3e", null ],
+    [ "target", "d7/def/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_likeendpoint.html#abb3f238bc67957d9e8b969f0271d809c", null ]
+];

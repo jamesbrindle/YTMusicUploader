@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_confirmbutton =
+[
+    [ "buttonRenderer", "d6/ded/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_confirmbutton.html#afdb816ee1597ee686de728e8940e8ad7", null ]
+];

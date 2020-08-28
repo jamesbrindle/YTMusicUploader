@@ -2,7 +2,7 @@
 .ad l
 .nh
 .SH NAME
-YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&.  
+YTMusicUploader.Providers.Requests \- YouTube Music API Request Methods  
 
 .SH SYNOPSIS
 .br
@@ -21,6 +21,7 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .ti -1c
 .RI "enum \fBUploadCheckResult\fP { \fBUploadCheckResult\&.NotPresent\fP, \fBUploadCheckResult\&.Present_FromCache\fP, \fBUploadCheckResult\&.Present_NewRequest\fP }"
 .br
+.RI "Not present or present with an indication of where the result came from - a new request or from the cache "
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -29,6 +30,10 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .RI "static bool \fBIsAuthenticated\fP (string cookieValue)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. /// In this case, we're actually perform a request for personally uploaded music files "
+.ti -1c
+.RI "static void \fBSetArtistCache\fP (string authenticationCookie)"
+.br
+.RI "Set the uploaded artist cached gathered from YouTube Music "
 .ti -1c
 .RI "static void \fBStartPrefetchingUploadedFilesCheck\fP (List< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
 .br
@@ -46,6 +51,14 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
 .ti -1c
+.RI "static \fBArtistCache\fP \fBGetArtists\fP (string cookieValue, \fBArtistCache\fP artistCache=null, string continuationToken=null)"
+.br
+.RI "HttpWebRequest POST request - Recursively fetches all the artists from YouTube Music's 'Upload' section "
+.ti -1c
+.RI "static List< \fBArtistCache\&.Song\fP > \fBGetArtistSongs\fP (string cookieValue, string browseId, List< \fBArtistCache\&.Song\fP > songs=null, string continuationToken=null)"
+.br
+.RI "HttpWebRequest POST request - Recursively fetches all the songs of an artist from YouTube Music's 'Upload' section "
+.ti -1c
 .RI "static bool \fBUploadTrack\fP (\fBMainForm\fP mainForm, string cookieValue, string filePath, int maxUploadSpeed, out string error)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to upload a music file\&. "
@@ -62,6 +75,9 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 
 .in +1c
 .ti -1c
+.RI "static \fBArtistCache\fP \fBArtistCache\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "static Thread \fBUploadCheckPreloaderThread\fP = null\fC [get, set]\fP"
 .br
 .ti -1c
@@ -70,23 +86,17 @@ YTMusicUploader.Providers.Requests \- HttpWebRequest POST request to send to You
 .in -1c
 .SH "Detailed Description"
 .PP 
-HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining if a generic request is successful given the current authentication cookie value we have stored\&. 
+YouTube Music API Request Methods 
 
 YouTube music HttpWebRequest abstract class
-.PP
-HttpWebRequest POST request to send to YouTube to upload a music file\&.
-.PP
-HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&.
-.PP
-In this case, we're actually perform a request for personally uploaded music files
-.PP
-Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
 .PP
 Thanks to: sigma67: https://ytmusicapi.readthedocs.io/en/latest/ https://github.com/sigma67/ytmusicapi
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "enum \fBYTMusicUploader\&.Providers\&.Requests\&.UploadCheckResult\fP\fC [strong]\fP"
 
+.PP
+Not present or present with an indication of where the result came from - a new request or from the cache 
 .PP
 \fBEnumerator\fP
 .in +1c
@@ -113,6 +123,48 @@ Required headers for any YouTube music API request
 \fBReturns\fP
 .RS 4
 The same HttpWebReqest object with added default headers
+.RE
+.PP
+
+.SS "static \fBArtistCache\fP YTMusicUploader\&.Providers\&.Requests\&.GetArtists (string cookieValue, \fBArtistCache\fP artistCache = \fCnull\fP, string continuationToken = \fCnull\fP)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request - Recursively fetches all the artists from YouTube Music's 'Upload' section 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIartistCache\fP Input ArtistCache object (should be empty when initialising - this is a recursive method)
+.br
+\fIcontinuationToken\fP Token from YouTube Music indicated more results to fetch, and the token to get them (shoult be empty when initialising - this is a recursive method)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+ArtistCache object
+.RE
+.PP
+
+.SS "static List<\fBArtistCache\&.Song\fP> YTMusicUploader\&.Providers\&.Requests\&.GetArtistSongs (string cookieValue, string browseId, List< \fBArtistCache\&.Song\fP > songs = \fCnull\fP, string continuationToken = \fCnull\fP)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request - Recursively fetches all the songs of an artist from YouTube Music's 'Upload' section 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIbrowseId\fP YouTube Music's navigation ID for an individual artist, retreived from 'GetArtists' request
+.br
+\fIsongs\fP Input ArtistCache 'Songs' object (should be empty when initialising - this is a recursive method)
+.br
+\fIcontinuationToken\fP Token from YouTube Music indicated more results to fetch, and the token to get them (shoult be empty when initialising - this is a recursive method)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+ArtistCache object
 .RE
 .PP
 
@@ -221,6 +273,10 @@ True if song is found, false otherwise
 .RE
 .PP
 
+.SS "static void YTMusicUploader\&.Providers\&.Requests\&.SetArtistCache (string authenticationCookie)\fC [static]\fP"
+
+.PP
+Set the uploaded artist cached gathered from YouTube Music 
 .SS "static void YTMusicUploader\&.Providers\&.Requests\&.StartPrefetchingUploadedFilesCheck (List< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
 
 .PP
@@ -262,6 +318,8 @@ True if the upload is successful, false otherwise
 
 .SH "Property Documentation"
 .PP 
+.SS "\fBArtistCache\fP YTMusicUploader\&.Providers\&.Requests\&.ArtistCache = null\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
 .SS "Thread YTMusicUploader\&.Providers\&.Requests\&.UploadCheckPreloaderSleepThread = null\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
 
 .SS "Thread YTMusicUploader\&.Providers\&.Requests\&.UploadCheckPreloaderThread = null\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"

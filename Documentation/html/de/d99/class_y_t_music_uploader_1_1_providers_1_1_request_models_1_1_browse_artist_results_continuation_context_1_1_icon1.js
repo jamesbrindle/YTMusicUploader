@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_icon1 =
+[
+    [ "iconType", "de/d99/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_icon1.html#a2b5505e3897061d0b501d7db6f5dd807", null ]
+];

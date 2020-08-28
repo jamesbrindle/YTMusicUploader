@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
+using YTMusicUploader.Providers.RequestModels;
 using static YTMusicUploader.Business.MusicDataFetcher;
 
 namespace YTMusicUploader.Business
@@ -27,6 +28,7 @@ namespace YTMusicUploader.Business
         private int _errorsCount;
         private int _uploadedCount;
         private int _discoveredFilesCount;
+        public ArtistCache ArtistCache { get; set; }
 
         public FileUploader(MainForm mainForm)
         {
@@ -44,6 +46,9 @@ namespace YTMusicUploader.Business
 
             MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;
 
+            MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
+            Requests.SetArtistCache(MainForm.Settings.AuthenticationCookie);
+
             if (Global.MultiThreadedRequests)
             {
                 Requests.StartPrefetchingUploadedFilesCheck(
@@ -56,6 +61,12 @@ namespace YTMusicUploader.Business
             {
                 if (File.Exists(musicFile.Path))
                 {
+                    if (Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2))
+                    {
+                        MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
+                        Requests.SetArtistCache(MainForm.Settings.AuthenticationCookie);
+                    }
+
                     musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);
 
                     if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
@@ -80,8 +91,23 @@ namespace YTMusicUploader.Business
                         {
                             TryProcess(musicFile).Wait();
                         }
-                        catch
+                        catch(Exception e)
                         {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                Thread.Sleep(1000);
+                                try
+                                {
+                                    TryProcess(musicFile).Wait();
+                                    break;
+                                }
+                                catch { }
+                            }
+                            
+                            var _ = e;
+#if DEBUG
+                            Console.Out.WriteLine("FileUploader: Process: " + e.Message);
+#endif
                             HandleFileNeedsUploading(musicFile).Wait();
                         }
 

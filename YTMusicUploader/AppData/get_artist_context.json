@@ -1,0 +1,72 @@
+﻿{
+  "context": {
+    "client": {
+      "clientName": "WEB_REMIX",
+      "clientVersion": "0.1",
+      "hl": "en-GB",
+      "gl": "GB",
+      "experimentIds": [],
+      "experimentsToken": "",
+      "browserName": "Firefox",
+      "browserVersion": "79.0",
+      "osName": "Windows",
+      "osVersion": "10.0",
+      "utcOffsetMinutes": 60,
+      "locationInfo": {
+        "locationPermissionAuthorizationStatus": "LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED"
+      },
+      "musicAppInfo": {
+        "musicActivityMasterSwitch": "MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE",
+        "musicLocationMasterSwitch": "MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE",
+        "pwaInstallabilityStatus": "PWA_INSTALLABILITY_STATUS_UNKNOWN"
+      }
+    },
+    "capabilities": {},
+    "request": {
+      "internalExperimentFlags": [
+        {
+          "key": "force_music_enable_outertube_music_queue",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_tastebuilder_browse",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_playlist_detail_browse",
+          "value": "true"
+        },
+        {
+          "key": "force_route_music_library_songs_to_outertube",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_home_browse",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_album_detail_browse",
+          "value": "true"
+        },
+        {
+          "key": "force_music_enable_outertube_search_suggestions",
+          "value": "true"
+        }
+      ],
+      "sessionIndex": 0
+    },
+    "clickTracking": {
+      "clickTrackingParams": "CCEQyfQCGA4iEwirpvvLnL7rAhWnCQYAHdG-AQc="
+    },
+    "activePlayers": {},
+    "user": {
+      "enableSafetyMode": false
+    }
+  },
+  "browseId": "",
+  "browseEndpointContextSupportedConfigs": {
+    "browseEndpointContextMusicConfig": {
+      "pageType": "MUSIC_PAGE_TYPE_ARTIST"
+    }
+  }
+}

@@ -1,3 +1,3 @@
 <map id="YTMusicUploader.Providers.Requests" name="YTMusicUploader.Providers.Requests">
-<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YouTube to check if the user&#39;s is authenticated (signed in) by..." alt="" coords="5,5,216,259"/>
+<area shape="rect" id="node1" title="YouTube Music API Request Methods" alt="" coords="5,5,216,317"/>
 </map>

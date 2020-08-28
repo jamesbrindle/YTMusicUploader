@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint7 =
+[
+    [ "browseEndpointContextSupportedConfigs", "d7/df5/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint7.html#a0eb15ca805c3c8e2d5fd0a174ba0439f", null ],
+    [ "browseId", "d7/df5/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint7.html#a2a5eff1b8e6356c89b21bfee796b2094", null ]
+];

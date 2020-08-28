@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationf0052a9bf854bbe6e9950e43fc855fe5 =
+[
+    [ "clickTrackingParams", "de/df5/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationf0052a9bf854bbe6e9950e43fc855fe5.html#a88ac2fc3fbfa9cc087ea9457ede3d095", null ],
+    [ "watchEndpoint", "de/df5/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationf0052a9bf854bbe6e9950e43fc855fe5.html#a5ba347bf288e7002769110db5ecb0716", null ]
+];

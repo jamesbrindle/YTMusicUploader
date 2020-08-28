@@ -110,6 +110,17 @@ namespace System
         }
 
         /// <summary>
+        /// Removes and ", ”, “, ' (quotes) from the string
+        /// </summary>
+        public static string UnQuote(this string s)
+        {
+            if (s == null)
+                return s;
+
+            return Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(s, "“", ""), "”", ""), "\"", ""), "'", "");
+        }
+
+        /// <summary>
         /// 4 digit short date
         /// </summary>
         public static string ToShortDate(this string s)

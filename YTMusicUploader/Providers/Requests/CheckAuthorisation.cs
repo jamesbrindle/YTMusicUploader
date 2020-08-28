@@ -6,10 +6,7 @@ using System.Net;
 namespace YTMusicUploader.Providers
 {
     /// <summary>
-    /// HttpWebRequest POST request to send to YouTube to check if the user's is authenticated (signed in) by determining 
-    /// if a generic request is successful given the current authentication cookie value we have stored.
-    /// 
-    /// In this case, we're actually perform a request for personally uploaded music files
+    /// YouTube Music API Request Methods
     /// 
     /// Thanks to: sigma67: 
     ///     https://ytmusicapi.readthedocs.io/en/latest/ 

@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_watchplaylistendpoint =
+[
+    [ "_params", "dc/d3c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_watchplaylistendpoint.html#a93757dc646873886caf2306a77dc80fb", null ],
+    [ "playlistId", "dc/d3c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_watchplaylistendpoint.html#aa46b273d3aceaafc6f859d5c37926d5b", null ]
+];

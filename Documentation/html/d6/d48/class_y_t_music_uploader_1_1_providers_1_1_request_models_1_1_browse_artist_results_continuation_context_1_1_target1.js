@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_target1 =
+[
+    [ "videoId", "d6/d48/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_target1.html#a326aa8aa88eab7ff4d83df30f81cdd0f", null ]
+];

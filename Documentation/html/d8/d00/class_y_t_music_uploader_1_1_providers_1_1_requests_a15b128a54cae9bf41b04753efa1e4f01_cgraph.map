@@ -1,0 +1,6 @@
+<map id="YTMusicUploader.Providers.Requests.GetArtistSongs" name="YTMusicUploader.Providers.Requests.GetArtistSongs">
+<area shape="rect" id="node1" title="HttpWebRequest POST request &#45; Recursively fetches all the songs of an artist from YouTube Music&#39;s &#39;Up..." alt="" coords="5,71,191,112"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="239,5,443,47"/>
+<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="248,71,433,112"/>
+<area shape="rect" id="node4" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="248,136,433,177"/>
+</map>

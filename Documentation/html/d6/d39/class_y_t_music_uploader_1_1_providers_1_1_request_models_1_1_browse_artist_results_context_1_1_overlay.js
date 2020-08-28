@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_overlay =
+[
+    [ "musicItemThumbnailOverlayRenderer", "d6/d39/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_overlay.html#aafb265fdba984a3e37685b053ea897e0", null ]
+];

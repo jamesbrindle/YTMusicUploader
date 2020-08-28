@@ -1,9 +1,23 @@
 var searchData=
 [
-  ['safefilestream_2ecs_1125',['SafeFileStream.cs',['../d4/d03/_safe_file_stream_8cs.html',1,'']]],
-  ['searchcontext_2ecs_1126',['SearchContext.cs',['../d0/d84/_search_context_8cs.html',1,'']]],
-  ['searchresults_2ecs_1127',['SearchResults.cs',['../d4/d4a/_search_results_8cs.html',1,'']]],
-  ['settings_2ecs_1128',['Settings.cs',['../d2/d74/_settings_8cs.html',1,'']]],
-  ['settings_2edesigner_2ecs_1129',['Settings.Designer.cs',['../d1/d1c/_settings_8_designer_8cs.html',1,'']]],
-  ['settingsrepo_2ecs_1130',['SettingsRepo.cs',['../d9/d8f/_settings_repo_8cs.html',1,'']]]
+  ['rating_2ecs_1316',['Rating.cs',['../d4/d22/_rating_8cs.html',1,'']]],
+  ['readme_2emd_1317',['README.md',['../d9/dd6/_r_e_a_d_m_e_8md.html',1,'']]],
+  ['recording_2ecs_1318',['Recording.cs',['../d0/de3/_recording_8cs.html',1,'']]],
+  ['recordinglist_2ecs_1319',['RecordingList.cs',['../de/dac/_recording_list_8cs.html',1,'']]],
+  ['recordingservice_2ecs_1320',['RecordingService.cs',['../d8/d18/_recording_service_8cs.html',1,'']]],
+  ['registrysettings_2ecs_1321',['RegistrySettings.cs',['../d2/d70/_registry_settings_8cs.html',1,'']]],
+  ['relation_2ecs_1322',['Relation.cs',['../da/dd4/_relation_8cs.html',1,'']]],
+  ['release_2ecs_1323',['Release.cs',['../db/d83/_release_8cs.html',1,'']]],
+  ['releasegroup_2ecs_1324',['ReleaseGroup.cs',['../d9/d6b/_release_group_8cs.html',1,'']]],
+  ['releasegrouplist_2ecs_1325',['ReleaseGroupList.cs',['../db/d31/_release_group_list_8cs.html',1,'']]],
+  ['releasegroupservice_2ecs_1326',['ReleaseGroupService.cs',['../db/d76/_release_group_service_8cs.html',1,'']]],
+  ['releaselist_2ecs_1327',['ReleaseList.cs',['../d6/d1c/_release_list_8cs.html',1,'']]],
+  ['releaseservice_2ecs_1328',['ReleaseService.cs',['../d8/db4/_release_service_8cs.html',1,'']]],
+  ['requests_2ecs_1329',['Requests.cs',['../d7/d81/_requests_8cs.html',1,'']]],
+  ['resources_2edesigner_2ecs_1330',['Resources.Designer.cs',['../d6/d0e/_resources_8_designer_8cs.html',1,'']]],
+  ['roundbutton_2ecs_1331',['RoundButton.cs',['../d5/daa/_round_button_8cs.html',1,'']]],
+  ['roundpicturebox_2ecs_1332',['RoundPictureBox.cs',['../d3/dd4/_round_picture_box_8cs.html',1,'']]],
+  ['roundrectangle_2ecs_1333',['RoundRectangle.cs',['../da/d64/_round_rectangle_8cs.html',1,'']]],
+  ['roundtextbox_2ecs_1334',['RoundTextBox.cs',['../de/d16/_round_text_box_8cs.html',1,'']]],
+  ['roundtooltip_2ecs_1335',['RoundTooltip.cs',['../d8/d9f/_round_tooltip_8cs.html',1,'']]]
 ];
