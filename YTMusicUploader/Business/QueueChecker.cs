@@ -49,7 +49,8 @@ namespace YTMusicUploader.Business
                 }
             })
             {
-                IsBackground = true
+                IsBackground = true,
+                Priority = ThreadPriority.Lowest
             };
             QueueCheckerThread.Start();
         }

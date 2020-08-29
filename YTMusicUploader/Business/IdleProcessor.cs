@@ -24,33 +24,39 @@ namespace YTMusicUploader.Business
             {
                 while (true)
                 {
-                    while (Paused)
+                    try
                     {
+                        while (Paused)
+                        {
+                            if (MainForm.Aborting || Stopped)
+                                return;
+
+                            ThreadHelper.SafeSleep(2000);
+                        }
+
+                        while (!NetworkHelper.InternetConnectionIsUp())
+                        {
+                            if (MainForm.Aborting || Stopped)
+                                return;
+
+                            ThreadHelper.SafeSleep(5000);
+                        }
+
+                        PopulateRandomMusicEntryWithMissingMbId();
+                        Thread.Sleep(100);
+                        PopulateRandomMusicEntryWithMissingEntityId();
+
                         if (MainForm.Aborting || Stopped)
                             return;
 
                         ThreadHelper.SafeSleep(2000);
                     }
-
-                    while (!NetworkHelper.InternetConnectionIsUp())
-                    {
-                        if (MainForm.Aborting || Stopped)
-                            return;
-
-                        ThreadHelper.SafeSleep(5000);
-                    }
-
-                    PopulateRandomMusicEntryWithMissingMbId();
-                    PopulateRandomMusicEntryWithMissingEntityId();
-
-                    if (MainForm.Aborting || Stopped)
-                        return;
-
-                    ThreadHelper.SafeSleep(1100);
+                    catch { }
                 }
             })
             {
-                IsBackground = true
+                IsBackground = true,
+                Priority = ThreadPriority.Lowest
             };
             IdleProcessorThread.Start();
         }
@@ -83,7 +89,9 @@ namespace YTMusicUploader.Business
                         musicFile.Path,
                         MainForm.Settings.AuthenticationCookie,
                         out string entityId,
-                        MainForm.MusicDataFetcher, false);
+                        MainForm.MusicDataFetcher,
+                        false,
+                        false);
 
                     if (!string.IsNullOrEmpty(entityId))
                     {

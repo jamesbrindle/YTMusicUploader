@@ -1,6 +1,6 @@
 <map id="YTMusicUploader.Business.FileUploader.Process" name="YTMusicUploader.Business.FileUploader.Process">
 <area shape="rect" id="node1" title="Execute the upload process" alt="" coords="5,169,192,211"/>
-<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6d2af40a5d91cfd94e42095a2fb0fb82" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="261,71,447,112"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6808d6ec5334bfe6a329d6a29be79ae5" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="261,71,447,112"/>
 <area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b" title=" " alt="" coords="259,136,449,177"/>
 <area shape="rect" id="node8" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="259,201,449,243"/>
 <area shape="rect" id="node10" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55" title="Starts a new thread which loops through MusicFiles to check if they&#39;ve already been uploaded to YouTu..." alt="" coords="240,267,468,323"/>

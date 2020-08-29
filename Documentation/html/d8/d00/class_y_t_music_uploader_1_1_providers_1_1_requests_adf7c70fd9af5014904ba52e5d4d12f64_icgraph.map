@@ -1,6 +1,6 @@
 <map id="YTMusicUploader.Providers.Requests.GetArtists" name="YTMusicUploader.Providers.Requests.GetArtists">
 <area shape="rect" id="node1" title="HttpWebRequest POST request &#45; Recursively fetches all the artists from YouTube Music&#39;s &#39;Upload&#39; secti..." alt="" coords="959,39,1144,80"/>
-<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6d2af40a5d91cfd94e42095a2fb0fb82" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="725,39,911,80"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6808d6ec5334bfe6a329d6a29be79ae5" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="725,39,911,80"/>
 <area shape="rect" id="node3" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="491,39,677,80"/>
 <area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723" title=" " alt="" coords="252,39,443,80"/>
 <area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="9,5,200,47"/>

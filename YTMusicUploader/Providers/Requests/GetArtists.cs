@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -28,8 +27,8 @@ namespace YTMusicUploader.Providers
         /// (shoult be empty when initialising - this is a recursive method)</param>
         /// <returns>ArtistCache object</returns>
         public static ArtistCache GetArtists(
-            string cookieValue, 
-            ArtistCache artistCache = null, 
+            string cookieValue,
+            ArtistCache artistCache = null,
             string continuationToken = null)
         {
             if (artistCache == null)
@@ -37,10 +36,10 @@ namespace YTMusicUploader.Providers
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl + 
-                                                                "browse" + 
-                                                                (string.IsNullOrEmpty(continuationToken) 
-                                                                                ? "" 
+                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl +
+                                                                "browse" +
+                                                                (string.IsNullOrEmpty(continuationToken)
+                                                                                ? ""
                                                                                 : "?ctoken=" + continuationToken +
                                                                                   "&continuation=" + continuationToken) +
                                                                 (string.IsNullOrEmpty(continuationToken)
@@ -105,8 +104,8 @@ namespace YTMusicUploader.Providers
         }
 
         private static ArtistCache GetInitialArtists(
-            ArtistCache artistCache, 
-            string httpResponseResults, 
+            ArtistCache artistCache,
+            string httpResponseResults,
             out string continuation)
         {
             continuation = string.Empty;
@@ -148,8 +147,8 @@ namespace YTMusicUploader.Providers
         }
 
         private static ArtistCache GetArtistsContinuation(
-            ArtistCache artistCache, 
-            string httpResponseResults, 
+            ArtistCache artistCache,
+            string httpResponseResults,
             out string continuation)
         {
             var browseArtistsResults = JsonConvert.DeserializeObject<BrowseArtistsResultsContinuationContext>(httpResponseResults);

@@ -11,7 +11,6 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using YTMusicUploader.Business;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.RequestModels;
@@ -64,7 +63,7 @@ namespace YTMusicUploader.Providers
         /// <summary>
         /// Set the uploaded artist cached gathered from YouTube Music
         /// </summary>
-        public static void SetArtistCache(string authenticationCookie)
+        public static void LoadArtistCache(string authenticationCookie)
         {
             UploadCheckCache.Pause = true;
             ArtistCache = null;
@@ -180,7 +179,8 @@ namespace YTMusicUploader.Providers
             string cookieValue,
             out string entityId,
             MusicDataFetcher musicDataFetcher = null,
-            bool checkCheck = true)
+            bool checkCheck = true,
+            bool parallel = true)
         {
             entityId = string.Empty;
             if (checkCheck && UploadCheckCache.CachedObjectHash.Contains(musicFilePath))
@@ -213,7 +213,7 @@ namespace YTMusicUploader.Providers
 
                 try
                 {
-                    return IsSongUploadedMulitpleAlbumNameVariation(artist, album, track, cookieValue, out entityId)
+                    return IsSongUploadedMulitpleAlbumNameVariation(artist, album, track, cookieValue, parallel, out entityId)
                                     ? UploadCheckResult.Present_NewRequest
                                     : UploadCheckResult.NotPresent;
                 }
@@ -237,11 +237,12 @@ namespace YTMusicUploader.Providers
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
         /// <param name="entityId">Output YouTube Music song entity ID if found</param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static bool IsSongUploadedMulitpleAlbumNameVariation(
+        private static bool IsSongUploadedMulitpleAlbumNameVariation(
             string artist,
             string album,
             string track,
             string cookieValue,
+            bool parallel,
             out string entityId)
         {
             // Make sure they're not null
@@ -252,7 +253,7 @@ namespace YTMusicUploader.Providers
             string originalAlbum = album;
             string originalTrack = track;
 
-            bool result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+            bool result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
             if (result)
                 return result;
 
@@ -265,7 +266,7 @@ namespace YTMusicUploader.Providers
                     // Don't bother trying the exact same search
                     if (album != originalAlbum)
                     {
-                        result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
                         if (result)
                             return result;
                     }
@@ -281,7 +282,7 @@ namespace YTMusicUploader.Providers
                     // Don't bother trying the exact same search
                     if (album != originalAlbum)
                     {
-                        result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
                         if (result)
                             return result;
                     }
@@ -307,7 +308,7 @@ namespace YTMusicUploader.Providers
             // Don't bother trying the exact same search
             if (track != originalTrack)
             {
-                result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
                 if (result)
                     return result;
             }
@@ -318,7 +319,7 @@ namespace YTMusicUploader.Providers
             // Don't bother trying the exact same search
             if (track != originalTrack)
             {
-                result = IsSongUploaded(artist, album, track, cookieValue, out entityId);
+                result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
                 if (result)
                     return result;
             }
@@ -339,11 +340,12 @@ namespace YTMusicUploader.Providers
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
         /// <param name="entityId">Output YouTube Music song entity ID if found</param>
         /// <returns>True if song is found, false otherwise</returns>
-        public static bool IsSongUploaded(
+        private static bool IsSongUploaded(
             string artist,
             string album,
             string track,
             string cookieValue,
+            bool parallel,
             out string entityId)
         {
             entityId = string.Empty;
@@ -392,8 +394,8 @@ namespace YTMusicUploader.Providers
                         result = streamReader.ReadToEnd();
                     }
 
-                    JObject runObject = JObject.Parse(result);
-                    List<JToken> runs = runObject.Descendants()
+                    var runObject = JObject.Parse(result);
+                    var runs = runObject.Descendants()
                                           .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
                                           .Select(p => ((JProperty)p).Value).ToList();
 
@@ -405,57 +407,49 @@ namespace YTMusicUploader.Providers
                     bool foundTrack = false;
                     foreach (JToken run in runs)
                     {
+                        if (!parallel)
+                            Thread.Sleep(5);
+
                         if (run.ToString().Contains("text"))
                         {
                             var runArray = run.ToObject<SearchResultContext.Run[]>();
                             if (runArray.Length > 0)
                             {
                                 if (runArray[0].text.ToLower().Contains("no results found"))
-                                    return IsPresentInArtistsCache(cookieValue, artist, track, matchSuccessMinimum, out entityId);
+                                {
+                                    return IsPresentInArtistsCache(cookieValue,
+                                                                   artist,
+                                                                   track,
+                                                                   matchSuccessMinimum,
+                                                                   parallel,
+                                                                   out entityId);
+                                }
                                 else
                                 {
-                                    Parallel.ForEach(runArray, (runElement) =>
+                                    if (parallel)
                                     {
-                                        if (runElement.text == null)
-                                            runElement.text = string.Empty;
-
-                                        float _artistSimilarity = 0.0f;
-                                        float _albumSimilartity = 0.0f;
-                                        float _trackSimilarity = 0.0f;
-
-                                        Parallel.For(0, 3, (i, state) =>
-                                        {
-                                            switch (i)
-                                            {
-                                                case 0:
-                                                    if (artistSimilarity < matchSuccessMinimum)
-                                                        _artistSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), artist.UnQuote());
-                                                    break;
-                                                case 1:
-                                                    if (_albumSimilartity < matchSuccessMinimum)
-                                                        _albumSimilartity = Levenshtein.Similarity(runElement.text.UnQuote(), album.UnQuote());
-                                                    break;
-                                                case 2:
-                                                    if (_trackSimilarity < matchSuccessMinimum)
-                                                        _trackSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), track.UnQuote());
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-                                        });
-
-                                        if (artistSimilarity < _artistSimilarity)
-                                            artistSimilarity = _artistSimilarity;
-
-                                        if (albumSimilartity < _albumSimilartity)
-                                            albumSimilartity = _albumSimilartity;
-
-                                        if (trackSimilarity < _trackSimilarity)
-                                        {
-                                            foundTrack = true;
-                                            trackSimilarity = _trackSimilarity;
-                                        }
-                                    });
+                                        DetermineSimilarity_Parallel(runArray,
+                                                                     artist,
+                                                                     album,
+                                                                     track,
+                                                                     ref foundTrack,
+                                                                     ref artistSimilarity,
+                                                                     ref albumSimilartity,
+                                                                     ref trackSimilarity,
+                                                                     matchSuccessMinimum);
+                                    }
+                                    else
+                                    {
+                                        DetermineSimilarity_Standard(runArray,
+                                                                     artist,
+                                                                     album,
+                                                                     track,
+                                                                     ref foundTrack,
+                                                                     ref artistSimilarity,
+                                                                     ref albumSimilartity,
+                                                                     ref trackSimilarity,
+                                                                     matchSuccessMinimum);
+                                    }
 
                                     if (foundTrack && string.IsNullOrEmpty(entityId))
                                     {
@@ -518,7 +512,12 @@ namespace YTMusicUploader.Providers
                         }
                     }
 
-                    return IsPresentInArtistsCache(cookieValue, artist, track, matchSuccessMinimum, out entityId);
+                    return IsPresentInArtistsCache(cookieValue,
+                                                   artist,
+                                                   track,
+                                                   matchSuccessMinimum,
+                                                   parallel,
+                                                   out entityId);
                 }
             }
             catch (Exception e)
@@ -531,7 +530,195 @@ namespace YTMusicUploader.Providers
             }
         }
 
+        private static void DetermineSimilarity_Parallel(
+            SearchResultContext.Run[] runArray,
+            string artist,
+            string album,
+            string track,
+            ref bool foundTrack,
+            ref float artistSimilarity,
+            ref float albumSimilarity,
+            ref float trackSimilarity,
+            float matchSuccessMinimum)
+        {
+            float _artistSimilarity = 0.0f;
+            float _albumSimilarity = 0.0f;
+            float _trackSimilarity = 0.0f;
+
+            Parallel.ForEach(runArray, (runElement) =>
+            {
+                if (runElement.text == null)
+                    runElement.text = string.Empty;
+
+                float __artistSimilarity = 0.0f;
+                float __albumSimilartity = 0.0f;
+                float __trackSimilarity = 0.0f;
+
+                Parallel.For(0, 3, (i, state) =>
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            if (__artistSimilarity < matchSuccessMinimum)
+                                __artistSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), artist.UnQuote());
+                            break;
+                        case 1:
+                            if (__albumSimilartity < matchSuccessMinimum)
+                                __albumSimilartity = Levenshtein.Similarity(runElement.text.UnQuote(), album.UnQuote());
+                            break;
+                        case 2:
+                            if (__trackSimilarity < matchSuccessMinimum)
+                                __trackSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), track.UnQuote());
+                            break;
+                        default:
+                            break;
+                    }
+                });
+
+                if (_artistSimilarity < __artistSimilarity)
+                    _artistSimilarity = __artistSimilarity;
+
+                if (_albumSimilarity < __albumSimilartity)
+                    _albumSimilarity = __albumSimilartity;
+
+                if (_trackSimilarity < __trackSimilarity)
+                    _trackSimilarity = __trackSimilarity;
+            });
+
+            artistSimilarity = _artistSimilarity;
+            albumSimilarity = _albumSimilarity;
+            trackSimilarity = _trackSimilarity;
+
+            if (artistSimilarity > matchSuccessMinimum &&
+                trackSimilarity > matchSuccessMinimum)
+            {
+                foundTrack = true;
+            }
+        }
+
+        private static void DetermineSimilarity_Standard(
+            SearchResultContext.Run[] runArray,
+            string artist,
+            string album,
+            string track,
+            ref bool foundTrack,
+            ref float artistSimilarity,
+            ref float albumSimilarity,
+            ref float trackSimilarity,
+            float matchSuccessMinimum)
+        {
+            foreach (var runElement in runArray)
+            {
+                Thread.Sleep(5);
+
+                if (runElement.text == null)
+                    runElement.text = string.Empty;
+
+                if (artistSimilarity < matchSuccessMinimum)
+                    artistSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), artist.UnQuote());
+
+                if (albumSimilarity < matchSuccessMinimum)
+                    albumSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), album.UnQuote());
+
+                if (trackSimilarity < matchSuccessMinimum)
+                    trackSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), track.UnQuote());
+            }
+
+            if (artistSimilarity > matchSuccessMinimum &&
+               trackSimilarity > matchSuccessMinimum)
+            {
+                foundTrack = true;
+            }
+        }
+
         private static bool IsPresentInArtistsCache(
+            string cookieValue,
+            string artist,
+            string track,
+            float matchSuccessMinimum,
+            bool parallel,
+            out string entityId)
+        {
+            entityId = string.Empty;
+            if (ArtistCache != null)
+            {
+                if (parallel)
+                {
+                    IsPresentInArtistsCache_Parallel(cookieValue,
+                                                     artist,
+                                                     track,
+                                                     matchSuccessMinimum,
+                                                     out entityId);
+                }
+                else
+                {
+                    IsPresentInArtistsCache_Standard(cookieValue,
+                                                     artist,
+                                                     track,
+                                                     matchSuccessMinimum,
+                                                     out entityId);
+                }
+
+                if (!string.IsNullOrEmpty(entityId))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static void IsPresentInArtistsCache_Parallel(
+            string cookieValue,
+            string artist,
+            string track,
+            float matchSuccessMinimum,
+            out string entityId)
+        {
+            string tempEntityId = string.Empty;
+            Parallel.ForEach(ArtistCache.Artists.AsParallel(), (artistCacheItem, stateA, indexA) =>
+            {
+                float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
+                if (artistSimilarity >= matchSuccessMinimum)
+                {
+                    if (artistCacheItem.Songs.Count == 0)
+                        artistCacheItem.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId);
+
+                    bool trackFound = false;
+                    Parallel.ForEach(artistCacheItem.Songs.AsParallel(), (songCacheItem, stateB, indexB) =>
+                    {
+                        if (!trackFound)
+                        {
+                            float trackSimilarity = Levenshtein.Similarity(track.UnQuote(), songCacheItem.Title.UnQuote());
+                            if (trackSimilarity > matchSuccessMinimum)
+                            {
+                                tempEntityId = songCacheItem.EntityId;
+                                trackFound = true;
+                                stateB.Break();
+                            }
+                            else
+                            {
+                                string modTrack = GetCleanedTrackName(track);
+                                string ytTitle = GetCleanedTrackName(songCacheItem.Title);
+
+                                trackSimilarity = Levenshtein.Similarity(modTrack.UnQuote(), ytTitle.UnQuote());
+                                if (trackSimilarity > matchSuccessMinimum)
+                                {
+                                    tempEntityId = songCacheItem.EntityId;
+                                    trackFound = true;
+                                    stateB.Break();
+                                }
+                            }
+                        }
+                    });
+
+                    if (trackFound)
+                        stateA.Break();
+                }
+            });
+
+            entityId = tempEntityId;
+        }
+
+        private static void IsPresentInArtistsCache_Standard(
             string cookieValue,
             string artist,
             string track,
@@ -539,56 +726,49 @@ namespace YTMusicUploader.Providers
             out string entityId)
         {
             entityId = string.Empty;
-            if (ArtistCache != null)
+            foreach (var artistCacheItem in ArtistCache.Artists)
             {
-                string tempEntityId = string.Empty;
-                Parallel.ForEach(ArtistCache.Artists.AsParallel(), (artistCacheItem, stateA, indexA) =>
+                Thread.Sleep(1);
+                float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
+                if (artistSimilarity >= matchSuccessMinimum)
                 {
-                    float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
-                    if (artistSimilarity >= matchSuccessMinimum)
-                    {
-                        if (artistCacheItem.Songs.Count == 0)
-                            artistCacheItem.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId);
+                    if (artistCacheItem.Songs.Count == 0)
+                        artistCacheItem.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId);
 
-                        bool trackFound = false;
-                        Parallel.ForEach(artistCacheItem.Songs.AsParallel(), (songCacheItem, stateB, indexB) =>
+                    bool trackFound = false;
+
+                    foreach (var songCacheItem in artistCacheItem.Songs)
+                    {
+                        Thread.Sleep(1);
+                        if (!trackFound)
                         {
-                            if (!trackFound)
+                            float trackSimilarity = Levenshtein.Similarity(track.UnQuote(), songCacheItem.Title.UnQuote());
+                            if (trackSimilarity > matchSuccessMinimum)
                             {
-                                float trackSimilarity = Levenshtein.Similarity(track.UnQuote(), songCacheItem.Title.UnQuote());
+                                entityId = songCacheItem.EntityId;
+                                trackFound = true;
+                                break;
+                            }
+                            else
+                            {
+                                string modTrack = GetCleanedTrackName(track);
+                                string ytTitle = GetCleanedTrackName(songCacheItem.Title);
+
+                                trackSimilarity = Levenshtein.Similarity(modTrack.UnQuote(), ytTitle.UnQuote());
                                 if (trackSimilarity > matchSuccessMinimum)
                                 {
-                                    tempEntityId = songCacheItem.EntityId;
+                                    entityId = songCacheItem.EntityId;
                                     trackFound = true;
-                                    stateB.Break();
-                                }
-                                else
-                                {
-                                    string modTrack = GetCleanedTrackName(track);
-                                    string ytTitle = GetCleanedTrackName(songCacheItem.Title);                                    
-
-                                    trackSimilarity = Levenshtein.Similarity(modTrack.UnQuote(), ytTitle.UnQuote());
-                                    if (trackSimilarity > matchSuccessMinimum)
-                                    {
-                                        tempEntityId = songCacheItem.EntityId;
-                                        trackFound = true;
-                                        stateB.Break();
-                                    }
+                                    break;
                                 }
                             }
-                        });
-
-                        if (trackFound)
-                            stateA.Break();
+                        }
                     }
-                });
 
-                entityId = tempEntityId;
-                if (!string.IsNullOrEmpty(entityId))
-                    return true;
+                    if (trackFound)
+                        break;
+                }
             }
-
-            return false;
         }
 
         private static string GetCleanedTrackName(string trackName)
