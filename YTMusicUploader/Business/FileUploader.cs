@@ -46,8 +46,13 @@ namespace YTMusicUploader.Business
 
             MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;
 
-            MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
-            Requests.LoadArtistCache(MainForm.Settings.AuthenticationCookie);
+            if (Requests.ArtistCache == null || 
+                Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2) || 
+                Requests.ArtistCache.Artists.Count == 0)
+            {
+                MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
+                Requests.LoadArtistCache(MainForm.Settings.AuthenticationCookie);
+            }
 
             if (Global.MultiThreadedRequests)
             {
@@ -61,7 +66,7 @@ namespace YTMusicUploader.Business
             {
                 if (File.Exists(musicFile.Path))
                 {
-                    if (Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2))
+                    if (Requests.ArtistCache == null || Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2))
                     {
                         MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
                         Requests.LoadArtistCache(MainForm.Settings.AuthenticationCookie);
