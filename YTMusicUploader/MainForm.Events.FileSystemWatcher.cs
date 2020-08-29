@@ -18,6 +18,17 @@ namespace YTMusicUploader
             LastFolderChangeTime = DateTime.Now;
         }
 
+        private void FolderWatcher_OnRenamed(object source, RenamedEventArgs e)
+        {
+            if (LastFolderChangeTime == null)
+            {
+                LastFolderChangeTime = DateTime.Now;
+                FlagStartQueue();
+            }
+
+            LastFolderChangeTime = DateTime.Now;
+        }
+
         private void FlagStartQueue()
         {
             new Thread((ThreadStart)delegate

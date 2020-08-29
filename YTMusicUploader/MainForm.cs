@@ -198,6 +198,9 @@ namespace YTMusicUploader
                 {
                     Path = watchFolder.Path,
                     NotifyFilter = NotifyFilters.CreationTime |
+                                   NotifyFilters.DirectoryName |
+                                   NotifyFilters.Size |
+                                   NotifyFilters.Attributes |
                                    NotifyFilters.FileName |
                                    NotifyFilters.LastAccess |
                                    NotifyFilters.LastWrite |
@@ -208,6 +211,9 @@ namespace YTMusicUploader
 
                 FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
                     .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
+
+                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                    .Renamed += new RenamedEventHandler(FolderWatcher_OnRenamed);
 
                 FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
                     .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
