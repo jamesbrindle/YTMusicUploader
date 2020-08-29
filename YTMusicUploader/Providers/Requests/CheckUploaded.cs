@@ -401,7 +401,7 @@ namespace YTMusicUploader.Providers
 
                     float matchSuccessMinimum = Global.YouTubeUploadedSimilarityPercentageForMatch;
                     float artistSimilarity = 0.0f;
-                    float albumSimilartity = 0.0f;
+                    float albumSimilarity = 0.0f;
                     float trackSimilarity = 0.0f;
 
                     bool foundTrack = false;
@@ -426,16 +426,19 @@ namespace YTMusicUploader.Providers
                                 }
                                 else
                                 {
+                                    float _artistSimilarity = 0.0f;
+                                    float _albumSimilartity = 0.0f;
+                                    float _trackSimilarity = 0.0f;
+
                                     if (parallel)
                                     {
                                         DetermineSimilarity_Parallel(runArray,
                                                                      artist,
                                                                      album,
                                                                      track,
-                                                                     ref foundTrack,
-                                                                     ref artistSimilarity,
-                                                                     ref albumSimilartity,
-                                                                     ref trackSimilarity,
+                                                                     ref _artistSimilarity,
+                                                                     ref _albumSimilartity,
+                                                                     ref _trackSimilarity,
                                                                      matchSuccessMinimum);
                                     }
                                     else
@@ -444,11 +447,25 @@ namespace YTMusicUploader.Providers
                                                                      artist,
                                                                      album,
                                                                      track,
-                                                                     ref foundTrack,
-                                                                     ref artistSimilarity,
-                                                                     ref albumSimilartity,
-                                                                     ref trackSimilarity,
+                                                                     ref _artistSimilarity,
+                                                                     ref _albumSimilartity,
+                                                                     ref _trackSimilarity,
                                                                      matchSuccessMinimum);
+                                    }
+
+                                    if (artistSimilarity < _artistSimilarity)
+                                        artistSimilarity = _artistSimilarity;
+
+                                    if (albumSimilarity < _albumSimilartity)
+                                        albumSimilarity = _albumSimilartity;
+
+                                    if (trackSimilarity < _trackSimilarity)
+                                        trackSimilarity = _trackSimilarity;
+
+                                    if (artistSimilarity >= matchSuccessMinimum &&
+                                        trackSimilarity >= matchSuccessMinimum)
+                                    {
+                                        foundTrack = true;
                                     }
 
                                     if (foundTrack && string.IsNullOrEmpty(entityId))
@@ -462,7 +479,7 @@ namespace YTMusicUploader.Providers
                                             if (!string.IsNullOrEmpty(album))
                                             {
                                                 if (artistSimilarity >= matchSuccessMinimum &&
-                                                    albumSimilartity >= matchSuccessMinimum &&
+                                                    albumSimilarity >= matchSuccessMinimum &&
                                                     trackSimilarity >= matchSuccessMinimum)
                                                 {
 
@@ -497,7 +514,7 @@ namespace YTMusicUploader.Providers
                     if (!string.IsNullOrEmpty(album))
                     {
                         if (artistSimilarity >= matchSuccessMinimum &&
-                            albumSimilartity >= matchSuccessMinimum &&
+                            albumSimilarity >= matchSuccessMinimum &&
                             trackSimilarity >= matchSuccessMinimum)
                         {
                             return true;
@@ -535,7 +552,6 @@ namespace YTMusicUploader.Providers
             string artist,
             string album,
             string track,
-            ref bool foundTrack,
             ref float artistSimilarity,
             ref float albumSimilarity,
             ref float trackSimilarity,
@@ -588,12 +604,6 @@ namespace YTMusicUploader.Providers
             artistSimilarity = _artistSimilarity;
             albumSimilarity = _albumSimilarity;
             trackSimilarity = _trackSimilarity;
-
-            if (artistSimilarity > matchSuccessMinimum &&
-                trackSimilarity > matchSuccessMinimum)
-            {
-                foundTrack = true;
-            }
         }
 
         private static void DetermineSimilarity_Standard(
@@ -601,7 +611,6 @@ namespace YTMusicUploader.Providers
             string artist,
             string album,
             string track,
-            ref bool foundTrack,
             ref float artistSimilarity,
             ref float albumSimilarity,
             ref float trackSimilarity,
@@ -622,12 +631,6 @@ namespace YTMusicUploader.Providers
 
                 if (trackSimilarity < matchSuccessMinimum)
                     trackSimilarity = Levenshtein.Similarity(runElement.text.UnQuote(), track.UnQuote());
-            }
-
-            if (artistSimilarity > matchSuccessMinimum &&
-               trackSimilarity > matchSuccessMinimum)
-            {
-                foundTrack = true;
             }
         }
 
