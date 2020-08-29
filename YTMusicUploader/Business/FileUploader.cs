@@ -294,9 +294,8 @@ namespace YTMusicUploader.Business
             string tooltipText = string.Empty;
             if (string.IsNullOrEmpty(musicPath))
                 tooltipText = "Idle";
-
             else
-                await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath);
+                tooltipText = await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath);
 
             if (!setArtworkImage)
             {
