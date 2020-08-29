@@ -89,16 +89,18 @@ namespace YTMusicUploader.Business
 
                         try
                         {
-                            TryProcess(musicFile).Wait();
+                            HandleUploadCheck(musicFile).Wait();
                         }
                         catch (Exception e)
                         {
+                            bool success = false;
                             for (int i = 0; i < 5; i++)
                             {
                                 Thread.Sleep(1000);
                                 try
                                 {
-                                    TryProcess(musicFile).Wait();
+                                    HandleUploadCheck(musicFile).Wait();
+                                    success = true;
                                     break;
                                 }
                                 catch { }
@@ -108,7 +110,8 @@ namespace YTMusicUploader.Business
 #if DEBUG
                             Console.Out.WriteLine("FileUploader: Process: " + e.Message);
 #endif
-                            HandleFileNeedsUploading(musicFile).Wait();
+                            if (!success)
+                                HandleFileNeedsUploading(musicFile).Wait();
                         }
 
                         await musicFile.Save();
@@ -141,6 +144,7 @@ namespace YTMusicUploader.Business
             existingMusicFile.Removed = false;
 
             TrackAndReleaseMbId trackAndReleaseMbId = null;
+
             if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
                 trackAndReleaseMbId = MainForm.MusicDataFetcher.GetTrackAndReleaseMbId(musicFile.Path, false);
 
@@ -165,7 +169,7 @@ namespace YTMusicUploader.Business
             await existingMusicFile.Save();
         }
 
-        private async Task TryProcess(MusicFile musicFile)
+        private async Task HandleUploadCheck(MusicFile musicFile)
         {
             var alreadyUploaded = Requests.IsSongUploaded(musicFile.Path,
                                                           MainForm.Settings.AuthenticationCookie,
@@ -203,6 +207,7 @@ namespace YTMusicUploader.Business
             musicFile.LastUpload = DateTime.Now;
             musicFile.Error = false;
             musicFile.EntityId = entityId;
+
             musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
                                         ? musicFile.MbId
                                         : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
@@ -251,6 +256,7 @@ namespace YTMusicUploader.Business
 
                 musicFile.LastUpload = DateTime.Now;
                 musicFile.Error = false;
+
                 musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
                                             ? musicFile.MbId
                                             : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)

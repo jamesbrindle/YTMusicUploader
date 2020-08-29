@@ -49,10 +49,9 @@ namespace YTMusicUploader.Providers
                 using (var response = (HttpWebResponse)request.GetResponse())
                 {
                     string result;
-                    using (var brotli = new Brotli.BrotliStream(
-                                                        response.GetResponseStream(),
-                                                        System.IO.Compression.CompressionMode.Decompress,
-                                                        true))
+                    using (var brotli = new Brotli.BrotliStream(response.GetResponseStream(),
+                                                                System.IO.Compression.CompressionMode.Decompress,
+                                                                true))
                     {
                         var streamReader = new StreamReader(brotli);
                         result = streamReader.ReadToEnd();

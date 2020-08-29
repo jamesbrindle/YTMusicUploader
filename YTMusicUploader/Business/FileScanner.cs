@@ -51,10 +51,9 @@ namespace YTMusicUploader.Business
                     return;
                 }
 
-                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(
-                                                                watchFolder.Path,
-                                                                "*.*",
-                                                                SearchOption.AllDirectories))
+                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(watchFolder.Path,
+                                                                            "*.*",
+                                                                            SearchOption.AllDirectories))
                 {
                     if (MainForm.Aborting)
                     {
@@ -148,10 +147,9 @@ namespace YTMusicUploader.Business
             int count = 0;
             foreach (var watchFolder in MainForm.WatchFolders)
             {
-                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(
-                                                                       watchFolder.Path,
-                                                                       "*.*",
-                                                                       SearchOption.AllDirectories))
+                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(watchFolder.Path,
+                                                                            "*.*",
+                                                                            SearchOption.AllDirectories))
                 {
                     if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
                         count++;

@@ -161,10 +161,10 @@ namespace YTMusicUploader.Providers
         private static string GetElapsedTime(TimeSpan timespan)
         {
             return string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                             timespan.Hours,
-                             timespan.Minutes,
-                             timespan.Seconds,
-                             timespan.Milliseconds / 10);
+                                 timespan.Hours,
+                                 timespan.Minutes,
+                                 timespan.Seconds,
+                                 timespan.Milliseconds / 10);
         }
     }
 }

@@ -76,10 +76,9 @@ namespace YTMusicUploader.Providers
                 using (var response = (HttpWebResponse)request.GetResponse())
                 {
                     string result;
-                    using (var brotli = new Brotli.BrotliStream(
-                                                        response.GetResponseStream(),
-                                                        System.IO.Compression.CompressionMode.Decompress,
-                                                        true))
+                    using (var brotli = new Brotli.BrotliStream(response.GetResponseStream(),
+                                                                System.IO.Compression.CompressionMode.Decompress,
+                                                                true))
                     {
                         var streamReader = new StreamReader(brotli);
                         result = streamReader.ReadToEnd();
@@ -117,9 +116,8 @@ namespace YTMusicUploader.Providers
         {
             continuation = string.Empty;
             var jo = JObject.Parse(httpResponseResults);
-            var musicShelfRendererTokens = jo.Descendants()
-                                                      .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicShelfRenderer")
-                                                      .Select(p => ((JProperty)p).Value).ToList();
+            var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicShelfRenderer")
+                                                           .Select(p => ((JProperty)p).Value).ToList();
 
             foreach (JToken token in musicShelfRendererTokens)
             {
@@ -170,9 +168,8 @@ namespace YTMusicUploader.Providers
         {
             continuation = string.Empty;
             var jo = JObject.Parse(httpResponseResults);
-            var musicShelfRendererTokens = jo.Descendants()
-                                                      .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicShelfContinuation")
-                                                      .Select(p => ((JProperty)p).Value).ToList();
+            var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicShelfContinuation")
+                                                           .Select(p => ((JProperty)p).Value).ToList();
 
             var result = JsonConvert.DeserializeObject<BrowseArtistResultsContinuationContext>(httpResponseResults);
 

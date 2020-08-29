@@ -213,7 +213,7 @@ namespace YTMusicUploader.Providers
 
                 try
                 {
-                    return IsSongUploadedMulitpleAlbumNameVariation(artist, album, track, cookieValue, parallel, out entityId)
+                    return IsSongUploadedMulitpleNameVariation(artist, album, track, cookieValue, parallel, out entityId)
                                     ? UploadCheckResult.Present_NewRequest
                                     : UploadCheckResult.NotPresent;
                 }
@@ -237,7 +237,7 @@ namespace YTMusicUploader.Providers
         /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
         /// <param name="entityId">Output YouTube Music song entity ID if found</param>
         /// <returns>True if song is found, false otherwise</returns>
-        private static bool IsSongUploadedMulitpleAlbumNameVariation(
+        private static bool IsSongUploadedMulitpleNameVariation(
             string artist,
             string album,
             string track,
@@ -262,24 +262,34 @@ namespace YTMusicUploader.Providers
                 try
                 {
                     album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
-
-                    // Don't bother trying the exact same search
                     if (album != originalAlbum)
                     {
                         result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
                         if (result)
                             return result;
-                    }
 
-                    originalAlbum = album;
+                        originalAlbum = album;
+                    }                   
                 }
                 catch { }
 
                 try
                 {
                     album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
+                    if (album != originalAlbum)
+                    {
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                        if (result)
+                            return result;
 
-                    // Don't bother trying the exact same search
+                        originalAlbum = album;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    album = Regex.Replace(album, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
                     if (album != originalAlbum)
                     {
                         result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
@@ -305,24 +315,98 @@ namespace YTMusicUploader.Providers
             }
             catch { }
 
-            // Don't bother trying the exact same search
             if (track != originalTrack)
             {
                 result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
                 if (result)
                     return result;
+
+                originalTrack = track;
             }
 
-            originalTrack = track;
-            track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
-
-            // Don't bother trying the exact same search
-            if (track != originalTrack)
+            try
             {
-                result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
-                if (result)
-                    return result;
+                track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
+                if (track != originalTrack)
+                {
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    if (result)
+                        return result;
+
+                    originalTrack = track;
+                }
             }
+            catch { }
+
+            try
+            {
+                track = Regex.Replace(track, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
+                if (track != originalTrack)
+                {
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    if (result)
+                        return result;
+
+                    originalTrack = track;
+                }
+            }
+            catch { }
+
+            try
+            {
+                track = Regex.Replace(track, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
+                if (track != originalTrack)
+                {
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    if (result)
+                        return result;
+
+                    originalTrack = track;
+                }
+            }
+            catch
+            { }
+
+            try
+            {
+                track = track.UnQuote();
+                if (track != originalTrack)
+                {
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    if (result)
+                        return result;
+
+                    originalTrack = track;
+                }
+            }
+            catch
+            { }
+
+            try
+            {
+                track = Regex.Replace(track, artist, "").Trim();
+                if (track != originalTrack)
+                {
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    if (result)
+                        return result;
+
+                    originalTrack = track;
+                }
+            }
+            catch { }
+
+            try
+            {
+                track = Regex.Replace(track, album, "").Trim();
+                if (track != originalTrack)
+                {
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    if (result)
+                        return result;
+                }
+            }
+            catch { }
 
             return false;
         }
@@ -419,6 +503,7 @@ namespace YTMusicUploader.Providers
                                 {
                                     return IsPresentInArtistsCache(cookieValue,
                                                                    artist,
+                                                                   album,
                                                                    track,
                                                                    matchSuccessMinimum,
                                                                    parallel,
@@ -531,6 +616,7 @@ namespace YTMusicUploader.Providers
 
                     return IsPresentInArtistsCache(cookieValue,
                                                    artist,
+                                                   album,
                                                    track,
                                                    matchSuccessMinimum,
                                                    parallel,
@@ -637,6 +723,7 @@ namespace YTMusicUploader.Providers
         private static bool IsPresentInArtistsCache(
             string cookieValue,
             string artist,
+            string album,
             string track,
             float matchSuccessMinimum,
             bool parallel,
@@ -649,6 +736,7 @@ namespace YTMusicUploader.Providers
                 {
                     IsPresentInArtistsCache_Parallel(cookieValue,
                                                      artist,
+                                                     album,
                                                      track,
                                                      matchSuccessMinimum,
                                                      out entityId);
@@ -657,6 +745,7 @@ namespace YTMusicUploader.Providers
                 {
                     IsPresentInArtistsCache_Standard(cookieValue,
                                                      artist,
+                                                     album,
                                                      track,
                                                      matchSuccessMinimum,
                                                      out entityId);
@@ -672,6 +761,7 @@ namespace YTMusicUploader.Providers
         private static void IsPresentInArtistsCache_Parallel(
             string cookieValue,
             string artist,
+            string album,
             string track,
             float matchSuccessMinimum,
             out string entityId)
@@ -699,8 +789,8 @@ namespace YTMusicUploader.Providers
                             }
                             else
                             {
-                                string modTrack = GetCleanedTrackName(track);
-                                string ytTitle = GetCleanedTrackName(songCacheItem.Title);
+                                string modTrack = GetCleanedTrackName(track, artist, album);
+                                string ytTitle = GetCleanedTrackName(songCacheItem.Title, artist, album);
 
                                 trackSimilarity = Levenshtein.Similarity(modTrack.UnQuote(), ytTitle.UnQuote());
                                 if (trackSimilarity > matchSuccessMinimum)
@@ -724,6 +814,7 @@ namespace YTMusicUploader.Providers
         private static void IsPresentInArtistsCache_Standard(
             string cookieValue,
             string artist,
+            string album,
             string track,
             float matchSuccessMinimum,
             out string entityId)
@@ -754,8 +845,8 @@ namespace YTMusicUploader.Providers
                             }
                             else
                             {
-                                string modTrack = GetCleanedTrackName(track);
-                                string ytTitle = GetCleanedTrackName(songCacheItem.Title);
+                                string modTrack = GetCleanedTrackName(track, artist, album);
+                                string ytTitle = GetCleanedTrackName(songCacheItem.Title, artist, album);
 
                                 trackSimilarity = Levenshtein.Similarity(modTrack.UnQuote(), ytTitle.UnQuote());
                                 if (trackSimilarity > matchSuccessMinimum)
@@ -774,8 +865,12 @@ namespace YTMusicUploader.Providers
             }
         }
 
-        private static string GetCleanedTrackName(string trackName)
+        private static string GetCleanedTrackName(string trackName, string artist, string album)
         {
+            trackName = trackName ?? "";
+            artist = artist ?? "";
+            album = album ?? "";
+
             if (!string.IsNullOrEmpty(trackName) && trackName.Length > 2 && trackName.Substring(0, 2).IsNumeric())
             {
                 try
@@ -790,6 +885,12 @@ namespace YTMusicUploader.Providers
             trackName = Regex.Replace(trackName, @"(\d)+-(\d)+", "").Trim();
             trackName = Regex.Replace(trackName, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
             trackName = Regex.Replace(trackName, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
+
+            if (trackName.ToLower().Contains(artist.ToLower()))
+                trackName = Regex.Replace(trackName, artist, "").Trim();
+
+            if (trackName.ToLower().Contains(album.ToLower()))
+                trackName = Regex.Replace(trackName, album, "").Trim();
 
             return trackName;
         }
