@@ -168,6 +168,7 @@ I'm going to be using this application for personal use, so I'll know straight a
 ### Further Development Considerations
 
 - Would like to add the ability to upload playlists *([sigma67](https://ytmusicapi.readthedocs.io/en/latest/) has included this ability in his API so it's definately do-able).*
+- Would like the ability to select and delete artists / albums / songs from YouTube Music.
 &nbsp;
 &nbsp;
 
