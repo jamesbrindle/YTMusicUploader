@@ -42,6 +42,14 @@ namespace YTMusicUploader.Business
                             ThreadHelper.SafeSleep(5000);
                         }
 
+                        while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
+                        {
+                            MainForm.SetPaused(true);
+                            Thread.Sleep(1000);
+                        }
+                        if (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.CloseChanges)
+                            return;
+
                         PopulateRandomMusicEntryWithMissingMbId();
                         Thread.Sleep(100);
                         PopulateRandomMusicEntryWithMissingEntityId();

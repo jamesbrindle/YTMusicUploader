@@ -24,6 +24,15 @@ namespace YTMusicUploader
 {
     public partial class MainForm : OptimisedMetroForm
     {
+        public enum ManagingYTMusicStatusEnum
+        {
+            Showing,
+            CloseNoChange,
+            CloseChanges,
+            CloseChangesComplete,
+            NeverShown
+        }
+
         //
         // Dialogues
         //
@@ -63,6 +72,7 @@ namespace YTMusicUploader
         private DateTime? LastFolderChangeTime { get; set; }
         public bool InstallingEdge { get; set; }
         public bool Aborting { get; set; } = false;
+        public ManagingYTMusicStatusEnum ManagingYTMusicStatus { get; set; } = ManagingYTMusicStatusEnum.NeverShown;
 
         //
         // MusicBrainz Access
@@ -328,6 +338,11 @@ namespace YTMusicUploader
                 while (!NetworkHelper.InternetConnectionIsUp())
                     ThreadHelper.SafeSleep(5000);
 
+                while (ManagingYTMusicStatus == ManagingYTMusicStatusEnum.Showing)
+                    Thread.Sleep(1000);
+                if (ManagingYTMusicStatus == ManagingYTMusicStatusEnum.CloseChanges)
+                    return;
+
                 while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
                 {
                     SetConnectedToYouTubeMusic(false);
@@ -425,6 +440,16 @@ namespace YTMusicUploader
                 InitialFilesCount = MusicFileRepo.CountAll().Result;
                 SetDiscoveredFilesLabel(InitialFilesCount.ToString());
             }
+        }
+
+        public void Restart()
+        {
+            QueueChecker.Queue = false;
+            Aborting = false;
+            Requests.UploadCheckCache.CleanUp = true;
+            FileUploader.Stopped = true;
+            FileScanner.Reset();
+            StartMainProcess();
         }
 
         public void ShowMessageBox(

@@ -37,12 +37,7 @@ namespace YTMusicUploader.Business
                             while (!MainForm.FileUploader.Stopped)
                                 ThreadHelper.SafeSleep(1000);
 
-                            Queue = false;
-                            MainForm.Aborting = false;
-                            Requests.UploadCheckCache.CleanUp = true;
-                            MainForm.FileUploader.Stopped = true;
-                            MainForm.FileScanner.Reset();
-                            MainForm.StartMainProcess();
+                            MainForm.Restart();
                         }
                     }
                     catch { }

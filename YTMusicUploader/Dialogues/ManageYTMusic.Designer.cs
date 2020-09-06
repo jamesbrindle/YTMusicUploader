@@ -47,6 +47,7 @@
             this.pnlUpdatesPanel = new System.Windows.Forms.Panel();
             this.tbUpdates = new System.Windows.Forms.RichTextBox();
             this.pnlActions = new System.Windows.Forms.Panel();
+            this.lblCheckedCount = new System.Windows.Forms.Label();
             this.pbPreloader = new System.Windows.Forms.PictureBox();
             this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
@@ -261,6 +262,7 @@
             // 
             // pnlActions
             // 
+            this.pnlActions.Controls.Add(this.lblCheckedCount);
             this.pnlActions.Controls.Add(this.pbPreloader);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlActions.Location = new System.Drawing.Point(575, 137);
@@ -269,11 +271,20 @@
             this.pnlActions.Size = new System.Drawing.Size(416, 54);
             this.pnlActions.TabIndex = 4;
             // 
+            // lblCheckedCount
+            // 
+            this.lblCheckedCount.AutoSize = true;
+            this.lblCheckedCount.Location = new System.Drawing.Point(0, 40);
+            this.lblCheckedCount.Name = "lblCheckedCount";
+            this.lblCheckedCount.Size = new System.Drawing.Size(94, 13);
+            this.lblCheckedCount.TabIndex = 1;
+            this.lblCheckedCount.Text = "0 Tracks checked";
+            // 
             // pbPreloader
             // 
             this.pbPreloader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbPreloader.Image = global::YTMusicUploader.Properties.Resources.preloader_cricle;
-            this.pbPreloader.Location = new System.Drawing.Point(391, 27);
+            this.pbPreloader.Location = new System.Drawing.Point(392, 30);
             this.pbPreloader.Name = "pbPreloader";
             this.pbPreloader.Size = new System.Drawing.Size(22, 22);
             this.pbPreloader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -290,6 +301,11 @@
             this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbRefresh.TabIndex = 4;
             this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
+            this.pbRefresh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseDown);
+            this.pbRefresh.MouseEnter += new System.EventHandler(this.PbRefresh_MouseEnter);
+            this.pbRefresh.MouseLeave += new System.EventHandler(this.PbRefresh_MouseLeave);
+            this.pbRefresh.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseUp);
             // 
             // pbIssueLogIcon
             // 
@@ -314,6 +330,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "ManageYTMusic";
             this.Style = MetroFramework.MetroColorStyle.Red;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageYTMusic_FormClosing);
             this.Load += new System.EventHandler(this.ManageYTMusic_Load);
             this.tblManageYTMusicUploads.ResumeLayout(false);
             this.pnlMusicDetailsPanel.ResumeLayout(false);
@@ -352,5 +369,6 @@
         private System.Windows.Forms.RichTextBox tbUpdates;
         private System.Windows.Forms.Label lblArtistTitle;
         private System.Windows.Forms.Panel pnlActions;
+        private System.Windows.Forms.Label lblCheckedCount;
     }
 }

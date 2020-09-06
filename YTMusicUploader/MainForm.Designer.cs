@@ -43,40 +43,42 @@
             this.lblDiscoveredFiles = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlRemoveFromWatchFolder = new System.Windows.Forms.Panel();
+            this.btnRemoveWatchFolder = new System.Windows.Forms.PictureBox();
             this.lblUploadingMessage = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.FolderSelector = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.TrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmShow = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIssues = new System.Windows.Forms.LinkLabel();
             this.lblUploaded = new System.Windows.Forms.LinkLabel();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tbThrottleSpeed = new JBToolkit.WinForms.RoundTextBox();
             this.pbYtMusicManage = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pbArtworkIdle = new System.Windows.Forms.PictureBox();
             this.pbArtwork = new System.Windows.Forms.PictureBox();
-            this.btnRemoveWatchFolder = new System.Windows.Forms.PictureBox();
             this.pbConnectedToYoutube = new System.Windows.Forms.PictureBox();
             this.btnConnectToYoutube = new JBToolkit.WinForms.RoundButton();
             this.btnAddWatchFolder = new System.Windows.Forms.PictureBox();
             this.pbAbout = new System.Windows.Forms.PictureBox();
             this.pbNotConnectedToYoutube = new System.Windows.Forms.PictureBox();
-            this.tsmShow = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.pbPaused = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.pnlRemoveFromWatchFolder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRemoveWatchFolder)).BeginInit();
             this.TrayContextMenuStrip.SuspendLayout();
             this.pnlHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbYtMusicManage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbYtMusicManage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArtworkIdle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArtwork)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRemoveWatchFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbConnectedToYoutube)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddWatchFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNotConnectedToYoutube)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPaused)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSub
@@ -214,6 +216,22 @@
             this.pnlRemoveFromWatchFolder.MouseEnter += new System.EventHandler(this.BtnRemoveWatchFolder_MouseEnter);
             this.pnlRemoveFromWatchFolder.MouseLeave += new System.EventHandler(this.BtnRemoveWatchFolder_MouseLeave);
             // 
+            // btnRemoveWatchFolder
+            // 
+            this.btnRemoveWatchFolder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveWatchFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemoveWatchFolder.Image = global::YTMusicUploader.Properties.Resources.minus;
+            this.btnRemoveWatchFolder.Location = new System.Drawing.Point(0, 0);
+            this.btnRemoveWatchFolder.Name = "btnRemoveWatchFolder";
+            this.btnRemoveWatchFolder.Size = new System.Drawing.Size(21, 17);
+            this.btnRemoveWatchFolder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnRemoveWatchFolder.TabIndex = 14;
+            this.btnRemoveWatchFolder.TabStop = false;
+            this.btnRemoveWatchFolder.Click += new System.EventHandler(this.BtnRemoveWatchFolder_Click);
+            this.btnRemoveWatchFolder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnRemoveWatchFolder_MouseDown);
+            this.btnRemoveWatchFolder.MouseLeave += new System.EventHandler(this.BtnRemoveWatchFolder_MouseLeave);
+            this.btnRemoveWatchFolder.MouseHover += new System.EventHandler(this.BtnRemoveWatchFolder_MouseEnter);
+            // 
             // lblUploadingMessage
             // 
             this.lblUploadingMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -253,6 +271,22 @@
             this.TrayContextMenuStrip.Name = "TrayContextMenuStrip";
             this.TrayContextMenuStrip.Size = new System.Drawing.Size(104, 48);
             // 
+            // tsmShow
+            // 
+            this.tsmShow.Image = global::YTMusicUploader.Properties.Resources.show;
+            this.tsmShow.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmShow.Name = "tsmShow";
+            this.tsmShow.Size = new System.Drawing.Size(103, 22);
+            this.tsmShow.Text = "Show";
+            // 
+            // tsmQuit
+            // 
+            this.tsmQuit.Image = global::YTMusicUploader.Properties.Resources.quit;
+            this.tsmQuit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmQuit.Name = "tsmQuit";
+            this.tsmQuit.Size = new System.Drawing.Size(103, 22);
+            this.tsmQuit.Text = "Quit";
+            // 
             // lblIssues
             // 
             this.lblIssues.AutoSize = true;
@@ -284,6 +318,16 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(198, 38);
             this.pnlHeader.TabIndex = 23;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::YTMusicUploader.Properties.Resources.Header;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(198, 38);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // tbThrottleSpeed
             // 
@@ -321,16 +365,6 @@
             this.pbYtMusicManage.MouseLeave += new System.EventHandler(this.PbYtMusicManage_MouseLeave);
             this.pbYtMusicManage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbYtMusicManage_MouseUp);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::YTMusicUploader.Properties.Resources.Header;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(198, 38);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // pbArtworkIdle
             // 
             this.pbArtworkIdle.Image = global::YTMusicUploader.Properties.Resources.idle;
@@ -350,22 +384,6 @@
             this.pbArtwork.TabIndex = 21;
             this.pbArtwork.TabStop = false;
             this.pbArtwork.Visible = false;
-            // 
-            // btnRemoveWatchFolder
-            // 
-            this.btnRemoveWatchFolder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemoveWatchFolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveWatchFolder.Image = global::YTMusicUploader.Properties.Resources.minus;
-            this.btnRemoveWatchFolder.Location = new System.Drawing.Point(0, 0);
-            this.btnRemoveWatchFolder.Name = "btnRemoveWatchFolder";
-            this.btnRemoveWatchFolder.Size = new System.Drawing.Size(21, 17);
-            this.btnRemoveWatchFolder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnRemoveWatchFolder.TabIndex = 14;
-            this.btnRemoveWatchFolder.TabStop = false;
-            this.btnRemoveWatchFolder.Click += new System.EventHandler(this.BtnRemoveWatchFolder_Click);
-            this.btnRemoveWatchFolder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnRemoveWatchFolder_MouseDown);
-            this.btnRemoveWatchFolder.MouseLeave += new System.EventHandler(this.BtnRemoveWatchFolder_MouseLeave);
-            this.btnRemoveWatchFolder.MouseHover += new System.EventHandler(this.BtnRemoveWatchFolder_MouseEnter);
             // 
             // pbConnectedToYoutube
             // 
@@ -442,27 +460,23 @@
             this.pbNotConnectedToYoutube.TabStop = false;
             this.pbNotConnectedToYoutube.Visible = false;
             // 
-            // tsmShow
+            // pbPaused
             // 
-            this.tsmShow.Image = global::YTMusicUploader.Properties.Resources.show;
-            this.tsmShow.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmShow.Name = "tsmShow";
-            this.tsmShow.Size = new System.Drawing.Size(103, 22);
-            this.tsmShow.Text = "Show";
-            // 
-            // tsmQuit
-            // 
-            this.tsmQuit.Image = global::YTMusicUploader.Properties.Resources.quit;
-            this.tsmQuit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmQuit.Name = "tsmQuit";
-            this.tsmQuit.Size = new System.Drawing.Size(103, 22);
-            this.tsmQuit.Text = "Quit";
+            this.pbPaused.Image = global::YTMusicUploader.Properties.Resources.paused;
+            this.pbPaused.Location = new System.Drawing.Point(27, 296);
+            this.pbPaused.Name = "pbPaused";
+            this.pbPaused.Size = new System.Drawing.Size(50, 50);
+            this.pbPaused.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbPaused.TabIndex = 25;
+            this.pbPaused.TabStop = false;
+            this.pbPaused.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 396);
+            this.Controls.Add(this.pbPaused);
             this.Controls.Add(this.pbYtMusicManage);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pbArtworkIdle);
@@ -499,17 +513,18 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.pnlRemoveFromWatchFolder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnRemoveWatchFolder)).EndInit();
             this.TrayContextMenuStrip.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbYtMusicManage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbYtMusicManage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArtworkIdle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArtwork)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRemoveWatchFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbConnectedToYoutube)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddWatchFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNotConnectedToYoutube)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPaused)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -551,6 +566,7 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pbYtMusicManage;
+        private System.Windows.Forms.PictureBox pbPaused;
     }
 }
 

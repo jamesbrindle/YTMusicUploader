@@ -773,7 +773,7 @@ namespace YTMusicUploader.Providers
                 if (artistSimilarity >= matchSuccessMinimum)
                 {
                     if (artistCacheItem.AlbumSongCollection.Songs.Count == 0)
-                        artistCacheItem.AlbumSongCollection.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId).Songs;
+                        artistCacheItem.AlbumSongCollection = GetArtistSongs(cookieValue, artistCacheItem.BrowseId);
 
                     bool trackFound = false;
                     Parallel.ForEach(artistCacheItem.AlbumSongCollection.Songs.AsParallel(), (songCacheItem, stateB, indexB) =>
@@ -827,7 +827,7 @@ namespace YTMusicUploader.Providers
                 if (artistSimilarity >= matchSuccessMinimum)
                 {
                     if (artistCacheItem.AlbumSongCollection.Songs.Count == 0)
-                        artistCacheItem.AlbumSongCollection.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId).Songs;
+                        artistCacheItem.AlbumSongCollection = GetArtistSongs(cookieValue, artistCacheItem.BrowseId);
 
                     bool trackFound = false;
 

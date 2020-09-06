@@ -39,9 +39,14 @@ namespace YTMusicUploader.Dialogues
             {
                 // If all child nodes checked, then check parent node
                 tvUploads.AfterCheck -= TvUploads_AfterCheck;
-                CheckParentNodes(e.Node);
+                CheckParentNodes(e.Node);      
                 tvUploads.AfterCheck += TvUploads_AfterCheck;
             }
+
+            bool nonFetchedArtistAlbumsSelected = false;
+            int checkedCount = CountChecked(ref nonFetchedArtistAlbumsSelected);
+            lblCheckedCount.Text = $"{checkedCount} track{(checkedCount == 1 ? "" : "s")} checked" +
+                                   (nonFetchedArtistAlbumsSelected ? " (non-fetched artist tracks selected)" : "");
         }
     }
 }

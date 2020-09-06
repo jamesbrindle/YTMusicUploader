@@ -128,12 +128,7 @@
                 if (await cache.TryGetCachedItem(url, out Stream stream).ConfigureAwait(false))
                 {
                     var result = (T)serializer.ReadObject(stream);
-
-                    // TODO: if de-serialization of the cache file fails, we shouldn't throw 
-                    //       but delete the file and go on with calling the webservice!
-
                     stream.Close();
-
                     return result;
                 }
 

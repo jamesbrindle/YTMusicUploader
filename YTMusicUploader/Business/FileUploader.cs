@@ -96,6 +96,14 @@ namespace YTMusicUploader.Business
                             ThreadHelper.SafeSleep(1000);
                         }
 
+                        while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
+                        {
+                            MainForm.SetPaused(true);
+                            Thread.Sleep(1000);
+                        }
+                        if (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.CloseChanges)
+                            return;
+
                         try
                         {
                             HandleUploadCheck(musicFile).Wait();

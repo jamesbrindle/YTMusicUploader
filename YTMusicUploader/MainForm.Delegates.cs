@@ -23,6 +23,34 @@ namespace YTMusicUploader
                     SetSystemTrayIconText(systemTrayIconText);
             }
         }
+
+        delegate void SetPausedDelegate(bool paused);
+        public void SetPaused(bool paused)
+        {
+            if (pbArtwork.InvokeRequired ||
+                lblStatus.InvokeRequired)
+            {
+                SetPausedDelegate d = new SetPausedDelegate(SetPaused);
+                Invoke(d, new object[] { paused });
+            }
+            else
+            {
+                if (paused)
+                {
+                    lblStatus.Text = "Paused";
+                    lblUploadingMessage.Text = "Paused";
+                    pbPaused.Visible = true;
+                }
+                else
+                {
+                    lblStatus.Text = "Idle";
+                    lblUploadingMessage.Text = "Paused";
+                    pbPaused.Visible = false;
+                }
+            }
+        }
+
+
         public void SetSystemTrayIconText(string text)
         {
             TrayIcon.Text = "YT Music Uploader\r\n" + text;

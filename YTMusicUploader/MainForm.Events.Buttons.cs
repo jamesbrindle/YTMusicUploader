@@ -174,15 +174,29 @@ namespace YTMusicUploader
 
         private void PbYtMusicManage_Click(object sender, EventArgs e)
         {
+            ManagingYTMusicStatus = ManagingYTMusicStatusEnum.Showing;
+            Requests.UploadCheckCache.Pause = true;
+
             if (ManageYTMusic == null || ManageYTMusic.IsDisposed)
                 ManageYTMusic = new ManageYTMusic(this);
+
+            SetPaused(true);
+
+            var result = ManageYTMusic.ShowDialog();
+            if (result == DialogResult.Yes)
+            {
+                ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChanges;
+                Requests.UploadCheckCache.Pause = false;
+                Restart();
+                ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChangesComplete;
+            }
             else
             {
-                ManageYTMusic.Dispose();
-                ManageYTMusic = new ManageYTMusic(this);
+                Requests.UploadCheckCache.Pause = false;
+                ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseNoChange;
             }
 
-            ManageYTMusic.ShowDialog();
+            SetPaused(false);
 
             pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
             new Thread((ThreadStart)delegate

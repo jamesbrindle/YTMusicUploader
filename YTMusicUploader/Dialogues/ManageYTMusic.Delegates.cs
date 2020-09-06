@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Business;
+using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.RequestModels;
 using static YTMusicUploader.Providers.RequestModels.ArtistCache;
 
@@ -14,16 +15,19 @@ namespace YTMusicUploader.Dialogues
 {
     public partial class ManageYTMusic
     {
-        delegate void BindArtistsDelegate();
-        private void BindArtists()
+        delegate void BindArtistsDelegate(bool showFetchedMessage = true);
+        private void BindArtists(bool showFetchedMessage = true)
         {
             if (tvUploads.InvokeRequired)
             {
                 BindArtistsDelegate d = new BindArtistsDelegate(BindArtists);
-                Invoke(d, new object[] { });
+                Invoke(d, new object[] { showFetchedMessage });
             }
             else
             {
+                SetTreeViewEnabled(false);
+                tvUploads.Nodes.Clear();
+
                 tvUploads.Nodes.Add(new TreeNode
                 {
                     Name = "root",
@@ -34,7 +38,7 @@ namespace YTMusicUploader.Dialogues
                     }
                 });
 
-                foreach (var artist in ArtistCache.Artists)
+                foreach (var artist in Requests.ArtistCache.Artists)
                 {
                     tvUploads.Nodes[0].Nodes.Add(new TreeNode
                     {
@@ -46,33 +50,51 @@ namespace YTMusicUploader.Dialogues
                             ArtistTitle = artist.ArtistName
                         }
                     });
+
+                    if (artist.AlbumSongCollection != null &&
+                        artist.AlbumSongCollection.Albums != null &&
+                        artist.AlbumSongCollection.Albums.Count > 0)
+                    {
+                        BindAlbumNodes(artist.BrowseId, artist.AlbumSongCollection, false, showFetchedMessage);
+                    }
                 }
 
                 string artistText = "artists";
-                int artistCount = ArtistCache.Artists.Count;
+                int artistCount = Requests.ArtistCache.Artists.Count;
 
                 if (artistCount == 1)
                     artistText = "artist";
 
-                AppendUpdatesText($"Fetched {artistCount} {artistText}.",
-                                  ColourHelper.HexStringToColor("#0d5601"));
+                if (showFetchedMessage)
+                    AppendUpdatesText($"Fetched {artistCount} {artistText}.",
+                                      ColourHelper.HexStringToColor("#0d5601"));
 
                 tvUploads.Nodes[0].Text = tvUploads.Nodes[0].Text + " (" + tvUploads.Nodes[0].Nodes.Count + ")";
                 tvUploads.Nodes[0].Expand();
                 ShowPreloader(false);
+                SetTreeViewEnabled(true);
             }
         }
 
-        delegate void BindAlbumNodesDelegate(string artistNodeName, AlbumSongCollection albumSongCollection);
-        private void BindAlbumNodes(string artistNodeName, AlbumSongCollection albumSongCollection)
+        delegate void BindAlbumNodesDelegate(
+            string artistNodeName,
+            AlbumSongCollection albumSongCollection,
+            bool expand = true,
+            bool showFetchedMessage = true);
+        private void BindAlbumNodes(
+            string artistNodeName,
+            AlbumSongCollection albumSongCollection,
+            bool expand = true,
+            bool showFetchedMessage = true)
         {
             if (tvUploads.InvokeRequired)
             {
                 BindAlbumNodesDelegate d = new BindAlbumNodesDelegate(BindAlbumNodes);
-                Invoke(d, new object[] { artistNodeName, albumSongCollection });
+                Invoke(d, new object[] { artistNodeName, albumSongCollection, expand, showFetchedMessage });
             }
             else
             {
+                SetTreeViewEnabled(false);
                 TreeNode artistNode = null;
                 for (int i = 0; i < tvUploads.Nodes[0].Nodes.Count; i++)
                 {
@@ -152,11 +174,20 @@ namespace YTMusicUploader.Dialogues
                 if (songCount == 1)
                     songText = "track";
 
-                AppendUpdatesText($"Fetched {albumCount} {albumText}, {songCount} {songText}.",
-                                  ColourHelper.HexStringToColor("#0d5601"));
+                if (showFetchedMessage)
+                    AppendUpdatesText($"Fetched {albumCount} {albumText}, {songCount} {songText}.",
+                                      ColourHelper.HexStringToColor("#0d5601"));
+
                 artistNode.Text = artistNode.Text + " (" + artistNode.Nodes.Count + ")";
-                artistNode.Expand();
+
+                if (expand)
+                    artistNode.Expand();
+
+                if (artistNode.Checked)
+                    CheckAllChildNodes(artistNode, true);
+
                 ShowPreloader(false);
+                SetTreeViewEnabled(true);
             }
         }
 
@@ -171,6 +202,26 @@ namespace YTMusicUploader.Dialogues
             else
             {
                 pbPreloader.Visible = showPreloader;
+            }
+        }
+
+        delegate void SetTreeViewEnabledDelegate(bool enabled);
+        private void SetTreeViewEnabled(bool enabled)
+        {
+            if (tvUploads.InvokeRequired || pbRefresh.InvokeRequired)
+            {
+                SetTreeViewEnabledDelegate d = new SetTreeViewEnabledDelegate(SetTreeViewEnabled);
+                Invoke(d, new object[] { enabled });
+            }
+            else
+            {
+                tvUploads.Enabled = enabled;
+                if (enabled)
+                    pbRefresh.Image = Properties.Resources.refresh;
+                else
+                    pbRefresh.Image = Properties.Resources.refresh_disabled;
+
+                pbRefresh.Enabled = enabled;
             }
         }
 

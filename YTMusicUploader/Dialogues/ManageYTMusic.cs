@@ -1,6 +1,7 @@
 ﻿using JBToolkit;
 using JBToolkit.WinForms;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Providers;
@@ -8,6 +9,9 @@ using YTMusicUploader.Providers.RequestModels;
 
 namespace YTMusicUploader.Dialogues
 {
+    // TODO: Check why 'database existence' isn't working
+
+
     /// <summary>
     /// Dialogue
     /// </summary>
@@ -17,7 +21,6 @@ namespace YTMusicUploader.Dialogues
         /// Form to see and delete music currently uploaded to YouTube music
         /// </summary>
         private MainForm MainForm { get; set; }
-        private ArtistCache ArtistCache { get; set; }
 
         /// <summary>
         /// Form to manage (see and delete) music currently uploaded to YouTube music
@@ -35,8 +38,15 @@ namespace YTMusicUploader.Dialogues
             ClearFields();
             ResumeDrawing(this);
 
-            new Thread((ThreadStart)delegate { GetArtists(); }).Start();
-        }
+            if (Requests.ArtistCache == null ||
+                Requests.ArtistCache.Artists == null ||
+                Requests.ArtistCache.Artists.Count == 0)
+            {
+                new Thread((ThreadStart)delegate { GetArtists(); }).Start();
+            }
+            else 
+                BindArtists(false);
+        }    
 
         private void ClearFields()
         {
@@ -51,17 +61,21 @@ namespace YTMusicUploader.Dialogues
 
         private void GetArtists()
         {
+            SetTreeViewEnabled(false);
             ShowPreloader(true);
             AppendUpdatesText("Fetching artists...", ColourHelper.HexStringToColor("#0f0466"));
-            ArtistCache = Requests.GetArtists(MainForm.Settings.AuthenticationCookie);
-            BindArtists();
+            Requests.ArtistCache = Requests.GetArtists(MainForm.Settings.AuthenticationCookie);
+            BindArtists(true);
         }
 
         private void GetAlbums(string artistNodeName, string artist)
         {
+            SetTreeViewEnabled(false);
             ShowPreloader(true);
             AppendUpdatesText($"Fetching songs for arists: {artist}...", ColourHelper.HexStringToColor("#0f0466"));
             var albumSongCollection = Requests.GetArtistSongs(MainForm.Settings.AuthenticationCookie, artistNodeName);
+            Requests.ArtistCache.Artists.Where(a => a.BrowseId == artistNodeName).FirstOrDefault().AlbumSongCollection = albumSongCollection;
+
             BindAlbumNodes(artistNodeName, albumSongCollection);
         }
 
@@ -101,6 +115,45 @@ namespace YTMusicUploader.Dialogues
                     parentNode.Checked = true;
                 CheckParentNodes(parentNode);
             }
+        }
+
+        private int CountChecked(ref bool nonFetchedArtistAlbumsSelected, TreeNode node = null)
+        {
+            int count = 0;
+            if (node == null)
+            {
+                node = tvUploads.Nodes[0];
+                nonFetchedArtistAlbumsSelected = false;
+            }
+
+            foreach (TreeNode childNode in node.Nodes)
+            {
+                if (((MusicManageTreeNodeModel)childNode.Tag).NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Song &&
+                    childNode.Checked)
+                {
+                    count++;
+                }
+                else
+                {
+                    if (((MusicManageTreeNodeModel)childNode.Tag).NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Artist &&
+                    childNode.Checked &&
+                    (childNode.Nodes == null ||
+                    childNode.Nodes.Count == 0))
+                    {
+                        nonFetchedArtistAlbumsSelected = true;
+                    }
+                }
+
+                if (childNode.Nodes != null && childNode.Nodes.Count > 0)
+                    count += CountChecked(ref nonFetchedArtistAlbumsSelected, childNode);
+            }
+
+            return count;
+        }
+
+        private void ManageYTMusic_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
