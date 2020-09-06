@@ -26,26 +26,69 @@ namespace YTMusicUploader.Providers
             }
             else
             {
-                if (File.Exists("ytuploader.db-shm"))
+                if (File.Exists(Path.Combine(Global.AppDataLocation, "ytuploader.db-shm")))
                 {
                     try
                     {
-                        File.Delete("ytuploader.db-shm");
+                        File.Delete(Path.Combine(Global.AppDataLocation,  "ytuploader.db-shm"));
                     }
                     catch { }
                 }
 
-                if (File.Exists("ytuploader.db-wal"))
+                if (File.Exists(Path.Combine(Global.AppDataLocation, "ytuploader.db-wal")))
                 {
                     try
                     {
-                        File.Delete("ytuploader.db-wal");
+                        File.Delete(Path.Combine(Global.AppDataLocation, "ytuploader.db-wal"));
                     }
                     catch { }
                 }
 
                 PerformAnyDbUpgrades();
             }
+        }
+
+        /// <summary>
+        /// Delete the app data database (user's database)
+        /// </summary>
+        public static void ResetDatabase()
+        {         
+            if (File.Exists(Path.Combine(Global.AppDataLocation, "ytuploader.db-shm")))
+            {
+                try
+                {
+                    File.Delete(Path.Combine(Global.AppDataLocation, "ytuploader.db-shm"));
+                }
+                catch { }
+            }
+
+            if (File.Exists(Path.Combine(Global.AppDataLocation, "ytuploader.db-wal")))
+            {
+                try
+                {
+                    File.Delete(Path.Combine(Global.AppDataLocation, "ytuploader.db-wal"));
+                }
+                catch { }
+            }
+
+            if (File.Exists(Path.Combine(Global.AppDataLocation, "ytuploader.db")))
+            {
+                try
+                {
+                    File.Delete(Path.Combine(Global.AppDataLocation, "ytuploader.db"));
+                }
+                catch { }
+            }
+
+            if (!File.Exists(Global.DbLocation))
+            {
+                if (!Directory.Exists(Global.AppDataLocation))
+                    Directory.CreateDirectory(Global.AppDataLocation);
+
+                File.Copy(Path.Combine(Global.WorkingDirectory, @"AppData\ytuploader.db"), Global.DbLocation);
+            }
+
+            PerformAnyDbUpgrades();
         }
 
         /// <summary>

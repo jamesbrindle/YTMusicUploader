@@ -1,6 +1,7 @@
 ﻿using JBToolkit.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -60,8 +61,20 @@ namespace YTMusicUploader.Dialogues
                 dgvUploads.Columns["Id"].Width = 55;
                 dgvUploads.Columns["Path"].FillWeight = 300;
                 dgvUploads.Columns["LastUpload"].Width = 100;
-
+                dgvUploads.Columns["MbId"].DefaultCellStyle = GetHyperLinkStyleForGridCell();
                 SetTitle("Upload Log");
+            }
+        }
+
+        private DataGridViewCellStyle GetHyperLinkStyleForGridCell()
+        {
+            // Set the Font and Uderline into the Content of the grid cell .  
+            {
+                DataGridViewCellStyle hyperlinkStyle = new DataGridViewCellStyle();                
+                Font l_objFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+                hyperlinkStyle.Font = l_objFont;        
+                hyperlinkStyle.ForeColor = Color.Blue;
+                return hyperlinkStyle;
             }
         }
 
@@ -84,7 +97,7 @@ namespace YTMusicUploader.Dialogues
             dgvUploads.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
         }
 
-        private void PbRefresh_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void PbRefresh_MouseDown(object sender, MouseEventArgs e)
         {
             pbRefresh.Image = Properties.Resources.refresh_down;
         }
@@ -99,7 +112,7 @@ namespace YTMusicUploader.Dialogues
             pbRefresh.Image = Properties.Resources.refresh;
         }
 
-        private void PbRefresh_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void PbRefresh_MouseUp(object sender, MouseEventArgs e)
         {
             pbRefresh.Image = Properties.Resources.refresh_hover;
         }
@@ -115,11 +128,41 @@ namespace YTMusicUploader.Dialogues
             _previousIndex = e.ColumnIndex;
         }
 
+        private void DgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUploads.Columns[dgvUploads.CurrentCell.ColumnIndex].HeaderText.Contains("MbId"))
+            {
+                if (!string.IsNullOrWhiteSpace(dgvUploads.CurrentCell.EditedFormattedValue.ToString()))
+                    System.Diagnostics.Process.Start("https://musicbrainz.org/recording/" + dgvUploads.CurrentCell.EditedFormattedValue);
+            }
+        }
+
+        private void DgvUploads_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUploads.Columns[e.ColumnIndex].Name != "MbId")
+            {
+                dgvUploads.Cursor = Cursors.Default;
+            }
+            else
+            {
+                if (e.RowIndex == -1 || e.ColumnIndex == -1)
+                    dgvUploads.Cursor = Cursors.Default;
+                else
+                {
+                    if (dgvUploads.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null ||
+                        string.IsNullOrEmpty(dgvUploads.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
+                        dgvUploads.Cursor = Cursors.Default;
+                    else
+                        dgvUploads.Cursor = Cursors.Hand;
+                }
+            }
+        }
+
         public List<MusicFile> SortData(List<MusicFile> list, string column, bool ascending)
         {
             return ascending ?
                 list.OrderBy(_ => _.GetType().GetProperty(column).GetValue(_)).ToList() :
                 list.OrderByDescending(_ => _.GetType().GetProperty(column).GetValue(_)).ToList();
-        }
+        }        
     }
 }

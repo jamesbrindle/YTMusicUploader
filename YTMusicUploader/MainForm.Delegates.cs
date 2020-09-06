@@ -39,12 +39,14 @@ namespace YTMusicUploader
                 {
                     lblStatus.Text = "Paused";
                     lblUploadingMessage.Text = "Paused";
+                    SetSystemTrayIconText("Paused");
                     pbPaused.Visible = true;
                 }
                 else
                 {
                     lblStatus.Text = "Idle";
-                    lblUploadingMessage.Text = "Paused";
+                    lblUploadingMessage.Text = "Idle";
+                    SetSystemTrayIconText("Idle");
                     pbPaused.Visible = false;
                 }
             }

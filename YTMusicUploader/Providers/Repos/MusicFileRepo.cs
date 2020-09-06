@@ -448,6 +448,22 @@ namespace YTMusicUploader.Providers.Repos
         }
 
         /// <summary>
+        /// Reset all music file entry uploaded states
+        /// </summary>
+        public async Task ResetAllMusicFileUploadedStates()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                conn.Execute(
+                        @"UPDATE MusicFiles
+                            SET LastUpload = '0001-01-01 00:00:00'");
+            }
+
+            await Task.Run(() => { });
+        }
+
+        /// <summary>
         /// Updates the Music File entry in the database with the fields of the given MusicFile object
         /// </summary>
         /// <param name="musicFile">Given MusicFile obejct to update with</param>

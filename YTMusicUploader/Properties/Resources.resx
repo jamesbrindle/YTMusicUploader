@@ -127,6 +127,18 @@
   <data name="default_artwork_60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\default_artwork-60.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="delete_from_youtube" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_from_youtube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_from_youtube_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_from_youtube_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_from_youtube_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_from_youtube_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_from_youtube_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_from_youtube_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="happy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\happy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -174,6 +186,30 @@
   </data>
   <data name="refresh_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_database_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_database_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_database_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_database_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_database_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_database_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_uploaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_uploaded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_uploaded_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_uploaded_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_uploaded_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_uploaded_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_uploaded_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_uploaded_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="show" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\show.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -21,6 +21,7 @@ namespace YTMusicUploader.Dialogues
         /// Form to see and delete music currently uploaded to YouTube music
         /// </summary>
         private MainForm MainForm { get; set; }
+        private bool ChangesMade { get; set; } = false;
 
         /// <summary>
         /// Form to manage (see and delete) music currently uploaded to YouTube music
@@ -44,9 +45,9 @@ namespace YTMusicUploader.Dialogues
             {
                 new Thread((ThreadStart)delegate { GetArtists(); }).Start();
             }
-            else 
+            else
                 BindArtists(false);
-        }    
+        }
 
         private void ClearFields()
         {
@@ -151,9 +152,44 @@ namespace YTMusicUploader.Dialogues
             return count;
         }
 
+        private void ResetMusicFileEntryStates()
+        {
+            new Thread((ThreadStart)delegate {
+                MainForm.MusicFileRepo.ResetAllMusicFileUploadedStates().Wait();
+                AppendUpdatesText("Music file entry state reset complete.",
+                                   ColourHelper.HexStringToColor("#0d5601"));
+
+            }).Start();          
+        }
+
+        private void ResetUserDatabase()
+        {
+            new Thread((ThreadStart)delegate {
+                DataAccess.ResetDatabase();
+                AppendUpdatesText("Database reset complete.",
+                                   ColourHelper.HexStringToColor("#0d5601"));
+
+            }).Start();
+        }
+
+        private void DeleteTracksFromYouTubeMusic()
+        {
+            new Thread((ThreadStart)delegate {
+
+                // TODO: Delete YouTube Music uploaded tracks implementation
+
+                AppendUpdatesText("Uploaded track deletion complete.",
+                                   ColourHelper.HexStringToColor("#0d5601"));
+
+            }).Start();
+        }
+
         private void ManageYTMusic_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            if (ChangesMade)
+                DialogResult = DialogResult.Yes;
+            else
+                DialogResult = DialogResult.Cancel;
         }
     }
 }

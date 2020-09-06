@@ -248,6 +248,14 @@ namespace YTMusicUploader.Dialogues
                 lblDuration.Text = nodeTag.Duration;
                 lblDatabaseExistence.Text = nodeTag.DatabaseExistence;
                 lblMbId.Text = nodeTag.MbId;
+
+                if (nodeTag.NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Album)
+                    lblMbId.Tag = "https://musicbrainz.org/release/" + nodeTag.MbId;
+                else if (nodeTag.NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Song)
+                    lblMbId.Tag = "https://musicbrainz.org/recording/" + nodeTag.MbId;
+                else
+                    lblMbId.Tag = string.Empty;
+
                 lblUploaded.Text = nodeTag.Uploaded;
 
                 if (nodeTag.NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Artist ||

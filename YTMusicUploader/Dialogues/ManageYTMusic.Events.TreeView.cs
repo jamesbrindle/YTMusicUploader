@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Windows.Forms;
+using System.Linq;
 using YTMusicUploader.Providers.RequestModels;
 
 namespace YTMusicUploader.Dialogues
@@ -44,9 +45,32 @@ namespace YTMusicUploader.Dialogues
             }
 
             bool nonFetchedArtistAlbumsSelected = false;
-            int checkedCount = CountChecked(ref nonFetchedArtistAlbumsSelected);
-            lblCheckedCount.Text = $"{checkedCount} track{(checkedCount == 1 ? "" : "s")} checked" +
+            int trackCheckedCount = CountChecked(ref nonFetchedArtistAlbumsSelected);
+            lblCheckedCount.Text = $"{trackCheckedCount} track{(trackCheckedCount == 1 ? "" : "s")} checked" +
                                    (nonFetchedArtistAlbumsSelected ? " (non-fetched artist tracks selected)" : "");
+
+
+            bool artistNodesChecked = false;
+            foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+            {
+                if (artistNode.Checked)
+                {
+                    artistNodesChecked = true;
+                    break;
+                }
+
+            }
+
+            if (trackCheckedCount > 0 || artistNodesChecked)
+            {
+                PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube;
+                PbDeleteYTUploaded.Enabled = true;
+            }
+            else
+            {
+                PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube_disabled;
+                PbDeleteYTUploaded.Enabled = false;
+            }
         }
     }
 }

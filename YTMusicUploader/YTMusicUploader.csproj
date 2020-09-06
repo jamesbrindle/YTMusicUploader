@@ -248,7 +248,7 @@
     </Compile>
     <Compile Include="Dialogues\ManageYTMusic.Events.Buttons.cs">
       <SubType>Form</SubType>
-	  <DependentUpon>ManageYTMusic.cs</DependentUpon>
+      <DependentUpon>ManageYTMusic.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogues\ManageYTMusic.Events.TreeView.cs">
       <SubType>Form</SubType>
@@ -480,6 +480,18 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\delete_from_youtube.png" />
+    <None Include="Resources\reset_database.png" />
+    <None Include="Resources\reset_uploaded_down.png" />
+    <None Include="Resources\reset_database_down.png" />
+    <None Include="Resources\delete_from_youtube_hover.png" />
+    <None Include="Resources\reset_uploaded_hover.png" />
+    <None Include="Resources\reset_database_hover.png" />
+    <None Include="Resources\delete_from_youtube_disabled.png" />
+    <None Include="Resources\reset_uploaded_disabled.png" />
+    <None Include="Resources\delete_from_youtube_down.png" />
+    <None Include="Resources\reset_uploaded.png" />
+    <None Include="Resources\reset_database_disabled.png" />
     <None Include="Resources\refresh_disabled.png" />
     <None Include="Resources\Raw\refresh_disabled.png" />
     <None Include="Resources\Raw\paused.svg" />
