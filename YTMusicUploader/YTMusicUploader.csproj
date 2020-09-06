@@ -480,6 +480,7 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Raw\action_buttons.svg" />
     <None Include="Resources\delete_from_youtube.png" />
     <None Include="Resources\reset_database.png" />
     <None Include="Resources\reset_uploaded_down.png" />
