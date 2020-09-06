@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace JBToolkit.ColorHelper
+namespace JBToolkit
 {
     /// <summary>
     /// Methods to convert RGB to hex, hex to RGB, alter colour brightness, lightness, intensity, also generate random 'nice' colours.

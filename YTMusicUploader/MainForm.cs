@@ -30,6 +30,7 @@ namespace YTMusicUploader
         public ConnectToYTMusic ConnectToYTMusicForm { get; set; }
         public IssueLog IssueLogForm { get; set; } = null;
         public UploadLog UploadLogForm { get; set; } = null;
+        public ManageYTMusic ManageYTMusic { get; set; } = null;
 
         //
         // Repos
@@ -75,6 +76,9 @@ namespace YTMusicUploader
         public ToolTip ArtWorkTooltip { get; set; }
         public ToolTip ConnectSuccessTooltip { get; set; }
         public ToolTip ConnectFailureTooltip { get; set; }
+        public ToolTip YtMusicManageTooltip { get; set; }
+        public ToolTip AboutTooltip { get; set; }
+
 
         //
         // Threads
@@ -187,6 +191,26 @@ namespace YTMusicUploader
             };
             ArtWorkTooltip.SetToolTip(pbArtwork,
                 "\nNothing uploading");
+
+            YtMusicManageTooltip = new ToolTip
+            {
+                ToolTipTitle = "YouTube Music Manage",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            YtMusicManageTooltip.SetToolTip(pbYtMusicManage,
+                "\nSee and delete albums and tracks uploaded to YouTube Music.");
+
+            AboutTooltip = new ToolTip
+            {
+                ToolTipTitle = "About",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            AboutTooltip.SetToolTip(pbAbout,
+                "\nAbout YTMusic Uploader.");
         }
 
         private async Task InitialiseFolderWatchers()

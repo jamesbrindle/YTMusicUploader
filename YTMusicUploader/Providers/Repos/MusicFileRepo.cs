@@ -45,7 +45,7 @@ namespace YTMusicUploader.Providers.Repos
         /// Load single MusicFile object by file path from the database
         /// </summary>
         /// <returns>MusicFile object</returns>
-        public async Task<MusicFile> Load(string path)
+        public async Task<MusicFile> LoadFromPath(string path)
         {
             using (var conn = DbConnection())
             {
@@ -65,6 +65,33 @@ namespace YTMusicUploader.Providers.Repos
                           WHERE Path = @Path
                           AND (Removed IS NULL OR Removed != 1)",
                         new { path }).FirstOrDefault();
+                return await Task.FromResult(musicFile);
+            }
+        }
+
+        /// Load single MusicFile object by file by YouTube entity Id
+        /// </summary>
+        /// <returns>MusicFile object</returns>
+        public async Task<MusicFile> LoadFromEntityId(string entityId)
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                var musicFile = conn.Query<MusicFile>(
+                        @"SELECT 
+                              Id, 
+                              Path, 
+                              MbId,
+                              ReleaseMbId,
+                              EntityId,
+                              Hash,
+                              LastUpload, 
+                              Error,
+                              ErrorReason
+                          FROM MusicFiles
+                          WHERE EntityId = @EntityId
+                          ORDER BY Removed",
+                        new { entityId }).FirstOrDefault();
                 return await Task.FromResult(musicFile);
             }
         }

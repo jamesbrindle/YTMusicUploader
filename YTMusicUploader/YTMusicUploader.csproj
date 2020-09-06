@@ -236,6 +236,20 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControls\RoundTooltip.cs" />
+    <Compile Include="Dialogues\ManageYTMusic.Delegates.cs">
+      <SubType>Form</SubType>
+	  <DependentUpon>ManageYTMusic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogues\ManageYTMusic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogues\ManageYTMusic.Designer.cs">
+      <DependentUpon>ManageYTMusic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogues\ManageYTMusic.Events.TreeView.cs">
+      <SubType>Form</SubType>
+	  <DependentUpon>ManageYTMusic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogues\UploadLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -375,6 +389,7 @@
     <Compile Include="Providers\RequestModels\BrowseArtistsResultsContext.cs" />
     <Compile Include="Providers\RequestModels\ArtistCache.cs" />
     <Compile Include="Providers\RequestModels\IRequestModel.cs" />
+    <Compile Include="Providers\RequestModels\MusicManageTreeNodeModel.cs" />
     <Compile Include="Providers\RequestModels\SearchContext.cs" />
     <Compile Include="Providers\RequestModels\SearchResultsContext.cs" />
     <Compile Include="Providers\Requests.cs" />
@@ -383,6 +398,9 @@
     <Compile Include="Providers\Requests\CheckUploaded.cs" />
     <Compile Include="Providers\Requests\UploadTrack.cs" />
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
+    <EmbeddedResource Include="Dialogues\ManageYTMusic.resx">
+      <DependentUpon>ManageYTMusic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogues\UploadLog.resx">
       <DependentUpon>UploadLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -458,6 +476,16 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ytmusic_manage_disabledpx.png" />
+    <None Include="Resources\default_artwork-60.jpg" />
+    <None Include="Resources\ytmusic_manage-40px.png" />
+    <None Include="Resources\preloader-cricle.gif" />
+    <None Include="Resources\ytmusic_manage_hover.png" />
+    <None Include="Resources\ytmusic_manage.png" />
+    <None Include="Resources\ytmusic_manage_down.png" />
+    <None Include="Resources\yt_logo_hover.png" />
+    <None Include="Resources\yt_logo_down.png" />
+    <None Include="Resources\Raw\ytmusic_manage.svg" />
     <None Include="Resources\Raw\refresh.svg" />
     <None Include="Resources\refresh_down.png" />
     <None Include="Resources\refresh_hover.png" />

@@ -72,6 +72,48 @@ namespace YTMusicUploader
             }
         }
 
+        delegate void SetManageTYMusicButtonEnabledDelegate(bool enabled);
+        public void SetManageTYMusicButtonEnabled(bool enabled)
+        {
+            if (pbYtMusicManage.InvokeRequired)
+            {
+                SetManageTYMusicButtonEnabledDelegate d = new SetManageTYMusicButtonEnabledDelegate(SetManageTYMusicButtonEnabled);
+                Invoke(d, new object[] { enabled });
+            }
+            else
+            {
+                pbYtMusicManage.Enabled = enabled;
+                if (enabled)
+                    pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
+                else
+                    pbYtMusicManage.Image = Properties.Resources.ytmusic_manage_disabled;
+            }
+        }
+
+        delegate void SetManageTYMusicButtonImageDelegate(Image image);
+        public void SetManageTYMusicButtonImage(Image image)
+        {
+            if (pbYtMusicManage.InvokeRequired)
+            {
+                SetManageTYMusicButtonImageDelegate d = new SetManageTYMusicButtonImageDelegate(SetManageTYMusicButtonImage);
+                Invoke(d, new object[] { image });
+            }
+            else
+                pbYtMusicManage.Image = image;
+        }
+
+        delegate void SetAboutButtonImageDelegate(Image image);
+        public void SetAboutButtonImage(Image image)
+        {
+            if (pbAbout.InvokeRequired)
+            {
+                SetAboutButtonImageDelegate d = new SetAboutButtonImageDelegate(SetAboutButtonImage);
+                Invoke(d, new object[] { image });
+            }
+            else
+                pbAbout.Image = image;
+        }
+
         delegate void SetThrottleSpeedDelegate(string mbps);
         public void SetThrottleSpeed(string mbps)
         {

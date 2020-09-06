@@ -46,12 +46,14 @@ namespace YTMusicUploader.Business
 
             MusicFiles = MainForm.MusicFileRepo.LoadAll(true, true, true).Result;
 
-            if (Requests.ArtistCache == null || 
-                Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2) || 
+            if (Requests.ArtistCache == null ||
+                Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2) ||
                 Requests.ArtistCache.Artists.Count == 0)
             {
+                MainForm.SetManageTYMusicButtonEnabled(false);
                 MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
                 Requests.LoadArtistCache(MainForm.Settings.AuthenticationCookie);
+                MainForm.SetManageTYMusicButtonEnabled(true);
             }
 
             if (Global.MultiThreadedRequests)
@@ -68,8 +70,10 @@ namespace YTMusicUploader.Business
                 {
                     if (Requests.ArtistCache == null || Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2))
                     {
+                        MainForm.SetManageTYMusicButtonEnabled(false);
                         MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
                         Requests.LoadArtistCache(MainForm.Settings.AuthenticationCookie);
+                        MainForm.SetManageTYMusicButtonEnabled(true);
                     }
 
                     musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);

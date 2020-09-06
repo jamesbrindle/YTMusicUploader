@@ -2,11 +2,11 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using YTMusicUploader.Providers.RequestModels;
+using static YTMusicUploader.Providers.RequestModels.ArtistCache;
 
 namespace YTMusicUploader.Providers
 {
@@ -28,14 +28,20 @@ namespace YTMusicUploader.Providers
         /// <param name="continuationToken">Token from YouTube Music indicated more results to fetch, and the token to get them
         /// (shoult be empty when initialising - this is a recursive method)</param>
         /// <returns>ArtistCache object</returns>
-        public static List<ArtistCache.Song> GetArtistSongs(
+        public static AlbumSongCollection GetArtistSongs(
             string cookieValue,
             string browseId,
-            List<ArtistCache.Song> songs = null,
+            AlbumSongCollection albumSongCollection = null,
             string continuationToken = null)
         {
-            if (songs == null)
-                songs = new List<ArtistCache.Song>();
+            if (albumSongCollection == null)
+                albumSongCollection = new AlbumSongCollection();
+
+            if (albumSongCollection.Songs == null)
+                albumSongCollection.Songs = new SongCollection();
+
+            if (albumSongCollection.Albums == null)
+                albumSongCollection.Albums = new AlbumCollection();
 
             try
             {
@@ -86,15 +92,15 @@ namespace YTMusicUploader.Providers
 
                     if (string.IsNullOrEmpty(continuationToken))
                     {
-                        songs = GetInitalArtistSongs(songs, result, out string continuation);
+                        albumSongCollection = GetInitalArtistSongs(albumSongCollection, result, out string continuation);
                         if (!string.IsNullOrEmpty(continuation))
-                            return GetArtistSongs(cookieValue, browseId, songs, continuation);
+                            return GetArtistSongs(cookieValue, browseId, albumSongCollection, continuation);
                     }
                     else
                     {
-                        songs = GetContinuationArtistSongs(songs, result, out string continuation);
+                        albumSongCollection = GetContinuationArtistSongs(albumSongCollection, result, out string continuation);
                         if (!string.IsNullOrEmpty(continuation))
-                            return GetArtistSongs(cookieValue, browseId, songs, continuation);
+                            return GetArtistSongs(cookieValue, browseId, albumSongCollection, continuation);
                     }
                 }
             }
@@ -106,11 +112,11 @@ namespace YTMusicUploader.Providers
 #endif
             }
 
-            return songs;
+            return albumSongCollection;
         }
 
-        private static List<ArtistCache.Song> GetInitalArtistSongs(
-            List<ArtistCache.Song> songs,
+        private static AlbumSongCollection GetInitalArtistSongs(
+            AlbumSongCollection albumSongCollection,
             string httpResponseResults,
             out string continuation)
         {
@@ -133,11 +139,17 @@ namespace YTMusicUploader.Providers
                 int i = 0;
                 foreach (var content in msr.contents)
                 {
-                    if (i != 0)
+                    if (content.musicResponsiveListItemRenderer.fixedColumns != null)
                     {
                         try
                         {
-                            songs.Add(new ArtistCache.Song
+                            string coverArtUrl = content.musicResponsiveListItemRenderer
+                                                        .thumbnail
+                                                        .musicThumbnailRenderer
+                                                        .thumbnail
+                                                        .thumbnails[0].url;
+
+                            var song = new Song
                             {
                                 Title = content.musicResponsiveListItemRenderer
                                                .flexColumns[0]
@@ -146,10 +158,40 @@ namespace YTMusicUploader.Providers
                                                .runs[0]
                                                .text,
 
+                                Duration = content.musicResponsiveListItemRenderer
+                                                  .fixedColumns[0].musicResponsiveListItemFixedColumnRenderer
+                                                  .text
+                                                  .runs[0]
+                                                  .text,
+
+                                CoverArtUrl = coverArtUrl,
+
                                 EntityId = GetEntityID(content.musicResponsiveListItemRenderer
                                                               .menu
                                                               .menuRenderer)
-                            });
+                            };
+
+                            string albumTitle = content.musicResponsiveListItemRenderer
+                                                       .flexColumns[2]
+                                                       .musicResponsiveListItemFlexColumnRenderer
+                                                       .text
+                                                       .runs[0]
+                                                       .text;
+
+                            if (!albumSongCollection.Albums.AlbumHashSet.Contains(albumTitle))
+                            {
+                                albumSongCollection.Albums.AlbumHashSet.Add(albumTitle);
+                                albumSongCollection.Albums.Add(new Alumb
+                                {
+                                    Title = albumTitle,
+                                    CoverArtUrl = coverArtUrl,
+                                    Songs = new SongCollection()
+                                });
+                            }
+
+                            albumSongCollection.Songs.Add(song);
+                            albumSongCollection.Albums.Where(m => m.Title == albumTitle).FirstOrDefault().Songs.Add(song);
+
                         }
                         catch { }
                     }
@@ -158,11 +200,11 @@ namespace YTMusicUploader.Providers
                 }
             }
 
-            return songs;
+            return albumSongCollection;
         }
 
-        private static List<ArtistCache.Song> GetContinuationArtistSongs(
-            List<ArtistCache.Song> songs,
+        private static AlbumSongCollection GetContinuationArtistSongs(
+            AlbumSongCollection albumSongCollection,
             string httpResponseResults,
             out string continuation)
         {
@@ -188,7 +230,13 @@ namespace YTMusicUploader.Providers
                 {
                     try
                     {
-                        songs.Add(new ArtistCache.Song
+                        string coverArtUrl = content.musicResponsiveListItemRenderer
+                                                        .thumbnail
+                                                        .musicThumbnailRenderer
+                                                        .thumbnail
+                                                        .thumbnails[0].url;
+
+                        var song = new Song
                         {
                             Title = content.musicResponsiveListItemRenderer
                                            .flexColumns[0]
@@ -197,16 +245,46 @@ namespace YTMusicUploader.Providers
                                            .runs[0]
                                            .text,
 
+                            CoverArtUrl = coverArtUrl,
+
+                            Duration = content.musicResponsiveListItemRenderer
+                                              .fixedColumns[0]
+                                              .musicResponsiveListItemFixedColumnRenderer
+                                              .text
+                                              .runs[0]
+                                              .text,
+
                             EntityId = GetEntityID(content.musicResponsiveListItemRenderer
                                                           .menu
                                                           .menuRenderer)
-                        });
+                        };
+
+                        string albumTitle = content.musicResponsiveListItemRenderer
+                                                   .flexColumns[2]
+                                                   .musicResponsiveListItemFlexColumnRenderer
+                                                   .text
+                                                   .runs[0]
+                                                   .text;
+
+                        if (!albumSongCollection.Albums.AlbumHashSet.Contains(albumTitle))
+                        {
+                            albumSongCollection.Albums.AlbumHashSet.Add(albumTitle);
+                            albumSongCollection.Albums.Add(new Alumb
+                            {
+                                Title = albumTitle,
+                                CoverArtUrl = coverArtUrl,
+                                Songs = new SongCollection()
+                            });
+                        }
+
+                        albumSongCollection.Songs.Add(song);
+                        albumSongCollection.Albums.Where(m => m.Title == albumTitle).FirstOrDefault().Songs.Add(song);
                     }
                     catch { }
                 }
             }
 
-            return songs;
+            return albumSongCollection;
         }
 
         private static string GetEntityID(BrowseArtistResultsContext.Menurenderer menuRenderer)

@@ -269,7 +269,7 @@ namespace YTMusicUploader.Providers
                             return result;
 
                         originalAlbum = album;
-                    }                   
+                    }
                 }
                 catch { }
 
@@ -772,11 +772,11 @@ namespace YTMusicUploader.Providers
                 float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
                 if (artistSimilarity >= matchSuccessMinimum)
                 {
-                    if (artistCacheItem.Songs.Count == 0)
-                        artistCacheItem.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId);
+                    if (artistCacheItem.AlbumSongCollection.Songs.Count == 0)
+                        artistCacheItem.AlbumSongCollection.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId).Songs;
 
                     bool trackFound = false;
-                    Parallel.ForEach(artistCacheItem.Songs.AsParallel(), (songCacheItem, stateB, indexB) =>
+                    Parallel.ForEach(artistCacheItem.AlbumSongCollection.Songs.AsParallel(), (songCacheItem, stateB, indexB) =>
                     {
                         if (!trackFound)
                         {
@@ -826,12 +826,12 @@ namespace YTMusicUploader.Providers
                 float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
                 if (artistSimilarity >= matchSuccessMinimum)
                 {
-                    if (artistCacheItem.Songs.Count == 0)
-                        artistCacheItem.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId);
+                    if (artistCacheItem.AlbumSongCollection.Songs.Count == 0)
+                        artistCacheItem.AlbumSongCollection.Songs = GetArtistSongs(cookieValue, artistCacheItem.BrowseId).Songs;
 
                     bool trackFound = false;
 
-                    foreach (var songCacheItem in artistCacheItem.Songs)
+                    foreach (var songCacheItem in artistCacheItem.AlbumSongCollection.Songs)
                     {
                         Thread.Sleep(1);
                         if (!trackFound)

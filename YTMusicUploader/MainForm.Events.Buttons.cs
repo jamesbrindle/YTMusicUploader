@@ -170,6 +170,48 @@ namespace YTMusicUploader
             btnConnectToYoutube.Focus();
         }
 
+        // YT Music Manage
+
+        private void PbYtMusicManage_Click(object sender, EventArgs e)
+        {
+            if (ManageYTMusic == null || ManageYTMusic.IsDisposed)
+                ManageYTMusic = new ManageYTMusic(this);
+            else
+            {
+                ManageYTMusic.Dispose();
+                ManageYTMusic = new ManageYTMusic(this);
+            }
+
+            ManageYTMusic.ShowDialog();
+
+            pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
+            new Thread((ThreadStart)delegate
+            {
+                Thread.Sleep(100);
+                SetManageTYMusicButtonImage(Properties.Resources.ytmusic_manage);
+            }).Start();
+        }
+
+        private void PbYtMusicManage_MouseDown(object sender, MouseEventArgs e)
+        {
+            pbYtMusicManage.Image = Properties.Resources.ytmusic_manage_down;
+        }
+
+        private void PbYtMusicManage_MouseEnter(object sender, EventArgs e)
+        {
+            pbYtMusicManage.Image = Properties.Resources.ytmusic_manage_hover;
+        }
+
+        private void PbYtMusicManage_MouseLeave(object sender, EventArgs e)
+        {
+            pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
+        }
+
+        private void PbYtMusicManage_MouseUp(object sender, MouseEventArgs e)
+        {
+            pbYtMusicManage.Image = Properties.Resources.ytmusic_manage_hover;
+        }
+
         // About
 
         private void PbAbout_Click(object sender, EventArgs e)
@@ -183,6 +225,33 @@ namespace YTMusicUploader
                MessageBoxButtons.OK,
                MessageBoxIcon.Asterisk,
                200);
+
+            pbAbout.Image = Properties.Resources.yt_logo;
+            new Thread((ThreadStart)delegate
+            {
+                Thread.Sleep(100);
+                SetAboutButtonImage(Properties.Resources.yt_logo);
+            }).Start();
+        }
+
+        private void PbAbout_MouseDown(object sender, MouseEventArgs e)
+        {
+            pbAbout.Image = Properties.Resources.yt_logo_down;
+        }
+
+        private void PbAbout_MouseEnter(object sender, EventArgs e)
+        {
+            pbAbout.Image = Properties.Resources.yt_logo_hover;
+        }
+
+        private void PbAbout_MouseLeave(object sender, EventArgs e)
+        {
+            pbAbout.Image = Properties.Resources.yt_logo;
+        }
+
+        private void PbAbout_MouseUp(object sender, MouseEventArgs e)
+        {
+            pbAbout.Image = Properties.Resources.yt_logo_hover;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using JBToolkit.ColorHelper;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
