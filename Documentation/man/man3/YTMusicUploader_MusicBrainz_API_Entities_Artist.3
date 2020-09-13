@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MusicBrainz.API.Entities.Artist" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MusicBrainz.API.Entities.Artist" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -55,27 +55,27 @@ YTMusicUploader.MusicBrainz.API.Entities.Artist \- An artist is generally a musi
 .br
 .RI "Gets or sets the rating\&. "
 .ti -1c
-.RI "List< \fBRecording\fP > \fBRecordings\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRecording\fP > \fBRecordings\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of recordings associated to this artist\&. "
 .ti -1c
-.RI "List< \fBReleaseGroup\fP > \fBReleaseGroups\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBReleaseGroup\fP > \fBReleaseGroups\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of release-groups associated to this artist\&. "
 .ti -1c
-.RI "List< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of releases associated to this artist\&. "
 .ti -1c
-.RI "List< \fBWork\fP > \fBWorks\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBWork\fP > \fBWorks\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of works associated to this artist\&. "
 .ti -1c
-.RI "List< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of tags associated to this artist\&. "
 .ti -1c
-.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of relations associated to this artist\&. "
 .in -1c
@@ -118,19 +118,19 @@ Gets or sets the name\&.
 
 .PP
 Gets or sets the rating\&. 
-.SS "List<\fBRecording\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Recordings\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRecording\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Recordings\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of recordings associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'recordings'); 
-.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Relations\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Relations\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of relations associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'url-rels', 'artist-rels'); 
-.SS "List<\fBReleaseGroup\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.ReleaseGroups\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBReleaseGroup\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.ReleaseGroups\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of release-groups associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'release-groups'); 
-.SS "List<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Releases\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Releases\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of releases associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'releases'); 
@@ -142,7 +142,7 @@ Gets or sets the score (only available in search results)\&.
 
 .PP
 Gets or sets the sort name\&. 
-.SS "List<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Tags\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Tags\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of tags associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'tags'); 
@@ -150,7 +150,7 @@ Gets or sets a list of tags associated to this artist\&. var e = await Artist\&.
 
 .PP
 Gets or sets the type\&. 
-.SS "List<\fBWork\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Works\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBWork\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Artist\&.Works\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of works associated to this artist\&. var e = await Artist\&.GetAsync(mbid, 'works'); 

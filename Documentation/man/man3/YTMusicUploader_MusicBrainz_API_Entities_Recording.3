@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MusicBrainz.API.Entities.Recording" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MusicBrainz.API.Entities.Recording" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -35,19 +35,19 @@ YTMusicUploader.MusicBrainz.API.Entities.Recording \- A recording is an entity i
 .br
 .RI "Gets or sets the rating\&. "
 .ti -1c
-.RI "List< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of artists associated to this recording\&. "
 .ti -1c
-.RI "List< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of releases associated to this recording\&. "
 .ti -1c
-.RI "List< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of tags associated to this recording\&. "
 .ti -1c
-.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of relations associated to this recording\&. "
 .in -1c
@@ -58,7 +58,7 @@ A recording is an entity in \fBMusicBrainz\fP which can be linked to tracks on r
 
 .SH "Property Documentation"
 .PP 
-.SS "List<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Credits\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Credits\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of artists associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'artists'); 
@@ -78,11 +78,11 @@ Gets or sets the length\&.
 
 .PP
 Gets or sets the rating\&. 
-.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Relations\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Relations\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of relations associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'url-rels'); 
-.SS "List<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Releases\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Releases\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of releases associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'releases'); 
@@ -90,7 +90,7 @@ Gets or sets a list of releases associated to this recording\&. var e = await Re
 
 .PP
 Gets or sets the score (only available in search results)\&. 
-.SS "List<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Tags\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Recording\&.Tags\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of tags associated to this recording\&. var e = await Recording\&.GetAsync(mbid, 'tags'); 

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,9 +17,12 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .br
 .RI "Load single MusicFile object by ID from the database "
 .ti -1c
-.RI "async Task< \fBMusicFile\fP > \fBLoad\fP (string path)"
+.RI "async Task< \fBMusicFile\fP > \fBLoadFromPath\fP (string path)"
 .br
 .RI "Load single MusicFile object by file path from the database "
+.ti -1c
+.RI "async Task< \fBMusicFile\fP > \fBLoadFromEntityId\fP (string entityId)"
+.br
 .ti -1c
 .RI "Task< \fBMusicFile\fP > \fBGetDuplicate\fP (string hash, string path)"
 .br
@@ -33,15 +36,15 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .br
 .RI "Gets a random music file from the database that's been uploaded but has a missing the YouTube Music entityId for the purposes of retreiving it when the application is in 'idle' state "
 .ti -1c
-.RI "async Task< List< \fBMusicFile\fP > > \fBLoadAll\fP (bool includeErrorFiles=true, bool lastUploadAscending=false, bool ignoreRecentlyUploaded=false)"
+.RI "async Task< \fBList\fP< \fBMusicFile\fP > > \fBLoadAll\fP (bool includeErrorFiles=true, bool lastUploadAscending=false, bool ignoreRecentlyUploaded=false)"
 .br
 .RI "Loads a list of all MusicFiles objects with optional filter or order by criteria "
 .ti -1c
-.RI "Task< List< \fBMusicFile\fP > > \fBLoadIssues\fP ()"
+.RI "Task< \fBList\fP< \fBMusicFile\fP > > \fBLoadIssues\fP ()"
 .br
 .RI "Loads a list of MusicFile objects with upload errors "
 .ti -1c
-.RI "async Task< List< \fBMusicFile\fP > > \fBLoadUploaded\fP ()"
+.RI "async Task< \fBList\fP< \fBMusicFile\fP > > \fBLoadUploaded\fP ()"
 .br
 .RI "Loads a list of MusicFile objects with a successful upload "
 .ti -1c
@@ -69,6 +72,10 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .br
 .RI "Sets the 'removed' flag to false "
 .ti -1c
+.RI "async Task \fBResetAllMusicFileUploadedStates\fP ()"
+.br
+.RI "Reset all music file entry uploaded states "
+.ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBUpdate\fP (\fBMusicFile\fP musicFile)"
 .br
 .RI "Updates the Music File entry in the database with the fields of the given MusicFile object "
@@ -76,6 +83,14 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (\fBMusicFile\fP musicFile, bool destroy=false)"
 .br
 .RI "Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteByEntityId\fP (string entityId)"
+.br
+.RI "Destroy a Music File entry from the database via it's YT Music EntityId "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteByBrowseId\fP (string browseId)"
+.br
+.RI "Destroy a Music File entry from the database via it's YT Music BrowseId (album) "
 .ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (int id, bool destroy=false)"
 .br
@@ -199,6 +214,38 @@ Deletes all Music File entries from the database
 .RE
 .PP
 
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteByBrowseId (string browseId)"
+
+.PP
+Destroy a Music File entry from the database via it's YT Music BrowseId (album) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbrowseId\fP YT Music track entity ID
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteByEntityId (string entityId)"
+
+.PP
+Destroy a Music File entry from the database via it's YT Music EntityId 
+.PP
+\fBParameters\fP
+.RS 4
+\fIentityId\fP YT Music track entity ID
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
 .SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteWatchFolder (string path)"
 
 .PP
@@ -298,18 +345,7 @@ MusicFile object
 .RE
 .PP
 
-.SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.Load (string path)"
-
-.PP
-Load single MusicFile object by file path from the database 
-.PP
-\fBReturns\fP
-.RS 4
-MusicFile object
-.RE
-.PP
-
-.SS "async Task<List<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadAll (bool includeErrorFiles = \fCtrue\fP, bool lastUploadAscending = \fCfalse\fP, bool ignoreRecentlyUploaded = \fCfalse\fP)"
+.SS "async Task<\fBList\fP<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadAll (bool includeErrorFiles = \fCtrue\fP, bool lastUploadAscending = \fCfalse\fP, bool ignoreRecentlyUploaded = \fCfalse\fP)"
 
 .PP
 Loads a list of all MusicFiles objects with optional filter or order by criteria 
@@ -325,32 +361,58 @@ Loads a list of all MusicFiles objects with optional filter or order by criteria
 .PP
 \fBReturns\fP
 .RS 4
-List of MusicFileObjects
+\fBList\fP of MusicFileObjects
 .RE
 .PP
 
-.SS "Task<List<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadIssues ()"
+.SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadFromEntityId (string entityId)"
+
+.PP
+Load single MusicFile object by file by YouTube entity Id
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
+.SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadFromPath (string path)"
+
+.PP
+Load single MusicFile object by file path from the database 
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
+.SS "Task<\fBList\fP<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadIssues ()"
 
 .PP
 Loads a list of MusicFile objects with upload errors 
 .PP
 \fBReturns\fP
 .RS 4
-List of MusicFileObjects
+\fBList\fP of MusicFileObjects
 .RE
 .PP
 
-.SS "async Task<List<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadUploaded ()"
+.SS "async Task<\fBList\fP<\fBMusicFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadUploaded ()"
 
 .PP
 Loads a list of MusicFile objects with a successful upload 
 .PP
 \fBReturns\fP
 .RS 4
-List of MusicFileObjects
+\fBList\fP of MusicFileObjects
 .RE
 .PP
 
+.SS "async Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.ResetAllMusicFileUploadedStates ()"
+
+.PP
+Reset all music file entry uploaded states 
 .SS "async Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
 
 .PP

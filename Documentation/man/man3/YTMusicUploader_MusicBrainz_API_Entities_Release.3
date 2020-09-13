@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MusicBrainz.API.Entities.Release" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MusicBrainz.API.Entities.Release" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -55,19 +55,19 @@ YTMusicUploader.MusicBrainz.API.Entities.Release \- A \fBMusicBrainz\fP release 
 .br
 .RI "Gets or sets the cover-art-archive\&. "
 .ti -1c
-.RI "List< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of artists associated to this release\&. "
 .ti -1c
-.RI "List< \fBLabelInfo\fP > \fBLabels\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBLabelInfo\fP > \fBLabels\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of labels associated to this release\&. "
 .ti -1c
-.RI "List< \fBMedium\fP > \fBMedia\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBMedium\fP > \fBMedia\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of media/tracks associated to this release\&. "
 .ti -1c
-.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of relations associated to this release\&. "
 .in -1c
@@ -90,7 +90,7 @@ Gets or sets the country\&.
 
 .PP
 Gets or sets the cover-art-archive\&. 
-.SS "List<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Credits\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Credits\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of artists associated to this release\&. var e = await Release\&.GetAsync(mbid, 'artists'); 
@@ -102,11 +102,11 @@ Gets or sets the date\&.
 
 .PP
 Gets or sets the \fBMusicBrainz\fP id\&. 
-.SS "List<\fBLabelInfo\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Labels\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBLabelInfo\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Labels\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of labels associated to this release\&. var e = await Release\&.GetAsync(mbid, 'labels'); 
-.SS "List<\fBMedium\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Media\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBMedium\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Media\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of media/tracks associated to this release\&. var e = await Release\&.GetAsync(mbid, 'recordings'); 
@@ -114,7 +114,7 @@ Gets or sets a list of media/tracks associated to this release\&. var e = await 
 
 .PP
 Gets or sets the quality\&. 
-.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Relations\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.Release\&.Relations\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of relations associated to this release\&. var e = await Release\&.GetAsync(mbid, 'url-rels'); 

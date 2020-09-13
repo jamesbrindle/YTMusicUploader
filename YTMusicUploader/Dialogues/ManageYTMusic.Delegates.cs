@@ -73,6 +73,7 @@ namespace YTMusicUploader.Dialogues
                 tvUploads.Nodes[0].Expand();
                 ShowPreloader(false);
                 SetTreeViewEnabled(true);
+                DisableAllActionButtons(false);
             }
         }
 
@@ -80,17 +81,19 @@ namespace YTMusicUploader.Dialogues
             string artistNodeName,
             AlbumSongCollection albumSongCollection,
             bool expand = true,
-            bool showFetchedMessage = true);
+            bool showFetchedMessage = true,
+            bool isDeleting = false);
         private void BindAlbumNodes(
             string artistNodeName,
             AlbumSongCollection albumSongCollection,
             bool expand = true,
-            bool showFetchedMessage = true)
+            bool showFetchedMessage = true,
+            bool isDeleting = false)
         {
             if (tvUploads.InvokeRequired)
             {
                 BindAlbumNodesDelegate d = new BindAlbumNodesDelegate(BindAlbumNodes);
-                Invoke(d, new object[] { artistNodeName, albumSongCollection, expand, showFetchedMessage });
+                Invoke(d, new object[] { artistNodeName, albumSongCollection, expand, showFetchedMessage, isDeleting });
             }
             else
             {
@@ -135,7 +138,7 @@ namespace YTMusicUploader.Dialogues
                                 CovertArtUrl = song.CoverArtUrl,
                                 DatabaseExistence = databaseExistenceText,
                                 MbId = musicFile == null || string.IsNullOrEmpty(musicFile.MbId) ? "-" : musicFile.MbId,
-                                EntityId = musicFile == null || string.IsNullOrEmpty(musicFile.EntityId) ? "-" : musicFile.EntityId,
+                                EntityOrBrowseId = song.EntityId,
                                 Uploaded = musicFile == null ? "-" : musicFile.LastUpload.ToString("dd/MM/yyyy HH:mm")
                             }
                         });
@@ -153,6 +156,7 @@ namespace YTMusicUploader.Dialogues
                             CovertArtUrl = album.CoverArtUrl,
                             DatabaseExistence = string.IsNullOrEmpty(releaseMbId) ? "Not found or not mapped" : "Tracks exists for this album",
                             MbId = string.IsNullOrEmpty(releaseMbId) ? "-" : releaseMbId,
+                            EntityOrBrowseId = album.EntityId,
                             Uploaded = "-"
                         }
                     };
@@ -186,8 +190,12 @@ namespace YTMusicUploader.Dialogues
                 if (artistNode.Checked)
                     CheckAllChildNodes(artistNode, true);
 
-                ShowPreloader(false);
-                SetTreeViewEnabled(true);
+                if (!isDeleting)
+                {
+                    ShowPreloader(false);
+                    SetTreeViewEnabled(true);
+                    DisableAllActionButtons(false);
+                }
             }
         }
 
@@ -303,6 +311,77 @@ namespace YTMusicUploader.Dialogues
                 pbCoverArt.Image = image;
         }
 
+        delegate void DeselectAllActionButtonsDelegate();
+        private void DeselectAllActionButtons()
+        {
+            if (PbResetUploadStates.InvokeRequired ||
+                PbResetDatabase.InvokeRequired ||
+                PbDeleteYTUploaded.InvokeRequired)
+            {
+                DeselectAllActionButtonsDelegate d = new DeselectAllActionButtonsDelegate(DeselectAllActionButtons);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                PbResetUploadStates.Image = Properties.Resources.reset_uploaded;
+                lblSelectedButton.Visible = false;
+
+                PbResetDatabase.Image = Properties.Resources.reset_database;
+                lblSelectedButton.Visible = false;
+
+                PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube;
+                lblSelectedButton.Visible = false;
+            }
+        }
+
+        delegate void DisableAllActionButtonsDelegate(bool disabled);
+        private void DisableAllActionButtons(bool disabled)
+        {
+            if (PbResetUploadStates.InvokeRequired ||
+                PbResetDatabase.InvokeRequired ||
+                PbDeleteYTUploaded.InvokeRequired ||
+                pbRefresh.InvokeRequired)
+            {
+                DisableAllActionButtonsDelegate d = new DisableAllActionButtonsDelegate(DisableAllActionButtons);
+                Invoke(d, new object[] { disabled });
+            }
+            else
+            {
+                lblSelectedButton.Visible = false;
+                lblSelectedButton.Visible = false;
+                lblSelectedButton.Visible = false;
+
+                if (disabled)
+                {
+                    PbResetUploadStates.Image = Properties.Resources.reset_uploaded_disabled;
+                    PbResetUploadStates.Enabled = false;
+
+                    PbResetDatabase.Image = Properties.Resources.reset_database_disabled;
+                    PbResetDatabase.Enabled = false;
+
+                    PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube_disabled;
+                    PbDeleteYTUploaded.Enabled = false;
+
+                    pbRefresh.Image = Properties.Resources.refresh_disabled;
+                    pbRefresh.Enabled = false;
+                }
+                else
+                {
+                    PbResetUploadStates.Image = Properties.Resources.reset_uploaded;
+                    PbResetUploadStates.Enabled = true;
+
+                    PbResetDatabase.Image = Properties.Resources.reset_database;
+                    PbResetDatabase.Enabled = true;
+
+                    PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube;
+                    PbDeleteYTUploaded.Enabled = true;
+
+                    pbRefresh.Image = Properties.Resources.refresh;
+                    pbRefresh.Enabled = true;
+                }
+            }
+        }
+
         delegate void AppendUpdatesTextDelegate(string text, Color color);
         private void AppendUpdatesText(string text, Color color)
         {
@@ -317,6 +396,35 @@ namespace YTMusicUploader.Dialogues
                 tbUpdates.AppendText("- " + text + "\r\n");
                 tbUpdates.SelectionStart = tbUpdates.Text.Length;
                 tbUpdates.ScrollToCaret();
+            }
+        }
+
+        delegate void SetCheckedLabelDelegate(string text);
+        private void SetCheckedLabel(string text)
+        {
+            if (lblCheckedCount.InvokeRequired)
+            {
+                SetCheckedLabelDelegate d = new SetCheckedLabelDelegate(SetCheckedLabel);
+                Invoke(d, new object[] { text });
+            }
+            else
+            {
+                lblCheckedCount.Text = text;
+            }
+        }
+
+        delegate void ChangeChildCountDelegate(TreeNode parentNode);
+        private void ChangeChildCount(TreeNode parentNode)
+        {
+            if (tvUploads.InvokeRequired)
+            {
+                ChangeChildCountDelegate d = new ChangeChildCountDelegate(ChangeChildCount);
+                Invoke(d, new object[] { parentNode });
+            }
+            else
+            {
+                int end = parentNode.Text.LastIndexOf("(");
+                parentNode.Text = parentNode.Text.Substring(0, end).Trim() + " (" + parentNode.Nodes.Count + ")";
             }
         }
     }

@@ -1,7 +1,18 @@
 var searchData=
 [
-  ['performanydbupgrades_1470',['PerformAnyDbUpgrades',['../d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a777fee8af9abfbafeb10f09327101e08',1,'YTMusicUploader::Providers::DataAccess']]],
-  ['performclick_1471',['PerformClick',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a3a6bf0589303bc3a48e67c7ca126cf3d',1,'JBToolkit::WinForms::RoundButton']]],
-  ['populate_1472',['Populate',['../da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html#a03002c8e811ffbe2702ed7f4e4ffbfbc',1,'YTMusicUploader.Dialogues.IssueLog.Populate()'],['../d8/d32/class_y_t_music_uploader_1_1_dialogues_1_1_upload_log.html#a60ab33dff1b412c08c319f836aa64087',1,'YTMusicUploader.Dialogues.UploadLog.Populate()']]],
-  ['process_1473',['Process',['../dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ac79b28d31e906a37a700c7574a7b6290',1,'YTMusicUploader.Business.FileScanner.Process()'],['../d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7',1,'YTMusicUploader.Business.FileUploader.Process()']]]
+  ['onenabledchanged_1611',['OnEnabledChanged',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a9ef98ab5f718f068e9185e294186d685',1,'JBToolkit::WinForms::RoundButton']]],
+  ['onfontchanged_1612',['OnFontChanged',['../d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html#ae203a0c29cc8569a14084328f04770de',1,'JBToolkit::WinForms::RoundTextBox']]],
+  ['onforecolorchanged_1613',['OnForeColorChanged',['../d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html#a27d540e864bcf5ca356be0bf25c0ffd8',1,'JBToolkit::WinForms::RoundTextBox']]],
+  ['onload_1614',['OnLoad',['../da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#aec527a96922fa9e51021f2da3b3f29e9',1,'JBToolkit::WinForms::OptimisedMetroForm']]],
+  ['onmousedoubleclick_1615',['OnMouseDoubleClick',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a7e133c6a818eb5bc1b2324ce504c6b77',1,'JBToolkit::WinForms::RoundButton']]],
+  ['onmousedown_1616',['OnMouseDown',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#aad03d523b6f9b16b94fab55467b874a6',1,'JBToolkit::WinForms::RoundButton']]],
+  ['onmouseenter_1617',['OnMouseEnter',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#aa497ed4ca2ba797a931f889123164514',1,'JBToolkit::WinForms::RoundButton']]],
+  ['onmouseleave_1618',['OnMouseLeave',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a64d4a75e7554f4d7b5eda6be5fbba310',1,'JBToolkit::WinForms::RoundButton']]],
+  ['onmouseup_1619',['OnMouseUp',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a4b8350b81d807f127b85f26f5fcbda98',1,'JBToolkit::WinForms::RoundButton']]],
+  ['onpaint_1620',['OnPaint',['../d3/d4f/class_j_b_toolkit_1_1_win_forms_1_1_anti_aliased_label.html#adb1780425f0adb2ffd5c441962d8623f',1,'JBToolkit.WinForms.AntiAliasedLabel.OnPaint()'],['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a93c789c433020e3c41b65333c1c969ff',1,'JBToolkit.WinForms.RoundButton.OnPaint()'],['../de/d6c/class_j_b_toolkit_1_1_win_forms_1_1_round_picture_box.html#ae3d4c52c254f9c93afda1dcc8bcc7096',1,'JBToolkit.WinForms.RoundPictureBox.OnPaint()'],['../d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html#ae35140720dc21734f4cf1d2551220541',1,'JBToolkit.WinForms.RoundTextBox.OnPaint()']]],
+  ['onresize_1621',['OnResize',['../de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a3231c2d97741b45eae5a1256d2078ee3',1,'JBToolkit::WinForms::RoundButton']]],
+  ['ontextchanged_1622',['OnTextChanged',['../d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html#a0ca6c7fd6846dbf5056d6ae0119ee656',1,'JBToolkit::WinForms::RoundTextBox']]],
+  ['open_1623',['Open',['../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#a6052a296a71ccf4201e766ce56cbb54a',1,'JBToolkit::StreamHelpers::SafeFileStream']]],
+  ['operator_20stream_1624',['operator Stream',['../dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#add2f9e36586d660dd3e4f3c37921875b',1,'JBToolkit::StreamHelpers::SafeFileStream']]],
+  ['optimisedmetroform_1625',['OptimisedMetroForm',['../da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#aa360b4434e453b2a81054049b7a35611',1,'JBToolkit::WinForms::OptimisedMetroForm']]]
 ];

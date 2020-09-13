@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.WatchFolderRepo" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.WatchFolderRepo" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,7 +13,7 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 
 .in +1c
 .ti -1c
-.RI "async Task< List< \fBWatchFolder\fP > > \fBLoad\fP ()"
+.RI "async Task< \fBList\fP< \fBWatchFolder\fP > > \fBLoad\fP ()"
 .br
 .RI "Loads a list of library watch folders from the database "
 .ti -1c
@@ -125,14 +125,14 @@ Inserts a library Watch Folder entry into the database from the fields of a Watc
 .RE
 .PP
 
-.SS "async Task<List<\fBWatchFolder\fP> > YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Load ()"
+.SS "async Task<\fBList\fP<\fBWatchFolder\fP> > YTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\&.Load ()"
 
 .PP
 Loads a list of library watch folders from the database 
 .PP
 \fBReturns\fP
 .RS 4
-List of WatchFolder model objects
+\fBList\fP of WatchFolder model objects
 .RE
 .PP
 

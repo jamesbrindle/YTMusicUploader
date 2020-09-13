@@ -56,6 +56,7 @@ namespace YTMusicUploader.Providers
                 public string MbId { get; set; }
                 public string ReleaseMbId { get; set; }
                 public string EntityId { get; set; }
+                public string BrowseId { get; set; }
                 public bool Result { get; set; }
             }
         }
@@ -130,8 +131,9 @@ namespace YTMusicUploader.Providers
                         UploadCheckCache.CachedObjects.Add(new UploadCheckCache.MusicFileCacheObject
                         {
                             MusicFilePath = cacheObject.Path,
-                            Result = IsSongUploaded(cacheObject.Path, cookieValue, out string entityId, musicDataFetcher, false) != UploadCheckResult.NotPresent,
+                            Result = IsSongUploaded(cacheObject.Path, cookieValue, out string entityId, out string browseId, musicDataFetcher, false) != UploadCheckResult.NotPresent,
                             EntityId = entityId,
+                            BrowseId = browseId,
 
                             MbId = !string.IsNullOrEmpty(cacheObject.MbId)
                                                 ? cacheObject.MbId
@@ -178,11 +180,14 @@ namespace YTMusicUploader.Providers
             string musicFilePath,
             string cookieValue,
             out string entityId,
+            out string browseId,
             MusicDataFetcher musicDataFetcher = null,
             bool checkCheck = true,
             bool parallel = true)
         {
             entityId = string.Empty;
+            browseId = string.Empty;
+
             if (checkCheck && UploadCheckCache.CachedObjectHash.Contains(musicFilePath))
             {
                 var cache = UploadCheckCache.CachedObjects
@@ -190,6 +195,7 @@ namespace YTMusicUploader.Providers
                                             .FirstOrDefault();
 
                 entityId = cache.EntityId;
+                browseId = cache.BrowseId;
                 return cache.Result
                                 ? UploadCheckResult.Present_FromCache
                                 : UploadCheckResult.NotPresent;
@@ -213,7 +219,7 @@ namespace YTMusicUploader.Providers
 
                 try
                 {
-                    return IsSongUploadedMulitpleNameVariation(artist, album, track, cookieValue, parallel, out entityId)
+                    return IsSongUploadedMulitpleNameVariation(artist, album, track, cookieValue, parallel, out entityId, out browseId)
                                     ? UploadCheckResult.Present_NewRequest
                                     : UploadCheckResult.NotPresent;
                 }
@@ -243,7 +249,8 @@ namespace YTMusicUploader.Providers
             string track,
             string cookieValue,
             bool parallel,
-            out string entityId)
+            out string entityId,
+            out string browseId)
         {
             // Make sure they're not null
             artist = artist ?? "";
@@ -253,7 +260,7 @@ namespace YTMusicUploader.Providers
             string originalAlbum = album;
             string originalTrack = track;
 
-            bool result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+            bool result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
             if (result)
                 return result;
 
@@ -264,7 +271,7 @@ namespace YTMusicUploader.Providers
                     album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
                     if (album != originalAlbum)
                     {
-                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                         if (result)
                             return result;
 
@@ -278,7 +285,7 @@ namespace YTMusicUploader.Providers
                     album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
                     if (album != originalAlbum)
                     {
-                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                         if (result)
                             return result;
 
@@ -292,7 +299,7 @@ namespace YTMusicUploader.Providers
                     album = Regex.Replace(album, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
                     if (album != originalAlbum)
                     {
-                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                         if (result)
                             return result;
                     }
@@ -317,7 +324,7 @@ namespace YTMusicUploader.Providers
 
             if (track != originalTrack)
             {
-                result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                 if (result)
                     return result;
 
@@ -329,7 +336,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                     if (result)
                         return result;
 
@@ -343,7 +350,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                     if (result)
                         return result;
 
@@ -357,7 +364,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                     if (result)
                         return result;
 
@@ -372,7 +379,7 @@ namespace YTMusicUploader.Providers
                 track = track.UnQuote();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                     if (result)
                         return result;
 
@@ -387,7 +394,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, artist, "").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                     if (result)
                         return result;
 
@@ -401,7 +408,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, album, "").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out browseId);
                     if (result)
                         return result;
                 }
@@ -430,9 +437,11 @@ namespace YTMusicUploader.Providers
             string track,
             string cookieValue,
             bool parallel,
-            out string entityId)
+            out string entityId,
+            out string browseId)
         {
             entityId = string.Empty;
+            browseId = string.Empty;
 
             try
             {
@@ -587,6 +596,38 @@ namespace YTMusicUploader.Providers
 
                                                     if (deleteRuns.Count > 0)
                                                         entityId = deleteRuns[0].ToString();
+                                                }
+                                            }
+                                        }
+
+                                        if (run.ToString().ToLower().Contains("delete album"))
+                                        {
+                                            if (!string.IsNullOrEmpty(album))
+                                            {
+                                                if (artistSimilarity >= matchSuccessMinimum &&
+                                                    albumSimilarity >= matchSuccessMinimum &&
+                                                    trackSimilarity >= matchSuccessMinimum)
+                                                {
+
+                                                    var deleteRuns = run.Parent.Parent.Parent.Parent.Descendants()
+                                                                        .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "entityId")
+                                                                        .Select(p => ((JProperty)p).Value).ToList();
+
+                                                    if (deleteRuns.Count > 0)
+                                                        browseId = deleteRuns[0].ToString();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (artistSimilarity >= matchSuccessMinimum &&
+                                                    trackSimilarity >= matchSuccessMinimum)
+                                                {
+                                                    var deleteRuns = run.Parent.Parent.Parent.Parent.Descendants()
+                                                                        .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "entityId")
+                                                                        .Select(p => ((JProperty)p).Value).ToList();
+
+                                                    if (deleteRuns.Count > 0)
+                                                        browseId = deleteRuns[0].ToString();
                                                 }
                                             }
                                         }

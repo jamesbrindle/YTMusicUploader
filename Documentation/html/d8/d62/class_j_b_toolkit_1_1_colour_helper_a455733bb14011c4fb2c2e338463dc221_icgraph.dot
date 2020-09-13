@@ -1,0 +1,12 @@
+digraph "JBToolkit.ColourHelper.MakeTransparent"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="JBToolkit.ColourHelper.Make\lTransparent",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Makes a control transparent"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="JBToolkit.WinForms.Round\lButton.OnPaint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d05/class_j_b_toolkit_1_1_win_forms_1_1_round_button.html#a93c789c433020e3c41b65333c1c969ff",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="JBToolkit.WinForms.Round\lTextBox.OnPaint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d02/class_j_b_toolkit_1_1_win_forms_1_1_round_text_box.html#ae35140720dc21734f4cf1d2551220541",tooltip=" "];
+}

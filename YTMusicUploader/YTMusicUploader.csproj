@@ -397,11 +397,13 @@
     <Compile Include="Providers\RequestModels\BrowseArtistsResultsContinuationContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistsResultsContext.cs" />
     <Compile Include="Providers\RequestModels\ArtistCache.cs" />
+    <Compile Include="Providers\RequestModels\DeleteFromYTMusicRequestContext.cs" />
     <Compile Include="Providers\RequestModels\IRequestModel.cs" />
     <Compile Include="Providers\RequestModels\MusicManageTreeNodeModel.cs" />
     <Compile Include="Providers\RequestModels\SearchContext.cs" />
     <Compile Include="Providers\RequestModels\SearchResultsContext.cs" />
     <Compile Include="Providers\Requests.cs" />
+    <Compile Include="Providers\Requests\DeleteFromYTMusic.cs" />
     <Compile Include="Providers\Requests\GetArtistSongs.cs" />
     <Compile Include="Providers\Requests\GetArtists.cs" />
     <Compile Include="Providers\Requests\CheckUploaded.cs" />
@@ -443,6 +445,9 @@
       <SubType>Designer</SubType>
       <CustomToolNamespace>YTMusicUploader.MusicBrainz.API.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="AppData\delete_song_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="AppData\get_artists_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MusicBrainz.API.Entities.ReleaseGroup" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MusicBrainz.API.Entities.ReleaseGroup" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,7 +31,7 @@ YTMusicUploader.MusicBrainz.API.Entities.ReleaseGroup \- A release group is used
 .br
 .RI "Gets or sets the primary type\&. "
 .ti -1c
-.RI "List< string > \fBSecondaryTypes\fP\fC [get, set]\fP"
+.RI "\fBList\fP< string > \fBSecondaryTypes\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets the secondary types\&. "
 .ti -1c
@@ -39,19 +39,19 @@ YTMusicUploader.MusicBrainz.API.Entities.ReleaseGroup \- A release group is used
 .br
 .RI "Gets or sets the rating\&. "
 .ti -1c
-.RI "List< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBNameCredit\fP > \fBCredits\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of artists associated to this release-group\&. "
 .ti -1c
-.RI "List< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRelease\fP > \fBReleases\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of releases associated to this release-group\&. "
 .ti -1c
-.RI "List< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBTag\fP > \fBTags\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of tags associated to this release-group\&. "
 .ti -1c
-.RI "List< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBRelation\fP > \fBRelations\fP\fC [get, set]\fP"
 .br
 .RI "Gets or sets a list of relations associated to this release-group\&. "
 .in -1c
@@ -62,7 +62,7 @@ A release group is used to group several different releases into a single logica
 
 .SH "Property Documentation"
 .PP 
-.SS "List<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Credits\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBNameCredit\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Credits\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of artists associated to this release-group\&. var e = await ReleaseGroup\&.GetAsync(mbid, 'artists'); 
@@ -82,11 +82,11 @@ Gets or sets the primary type\&.
 
 .PP
 Gets or sets the rating\&. 
-.SS "List<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Relations\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRelation\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Relations\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of relations associated to this release-group\&. var e = await ReleaseGroup\&.GetAsync(mbid, 'url-rels'); 
-.SS "List<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Releases\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBRelease\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Releases\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of releases associated to this release-group\&. var e = await ReleaseGroup\&.GetAsync(mbid, 'releases'); 
@@ -94,11 +94,11 @@ Gets or sets a list of releases associated to this release-group\&. var e = awai
 
 .PP
 Gets or sets the score (only available in search results)\&. 
-.SS "List<string> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.SecondaryTypes\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<string> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.SecondaryTypes\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets the secondary types\&. 
-.SS "List<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Tags\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBTag\fP> YTMusicUploader\&.MusicBrainz\&.API\&.Entities\&.ReleaseGroup\&.Tags\fC [get]\fP, \fC [set]\fP"
 
 .PP
 Gets or sets a list of tags associated to this release-group\&. var e = await ReleaseGroup\&.GetAsync(mbid, 'tags'); 

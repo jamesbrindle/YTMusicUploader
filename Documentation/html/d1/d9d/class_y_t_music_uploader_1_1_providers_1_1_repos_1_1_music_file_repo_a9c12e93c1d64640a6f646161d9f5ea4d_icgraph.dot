@@ -1,0 +1,18 @@
+digraph "YTMusicUploader.Providers.Repos.MusicFileRepo.CountAll"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.CountAll",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Count all non-removed Music File entries"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="YTMusicUploader.MainForm.\lRepopulateAmountLables",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="YTMusicUploader.MainForm.\lStartMainProcess",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="YTMusicUploader.MainForm.\lMainForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9",tooltip=" "];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="YTMusicUploader.MainForm.\lRestart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad49bcebfe92cf336cecefee2c73a1883",tooltip=" "];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="YTMusicUploader.Business.\lQueueChecker.QueueChecker",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf",tooltip=" "];
+}

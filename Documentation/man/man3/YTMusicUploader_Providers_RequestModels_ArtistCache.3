@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.RequestModels.ArtistCache" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.RequestModels.ArtistCache" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -11,10 +11,25 @@ YTMusicUploader.Providers.RequestModels.ArtistCache \- Used to store temporary a
 
 .in +1c
 .ti -1c
+.RI "class \fBAlbumCollection\fP"
+.br
+.ti -1c
+.RI "class \fBAlbumSongCollection\fP"
+.br
+.ti -1c
+.RI "class \fBAlumb\fP"
+.br
+.ti -1c
 .RI "class \fBArtist\fP"
 .br
 .ti -1c
+.RI "class \fBArtistCollection\fP"
+.br
+.ti -1c
 .RI "class \fBSong\fP"
+.br
+.ti -1c
+.RI "class \fBSongCollection\fP"
 .br
 .in -1c
 .SS "Properties"
@@ -24,7 +39,7 @@ YTMusicUploader.Providers.RequestModels.ArtistCache \- Used to store temporary a
 .RI "DateTime \fBLastSetTime\fP = DateTime\&.Now\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "List< \fBArtist\fP > \fBArtists\fP = new List<\fBArtist\fP>()\fC [get, set]\fP"
+.RI "\fBArtistCollection\fP \fBArtists\fP = new \fBArtistCollection\fP()\fC [get, set]\fP"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -34,7 +49,7 @@ Used to store temporary artist details from YouTube Music to be used for lookups
 
 .SH "Property Documentation"
 .PP 
-.SS "List<\fBArtist\fP> YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.Artists = new List<\fBArtist\fP>()\fC [get]\fP, \fC [set]\fP"
+.SS "\fBArtistCollection\fP YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.Artists = new \fBArtistCollection\fP()\fC [get]\fP, \fC [set]\fP"
 
 .SS "DateTime YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.LastSetTime = DateTime\&.Now\fC [get]\fP, \fC [set]\fP"
 

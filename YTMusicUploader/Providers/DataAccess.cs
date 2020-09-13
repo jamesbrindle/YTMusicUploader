@@ -144,6 +144,21 @@ namespace YTMusicUploader.Providers
                         @"ALTER TABLE MusicFiles
                          ADD COLUMN EntityId TEXT");
                 }
+
+                //
+                // Added BrowseId Column to MusicFiles Table in v1.4.0
+                //
+
+                columns = conn.Query<string>(
+                        @"SELECT name 
+                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+
+                if (!columns.Contains("BrowseId"))
+                {
+                    conn.Execute(
+                        @"ALTER TABLE MusicFiles
+                         ADD COLUMN BrowseId TEXT");
+                }
             }
         }
 

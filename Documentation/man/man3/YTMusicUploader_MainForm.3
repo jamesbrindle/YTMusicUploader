@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MainForm" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MainForm" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,6 +8,13 @@ YTMusicUploader.MainForm
 .PP
 .PP
 Inherits \fBOptimisedMetroForm\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBManagingYTMusicStatusEnum\fP { \fBManagingYTMusicStatusEnum\&.Showing\fP, \fBManagingYTMusicStatusEnum\&.CloseNoChange\fP, \fBManagingYTMusicStatusEnum\&.CloseChanges\fP, \fBManagingYTMusicStatusEnum\&.CloseChangesComplete\fP, \fBManagingYTMusicStatusEnum\&.NeverShown\fP }"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
@@ -24,6 +31,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBRepopulateAmountLables\fP (bool includeDiscoveredFiles=false)"
 .br
 .ti -1c
+.RI "void \fBRestart\fP ()"
+.br
+.ti -1c
 .RI "void \fBShowMessageBox\fP (string title, string message, MessageBoxButtons buttons, MessageBoxIcon icon, int height)"
 .br
 .ti -1c
@@ -33,6 +43,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBSetStatusMessage\fP (string statusMessage, string systemTrayIconText=null)"
 .br
 .ti -1c
+.RI "void \fBSetPaused\fP (bool paused)"
+.br
+.ti -1c
 .RI "void \fBSetSystemTrayIconText\fP (string text)"
 .br
 .ti -1c
@@ -40,6 +53,15 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetStartWithWindows\fP (bool startWithWindows)"
+.br
+.ti -1c
+.RI "void \fBSetManageTYMusicButtonEnabled\fP (bool enabled)"
+.br
+.ti -1c
+.RI "void \fBSetManageTYMusicButtonImage\fP (Image image)"
+.br
+.ti -1c
+.RI "void \fBSetAboutButtonImage\fP (Image image)"
 .br
 .ti -1c
 .RI "void \fBSetThrottleSpeed\fP (string mbps)"
@@ -96,6 +118,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "\fBUploadLog\fP \fBUploadLogForm\fP = null\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "\fBManageYTMusic\fP \fBManageYTMusic\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "\fBSettingsRepo\fP \fBSettingsRepo\fP = new \fBSettingsRepo\fP()\fC [get, set]\fP"
 .br
 .ti -1c
@@ -108,7 +133,7 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "\fBSettings\fP \fBSettings\fP\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "List< \fBWatchFolder\fP > \fBWatchFolders\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBWatchFolder\fP > \fBWatchFolders\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "\fBFileScanner\fP \fBFileScanner\fP\fC [get, set]\fP"
@@ -138,6 +163,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "bool \fBAborting\fP = false\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "\fBManagingYTMusicStatusEnum\fP \fBManagingYTMusicStatus\fP = \fBManagingYTMusicStatusEnum\&.NeverShown\fP\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "\fBMusicDataFetcher\fP \fBMusicDataFetcher\fP\fC [get, set]\fP"
 .br
 .ti -1c
@@ -152,7 +180,30 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .ti -1c
 .RI "ToolTip \fBConnectFailureTooltip\fP\fC [get, set]\fP"
 .br
+.ti -1c
+.RI "ToolTip \fBYtMusicManageTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBAboutTooltip\fP\fC [get, set]\fP"
+.br
 .in -1c
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBYTMusicUploader\&.MainForm\&.ManagingYTMusicStatusEnum\fP\fC [strong]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIShowing \fP\fP
+.TP
+\fB\fICloseNoChange \fP\fP
+.TP
+\fB\fICloseChanges \fP\fP
+.TP
+\fB\fICloseChangesComplete \fP\fP
+.TP
+\fB\fINeverShown \fP\fP
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "YTMusicUploader\&.MainForm\&.MainForm (bool hidden)"
@@ -182,6 +233,10 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.RepopulateAmountLables (bool includeDiscoveredFiles = \fCfalse\fP)"
 
+.SS "void YTMusicUploader\&.MainForm\&.Restart ()"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetAboutButtonImage (Image image)"
+
 .SS "void YTMusicUploader\&.MainForm\&.SetConnectedToYouTubeMusic (bool connectedToYouTubeMusic)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetConnectToYouTubeButtonEnabled (bool enabled)"
@@ -189,6 +244,12 @@ Clean up any resources being used\&.
 .SS "void YTMusicUploader\&.MainForm\&.SetDiscoveredFilesLabel (string text)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetIssuesLabel (string text)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetManageTYMusicButtonEnabled (bool enabled)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetManageTYMusicButtonImage (Image image)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetPaused (bool paused)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetStartWithWindows (bool startWithWindows)"
 
@@ -214,6 +275,8 @@ Clean up any resources being used\&.
 .PP 
 .SS "bool YTMusicUploader\&.MainForm\&.Aborting = false\fC [get]\fP, \fC [set]\fP"
 
+.SS "ToolTip YTMusicUploader\&.MainForm\&.AboutTooltip\fC [get]\fP, \fC [set]\fP"
+
 .SS "Image YTMusicUploader\&.MainForm\&.ArtworkImage\fC [get]\fP, \fC [set]\fP"
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.ArtWorkTooltip\fC [get]\fP, \fC [set]\fP"
@@ -238,6 +301,10 @@ Clean up any resources being used\&.
 
 .SS "\fBIssueLog\fP YTMusicUploader\&.MainForm\&.IssueLogForm = null\fC [get]\fP, \fC [set]\fP"
 
+.SS "\fBManageYTMusic\fP YTMusicUploader\&.MainForm\&.ManageYTMusic = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBManagingYTMusicStatusEnum\fP YTMusicUploader\&.MainForm\&.ManagingYTMusicStatus = \fBManagingYTMusicStatusEnum\&.NeverShown\fP\fC [get]\fP, \fC [set]\fP"
+
 .SS "\fBMusicDataFetcher\fP YTMusicUploader\&.MainForm\&.MusicDataFetcher\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBMusicFileRepo\fP YTMusicUploader\&.MainForm\&.MusicFileRepo = new \fBMusicFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
@@ -254,7 +321,9 @@ Clean up any resources being used\&.
 
 .SS "\fBWatchFolderRepo\fP YTMusicUploader\&.MainForm\&.WatchFolderRepo = new \fBWatchFolderRepo\fP()\fC [get]\fP, \fC [set]\fP"
 
-.SS "List<\fBWatchFolder\fP> YTMusicUploader\&.MainForm\&.WatchFolders\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBWatchFolder\fP> YTMusicUploader\&.MainForm\&.WatchFolders\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.YtMusicManageTooltip\fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

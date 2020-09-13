@@ -36,6 +36,7 @@ namespace YTMusicUploader.Providers.RequestModels
         {
             public string Title { get; set; }
             public string CoverArtUrl { get; set; }
+            public string EntityId { get; set; }
             public SongCollection Songs { get; set; }
         }
 

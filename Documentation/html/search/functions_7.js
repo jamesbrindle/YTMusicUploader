@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hexstringtocolor_1429',['HexStringToColor',['../d9/d17/class_j_b_toolkit_1_1_color_helper_1_1_colour_helper.html#a6b21110f303a558675adb57e5c1ea10a',1,'JBToolkit::ColorHelper::ColourHelper']]]
+  ['hexstringtocolor_1578',['HexStringToColor',['../d8/d62/class_j_b_toolkit_1_1_colour_helper.html#a8f9f5252b34ac3aac424f98478cd6c35',1,'JBToolkit::ColourHelper']]]
 ];

@@ -7,7 +7,7 @@ Automatically upload your local personal music library to YouTube Music.
 &nbsp;
 &nbsp;
 
-**[Download Version 1.3.8 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.3.8)**
+**[Download Version 1.4.0 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.4.0)**
 &nbsp;
 &nbsp;
 
@@ -27,6 +27,8 @@ This is a .Net application written in C# that uploads your personal music librar
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1b.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6b.png)](https://github.com/jamesbrindle/YTMusicUploader)
+
+[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader_ytmusicmanage.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
 &nbsp;
 
@@ -34,6 +36,7 @@ This is a .Net application written in C# that uploads your personal music librar
 
 - Connect and authenticate with YouTube Music.
 - Upload music to YouTube Music.
+- Delete uploaded music from YouTube Music.
 - Checks YouTube Music to see if the music file has already been uploaded. ***It will perform this check once per month on all watched library files and is quite dependant on music file meta data being present and accurate.***
 - Add and remove library watch folders.
 - File system watcher to monitor for changes in watched folders.

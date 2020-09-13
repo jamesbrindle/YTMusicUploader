@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Requests" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Requests" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -35,19 +35,23 @@ YTMusicUploader.Providers.Requests \- YouTube Music API Request Methods
 .br
 .RI "Set the uploaded artist cached gathered from YouTube Music "
 .ti -1c
-.RI "static void \fBStartPrefetchingUploadedFilesCheck\fP (List< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
+.RI "static void \fBStartPrefetchingUploadedFilesCheck\fP (\fBList\fP< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher=null)"
 .br
 .RI "Starts a new thread which loops through MusicFiles to check if they've already been uploaded to YouTube Music ahead of time and stores them in a cache to speed up the upload checker\&. "
 .ti -1c
-.RI "static \fBUploadCheckResult\fP \fBIsSongUploaded\fP (string musicFilePath, string cookieValue, out string entityId, \fBMusicDataFetcher\fP musicDataFetcher=null, bool checkCheck=true, bool parallel=true)"
+.RI "static \fBUploadCheckResult\fP \fBIsSongUploaded\fP (string musicFilePath, string cookieValue, out string entityId, out string browseId, \fBMusicDataFetcher\fP musicDataFetcher=null, bool checkCheck=true, bool parallel=true)"
 .br
 .RI "HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. "
+.ti -1c
+.RI "static bool \fBDeleteAlbumOrTrackFromYTMusic\fP (string cookieValue, string entityId, out string errorMessage)"
+.br
+.RI "HttpWebRequest POST request to send to YouTube delete a YT music track fro the users uploads "
 .ti -1c
 .RI "static \fBArtistCache\fP \fBGetArtists\fP (string cookieValue, \fBArtistCache\fP artistCache=null, string continuationToken=null)"
 .br
 .RI "HttpWebRequest POST request - Recursively fetches all the artists from YouTube Music's 'Upload' section "
 .ti -1c
-.RI "static List< \fBArtistCache\&.Song\fP > \fBGetArtistSongs\fP (string cookieValue, string browseId, List< \fBArtistCache\&.Song\fP > songs=null, string continuationToken=null)"
+.RI "static AlbumSongCollection \fBGetArtistSongs\fP (string cookieValue, string browseId, AlbumSongCollection albumSongCollection=null, string continuationToken=null)"
 .br
 .RI "HttpWebRequest POST request - Recursively fetches all the songs of an artist from YouTube Music's 'Upload' section "
 .ti -1c
@@ -118,6 +122,24 @@ The same HttpWebReqest object with added default headers
 .RE
 .PP
 
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.DeleteAlbumOrTrackFromYTMusic (string cookieValue, string entityId, out string errorMessage)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YouTube delete a YT music track fro the users uploads 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIentityId\fP YT Music entity ID to delete
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if successfully authenticated, false otherwise
+.RE
+.PP
+
 .SS "static \fBArtistCache\fP YTMusicUploader\&.Providers\&.Requests\&.GetArtists (string cookieValue, \fBArtistCache\fP artistCache = \fCnull\fP, string continuationToken = \fCnull\fP)\fC [static]\fP"
 
 .PP
@@ -138,7 +160,7 @@ ArtistCache object
 .RE
 .PP
 
-.SS "static List<\fBArtistCache\&.Song\fP> YTMusicUploader\&.Providers\&.Requests\&.GetArtistSongs (string cookieValue, string browseId, List< \fBArtistCache\&.Song\fP > songs = \fCnull\fP, string continuationToken = \fCnull\fP)\fC [static]\fP"
+.SS "static AlbumSongCollection YTMusicUploader\&.Providers\&.Requests\&.GetArtistSongs (string cookieValue, string browseId, AlbumSongCollection albumSongCollection = \fCnull\fP, string continuationToken = \fCnull\fP)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request - Recursively fetches all the songs of an artist from YouTube Music's 'Upload' section 
@@ -192,7 +214,7 @@ True if successfully authenticated, false otherwise
 .RE
 .PP
 
-.SS "static \fBUploadCheckResult\fP YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string musicFilePath, string cookieValue, out string entityId, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP, bool checkCheck = \fCtrue\fP, bool parallel = \fCtrue\fP)\fC [static]\fP"
+.SS "static \fBUploadCheckResult\fP YTMusicUploader\&.Providers\&.Requests\&.IsSongUploaded (string musicFilePath, string cookieValue, out string entityId, out string browseId, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP, bool checkCheck = \fCtrue\fP, bool parallel = \fCtrue\fP)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags\&. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0\&.75\&. 
@@ -221,7 +243,7 @@ True if song is found, false otherwise
 
 .PP
 Set the uploaded artist cached gathered from YouTube Music 
-.SS "static void YTMusicUploader\&.Providers\&.Requests\&.StartPrefetchingUploadedFilesCheck (List< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
+.SS "static void YTMusicUploader\&.Providers\&.Requests\&.StartPrefetchingUploadedFilesCheck (\fBList\fP< \fBMusicFile\fP > musicFilesList, string cookieValue, \fBMusicDataFetcher\fP musicDataFetcher = \fCnull\fP)\fC [static]\fP"
 
 .PP
 Starts a new thread which loops through MusicFiles to check if they've already been uploaded to YouTube Music ahead of time and stores them in a cache to speed up the upload checker\&. 

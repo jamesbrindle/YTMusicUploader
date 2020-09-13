@@ -166,9 +166,9 @@ namespace YTMusicUploader.Providers
 
                                 CoverArtUrl = coverArtUrl,
 
-                                EntityId = GetEntityID(content.musicResponsiveListItemRenderer
-                                                              .menu
-                                                              .menuRenderer)
+                                EntityId = GetTrackEntityID(content.musicResponsiveListItemRenderer
+                                                                   .menu
+                                                                   .menuRenderer)
                             };
 
                             string albumTitle = content.musicResponsiveListItemRenderer
@@ -185,7 +185,11 @@ namespace YTMusicUploader.Providers
                                 {
                                     Title = albumTitle,
                                     CoverArtUrl = coverArtUrl,
-                                    Songs = new SongCollection()
+                                    Songs = new SongCollection(),
+                                    EntityId = GetAlbumEntityID(content.musicResponsiveListItemRenderer
+                                                                       .flexColumns[2]
+                                                                       .musicResponsiveListItemFlexColumnRenderer)
+
                                 });
                             }
 
@@ -254,7 +258,7 @@ namespace YTMusicUploader.Providers
                                               .runs[0]
                                               .text,
 
-                            EntityId = GetEntityID(content.musicResponsiveListItemRenderer
+                            EntityId = GetTrackEntityID(content.musicResponsiveListItemRenderer
                                                           .menu
                                                           .menuRenderer)
                         };
@@ -273,7 +277,10 @@ namespace YTMusicUploader.Providers
                             {
                                 Title = albumTitle,
                                 CoverArtUrl = coverArtUrl,
-                                Songs = new SongCollection()
+                                Songs = new SongCollection(),
+                                EntityId = GetAlbumEntityID(content.musicResponsiveListItemRenderer
+                                                                   .flexColumns[2]
+                                                                   .musicResponsiveListItemFlexColumnRenderer)
                             });
                         }
 
@@ -287,7 +294,7 @@ namespace YTMusicUploader.Providers
             return albumSongCollection;
         }
 
-        private static string GetEntityID(BrowseArtistResultsContext.Menurenderer menuRenderer)
+        private static string GetTrackEntityID(BrowseArtistResultsContext.Menurenderer menuRenderer)
         {
             foreach (var item in menuRenderer.items)
             {
@@ -310,6 +317,11 @@ namespace YTMusicUploader.Providers
             }
 
             return string.Empty;
+        }
+
+        private static string GetAlbumEntityID(BrowseArtistResultsContext.Musicresponsivelistitemflexcolumnrenderer menuRenderer)
+        {
+            return menuRenderer.text.runs[0].navigationEndpoint.browseEndpoint.browseId.Replace("FEmusic_library_privately_owned_release_detail", "");
         }
     }
 }

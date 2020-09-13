@@ -24,6 +24,7 @@ namespace YTMusicUploader.Dialogues
 
         private void PbRefresh_Click(object sender, EventArgs e)
         {
+            DisableAllActionButtons(true);
             new Thread((ThreadStart)delegate { GetArtists(); }).Start();
         }
 
@@ -62,9 +63,11 @@ namespace YTMusicUploader.Dialogues
             {
                 ChangesMade = true;
 
+                ShowPreloader(true);
                 AppendUpdatesText("Reseting uploaded music file entry states...", 
                                   ColourHelper.HexStringToColor("#e20000"));
 
+                DeselectAllActionButtons();
                 ResetMusicFileEntryStates();
             }
         }
@@ -94,7 +97,7 @@ namespace YTMusicUploader.Dialogues
             PbResetUploadStates.Image = Properties.Resources.reset_uploaded_hover;
             lblSelectedButton.Text = "Reset uploaded music states (will recheck all music files).";
             lblSelectedButton.Visible = true;
-        }
+        }        
 
         //
         // Reset Database
@@ -113,9 +116,11 @@ namespace YTMusicUploader.Dialogues
             {
                 ChangesMade = true;
 
+                ShowPreloader(true);
                 AppendUpdatesText("Resetting the database...",
                                   ColourHelper.HexStringToColor("#e20000"));
 
+                DeselectAllActionButtons();
                 ResetUserDatabase();
                 MainForm.QuitApplication();
             }
@@ -164,9 +169,11 @@ namespace YTMusicUploader.Dialogues
             {
                 ChangesMade = true;
 
-                AppendUpdatesText("Deleting tracks from YouTube Music...",
+                ShowPreloader(true);
+                AppendUpdatesText("Deleting from YouTube Music...",
                                    ColourHelper.HexStringToColor("#e20000"));
 
+                DeselectAllActionButtons();
                 DeleteTracksFromYouTubeMusic();
             }
         }

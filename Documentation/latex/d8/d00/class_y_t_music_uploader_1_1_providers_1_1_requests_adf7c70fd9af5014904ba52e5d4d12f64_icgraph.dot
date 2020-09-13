@@ -1,0 +1,20 @@
+digraph "YTMusicUploader.Providers.Requests.GetArtists"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="YTMusicUploader.Providers.\lRequests.GetArtists",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="HttpWebRequest POST request - Recursively fetches all the artists from YouTube Music's 'Upload' secti..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.Providers.\lRequests.LoadArtistCache",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6808d6ec5334bfe6a329d6a29be79ae5",tooltip="Set the uploaded artist cached gathered from YouTube Music"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="YTMusicUploader.Business.\lFileUploader.Process",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7",tooltip="Execute the upload process"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="YTMusicUploader.MainForm.\lStartMainProcess",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="YTMusicUploader.MainForm.\lMainForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9",tooltip=" "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="YTMusicUploader.MainForm.\lRestart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad49bcebfe92cf336cecefee2c73a1883",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="YTMusicUploader.Business.\lQueueChecker.QueueChecker",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf",tooltip=" "];
+}

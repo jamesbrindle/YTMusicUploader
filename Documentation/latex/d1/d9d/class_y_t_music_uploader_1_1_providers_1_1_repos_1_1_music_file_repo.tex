@@ -7,40 +7,32 @@ Music File database repository access.
 
 
 
-Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=286pt]{d8/da9/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:
+% FIG 0
 
 
-Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=286pt]{d4/d25/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__coll__graph}
-\end{center}
-\end{figure}
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:
+% FIG 1
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1}{Load}} (int id)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by ID from the database \end{DoxyCompactList}\item 
-async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_aa109b7154007a69cbe1a4f2b611b524d}{Load}} (string path)
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}{Load\+From\+Path}} (string path)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by file path from the database \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede}{Load\+From\+Entity\+Id}} (string entity\+Id)
+\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1c9cb64300bd688e1d751ec5720dd216}{Get\+Duplicate}} (string hash, string path)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by hash and from the database that doesn\textquotesingle{}t match the given path (i.\+e. a duplicate hash) \end{DoxyCompactList}\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd}{Get\+Randmon\+Music\+File\+With\+Missing\+Mb\+Id}} ()
 \begin{DoxyCompactList}\small\item\em Gets a random music file from the database that\textquotesingle{}s been uploaded but has a missing Mb\+Id for the purposes of retreiving it from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} when the application is in \textquotesingle{}idle\textquotesingle{} state \end{DoxyCompactList}\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a7030a19fb0ec9cc8c75ab7ef6019c36f}{Get\+Randmon\+Music\+File\+With\+Missing\+Entity\+Id}} ()
 \begin{DoxyCompactList}\small\item\em Gets a random music file from the database that\textquotesingle{}s been uploaded but has a missing the You\+Tube Music entity\+Id for the purposes of retreiving it when the application is in \textquotesingle{}idle\textquotesingle{} state \end{DoxyCompactList}\item 
-async Task$<$ List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a39d2da3fb475240cc9bedef41b3375b9}{Load\+All}} (bool include\+Error\+Files=true, bool last\+Upload\+Ascending=false, bool ignore\+Recently\+Uploaded=false)
+async Task$<$ \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a39d2da3fb475240cc9bedef41b3375b9}{Load\+All}} (bool include\+Error\+Files=true, bool last\+Upload\+Ascending=false, bool ignore\+Recently\+Uploaded=false)
 \begin{DoxyCompactList}\small\item\em Loads a list of all Music\+Files objects with optional filter or order by criteria \end{DoxyCompactList}\item 
-Task$<$ List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1332e55e11b634ee3814a7946aec8ca1}{Load\+Issues}} ()
+Task$<$ \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1332e55e11b634ee3814a7946aec8ca1}{Load\+Issues}} ()
 \begin{DoxyCompactList}\small\item\em Loads a list of Music\+File objects with upload errors \end{DoxyCompactList}\item 
-async Task$<$ List$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a400b2cfc689853d8b597700f32fd673e}{Load\+Uploaded}} ()
+async Task$<$ \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a400b2cfc689853d8b597700f32fd673e}{Load\+Uploaded}} ()
 \begin{DoxyCompactList}\small\item\em Loads a list of Music\+File objects with a successful upload \end{DoxyCompactList}\item 
 async Task$<$ int $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d}{Count\+All}} ()
 \begin{DoxyCompactList}\small\item\em Count all non-\/removed Music File entries \end{DoxyCompactList}\item 
@@ -54,10 +46,16 @@ async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_ope
 \begin{DoxyCompactList}\small\item\em Inserts a Music File entry into the database. If the entry already exists, but is flagged as \textquotesingle{}removed\textquotesingle{}, then the removed flag will be set to false \end{DoxyCompactList}\item 
 async Task \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0f999df69e05c29e3f1b9233e30c5b63}{Restore\+Music\+File}} (int id)
 \begin{DoxyCompactList}\small\item\em Sets the \textquotesingle{}removed\textquotesingle{} flag to false \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a20a591fdd0fb5b5b338af5f0290653f1}{Reset\+All\+Music\+File\+Uploaded\+States}} ()
+\begin{DoxyCompactList}\small\item\em Reset all music file entry uploaded states \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a30164946b3b505acdde6df9cd2393015}{Update}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} music\+File)
 \begin{DoxyCompactList}\small\item\em Updates the Music File entry in the database with the fields of the given Music\+File object \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a88a351a8566be307ba2519224c4fa5a7}{Delete}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} music\+File, bool destroy=false)
 \begin{DoxyCompactList}\small\item\em Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the \textquotesingle{}removed\textquotesingle{} flag, whereas destroy is to completely delete it from the database \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}{Delete\+By\+Entity\+Id}} (string entity\+Id)
+\begin{DoxyCompactList}\small\item\em Destroy a Music File entry from the database via it\textquotesingle{}s YT Music Entity\+Id \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1}{Delete\+By\+Browse\+Id}} (string browse\+Id)
+\begin{DoxyCompactList}\small\item\em Destroy a Music File entry from the database via it\textquotesingle{}s YT Music Browse\+Id (album) \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}{Delete}} (int id, bool destroy=false)
 \begin{DoxyCompactList}\small\item\em Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the \textquotesingle{}removed\textquotesingle{} flag, whereas destroy is to completely delete it from the database \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a61d540025b68ae4753ca2575da74b67b}{Delete}} (string path)
@@ -95,13 +93,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph}
-\end{center}
-\end{figure}
+Here is the caller graph for this function\+:
+% FIG 2
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountIssues@{CountIssues}}
 \index{CountIssues@{CountIssues}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -122,13 +115,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph}
-\end{center}
-\end{figure}
+Here is the caller graph for this function\+:
+% FIG 3
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountUploaded@{CountUploaded}}
 \index{CountUploaded@{CountUploaded}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -149,13 +137,8 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph}
-\end{center}
-\end{figure}
+Here is the caller graph for this function\+:
+% FIG 4
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -257,6 +240,46 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a73f58bd09067c3085ddf57553cc5a240_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!DeleteByBrowseId@{DeleteByBrowseId}}
+\index{DeleteByBrowseId@{DeleteByBrowseId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{DeleteByBrowseId()}{DeleteByBrowseId()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Delete\+By\+Browse\+Id (\begin{DoxyParamCaption}\item[{string}]{browse\+Id }\end{DoxyParamCaption})}
+
+
+
+Destroy a Music File entry from the database via it\textquotesingle{}s YT Music Browse\+Id (album) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em browse\+Id} & YT Music track entity ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!DeleteByEntityId@{DeleteByEntityId}}
+\index{DeleteByEntityId@{DeleteByEntityId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{DeleteByEntityId()}{DeleteByEntityId()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Delete\+By\+Entity\+Id (\begin{DoxyParamCaption}\item[{string}]{entity\+Id }\end{DoxyParamCaption})}
+
+
+
+Destroy a Music File entry from the database via it\textquotesingle{}s YT Music Entity\+Id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity\+Id} & YT Music track entity ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 6
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0cb6e5cbf85b9568b1d66f37e4ce0eca}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0cb6e5cbf85b9568b1d66f37e4ce0eca}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!DeleteWatchFolder@{DeleteWatchFolder}}
 \index{DeleteWatchFolder@{DeleteWatchFolder}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -416,7 +439,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Load@{Load}}
 \index{Load@{Load}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
-\doxysubsubsection{\texorpdfstring{Load()}{Load()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
 {\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
 
 
@@ -433,31 +456,11 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_aa109b7154007a69cbe1a4f2b611b524d}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_aa109b7154007a69cbe1a4f2b611b524d}} 
-\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Load@{Load}}
-\index{Load@{Load}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
-\doxysubsubsection{\texorpdfstring{Load()}{Load()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
-
-
-
-Load single Music\+File object by file path from the database 
-
-\begin{DoxyReturn}{Returns}
-Music\+File object
-\end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_aa109b7154007a69cbe1a4f2b611b524d_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a39d2da3fb475240cc9bedef41b3375b9}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a39d2da3fb475240cc9bedef41b3375b9}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadAll@{LoadAll}}
 \index{LoadAll@{LoadAll}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
 \doxysubsubsection{\texorpdfstring{LoadAll()}{LoadAll()}}
-{\footnotesize\ttfamily async Task$<$List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+All (\begin{DoxyParamCaption}\item[{bool}]{include\+Error\+Files = {\ttfamily true},  }\item[{bool}]{last\+Upload\+Ascending = {\ttfamily false},  }\item[{bool}]{ignore\+Recently\+Uploaded = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+All (\begin{DoxyParamCaption}\item[{bool}]{include\+Error\+Files = {\ttfamily true},  }\item[{bool}]{last\+Upload\+Ascending = {\ttfamily false},  }\item[{bool}]{ignore\+Recently\+Uploaded = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -473,7 +476,7 @@ Loads a list of all Music\+Files objects with optional filter or order by criter
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-List of Music\+File\+Objects
+\mbox{\hyperlink{class_list}{List}} of Music\+File\+Objects
 \end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -482,18 +485,50 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a39d2da3fb475240cc9bedef41b3375b9_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadFromEntityId@{LoadFromEntityId}}
+\index{LoadFromEntityId@{LoadFromEntityId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{LoadFromEntityId()}{LoadFromEntityId()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+From\+Entity\+Id (\begin{DoxyParamCaption}\item[{string}]{entity\+Id }\end{DoxyParamCaption})}
+
+
+
+
+
+Load single Music\+File object by file by You\+Tube entity Id
+
+\begin{DoxyReturn}{Returns}
+Music\+File object
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadFromPath@{LoadFromPath}}
+\index{LoadFromPath@{LoadFromPath}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{LoadFromPath()}{LoadFromPath()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+From\+Path (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Load single Music\+File object by file path from the database 
+
+\begin{DoxyReturn}{Returns}
+Music\+File object
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 8
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1332e55e11b634ee3814a7946aec8ca1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1332e55e11b634ee3814a7946aec8ca1}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadIssues@{LoadIssues}}
 \index{LoadIssues@{LoadIssues}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
 \doxysubsubsection{\texorpdfstring{LoadIssues()}{LoadIssues()}}
-{\footnotesize\ttfamily Task$<$List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+Issues (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+Issues (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Loads a list of Music\+File objects with upload errors 
 
 \begin{DoxyReturn}{Returns}
-List of Music\+File\+Objects
+\mbox{\hyperlink{class_list}{List}} of Music\+File\+Objects
 \end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -506,14 +541,14 @@ Here is the call graph for this function\+:\nopagebreak
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadUploaded@{LoadUploaded}}
 \index{LoadUploaded@{LoadUploaded}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
 \doxysubsubsection{\texorpdfstring{LoadUploaded()}{LoadUploaded()}}
-{\footnotesize\ttfamily async Task$<$List$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+Uploaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+Uploaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Loads a list of Music\+File objects with a successful upload 
 
 \begin{DoxyReturn}{Returns}
-List of Music\+File\+Objects
+\mbox{\hyperlink{class_list}{List}} of Music\+File\+Objects
 \end{DoxyReturn}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -522,6 +557,18 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a400b2cfc689853d8b597700f32fd673e_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a20a591fdd0fb5b5b338af5f0290653f1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a20a591fdd0fb5b5b338af5f0290653f1}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!ResetAllMusicFileUploadedStates@{ResetAllMusicFileUploadedStates}}
+\index{ResetAllMusicFileUploadedStates@{ResetAllMusicFileUploadedStates}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{ResetAllMusicFileUploadedStates()}{ResetAllMusicFileUploadedStates()}}
+{\footnotesize\ttfamily async Task Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Reset\+All\+Music\+File\+Uploaded\+States (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset all music file entry uploaded states 
+
+Here is the call graph for this function\+:
+% FIG 9
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0f999df69e05c29e3f1b9233e30c5b63}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0f999df69e05c29e3f1b9233e30c5b63}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!RestoreMusicFile@{RestoreMusicFile}}
 \index{RestoreMusicFile@{RestoreMusicFile}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}

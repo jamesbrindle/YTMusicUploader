@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['path_1546',['Path',['../d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html#a0be8c375722e77e117bde1ef646e86f9',1,'JBToolkit::Windows::FileData']]]
+  ['general_1735',['general',['../da/d8b/_l_i_c_e_n_s_e_8txt.html#abed7303c36bbd2d8c9a0dd56cd5c7ef0',1,'LICENSE.txt']]],
+  ['guidelines_1736',['guidelines',['../da/d8b/_l_i_c_e_n_s_e_8txt.html#afe4dabac7389ce7b2488ed26185bb1e1',1,'LICENSE.txt']]]
 ];

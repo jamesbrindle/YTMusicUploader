@@ -1,0 +1,70 @@
+.TH "JBToolkit.ColourHelper.IntensityValue" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+JBToolkit.ColourHelper.IntensityValue
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIntensityValue\fP (\fBIntensityValue\fP parent, int value, int level)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBIntensityValue\fP \fBChildA\fP"
+.br
+.ti -1c
+.RI "\fBIntensityValue\fP \fBChildB\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBLevel\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBValue\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIntensityValue\fP \fBParent\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JBToolkit\&.ColourHelper\&.IntensityValue\&.IntensityValue (\fBIntensityValue\fP parent, int value, int level)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBIntensityValue\fP JBToolkit\&.ColourHelper\&.IntensityValue\&.ChildA"
+\fBInitial value:\fP
+.PP
+.nf
+=> mChildA ?? (mChildA =
+                                                new IntensityValue(this, Value - (1 << (7 - Level)), Level + 1))
+.fi
+.SS "\fBIntensityValue\fP JBToolkit\&.ColourHelper\&.IntensityValue\&.ChildB"
+\fBInitial value:\fP
+.PP
+.nf
+=> mChildB ?? (mChildB =
+                                                new IntensityValue(this, Value + (1 << (7 - Level)), Level + 1))
+.fi
+.SH "Property Documentation"
+.PP 
+.SS "int JBToolkit\&.ColourHelper\&.IntensityValue\&.Level\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBIntensityValue\fP JBToolkit\&.ColourHelper\&.IntensityValue\&.Parent\fC [get]\fP, \fC [set]\fP"
+
+.SS "int JBToolkit\&.ColourHelper\&.IntensityValue\&.Value\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

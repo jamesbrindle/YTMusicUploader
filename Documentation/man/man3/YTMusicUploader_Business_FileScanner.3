@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business.FileScanner" 3 "Sat Aug 29 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business.FileScanner" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,7 +30,7 @@ YTMusicUploader.Business.FileScanner \- Responsive for scanning library music fi
 
 .in +1c
 .ti -1c
-.RI "List< \fBFileData\fP > \fBNewFiles\fP = new List<\fBFileData\fP>()\fC [get, set]\fP"
+.RI "\fBList\fP< \fBFileData\fP > \fBNewFiles\fP = new \fBList\fP<\fBFileData\fP>()\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "HashSet< string > \fBNewFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
@@ -39,10 +39,10 @@ YTMusicUploader.Business.FileScanner \- Responsive for scanning library music fi
 .RI "HashSet< string > \fBDiscoveredFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "List< \fBMusicFile\fP > \fBMusicFilesToDelete\fP = new List<\fBMusicFile\fP>()\fC [get, set]\fP"
+.RI "\fBList\fP< \fBMusicFile\fP > \fBMusicFilesToDelete\fP = new \fBList\fP<\fBMusicFile\fP>()\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "List< \fBMusicFile\fP > \fBCurrentMusicFiles\fP\fC [get, set]\fP"
+.RI "\fBList\fP< \fBMusicFile\fP > \fBCurrentMusicFiles\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "HashSet< string > \fBCurrentMusicFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
@@ -73,15 +73,15 @@ Updates the 'Discovered Files' count on the main form\&. Ideally used when updat
 Resets the properties, such as discovered file, current music files and hashes 
 .SH "Property Documentation"
 .PP 
-.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.CurrentMusicFiles\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBMusicFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.CurrentMusicFiles\fC [get]\fP, \fC [set]\fP"
 
 .SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.CurrentMusicFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
 
 .SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.DiscoveredFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
 
-.SS "List<\fBMusicFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.MusicFilesToDelete = new List<\fBMusicFile\fP>()\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBMusicFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.MusicFilesToDelete = new \fBList\fP<\fBMusicFile\fP>()\fC [get]\fP, \fC [set]\fP"
 
-.SS "List<\fBFileData\fP> YTMusicUploader\&.Business\&.FileScanner\&.NewFiles = new List<\fBFileData\fP>()\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBFileData\fP> YTMusicUploader\&.Business\&.FileScanner\&.NewFiles = new \fBList\fP<\fBFileData\fP>()\fC [get]\fP, \fC [set]\fP"
 
 .SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.NewFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
 
