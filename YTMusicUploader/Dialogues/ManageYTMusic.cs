@@ -58,6 +58,7 @@ namespace YTMusicUploader.Dialogues
 
         private void ClearFields()
         {
+            tbUpdates.Text = string.Empty;
             lblArtistTitle.Text = "Nothing selected";
             lblAlbumTitle.Text = "-";
             lblSongTitle.Text = "-";
@@ -96,12 +97,14 @@ namespace YTMusicUploader.Dialogues
 
                 artistNodes.Add(artistNode);
 
-                if (artist.AlbumSongCollection != null &&
-                    artist.AlbumSongCollection.Albums != null &&
-                    artist.AlbumSongCollection.Albums.Count > 0)
-                {
-                    BindAlbumNodesFromArtistBind(artistNode, artist.AlbumSongCollection, false, showFetchedMessage);
-                }
+                // v1.4.3: This block can take too. Don't bother...
+
+                //if (artist.AlbumSongCollection != null &&
+                //    artist.AlbumSongCollection.Albums != null &&
+                //    artist.AlbumSongCollection.Albums.Count > 0)
+                //{
+                //    BindAlbumNodesFromArtistBind(artistNode, artist.AlbumSongCollection, false, showFetchedMessage);
+                //}
             }
 
             AddArtistNodesToTree(artistNodes);
@@ -131,7 +134,6 @@ namespace YTMusicUploader.Dialogues
             if (!isDeleting)
             {
                 AppendUpdatesText($"Fetching songs for arists: {artist}...", ColourHelper.HexStringToColor("#0f0466"));
-
                 new Thread((ThreadStart)delegate
                 {
                     var albumSongCollection = Requests.GetArtistSongs(MainForm.Settings.AuthenticationCookie, artistNode.Name);
@@ -163,7 +165,7 @@ namespace YTMusicUploader.Dialogues
                     var songNodes = new List<TreeNode>();
                     string releaseMbId = string.Empty;
 
-                    foreach (var song in album.Songs)
+                    album.Songs.AsParallel().ForAllInApproximateOrder(song =>
                     {
                         var musicFile = MainForm.MusicFileRepo.LoadFromEntityId(song.EntityId).Result;
                         string databaseExistenceText = "Not found or not mapped";
@@ -192,7 +194,7 @@ namespace YTMusicUploader.Dialogues
                                 Uploaded = musicFile == null ? "-" : musicFile.LastUpload.ToString("dd/MM/yyyy HH:mm")
                             }
                         });
-                    }
+                    });
 
                     var albumNode = new TreeNode
                     {
@@ -214,7 +216,7 @@ namespace YTMusicUploader.Dialogues
                     albumNode.Nodes.AddRange(songNodes.ToArray());
                     albumNode.Text = albumNode.Text + " (" + songNodes.Count + ")";
                     albumNodes.Add(albumNode);
-                }
+                };
 
                 AddChildNodes(artistNode, albumNodes);
 
@@ -250,6 +252,7 @@ namespace YTMusicUploader.Dialogues
             }
         }
 
+        [Obsolete(message: "Faster without it")]
         private void BindAlbumNodesFromArtistBind(
             TreeNode artistNode,
             AlbumSongCollection albumSongCollection,
@@ -262,7 +265,7 @@ namespace YTMusicUploader.Dialogues
                 var songNodes = new List<TreeNode>();
                 string releaseMbId = string.Empty;
 
-                foreach (var song in album.Songs)
+                album.Songs.AsParallel().ForAllInApproximateOrder(song =>
                 {
                     var musicFile = MainForm.MusicFileRepo.LoadFromEntityId(song.EntityId).Result;
                     string databaseExistenceText = "Not found or not mapped";
@@ -291,7 +294,7 @@ namespace YTMusicUploader.Dialogues
                             Uploaded = musicFile == null ? "-" : musicFile.LastUpload.ToString("dd/MM/yyyy HH:mm")
                         }
                     });
-                }
+                });
 
                 var albumNode = new TreeNode
                 {
