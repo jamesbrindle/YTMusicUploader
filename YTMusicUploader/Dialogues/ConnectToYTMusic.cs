@@ -11,7 +11,7 @@ namespace YTMusicUploader.Dialogues
 {
     /*## WARNING ####################################################################################
     
-     If  you change anything in the ConnectYTMusic layout, the .Desinger.cs will put the '.Source'
+     If you change anything in the ConnectYTMusic layout, the .Desinger.cs will put the '.Source'
      property back into the WebView2 control. You need to make sure you remove the Source line
      so that we can set the CoreWebView2Environment 'before' setting the source (known bug).
 
@@ -72,7 +72,7 @@ namespace YTMusicUploader.Dialogues
                 MainForm.ShowMessageBox(
                             "WebView2 Error",
                             $"{Environment.NewLine}It looks like Canary Edge Core never finished installing. {Environment.NewLine}{Environment.NewLine}" +
-                            $"Please delete the folder: {Global.EdgeFolder} and then restart this application. If the error persists, then this application" +
+                            $"Please delete the folder: {Global.EdgeFolder} and then restart this application. If the error persists, then this application " +
                             $"has been built wrong. Please see the 'WARNING' in file: 'Dialogues/ConnectToYTMusics." +
                             $"{Environment.NewLine}{Environment.NewLine}The application will reinstall automatically once restarted." +
                             $"{Environment.NewLine}{Environment.NewLine}Exception: {e.Message}" +
