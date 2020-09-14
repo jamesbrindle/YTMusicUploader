@@ -58,7 +58,6 @@ namespace YTMusicUploader.Dialogues
                 dgvIssues.Columns["MbId"].Visible = false;
                 dgvIssues.Columns["ReleaseMbId"].Visible = false;
                 dgvIssues.Columns["EntityId"].Visible = false;
-                dgvIssues.Columns["BrowseId"].Visible = false;
                 dgvIssues.Columns["Id"].Width = 55;
                 dgvIssues.Columns["Error"].Width = 45;
                 dgvIssues.Columns["Path"].FillWeight = 300;

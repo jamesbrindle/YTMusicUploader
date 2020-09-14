@@ -54,7 +54,6 @@ namespace YTMusicUploader.Dialogues
                 dgvUploads.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
                 dgvUploads.Columns["ReleaseMbId"].Visible = false;
                 dgvUploads.Columns["EntityId"].Visible = false;
-                dgvUploads.Columns["BrowseId"].Visible = false;
                 dgvUploads.Columns["Hash"].Visible = false;
                 dgvUploads.Columns["Removed"].Visible = false;
                 dgvUploads.Columns["Error"].Visible = false;
