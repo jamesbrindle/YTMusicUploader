@@ -54,8 +54,6 @@ async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_ope
 \begin{DoxyCompactList}\small\item\em Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the \textquotesingle{}removed\textquotesingle{} flag, whereas destroy is to completely delete it from the database \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}{Delete\+By\+Entity\+Id}} (string entity\+Id)
 \begin{DoxyCompactList}\small\item\em Destroy a Music File entry from the database via it\textquotesingle{}s YT Music Entity\+Id \end{DoxyCompactList}\item 
-async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1}{Delete\+By\+Browse\+Id}} (string browse\+Id)
-\begin{DoxyCompactList}\small\item\em Destroy a Music File entry from the database via it\textquotesingle{}s YT Music Browse\+Id (album) \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}{Delete}} (int id, bool destroy=false)
 \begin{DoxyCompactList}\small\item\em Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the \textquotesingle{}removed\textquotesingle{} flag, whereas destroy is to completely delete it from the database \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a61d540025b68ae4753ca2575da74b67b}{Delete}} (string path)
@@ -240,26 +238,6 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a73f58bd09067c3085ddf57553cc5a240_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1}} 
-\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!DeleteByBrowseId@{DeleteByBrowseId}}
-\index{DeleteByBrowseId@{DeleteByBrowseId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
-\doxysubsubsection{\texorpdfstring{DeleteByBrowseId()}{DeleteByBrowseId()}}
-{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Delete\+By\+Browse\+Id (\begin{DoxyParamCaption}\item[{string}]{browse\+Id }\end{DoxyParamCaption})}
-
-
-
-Destroy a Music File entry from the database via it\textquotesingle{}s YT Music Browse\+Id (album) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em browse\+Id} & YT Music track entity ID\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-% FIG 5
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!DeleteByEntityId@{DeleteByEntityId}}
 \index{DeleteByEntityId@{DeleteByEntityId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -279,7 +257,7 @@ Destroy a Music File entry from the database via it\textquotesingle{}s YT Music 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 6
+% FIG 5
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0cb6e5cbf85b9568b1d66f37e4ce0eca}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0cb6e5cbf85b9568b1d66f37e4ce0eca}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!DeleteWatchFolder@{DeleteWatchFolder}}
 \index{DeleteWatchFolder@{DeleteWatchFolder}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -501,7 +479,7 @@ Load single Music\+File object by file by You\+Tube entity Id
 Music\+File object
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 7
+% FIG 6
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadFromPath@{LoadFromPath}}
 \index{LoadFromPath@{LoadFromPath}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -516,7 +494,7 @@ Load single Music\+File object by file path from the database
 Music\+File object
 \end{DoxyReturn}
 Here is the call graph for this function\+:
-% FIG 8
+% FIG 7
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1332e55e11b634ee3814a7946aec8ca1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1332e55e11b634ee3814a7946aec8ca1}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadIssues@{LoadIssues}}
 \index{LoadIssues@{LoadIssues}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -568,7 +546,7 @@ Here is the call graph for this function\+:\nopagebreak
 Reset all music file entry uploaded states 
 
 Here is the call graph for this function\+:
-% FIG 9
+% FIG 8
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0f999df69e05c29e3f1b9233e30c5b63}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a0f999df69e05c29e3f1b9233e30c5b63}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!RestoreMusicFile@{RestoreMusicFile}}
 \index{RestoreMusicFile@{RestoreMusicFile}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}

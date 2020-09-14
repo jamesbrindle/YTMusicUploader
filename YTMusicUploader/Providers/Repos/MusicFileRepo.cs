@@ -29,7 +29,6 @@ namespace YTMusicUploader.Providers.Repos
                               MbId,
                               ReleaseMbId,
                               EntityId,
-                              BrowseId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -58,7 +57,6 @@ namespace YTMusicUploader.Providers.Repos
                               MbId,
                               ReleaseMbId,
                               EntityId,
-                              BrowseId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -86,7 +84,6 @@ namespace YTMusicUploader.Providers.Repos
                               MbId,
                               ReleaseMbId,
                               EntityId,
-                              BrowseId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -118,7 +115,6 @@ namespace YTMusicUploader.Providers.Repos
                               MbId,
                               ReleaseMbId,
                               EntityId,
-                              BrowseId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -149,7 +145,6 @@ namespace YTMusicUploader.Providers.Repos
                               MbId,
                               ReleaseMbId,
                               EntityId,
-                              BrowseId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -181,7 +176,6 @@ namespace YTMusicUploader.Providers.Repos
                               MbId,
                               ReleaseMbId,
                               EntityId,
-                              BrowseId,
                               Hash,
                               LastUpload, 
                               Error,
@@ -217,7 +211,6 @@ namespace YTMusicUploader.Providers.Repos
                                        MbId,
                                        ReleaseMbId,
                                        EntityId,
-                                       BrowseId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -257,7 +250,6 @@ namespace YTMusicUploader.Providers.Repos
                                        MbId,
                                        ReleaseMbId,
                                        EntityId,
-                                       BrowseId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -288,7 +280,6 @@ namespace YTMusicUploader.Providers.Repos
                                        MbId,
                                        ReleaseMbId,
                                        EntityId,
-                                       BrowseId,
                                        Hash,
                                        LastUpload, 
                                        Error,
@@ -411,7 +402,6 @@ namespace YTMusicUploader.Providers.Repos
                                         MbId,
                                         ReleaseMbId,
                                         EntityId,
-                                        BrowseId,
                                         LastUpload, 
                                         Error,
                                         ErrorReason) 
@@ -420,7 +410,6 @@ namespace YTMusicUploader.Providers.Repos
                                         @MbId,
                                         @ReleaseMbId,
                                         @EntityId,
-                                        @BrowseId,
                                         @LastUpload, 
                                         @Error,
                                         @ErrorReason);
@@ -498,7 +487,6 @@ namespace YTMusicUploader.Providers.Repos
                                  MbId = @MbId,
                                  ReleaseMbId = @ReleaseMbId,
                                  EntityId = @EntityId,
-                                 BrowseId = @BrowseId,
                                  LastUpload = @LastUpload, 
                                  Error = @Error,
                                  ErrorReason = @ErrorReason,
@@ -549,37 +537,6 @@ namespace YTMusicUploader.Providers.Repos
                             @"DELETE FROM MusicFiles
                               WHERE EntityID = @EntityId",
                             new { entityId });
-                }
-
-                stopWatch.Stop();
-                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
-            }
-            catch (Exception e)
-            {
-                stopWatch.Stop();
-                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
-            }
-        }
-
-        /// <summary>
-        /// Destroy a Music File entry from the database via it's YT Music BrowseId (album)
-        /// </summary>
-        /// <param name="browseId">YT Music track entity ID</param>
-        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
-        public async Task<DbOperationResult> DeleteByBrowseId(string browseId)
-        {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
-            try
-            {
-                using (var conn = DbConnection())
-                {
-                    conn.Open();
-                    conn.Execute(
-                            @"DELETE FROM MusicFiles
-                              WHERE BrowseId = @BrowseId",
-                            new { browseId });
                 }
 
                 stopWatch.Stop();

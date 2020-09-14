@@ -298,7 +298,7 @@
             // 
             this.pbPreloader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbPreloader.Image = global::YTMusicUploader.Properties.Resources.preloader_cricle;
-            this.pbPreloader.Location = new System.Drawing.Point(392, 2);
+            this.pbPreloader.Location = new System.Drawing.Point(391, 2);
             this.pbPreloader.Name = "pbPreloader";
             this.pbPreloader.Size = new System.Drawing.Size(22, 22);
             this.pbPreloader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

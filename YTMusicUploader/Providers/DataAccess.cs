@@ -30,7 +30,7 @@ namespace YTMusicUploader.Providers
                 {
                     try
                     {
-                        File.Delete(Path.Combine(Global.AppDataLocation,  "ytuploader.db-shm"));
+                        File.Delete(Path.Combine(Global.AppDataLocation, "ytuploader.db-shm"));
                     }
                     catch { }
                 }
@@ -52,7 +52,7 @@ namespace YTMusicUploader.Providers
         /// Delete the app data database (user's database)
         /// </summary>
         public static void ResetDatabase()
-        {         
+        {
             if (File.Exists(Path.Combine(Global.AppDataLocation, "ytuploader.db-shm")))
             {
                 try
@@ -143,21 +143,6 @@ namespace YTMusicUploader.Providers
                     conn.Execute(
                         @"ALTER TABLE MusicFiles
                          ADD COLUMN EntityId TEXT");
-                }
-
-                //
-                // Added BrowseId Column to MusicFiles Table in v1.4.0
-                //
-
-                columns = conn.Query<string>(
-                        @"SELECT name 
-                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
-
-                if (!columns.Contains("BrowseId"))
-                {
-                    conn.Execute(
-                        @"ALTER TABLE MusicFiles
-                         ADD COLUMN BrowseId TEXT");
                 }
             }
         }

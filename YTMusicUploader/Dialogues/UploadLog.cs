@@ -71,9 +71,9 @@ namespace YTMusicUploader.Dialogues
         {
             // Set the Font and Uderline into the Content of the grid cell .  
             {
-                DataGridViewCellStyle hyperlinkStyle = new DataGridViewCellStyle();                
+                DataGridViewCellStyle hyperlinkStyle = new DataGridViewCellStyle();
                 Font l_objFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
-                hyperlinkStyle.Font = l_objFont;        
+                hyperlinkStyle.Font = l_objFont;
                 hyperlinkStyle.ForeColor = Color.Blue;
                 return hyperlinkStyle;
             }
@@ -164,6 +164,6 @@ namespace YTMusicUploader.Dialogues
             return ascending ?
                 list.OrderBy(_ => _.GetType().GetProperty(column).GetValue(_)).ToList() :
                 list.OrderByDescending(_ => _.GetType().GetProperty(column).GetValue(_)).ToList();
-        }        
+        }
     }
 }

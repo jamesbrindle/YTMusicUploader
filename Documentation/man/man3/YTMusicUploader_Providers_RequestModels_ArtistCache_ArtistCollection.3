@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.RequestModels.ArtistCache.ArtistCollection" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.RequestModels.ArtistCache.ArtistCollection" 3 "Mon Sep 14 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,6 +8,28 @@ YTMusicUploader.Providers.RequestModels.ArtistCache.ArtistCollection
 .PP
 .PP
 Inherits \fBList< Artist >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRemoveSong\fP (string artistBrowseId, string songEntityId)"
+.br
+.RI "Remove a single song from the cache following a YT Music deletion "
+.ti -1c
+.RI "void \fBRemoveAlbum\fP (string artistBrowseId, string albumEntityId)"
+.br
+.RI "Remove an album from the cache following a YT Music deletion "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.ArtistCollection\&.RemoveAlbum (string artistBrowseId, string albumEntityId)"
+
+.PP
+Remove an album from the cache following a YT Music deletion 
+.SS "void YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.ArtistCollection\&.RemoveSong (string artistBrowseId, string songEntityId)"
+
+.PP
+Remove a single song from the cache following a YT Music deletion 
 
 .SH "Author"
 .PP 

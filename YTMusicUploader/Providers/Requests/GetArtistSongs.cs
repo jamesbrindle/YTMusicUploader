@@ -321,7 +321,12 @@ namespace YTMusicUploader.Providers
 
         private static string GetAlbumEntityID(BrowseArtistResultsContext.Musicresponsivelistitemflexcolumnrenderer menuRenderer)
         {
-            return menuRenderer.text.runs[0].navigationEndpoint.browseEndpoint.browseId.Replace("FEmusic_library_privately_owned_release_detail", "");
+            return menuRenderer.text
+                               .runs[0]
+                               .navigationEndpoint
+                               .browseEndpoint
+                               .browseId
+                               .Replace("FEmusic_library_privately_owned_release_detail", "");
         }
     }
 }

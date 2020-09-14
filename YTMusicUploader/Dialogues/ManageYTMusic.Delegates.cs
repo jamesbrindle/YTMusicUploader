@@ -1,33 +1,29 @@
-﻿using JBToolkit;
-using JBToolkit.Imaging;
-using System;
+﻿using JBToolkit.Imaging;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Business;
-using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.RequestModels;
-using static YTMusicUploader.Providers.RequestModels.ArtistCache;
 
 namespace YTMusicUploader.Dialogues
 {
     public partial class ManageYTMusic
     {
-        delegate void BindArtistsDelegate(bool showFetchedMessage = true);
-        private void BindArtists(bool showFetchedMessage = true)
+        delegate void AddArtistNodesToTreeDelegate(List<TreeNode> artistNodes);
+        private void AddArtistNodesToTree(List<TreeNode> artistNodes)
         {
             if (tvUploads.InvokeRequired)
             {
-                BindArtistsDelegate d = new BindArtistsDelegate(BindArtists);
-                Invoke(d, new object[] { showFetchedMessage });
+                AddArtistNodesToTreeDelegate d = new AddArtistNodesToTreeDelegate(AddArtistNodesToTree);
+                Invoke(d, new object[] { artistNodes });
             }
             else
             {
-                SetTreeViewEnabled(false);
                 tvUploads.Nodes.Clear();
 
+                SuspendDrawing(tvUploads);
                 tvUploads.Nodes.Add(new TreeNode
                 {
                     Name = "root",
@@ -38,165 +34,33 @@ namespace YTMusicUploader.Dialogues
                     }
                 });
 
-                foreach (var artist in Requests.ArtistCache.Artists)
-                {
-                    tvUploads.Nodes[0].Nodes.Add(new TreeNode
-                    {
-                        Name = artist.BrowseId,
-                        Text = artist.ArtistName,
-                        Tag = Tag = new MusicManageTreeNodeModel
-                        {
-                            NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Artist,
-                            ArtistTitle = artist.ArtistName
-                        }
-                    });
-
-                    if (artist.AlbumSongCollection != null &&
-                        artist.AlbumSongCollection.Albums != null &&
-                        artist.AlbumSongCollection.Albums.Count > 0)
-                    {
-                        BindAlbumNodes(artist.BrowseId, artist.AlbumSongCollection, false, showFetchedMessage);
-                    }
-                }
-
-                string artistText = "artists";
-                int artistCount = Requests.ArtistCache.Artists.Count;
-
-                if (artistCount == 1)
-                    artistText = "artist";
-
-                if (showFetchedMessage)
-                    AppendUpdatesText($"Fetched {artistCount} {artistText}.",
-                                      ColourHelper.HexStringToColor("#0d5601"));
+                AddChildNodesFromArtistBind(tvUploads.Nodes[0], artistNodes);
 
                 tvUploads.Nodes[0].Text = tvUploads.Nodes[0].Text + " (" + tvUploads.Nodes[0].Nodes.Count + ")";
                 tvUploads.Nodes[0].Expand();
-                ShowPreloader(false);
-                SetTreeViewEnabled(true);
-                DisableAllActionButtons(false);
+                ResumeDrawing(tvUploads);
             }
         }
 
-        delegate void BindAlbumNodesDelegate(
-            string artistNodeName,
-            AlbumSongCollection albumSongCollection,
-            bool expand = true,
-            bool showFetchedMessage = true,
-            bool isDeleting = false);
-        private void BindAlbumNodes(
-            string artistNodeName,
-            AlbumSongCollection albumSongCollection,
-            bool expand = true,
-            bool showFetchedMessage = true,
-            bool isDeleting = false)
+        delegate void AddChildNodesDelegate(TreeNode parentNode, List<TreeNode> childNodeList);
+        private void AddChildNodes(TreeNode parentNode, List<TreeNode> childNodeList)
         {
             if (tvUploads.InvokeRequired)
             {
-                BindAlbumNodesDelegate d = new BindAlbumNodesDelegate(BindAlbumNodes);
-                Invoke(d, new object[] { artistNodeName, albumSongCollection, expand, showFetchedMessage, isDeleting });
+                AddChildNodesDelegate d = new AddChildNodesDelegate(AddChildNodes);
+                Invoke(d, new object[] { parentNode, childNodeList });
             }
             else
             {
-                SetTreeViewEnabled(false);
-                TreeNode artistNode = null;
-                for (int i = 0; i < tvUploads.Nodes[0].Nodes.Count; i++)
-                {
-                    if (tvUploads.Nodes[0].Nodes[i].Name == artistNodeName)
-                    {
-                        artistNode = tvUploads.Nodes[0].Nodes[i];
-                        break;
-                    }
-                }
-
-                foreach (var album in albumSongCollection.Albums)
-                {
-                    var songNodes = new List<TreeNode>();
-                    string releaseMbId = string.Empty;
-
-                    foreach (var song in album.Songs)
-                    {
-                        var musicFile = MainForm.MusicFileRepo.LoadFromEntityId(song.EntityId).Result;
-                        string databaseExistenceText = "Not found or not mapped";
-
-                        if (musicFile != null && musicFile.Id != 0 && musicFile.Id != -1)
-                        {
-                            databaseExistenceText = $"Exists ({musicFile.Id})";
-                            releaseMbId = string.IsNullOrEmpty(musicFile.ReleaseMbId) ? releaseMbId : musicFile.ReleaseMbId;
-                        }
-
-                        songNodes.Add(new TreeNode
-                        {
-                            Name = song.EntityId,
-                            Text = song.Title,
-                            Tag = Tag = new MusicManageTreeNodeModel
-                            {
-                                NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Song,
-                                ArtistTitle = ((MusicManageTreeNodeModel)artistNode.Tag).ArtistTitle,
-                                AlbumTitle = album.Title,
-                                SongTitle = song.Title,
-                                Duration = song.Duration,
-                                CovertArtUrl = song.CoverArtUrl,
-                                DatabaseExistence = databaseExistenceText,
-                                MbId = musicFile == null || string.IsNullOrEmpty(musicFile.MbId) ? "-" : musicFile.MbId,
-                                EntityOrBrowseId = song.EntityId,
-                                Uploaded = musicFile == null ? "-" : musicFile.LastUpload.ToString("dd/MM/yyyy HH:mm")
-                            }
-                        });
-                    }
-
-                    var albumNode = new TreeNode
-                    {
-                        Name = Guid.NewGuid().ToString(),
-                        Text = album.Title,
-                        Tag = Tag = new MusicManageTreeNodeModel
-                        {
-                            NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Album,
-                            ArtistTitle = ((MusicManageTreeNodeModel)artistNode.Tag).ArtistTitle,
-                            AlbumTitle = album.Title,
-                            CovertArtUrl = album.CoverArtUrl,
-                            DatabaseExistence = string.IsNullOrEmpty(releaseMbId) ? "Not found or not mapped" : "Tracks exists for this album",
-                            MbId = string.IsNullOrEmpty(releaseMbId) ? "-" : releaseMbId,
-                            EntityOrBrowseId = album.EntityId,
-                            Uploaded = "-"
-                        }
-                    };
-
-                    albumNode.Nodes.AddRange(songNodes.ToArray());
-                    albumNode.Text = albumNode.Text + " (" + songNodes.Count + ")";
-                    artistNode.Nodes.Add(albumNode);
-                }
-
-                int albumCount = albumSongCollection.Albums.Count;
-                int songCount = albumSongCollection.Songs.Count;
-
-                string albumText = "albums";
-                string songText = "tracks";
-
-                if (albumCount == 1)
-                    albumText = "album";
-
-                if (songCount == 1)
-                    songText = "track";
-
-                if (showFetchedMessage)
-                    AppendUpdatesText($"Fetched {albumCount} {albumText}, {songCount} {songText}.",
-                                      ColourHelper.HexStringToColor("#0d5601"));
-
-                artistNode.Text = artistNode.Text + " (" + artistNode.Nodes.Count + ")";
-
-                if (expand)
-                    artistNode.Expand();
-
-                if (artistNode.Checked)
-                    CheckAllChildNodes(artistNode, true);
-
-                if (!isDeleting)
-                {
-                    ShowPreloader(false);
-                    SetTreeViewEnabled(true);
-                    DisableAllActionButtons(false);
-                }
+                SuspendDrawing(tvUploads);
+                parentNode.Nodes.AddRange(childNodeList.ToArray());
+                ResumeDrawing(tvUploads);
             }
+        }
+
+        private void AddChildNodesFromArtistBind(TreeNode parentNode, List<TreeNode> childNodeList)
+        {
+            parentNode.Nodes.AddRange(childNodeList.ToArray());
         }
 
         delegate void SetStatusDelegate(bool showPreloader);
@@ -373,12 +237,36 @@ namespace YTMusicUploader.Dialogues
                     PbResetDatabase.Image = Properties.Resources.reset_database;
                     PbResetDatabase.Enabled = true;
 
-                    PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube;
-                    PbDeleteYTUploaded.Enabled = true;
+                    if (lblCheckedCount.Text == "0 tracks checked")
+                    {
+                        PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube_disabled;
+                        PbDeleteYTUploaded.Enabled = false;
+                    }
+                    else
+                    {
+                        PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube;
+                        PbDeleteYTUploaded.Enabled = true;
+                    }
 
                     pbRefresh.Image = Properties.Resources.refresh;
                     pbRefresh.Enabled = true;
                 }
+            }
+        }
+
+        delegate void DisableDeleteFromYTMusicButtonDelegate();
+        private void DisableDeleteFromYTMusicButton()
+        {
+            if (PbDeleteYTUploaded.InvokeRequired)
+            {
+                DisableDeleteFromYTMusicButtonDelegate d = new DisableDeleteFromYTMusicButtonDelegate(DisableDeleteFromYTMusicButton);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube_disabled;
+                PbDeleteYTUploaded.Enabled = false;
+                lblSelectedButton.Visible = false;
             }
         }
 

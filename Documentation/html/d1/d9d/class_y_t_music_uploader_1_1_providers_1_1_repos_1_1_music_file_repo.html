@@ -164,9 +164,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adda3fbe08e12af479c3fb80de3c66568"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#adda3fbe08e12af479c3fb80de3c66568">DeleteByEntityId</a> (string entityId)</td></tr>
 <tr class="memdesc:adda3fbe08e12af479c3fb80de3c66568"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a Music File entry from the database via it's YT Music EntityId  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#adda3fbe08e12af479c3fb80de3c66568">More...</a><br /></td></tr>
 <tr class="separator:adda3fbe08e12af479c3fb80de3c66568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb48cafb69d08fa066f78b9f77d051b1"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#afb48cafb69d08fa066f78b9f77d051b1">DeleteByBrowseId</a> (string browseId)</td></tr>
-<tr class="memdesc:afb48cafb69d08fa066f78b9f77d051b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a Music File entry from the database via it's YT Music BrowseId (album)  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#afb48cafb69d08fa066f78b9f77d051b1">More...</a><br /></td></tr>
-<tr class="separator:afb48cafb69d08fa066f78b9f77d051b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dba4edf26d86fbec4abed0e5a1652d0"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a4dba4edf26d86fbec4abed0e5a1652d0">Delete</a> (int id, bool destroy=false)</td></tr>
 <tr class="memdesc:a4dba4edf26d86fbec4abed0e5a1652d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a4dba4edf26d86fbec4abed0e5a1652d0">More...</a><br /></td></tr>
 <tr class="separator:a4dba4edf26d86fbec4abed0e5a1652d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -470,39 +467,6 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="afb48cafb69d08fa066f78b9f77d051b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb48cafb69d08fa066f78b9f77d051b1">&#9670;&nbsp;</a></span>DeleteByBrowseId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">async Task&lt;<a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a>&gt; YTMusicUploader.Providers.Repos.MusicFileRepo.DeleteByBrowseId </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>browseId</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Destroy a Music File entry from the database via it's YT Music BrowseId (album) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">browseId</td><td>YT Music track entity ID</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html" title="Database process execution and query result object. Contains if there&#39;s any errors and the time taken...">DbOperationResult</a> - Showing success or fail, with messages and stats</dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_afb48cafb69d08fa066f78b9f77d051b1_cgraph" alt=""/></div>
-<!-- MAP 5 -->
-</div>
-
-</div>
-</div>
 <a id="adda3fbe08e12af479c3fb80de3c66568"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adda3fbe08e12af479c3fb80de3c66568">&#9670;&nbsp;</a></span>DeleteByEntityId()</h2>
 
@@ -531,7 +495,7 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568_cgraph" alt=""/></div>
-<!-- MAP 6 -->
+<!-- MAP 5 -->
 </div>
 
 </div>
@@ -881,7 +845,7 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede_cgraph" alt=""/></div>
-<!-- MAP 7 -->
+<!-- MAP 6 -->
 </div>
 
 </div>
@@ -908,7 +872,7 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba_cgraph" alt=""/></div>
-<!-- MAP 8 -->
+<!-- MAP 7 -->
 </div>
 
 </div>
@@ -991,7 +955,7 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a20a591fdd0fb5b5b338af5f0290653f1_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a20a591fdd0fb5b5b338af5f0290653f1_cgraph" alt=""/></div>
-<!-- MAP 9 -->
+<!-- MAP 8 -->
 </div>
 
 </div>

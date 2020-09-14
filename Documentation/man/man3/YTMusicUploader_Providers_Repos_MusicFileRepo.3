@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sun Sep 13 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Mon Sep 14 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -87,10 +87,6 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .RI "async Task< \fBDbOperationResult\fP > \fBDeleteByEntityId\fP (string entityId)"
 .br
 .RI "Destroy a Music File entry from the database via it's YT Music EntityId "
-.ti -1c
-.RI "async Task< \fBDbOperationResult\fP > \fBDeleteByBrowseId\fP (string browseId)"
-.br
-.RI "Destroy a Music File entry from the database via it's YT Music BrowseId (album) "
 .ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (int id, bool destroy=false)"
 .br
@@ -207,22 +203,6 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 
 .PP
 Deletes all Music File entries from the database 
-.PP
-\fBReturns\fP
-.RS 4
-\fBDbOperationResult\fP - Showing success or fail, with messages and stats
-.RE
-.PP
-
-.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.DeleteByBrowseId (string browseId)"
-
-.PP
-Destroy a Music File entry from the database via it's YT Music BrowseId (album) 
-.PP
-\fBParameters\fP
-.RS 4
-\fIbrowseId\fP YT Music track entity ID
-.RE
 .PP
 \fBReturns\fP
 .RS 4

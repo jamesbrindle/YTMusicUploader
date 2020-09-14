@@ -129,9 +129,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d6ca2f67b1b9f6e978e8386ab5abc55"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55">StartPrefetchingUploadedFilesCheck</a> (<a class="el" href="../../d1/d34/class_list.html">List</a>&lt; <a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> &gt; musicFilesList, string cookieValue, <a class="el" href="../../dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html">MusicDataFetcher</a> musicDataFetcher=null)</td></tr>
 <tr class="memdesc:a3d6ca2f67b1b9f6e978e8386ab5abc55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts a new thread which loops through MusicFiles to check if they've already been uploaded to YouTube Music ahead of time and stores them in a cache to speed up the upload checker.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a3d6ca2f67b1b9f6e978e8386ab5abc55">More...</a><br /></td></tr>
 <tr class="separator:a3d6ca2f67b1b9f6e978e8386ab5abc55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f4b3f42b3612338a3ddc76d223644dc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a72eb54f3b45a371d5ae1969d5b750ece">UploadCheckResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a1f4b3f42b3612338a3ddc76d223644dc">IsSongUploaded</a> (string musicFilePath, string cookieValue, out string entityId, out string browseId, <a class="el" href="../../dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html">MusicDataFetcher</a> musicDataFetcher=null, bool checkCheck=true, bool parallel=true)</td></tr>
-<tr class="memdesc:a1f4b3f42b3612338a3ddc76d223644dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a1f4b3f42b3612338a3ddc76d223644dc">More...</a><br /></td></tr>
-<tr class="separator:a1f4b3f42b3612338a3ddc76d223644dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba672b6f2d24af412db915dbbbfd9e60"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a72eb54f3b45a371d5ae1969d5b750ece">UploadCheckResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#aba672b6f2d24af412db915dbbbfd9e60">IsSongUploaded</a> (string musicFilePath, string cookieValue, out string entityId, <a class="el" href="../../dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html">MusicDataFetcher</a> musicDataFetcher=null, bool checkCheck=true, bool parallel=true)</td></tr>
+<tr class="memdesc:aba672b6f2d24af412db915dbbbfd9e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we're trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file's meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it's above 0.75.  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#aba672b6f2d24af412db915dbbbfd9e60">More...</a><br /></td></tr>
+<tr class="separator:aba672b6f2d24af412db915dbbbfd9e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af59e05abcea3771f97484cb75d2f37d9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#af59e05abcea3771f97484cb75d2f37d9">DeleteAlbumOrTrackFromYTMusic</a> (string cookieValue, string entityId, out string errorMessage)</td></tr>
 <tr class="memdesc:af59e05abcea3771f97484cb75d2f37d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">HttpWebRequest POST request to send to YouTube delete a YT music track fro the users uploads  <a href="../../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#af59e05abcea3771f97484cb75d2f37d9">More...</a><br /></td></tr>
 <tr class="separator:af59e05abcea3771f97484cb75d2f37d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -534,8 +534,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a1f4b3f42b3612338a3ddc76d223644dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f4b3f42b3612338a3ddc76d223644dc">&#9670;&nbsp;</a></span>IsSongUploaded()</h2>
+<a id="aba672b6f2d24af412db915dbbbfd9e60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba672b6f2d24af412db915dbbbfd9e60">&#9670;&nbsp;</a></span>IsSongUploaded()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,12 +560,6 @@ Here is the caller graph for this function:</div>
           <td></td>
           <td class="paramtype">out string&#160;</td>
           <td class="paramname"><em>entityId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">out string&#160;</td>
-          <td class="paramname"><em>browseId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

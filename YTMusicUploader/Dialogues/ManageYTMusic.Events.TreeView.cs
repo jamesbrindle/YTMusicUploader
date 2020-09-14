@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Windows.Forms;
-using System.Linq;
 using YTMusicUploader.Providers.RequestModels;
 
 namespace YTMusicUploader.Dialogues
@@ -18,7 +17,7 @@ namespace YTMusicUploader.Dialogues
                     {
                         new Thread((ThreadStart)delegate
                         {
-                            GetAlbums(selectedNode.Name, ((MusicManageTreeNodeModel)selectedNode.Tag).ArtistTitle);
+                            GetAlbums(selectedNode, ((MusicManageTreeNodeModel)selectedNode.Tag).ArtistTitle);
                         }).Start();
                     }
                 }
@@ -40,7 +39,7 @@ namespace YTMusicUploader.Dialogues
             {
                 // If all child nodes checked, then check parent node
                 tvUploads.AfterCheck -= TvUploads_AfterCheck;
-                CheckParentNodes(e.Node);      
+                CheckParentNodes(e.Node);
                 tvUploads.AfterCheck += TvUploads_AfterCheck;
             }
 
@@ -58,7 +57,6 @@ namespace YTMusicUploader.Dialogues
                     artistNodesChecked = true;
                     break;
                 }
-
             }
 
             if (trackCheckedCount > 0 || artistNodesChecked)

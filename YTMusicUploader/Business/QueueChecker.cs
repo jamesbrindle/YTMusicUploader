@@ -1,6 +1,5 @@
 ﻿using JBToolkit.Threads;
 using System.Threading;
-using YTMusicUploader.Providers;
 
 namespace YTMusicUploader.Business
 {

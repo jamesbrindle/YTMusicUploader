@@ -64,7 +64,7 @@ namespace YTMusicUploader.Dialogues
                 ChangesMade = true;
 
                 ShowPreloader(true);
-                AppendUpdatesText("Reseting uploaded music file entry states...", 
+                AppendUpdatesText("Reseting uploaded music file entry states...",
                                   ColourHelper.HexStringToColor("#e20000"));
 
                 DeselectAllActionButtons();
@@ -97,7 +97,7 @@ namespace YTMusicUploader.Dialogues
             PbResetUploadStates.Image = Properties.Resources.reset_uploaded_hover;
             lblSelectedButton.Text = "Reset uploaded music states (will recheck all music files).";
             lblSelectedButton.Visible = true;
-        }        
+        }
 
         //
         // Reset Database
@@ -107,7 +107,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (MetroMessageBox.Show(this,
                                 "\r\nThis will completely reset the database which includes all settings and all music file " +
-                                    "entries and their states. The application will need to close for changes to take effect." + 
+                                    "entries and their states. The application will need to close for changes to take effect." +
                                     "\r\n\r\nAre you sure you want to contine?",
                                 "Confirm Action",
                                 MessageBoxButtons.YesNo,
@@ -174,7 +174,14 @@ namespace YTMusicUploader.Dialogues
                                    ColourHelper.HexStringToColor("#e20000"));
 
                 DeselectAllActionButtons();
-                DeleteTracksFromYouTubeMusic();
+                try
+                {
+                    DeleteTracksFromYouTubeMusic();
+                }
+                catch
+                {
+                    DisableAllActionButtons(false);
+                }
             }
         }
 
