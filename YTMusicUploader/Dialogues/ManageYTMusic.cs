@@ -165,7 +165,7 @@ namespace YTMusicUploader.Dialogues
                     var songNodes = new List<TreeNode>();
                     string releaseMbId = string.Empty;
 
-                    album.Songs.AsParallel().ForAllInApproximateOrder(song =>
+                    foreach (var song in album.Songs)
                     {
                         var musicFile = MainForm.MusicFileRepo.LoadFromEntityId(song.EntityId).Result;
                         string databaseExistenceText = "Not found or not mapped";
@@ -194,7 +194,7 @@ namespace YTMusicUploader.Dialogues
                                 Uploaded = musicFile == null ? "-" : musicFile.LastUpload.ToString("dd/MM/yyyy HH:mm")
                             }
                         });
-                    });
+                    }
 
                     var albumNode = new TreeNode
                     {
