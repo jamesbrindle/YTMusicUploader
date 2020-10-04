@@ -3,7 +3,7 @@
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/yt_logo-64.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
 
-Automatically upload your local personal music library to YouTube Music.
+Automatically upload your local personal music library to YouTube Music and bulk delete from YouTube Music.
 &nbsp;
 &nbsp;
 
@@ -59,9 +59,9 @@ This is a .Net application written in C# that uploads your personal music librar
 
 I used to have Google Play music and liked uploading my own content via its automatic library uploader application; I have a large library of music and you could stream your own uploaded songs from Google Play music without paying for a subscription...
 
-Google Play music is on its way out in December and its replacement, YouTube music doesn't currently have a library watcher application. You can only drag and drop manually into the browser for a limited number of songs... So, I decided to create one.
+Google Play music is on its way out in December and its replacement, YouTube Music doesn't currently have a library watcher application. You can only drag and drop manually into the browser for a limited number of songs... So, I decided to create one.
 
-I got a subscription in the end, so some might consider this pointless in the world of streaming anything you want these days.. So I suppose the only real benefit is the ability to:
+I got a subscription in the end, so some might consider this pointless in the world of streaming anything you want these days... So I suppose the only real benefit is the ability to:
 
 - Upload songs that aren't on YouTube music.
 - Backup your songs *(you can't download them again from YouTube music, but you can use [Google Takeout](https://takeout.google.com/settings/takeout?pli=1) to get them).*
@@ -164,14 +164,13 @@ private void Browser_CoreWebView2Ready(object sender, EventArgs e)
 
 Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube Music develops...
 
-I'm going to be using this application for personal use, so I'll know straight aware when it's not working and will attempt to update the API call implementation as soon as possible.
+I'm going to be using this application for personal use, so I'll know straight away when it's not working and will attempt to update the API call implementation as soon as possible.
 &nbsp;
 &nbsp;
 
 ### Further Development Considerations
 
 - Would like to add the ability to upload playlists *([sigma67](https://ytmusicapi.readthedocs.io/en/latest/) has included this ability in his API so it's definately do-able).*
-- Would like the ability to select and delete artists / albums / songs from YouTube Music.
 &nbsp;
 &nbsp;
 
