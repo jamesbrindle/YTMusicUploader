@@ -1209,6 +1209,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F7C5448B2B0B49BEA2BD3637766B4389"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FAE18D586EAA405E84ACE4EC5D48C4CD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -6949,6 +6955,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F7C5448B2B0B49BEA2BD3637766B4389"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\delete_song_context.json"
+            "TargetName" = "8:delete_song_context.json"
+            "Tag" = "8:"
+            "Folder" = "8:_5738FCABC1794593B91E424CF8D2BE8E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FAE18D586EAA405E84ACE4EC5D48C4CD"
             {
             "SourcePath" = "8:..\\YTMusicUploader\\bin\\x64\\Release\\runtimes\\win\\native\\brolib_x64.dll"
@@ -7248,15 +7274,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{9E27DA95-562C-44F1-8587-07272768B218}"
-        "PackageCode" = "8:{0C65219D-6B63-42B7-916E-1297B42AA935}"
+        "ProductCode" = "8:{54AB6CC1-FE5F-44BE-8053-67F677045651}"
+        "PackageCode" = "8:{6894108C-83E2-4CB1-B0C0-0E71C3AD7EE8}"
         "UpgradeCode" = "8:{AB84D0C0-CDF7-4BDF-90B0-C4808DB11DAB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.4.4"
+        "ProductVersion" = "8:1.4.5"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"
