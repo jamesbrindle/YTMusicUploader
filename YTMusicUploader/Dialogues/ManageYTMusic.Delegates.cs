@@ -204,7 +204,9 @@ namespace YTMusicUploader.Dialogues
             if (PbResetUploadStates.InvokeRequired ||
                 PbResetDatabase.InvokeRequired ||
                 PbDeleteYTUploaded.InvokeRequired ||
-                pbRefresh.InvokeRequired)
+                pbRefresh.InvokeRequired ||
+                tvUploads.InvokeRequired ||
+                tbSearchArtists.InvokeRequired)
             {
                 DisableAllActionButtonsDelegate d = new DisableAllActionButtonsDelegate(DisableAllActionButtons);
                 Invoke(d, new object[] { disabled });
@@ -214,6 +216,10 @@ namespace YTMusicUploader.Dialogues
                 lblSelectedButton.Visible = false;
                 lblSelectedButton.Visible = false;
                 lblSelectedButton.Visible = false;
+
+                tvUploads.AfterSelect -= TvUploads_AfterSelect;
+                tbSearchArtists.TextChanged -= TbSearchArtists_TextChanged;
+                tbSearchArtists.KeyDown -= TbSearchArtists_KeyDown;
 
                 if (disabled)
                 {
@@ -228,6 +234,8 @@ namespace YTMusicUploader.Dialogues
 
                     pbRefresh.Image = Properties.Resources.refresh_disabled;
                     pbRefresh.Enabled = false;
+
+                    tbSearchArtists.Enabled = false;
                 }
                 else
                 {
@@ -250,7 +258,14 @@ namespace YTMusicUploader.Dialogues
 
                     pbRefresh.Image = Properties.Resources.refresh;
                     pbRefresh.Enabled = true;
+
+                    tbSearchArtists.Enabled = true;
                 }
+
+
+                tvUploads.AfterSelect += TvUploads_AfterSelect;
+                tbSearchArtists.TextChanged += TbSearchArtists_TextChanged;
+                tbSearchArtists.KeyDown += TbSearchArtists_KeyDown;
             }
         }
 

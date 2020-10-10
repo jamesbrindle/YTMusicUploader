@@ -60,7 +60,6 @@ namespace YTMusicUploader.Dialogues
 
         private void ClearFields()
         {
-            tbUpdates.Text = string.Empty;
             lblArtistTitle.Text = "Nothing selected";
             lblAlbumTitle.Text = "-";
             lblSongTitle.Text = "-";
@@ -68,6 +67,16 @@ namespace YTMusicUploader.Dialogues
             lblDatabaseExistence.Text = "-";
             lblMbId.Text = "-";
             lblUploaded.Text = "-";
+
+            tvUploads.AfterSelect -= TvUploads_AfterSelect;
+            tbSearchArtists.TextChanged -= TbSearchArtists_TextChanged;
+            tbSearchArtists.KeyDown -= TbSearchArtists_KeyDown;
+
+            tbSearchArtists.Text = "";
+
+            tvUploads.AfterSelect += TvUploads_AfterSelect;
+            tbSearchArtists.TextChanged += TbSearchArtists_TextChanged;
+            tbSearchArtists.KeyDown += TbSearchArtists_KeyDown;           
         }
 
         private void GetArtists()
@@ -78,6 +87,7 @@ namespace YTMusicUploader.Dialogues
             AppendUpdatesText("Fetching artists...", ColourHelper.HexStringToColor("#0f0466"));
             Requests.ArtistCache = Requests.GetArtists(MainForm.Settings.AuthenticationCookie);
             BindArtists(true);
+            ClearFields();
         }
 
         private void BindArtists(bool showFetchedMessage = true)
@@ -589,8 +599,6 @@ namespace YTMusicUploader.Dialogues
                 DialogResult = DialogResult.Yes;
             else
                 DialogResult = DialogResult.Cancel;
-        }
-
-       
+        }       
     }
 }
