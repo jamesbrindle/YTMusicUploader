@@ -2,6 +2,7 @@
 using JBToolkit.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -35,6 +36,7 @@ namespace YTMusicUploader.Dialogues
         {
             OnLoad(e);
             ClearFields();
+            SetTextBoxCueBanner(tbSearchArtists, "Press 'Enter' for next match.");
 
             DisableAllActionButtons(true);
             SetTreeViewEnabled(false);
@@ -473,11 +475,12 @@ namespace YTMusicUploader.Dialogues
                             if (trackNode.Checked)
                                 tracksToDelete.Add(trackNode);
 
-                        if (albumNode.Checked)
+                        var musicManageAbumTreeNodeModel = (MusicManageTreeNodeModel)albumNode.Tag;
+                        string albumEntityId = musicManageAbumTreeNodeModel.EntityOrBrowseId;
+
+                        if (albumNode.Checked && albumEntityId != "[Single]")
                         {
-                            var musicManagetreeNodeModel = (MusicManageTreeNodeModel)albumNode.Tag;
-                            string entityId = musicManagetreeNodeModel.EntityOrBrowseId;
-                            if (Requests.DeleteAlbumOrTrackFromYTMusic(MainForm.Settings.AuthenticationCookie, entityId, out string errorMessage))
+                            if (Requests.DeleteAlbumOrTrackFromYTMusic(MainForm.Settings.AuthenticationCookie, albumEntityId, out string errorMessage))
                             {
                                 foreach (TreeNode songNode in tracksToDelete)
                                 {
@@ -488,46 +491,45 @@ namespace YTMusicUploader.Dialogues
 
                                 Requests.ArtistCache.Artists.RemoveAlbum(
                                                                    ((MusicManageTreeNodeModel)artistNode.Tag).EntityOrBrowseId,
-                                                                   musicManagetreeNodeModel.EntityOrBrowseId);
+                                                                   musicManageAbumTreeNodeModel.EntityOrBrowseId);
 
-                                AppendUpdatesText($"Deleted Album: {musicManagetreeNodeModel.ArtistTitle} - " +
-                                                  $"{musicManagetreeNodeModel.AlbumTitle}",
+                                AppendUpdatesText($"Deleted Album: {musicManageAbumTreeNodeModel.ArtistTitle} - " +
+                                                  $"{musicManageAbumTreeNodeModel.AlbumTitle}",
                                                   ColourHelper.HexStringToColor("#0d5601"));
 
                             }
                             else
                             {
-                                AppendUpdatesText($"Error Deleting Album: {musicManagetreeNodeModel.ArtistTitle} - " +
-                                                  $"{musicManagetreeNodeModel.AlbumTitle}:: " +
+                                AppendUpdatesText($"Error Deleting Album: {musicManageAbumTreeNodeModel.ArtistTitle} - " +
+                                                  $"{musicManageAbumTreeNodeModel.AlbumTitle}:: " +
                                                   $"{errorMessage}",
                                                   ColourHelper.HexStringToColor("#0d5601"));
                             }
                         }
-
                         else
                         {
                             tracksToDelete.AsParallel().ForAllInApproximateOrder(nodeToDelete =>
                             {
-                                var musicManagetreeNodeModel = (MusicManageTreeNodeModel)nodeToDelete.Tag;
-                                string entityid = musicManagetreeNodeModel.EntityOrBrowseId;
-                                if (Requests.DeleteAlbumOrTrackFromYTMusic(MainForm.Settings.AuthenticationCookie, entityid, out string errorMessage))
+                                var musicManageTrackTreeNodeModel = (MusicManageTreeNodeModel)nodeToDelete.Tag;
+                                string trackEntityId = musicManageTrackTreeNodeModel.EntityOrBrowseId;
+                                if (Requests.DeleteAlbumOrTrackFromYTMusic(MainForm.Settings.AuthenticationCookie, trackEntityId, out string errorMessage))
                                 {
-                                    MainForm.MusicFileRepo.DeleteByEntityId(entityid).Wait();
-                                    AppendUpdatesText($"Deleted Track: {musicManagetreeNodeModel.ArtistTitle} - " +
-                                                      $"{musicManagetreeNodeModel.AlbumTitle} - " +
-                                                      $"{musicManagetreeNodeModel.SongTitle}",
+                                    MainForm.MusicFileRepo.DeleteByEntityId(trackEntityId).Wait();
+                                    AppendUpdatesText($"Deleted Track: {musicManageTrackTreeNodeModel.ArtistTitle} - " +
+                                                      $"{musicManageTrackTreeNodeModel.AlbumTitle} - " +
+                                                      $"{musicManageTrackTreeNodeModel.SongTitle}",
                                                       ColourHelper.HexStringToColor("#0d5601"));
 
                                     albumNode.Nodes.Remove(nodeToDelete);
                                     Requests.ArtistCache.Artists.RemoveSong(
                                                                     ((MusicManageTreeNodeModel)artistNode.Tag).EntityOrBrowseId,
-                                                                    musicManagetreeNodeModel.EntityOrBrowseId);
+                                                                    musicManageTrackTreeNodeModel.EntityOrBrowseId);
                                 }
                                 else
                                 {
-                                    AppendUpdatesText($"Error Deleting Track: {musicManagetreeNodeModel.ArtistTitle} - " +
-                                                      $"{musicManagetreeNodeModel.AlbumTitle} - " +
-                                                      $"{musicManagetreeNodeModel.SongTitle}:: " +
+                                    AppendUpdatesText($"Error Deleting Track: {musicManageTrackTreeNodeModel.ArtistTitle} - " +
+                                                      $"{musicManageTrackTreeNodeModel.AlbumTitle} - " +
+                                                      $"{musicManageTrackTreeNodeModel.SongTitle}:: " +
                                                       $"{errorMessage}",
                                                       ColourHelper.HexStringToColor("#e20000"));
                                 }
@@ -588,5 +590,7 @@ namespace YTMusicUploader.Dialogues
             else
                 DialogResult = DialogResult.Cancel;
         }
+
+       
     }
 }

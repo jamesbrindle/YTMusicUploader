@@ -289,17 +289,18 @@ namespace YTMusicUploader.Providers
                 }
                 catch { }
 
-                try
-                {
-                    album = Regex.Replace(album, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
-                    if (album != originalAlbum)
-                    {
-                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
-                        if (result)
-                            return result;
-                    }
-                }
-                catch { }
+                // Difference versions of the album are usual in brackets, so removing this block not report false duplicates
+                //try
+                //{
+                //    album = Regex.Replace(album, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
+                //    if (album != originalAlbum)
+                //    {
+                //        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                //        if (result)
+                //            return result;
+                //    }
+                //}
+                //catch { }
             }
 
             try
@@ -438,7 +439,7 @@ namespace YTMusicUploader.Providers
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl + "search" + Global.YouTubeMusicParams);
+                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicBaseUrl + "search" + Global.YouTubeMusicParams);
                 request = AddStandardHeaders(request, cookieValue);
 
                 request.ContentType = "application/json; charset=UTF-8";
@@ -485,7 +486,7 @@ namespace YTMusicUploader.Providers
                                           .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
                                           .Select(p => ((JProperty)p).Value).ToList();
 
-                    float matchSuccessMinimum = Global.YouTubeUploadedSimilarityPercentageForMatch;
+                    float matchSuccessMinimum = Global.YouTubeMusicUploadedSimilarityPercentageForMatch;
                     float artistSimilarity = 0.0f;
                     float albumSimilarity = 0.0f;
                     float trackSimilarity = 0.0f;

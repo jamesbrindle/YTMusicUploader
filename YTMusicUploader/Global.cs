@@ -16,7 +16,7 @@ namespace YTMusicUploader
         private static string _applicationVersion = null;
         private static string _appDataLocation = null;
         private static bool? _multiThreadedRequests = null;
-        private static int? _maxDegreesOfParallelism = 4;
+        private static int? _maxDegreesOfParallelism = null;
         private static string _dbLocation = null;
         private static string _edgeFolder = null;
         private static string _edgeVersion = null;
@@ -30,6 +30,7 @@ namespace YTMusicUploader
         private static float? _youTubeUploadedSimilarityPercentageForMatch = null;
         private static string _workingDirectory = null;
         private static string[] _supportedFiles = null;
+        private static int? _yTMusic500ErrorRetryAttempts = null;
 
         /// <summary>
         /// Returns application's version from Assembly
@@ -142,7 +143,7 @@ namespace YTMusicUploader
         /// <summary>
         /// Main API URL for YouTube Music
         /// </summary>
-        public static string YouTubeBaseUrl
+        public static string YouTubeMusicBaseUrl
         {
             get
             {
@@ -352,9 +353,33 @@ namespace YTMusicUploader
         }
 
         /// <summary>
+        /// How many retry attempts to perform on a YT Music 500 error during upload
+        /// </summary>
+        public static int YouTubeMusic500ErrorRetryAttempts
+        {
+            get
+            {
+                if (_yTMusic500ErrorRetryAttempts != null)
+                    return (int)_yTMusic500ErrorRetryAttempts;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusic500ErrorRetryAttempts"] != null)
+                        _yTMusic500ErrorRetryAttempts = ConfigurationManager.AppSettings["YTMusic500ErrorRetryAttempts"].ToInt();
+                }
+                catch
+                {
+                    _yTMusic500ErrorRetryAttempts = 4;
+                }
+
+                return (int)_yTMusic500ErrorRetryAttempts;
+            }
+        }
+
+        /// <summary>
         /// Levenstein similarity match success value (as float type) to match against already uploaded YouTube Music files
         /// </summary>
-        public static float YouTubeUploadedSimilarityPercentageForMatch
+        public static float YouTubeMusicUploadedSimilarityPercentageForMatch
         {
             get
             {

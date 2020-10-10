@@ -45,7 +45,7 @@ namespace YTMusicUploader.Providers
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl +
+                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicBaseUrl +
                                                                 "browse" +
                                                                 (string.IsNullOrEmpty(continuationToken)
                                                                                 ? ""
@@ -171,12 +171,22 @@ namespace YTMusicUploader.Providers
                                                                    .menuRenderer)
                             };
 
-                            string albumTitle = content.musicResponsiveListItemRenderer
-                                                       .flexColumns[2]
-                                                       .musicResponsiveListItemFlexColumnRenderer
-                                                       .text
-                                                       .runs[0]
-                                                       .text;
+                            bool isSingle = true;
+                            string albumTitle = "[Singles]";
+                            if (content.musicResponsiveListItemRenderer
+                                       .flexColumns[2]
+                                       .musicResponsiveListItemFlexColumnRenderer
+                                       .text
+                                       .runs != null)
+                            {
+                                isSingle = false;
+                                albumTitle = content.musicResponsiveListItemRenderer
+                                                    .flexColumns[2]
+                                                    .musicResponsiveListItemFlexColumnRenderer
+                                                    .text
+                                                    .runs[0]
+                                                    .text;
+                            }
 
                             if (!albumSongCollection.Albums.AlbumHashSet.Contains(albumTitle))
                             {
@@ -186,18 +196,25 @@ namespace YTMusicUploader.Providers
                                     Title = albumTitle,
                                     CoverArtUrl = coverArtUrl,
                                     Songs = new SongCollection(),
-                                    EntityId = GetAlbumEntityID(content.musicResponsiveListItemRenderer
-                                                                       .flexColumns[2]
-                                                                       .musicResponsiveListItemFlexColumnRenderer)
-
+                                    EntityId = isSingle ? "[Single]"
+                                                        : GetAlbumEntityID(content.musicResponsiveListItemRenderer
+                                                                                  .flexColumns[2]
+                                                                                  .musicResponsiveListItemFlexColumnRenderer)
                                 });
                             }
 
                             albumSongCollection.Songs.Add(song);
-                            albumSongCollection.Albums.Where(m => m.Title == albumTitle).FirstOrDefault().Songs.Add(song);
+                            if (albumSongCollection.Albums.Where(m => m.Title == albumTitle).Any())
+                                albumSongCollection.Albums.Where(m => m.Title == albumTitle).FirstOrDefault().Songs.Add(song);
 
                         }
-                        catch { }
+                        catch (Exception e)
+                        {
+                            var _ = e;
+#if DEBUG
+                            Console.Out.WriteLine(e.Message);
+#endif
+                        }
                     }
 
                     i++;
@@ -263,12 +280,23 @@ namespace YTMusicUploader.Providers
                                                           .menuRenderer)
                         };
 
-                        string albumTitle = content.musicResponsiveListItemRenderer
-                                                   .flexColumns[2]
-                                                   .musicResponsiveListItemFlexColumnRenderer
-                                                   .text
-                                                   .runs[0]
-                                                   .text;
+                        bool isSingle = true;
+                        string albumTitle = "[Singles]";
+
+                        if (content.musicResponsiveListItemRenderer
+                                   .flexColumns[2]
+                                   .musicResponsiveListItemFlexColumnRenderer
+                                   .text
+                                   .runs != null)
+                        {
+                            isSingle = false;
+                            albumTitle = content.musicResponsiveListItemRenderer
+                                                .flexColumns[2]
+                                                .musicResponsiveListItemFlexColumnRenderer
+                                                .text
+                                                .runs[0]
+                                                .text;
+                        }
 
                         if (!albumSongCollection.Albums.AlbumHashSet.Contains(albumTitle))
                         {
@@ -278,16 +306,24 @@ namespace YTMusicUploader.Providers
                                 Title = albumTitle,
                                 CoverArtUrl = coverArtUrl,
                                 Songs = new SongCollection(),
-                                EntityId = GetAlbumEntityID(content.musicResponsiveListItemRenderer
-                                                                   .flexColumns[2]
-                                                                   .musicResponsiveListItemFlexColumnRenderer)
+                                EntityId = isSingle ? "[Single]"
+                                                    : GetAlbumEntityID(content.musicResponsiveListItemRenderer
+                                                                              .flexColumns[2]
+                                                                              .musicResponsiveListItemFlexColumnRenderer)
                             });
                         }
 
                         albumSongCollection.Songs.Add(song);
-                        albumSongCollection.Albums.Where(m => m.Title == albumTitle).FirstOrDefault().Songs.Add(song);
+                        if (albumSongCollection.Albums.Where(m => m.Title == albumTitle).Any())
+                            albumSongCollection.Albums.Where(m => m.Title == albumTitle).FirstOrDefault().Songs.Add(song);
                     }
-                    catch { }
+                    catch (Exception e)
+                    {
+                        var _ = e;
+#if DEBUG
+                        Console.Out.WriteLine(e.Message);
+#endif
+                    }
                 }
             }
 

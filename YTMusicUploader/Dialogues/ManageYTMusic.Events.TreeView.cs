@@ -1,4 +1,7 @@
-﻿using System.Threading;
+﻿using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Providers.RequestModels;
 
@@ -6,11 +9,35 @@ namespace YTMusicUploader.Dialogues
 {
     public partial class ManageYTMusic
     {
+        private void ScrollUploadsArtistNodeToCentre(TreeNode treeNode)
+        {
+            treeNode.EnsureVisible();
+            if (treeNode.Bounds.Y > (tvUploads.Height / 2))
+            {
+                if (treeNode.Bounds.Y > (tvUploads.Height / 2))
+                {
+                    try
+                    {
+                        if (tvUploads.Nodes[0].Nodes.Count > treeNode.Index + 10)
+                        {
+                            tvUploads.SelectedNode = tvUploads.Nodes[0].Nodes[treeNode.Index + 10];
+                            tvUploads.SelectedNode.EnsureVisible();
+                            tvUploads.SelectedNode = null;
+                        }
+                    }
+                    catch { }
+                }
+            }
+        }
+
         private void TvUploads_AfterSelect(object sender, TreeViewEventArgs e)
         {
             var selectedNode = e.Node;
             if (selectedNode != null)
             {
+                foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+                    artistNode.BackColor = Color.White;
+
                 if (((MusicManageTreeNodeModel)selectedNode.Tag).NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Artist)
                 {
                     if (selectedNode.Nodes == null || selectedNode.Nodes.Count == 0)

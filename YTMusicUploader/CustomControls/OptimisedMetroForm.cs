@@ -200,6 +200,7 @@ namespace JBToolkit.WinForms
 
                 cp.ExStyle |= 0x02000000; // Turn on WS_EX_COMPOSITED    
                 cp.Style |= 0x40000; // Form shadow or at least a thin border when no shadow (i.e. remote app) - WS_SIZEBOX; 
+                cp.ExStyle |= 0x80; // Prevent show in ALT+Tab
 
                 return cp;
             }
@@ -262,6 +263,11 @@ namespace JBToolkit.WinForms
         public void SetTextBoxCueBanner(TextBox textbox, string text)
         {
             SendMessage(textbox.Handle, EM_SETCUEBANNER, 1, text);
+        }
+
+        public void SetTextBoxCueBanner(RoundTextBox textbox, string text)
+        {
+            SendMessage(textbox.box.Handle, EM_SETCUEBANNER, 1, text);
         }
 
         public const int EM_SETCUEBANNER = 0x1501;

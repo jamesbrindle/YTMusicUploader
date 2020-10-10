@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageYTMusic));
             this.lblTitle = new System.Windows.Forms.Label();
             this.tblManageYTMusicUploads = new System.Windows.Forms.TableLayoutPanel();
-            this.tvUploads = new System.Windows.Forms.TreeView();
             this.pnlMusicDetailsPanel = new System.Windows.Forms.Panel();
             this.lblMbId = new System.Windows.Forms.LinkLabel();
             this.lblArtistTitle = new System.Windows.Forms.Label();
@@ -55,6 +54,10 @@
             this.PbDeleteYTUploaded = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSelectedButton = new System.Windows.Forms.Label();
+            this.tvUploads = new System.Windows.Forms.TreeView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tbSearchArtists = new JBToolkit.WinForms.RoundTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
             this.tblManageYTMusicUploads.SuspendLayout();
@@ -68,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PbResetDatabase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbDeleteYTUploaded)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             this.SuspendLayout();
@@ -89,33 +93,25 @@
             this.tblManageYTMusicUploads.ColumnCount = 2;
             this.tblManageYTMusicUploads.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.0222F));
             this.tblManageYTMusicUploads.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.9778F));
-            this.tblManageYTMusicUploads.Controls.Add(this.tvUploads, 0, 0);
             this.tblManageYTMusicUploads.Controls.Add(this.pnlMusicDetailsPanel, 1, 0);
-            this.tblManageYTMusicUploads.Controls.Add(this.pnlUpdatesPanel, 1, 3);
-            this.tblManageYTMusicUploads.Controls.Add(this.pnlActions, 1, 2);
-            this.tblManageYTMusicUploads.Controls.Add(this.tableLayoutPanel1, 1, 1);
+            this.tblManageYTMusicUploads.Controls.Add(this.pnlUpdatesPanel, 1, 4);
+            this.tblManageYTMusicUploads.Controls.Add(this.pnlActions, 1, 3);
+            this.tblManageYTMusicUploads.Controls.Add(this.tableLayoutPanel1, 1, 2);
+            this.tblManageYTMusicUploads.Controls.Add(this.tvUploads, 0, 1);
+            this.tblManageYTMusicUploads.Controls.Add(this.panel2, 0, 0);
             this.tblManageYTMusicUploads.Location = new System.Drawing.Point(23, 76);
             this.tblManageYTMusicUploads.Name = "tblManageYTMusicUploads";
-            this.tblManageYTMusicUploads.RowCount = 4;
-            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.tblManageYTMusicUploads.RowCount = 5;
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblManageYTMusicUploads.Size = new System.Drawing.Size(991, 633);
             this.tblManageYTMusicUploads.TabIndex = 5;
-            // 
-            // tvUploads
-            // 
-            this.tvUploads.CheckBoxes = true;
-            this.tvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvUploads.Location = new System.Drawing.Point(3, 0);
-            this.tvUploads.Margin = new System.Windows.Forms.Padding(3, 0, 20, 0);
-            this.tvUploads.Name = "tvUploads";
-            this.tblManageYTMusicUploads.SetRowSpan(this.tvUploads, 4);
-            this.tvUploads.Size = new System.Drawing.Size(552, 633);
-            this.tvUploads.TabIndex = 1;
-            this.tvUploads.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TvUploads_AfterCheck);
-            this.tvUploads.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvUploads_AfterSelect);
             // 
             // pnlMusicDetailsPanel
             // 
@@ -134,8 +130,9 @@
             this.pnlMusicDetailsPanel.Location = new System.Drawing.Point(578, 0);
             this.pnlMusicDetailsPanel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.pnlMusicDetailsPanel.Name = "pnlMusicDetailsPanel";
-            this.pnlMusicDetailsPanel.Size = new System.Drawing.Size(410, 128);
-            this.pnlMusicDetailsPanel.TabIndex = 2;
+            this.tblManageYTMusicUploads.SetRowSpan(this.pnlMusicDetailsPanel, 2);
+            this.pnlMusicDetailsPanel.Size = new System.Drawing.Size(410, 148);
+            this.pnlMusicDetailsPanel.TabIndex = 6;
             // 
             // lblMbId
             // 
@@ -147,7 +144,6 @@
             this.lblMbId.TabIndex = 1;
             this.lblMbId.TabStop = true;
             this.lblMbId.Text = "sdf34-34cfr324rc234-d3cr34r34";
-            this.lblMbId.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblMbId_LinkClicked);
             // 
             // lblArtistTitle
             // 
@@ -255,11 +251,11 @@
             this.pnlUpdatesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlUpdatesPanel.Controls.Add(this.tbUpdates);
             this.pnlUpdatesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlUpdatesPanel.Location = new System.Drawing.Point(578, 240);
+            this.pnlUpdatesPanel.Location = new System.Drawing.Point(578, 260);
             this.pnlUpdatesPanel.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.pnlUpdatesPanel.Name = "pnlUpdatesPanel";
             this.pnlUpdatesPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.pnlUpdatesPanel.Size = new System.Drawing.Size(411, 393);
+            this.pnlUpdatesPanel.Size = new System.Drawing.Size(411, 373);
             this.pnlUpdatesPanel.TabIndex = 3;
             // 
             // tbUpdates
@@ -269,7 +265,7 @@
             this.tbUpdates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbUpdates.Location = new System.Drawing.Point(4, 4);
             this.tbUpdates.Name = "tbUpdates";
-            this.tbUpdates.Size = new System.Drawing.Size(401, 383);
+            this.tbUpdates.Size = new System.Drawing.Size(401, 363);
             this.tbUpdates.TabIndex = 0;
             this.tbUpdates.Text = "";
             // 
@@ -278,7 +274,7 @@
             this.pnlActions.Controls.Add(this.lblCheckedCount);
             this.pnlActions.Controls.Add(this.pbPreloader);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActions.Location = new System.Drawing.Point(575, 211);
+            this.pnlActions.Location = new System.Drawing.Point(575, 231);
             this.pnlActions.Margin = new System.Windows.Forms.Padding(0);
             this.pnlActions.Name = "pnlActions";
             this.pnlActions.Size = new System.Drawing.Size(416, 26);
@@ -320,7 +316,7 @@
             this.tableLayoutPanel1.Controls.Add(this.PbDeleteYTUploaded, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(578, 134);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(578, 154);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
@@ -403,6 +399,57 @@
             this.lblSelectedButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblSelectedButton.Visible = false;
             // 
+            // tvUploads
+            // 
+            this.tvUploads.CheckBoxes = true;
+            this.tvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvUploads.Location = new System.Drawing.Point(3, 34);
+            this.tvUploads.Margin = new System.Windows.Forms.Padding(3, 0, 20, 0);
+            this.tvUploads.Name = "tvUploads";
+            this.tblManageYTMusicUploads.SetRowSpan(this.tvUploads, 4);
+            this.tvUploads.Size = new System.Drawing.Size(552, 599);
+            this.tvUploads.TabIndex = 1;
+            this.tvUploads.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TvUploads_AfterCheck);
+            this.tvUploads.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvUploads_AfterSelect);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.tbSearchArtists);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(569, 31);
+            this.panel2.TabIndex = 7;
+            // 
+            // tbSearchArtists
+            // 
+            this.tbSearchArtists.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSearchArtists.BackColor = System.Drawing.Color.Transparent;
+            this.tbSearchArtists.Br = System.Drawing.Color.White;
+            this.tbSearchArtists.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.tbSearchArtists.ForeColor = System.Drawing.Color.Black;
+            this.tbSearchArtists.Location = new System.Drawing.Point(91, 1);
+            this.tbSearchArtists.Name = "tbSearchArtists";
+            this.tbSearchArtists.PasswordChar = '\0';
+            this.tbSearchArtists.ReadOnly = false;
+            this.tbSearchArtists.Size = new System.Drawing.Size(461, 26);
+            this.tbSearchArtists.TabIndex = 6;
+            this.tbSearchArtists.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbSearchArtists.TextChanged += new System.EventHandler(this.TbSearchArtists_TextChanged);
+            this.tbSearchArtists.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbSearchArtists_KeyDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(-2, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Search Artists";
+            // 
             // pbRefresh
             // 
             this.pbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -459,6 +506,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PbResetDatabase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbDeleteYTUploaded)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             this.ResumeLayout(false);
@@ -473,18 +522,7 @@
         private System.Windows.Forms.TableLayoutPanel tblManageYTMusicUploads;
         private System.Windows.Forms.TreeView tvUploads;
         private System.Windows.Forms.PictureBox pbPreloader;
-        private System.Windows.Forms.Panel pnlMusicDetailsPanel;
-        private System.Windows.Forms.Label lblUploaded;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblDatabaseExistence;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblDuration;
-        private System.Windows.Forms.Label lblSongTitle;
-        private System.Windows.Forms.Label lblAlbumTitle;
-        private System.Windows.Forms.PictureBox pbCoverArt;
         private System.Windows.Forms.Panel pnlUpdatesPanel;
-        private System.Windows.Forms.Label lblArtistTitle;
         private System.Windows.Forms.Panel pnlActions;
         private System.Windows.Forms.Label lblCheckedCount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -494,6 +532,20 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblSelectedButton;
         private System.Windows.Forms.RichTextBox tbUpdates;
+        private System.Windows.Forms.Panel pnlMusicDetailsPanel;
         private System.Windows.Forms.LinkLabel lblMbId;
+        private System.Windows.Forms.Label lblArtistTitle;
+        private System.Windows.Forms.Label lblUploaded;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblDatabaseExistence;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDuration;
+        private System.Windows.Forms.Label lblSongTitle;
+        private System.Windows.Forms.Label lblAlbumTitle;
+        private System.Windows.Forms.PictureBox pbCoverArt;
+        private System.Windows.Forms.Panel panel2;
+        private JBToolkit.WinForms.RoundTextBox tbSearchArtists;
+        private System.Windows.Forms.Label label3;
     }
 }

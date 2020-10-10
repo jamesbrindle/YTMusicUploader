@@ -29,7 +29,7 @@ namespace YTMusicUploader.Providers
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(
-                                                        Global.YouTubeBaseUrl +
+                                                        Global.YouTubeMusicBaseUrl +
                                                         "music/delete_privately_owned_entity" +
                                                         Global.YouTubeMusicParams);
 

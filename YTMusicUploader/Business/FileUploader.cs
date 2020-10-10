@@ -250,22 +250,46 @@ namespace YTMusicUploader.Business
             await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
             await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
 
-            Requests.UploadTrack(
+            bool success = false;
+
+            for (int i = 0; i < 100; i++)
+            {
+                Requests.UploadTrack(
                         MainForm,
                         MainForm.Settings.AuthenticationCookie,
                         musicFile.Path,
                         MainForm.Settings.ThrottleSpeed,
-                        out string error);
+                        out string error);                
 
-            if (!string.IsNullOrEmpty(error))
-            {
-                musicFile.Error = true;
-                musicFile.ErrorReason = error;
+                if (!string.IsNullOrEmpty(error))
+                {
+                    if (i >= Global.YouTubeMusic500ErrorRetryAttempts)
+                    {
+                        musicFile.Error = true;
+                        musicFile.ErrorReason = error;
 
-                _errorsCount++;
-                MainForm.SetIssuesLabel(_errorsCount.ToString());
+                        _errorsCount++;
+                        MainForm.SetIssuesLabel(_errorsCount.ToString());
+
+                        success = false;
+                        break;
+                    }
+                    else
+                    {
+                        MainForm.SetStatusMessage($"500 Error from YT Music. Waiting 10 seconds then trying again ({i + 1}/4)",
+                                                  $"500 Error from YT Music. Waiting 10 seconds then trying again ({i + 1}/ 4)");
+
+                        Thread.Sleep(10000); // 10 seconds
+                    }
+                }
+                else
+                {
+                    success = true;
+                    break;
+                }
             }
-            else
+            
+            if (success)
             {
                 TrackAndReleaseMbId trackAndReleaseMbId = null;
                 if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))

@@ -36,7 +36,7 @@ namespace YTMusicUploader.Providers
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl +
+                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicBaseUrl +
                                                                 "browse" +
                                                                 (string.IsNullOrEmpty(continuationToken)
                                                                                 ? ""

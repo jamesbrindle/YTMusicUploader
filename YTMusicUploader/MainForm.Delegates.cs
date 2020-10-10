@@ -349,9 +349,12 @@ namespace YTMusicUploader
             {
                 try
                 {
-                    WindowState = FormWindowState.Normal;
                     CenterForm();
+                    Show();
                     ShowInTaskbar = true;
+
+                    if (WindowState == FormWindowState.Minimized)
+                        WindowState = FormWindowState.Normal;
                 }
                 catch { }
 

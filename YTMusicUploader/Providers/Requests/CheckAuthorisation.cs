@@ -25,7 +25,7 @@ namespace YTMusicUploader.Providers
         {
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeBaseUrl + "browse" + Global.YouTubeMusicParams);
+                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicBaseUrl + "browse" + Global.YouTubeMusicParams);
                 request = AddStandardHeaders(request, cookieValue);
 
                 request.ContentType = "application/json; charset=UTF-8";

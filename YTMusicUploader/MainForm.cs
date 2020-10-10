@@ -466,10 +466,9 @@ namespace YTMusicUploader
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                Hide();
                 e.Cancel = true;
-                WindowState = FormWindowState.Minimized;
                 ShowInTaskbar = false;
-
             }
             else
             {

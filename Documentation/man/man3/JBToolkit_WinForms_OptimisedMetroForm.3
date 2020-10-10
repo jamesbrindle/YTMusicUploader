@@ -1,4 +1,4 @@
-.TH "JBToolkit.WinForms.OptimisedMetroForm" 3 "Sun Sep 20 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "JBToolkit.WinForms.OptimisedMetroForm" 3 "Sat Oct 10 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,6 +30,9 @@ Inherits \fBMetroForm\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetTextBoxCueBanner\fP (TextBox textbox, string text)"
+.br
+.ti -1c
+.RI "void \fBSetTextBoxCueBanner\fP (\fBRoundTextBox\fP textbox, string text)"
 .br
 .ti -1c
 .RI "int \fBGetScreenDPI\fP ()"
@@ -121,6 +124,8 @@ Resume the drawing of a control
 .PP
 Iterates through all controls and ensure they're set to double buffered 
 .SS "static int JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SetSystemParametersInfo (int uAction, int uParam, int lpvParam, int fuWinIni)"
+
+.SS "void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SetTextBoxCueBanner (\fBRoundTextBox\fP textbox, string text)"
 
 .SS "void JBToolkit\&.WinForms\&.OptimisedMetroForm\&.SetTextBoxCueBanner (TextBox textbox, string text)"
 

@@ -125,6 +125,14 @@ namespace JBToolkit.WinForms
                 box.SelectionStart = 0;
                 box.SelectionLength = Text.Length;
             }
+
+            base.OnKeyDown(e);
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            box.Text = Text;
         }
 
         protected override void OnTextChanged(EventArgs e)

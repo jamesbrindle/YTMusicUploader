@@ -15,13 +15,33 @@ namespace YTMusicUploader
             }
             else if (e.Button == MouseButtons.Left)
             {
-                ShowForm();
+                if (!Visible)
+                    ShowForm();
+                else
+                {
+                    if (WindowState == FormWindowState.Minimized)
+                        WindowState = FormWindowState.Normal;
+
+                    Activate();
+                    Focus();
+                    BringToFront();
+                }
             }
         }
 
         private void TsmShow_Click(object sender, EventArgs e)
         {
-            ShowForm();
+            if (!Visible)
+                ShowForm();
+            else
+            {
+                if (WindowState == FormWindowState.Minimized)
+                    WindowState = FormWindowState.Normal;
+
+                Activate();
+                Focus();
+                BringToFront();
+            }
         }
 
         private void TsmQuit_Click(object sender, EventArgs e)
