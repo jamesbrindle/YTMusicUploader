@@ -253,40 +253,48 @@ namespace YTMusicUploader.Business
             bool success = false;
             for (int i = 0; i < int.MaxValue; i++)
             {
-                Requests.UploadTrack(
-                        MainForm,
-                        MainForm.Settings.AuthenticationCookie,
-                        musicFile.Path,
-                        MainForm.Settings.ThrottleSpeed,
-                        out string error);                
-
-                if (!string.IsNullOrEmpty(error))
+                if (new FileInfo(musicFile.Path).Length > 309329920)
                 {
-                    if (i >= Global.YouTubeMusic500ErrorRetryAttempts)
-                    {
-                        musicFile.Error = true;
-                        musicFile.ErrorReason = error;
-
-                        _errorsCount++;
-                        MainForm.SetIssuesLabel(_errorsCount.ToString());
-
-                        success = false;
-                        break;
-                    }
-                    else
-                    {
-                        MainForm.SetStatusMessage($"500 Error from YT Music. Waiting 10 seconds then trying again " +
-                                                        $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})",
-                                                  $"500 Error from YT Music. Waiting 10 seconds then trying again " +
-                                                        $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})");
-
-                        ThreadHelper.SafeSleep(10000); // 10 seconds                       
-                    }
+                    musicFile.Error = true;
+                    musicFile.ErrorReason = "File size exeeds YTM limit of 300 MB per track.";
                 }
                 else
                 {
-                    success = true;
-                    break;
+                    Requests.UploadTrack(
+                            MainForm,
+                            MainForm.Settings.AuthenticationCookie,
+                            musicFile.Path,
+                            MainForm.Settings.ThrottleSpeed,
+                            out string error);
+
+                    if (!string.IsNullOrEmpty(error))
+                    {
+                        if (i >= Global.YouTubeMusic500ErrorRetryAttempts)
+                        {
+                            musicFile.Error = true;
+                            musicFile.ErrorReason = error;
+
+                            _errorsCount++;
+                            MainForm.SetIssuesLabel(_errorsCount.ToString());
+
+                            success = false;
+                            break;
+                        }
+                        else
+                        {
+                            MainForm.SetStatusMessage($"500 Error from YT Music. Waiting 10 seconds then trying again " +
+                                                            $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})",
+                                                      $"500 Error from YT Music. Waiting 10 seconds then trying again " +
+                                                            $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})");
+
+                            ThreadHelper.SafeSleep(10000); // 10 seconds                       
+                        }
+                    }
+                    else
+                    {
+                        success = true;
+                        break;
+                    }
                 }
             }
             
