@@ -252,7 +252,7 @@
     </Compile>
     <Compile Include="Dialogues\ManageYTMusic.Events.TextBox.cs">
       <SubType>Form</SubType>
-	  <DependentUpon>ManageYTMusic.cs</DependentUpon>
+      <DependentUpon>ManageYTMusic.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogues\ManageYTMusic.Events.TreeView.cs">
       <SubType>Form</SubType>

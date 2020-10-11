@@ -76,7 +76,7 @@ namespace YTMusicUploader.Dialogues
 
             tvUploads.AfterSelect += TvUploads_AfterSelect;
             tbSearchArtists.TextChanged += TbSearchArtists_TextChanged;
-            tbSearchArtists.KeyDown += TbSearchArtists_KeyDown;           
+            tbSearchArtists.KeyDown += TbSearchArtists_KeyDown;
         }
 
         private void GetArtists()
@@ -444,15 +444,12 @@ namespace YTMusicUploader.Dialogues
 
         private void ResetUserDatabase()
         {
-            new Thread((ThreadStart)delegate
-            {
-                DisableAllActionButtons(true);
-                DataAccess.ResetDatabase();
-                AppendUpdatesText("Database reset complete.",
-                                   ColourHelper.HexStringToColor("#0d5601"));
-                DisableAllActionButtons(false);
-                ShowPreloader(false);
-            }).Start();
+            DisableAllActionButtons(true);
+            DataAccess.ResetDatabase();
+            AppendUpdatesText("Database reset complete.",
+                               ColourHelper.HexStringToColor("#0d5601"));
+            DisableAllActionButtons(false);
+            ShowPreloader(false);
         }
 
         private void DeleteTracksFromYouTubeMusic()
@@ -599,6 +596,6 @@ namespace YTMusicUploader.Dialogues
                 DialogResult = DialogResult.Yes;
             else
                 DialogResult = DialogResult.Cancel;
-        }       
+        }
     }
 }

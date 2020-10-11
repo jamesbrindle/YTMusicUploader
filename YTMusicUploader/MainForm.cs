@@ -74,6 +74,8 @@ namespace YTMusicUploader
         public bool Aborting { get; set; } = false;
         public ManagingYTMusicStatusEnum ManagingYTMusicStatus { get; set; } = ManagingYTMusicStatusEnum.NeverShown;
 
+        private bool StartHidden = false;
+
         //
         // MusicBrainz Access
         //
@@ -89,7 +91,6 @@ namespace YTMusicUploader
         public ToolTip YtMusicManageTooltip { get; set; }
         public ToolTip AboutTooltip { get; set; }
 
-
         //
         // Threads
         //
@@ -104,15 +105,16 @@ namespace YTMusicUploader
 #endif
             CultureHelper.GloballySetCultureToGB();
             MainFormInstance = this;
+            InitializeComponent();
 
             if (hidden)
             {
                 ShowInTaskbar = false;
-                Hide();
+                CenterForm();
+                WindowState = FormWindowState.Minimized;
+                Opacity = 0;
+                StartHidden = true;
             }
-
-            InitializeComponent();
-            SuspendDrawing(this);
 
             MusicDataFetcher = new MusicDataFetcher();
             SetVersion("v" + Global.ApplicationVersion);
@@ -148,8 +150,16 @@ namespace YTMusicUploader
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            OnLoad(e);
-            ResumeDrawing(this);
+            if (StartHidden)
+            {
+                BeginInvoke(new MethodInvoker(delegate
+                {
+                    Hide();
+                }));
+            }
+
+            OnLoad(e);            
+            ResumeDrawing(this);            
         }
 
         private void InitialiseTimers()
@@ -486,6 +496,7 @@ namespace YTMusicUploader
             {
                 Hide();
                 e.Cancel = true;
+                Opacity = 0;
                 ShowInTaskbar = false;
             }
             else

@@ -56,7 +56,6 @@ namespace JBToolkit.WinForms
         {
             try
             {
-
                 if (message.Msg == WM_SYSCOMMAND && (message.WParam.ToInt32() & 0xfff0) == SC_SIZE)
                 {
                     if (FormResizable)
