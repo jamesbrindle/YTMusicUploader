@@ -129,7 +129,6 @@ namespace YTMusicUploader.Business
 
                     count++;
                     RemoveFromDB(conn, musicFile.Path);
-
                 };
 
                 MainForm.SetDiscoveredFilesLabel(MainForm.MusicFileRepo.CountAll().Result.ToString());
@@ -213,7 +212,8 @@ namespace YTMusicUploader.Business
                 {
                     conn.Execute(
                        @"UPDATE MusicFiles
-                            SET Removed = 0
+                            SET Removed = 0,
+                                LastUpload = '0001-01-01 00:00:00'
                          WHERE Id = @Id",
                        new { id });
                 }

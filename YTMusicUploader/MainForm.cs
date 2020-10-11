@@ -108,7 +108,7 @@ namespace YTMusicUploader
             if (hidden)
             {
                 ShowInTaskbar = false;
-                WindowState = FormWindowState.Minimized;
+                Hide();
             }
 
             InitializeComponent();
@@ -364,70 +364,88 @@ namespace YTMusicUploader
             DataAccess.CheckAndCopyDatabaseFile();
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {
-                try
+                MainProcess();
+                int retryIssuesCount = 0;
+                while (MusicFileRepo.CountIssues().Result > 0)
                 {
-                    LoadDb().Wait();
+                    ThreadHelper.SafeSleep(10000);
 
-                    while (InstallingEdge)
-                        ThreadHelper.SafeSleep(200);
+                    retryIssuesCount++;
+                    if (retryIssuesCount < Global.YTMusicIssuesMainProcessRetry)
+                        MainProcess();
+                    else
+                        break;
+                }
+            })
+            {
+                IsBackground = true
+            };
+            _scanAndUploadThread.Start();
+        }
 
+        private void MainProcess()
+        {
+            try
+            {
+                LoadDb().Wait();
+
+                while (InstallingEdge)
+                    ThreadHelper.SafeSleep(200);
+
+                if (Aborting)
+                {
+                    SetStatusMessage("Idle", "Idle");
+                    return;
+                }
+
+                FileScanner.Process();
+                while (!ConnectedToYTMusic)
+                {
                     if (Aborting)
                     {
                         SetStatusMessage("Idle", "Idle");
                         return;
                     }
 
-                    FileScanner.Process();
-                    while (!ConnectedToYTMusic)
-                    {
-                        if (Aborting)
-                        {
-                            SetStatusMessage("Idle", "Idle");
-                            return;
-                        }
-
-                        ThreadHelper.SafeSleep(1000);
-                    }
-
-                    while (!NetworkHelper.InternetConnectionIsUp())
-                    {
-                        SetStatusMessage("No internet connection", "No internet connection");
-                        ThreadHelper.SafeSleep(5000);
-                    }
-
-                    while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
-                    {
-                        try
-                        {
-                            SetConnectedToYouTubeMusic(false);
-                            ThreadHelper.SafeSleep(1000);
-                            Settings = SettingsRepo.Load().Result;
-                        }
-                        catch { }
-                    }
-
-                    SetConnectedToYouTubeMusic(true);
-                    SetStatusMessage("Uploading", "Uploading");
-                    RepopulateAmountLables();
-                    FileUploader.Process().Wait();
-                    SetStatusMessage("Idle", "Idle");
-                    SetUploadingMessage("Idle", "Idle", null, true);
-                    RepopulateAmountLables(true);
+                    ThreadHelper.SafeSleep(1000);
                 }
-                catch (Exception e)
+
+                while (!NetworkHelper.InternetConnectionIsUp())
                 {
-                    string _ = e.Message;
-#if DEBUG
-                    Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
-#endif
+                    SetStatusMessage("No internet connection", "No internet connection");
+                    ThreadHelper.SafeSleep(5000);
                 }
 
-                IdleProcessor.Paused = false;
-            })
+                while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
+                {
+                    try
+                    {
+                        SetConnectedToYouTubeMusic(false);
+                        ThreadHelper.SafeSleep(1000);
+                        Settings = SettingsRepo.Load().Result;
+                    }
+                    catch { }
+                }
+
+                SetConnectedToYouTubeMusic(true);
+                SetStatusMessage("Uploading", "Uploading");
+                RepopulateAmountLables();
+                FileUploader.Process().Wait();
+                SetStatusMessage("Idle", "Idle");
+                SetUploadingMessage("Idle", "Idle", null, true);
+                RepopulateAmountLables(true);
+
+                Thread.Sleep(10000);
+            }
+            catch (Exception e)
             {
-                IsBackground = true
-            };
-            _scanAndUploadThread.Start();
+                string _ = e.Message;
+#if DEBUG
+                Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
+#endif
+            }
+
+            IdleProcessor.Paused = false;
         }
 
         public void RepopulateAmountLables(bool includeDiscoveredFiles = false)

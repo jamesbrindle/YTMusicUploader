@@ -251,8 +251,7 @@ namespace YTMusicUploader.Business
             await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
 
             bool success = false;
-
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < int.MaxValue; i++)
             {
                 Requests.UploadTrack(
                         MainForm,
@@ -281,7 +280,7 @@ namespace YTMusicUploader.Business
                                                   $"500 Error from YT Music. Waiting 10 seconds then trying again " +
                                                         $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})");
 
-                        Thread.Sleep(10000); // 10 seconds
+                        ThreadHelper.SafeSleep(10000); // 10 seconds                       
                     }
                 }
                 else

@@ -31,6 +31,7 @@ namespace YTMusicUploader
         private static string _workingDirectory = null;
         private static string[] _supportedFiles = null;
         private static int? _yTMusic500ErrorRetryAttempts = null;
+        private static int? _yTMusicIssuesMainProcessRetry = null;
 
         /// <summary>
         /// Returns application's version from Assembly
@@ -373,6 +374,30 @@ namespace YTMusicUploader
                 }
 
                 return (int)_yTMusic500ErrorRetryAttempts;
+            }
+        }
+
+        /// <summary>
+        /// How many times to repeat the main process when issues are present
+        /// </summary>
+        public static int YTMusicIssuesMainProcessRetry
+        {
+            get
+            {
+                if (_yTMusicIssuesMainProcessRetry != null)
+                    return (int)_yTMusicIssuesMainProcessRetry;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusicIssuesMainProcessRetry"] != null)
+                        _yTMusicIssuesMainProcessRetry = ConfigurationManager.AppSettings["YTMusicIssuesMainProcessRetry"].ToInt();
+                }
+                catch
+                {
+                    _yTMusicIssuesMainProcessRetry = 15;
+                }
+
+                return (int)_yTMusicIssuesMainProcessRetry;
             }
         }
 
