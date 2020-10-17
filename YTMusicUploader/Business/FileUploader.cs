@@ -284,8 +284,7 @@ namespace YTMusicUploader.Business
                         {
                             MainForm.SetStatusMessage($"500 Error from YT Music. Waiting 10 seconds then trying again " +
                                                             $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})",
-                                                      $"500 Error from YT Music. Waiting 10 seconds then trying again " +
-                                                            $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})");
+                                                      $"Retrying on 500 error ({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})");
 
                             ThreadHelper.SafeSleep(10000); // 10 seconds                       
                         }
