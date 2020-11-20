@@ -1,5 +1,0 @@
-<map id="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainzWithAlbumNameVariation" name="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainzWithAlbumNameVariation">
-<area shape="rect" id="node1" title="Get the recording (track data) from MusicBrainz via query using the artist, album an track names...." alt="" coords="336,31,579,87"/>
-<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ae4ac2c60d860e677cbc93019d19f3b8d" title="Get just the track MBID and ReleaseMBID from the music file or optionally from MusicBrainz if not pre..." alt="" coords="5,5,288,47"/>
-<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a29f070d1553ab3ab7509185433efa0ba" title="First looks at the file meta data for the track MBID then makes a request to MusicBrainz if it&#39;s not ..." alt="" coords="40,71,253,112"/>
-</map>

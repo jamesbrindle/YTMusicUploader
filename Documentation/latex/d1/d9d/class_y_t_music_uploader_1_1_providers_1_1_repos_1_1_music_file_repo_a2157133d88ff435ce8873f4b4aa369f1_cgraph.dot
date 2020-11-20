@@ -1,0 +1,20 @@
+digraph "YTMusicUploader.Providers.Repos.MusicFileRepo.Insert"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.Insert",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Inserts a Music File entry into the database. If the entry already exists, but is flagged as 'removed..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.Providers.\lDataAccess.DbConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996",tooltip="Create an SQLite connection to the database file in the users AppData path"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="YTMusicUploader.Providers.\lDbOperationResult.Fail",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a294611423979cc1924b6436a62a5333f",tooltip="Database process execution and query result object for 'failure'. Contains the error reason and the t..."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.GetMusicFile\lIdFromPath",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a6b28e8ade807403313478427a669d81b",tooltip="Returns the database ID of the music file by a give file path"];
+  Node4 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.RestoreMusicFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a0f999df69e05c29e3f1b9233e30c5b63",tooltip="Sets the 'removed' flag to false"];
+  Node5 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="YTMusicUploader.Providers.\lDbOperationResult.Success",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a7d211fda363a2bc57c5bc92991d4b39d",tooltip="Database process execution and query result object for 'success'. Contains the time taken to perform ..."];
+}

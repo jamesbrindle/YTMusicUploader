@@ -1,0 +1,10 @@
+digraph "YTMusicUploader.Business.EdgeDependencyChecker.CheckEdgeCoreFilesArePresentAndCorrect"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="YTMusicUploader.Business.\lEdgeDependencyChecker.CheckEdge\lCoreFilesArePresentAndCorrect",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Check all the required Edge Core files are present and are the right byte site (i...."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.MainForm.\lMainForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9",tooltip=" "];
+}

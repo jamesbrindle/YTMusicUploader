@@ -1,0 +1,24 @@
+digraph "YTMusicUploader.Business.MusicDataFetcher.GetAlbumArtworkFromCoverArtArchive"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetAlbumArtwork\lFromCoverArtArchive",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Makes a requst to ConvertArchive to try and retrive the album art cover image"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.MusicBrainz.\lAPI.Entities.CoverArtArchive.Get\lCoverArtUri",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/ddd/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_entities_1_1_cover_art_archive.html#a6656cd935ebb111f71e5eea0cc9cf5fb",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetImageBytes\lFromUrl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a9433e70a6a919cb93186739b92bb493e",tooltip="Peforms a HTTP web request and downloads an image"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetReleaseMbId",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ad2e53a86a26a47a3418bb0916ae78245",tooltip="First looks at the file meta data for the release MBID, then makes a request to MusicBrainz if it's n..."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetMusicTagLibFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a50e0a63ee984508b8677e836e27ca4cb",tooltip="Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file"];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetReleaseFrom\lMusicBrainzWithAlbumNameVariation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a950a4ab40983cdbc70821eaa9becb990",tooltip="Get the release (typically, the album data) from MusicBrainz via query using the artist,..."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetReleaseFrom\lMusicBrainz",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ab9b74b81d70a6ddbddf6ef3f4ba76330",tooltip="Get the release (typically, the album data) from MusicBrainz via query using the artist,..."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="YTMusicUploader.MusicBrainz.\lAPI.Services.IReleaseService.SearchAsync",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/d6a/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_service.html#a9bdd1d529806bee9e7240bd6b1911b57",tooltip="Search for a release in the MusicBrainz database, matching the given query."];
+  Node7 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="YTMusicUploader.MusicBrainz.\lAPI.Services.IArtistService.SearchAsync",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d62/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_artist_service.html#ac6a557bc948999cc191351e634be1d20",tooltip="Search for an artist in the MusicBrainz database, matching the given query."];
+}

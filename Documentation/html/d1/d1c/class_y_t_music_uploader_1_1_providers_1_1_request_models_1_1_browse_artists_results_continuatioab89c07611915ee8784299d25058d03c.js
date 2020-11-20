@@ -1,5 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuatioab89c07611915ee8784299d25058d03c =
-[
-    [ "clickTrackingParams", "d1/d1c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuatioab89c07611915ee8784299d25058d03c.html#a6cef25a62f7ac334558b9dfa7ddcdd68", null ],
-    [ "watchPlaylistEndpoint", "d1/d1c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuatioab89c07611915ee8784299d25058d03c.html#a46087685beebc137be6dbe964cfb4bfb", null ]
-];

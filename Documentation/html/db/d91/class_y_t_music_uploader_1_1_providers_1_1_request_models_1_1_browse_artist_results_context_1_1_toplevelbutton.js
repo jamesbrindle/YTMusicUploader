@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_toplevelbutton =
-[
-    [ "likeButtonRenderer", "db/d91/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_toplevelbutton.html#ab1757d822dde5ea115a9c7cf7d58d51e", null ]
-];

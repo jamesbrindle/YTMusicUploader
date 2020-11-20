@@ -1,0 +1,10 @@
+digraph "YTMusicUploader.Business.FileScanner.RecountLibraryFiles"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="YTMusicUploader.Business.\lFileScanner.RecountLibraryFiles",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Updates the 'Discovered Files' count on the main form. Ideally used when updating the form while an u..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.MainForm.\lSetDiscoveredFilesLabel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad5af0ba57a68f99474530af52999381b",tooltip=" "];
+}

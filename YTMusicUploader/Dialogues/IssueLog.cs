@@ -9,7 +9,7 @@ using YTMusicUploader.Providers.DataModels;
 namespace YTMusicUploader.Dialogues
 {
     /// <summary>
-    /// Dialogue
+    /// Upload Issues Log Dialogue
     /// </summary>
     public partial class IssueLog : OptimisedMetroForm
     {
@@ -45,23 +45,23 @@ namespace YTMusicUploader.Dialogues
         /// </summary>
         public void Populate()
         {
-            if (dgvIssues.InvokeRequired)
+            if (dvgLog.InvokeRequired)
             {
                 PopulateDelegate d = new PopulateDelegate(Populate);
                 Invoke(d, new object[] { });
             }
             else
             {
-                dgvIssues.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
-                dgvIssues.Columns["Hash"].Visible = false;
-                dgvIssues.Columns["Removed"].Visible = false;
-                dgvIssues.Columns["MbId"].Visible = false;
-                dgvIssues.Columns["ReleaseMbId"].Visible = false;
-                dgvIssues.Columns["EntityId"].Visible = false;
-                dgvIssues.Columns["Id"].Width = 55;
-                dgvIssues.Columns["Error"].Width = 45;
-                dgvIssues.Columns["Path"].FillWeight = 300;
-                dgvIssues.Columns["LastUpload"].Width = 100;
+                dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+                dvgLog.Columns["Hash"].Visible = false;
+                dvgLog.Columns["Removed"].Visible = false;
+                dvgLog.Columns["MbId"].Visible = false;
+                dvgLog.Columns["ReleaseMbId"].Visible = false;
+                dvgLog.Columns["EntityId"].Visible = false;
+                dvgLog.Columns["Id"].Width = 55;
+                dvgLog.Columns["Error"].Width = 45;
+                dvgLog.Columns["Path"].FillWeight = 300;
+                dvgLog.Columns["LastUpload"].Width = 100;
 
                 SetTitle("Issues Log");
             }
@@ -83,7 +83,7 @@ namespace YTMusicUploader.Dialogues
 
         private void PbRefresh_Click(object sender, EventArgs e)
         {
-            dgvIssues.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+            dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
         }
 
         private void PbRefresh_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -106,13 +106,13 @@ namespace YTMusicUploader.Dialogues
             pbRefresh.Image = Properties.Resources.refresh_hover;
         }
 
-        private void DgvUploads_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvIssues_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex == _previousIndex)
                 _sortDirection ^= true; // toggle direction
 
-            dgvIssues.DataSource = SortData(
-                (List<MusicFile>)dgvIssues.DataSource, dgvIssues.Columns[e.ColumnIndex].Name, _sortDirection);
+            dvgLog.DataSource = SortData(
+                (List<MusicFile>)dvgLog.DataSource, dvgLog.Columns[e.ColumnIndex].Name, _sortDirection);
 
             _previousIndex = e.ColumnIndex;
         }

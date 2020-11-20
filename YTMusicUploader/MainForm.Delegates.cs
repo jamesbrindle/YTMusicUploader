@@ -102,6 +102,20 @@ namespace YTMusicUploader
             }
         }
 
+        delegate void SetSendLogsToSourceDelegate(bool sendLogsToSource);
+        public void SetSendLogsToSource(bool sendLogsToSource)
+        {
+            if (cbStartWithWindows.InvokeRequired)
+            {
+                SetSendLogsToSourceDelegate d = new SetSendLogsToSourceDelegate(SetSendLogsToSource);
+                Invoke(d, new object[] { sendLogsToSource });
+            }
+            else
+            {
+                cbSendErrorLogsToSource.Checked = sendLogsToSource;
+            }
+        }
+
         delegate void SetManageTYMusicButtonEnabledDelegate(bool enabled);
         public void SetManageTYMusicButtonEnabled(bool enabled)
         {
@@ -319,6 +333,8 @@ namespace YTMusicUploader
                 lbWatchFolders.DataSource = new BindingSource(WatchFolders, null);
                 lbWatchFolders.DisplayMember = "Path";
                 lbWatchFolders.ValueMember = "Id";
+
+                lbWatchFolders.SelectedIndex = -1;
             }
         }
 

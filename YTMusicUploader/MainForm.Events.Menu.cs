@@ -20,16 +20,16 @@ namespace YTMusicUploader
                 else
                 {
                     if (WindowState == FormWindowState.Minimized)
-                    {                       
-                        WindowState = FormWindowState.Normal;                        
-                       
+                    {
+                        WindowState = FormWindowState.Normal;
+
                         if (StartHidden)
                         {
                             StartHidden = false;
                             CenterForm();
                         }
 
-                        Opacity = 1;                        
+                        Opacity = 1;
                     }
 
                     ShowInTaskbar = true;

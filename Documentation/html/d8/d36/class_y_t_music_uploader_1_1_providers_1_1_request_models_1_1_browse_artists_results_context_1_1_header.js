@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_header =
-[
-    [ "musicCarouselShelfBasicHeaderRenderer", "d8/d36/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_header.html#aa562a73ea334f92260693e0d5a6ace5a", null ]
-];

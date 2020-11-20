@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace YTMusicUploader.Dialogues
@@ -56,7 +53,7 @@ namespace YTMusicUploader.Dialogues
                         if (artistNode != heightlightedNode)
                             artistNode.BackColor = Color.White;
                     }
-                }               
+                }
             }
 
             tvUploads.AfterSelect += TvUploads_AfterSelect;
@@ -72,11 +69,11 @@ namespace YTMusicUploader.Dialogues
                 {
                     if (_currentMatchNodeIndex == _tnMatchList.Count)
                         _currentMatchNodeIndex = 0;
-                    
+
                     tvUploads.SelectedNode = _tnMatchList[_currentMatchNodeIndex];
                     _tnMatchList[_currentMatchNodeIndex].BackColor = ColourHelper.HexStringToColor("#8eea88");
                     ScrollUploadsArtistNodeToCentre(_tnMatchList[_currentMatchNodeIndex]);
-                    tvUploads.SelectedNode = null;                    
+                    tvUploads.SelectedNode = null;
 
                     foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
                     {

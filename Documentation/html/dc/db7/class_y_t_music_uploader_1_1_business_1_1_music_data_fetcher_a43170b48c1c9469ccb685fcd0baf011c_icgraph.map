@@ -1,5 +1,0 @@
-<map id="YTMusicUploader.Business.MusicDataFetcher.GetMusicFileMetaData" name="YTMusicUploader.Business.MusicDataFetcher.GetMusicFileMetaData">
-<area shape="rect" id="node1" title="Returns MusicFileMetaData object of music file meta data such as:" alt="" coords="336,50,601,91"/>
-<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a14170fb5dc5b9bf4ed5992f549530ef0" title="Get the recording (track data) from MusicBrainz via query using the artist, album an track names from..." alt="" coords="25,5,268,61"/>
-<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ae4ac2c60d860e677cbc93019d19f3b8d" title="Get just the track MBID and ReleaseMBID from the music file or optionally from MusicBrainz if not pre..." alt="" coords="5,86,288,127"/>
-</map>

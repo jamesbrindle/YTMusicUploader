@@ -13,6 +13,7 @@ namespace YTMusicUploader.Providers.DataModels
         public bool StartWithWindows { get; set; } = true;
         public int ThrottleSpeed { get; set; } = -1;
         public string AuthenticationCookie { get; set; } = null;
+        public bool SendLogsToSource { get; set; } = true;
 
         /// <summary>
         /// Updates the database
@@ -24,7 +25,7 @@ namespace YTMusicUploader.Providers.DataModels
         }
 
         /// <summary>
-        /// Not implemented for the 'Settings' model
+        /// NOT IMPLEMENTED
         /// </summary>
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async override Task<DbOperationResult> Delete()

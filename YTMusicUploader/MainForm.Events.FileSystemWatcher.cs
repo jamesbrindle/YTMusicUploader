@@ -11,6 +11,8 @@ namespace YTMusicUploader
         {
             if (LastFolderChangeTime == null)
             {
+                Logger.LogInfo("FolderWatcher_OnChanged", "Library file change detected: Starting scan process");
+
                 LastFolderChangeTime = DateTime.Now;
                 FlagStartQueue();
             }
@@ -22,6 +24,8 @@ namespace YTMusicUploader
         {
             if (LastFolderChangeTime == null)
             {
+                Logger.LogInfo("FolderWatcher_OnRenamed", "Library file change detected: Starting scan process");
+
                 LastFolderChangeTime = DateTime.Now;
                 FlagStartQueue();
             }

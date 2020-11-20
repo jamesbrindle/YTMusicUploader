@@ -7,7 +7,7 @@ digraph "YTMusicUploader.Providers.Repos.MusicFileRepo.CountIssues"
   Node1 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.CountIssues",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Count all non-removed Music File entries that have upload errors"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="YTMusicUploader.MainForm.\lRepopulateAmountLables",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92",tooltip=" "];
-  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="YTMusicUploader.MainForm.\lStartMainProcess",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723",tooltip=" "];
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="YTMusicUploader.MainForm.\lMainForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9",tooltip=" "];

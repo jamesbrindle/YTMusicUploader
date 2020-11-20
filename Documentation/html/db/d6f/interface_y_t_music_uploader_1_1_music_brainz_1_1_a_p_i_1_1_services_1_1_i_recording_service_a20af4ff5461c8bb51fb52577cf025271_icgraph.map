@@ -1,4 +1,0 @@
-<map id="YTMusicUploader.MusicBrainz.API.Services.IRecordingService.GetAsync" name="YTMusicUploader.MusicBrainz.API.Services.IRecordingService.GetAsync">
-<area shape="rect" id="node1" title="Lookup an recording in the MusicBrainz database." alt="" coords="295,5,501,61"/>
-<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a39a5c3fde0aefc1779c2b203c7931294" title="Get the recording (track data) from MusicBrainz via the MBID" alt="" coords="5,5,247,61"/>
-</map>

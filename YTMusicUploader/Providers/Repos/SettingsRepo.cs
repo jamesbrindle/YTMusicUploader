@@ -27,7 +27,8 @@ namespace YTMusicUploader.Providers.Repos
                               Id, 
                               StartWithWindows, 
                               ThrottleSpeed, 
-                              AuthenticationCookie
+                              AuthenticationCookie,
+                              SendLogsToSource
                           FROM Settings").FirstOrDefault();
 
                 return await Task.FromResult(settings);
@@ -53,7 +54,8 @@ namespace YTMusicUploader.Providers.Repos
                             @"UPDATE Settings 
                                  SET StartWithWindows = @StartWithWindows, 
                                      ThrottleSpeed = @ThrottleSpeed,  
-                                     AuthenticationCookie = @AuthenticationCookie
+                                     AuthenticationCookie = @AuthenticationCookie,
+                                     SendLogsToSource = @SendLogsToSource
                               WHERE Id = @Id",
                             settings);
 

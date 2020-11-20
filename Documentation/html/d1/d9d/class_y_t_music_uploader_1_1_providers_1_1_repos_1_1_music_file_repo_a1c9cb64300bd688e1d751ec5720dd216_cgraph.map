@@ -1,4 +1,0 @@
-<map id="YTMusicUploader.Providers.Repos.MusicFileRepo.GetDuplicate" name="YTMusicUploader.Providers.Repos.MusicFileRepo.GetDuplicate">
-<area shape="rect" id="node1" title="Load single MusicFile object by hash and from the database that doesn&#39;t match the given path (i...." alt="" coords="5,5,233,47"/>
-<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="281,5,467,47"/>
-</map>

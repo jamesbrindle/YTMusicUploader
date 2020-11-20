@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_playicon =
-[
-    [ "iconType", "de/d34/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_playicon.html#ad5ca67017160fa91065000db4e06c02f", null ]
-];

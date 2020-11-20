@@ -1,3 +1,0 @@
-<map id="YTMusicUploader.Business.IdleProcessor" name="YTMusicUploader.Business.IdleProcessor">
-<area shape="rect" id="node1" title="Performs operations while the application is in idle state, such as retreiving data from MusicBrainz ..." alt="" coords="5,5,192,141"/>
-</map>

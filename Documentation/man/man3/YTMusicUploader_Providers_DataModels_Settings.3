@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataModels.Settings" 3 "Sat Oct 10 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataModels.Settings" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,7 +19,7 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .ti -1c
 .RI "async override Task< \fBDbOperationResult\fP > \fBDelete\fP ()"
 .br
-.RI "Not implemented for the '\fBSettings\fP' model "
+.RI "NOT IMPLEMENTED "
 .in -1c
 .SS "Properties"
 
@@ -33,6 +33,9 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .ti -1c
 .RI "string \fBAuthenticationCookie\fP = null\fC [get, set]\fP"
 .br
+.ti -1c
+.RI "bool \fBSendLogsToSource\fP = true\fC [get, set]\fP"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -44,7 +47,7 @@ Application settings data
 .SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.Delete ()\fC [virtual]\fP"
 
 .PP
-Not implemented for the '\fBSettings\fP' model 
+NOT IMPLEMENTED 
 .PP
 Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.Save ()\fC [virtual]\fP"
@@ -63,6 +66,8 @@ Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .SH "Property Documentation"
 .PP 
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.AuthenticationCookie = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.SendLogsToSource = true\fC [get]\fP, \fC [set]\fP"
 
 .SS "bool YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.StartWithWindows = true\fC [get]\fP, \fC [set]\fP"
 

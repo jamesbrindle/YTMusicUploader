@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using JBToolkit.Network;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data.SQLite;
 using System.IO;
@@ -142,7 +144,55 @@ namespace YTMusicUploader.Providers
                 {
                     conn.Execute(
                         @"ALTER TABLE MusicFiles
-                         ADD COLUMN EntityId TEXT");
+                          ADD COLUMN EntityId TEXT");
+                }
+
+                //
+                // Added Logs Table in 1.4.9
+                // 
+
+                string result = conn.Query<string>(
+                            @"SELECT name FROM sqlite_master WHERE type='table' AND name='Logs';")
+                    .ToList()
+                    .FirstOrDefault();
+
+                if (string.IsNullOrEmpty(result))
+                {
+                    conn.Execute(
+                        @"CREATE TABLE ""LogType"" (
+	                        ""Id""	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	                        ""Description""	TEXT NOT NULL
+                        );");
+
+                    conn.Execute(
+                        @"INSERT INTO LogType (Id, Description) VALUES
+                          (1, 'Info'),
+                          (2, 'Error')");
+
+                    conn.Execute(
+                        @"CREATE TABLE ""Logs"" (
+	                            ""Id""	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	                            ""Event""	TEXT NOT NULL,
+	                            ""LogTypeId""	INTEGER NOT NULL,
+	                            ""Machine""	TEXT NOT NULL,
+	                            ""Source""	TEXT NOT NULL,
+	                            ""Message""	TEXT NOT NULL,
+	                            ""StackTrace""	TEXT,
+	                            FOREIGN KEY(""LogTypeId"") REFERENCES ""LogType""(""Id"")
+                        );");
+                }
+
+                columns = conn.Query<string>(
+                        @"SELECT name 
+                          FROM PRAGMA_TABLE_INFO('Settings')").ToList();
+
+                if (!columns.Contains("SendLogsToSource"))
+                {
+                    conn.Execute(
+                        @"ALTER TABLE Settings
+                         ADD SendLogsToSource INTEGER DEFAULT 1");
+
+                    Logger.LogInfo("PerformAnyDbUpgrades", "Database version bumped to: 1.4.8");
                 }
             }
         }
@@ -154,6 +204,11 @@ namespace YTMusicUploader.Providers
         public static SQLiteConnection DbConnection()
         {
             return new SQLiteConnection("Data Source=" + Global.DbLocation);
+        }
+
+        internal static MySqlConnection RemoteDbConnection()
+        {
+            return new MySqlConnection(NetworkHelper.ConnectionString("cLx81TqecjVCRGCPV0fmTi99LTsUqYorQR7JiG9RYvqiqic2bT0S3RBh3CyzDt17MVKPaeMs/HOEZvZObCVjy5NN9krbKP2X/SHHuHTMEOBFxunNaGpTvaZl1Fv54uo6PfkaYeQKPUSnorKNxPVQsZAyfr5imIHyj1qP2pW86V6bueaviRkxMRW72G6t3ZNMIgkOZb+0drCq4xphSrz0H8ctMDq304suE/IFFHQ1M1mBPsfi38Zwjwwy3aA+40mf"));
         }
     }
 

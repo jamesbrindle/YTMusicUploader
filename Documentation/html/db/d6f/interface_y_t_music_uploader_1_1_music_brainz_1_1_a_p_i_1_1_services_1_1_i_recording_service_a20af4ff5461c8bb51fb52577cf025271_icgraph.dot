@@ -1,0 +1,10 @@
+digraph "YTMusicUploader.MusicBrainz.API.Services.IRecordingService.GetAsync"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="YTMusicUploader.MusicBrainz.\lAPI.Services.IRecordingService.\lGetAsync",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Lookup an recording in the MusicBrainz database."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetRecordingFrom\lMusicBrainz",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a39a5c3fde0aefc1779c2b203c7931294",tooltip="Get the recording (track data) from MusicBrainz via the MBID"];
+}

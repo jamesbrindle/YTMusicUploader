@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_menu =
-[
-    [ "menuRenderer", "db/d00/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_menu.html#a1f2529169f9514b1f7906422cc5873d3", null ]
-];

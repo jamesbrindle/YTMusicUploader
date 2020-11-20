@@ -1,0 +1,12 @@
+digraph "JBToolkit.WinForms.OptimisedMetroForm.WndProc"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="JBToolkit.WinForms.Optimised\lMetroForm.WndProc",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="JBToolkit.WinForms.Optimised\lMetroForm.GetSystemParametersInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a2396f30e98c3679843a3a48e9b200806",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="JBToolkit.WinForms.Optimised\lMetroForm.SetSystemParametersInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a4b1a40afef599f2a651b5cc7329c1fcc",tooltip=" "];
+}

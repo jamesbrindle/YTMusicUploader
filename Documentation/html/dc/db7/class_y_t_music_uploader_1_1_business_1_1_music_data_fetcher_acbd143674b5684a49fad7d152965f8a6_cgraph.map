@@ -1,9 +1,0 @@
-<map id="YTMusicUploader.Business.MusicDataFetcher.GetAlbumArtwork" name="YTMusicUploader.Business.MusicDataFetcher.GetAlbumArtwork">
-<area shape="rect" id="node1" title="Returns album artwork. First it will look at actual file to see if one is embedded,..." alt="" coords="5,50,240,91"/>
-<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#af48686aceec7ea58422eaaf5e160deda" title="Makes a requst to ConvertArchive to try and retrive the album art cover image" alt="" coords="288,43,523,99"/>
-<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a9433e70a6a919cb93186739b92bb493e" title="Peforms a HTTP web request and downloads an image" alt="" coords="573,5,796,61"/>
-<area shape="rect" id="node4" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a276cf6fb6b4515541a74a74319d7acc1" title="First looks at the file meta data for the release MBID, then makes a request to MusicBrainz if it&#39;s n..." alt="" coords="571,86,799,127"/>
-<area shape="rect" id="node5" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a50e0a63ee984508b8677e836e27ca4cb" title="Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file" alt="" coords="849,49,1095,90"/>
-<area shape="rect" id="node6" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ad7037855e8c1954f547b5a3ac66e4cb2" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="847,115,1097,171"/>
-<area shape="rect" id="node7" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ab9b74b81d70a6ddbddf6ef3f4ba76330" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="1145,115,1376,171"/>
-</map>

@@ -1,6 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_watchendpoint1 =
-[
-    [ "playlistId", "db/da8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_watchendpoint1.html#a6a803fc79ea07e1ebf1452f45874858b", null ],
-    [ "videoId", "db/da8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_watchendpoint1.html#ae62cc9288914436c4eeb13cf9f02b1fa", null ],
-    [ "watchEndpointMusicSupportedConfigs", "db/da8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_watchendpoint1.html#af8118a295be340683b6d9d27d16822e1", null ]
-];

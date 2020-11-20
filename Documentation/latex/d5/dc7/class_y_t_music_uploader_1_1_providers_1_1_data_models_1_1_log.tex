@@ -1,0 +1,155 @@
+\hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{}\doxysection{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log Class Reference}
+\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+
+
+Information or error log object  
+
+
+
+
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log\+:
+% FIG 0
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log\+:
+% FIG 1
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0}{Log\+Type\+Enum}} \{ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0a4059b0251f66a18cb56f544728796875}{Log\+Type\+Enum.\+Info}} = 1, 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0a902b0d55fddef6f8d651fe1035b7d4bd}{Log\+Type\+Enum.\+Error}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Defined the type of log -\/ Error or info \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ae3c559da7080e69ae6babc40269fd3d4}{Delete}} ()
+\begin{DoxyCompactList}\small\item\em N\+OT I\+M\+P\+L\+E\+M\+E\+N\+T\+ED \end{DoxyCompactList}\item 
+async override Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ad5d3bb5eae4d148dfc43511f099cd172}{Save}} ()
+\begin{DoxyCompactList}\small\item\em Adds to the log to the database \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Date\+Time \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_aba637900035bb485c2704f4812997717}{Event}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0}{Log\+Type\+Enum}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ac538e55a422969f3e616271e19e54b87}{Log\+Type\+Id}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ab79c200d5a1f419e8831c77b7e8da6f7}{Machine}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a6ca1a04431f313bb87f50d560550f362}{Source}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a9eeea372934bc29c24e91070e909a22b}{Message}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a73a391844c8a352e1fca3e718bf9bb6d}{Stack\+Trace}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Information or error log object 
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!LogTypeEnum@{LogTypeEnum}}
+\index{LogTypeEnum@{LogTypeEnum}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{LogTypeEnum}{LogTypeEnum}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0}{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Log\+Type\+Enum}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Defined the type of log -\/ Error or info 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Info@{Info}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Info@{Info}}}\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0a4059b0251f66a18cb56f544728796875}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0a4059b0251f66a18cb56f544728796875}} 
+Info&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Error@{Error}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Error@{Error}}}\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0a902b0d55fddef6f8d651fe1035b7d4bd}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0a902b0d55fddef6f8d651fe1035b7d4bd}} 
+Error&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ae3c559da7080e69ae6babc40269fd3d4}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ae3c559da7080e69ae6babc40269fd3d4}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Delete@{Delete}}
+\index{Delete@{Delete}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily override Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+N\+OT I\+M\+P\+L\+E\+M\+E\+N\+T\+ED 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models_a55925b71c9b3c144f69345657936f1c6}{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Db\+Models}}.
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ad5d3bb5eae4d148dfc43511f099cd172}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ad5d3bb5eae4d148dfc43511f099cd172}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Save@{Save}}
+\index{Save@{Save}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily async override Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Adds to the log to the database 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models_a2ba8d26b0274aed160098bdc3cd676b2}{Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Db\+Models}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_aba637900035bb485c2704f4812997717}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_aba637900035bb485c2704f4812997717}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Event@{Event}}
+\index{Event@{Event}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{Event}{Event}}
+{\footnotesize\ttfamily Date\+Time Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Event\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ac538e55a422969f3e616271e19e54b87}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ac538e55a422969f3e616271e19e54b87}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!LogTypeId@{LogTypeId}}
+\index{LogTypeId@{LogTypeId}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{LogTypeId}{LogTypeId}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a76540180dce5859f034fa66e83cca6c0}{Log\+Type\+Enum}} Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Log\+Type\+Id\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ab79c200d5a1f419e8831c77b7e8da6f7}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_ab79c200d5a1f419e8831c77b7e8da6f7}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Machine@{Machine}}
+\index{Machine@{Machine}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{Machine}{Machine}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Machine\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a9eeea372934bc29c24e91070e909a22b}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a9eeea372934bc29c24e91070e909a22b}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Message@{Message}}
+\index{Message@{Message}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{Message}{Message}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Message\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a6ca1a04431f313bb87f50d560550f362}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a6ca1a04431f313bb87f50d560550f362}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!Source@{Source}}
+\index{Source@{Source}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{Source}{Source}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Source\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a73a391844c8a352e1fca3e718bf9bb6d}\label{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log_a73a391844c8a352e1fca3e718bf9bb6d}} 
+\index{YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}!StackTrace@{StackTrace}}
+\index{StackTrace@{StackTrace}!YTMusicUploader.Providers.DataModels.Log@{YTMusicUploader.Providers.DataModels.Log}}
+\doxysubsubsection{\texorpdfstring{StackTrace}{StackTrace}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Data\+Models.\+Log.\+Stack\+Trace\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Data\+Models/\mbox{\hyperlink{_log_8cs}{Log.\+cs}}\end{DoxyCompactItemize}

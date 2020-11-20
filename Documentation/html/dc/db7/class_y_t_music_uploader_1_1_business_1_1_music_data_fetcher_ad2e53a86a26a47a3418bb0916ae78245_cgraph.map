@@ -1,8 +1,0 @@
-<map id="YTMusicUploader.Business.MusicDataFetcher.GetReleaseMbId" name="YTMusicUploader.Business.MusicDataFetcher.GetReleaseMbId">
-<area shape="rect" id="node1" title="First looks at the file meta data for the release MBID, then makes a request to MusicBrainz if it&#39;s n..." alt="" coords="5,43,233,84"/>
-<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a50e0a63ee984508b8677e836e27ca4cb" title="Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file" alt="" coords="281,5,528,47"/>
-<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a950a4ab40983cdbc70821eaa9becb990" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="283,71,526,127"/>
-<area shape="rect" id="node4" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ab9b74b81d70a6ddbddf6ef3f4ba76330" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="576,71,807,127"/>
-<area shape="rect" id="node5" href="$d6/d6a/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_service.html#a9bdd1d529806bee9e7240bd6b1911b57" title="Search for a release in the MusicBrainz database, matching the given query." alt="" coords="855,45,1129,87"/>
-<area shape="rect" id="node6" href="$dd/d62/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_artist_service.html#ac6a557bc948999cc191351e634be1d20" title="Search for an artist in the MusicBrainz database, matching the given query." alt="" coords="863,111,1121,152"/>
-</map>

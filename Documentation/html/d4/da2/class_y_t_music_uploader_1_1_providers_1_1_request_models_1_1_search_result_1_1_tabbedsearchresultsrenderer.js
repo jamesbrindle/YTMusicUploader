@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tabbedsearchresultsrenderer =
-[
-    [ "tabs", "d4/da2/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_tabbedsearchresultsrenderer.html#ae2fcbb931c546a6368b5e047a7491618", null ]
-];

@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation63f6925cd849065e1e2c514ce69d6108 =
-[
-    [ "musicVideoType", "d0/d7a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation63f6925cd849065e1e2c514ce69d6108.html#ad637d0c485d6a1441167c8fc1f3ee55f", null ]
-];

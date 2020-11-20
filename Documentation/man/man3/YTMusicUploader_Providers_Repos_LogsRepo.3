@@ -1,0 +1,82 @@
+.TH "YTMusicUploader.Providers.Repos.LogsRepo" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Repos.LogsRepo \- Log events repository access  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Task< \fBList\fP< \fBLog\fP > > \fBLoadAll\fP ()"
+.br
+.RI "Loads all logs from the databse "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBAdd\fP (\fBLog\fP log)"
+.br
+.RI "Adds the log to the databse "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteOlderThan\fP (DateTime dateTime)"
+.br
+.RI "Deletes logs older than a particular date from the databae "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Log events repository access 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.LogsRepo\&.Add (\fBLog\fP log)"
+
+.PP
+Adds the log to the databse 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlog\fP Log object to record
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.LogsRepo\&.DeleteOlderThan (DateTime dateTime)"
+
+.PP
+Deletes logs older than a particular date from the databae 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdateTime\fP Delete before date
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "Task<\fBList\fP<\fBLog\fP> > YTMusicUploader\&.Providers\&.Repos\&.LogsRepo\&.LoadAll ()"
+
+.PP
+Loads all logs from the databse 
+.PP
+\fBReturns\fP
+.RS 4
+\fBList\fP of MusicFileObjects
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

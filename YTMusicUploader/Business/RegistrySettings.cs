@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,17 +17,24 @@ namespace YTMusicUploader.Business
         /// <param name="startWithWindows">Set to start with windows if true, false otherwise</param>
         public async static Task SetStartWithWindows(bool startWithWindows)
         {
-            if (startWithWindows)
+            try
             {
-                var path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-                RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
-                key.SetValue("YT Music Uploader", "\"" + Application.ExecutablePath.ToString() + "\" -hidden");
+                if (startWithWindows)
+                {
+                    var path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+                    RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
+                    key.SetValue("YT Music Uploader", "\"" + Application.ExecutablePath.ToString() + "\" -hidden");
+                }
+                else
+                {
+                    var path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+                    RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
+                    key.DeleteValue("YT Music Uploader", false);
+                }
             }
-            else
+            catch (Exception e)
             {
-                var path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-                RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
-                key.DeleteValue("YT Music Uploader", false);
+                Logger.Log(e);
             }
 
             await Task.Run(() => { });

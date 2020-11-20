@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_text1 =
-[
-    [ "runs", "d7/da0/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_text1.html#a98419687c2008397a05d1e2e12e9f5eb", null ]
-];

@@ -1,4 +1,0 @@
-<map id="YTMusicUploader.Business.Pipes.IIpcClient" name="YTMusicUploader.Business.Pipes.IIpcClient">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,192,97"/>
-<area shape="rect" id="node2" title="WCF Named pipe client &#45; To Send data to an existing YTMusicUploader process" alt="" coords="5,145,192,252"/>
-</map>

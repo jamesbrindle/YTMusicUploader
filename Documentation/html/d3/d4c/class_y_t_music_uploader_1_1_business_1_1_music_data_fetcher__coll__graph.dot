@@ -1,0 +1,7 @@
+digraph "YTMusicUploader.Business.MusicDataFetcher"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{YTMusicUploader.Business.\lMusicDataFetcher\n|+ MusicBrainzClient\l+ MusicBrainzLastRequest\l|+ MusicDataFetcher()\l+ GetTrackMbId()\l+ GetReleaseMbId()\l+ GetTrackAndReleaseMbId()\l+ GetRecordingFromMusicBrainz\lWithAlbumNameVariation()\l+ GetRecordingFromMusicBrainz\lWithAlbumNameVariation()\l+ GetRecordingFromMusicBrainz()\l+ GetRecordingFromMusicBrainz()\l+ GetReleaseFromMusicBrainz\lWithAlbumNameVariation()\l+ GetReleaseFromMusicBrainz()\l+ GetReleaseFromMusicBrainz()\l+ GetAlbumArtwork()\l+ GetAlbumArtworkFromCover\lArtArchive()\l+ GetMusicFileMetaData()\l+ GetMusicFileMetaDataString()\l+ GetMusicTagLibFile()\l+ GetImageBytesFromUrl()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Gets meta data / tag information from the music file itself and looks up any missing data using a Mus..."];
+}

@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_verticalgradient =
-[
-    [ "gradientLayerColors", "d2/d60/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_verticalgradient.html#a281024380d0f18ddd4e91927c0c3f83d", null ]
-];

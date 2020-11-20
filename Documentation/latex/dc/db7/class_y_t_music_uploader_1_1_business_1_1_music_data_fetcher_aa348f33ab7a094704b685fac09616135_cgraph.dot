@@ -1,0 +1,10 @@
+digraph "YTMusicUploader.Business.MusicDataFetcher.GetReleaseFromMusicBrainz"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetReleaseFrom\lMusicBrainz",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Get the release (typically, the album data) from MusicBrainz via the MBID"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.MusicBrainz.\lAPI.Services.IReleaseService.GetAsync",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d6/d6a/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_release_service.html#ac6ec45083b7ed3ec96fa87a80e7042d6",tooltip="Lookup a release in the MusicBrainz database."];
+}

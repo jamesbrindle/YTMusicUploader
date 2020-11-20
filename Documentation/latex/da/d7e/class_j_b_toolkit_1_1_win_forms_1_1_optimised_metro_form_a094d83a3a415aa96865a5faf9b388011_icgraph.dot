@@ -1,0 +1,16 @@
+digraph "JBToolkit.WinForms.OptimisedMetroForm.SendMessage"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="JBToolkit.WinForms.Optimised\lMetroForm.SendMessage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="JBToolkit.WinForms.Optimised\lMetroForm.ResumeDrawing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a13359eb7cee22371cc8748c68e536f96",tooltip="Resume the drawing of a control"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="JBToolkit.WinForms.Optimised\lMetroForm.OnLoad",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#aec527a96922fa9e51021f2da3b3f29e9",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="JBToolkit.WinForms.Optimised\lMetroForm.SetTextBoxCueBanner",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a27c09716f8e37025305a17f63c0a5142",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="JBToolkit.WinForms.Optimised\lMetroForm.SuspendDrawing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/d7e/class_j_b_toolkit_1_1_win_forms_1_1_optimised_metro_form.html#a2d39e1d50ee60dc221e5e9645142a397",tooltip="Suspend the drawing of a control"];
+}

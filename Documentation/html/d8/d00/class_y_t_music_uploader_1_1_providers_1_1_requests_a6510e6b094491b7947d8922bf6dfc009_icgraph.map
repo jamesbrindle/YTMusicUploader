@@ -1,4 +1,0 @@
-<map id="YTMusicUploader.Providers.Requests.IsSongUploaded" name="YTMusicUploader.Providers.Requests.IsSongUploaded">
-<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="240,5,425,47"/>
-<area shape="rect" id="node2" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="5,5,192,47"/>
-</map>

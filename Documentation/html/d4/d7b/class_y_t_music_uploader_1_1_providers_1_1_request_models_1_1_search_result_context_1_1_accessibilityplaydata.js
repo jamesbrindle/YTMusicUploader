@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_accessibilityplaydata =
-[
-    [ "accessibilityData", "d4/d7b/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_accessibilityplaydata.html#afb7c5d11f71bb1bd531977a5e9eae43a", null ]
-];

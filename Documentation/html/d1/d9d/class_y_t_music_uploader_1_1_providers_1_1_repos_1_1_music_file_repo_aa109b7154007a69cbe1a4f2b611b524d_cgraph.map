@@ -1,4 +1,0 @@
-<map id="YTMusicUploader.Providers.Repos.MusicFileRepo.Load" name="YTMusicUploader.Providers.Repos.MusicFileRepo.Load">
-<area shape="rect" id="node1" title="Load single MusicFile object by file path from the database" alt="" coords="5,5,191,47"/>
-<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="239,5,424,47"/>
-</map>

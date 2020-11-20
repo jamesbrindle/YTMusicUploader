@@ -1,0 +1,10 @@
+digraph "YTMusicUploader.Providers.Repos.WatchFolderRepo.Load"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="YTMusicUploader.Providers.\lRepos.WatchFolderRepo.Load",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Loads a list of library watch folders from the database"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.Providers.\lDataAccess.DbConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996",tooltip="Create an SQLite connection to the database file in the users AppData path"];
+}

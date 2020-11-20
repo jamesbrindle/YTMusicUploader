@@ -1,4 +1,5 @@
 ﻿using JBToolkit.Threads;
+using System;
 using System.Threading;
 
 namespace YTMusicUploader.Business
@@ -39,7 +40,11 @@ namespace YTMusicUploader.Business
                             MainForm.Restart();
                         }
                     }
-                    catch { }
+                    catch (Exception e)
+                    {
+                        Logger.Log(e);
+                        ThreadHelper.SafeSleep(1000);
+                    }
                 }
             })
             {

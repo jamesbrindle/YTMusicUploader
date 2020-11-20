@@ -12,5 +12,11 @@ namespace YTMusicUploader
             Task.Run(async () => await Settings.Save());
             Task.Run(async () => await RegistrySettings.SetStartWithWindows(cbStartWithWindows.Checked));
         }
+
+        private void CbSendErrorLogsToSource_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.SendLogsToSource = cbSendErrorLogsToSource.Checked;
+            Task.Run(async () => await Settings.Save());
+        }
     }
 }

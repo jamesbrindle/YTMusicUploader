@@ -10,7 +10,7 @@ using YTMusicUploader.Providers.DataModels;
 namespace YTMusicUploader.Dialogues
 {
     /// <summary>
-    /// Form to display upload successes. Data fetched from the local database.
+    /// Success Upload Log Dialogue
     /// </summary>
     public partial class UploadLog : OptimisedMetroForm
     {
@@ -44,24 +44,24 @@ namespace YTMusicUploader.Dialogues
         /// </summary>
         public void Populate()
         {
-            if (dgvUploads.InvokeRequired)
+            if (dvgLog.InvokeRequired)
             {
                 PopulateDelegate d = new PopulateDelegate(Populate);
                 Invoke(d, new object[] { });
             }
             else
             {
-                dgvUploads.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
-                dgvUploads.Columns["ReleaseMbId"].Visible = false;
-                dgvUploads.Columns["EntityId"].Visible = false;
-                dgvUploads.Columns["Hash"].Visible = false;
-                dgvUploads.Columns["Removed"].Visible = false;
-                dgvUploads.Columns["Error"].Visible = false;
-                dgvUploads.Columns["ErrorReason"].Visible = false;
-                dgvUploads.Columns["Id"].Width = 55;
-                dgvUploads.Columns["Path"].FillWeight = 300;
-                dgvUploads.Columns["LastUpload"].Width = 100;
-                dgvUploads.Columns["MbId"].DefaultCellStyle = GetHyperLinkStyleForGridCell();
+                dvgLog.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
+                dvgLog.Columns["ReleaseMbId"].Visible = false;
+                dvgLog.Columns["EntityId"].Visible = false;
+                dvgLog.Columns["Hash"].Visible = false;
+                dvgLog.Columns["Removed"].Visible = false;
+                dvgLog.Columns["Error"].Visible = false;
+                dvgLog.Columns["ErrorReason"].Visible = false;
+                dvgLog.Columns["Id"].Width = 55;
+                dvgLog.Columns["Path"].FillWeight = 300;
+                dvgLog.Columns["LastUpload"].Width = 100;
+                dvgLog.Columns["MbId"].DefaultCellStyle = GetHyperLinkStyleForGridCell();
                 SetTitle("Upload Log");
             }
         }
@@ -94,7 +94,7 @@ namespace YTMusicUploader.Dialogues
 
         private void PbRefresh_Click(object sender, EventArgs e)
         {
-            dgvUploads.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
+            dvgLog.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
         }
 
         private void PbRefresh_MouseDown(object sender, MouseEventArgs e)
@@ -122,38 +122,38 @@ namespace YTMusicUploader.Dialogues
             if (e.ColumnIndex == _previousIndex)
                 _sortDirection ^= true; // toggle direction
 
-            dgvUploads.DataSource = SortData(
-                (List<MusicFile>)dgvUploads.DataSource, dgvUploads.Columns[e.ColumnIndex].Name, _sortDirection);
+            dvgLog.DataSource = SortData(
+                (List<MusicFile>)dvgLog.DataSource, dvgLog.Columns[e.ColumnIndex].Name, _sortDirection);
 
             _previousIndex = e.ColumnIndex;
         }
 
         private void DgvUploads_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvUploads.Columns[dgvUploads.CurrentCell.ColumnIndex].HeaderText.Contains("MbId"))
+            if (dvgLog.Columns[dvgLog.CurrentCell.ColumnIndex].HeaderText.Contains("MbId"))
             {
-                if (!string.IsNullOrWhiteSpace(dgvUploads.CurrentCell.EditedFormattedValue.ToString()))
-                    System.Diagnostics.Process.Start("https://musicbrainz.org/recording/" + dgvUploads.CurrentCell.EditedFormattedValue);
+                if (!string.IsNullOrWhiteSpace(dvgLog.CurrentCell.EditedFormattedValue.ToString()))
+                    System.Diagnostics.Process.Start("https://musicbrainz.org/recording/" + dvgLog.CurrentCell.EditedFormattedValue);
             }
         }
 
         private void DgvUploads_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvUploads.Columns[e.ColumnIndex].Name != "MbId")
+            if (dvgLog.Columns[e.ColumnIndex].Name != "MbId")
             {
-                dgvUploads.Cursor = Cursors.Default;
+                dvgLog.Cursor = Cursors.Default;
             }
             else
             {
                 if (e.RowIndex == -1 || e.ColumnIndex == -1)
-                    dgvUploads.Cursor = Cursors.Default;
+                    dvgLog.Cursor = Cursors.Default;
                 else
                 {
-                    if (dgvUploads.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null ||
-                        string.IsNullOrEmpty(dgvUploads.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
-                        dgvUploads.Cursor = Cursors.Default;
+                    if (dvgLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null ||
+                        string.IsNullOrEmpty(dvgLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
+                        dvgLog.Cursor = Cursors.Default;
                     else
-                        dgvUploads.Cursor = Cursors.Hand;
+                        dvgLog.Cursor = Cursors.Hand;
                 }
             }
         }

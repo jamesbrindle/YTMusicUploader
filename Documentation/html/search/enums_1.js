@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['managingytmusicstatusenum_1798',['ManagingYTMusicStatusEnum',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a6f30edd7cdeb2abdec26d2e88c125754',1,'YTMusicUploader::MainForm']]],
-  ['mousestate_1799',['MouseState',['../d8/d9d/namespace_j_b_toolkit_1_1_win_forms.html#a8b98fc50d2a867579c3aa23493fd9444',1,'JBToolkit::WinForms']]]
+  ['logtypeenum_1842',['LogTypeEnum',['../d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html#a76540180dce5859f034fa66e83cca6c0',1,'YTMusicUploader::Providers::DataModels::Log']]]
 ];

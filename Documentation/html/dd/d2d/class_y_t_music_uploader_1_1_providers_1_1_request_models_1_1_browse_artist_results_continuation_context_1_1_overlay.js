@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_overlay =
-[
-    [ "musicItemThumbnailOverlayRenderer", "dd/d2d/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_overlay.html#a4f7580103c5ce2ba916936427a328ccb", null ]
-];

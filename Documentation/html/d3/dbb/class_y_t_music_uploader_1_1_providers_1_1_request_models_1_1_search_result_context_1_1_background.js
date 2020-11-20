@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_background =
-[
-    [ "verticalGradient", "d3/dbb/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_background.html#a2b724e7174ba337c50feb47e70069e7a", null ]
-];

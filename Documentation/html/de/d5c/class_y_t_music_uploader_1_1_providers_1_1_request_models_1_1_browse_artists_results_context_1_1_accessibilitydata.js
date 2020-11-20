@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_accessibilitydata =
-[
-    [ "accessibilityData", "de/d5c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_accessibilitydata.html#adb720e3caa886b6cf379588b776b200e", null ]
-];

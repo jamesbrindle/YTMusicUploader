@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_addtoplaylistendpoint =
-[
-    [ "videoId", "d5/d36/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_addtoplaylistendpoint.html#ad6abca410aeff53fca629542d7623eb5", null ]
-];

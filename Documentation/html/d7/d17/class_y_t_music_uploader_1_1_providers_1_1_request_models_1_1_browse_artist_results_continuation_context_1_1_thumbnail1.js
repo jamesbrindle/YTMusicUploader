@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_thumbnail1 =
-[
-    [ "thumbnails", "d7/d17/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_thumbnail1.html#ad78b9d67283058cc009bc35e8ab43f70", null ]
-];

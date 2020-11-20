@@ -1,9 +1,0 @@
-<map id="YTMusicUploader.Providers.RequestModels.IRequestModel" name="YTMusicUploader.Providers.RequestModels.IRequestModel">
-<area shape="rect" id="node1" title=" " alt="" coords="674,5,877,97"/>
-<area shape="rect" id="node2" href="$d5/d4a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_request_context.html" title="Deserialised HttpWebRequest request body received for a YouTube Music search" alt="" coords="5,145,244,296"/>
-<area shape="rect" id="node3" href="$d8/d20/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context.html" title="Deserialised HttpWebRequest response body received from YouTube Music after a search" alt="" coords="269,145,503,296"/>
-<area shape="rect" id="node4" href="$de/d8e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context.html" title="Deserialised HttpWebRequest response body received from YouTube Music after a search" alt="" coords="527,145,762,296"/>
-<area shape="rect" id="node5" href="$d7/dd2/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context.html" title="Deserialised HttpWebRequest response body received from YouTube Music after a search" alt="" coords="787,153,1028,289"/>
-<area shape="rect" id="node6" href="$db/d9e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_context.html" title="Deserialised HttpWebRequest body to send to YouTube Music to perform a search of uploaded songs" alt="" coords="1053,160,1255,281"/>
-<area shape="rect" id="node7" href="$dc/dc5/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context.html" title="Deserialised HttpWebRequest response body received from YouTube Music after a search" alt="" coords="1280,160,1519,281"/>
-</map>

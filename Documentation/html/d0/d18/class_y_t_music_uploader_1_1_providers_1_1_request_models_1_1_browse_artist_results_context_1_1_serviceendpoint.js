@@ -1,5 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_serviceendpoint =
-[
-    [ "clickTrackingParams", "d0/d18/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_serviceendpoint.html#a08e53142c1628d98d9794f90f764aaf7", null ],
-    [ "queueAddEndpoint", "d0/d18/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_serviceendpoint.html#ad9c5640e1dea3e41425735f64f6ab7fd", null ]
-];

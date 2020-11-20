@@ -359,6 +359,7 @@ namespace System
             return isNum;
         }
 
+
         /// <summary>
         /// Removes any numbers from string
         /// </summary>
@@ -392,6 +393,37 @@ namespace System
             }
 
             return b;
+        }
+
+        /// <summary>
+        /// Shortens a string adding ... to the end if the number of characters is greater than specified
+        /// </summary>
+        public static string Ellipse(this string text, int maxCharacters)
+        {
+            if (text.Length > maxCharacters)
+                return text.Substring(0, maxCharacters) + "...";
+            return text;
+        }
+
+        /// <summary>
+        /// Shortens a file path, splitting the path with ... if it's above the max characters cap.
+        /// E.g: C:\Documents\...\Photos\Cats
+        /// </summary>
+        public static string EllipsisPath(this string filePath, int maxLength = 100)
+        {
+            if (filePath.Length > maxLength)
+            {
+                // Find last '\' character
+                int i = filePath.LastIndexOf('\\');
+
+                string tokenRight = filePath.Substring(i, filePath.Length - i);
+                string tokenCenter = @"\...";
+                string tokenLeft = filePath.Substring(0, maxLength - (tokenRight.Length + tokenCenter.Length));
+
+                return tokenLeft + tokenCenter + tokenRight;
+            }
+            else
+                return filePath;
         }
 
         /// <summary>

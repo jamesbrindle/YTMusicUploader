@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_queuetarget =
-[
-    [ "videoId", "d8/dd5/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_queuetarget.html#a3b4a957e2f4e382d6855ca5eea31842d", null ]
-];

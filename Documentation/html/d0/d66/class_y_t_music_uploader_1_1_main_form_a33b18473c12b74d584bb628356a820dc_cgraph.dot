@@ -1,0 +1,14 @@
+digraph "YTMusicUploader.MainForm.InstallEdge"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="YTMusicUploader.MainForm.\lInstallEdge",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="YTMusicUploader.MainForm.\lSetConnectToYouTubeButtonEnabled",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ac08b0810ba0be3d71049f5ef937d98d9",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="YTMusicUploader.MainForm.\lSetStatusMessage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="YTMusicUploader.MainForm.\lSetSystemTrayIconText",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee",tooltip=" "];
+}

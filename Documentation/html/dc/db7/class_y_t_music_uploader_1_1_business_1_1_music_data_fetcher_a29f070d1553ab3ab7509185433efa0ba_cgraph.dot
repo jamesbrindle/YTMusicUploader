@@ -1,0 +1,16 @@
+digraph "YTMusicUploader.Business.MusicDataFetcher.GetTrackMbId"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetTrackMbId",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="First looks at the file meta data for the track MBID then makes a request to MusicBrainz if it's not ..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetMusicTagLibFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a50e0a63ee984508b8677e836e27ca4cb",tooltip="Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetRecordingFrom\lMusicBrainzWithAlbumNameVariation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a5fe39e790b91f72fb24ae86546217a0f",tooltip="Get the recording (track data) from MusicBrainz via query using the artist, album an track names...."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="YTMusicUploader.Business.\lMusicDataFetcher.GetRecordingFrom\lMusicBrainz",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a7892203555b075bcf4bbb7da3a43ba0e",tooltip="Get the recording (track data) from MusicBrainz via query using the artist, album an track names"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="YTMusicUploader.MusicBrainz.\lAPI.Services.IRecordingService.\lSearchAsync",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/d6f/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_recording_service.html#aa65773bd4edd753f4b269f3eefccb5dc",tooltip="Search for an recording in the MusicBrainz database, matching the given query."];
+}

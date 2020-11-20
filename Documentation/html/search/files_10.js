@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['safefilestream_2ecs_1483',['SafeFileStream.cs',['../d4/d03/_safe_file_stream_8cs.html',1,'']]],
-  ['searchcontext_2ecs_1484',['SearchContext.cs',['../d0/d84/_search_context_8cs.html',1,'']]],
-  ['searchresultscontext_2ecs_1485',['SearchResultsContext.cs',['../dc/d92/_search_results_context_8cs.html',1,'']]],
-  ['settings_2ecs_1486',['Settings.cs',['../d2/d74/_settings_8cs.html',1,'']]],
-  ['settings_2edesigner_2ecs_1487',['Settings.Designer.cs',['../d1/d1c/_settings_8_designer_8cs.html',1,'']]],
-  ['settingsrepo_2ecs_1488',['SettingsRepo.cs',['../d9/d8f/_settings_repo_8cs.html',1,'']]]
+  ['safefilestream_2ecs_1523',['SafeFileStream.cs',['../d4/d03/_safe_file_stream_8cs.html',1,'']]],
+  ['searchcontext_2ecs_1524',['SearchContext.cs',['../d0/d84/_search_context_8cs.html',1,'']]],
+  ['searchresultscontext_2ecs_1525',['SearchResultsContext.cs',['../dc/d92/_search_results_context_8cs.html',1,'']]],
+  ['settings_2ecs_1526',['Settings.cs',['../d2/d74/_settings_8cs.html',1,'']]],
+  ['settings_2edesigner_2ecs_1527',['Settings.Designer.cs',['../d1/d1c/_settings_8_designer_8cs.html',1,'']]],
+  ['settingsrepo_2ecs_1528',['SettingsRepo.cs',['../d9/d8f/_settings_repo_8cs.html',1,'']]]
 ];

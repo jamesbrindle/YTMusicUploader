@@ -66,10 +66,21 @@ namespace YTMusicUploader.Providers
         /// </summary>
         public static void LoadArtistCache(string authenticationCookie)
         {
-            UploadCheckCache.Pause = true;
-            ArtistCache = null;
-            ArtistCache = GetArtists(authenticationCookie);
-            UploadCheckCache.Pause = false;
+            try
+            {
+                Logger.LogInfo("LoadArtistCache", "Loading artists for cache");
+
+                UploadCheckCache.Pause = true;
+                ArtistCache = null;
+                ArtistCache = GetArtists(authenticationCookie);
+                UploadCheckCache.Pause = false;
+
+                Logger.LogInfo("LoadArtistCache", "Load artists complete");
+            }
+            catch (Exception e)
+            {
+                Logger.Log(e);
+            }
         }
 
         /// <summary>
@@ -84,82 +95,91 @@ namespace YTMusicUploader.Providers
             string cookieValue,
             MusicDataFetcher musicDataFetcher = null)
         {
-            UploadCheckCache.CleanUp = false;
-            UploadCheckCache.CachedObjects.Clear();
-            UploadCheckCache.CachedObjectHash.Clear();
-
             try
             {
-                if (UploadCheckPreloaderThread != null)
-                    UploadCheckPreloaderThread.Abort();
-            }
-            catch { }
+                Logger.LogInfo("LoadArtistCache", "Uploads details pre-fetch started (with no complete info)");
 
-            UploadCheckPreloaderThread = new Thread((ThreadStart)delegate
-            {
-                while (!UploadCheckCache.CleanUp)
-                {
-                    // The pretecher runs in parallel and doesn't leave any time
-                    // for the normal requests... So every second grant a full 100ms
-
-                    UploadCheckCache.Sleep = true;
-                    ThreadHelper.SafeSleep(100);
-                    UploadCheckCache.Sleep = false;
-                    ThreadHelper.SafeSleep(1000);
-                }
-
+                UploadCheckCache.CleanUp = false;
                 UploadCheckCache.CachedObjects.Clear();
                 UploadCheckCache.CachedObjectHash.Clear();
-            })
-            {
-                IsBackground = true
-            };
-            UploadCheckPreloaderThread.Start();
 
-            UploadCheckPreloaderThread = new Thread((ThreadStart)delegate
-            {
-                musicFilesList.AsParallel().ForAllInApproximateOrder(cacheObject =>
+                try
                 {
-                    if (!UploadCheckCache.CleanUp)
+                    if (UploadCheckPreloaderThread != null)
+                        UploadCheckPreloaderThread.Abort();
+                }
+                catch { }
+
+                UploadCheckPreloaderThread = new Thread((ThreadStart)delegate
+                {
+                    while (!UploadCheckCache.CleanUp)
                     {
-                        while (UploadCheckCache.Sleep)
-                            ThreadHelper.SafeSleep(2);
+                        // The pretecher runs in parallel and doesn't leave any time
+                        // for the normal requests... So every second grant a full 100ms
 
-                        while (UploadCheckCache.Pause)
-                            ThreadHelper.SafeSleep(200);
-
-                        UploadCheckCache.CachedObjects.Add(new UploadCheckCache.MusicFileCacheObject
-                        {
-                            MusicFilePath = cacheObject.Path,
-                            Result = IsSongUploaded(cacheObject.Path, cookieValue, out string entityId, musicDataFetcher, false) != UploadCheckResult.NotPresent,
-                            EntityId = entityId,
-
-                            MbId = !string.IsNullOrEmpty(cacheObject.MbId)
-                                                ? cacheObject.MbId
-                                                : musicDataFetcher.GetTrackMbId(cacheObject.Path, false).Result,
-
-                            ReleaseMbId = !string.IsNullOrEmpty(cacheObject.MbId)
-                                                       ? cacheObject.ReleaseMbId
-                                                       : musicDataFetcher.GetReleaseMbId(cacheObject.Path, false).Result
-
-                        });
-
-                        UploadCheckCache.CachedObjectHash.Add(cacheObject.Path);
+                        UploadCheckCache.Sleep = true;
+                        ThreadHelper.SafeSleep(100);
+                        UploadCheckCache.Sleep = false;
+                        ThreadHelper.SafeSleep(1000);
                     }
-                    else
+
+                    UploadCheckCache.CachedObjects.Clear();
+                    UploadCheckCache.CachedObjectHash.Clear();
+                })
+                {
+                    IsBackground = true
+                };
+                UploadCheckPreloaderThread.Start();
+
+                UploadCheckPreloaderThread = new Thread((ThreadStart)delegate
+                {
+                    musicFilesList.AsParallel().ForAllInApproximateOrder(cacheObject =>
                     {
-                        try
+                        if (!UploadCheckCache.CleanUp)
                         {
-                            return;
+                            while (UploadCheckCache.Sleep)
+                                ThreadHelper.SafeSleep(2);
+
+                            while (UploadCheckCache.Pause)
+                                ThreadHelper.SafeSleep(200);
+
+                            UploadCheckCache.CachedObjects.Add(new UploadCheckCache.MusicFileCacheObject
+                            {
+                                MusicFilePath = cacheObject.Path,
+                                Result = IsSongUploaded(cacheObject.Path, cookieValue, out string entityId, musicDataFetcher, false) != UploadCheckResult.NotPresent,
+                                EntityId = entityId,
+
+                                MbId = !string.IsNullOrEmpty(cacheObject.MbId)
+                                                    ? cacheObject.MbId
+                                                    : musicDataFetcher.GetTrackMbId(cacheObject.Path, false).Result,
+
+                                ReleaseMbId = !string.IsNullOrEmpty(cacheObject.MbId)
+                                                           ? cacheObject.ReleaseMbId
+                                                           : musicDataFetcher.GetReleaseMbId(cacheObject.Path, false).Result
+
+                            });
+
+                            UploadCheckCache.CachedObjectHash.Add(cacheObject.Path);
                         }
-                        catch { }
-                    }
-                }, Global.MaxDegreesOfParallelism);
-            })
+                        else
+                        {
+                            try
+                            {
+                                return;
+                            }
+                            catch { }
+                        }
+                    }, Global.MaxDegreesOfParallelism);
+                })
+                {
+                    IsBackground = true
+                };
+                UploadCheckPreloaderThread.Start();
+            }
+            catch (Exception e)
             {
-                IsBackground = true
-            };
-            UploadCheckPreloaderThread.Start();
+                Logger.Log(e);
+            }
         }
 
         /// <summary>
@@ -185,44 +205,53 @@ namespace YTMusicUploader.Providers
         {
             entityId = string.Empty;
 
-            if (checkCheck && UploadCheckCache.CachedObjectHash.Contains(musicFilePath))
+            try
             {
-                var cache = UploadCheckCache.CachedObjects
-                                            .Where(m => m.MusicFilePath == musicFilePath)
-                                            .FirstOrDefault();
-
-                entityId = cache.EntityId;
-                return cache.Result
-                                ? UploadCheckResult.Present_FromCache
-                                : UploadCheckResult.NotPresent;
-            }
-            else
-            {
-                if (musicDataFetcher == null)
-                    musicDataFetcher = new MusicDataFetcher();
-
-                var musicFileMetaData = musicDataFetcher.GetMusicFileMetaData(musicFilePath);
-                if (musicFileMetaData == null ||
-                    musicFileMetaData.Artist == null ||
-                    musicFileMetaData.Track == null)
+                if (checkCheck && UploadCheckCache.CachedObjectHash.Contains(musicFilePath))
                 {
-                    return UploadCheckResult.NotPresent;
-                }
+                    var cache = UploadCheckCache.CachedObjects
+                                                .Where(m => m.MusicFilePath == musicFilePath)
+                                                .FirstOrDefault();
 
-                string artist = musicFileMetaData.Artist;
-                string album = musicFileMetaData.Album;
-                string track = musicFileMetaData.Track;
-
-                try
-                {
-                    return IsSongUploadedMulitpleNameVariation(artist, album, track, cookieValue, parallel, out entityId)
-                                    ? UploadCheckResult.Present_NewRequest
+                    entityId = cache.EntityId;
+                    return cache.Result
+                                    ? UploadCheckResult.Present_FromCache
                                     : UploadCheckResult.NotPresent;
                 }
-                catch
+                else
                 {
-                    return UploadCheckResult.NotPresent;
+                    if (musicDataFetcher == null)
+                        musicDataFetcher = new MusicDataFetcher();
+
+                    var musicFileMetaData = musicDataFetcher.GetMusicFileMetaData(musicFilePath);
+                    if (musicFileMetaData == null ||
+                        musicFileMetaData.Artist == null ||
+                        musicFileMetaData.Track == null)
+                    {
+                        return UploadCheckResult.NotPresent;
+                    }
+
+                    string artist = musicFileMetaData.Artist;
+                    string album = musicFileMetaData.Album;
+                    string track = musicFileMetaData.Track;
+
+                    try
+                    {
+                        return IsSongUploadedMulitpleNameVariation(artist, album, track, cookieValue, parallel, out entityId)
+                                        ? UploadCheckResult.Present_NewRequest
+                                        : UploadCheckResult.NotPresent;
+                    }
+                    catch
+                    {
+                        return UploadCheckResult.NotPresent;
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Logger.Log(e, "Error while checkking if song was uploaded:" + musicFilePath);
+
+                return UploadCheckResult.NotPresent;
             }
         }
 
@@ -592,7 +621,7 @@ namespace YTMusicUploader.Providers
                                                         entityId = deleteRuns[0].ToString();
                                                 }
                                             }
-                                        }                                       
+                                        }
                                     }
                                 }
                             }

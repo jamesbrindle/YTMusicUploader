@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_request_context_1_1_d0330367f2958ae9d3c5a36848ff1360 =
-[
-    [ "pageType", "da/dcc/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_request_context_1_1_d0330367f2958ae9d3c5a36848ff1360.html#a38e493491f76519281302f026bbf862b", null ]
-];

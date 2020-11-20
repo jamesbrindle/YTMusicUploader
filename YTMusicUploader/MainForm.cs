@@ -39,6 +39,7 @@ namespace YTMusicUploader
         public ConnectToYTMusic ConnectToYTMusicForm { get; set; }
         public IssueLog IssueLogForm { get; set; } = null;
         public UploadLog UploadLogForm { get; set; } = null;
+        public ApplicationLog GeneralLogForm { get; set; } = null;
         public ManageYTMusic ManageYTMusic { get; set; } = null;
 
         //
@@ -104,6 +105,9 @@ namespace YTMusicUploader
             CheckForIllegalCrossThreadCalls = false;
 #endif
             CultureHelper.GloballySetCultureToGB();
+
+            Logger.LogInfo("MainForm", "Application start begin");
+
             MainFormInstance = this;
             InitializeComponent();
 
@@ -139,6 +143,8 @@ namespace YTMusicUploader
             InitialiseTooltips();
             InitialiseSystemTrayIconMenuButtons();
 
+            Logger.LogInfo("MainForm", "Application start success");
+
             ConnectToYouTubeMusic();
             StartMainProcess();
         }
@@ -158,8 +164,8 @@ namespace YTMusicUploader
                 }));
             }
 
-            OnLoad(e);            
-            ResumeDrawing(this);            
+            OnLoad(e);
+            ResumeDrawing(this);
         }
 
         private void InitialiseTimers()
@@ -322,14 +328,18 @@ namespace YTMusicUploader
             var uploadsCount = await MusicFileRepo.CountUploaded();
 
             await RegistrySettings.SetStartWithWindows(Settings.StartWithWindows);
+            SetSendLogsToSource(Settings.SendLogsToSource);
             SetStartWithWindows(Settings.StartWithWindows);
             SetDiscoveredFilesLabel(InitialFilesCount.ToString());
+
             await BindWatchFoldersList();
             await InitialiseFolderWatchers();
 
             InitialFilesCount = Task.FromResult(initialFilesCount).Result;
             SetIssuesLabel(Task.FromResult(issueCount).Result.ToString());
             SetUploadedLabel(Task.FromResult(uploadsCount).Result.ToString());
+
+            Logger.ClearHistoricLogs();
 
             RunDebugCommands();
         }
@@ -360,6 +370,7 @@ namespace YTMusicUploader
                     Settings = SettingsRepo.Load().Result;
                 }
 
+                Logger.LogInfo("ConnectToYouTubeMusic", "Connection to YouTube Music successful");
                 SetConnectedToYouTubeMusic(true);
             })
             {
@@ -370,8 +381,14 @@ namespace YTMusicUploader
 
         public void StartMainProcess()
         {
+            Logger.LogInfo("StartMainProcess", "Main process thread starting");
+
             IdleProcessor.Paused = true;
+
+            Logger.LogInfo("StartMainProcess", "DB check starting");
             DataAccess.CheckAndCopyDatabaseFile();
+            Logger.LogInfo("StartMainProcess", "DB check complete");
+
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {
                 MainProcess();
@@ -408,7 +425,10 @@ namespace YTMusicUploader
                     return;
                 }
 
+                Logger.LogInfo("MainProcess", "File scanner starting");
                 FileScanner.Process();
+                Logger.LogInfo("MainProcess", "File scan complete");
+
                 while (!ConnectedToYTMusic)
                 {
                     if (Aborting)
@@ -440,7 +460,11 @@ namespace YTMusicUploader
                 SetConnectedToYouTubeMusic(true);
                 SetStatusMessage("Uploading", "Uploading");
                 RepopulateAmountLables();
+
+                Logger.LogInfo("MainProcess", "Starting upload check and process");
                 FileUploader.Process().Wait();
+                Logger.LogInfo("MainProcess", "Upload check and process complete");
+
                 SetStatusMessage("Idle", "Idle");
                 SetUploadingMessage("Idle", "Idle", null, true);
                 RepopulateAmountLables(true);
@@ -452,6 +476,7 @@ namespace YTMusicUploader
                 string _ = e.Message;
 #if DEBUG
                 Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
+                Logger.Log(e);
 #endif
             }
 
@@ -507,6 +532,8 @@ namespace YTMusicUploader
 
         public void QuitApplication()
         {
+            Logger.LogInfo("MainForm_FormClosing", "Application closing");
+
             Aborting = true;
             Requests.UploadCheckCache.CleanUp = true;
             IdleProcessor.Stopped = true;

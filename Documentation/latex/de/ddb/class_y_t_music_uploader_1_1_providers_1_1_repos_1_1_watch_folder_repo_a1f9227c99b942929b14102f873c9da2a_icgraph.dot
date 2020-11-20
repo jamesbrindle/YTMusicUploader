@@ -1,0 +1,10 @@
+digraph "YTMusicUploader.Providers.Repos.WatchFolderRepo.Insert"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="YTMusicUploader.Providers.\lRepos.WatchFolderRepo.Insert",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="YTMusicUploader.Providers.\lDataModels.WatchFolder.Save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html#a22bddb4f7cd608a26adc32cf23e98e52",tooltip="Insert into the database"];
+}

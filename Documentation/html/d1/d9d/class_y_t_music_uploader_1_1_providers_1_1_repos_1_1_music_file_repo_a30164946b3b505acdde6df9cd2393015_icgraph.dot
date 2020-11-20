@@ -1,0 +1,10 @@
+digraph "YTMusicUploader.Providers.Repos.MusicFileRepo.Update"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.Update",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Updates the Music File entry in the database with the fields of the given MusicFile object"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="YTMusicUploader.Providers.\lDataModels.MusicFile.Save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html#a6d852cd37ed75db01fb143d2bebc0244",tooltip="Insert or update the database"];
+}

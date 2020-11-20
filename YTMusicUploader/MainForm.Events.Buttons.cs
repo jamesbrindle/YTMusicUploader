@@ -95,8 +95,11 @@ namespace YTMusicUploader
 
         private void BtnRemoveWatchFolder_Click(object sender, EventArgs e)
         {
-            Aborting = true;
-            Task.Run(async () => await RemoveWachFolder());
+            if (lbWatchFolders.SelectedIndex > -1)
+            {
+                Aborting = true;
+                Task.Run(async () => await RemoveWachFolder());
+            }
         }
 
         private async Task RemoveWachFolder()
@@ -224,6 +227,44 @@ namespace YTMusicUploader
         private void PbYtMusicManage_MouseUp(object sender, MouseEventArgs e)
         {
             pbYtMusicManage.Image = Properties.Resources.ytmusic_manage_hover;
+        }
+
+        // Log
+
+        private void PbLog_MouseDown(object sender, MouseEventArgs e)
+        {
+            pbLog.Image = Properties.Resources.log_down;
+        }
+
+        private void PbLog_MouseEnter(object sender, EventArgs e)
+        {
+            pbLog.Image = Properties.Resources.log_hover;
+        }
+
+        private void PbLog_MouseLeave(object sender, EventArgs e)
+        {
+            pbLog.Image = Properties.Resources.log_up;
+        }
+
+        private void PLog_MouseUp(object sender, MouseEventArgs e)
+        {
+            pbLog.Image = Properties.Resources.log_hover;
+        }
+
+        private void PbLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (GeneralLogForm == null)
+                    GeneralLogForm = new ApplicationLog();
+
+                GeneralLogForm.ShowDialog();
+            }
+            catch
+            {
+                GeneralLogForm = new ApplicationLog();
+                GeneralLogForm.ShowDialog();
+            }
         }
 
         // About

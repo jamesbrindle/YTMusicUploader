@@ -1,5 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_notificationtextrenderer =
-[
-    [ "successResponseText", "d0/df0/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_notificationtextrenderer.html#a88018ed4473e4d3275d68543516736e5", null ],
-    [ "trackingParams", "d0/df0/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_notificationtextrenderer.html#ae09513763ee65f3f7c1802c9dcbf0755", null ]
-];

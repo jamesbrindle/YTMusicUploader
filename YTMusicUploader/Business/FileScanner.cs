@@ -143,19 +143,30 @@ namespace YTMusicUploader.Business
         /// </summary>
         public void RecountLibraryFiles()
         {
-            int count = 0;
-            foreach (var watchFolder in MainForm.WatchFolders)
-            {
-                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(watchFolder.Path,
-                                                                            "*.*",
-                                                                            SearchOption.AllDirectories))
-                {
-                    if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
-                        count++;
-                }
-            }
+            Logger.LogInfo("RecountLibraryFiles", "Recounting library files");
 
-            MainForm.SetDiscoveredFilesLabel(count.ToString());
+            try
+            {
+
+                int count = 0;
+                foreach (var watchFolder in MainForm.WatchFolders)
+                {
+                    foreach (var file in FastDirectoryEnumerator.EnumerateFiles(watchFolder.Path,
+                                                                                "*.*",
+                                                                                SearchOption.AllDirectories))
+                    {
+                        if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                            count++;
+                    }
+                }
+
+                Logger.LogInfo("RecountLibraryFiles", "Recounting library files complete: " + count + " files");
+                MainForm.SetDiscoveredFilesLabel(count.ToString());
+            }
+            catch (Exception e)
+            {
+                Logger.Log(e);
+            }
         }
 
         private void SetStatus(string statusText = null, string systemTrayIconText = null)

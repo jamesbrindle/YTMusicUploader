@@ -1,0 +1,117 @@
+.TH "YTMusicUploader.Providers.DataModels.Log" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.DataModels.Log \- Information or error log object  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBLogTypeEnum\fP { \fBLogTypeEnum\&.Info\fP = 1, \fBLogTypeEnum\&.Error\fP = 2 }"
+.br
+.RI "Defined the type of log - Error or info "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override Task< \fBDbOperationResult\fP > \fBDelete\fP ()"
+.br
+.RI "NOT IMPLEMENTED "
+.ti -1c
+.RI "async override Task< \fBDbOperationResult\fP > \fBSave\fP ()"
+.br
+.RI "Adds to the log to the database "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "DateTime \fBEvent\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBLogTypeEnum\fP \fBLogTypeId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBMachine\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBSource\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBMessage\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBStackTrace\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Information or error log object 
+
+
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBYTMusicUploader\&.Providers\&.DataModels\&.Log\&.LogTypeEnum\fP\fC [strong]\fP"
+
+.PP
+Defined the type of log - Error or info 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIInfo \fP\fP
+.TP
+\fB\fIError \fP\fP
+.SH "Member Function Documentation"
+.PP 
+.SS "override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.Log\&.Delete ()\fC [virtual]\fP"
+
+.PP
+NOT IMPLEMENTED 
+.PP
+\fBReturns\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.Log\&.Save ()\fC [virtual]\fP"
+
+.PP
+Adds to the log to the database 
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.PP
+Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "DateTime YTMusicUploader\&.Providers\&.DataModels\&.Log\&.Event\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBLogTypeEnum\fP YTMusicUploader\&.Providers\&.DataModels\&.Log\&.LogTypeId\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.Log\&.Machine\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.Log\&.Message\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.Log\&.Source\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.Log\&.StackTrace\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

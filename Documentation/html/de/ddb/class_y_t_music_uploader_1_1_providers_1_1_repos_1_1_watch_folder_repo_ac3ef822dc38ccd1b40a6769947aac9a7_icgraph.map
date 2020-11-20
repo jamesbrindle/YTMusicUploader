@@ -1,5 +1,0 @@
-<map id="YTMusicUploader.Providers.Repos.WatchFolderRepo.GetWatchFolderIdFromPath" name="YTMusicUploader.Providers.Repos.WatchFolderRepo.GetWatchFolderIdFromPath">
-<area shape="rect" id="node1" title="Returns the database ID of the library watch folder from a given full directory path" alt="" coords="505,5,736,61"/>
-<area shape="rect" id="node2" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html#a276572e4606d25da81865bcee0a7d5eb" title="Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object" alt="" coords="255,13,457,54"/>
-<area shape="rect" id="node3" href="$d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html#a493e741107023c0bedacff2ff763e8bb" title="Insert into the database" alt="" coords="5,13,207,54"/>
-</map>

@@ -1,5 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_musicheaderrenderer =
-[
-    [ "title", "da/d91/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_musicheaderrenderer.html#a339fa71962bc195d4c86260005fc74ff", null ],
-    [ "trackingParams", "da/d91/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_musicheaderrenderer.html#a27f214985963ac32a8bf01fb8af7851c", null ]
-];

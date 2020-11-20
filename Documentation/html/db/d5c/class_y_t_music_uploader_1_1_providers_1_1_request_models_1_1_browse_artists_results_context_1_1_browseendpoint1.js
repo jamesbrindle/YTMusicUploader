@@ -1,5 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint1 =
-[
-    [ "browseEndpointContextSupportedConfigs", "db/d5c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint1.html#ac93140ab486cabde3eff5dc18fdba78c", null ],
-    [ "browseId", "db/d5c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint1.html#ae5e1f2d4031e4c29b1d04cf28c3d3c42", null ]
-];

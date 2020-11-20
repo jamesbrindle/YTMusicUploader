@@ -1,5 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_watchplaylistendpoint2 =
-[
-    [ "_params", "da/de4/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_watchplaylistendpoint2.html#ae8c054bd7e675c1689190ee8224aca9d", null ],
-    [ "playlistId", "da/de4/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_watchplaylistendpoint2.html#ae375d02c6a6ad3803af030258f476c21", null ]
-];

@@ -1,4 +1,0 @@
-<map id="YTMusicUploader.Providers.Requests.IsSongUploadedMulitpleAlbumNameVariations" name="YTMusicUploader.Providers.Requests.IsSongUploadedMulitpleAlbumNameVariations">
-<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="5,5,225,61"/>
-<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a99562c8c5a51bb201bdb9e5169793959" title="HttpWebRequest POST request to send to YouTube to determine if the song about to be uploaded already ..." alt="" coords="273,13,459,54"/>
-</map>

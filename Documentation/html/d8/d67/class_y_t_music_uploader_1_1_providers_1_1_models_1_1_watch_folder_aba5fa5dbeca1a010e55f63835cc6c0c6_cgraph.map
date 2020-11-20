@@ -1,8 +1,0 @@
-<map id="YTMusicUploader.Providers.Models.WatchFolder.Save" name="YTMusicUploader.Providers.Models.WatchFolder.Save">
-<area shape="rect" id="node1" title="Insert into the database" alt="" coords="5,70,191,111"/>
-<area shape="rect" id="node2" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html#a276572e4606d25da81865bcee0a7d5eb" title="Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object" alt="" coords="239,70,441,111"/>
-<area shape="rect" id="node3" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="768,41,953,82"/>
-<area shape="rect" id="node4" href="$d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a294611423979cc1924b6436a62a5333f" title="Database process execution and query result object for &#39;failure&#39;. Contains the error reason and the t..." alt="" coords="512,33,697,74"/>
-<area shape="rect" id="node5" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html#ac3ef822dc38ccd1b40a6769947aac9a7" title="Returns the database ID of the library watch folder from a given full directory path" alt="" coords="489,99,720,155"/>
-<area shape="rect" id="node6" href="$d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a7d211fda363a2bc57c5bc92991d4b39d" title="Database process execution and query result object for &#39;success&#39;. Contains the time taken to perform ..." alt="" coords="511,179,698,221"/>
-</map>

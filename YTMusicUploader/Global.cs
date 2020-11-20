@@ -17,6 +17,7 @@ namespace YTMusicUploader
         private static string _appDataLocation = null;
         private static bool? _multiThreadedRequests = null;
         private static int? _maxDegreesOfParallelism = null;
+        private static int? _clearLogsAfterDays = null;
         private static string _dbLocation = null;
         private static string _edgeFolder = null;
         private static string _edgeVersion = null;
@@ -153,8 +154,8 @@ namespace YTMusicUploader
 
                 try
                 {
-                    if (ConfigurationManager.AppSettings["YouTubeMusicBaseUrl"] != null)
-                        _youTubeBaseUrl = ConfigurationManager.AppSettings["YouTubeMusicBaseUrl"];
+                    if (ConfigurationManager.AppSettings["YTMusicMusicBaseUrl"] != null)
+                        _youTubeBaseUrl = ConfigurationManager.AppSettings["YTMusicMusicBaseUrl"];
                 }
                 catch
                 {
@@ -177,8 +178,8 @@ namespace YTMusicUploader
 
                 try
                 {
-                    if (ConfigurationManager.AppSettings["YouTubeMusicUploadUrl"] != null)
-                        _youTubeMusicUploadUrl = ConfigurationManager.AppSettings["YouTubeMusicUploadUrl"];
+                    if (ConfigurationManager.AppSettings["YTMusicUploadUrl"] != null)
+                        _youTubeMusicUploadUrl = ConfigurationManager.AppSettings["YTMusicUploadUrl"];
                 }
                 catch
                 {
@@ -201,8 +202,8 @@ namespace YTMusicUploader
 
                 try
                 {
-                    if (ConfigurationManager.AppSettings["YouTubeMusicParams"] != null)
-                        _youTubeMusicParams = ConfigurationManager.AppSettings["YouTubeMusicParams"];
+                    if (ConfigurationManager.AppSettings["YTMusicParams"] != null)
+                        _youTubeMusicParams = ConfigurationManager.AppSettings["YTMusicParams"];
                 }
                 catch
                 {
@@ -258,6 +259,30 @@ namespace YTMusicUploader
                 }
 
                 return (int)_maxDegreesOfParallelism;
+            }
+        }
+
+        /// <summary>
+        /// Check already uploaded tracks with YouTube Music in parallel
+        /// </summary>
+        public static int ClearLogsAfterDays
+        {
+            get
+            {
+                if (_clearLogsAfterDays != null)
+                    return (int)_clearLogsAfterDays;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["ClearLogsAfterNoOfDays"] != null)
+                        _clearLogsAfterDays = ConfigurationManager.AppSettings["ClearLogsAfterNoOfDays"].ToInt();
+                }
+                catch
+                {
+                    _clearLogsAfterDays = 30;
+                }
+
+                return (int)_clearLogsAfterDays;
             }
         }
 
@@ -413,8 +438,8 @@ namespace YTMusicUploader
 
                 try
                 {
-                    if (ConfigurationManager.AppSettings["YouTubeUploadedSimilarityPercentageForMatch"] != null)
-                        _youTubeUploadedSimilarityPercentageForMatch = float.Parse(ConfigurationManager.AppSettings["YouTubeUploadedSimilarityPercentageForMatch"]);
+                    if (ConfigurationManager.AppSettings["YTMusicUploadedSimilarityPercentageForMatch"] != null)
+                        _youTubeUploadedSimilarityPercentageForMatch = float.Parse(ConfigurationManager.AppSettings["YTMusicUploadedSimilarityPercentageForMatch"]);
                 }
                 catch
                 {

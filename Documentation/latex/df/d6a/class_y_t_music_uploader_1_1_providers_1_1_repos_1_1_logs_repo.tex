@@ -1,0 +1,97 @@
+\hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo}{}\doxysection{Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo Class Reference}
+\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo}\index{YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}}
+
+
+Log events repository access  
+
+
+
+
+Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo\+:
+% FIG 0
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Task$<$ \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a29ef174ab2247fad12d438943965208a}{Load\+All}} ()
+\begin{DoxyCompactList}\small\item\em Loads all logs from the databse \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a7467ef5e68e708b160cfd3efac2f5f76}{Add}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}} log)
+\begin{DoxyCompactList}\small\item\em Adds the log to the databse \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_abad6b4c98cebf46a2b12bb9324354e4b}{Delete\+Older\+Than}} (Date\+Time date\+Time)
+\begin{DoxyCompactList}\small\item\em Deletes logs older than a particular date from the databae \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Log events repository access 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a7467ef5e68e708b160cfd3efac2f5f76}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a7467ef5e68e708b160cfd3efac2f5f76}} 
+\index{YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}!Add@{Add}}
+\index{Add@{Add}!YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo.\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}}}]{log }\end{DoxyParamCaption})}
+
+
+
+Adds the log to the databse 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log} & Log object to record\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_abad6b4c98cebf46a2b12bb9324354e4b}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_abad6b4c98cebf46a2b12bb9324354e4b}} 
+\index{YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}!DeleteOlderThan@{DeleteOlderThan}}
+\index{DeleteOlderThan@{DeleteOlderThan}!YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}}
+\doxysubsubsection{\texorpdfstring{DeleteOlderThan()}{DeleteOlderThan()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo.\+Delete\+Older\+Than (\begin{DoxyParamCaption}\item[{Date\+Time}]{date\+Time }\end{DoxyParamCaption})}
+
+
+
+Deletes logs older than a particular date from the databae 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\+Time} & Delete before date\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a29ef174ab2247fad12d438943965208a}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a29ef174ab2247fad12d438943965208a}} 
+\index{YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}!LoadAll@{LoadAll}}
+\index{LoadAll@{LoadAll}!YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}}
+\doxysubsubsection{\texorpdfstring{LoadAll()}{LoadAll()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo.\+Load\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads all logs from the databse 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_list}{List}} of Music\+File\+Objects
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Repos/\mbox{\hyperlink{_logs_repo_8cs}{Logs\+Repo.\+cs}}\end{DoxyCompactItemize}

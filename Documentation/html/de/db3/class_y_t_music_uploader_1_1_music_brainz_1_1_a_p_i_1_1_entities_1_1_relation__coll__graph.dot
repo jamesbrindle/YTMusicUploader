@@ -1,0 +1,7 @@
+digraph "YTMusicUploader.MusicBrainz.API.Entities.Relation"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{YTMusicUploader.MusicBrainz.\lAPI.Entities.Relation\n|+ Type\l+ TypeId\l+ TargetType\l+ Direction\l+ Begin\l+ End\l+ Ended\l+ Attributes\l+ Url\l+ Artist\l+ Work\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Relationships are a way to represent all the different ways in which entities are connected to each o..."];
+}

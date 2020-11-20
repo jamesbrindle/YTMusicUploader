@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_shelfdivider =
-[
-    [ "musicShelfDividerRenderer", "d2/d33/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_shelfdivider.html#ab9146ddf6a9d1abad2eeb0f9918cce5d", null ]
-];

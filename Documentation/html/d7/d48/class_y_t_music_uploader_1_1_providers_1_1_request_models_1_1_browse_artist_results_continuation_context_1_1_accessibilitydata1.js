@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_accessibilitydata1 =
-[
-    [ "label", "d7/d48/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_accessibilitydata1.html#a48f543f18e0b55b2a0512f1267d6a413", null ]
-];

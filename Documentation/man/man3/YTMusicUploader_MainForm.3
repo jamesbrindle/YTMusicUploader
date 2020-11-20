@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MainForm" 3 "Sat Oct 10 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MainForm" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -53,6 +53,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetStartWithWindows\fP (bool startWithWindows)"
+.br
+.ti -1c
+.RI "void \fBSetSendLogsToSource\fP (bool sendLogsToSource)"
 .br
 .ti -1c
 .RI "void \fBSetManageTYMusicButtonEnabled\fP (bool enabled)"
@@ -116,6 +119,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "\fBUploadLog\fP \fBUploadLogForm\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBApplicationLog\fP \fBGeneralLogForm\fP = null\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "\fBManageYTMusic\fP \fBManageYTMusic\fP = null\fC [get, set]\fP"
@@ -251,6 +257,8 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetPaused (bool paused)"
 
+.SS "void YTMusicUploader\&.MainForm\&.SetSendLogsToSource (bool sendLogsToSource)"
+
 .SS "void YTMusicUploader\&.MainForm\&.SetStartWithWindows (bool startWithWindows)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetStatusMessage (string statusMessage, string systemTrayIconText = \fCnull\fP)"
@@ -292,6 +300,8 @@ Clean up any resources being used\&.
 .SS "\fBFileScanner\fP YTMusicUploader\&.MainForm\&.FileScanner\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBFileUploader\fP YTMusicUploader\&.MainForm\&.FileUploader\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBApplicationLog\fP YTMusicUploader\&.MainForm\&.GeneralLogForm = null\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBIdleProcessor\fP YTMusicUploader\&.MainForm\&.IdleProcessor\fC [get]\fP, \fC [set]\fP"
 

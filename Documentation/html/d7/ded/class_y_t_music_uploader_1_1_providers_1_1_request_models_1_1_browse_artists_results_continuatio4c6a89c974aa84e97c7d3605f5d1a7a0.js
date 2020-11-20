@@ -1,5 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuatio4c6a89c974aa84e97c7d3605f5d1a7a0 =
-[
-    [ "browseEndpoint", "d7/ded/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuatio4c6a89c974aa84e97c7d3605f5d1a7a0.html#a5d4d22d3167a96e5406e4ac6a3966948", null ],
-    [ "clickTrackingParams", "d7/ded/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuatio4c6a89c974aa84e97c7d3605f5d1a7a0.html#a2809a972a103da5fc57779d65fa66a7f", null ]
-];

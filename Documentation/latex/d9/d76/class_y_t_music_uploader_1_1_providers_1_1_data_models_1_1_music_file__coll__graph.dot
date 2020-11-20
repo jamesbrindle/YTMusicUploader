@@ -1,0 +1,11 @@
+digraph "YTMusicUploader.Providers.DataModels.MusicFile"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{YTMusicUploader.Providers.\lDataModels.MusicFile\n|+ Path\l+ MbId\l+ ReleaseMbId\l+ EntityId\l+ Hash\l+ LastUpload\l+ Error\l+ ErrorReason\l+ Removed\l|+ MusicFile()\l+ MusicFile()\l+ MusicFile()\l+ Save()\l+ Delete()\l+ Delete()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Music library file and status"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node2 [label="{DbModels\n|+ Id\l|+ Save()\l+ Delete()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/df5/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node3 [label="{IDbModel\n|+ Id\l|+ Save()\l+ Delete()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/da3/interface_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_i_db_model.html",tooltip=" "];
+}

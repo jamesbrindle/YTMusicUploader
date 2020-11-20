@@ -1,0 +1,7 @@
+digraph "YTMusicUploader.Providers.RequestModels.BrowseArtistRequestContext.Client"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{YTMusicUploader.Providers.\lRequestModels.BrowseArtistRequest\lContext.Client\n|+ clientName\l+ clientVersion\l+ hl\l+ gl\l+ experimentIds\l+ experimentsToken\l+ browserName\l+ browserVersion\l+ osName\l+ osVersion\l+ utcOffsetMinutes\l+ locationInfo\l+ musicAppInfo\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

@@ -1,4 +1,0 @@
-<map id="YTMusicUploader.MusicBrainz.API.Entities.Collections.RecordingList" name="YTMusicUploader.MusicBrainz.API.Entities.Collections.RecordingList">
-<area shape="rect" id="node1" title="List of recordings returned by MusicBrainz search requests." alt="" coords="5,145,248,237"/>
-<area shape="rect" id="node2" href="$d7/da1/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_result.html" title="Abstract base class for MusicBrainz queries returning lists (with paging support)." alt="" coords="79,5,174,97"/>
-</map>

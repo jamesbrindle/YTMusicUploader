@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_browseendpointcontextmusicconfig2 =
-[
-    [ "pageType", "d6/d09/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_1_1_browseendpointcontextmusicconfig2.html#abfd66afa06ef4f0020e848be7a0aad12", null ]
-];

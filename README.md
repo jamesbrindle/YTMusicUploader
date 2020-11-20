@@ -7,7 +7,7 @@ Automatically upload your local personal music library to YouTube Music and bulk
 &nbsp;
 &nbsp;
 
-**[Download Version 1.4.8 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.4.8)**
+**[Download Version 1.5.0 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.5.0)**
 &nbsp;
 &nbsp;
 
@@ -48,8 +48,10 @@ This is a .Net application written in C# that uploads your personal music librar
 - Show an issues log dialogue.
 
 &nbsp;
-- **This application does not send any telemetry data of any kind to its source.**
+- **This application does not send any telemetry data of any kind to its source if the 'Send Diagnostic Data' checkbox is not set'**
 - **Valid file formats are the same as YouTube Music:  .flac, .m4a, .mp3, .oga, .wma**
+- **Maximum number of files you can upload to YouTube Music is 100, 000**
+- **Maximum file size YouTube Music will allow is 300 MB**
 &nbsp;
 
 &nbsp;

@@ -34,12 +34,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UploadLog));
             this.pnlUploads = new System.Windows.Forms.Panel();
-            this.dgvUploads = new JBToolkit.WinForms.FastScrollDataGridView();
+            this.dvgLog = new JBToolkit.WinForms.FastScrollDataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
             this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pnlUploads.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUploads)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             this.SuspendLayout();
@@ -49,24 +49,24 @@
             this.pnlUploads.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlUploads.Controls.Add(this.dgvUploads);
+            this.pnlUploads.Controls.Add(this.dvgLog);
             this.pnlUploads.Location = new System.Drawing.Point(26, 76);
             this.pnlUploads.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlUploads.Name = "pnlUploads";
             this.pnlUploads.Size = new System.Drawing.Size(988, 633);
             this.pnlUploads.TabIndex = 1;
             // 
-            // dgvUploads
+            // dvgLog
             // 
-            this.dgvUploads.AllowUserToAddRows = false;
-            this.dgvUploads.AllowUserToDeleteRows = false;
-            this.dgvUploads.AllowUserToOrderColumns = true;
-            this.dgvUploads.AllowUserToResizeRows = false;
+            this.dvgLog.AllowUserToAddRows = false;
+            this.dvgLog.AllowUserToDeleteRows = false;
+            this.dvgLog.AllowUserToOrderColumns = true;
+            this.dvgLog.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvUploads.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvUploads.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvUploads.BackgroundColor = System.Drawing.Color.White;
+            this.dvgLog.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dvgLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvgLog.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,8 +74,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvUploads.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dvgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -83,13 +83,13 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUploads.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvUploads.DisableScroll = false;
-            this.dgvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvUploads.Location = new System.Drawing.Point(0, 0);
-            this.dgvUploads.MinimumSize = new System.Drawing.Size(600, 400);
-            this.dgvUploads.Name = "dgvUploads";
-            this.dgvUploads.ReadOnly = true;
+            this.dvgLog.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dvgLog.DisableScroll = false;
+            this.dvgLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvgLog.Location = new System.Drawing.Point(0, 0);
+            this.dvgLog.MinimumSize = new System.Drawing.Size(600, 400);
+            this.dvgLog.Name = "dvgLog";
+            this.dvgLog.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,19 +97,19 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUploads.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvUploads.RowHeadersVisible = false;
-            this.dgvUploads.Size = new System.Drawing.Size(988, 633);
-            this.dgvUploads.TabIndex = 0;
-            this.dgvUploads.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUploads_CellContentClick);
-            this.dgvUploads.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUploads_CellMouseEnter);
-            this.dgvUploads.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvUploads_ColumnHeaderMouseClick);
+            this.dvgLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dvgLog.RowHeadersVisible = false;
+            this.dvgLog.Size = new System.Drawing.Size(988, 633);
+            this.dvgLog.TabIndex = 0;
+            this.dvgLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUploads_CellContentClick);
+            this.dvgLog.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUploads_CellMouseEnter);
+            this.dvgLog.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvUploads_ColumnHeaderMouseClick);
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(73, 34);
+            this.lblTitle.Location = new System.Drawing.Point(74, 34);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(124, 13);
             this.lblTitle.TabIndex = 3;
@@ -118,7 +118,7 @@
             // pbIssueLogIcon
             // 
             this.pbIssueLogIcon.Image = global::YTMusicUploader.Properties.Resources.happy;
-            this.pbIssueLogIcon.Location = new System.Drawing.Point(23, 20);
+            this.pbIssueLogIcon.Location = new System.Drawing.Point(24, 20);
             this.pbIssueLogIcon.Name = "pbIssueLogIcon";
             this.pbIssueLogIcon.Size = new System.Drawing.Size(40, 40);
             this.pbIssueLogIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -157,7 +157,7 @@
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Load += new System.EventHandler(this.IssueLog_Load);
             this.pnlUploads.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUploads)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             this.ResumeLayout(false);
@@ -169,7 +169,7 @@
         private System.Windows.Forms.Panel pnlUploads;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbIssueLogIcon;
-        private JBToolkit.WinForms.FastScrollDataGridView dgvUploads;
+        private JBToolkit.WinForms.FastScrollDataGridView dvgLog;
         private System.Windows.Forms.PictureBox pbRefresh;
     }
 }

@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_request_context_1_1_f83c064818ec274477c26dc5f71ac7f9 =
-[
-    [ "browseEndpointContextMusicConfig", "d1/dec/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_request_context_1_1_f83c064818ec274477c26dc5f71ac7f9.html#a9224a3c4134d39e75167792ce8eed0ed", null ]
-];

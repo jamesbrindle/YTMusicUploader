@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_endicon =
-[
-    [ "iconLinkRenderer", "d0/deb/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_endicon.html#a1a42cb21cfe0ca5742400f7cf35bb0dd", null ]
-];
