@@ -87,6 +87,7 @@ namespace YTMusicUploader
         // Tooltips
         //
         public ToolTip ArtWorkTooltip { get; set; }
+        public ToolTip ApplicationLogsTooltip { get; set; }
         public ToolTip ConnectSuccessTooltip { get; set; }
         public ToolTip ConnectFailureTooltip { get; set; }
         public ToolTip YtMusicManageTooltip { get; set; }
@@ -217,6 +218,16 @@ namespace YTMusicUploader
             };
             ArtWorkTooltip.SetToolTip(pbArtwork,
                 "\nNothing uploading");
+
+            ApplicationLogsTooltip = new ToolTip
+            {
+                ToolTipTitle = "Application Logs",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            ApplicationLogsTooltip.SetToolTip(pbLog,
+                $"\nShows all info and error logs over the past {Global.ClearLogsAfterDays} days.");
 
             YtMusicManageTooltip = new ToolTip
             {

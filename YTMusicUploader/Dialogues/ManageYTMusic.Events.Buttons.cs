@@ -11,7 +11,6 @@ namespace YTMusicUploader.Dialogues
         //
         // MBID Hyperlink
         //
-
         private void LblMbId_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (!string.IsNullOrEmpty(lblMbId.Tag.ToString()) && lblMbId.Tag.ToString() != "-")

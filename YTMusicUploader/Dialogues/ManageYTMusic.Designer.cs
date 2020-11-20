@@ -144,6 +144,7 @@
             this.lblMbId.TabIndex = 1;
             this.lblMbId.TabStop = true;
             this.lblMbId.Text = "sdf34-34cfr324rc234-d3cr34r34";
+            this.lblMbId.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblMbId_LinkClicked);
             // 
             // lblArtistTitle
             // 
