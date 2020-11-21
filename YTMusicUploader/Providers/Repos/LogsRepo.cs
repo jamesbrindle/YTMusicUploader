@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using JBToolkit.Threads;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,7 +20,7 @@ namespace YTMusicUploader.Providers.Repos
         /// <returns>List of MusicFileObjects</returns>
         public Task<List<Log>> LoadAll()
         {
-            using (var conn = DbConnection())
+            using (var conn = DbConnection(true))
             {
                 string cmd = string.Format(
                                 @"SELECT * 
@@ -28,7 +29,31 @@ namespace YTMusicUploader.Providers.Repos
 
                 conn.Open();
                 var logs = conn.Query<Log>(cmd).ToList();
-                return Task.FromResult(logs);
+                conn.Close();
+
+                return Task.FromResult(logs);               
+            }
+        }
+
+        /// <summary>
+        /// Loads specific logs from the databse
+        /// </summary>
+        /// <returns>List of MusicFileObjects</returns>
+        public Task<List<Log>> LoadSpecific(string logTypes)
+        {
+            using (var conn = DbConnection(true))
+            {
+                string cmd = string.Format(
+                                @"SELECT * 
+                                  FROM Logs
+                                  WHERE LogTypeId IN ({0})
+                                  ORDER BY Id DESC", logTypes);
+
+                conn.Open();
+                var logs = conn.Query<Log>(cmd).ToList();
+                conn.Close();
+
+                return Task.FromResult(logs);                
             }
         }
 
@@ -39,16 +64,12 @@ namespace YTMusicUploader.Providers.Repos
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> Add(Log log)
         {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
             try
             {
                 using (var conn = DbConnection())
                 {
                     conn.Open();
-
-                    log.Id = (int)conn.Query<long>(
+                    conn.Execute(
                         @"INSERT 
                                 INTO Logs (
                                         Event, 
@@ -64,16 +85,15 @@ namespace YTMusicUploader.Providers.Repos
                                         @Message,
                                         @StackTrace);
                               SELECT last_insert_rowid()",
-                        log).First();
+                        log);
+                    conn.Close();
                 }
 
-                stopWatch.Stop();
-                return await Task.FromResult(DbOperationResult.Success(1, stopWatch.Elapsed));
+                return await Task.FromResult(DbOperationResult.Success(-1, new TimeSpan(0)));
             }
             catch (Exception e)
             {
-                stopWatch.Stop();
-                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, new TimeSpan(0)));
             }
         }
 
@@ -104,6 +124,7 @@ namespace YTMusicUploader.Providers.Repos
                                         @Message,
                                         @StackTrace);",
                         log);
+                    conn.Close();
                 }
             }
             catch { }
@@ -128,6 +149,7 @@ namespace YTMusicUploader.Providers.Repos
                           @"DELETE FROM Logs
                             WHERE Event < '{0}'",
                           dateTime.ToSQLDateTime()));
+                    conn.Close();
                 }
 
                 stopWatch.Stop();

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MainForm" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MainForm" 3 "Sat Nov 21 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -67,10 +67,19 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBSetAboutButtonImage\fP (Image image)"
 .br
 .ti -1c
+.RI "void \fBSetLogButtonImage\fP (Image image)"
+.br
+.ti -1c
+.RI "void \fBSetUpdateButtonImage\fP (Image image)"
+.br
+.ti -1c
 .RI "void \fBSetThrottleSpeed\fP (string mbps)"
 .br
 .ti -1c
 .RI "void \fBSetVersion\fP (string version)"
+.br
+.ti -1c
+.RI "void \fBSetVersionWarningVisible\fP (bool visible)"
 .br
 .ti -1c
 .RI "void \fBSetUploadingMessage\fP (string text, string tooltipText=null, Image artworkImage=null, bool changingArtworkImage=false)"
@@ -181,6 +190,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "ToolTip \fBArtWorkTooltip\fP\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "ToolTip \fBApplicationLogsTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "ToolTip \fBConnectSuccessTooltip\fP\fC [get, set]\fP"
 .br
 .ti -1c
@@ -190,7 +202,46 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "ToolTip \fBYtMusicManageTooltip\fP\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "ToolTip \fBNewVersionTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "ToolTip \fBAboutTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBConnectToYTMusicBtnTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBStartWithWindowsTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBSendDiagnosticDataTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBThrottleUploadSpeedTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBAddWatchFolderTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBRemoveWatchFolderTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBDiscoveredFilesTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBUploadIssuesTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBUploadSuccessTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBDiscoveredFilesLabelTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBUploadIssuesLabelTooltip\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ToolTip \fBUploadSuccessLabelTooltip\fP\fC [get, set]\fP"
 .br
 .in -1c
 .SH "Member Enumeration Documentation"
@@ -251,6 +302,8 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetIssuesLabel (string text)"
 
+.SS "void YTMusicUploader\&.MainForm\&.SetLogButtonImage (Image image)"
+
 .SS "void YTMusicUploader\&.MainForm\&.SetManageTYMusicButtonEnabled (bool enabled)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetManageTYMusicButtonImage (Image image)"
@@ -267,11 +320,15 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetThrottleSpeed (string mbps)"
 
+.SS "void YTMusicUploader\&.MainForm\&.SetUpdateButtonImage (Image image)"
+
 .SS "void YTMusicUploader\&.MainForm\&.SetUploadedLabel (string text)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text, string tooltipText = \fCnull\fP, Image artworkImage = \fCnull\fP, bool changingArtworkImage = \fCfalse\fP)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetVersion (string version)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetVersionWarningVisible (bool visible)"
 
 .SS "void YTMusicUploader\&.MainForm\&.ShowForm ()"
 
@@ -285,6 +342,10 @@ Clean up any resources being used\&.
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.AboutTooltip\fC [get]\fP, \fC [set]\fP"
 
+.SS "ToolTip YTMusicUploader\&.MainForm\&.AddWatchFolderTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.ApplicationLogsTooltip\fC [get]\fP, \fC [set]\fP"
+
 .SS "Image YTMusicUploader\&.MainForm\&.ArtworkImage\fC [get]\fP, \fC [set]\fP"
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.ArtWorkTooltip\fC [get]\fP, \fC [set]\fP"
@@ -295,7 +356,13 @@ Clean up any resources being used\&.
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.ConnectSuccessTooltip\fC [get]\fP, \fC [set]\fP"
 
+.SS "ToolTip YTMusicUploader\&.MainForm\&.ConnectToYTMusicBtnTooltip\fC [get]\fP, \fC [set]\fP"
+
 .SS "\fBConnectToYTMusic\fP YTMusicUploader\&.MainForm\&.ConnectToYTMusicForm\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.DiscoveredFilesLabelTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.DiscoveredFilesTooltip\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBFileScanner\fP YTMusicUploader\&.MainForm\&.FileScanner\fC [get]\fP, \fC [set]\fP"
 
@@ -319,15 +386,33 @@ Clean up any resources being used\&.
 
 .SS "\fBMusicFileRepo\fP YTMusicUploader\&.MainForm\&.MusicFileRepo = new \fBMusicFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
 
+.SS "ToolTip YTMusicUploader\&.MainForm\&.NewVersionTooltip\fC [get]\fP, \fC [set]\fP"
+
 .SS "\fBQueueChecker\fP YTMusicUploader\&.MainForm\&.QueueChecker\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.RemoveWatchFolderTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.SendDiagnosticDataTooltip\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBSettings\fP YTMusicUploader\&.MainForm\&.Settings\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBSettingsRepo\fP YTMusicUploader\&.MainForm\&.SettingsRepo = new \fBSettingsRepo\fP()\fC [get]\fP, \fC [set]\fP"
 
+.SS "ToolTip YTMusicUploader\&.MainForm\&.StartWithWindowsTooltip\fC [get]\fP, \fC [set]\fP"
+
 .SS "System\&.Windows\&.Forms\&.Timer YTMusicUploader\&.MainForm\&.ThrottleTextChangedTimer\fC [get]\fP, \fC [set]\fP"
 
+.SS "ToolTip YTMusicUploader\&.MainForm\&.ThrottleUploadSpeedTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.UploadIssuesLabelTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.UploadIssuesTooltip\fC [get]\fP, \fC [set]\fP"
+
 .SS "\fBUploadLog\fP YTMusicUploader\&.MainForm\&.UploadLogForm = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.UploadSuccessLabelTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "ToolTip YTMusicUploader\&.MainForm\&.UploadSuccessTooltip\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBWatchFolderRepo\fP YTMusicUploader\&.MainForm\&.WatchFolderRepo = new \fBWatchFolderRepo\fP()\fC [get]\fP, \fC [set]\fP"
 

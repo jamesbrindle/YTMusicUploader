@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using JBToolkit.Network;
+using JBToolkit.Threads;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data.SQLite;
@@ -102,75 +103,77 @@ namespace YTMusicUploader.Providers
             {
                 conn.Open();
 
-                //
-                // Added Mbid Column to MusicFiles Table in v1.2
-                //
-
-                var columns = conn.Query<string>(
-                        @"SELECT name 
-                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
-
-                if (!columns.Contains("MbId"))
+                try
                 {
-                    conn.Execute(
-                        @"ALTER TABLE MusicFiles
-                         ADD COLUMN MbId TEXT");
-                }
+                    //
+                    // Added Mbid Column to MusicFiles Table in v1.2
+                    //
 
-                //
-                // Added ReleaseMbId Column to MusicFiles Table in v1.3.6
-                //
+                    var columns = conn.Query<string>(
+                            @"SELECT name 
+                              FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
 
-                columns = conn.Query<string>(
-                        @"SELECT name 
-                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+                    if (!columns.Contains("MbId"))
+                    {
+                        conn.Execute(
+                            @"ALTER TABLE MusicFiles
+                              ADD COLUMN MbId TEXT");
+                    }
 
-                if (!columns.Contains("ReleaseMbId"))
-                {
-                    conn.Execute(
-                        @"ALTER TABLE MusicFiles
-                         ADD COLUMN ReleaseMbId TEXT");
-                }
+                    //
+                    // Added ReleaseMbId Column to MusicFiles Table in v1.3.6
+                    //
 
-                //
-                // Added EntityId Column to MusicFiles Table in v1.3.6
-                //
+                    columns = conn.Query<string>(
+                            @"SELECT name 
+                             FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
 
-                columns = conn.Query<string>(
-                        @"SELECT name 
-                          FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+                    if (!columns.Contains("ReleaseMbId"))
+                    {
+                        conn.Execute(
+                            @"ALTER TABLE MusicFiles
+                              ADD COLUMN ReleaseMbId TEXT");
+                    }
 
-                if (!columns.Contains("EntityId"))
-                {
-                    conn.Execute(
-                        @"ALTER TABLE MusicFiles
-                          ADD COLUMN EntityId TEXT");
-                }
+                    //
+                    // Added EntityId Column to MusicFiles Table in v1.3.6
+                    //
 
-                //
-                // Added Logs Table in 1.4.9
-                // 
+                    columns = conn.Query<string>(
+                            @"SELECT name 
+                              FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
 
-                string result = conn.Query<string>(
-                            @"SELECT name FROM sqlite_master WHERE type='table' AND name='Logs';")
-                    .ToList()
-                    .FirstOrDefault();
+                    if (!columns.Contains("EntityId"))
+                    {
+                        conn.Execute(
+                            @"ALTER TABLE MusicFiles
+                              ADD COLUMN EntityId TEXT");
+                    }
 
-                if (string.IsNullOrEmpty(result))
-                {
-                    conn.Execute(
-                        @"CREATE TABLE ""LogType"" (
+                    //
+                    // Added Logs Table in 1.4.9
+                    // 
+
+                    string result = conn.Query<string>(
+                                    @"SELECT name FROM sqlite_master WHERE type='table' AND name='Logs';")
+                                        .ToList()
+                                        .FirstOrDefault();
+
+                    if (string.IsNullOrEmpty(result))
+                    {
+                        conn.Execute(
+                            @"CREATE TABLE ""LogType"" (
 	                        ""Id""	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	                        ""Description""	TEXT NOT NULL
                         );");
 
-                    conn.Execute(
-                        @"INSERT INTO LogType (Id, Description) VALUES
-                          (1, 'Info'),
-                          (2, 'Error')");
+                        conn.Execute(
+                            @"INSERT INTO LogType (Id, Description) VALUES
+                              (1, 'Info'),
+                              (2, 'Error')");
 
-                    conn.Execute(
-                        @"CREATE TABLE ""Logs"" (
+                        conn.Execute(
+                            @"CREATE TABLE ""Logs"" (
 	                            ""Id""	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	                            ""Event""	TEXT NOT NULL,
 	                            ""LogTypeId""	INTEGER NOT NULL,
@@ -180,20 +183,38 @@ namespace YTMusicUploader.Providers
 	                            ""StackTrace""	TEXT,
 	                            FOREIGN KEY(""LogTypeId"") REFERENCES ""LogType""(""Id"")
                         );");
+                    }
+
+                    columns = conn.Query<string>(
+                            @"SELECT name 
+                              FROM PRAGMA_TABLE_INFO('Settings')").ToList();
+
+                    if (!columns.Contains("SendLogsToSource"))
+                    {
+                        conn.Execute(
+                            @"ALTER TABLE Settings
+                              ADD SendLogsToSource INTEGER DEFAULT 1");
+
+                    }
+
+                    result = conn.Query<string>(
+                                @"SELECT Description
+                                  FROM LogType
+                                  WHERE Description = 'Warning'")
+                                .ToList()
+                                .FirstOrDefault();
+
+                    if (result == null)
+                    {
+                        conn.Execute(
+                           @"INSERT INTO LogType (Description)
+                             VALUES ('Warning'),
+                                    ('Critical')");
+                    }
                 }
+                catch { }
 
-                columns = conn.Query<string>(
-                        @"SELECT name 
-                          FROM PRAGMA_TABLE_INFO('Settings')").ToList();
-
-                if (!columns.Contains("SendLogsToSource"))
-                {
-                    conn.Execute(
-                        @"ALTER TABLE Settings
-                         ADD SendLogsToSource INTEGER DEFAULT 1");
-
-                    Logger.LogInfo("PerformAnyDbUpgrades", "Database version bumped to: 1.4.8");
-                }
+                conn.Close();
             }
         }
 
@@ -201,9 +222,9 @@ namespace YTMusicUploader.Providers
         /// Create an SQLite connection to the database file in the users AppData path
         /// </summary>
         /// <returns></returns>
-        public static SQLiteConnection DbConnection()
+        public static SQLiteConnection DbConnection(bool readOnly = false)
         {
-            return new SQLiteConnection("Data Source=" + Global.DbLocation);
+            return new SQLiteConnection("Data Source=" + Global.DbLocation + ";cache=shared" + (readOnly ? ";Read Only=True" : ""));
         }
 
         internal static MySqlConnection RemoteDbConnection()

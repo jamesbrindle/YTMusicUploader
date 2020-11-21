@@ -35,7 +35,7 @@ namespace YTMusicUploader
 
         private void FlagStartQueue()
         {
-            new Thread((ThreadStart)delegate
+            ThreadPool.QueueUserWorkItem(delegate
             {
                 while (LastFolderChangeTime > DateTime.Now.AddSeconds(-10))
                     ThreadHelper.SafeSleep(1000);
@@ -44,7 +44,7 @@ namespace YTMusicUploader
                 FileScanner.RecountLibraryFiles();
                 QueueChecker.Queue = true;
 
-            }).Start();
+            });
         }
     }
 }

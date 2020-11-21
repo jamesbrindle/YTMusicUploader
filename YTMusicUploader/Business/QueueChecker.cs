@@ -40,9 +40,8 @@ namespace YTMusicUploader.Business
                             MainForm.Restart();
                         }
                     }
-                    catch (Exception e)
+                    catch
                     {
-                        Logger.Log(e);
                         ThreadHelper.SafeSleep(1000);
                     }
                 }

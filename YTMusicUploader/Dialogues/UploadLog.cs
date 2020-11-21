@@ -51,17 +51,28 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
-                dvgLog.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
-                dvgLog.Columns["ReleaseMbId"].Visible = false;
-                dvgLog.Columns["EntityId"].Visible = false;
-                dvgLog.Columns["Hash"].Visible = false;
-                dvgLog.Columns["Removed"].Visible = false;
-                dvgLog.Columns["Error"].Visible = false;
-                dvgLog.Columns["ErrorReason"].Visible = false;
-                dvgLog.Columns["Id"].Width = 55;
-                dvgLog.Columns["Path"].FillWeight = 300;
-                dvgLog.Columns["LastUpload"].Width = 100;
-                dvgLog.Columns["MbId"].DefaultCellStyle = GetHyperLinkStyleForGridCell();
+                try
+                {
+                    Logger.LogInfo("Populate - Uploads", "Loading issues from the database");
+
+                    dvgLog.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
+                    dvgLog.Columns["ReleaseMbId"].Visible = false;
+                    dvgLog.Columns["EntityId"].Visible = false;
+                    dvgLog.Columns["Hash"].Visible = false;
+                    dvgLog.Columns["Removed"].Visible = false;
+                    dvgLog.Columns["Error"].Visible = false;
+                    dvgLog.Columns["ErrorReason"].Visible = false;
+                    dvgLog.Columns["Id"].Width = 55;
+                    dvgLog.Columns["Path"].FillWeight = 300;
+                    dvgLog.Columns["LastUpload"].Width = 100;
+                    dvgLog.Columns["MbId"].DefaultCellStyle = GetHyperLinkStyleForGridCell();
+
+                }
+                catch(Exception e)
+                {
+                    Logger.Log(e, "Unable to fetch uploads from the database and bind gridview", Log.LogTypeEnum.Critcal);
+                }
+
                 SetTitle("Upload Log");
             }
         }

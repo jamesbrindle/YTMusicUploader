@@ -39,6 +39,8 @@
             this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
             this.lblLogClearMessage = new System.Windows.Forms.Label();
+            this.ddLogType = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlIssueLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
@@ -145,24 +147,45 @@
             // 
             this.lblLogClearMessage.AutoSize = true;
             this.lblLogClearMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogClearMessage.Location = new System.Drawing.Point(729, 34);
+            this.lblLogClearMessage.Location = new System.Drawing.Point(478, 34);
             this.lblLogClearMessage.Name = "lblLogClearMessage";
             this.lblLogClearMessage.Size = new System.Drawing.Size(161, 13);
             this.lblLogClearMessage.TabIndex = 5;
             this.lblLogClearMessage.Text = "Logs are cleared after 30 days.";
+            // 
+            // ddLogType
+            // 
+            this.ddLogType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddLogType.FormattingEnabled = true;
+            this.ddLogType.Location = new System.Drawing.Point(330, 31);
+            this.ddLogType.Name = "ddLogType";
+            this.ddLogType.Size = new System.Drawing.Size(121, 21);
+            this.ddLogType.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(272, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Log Type";
             // 
             // ApplicationLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ddLogType);
             this.Controls.Add(this.lblLogClearMessage);
             this.Controls.Add(this.pbRefresh);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
             this.Controls.Add(this.pnlIssueLog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(600, 400);
+            this.MinimumSize = new System.Drawing.Size(765, 400);
             this.Name = "ApplicationLog";
             this.Load += new System.EventHandler(this.ApplicationLoad_Load);
             this.pnlIssueLog.ResumeLayout(false);
@@ -181,5 +204,7 @@
         private JBToolkit.WinForms.FastScrollDataGridView dgvLog;
         private System.Windows.Forms.PictureBox pbRefresh;
         private System.Windows.Forms.Label lblLogClearMessage;
+        private System.Windows.Forms.ComboBox ddLogType;
+        private System.Windows.Forms.Label label1;
     }
 }

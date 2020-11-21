@@ -1,4 +1,5 @@
-﻿using JBToolkit.Culture;
+﻿using JBToolkit.Assemblies;
+using JBToolkit.Culture;
 using JBToolkit.Network;
 using JBToolkit.Threads;
 using JBToolkit.WinForms;
@@ -84,21 +85,17 @@ namespace YTMusicUploader
         public Image ArtworkImage { get; set; }
 
         //
-        // Tooltips
-        //
-        public ToolTip ArtWorkTooltip { get; set; }
-        public ToolTip ApplicationLogsTooltip { get; set; }
-        public ToolTip ConnectSuccessTooltip { get; set; }
-        public ToolTip ConnectFailureTooltip { get; set; }
-        public ToolTip YtMusicManageTooltip { get; set; }
-        public ToolTip AboutTooltip { get; set; }
-
-        //
         // Threads
         //
         private Thread _installingEdgeThread;
         private Thread _connectToYouTubeMusicThread;
         private Thread _scanAndUploadThread;
+
+        //
+        // Version
+        //
+        private string LatestVersionTag { get; set; } = null;
+        private string LatestVersionUrl { get; set; } = null;
 
         public MainForm(bool hidden) : base(formResizable: false)
         {
@@ -106,8 +103,6 @@ namespace YTMusicUploader
             CheckForIllegalCrossThreadCalls = false;
 #endif
             CultureHelper.GloballySetCultureToGB();
-
-            Logger.LogInfo("MainForm", "Application start begin");
 
             MainFormInstance = this;
             InitializeComponent();
@@ -143,9 +138,6 @@ namespace YTMusicUploader
             InitialiseTimers();
             InitialiseTooltips();
             InitialiseSystemTrayIconMenuButtons();
-
-            Logger.LogInfo("MainForm", "Application start success");
-
             ConnectToYouTubeMusic();
             StartMainProcess();
         }
@@ -184,71 +176,7 @@ namespace YTMusicUploader
         {
             tsmShow.Click += new EventHandler(TsmShow_Click);
             tsmQuit.Click += new EventHandler(TsmQuit_Click);
-        }
-
-        private void InitialiseTooltips()
-        {
-            ConnectSuccessTooltip = new ToolTip
-            {
-                ToolTipTitle = "YouTube Music Connection",
-                UseFading = true,
-                IsBalloon = true,
-                InitialDelay = 750,
-            };
-            ConnectSuccessTooltip.SetToolTip(pbConnectedToYoutube,
-                "\nYou are connected to YouTube Music and successfully authenticated.");
-
-            ConnectFailureTooltip = new ToolTip
-            {
-                ToolTipTitle = "YouTube Music Connection",
-                ToolTipIcon = ToolTipIcon.Warning,
-                UseFading = true,
-                IsBalloon = true,
-                InitialDelay = 750,
-            };
-            ConnectFailureTooltip.SetToolTip(pbNotConnectedToYoutube,
-                "\nYou are not connected to YouTube Music.\n\nPress the 'Connect to YouTube Music button and sign into YouTube Music.");
-
-            ArtWorkTooltip = new ToolTip
-            {
-                ToolTipTitle = "Music File Meta Data",
-                UseFading = true,
-                IsBalloon = true,
-                InitialDelay = 750,
-            };
-            ArtWorkTooltip.SetToolTip(pbArtwork,
-                "\nNothing uploading");
-
-            ApplicationLogsTooltip = new ToolTip
-            {
-                ToolTipTitle = "Application Logs",
-                UseFading = true,
-                IsBalloon = true,
-                InitialDelay = 750,
-            };
-            ApplicationLogsTooltip.SetToolTip(pbLog,
-                $"\nShows all info and error logs over the past {Global.ClearLogsAfterDays} days.");
-
-            YtMusicManageTooltip = new ToolTip
-            {
-                ToolTipTitle = "YouTube Music Manage",
-                UseFading = true,
-                IsBalloon = true,
-                InitialDelay = 750,
-            };
-            YtMusicManageTooltip.SetToolTip(pbYtMusicManage,
-                "\nSee and delete albums and tracks uploaded to YouTube Music.");
-
-            AboutTooltip = new ToolTip
-            {
-                ToolTipTitle = "About",
-                UseFading = true,
-                IsBalloon = true,
-                InitialDelay = 750,
-            };
-            AboutTooltip.SetToolTip(pbAbout,
-                "\nAbout YTMusic Uploader.");
-        }
+        }       
 
         private async Task InitialiseFolderWatchers()
         {
@@ -370,7 +298,7 @@ namespace YTMusicUploader
                     ThreadHelper.SafeSleep(5000);
 
                 while (ManagingYTMusicStatus == ManagingYTMusicStatusEnum.Showing)
-                    Thread.Sleep(1000);
+                    ThreadHelper.SafeSleep(1000);
                 if (ManagingYTMusicStatus == ManagingYTMusicStatusEnum.CloseChanges)
                     return;
 
@@ -381,7 +309,6 @@ namespace YTMusicUploader
                     Settings = SettingsRepo.Load().Result;
                 }
 
-                Logger.LogInfo("ConnectToYouTubeMusic", "Connection to YouTube Music successful");
                 SetConnectedToYouTubeMusic(true);
             })
             {
@@ -392,13 +319,9 @@ namespace YTMusicUploader
 
         public void StartMainProcess()
         {
-            Logger.LogInfo("StartMainProcess", "Main process thread starting");
-
-            IdleProcessor.Paused = true;
-
-            Logger.LogInfo("StartMainProcess", "DB check starting");
+            IdleProcessor.Paused = true;            
             DataAccess.CheckAndCopyDatabaseFile();
-            Logger.LogInfo("StartMainProcess", "DB check complete");
+            Logger.LogInfo("StartMainProcess", "Main process thread starting");
 
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {
@@ -436,6 +359,8 @@ namespace YTMusicUploader
                     return;
                 }
 
+                CheckForLatestVersion();
+
                 Logger.LogInfo("MainProcess", "File scanner starting");
                 FileScanner.Process();
                 Logger.LogInfo("MainProcess", "File scan complete");
@@ -472,22 +397,22 @@ namespace YTMusicUploader
                 SetStatusMessage("Uploading", "Uploading");
                 RepopulateAmountLables();
 
-                Logger.LogInfo("MainProcess", "Starting upload check and process");
+                Logger.LogInfo("MainProcess", "Starting upload check and upload process");
                 FileUploader.Process().Wait();
-                Logger.LogInfo("MainProcess", "Upload check and process complete");
+                Logger.LogInfo("MainProcess", "Upload check and process upload process complete");
 
                 SetStatusMessage("Idle", "Idle");
                 SetUploadingMessage("Idle", "Idle", null, true);
                 RepopulateAmountLables(true);
 
-                Thread.Sleep(10000);
+                ThreadHelper.SafeSleep(10000);
             }
             catch (Exception e)
             {
                 string _ = e.Message;
 #if DEBUG
                 Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
-                Logger.Log(e);
+                Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Critcal);
 #endif
             }
 
@@ -503,6 +428,27 @@ namespace YTMusicUploader
             {
                 InitialFilesCount = MusicFileRepo.CountAll().Result;
                 SetDiscoveredFilesLabel(InitialFilesCount.ToString());
+            }
+        }
+
+        private void CheckForLatestVersion()
+        {
+            if (VersionHelper.LatestVersionGreaterThanCurrentVersion(out string htmlUrl, out string latestVersion))
+            {
+                LatestVersionUrl = htmlUrl;
+                LatestVersionTag = latestVersion;
+                SetVersionWarningVisible(true);
+
+                NewVersionTooltip.SetToolTip(pbUpdate,
+                    "\nVersion " + LatestVersionTag + " available.\nClick for details.");
+
+                Logger.LogInfo("CheckForLatestVersion", "Newer software version detected");
+            }
+            else
+            {
+                LatestVersionUrl = null;
+                LatestVersionTag = null;
+                SetVersionWarningVisible(false);
             }
         }
 

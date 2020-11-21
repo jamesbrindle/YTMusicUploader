@@ -158,6 +158,30 @@ namespace YTMusicUploader
                 pbAbout.Image = image;
         }
 
+        delegate void SetLogButtonImageDelegate(Image image);
+        public void SetLogButtonImage(Image image)
+        {
+            if (pbLog.InvokeRequired)
+            {
+                SetLogButtonImageDelegate d = new SetLogButtonImageDelegate(SetLogButtonImage);
+                Invoke(d, new object[] { image });
+            }
+            else
+                pbLog.Image = image;
+        }
+
+        delegate void SetUpdateButtonImageDelegate(Image image);
+        public void SetUpdateButtonImage(Image image)
+        {
+            if (pbUpdate.InvokeRequired)
+            {
+                SetUpdateButtonImageDelegate d = new SetUpdateButtonImageDelegate(SetUpdateButtonImage);
+                Invoke(d, new object[] { image });
+            }
+            else
+                pbUpdate.Image = image;
+        }
+
         delegate void SetThrottleSpeedDelegate(string mbps);
         public void SetThrottleSpeed(string mbps)
         {
@@ -188,6 +212,21 @@ namespace YTMusicUploader
             else
             {
                 lblVersion.Text = version;
+            }
+        }
+
+
+        delegate void SetVersionWarningVisibleDelegate(bool visible);
+        public void SetVersionWarningVisible(bool visible)
+        {
+            if (pbUpdate.InvokeRequired)
+            {
+                SetVersionWarningVisibleDelegate d = new SetVersionWarningVisibleDelegate(SetVersionWarningVisible);
+                Invoke(d, new object[] { visible });
+            }
+            else
+            {
+                pbUpdate.Visible = visible;
             }
         }
 

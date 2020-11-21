@@ -3,7 +3,7 @@ digraph "YTMusicUploader.Providers.Repos.LogsRepo"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{YTMusicUploader.Providers.\lRepos.LogsRepo\n||+ LoadAll()\l+ Add()\l+ DeleteOlderThan()\l~ RemoteAdd()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Log events repository access"];
+  Node1 [label="{YTMusicUploader.Providers.\lRepos.LogsRepo\n||+ LoadAll()\l+ LoadSpecific()\l+ Add()\l+ DeleteOlderThan()\l~ RemoteAdd()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Log events repository access"];
   Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
   Node2 [label="{DataAccess\n||+ CheckAndCopyDatabaseFile()\l+ ResetDatabase()\l+ PerformAnyDbUpgrades()\l+ DbConnection()\l~ RemoteDbConnection()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html",tooltip="Abastract database repository access class."];
 }

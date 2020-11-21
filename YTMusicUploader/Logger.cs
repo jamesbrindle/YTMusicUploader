@@ -1,4 +1,5 @@
 ﻿using JBToolkit.Network;
+using JBToolkit.Threads;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -18,7 +19,6 @@ namespace YTMusicUploader
         private static SettingsRepo m_settingsRepo = null;
         private static string m_externalIp = string.Empty;
         private static string m_machineName = string.Empty;
-
         private static LogsRepo LogsRepo
         {
             get
@@ -100,7 +100,7 @@ namespace YTMusicUploader
         {
             try
             {
-                new Thread((ThreadStart)delegate
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     var log = new Log
                     {
@@ -115,24 +115,54 @@ namespace YTMusicUploader
                     Task.Run(async () => await LogsRepo.Add(log));
                     if (SendLogToSource)
                     {
-                        log.Machine = log.Machine + $"@{ExternalIp}";
+                        log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
                     }
-
-                }).Start();
+                });
             }
             catch { }
         }
 
         /// <summary>
-        /// Log error from exception
+        /// Log error from exception with error severity
+        /// </summary>
+        /// <param name="e">Exception to log</param>
+        public static void Log(Exception e, LogTypeEnum logType)
+        {
+            try
+            {
+                ThreadPool.QueueUserWorkItem(delegate
+                {
+                    var log = new Log
+                    {
+                        Event = DateTime.Now,
+                        LogTypeId = logType,
+                        Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
+                        Message = e.Message.Ellipse(1500 - 5),
+                        StackTrace = e.StackTrace.Ellipse(4000 - 5),
+                        Machine = MachineName.Ellipse(210)
+                    };
+
+                    Task.Run(async () => await LogsRepo.Add(log));
+                    if (SendLogToSource)
+                    {
+                        log.Machine += $"@{ExternalIp}";
+                        LogsRepo.RemoteAdd(log);
+                    }
+                });
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Log error from exception with additional messag prefix
         /// </summary>
         /// <param name="e">Exception to log</param>
         public static void Log(Exception e, string additionalMessage)
         {
             try
             {
-                new Thread((ThreadStart)delegate
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     var log = new Log
                     {
@@ -147,11 +177,43 @@ namespace YTMusicUploader
                     Task.Run(async () => await LogsRepo.Add(log));
                     if (SendLogToSource)
                     {
-                        log.Machine = log.Machine + $"@{ExternalIp}";
+                        log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
                     }
 
-                }).Start();
+                });
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Log error from exception with error severity
+        /// </summary>
+        /// <param name="e">Exception to log</param>
+        public static void Log(Exception e, string additionalMessage, LogTypeEnum logType)
+        {
+            try
+            {
+                ThreadPool.QueueUserWorkItem(delegate
+                {
+                    var log = new Log
+                    {
+                        Event = DateTime.Now,
+                        LogTypeId = logType,
+                        Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
+                        Message = (additionalMessage + ": " + e.Message).Ellipse(1500 - 5),
+                        StackTrace = e.StackTrace.Ellipse(4000 - 5),
+                        Machine = MachineName.Ellipse(210)
+                    };
+
+                    Task.Run(async () => await LogsRepo.Add(log));
+                    if (SendLogToSource)
+                    {
+                        log.Machine += $"@{ExternalIp}";
+                        LogsRepo.RemoteAdd(log);
+                    }
+
+                });
             }
             catch { }
         }
@@ -166,7 +228,7 @@ namespace YTMusicUploader
         {
             try
             {
-                new Thread((ThreadStart)delegate
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     var log = new Log
                     {
@@ -179,13 +241,13 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource && logType != LogTypeEnum.Info)
                     {
-                        log.Machine = log.Machine + $"@{ExternalIp}";
+                        log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
                     }
 
-                }).Start();
+                });
             }
             catch { }
         }
@@ -199,7 +261,7 @@ namespace YTMusicUploader
         {
             try
             {
-                new Thread((ThreadStart)delegate
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     var log = new Log
                     {
@@ -212,13 +274,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
-                    {
-                        log.Machine = log.Machine + $"@{ExternalIp}";
-                        LogsRepo.RemoteAdd(log);
-                    }
-
-                }).Start();
+                });
             }
             catch { }
         }
@@ -232,7 +288,7 @@ namespace YTMusicUploader
         {
             try
             {
-                new Thread((ThreadStart)delegate
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     var log = new Log
                     {
@@ -247,11 +303,77 @@ namespace YTMusicUploader
                     Task.Run(async () => await LogsRepo.Add(log));
                     if (SendLogToSource)
                     {
-                        log.Machine = log.Machine + $"@{ExternalIp}";
+                        log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
                     }
 
-                }).Start();
+                });
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Log custom info message
+        /// </summary>
+        /// <param name="source">Where the message originated</param>
+        /// <param name="message">The messsage to log</param>
+        public static void LogWarning(string source, string message)
+        {
+            try
+            {
+                ThreadPool.QueueUserWorkItem(delegate
+                {
+                    var log = new Log
+                    {
+                        Event = DateTime.Now,
+                        LogTypeId = LogTypeEnum.Warning,
+                        Source = source,
+                        Message = message.Ellipse(1500 - 5),
+                        StackTrace = null,
+                        Machine = MachineName.Ellipse(210)
+                    };
+
+                    Task.Run(async () => await LogsRepo.Add(log));
+                    if (SendLogToSource)
+                    {
+                        log.Machine += $"@{ExternalIp}";
+                        LogsRepo.RemoteAdd(log);
+                    }
+
+                });
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Log custom info message
+        /// </summary>
+        /// <param name="source">Where the message originated</param>
+        /// <param name="message">The messsage to log</param>
+        public static void LogCritial(string source, string message)
+        {
+            try
+            {
+                ThreadPool.QueueUserWorkItem(delegate
+                {
+                    var log = new Log
+                    {
+                        Event = DateTime.Now,
+                        LogTypeId = LogTypeEnum.Critcal,
+                        Source = source,
+                        Message = message.Ellipse(1500 - 5),
+                        StackTrace = null,
+                        Machine = MachineName.Ellipse(210)
+                    };
+
+                    Task.Run(async () => await LogsRepo.Add(log));
+                    if (SendLogToSource)
+                    {
+                        log.Machine += $"@{ExternalIp}";
+                        LogsRepo.RemoteAdd(log);
+                    }
+
+                });
             }
             catch { }
         }

@@ -10,8 +10,7 @@ digraph "YTMusicUploader.MainForm.StartMainProcess"
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
   Node3 [label="YTMusicUploader.Providers.\lDataAccess.PerformAnyDbUpgrades",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a777fee8af9abfbafeb10f09327101e08",tooltip="Runs on form load to ensure the database schema is at the latest version following an application upg..."];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
-  Node4 [label="YTMusicUploader.Providers.\lDataAccess.DbConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996",tooltip="Create an SQLite connection to the database file in the users AppData path"];
+  Node4 [label="YTMusicUploader.Providers.\lDataAccess.DbConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a282db1993d3e890ff819c1afd3e14114",tooltip="Create an SQLite connection to the database file in the users AppData path"];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
   Node5 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.CountIssues",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a799073d452dba59c8412e483f124eb73",tooltip="Count all non-removed Music File entries that have upload errors"];
-  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
 }

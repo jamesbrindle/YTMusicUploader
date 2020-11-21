@@ -8,7 +8,7 @@ digraph "YTMusicUploader.Providers.DataModels.Log.Save"
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="YTMusicUploader.Providers.\lRepos.LogsRepo.Add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a7467ef5e68e708b160cfd3efac2f5f76",tooltip="Adds the log to the databse"];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="YTMusicUploader.Providers.\lDataAccess.DbConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#ac9ee0f646d725d0ccebc213c38d4b996",tooltip="Create an SQLite connection to the database file in the users AppData path"];
+  Node3 [label="YTMusicUploader.Providers.\lDataAccess.DbConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a282db1993d3e890ff819c1afd3e14114",tooltip="Create an SQLite connection to the database file in the users AppData path"];
   Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="YTMusicUploader.Providers.\lDbOperationResult.Fail",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a294611423979cc1924b6436a62a5333f",tooltip="Database process execution and query result object for 'failure'. Contains the error reason and the t..."];
   Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

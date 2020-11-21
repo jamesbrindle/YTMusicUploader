@@ -1,4 +1,6 @@
-﻿using MetroFramework;
+﻿using JBToolkit.Assemblies;
+using JBToolkit.Threads;
+using MetroFramework;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,7 +20,7 @@ namespace YTMusicUploader
             try
             {
                 ConnectToYTMusicForm.Show();
-                new Thread((ThreadStart)delegate
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     SetConnectedToYouTubeMusic(Requests.IsAuthenticated(Settings.AuthenticationCookie));
                 });
@@ -34,7 +36,7 @@ namespace YTMusicUploader
                     ConnectToYTMusicForm = new ConnectToYTMusic(this);
 
                     ConnectToYTMusicForm.Show();
-                    new Thread((ThreadStart)delegate
+                    ThreadPool.QueueUserWorkItem(delegate
                     {
                         SetConnectedToYouTubeMusic(Requests.IsAuthenticated(Settings.AuthenticationCookie));
                     });
@@ -67,6 +69,8 @@ namespace YTMusicUploader
 
         private async Task AddWatchFolder()
         {
+            Logger.LogInfo("AddWatchFolder", "Watch folder added: " + FolderSelector.SelectedPath);
+
             WatchFolderRepo.Insert(new WatchFolder
             {
                 Path = FolderSelector.SelectedPath
@@ -108,6 +112,8 @@ namespace YTMusicUploader
             {
                 if ((WatchFolder)lbWatchFolders.SelectedItem != null)
                 {
+                    Logger.LogInfo("RemoveWachFolder", "Watch folder removed: " + ((WatchFolder)lbWatchFolders.SelectedItem).Path);
+
                     await WatchFolderRepo.Delete(((WatchFolder)lbWatchFolders.SelectedItem).Id);
                     await MusicFileRepo.DeleteWatchFolder(((WatchFolder)lbWatchFolders.SelectedItem).Path);
                     RepopulateAmountLables();
@@ -202,11 +208,11 @@ namespace YTMusicUploader
             SetPaused(false);
 
             pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
-            new Thread((ThreadStart)delegate
+            ThreadPool.QueueUserWorkItem(delegate
             {
-                Thread.Sleep(100);
+                ThreadHelper.SafeSleep(100);
                 SetManageTYMusicButtonImage(Properties.Resources.ytmusic_manage);
-            }).Start();
+            });
         }
 
         private void PbYtMusicManage_MouseDown(object sender, MouseEventArgs e)
@@ -265,6 +271,66 @@ namespace YTMusicUploader
                 GeneralLogForm = new ApplicationLog();
                 GeneralLogForm.ShowDialog();
             }
+
+            pbLog.Image = Properties.Resources.log_up;
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                ThreadHelper.SafeSleep(100);
+                SetLogButtonImage(Properties.Resources.log_up);
+            });
+        }
+
+        //
+        // Latest Version
+        //
+
+        private void PbUpdate_Click(object sender, EventArgs e)
+        {
+            pbUpdate.Image = Properties.Resources.update_up;
+            var result = MetroMessageBox.Show(
+                           this,
+                           Environment.NewLine +
+                           "A new version of YT Music Uploader is available which will likely offer bug fixes and feature enhancements." +
+                           Environment.NewLine + Environment.NewLine +
+                           "Current version: " + VersionHelper.GetVersionFull() +                           
+                           Environment.NewLine +
+                           "Latest version: " + LatestVersionTag +
+                           Environment.NewLine + Environment.NewLine +
+                           "Would you like to be directed to the download page?",
+                           "New YT Music Uploader Available",
+                           MessageBoxButtons.YesNoCancel,
+                           MessageBoxIcon.Question,
+                           270);
+
+            pbUpdate.Image = Properties.Resources.update_up;
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                ThreadHelper.SafeSleep(100);
+                SetUpdateButtonImage(Properties.Resources.update_up);
+            });
+
+            if (result == DialogResult.Yes)
+                System.Diagnostics.Process.Start(LatestVersionUrl);
+        }
+
+        private void PbUpdate_MouseDown(object sender, MouseEventArgs e)
+        {
+            pbUpdate.Image = Properties.Resources.update_down;
+        }
+
+        private void PbUpdate_MouseEnter(object sender, EventArgs e)
+        {
+            pbUpdate.Image = Properties.Resources.update_hover;
+        }
+
+        private void PbUpdate_MouseLeave(object sender, EventArgs e)
+        {
+            pbUpdate.Image = Properties.Resources.update_up;
+        }
+
+        private void PbUpdate_MouseUp(object sender, MouseEventArgs e)
+        {
+            pbUpdate.Image = Properties.Resources.update_hover;
         }
 
         // About
@@ -282,11 +348,11 @@ namespace YTMusicUploader
                200);
 
             pbAbout.Image = Properties.Resources.yt_logo;
-            new Thread((ThreadStart)delegate
+            ThreadPool.QueueUserWorkItem(delegate
             {
-                Thread.Sleep(100);
+                ThreadHelper.SafeSleep(100);
                 SetAboutButtonImage(Properties.Resources.yt_logo);
-            }).Start();
+            });
         }
 
         private void PbAbout_MouseDown(object sender, MouseEventArgs e)

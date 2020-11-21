@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataAccess" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataAccess" 3 "Sat Nov 21 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,7 +25,7 @@ Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.LogsRepo\fP, \fBYTMusicUpl
 .br
 .RI "Runs on form load to ensure the database schema is at the latest version following an application upgrade "
 .ti -1c
-.RI "static SQLiteConnection \fBDbConnection\fP ()"
+.RI "static SQLiteConnection \fBDbConnection\fP (bool readOnly=false)"
 .br
 .RI "Create an SQLite connection to the database file in the users AppData path "
 .in -1c
@@ -40,7 +40,7 @@ Abastract database repository access class\&.
 
 .PP
 Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder 
-.SS "static SQLiteConnection YTMusicUploader\&.Providers\&.DataAccess\&.DbConnection ()\fC [static]\fP"
+.SS "static SQLiteConnection YTMusicUploader\&.Providers\&.DataAccess\&.DbConnection (bool readOnly = \fCfalse\fP)\fC [static]\fP"
 
 .PP
 Create an SQLite connection to the database file in the users AppData path 

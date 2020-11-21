@@ -16,7 +16,9 @@ namespace YTMusicUploader.Providers.DataModels
         public enum LogTypeEnum
         {
             Info = 1,
-            Error = 2
+            Error = 2,
+            Warning = 3,
+            Critcal = 4
         }
 
         public DateTime Event { get; set; }

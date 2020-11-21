@@ -99,7 +99,7 @@ namespace YTMusicUploader.Business
                         while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
                         {
                             MainForm.SetPaused(true);
-                            Thread.Sleep(1000);
+                            ThreadHelper.SafeSleep(1000);
                         }
                         if (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.CloseChanges)
                             return;
@@ -113,7 +113,7 @@ namespace YTMusicUploader.Business
                             bool success = false;
                             for (int i = 0; i < 5; i++)
                             {
-                                Thread.Sleep(1000);
+                                ThreadHelper.SafeSleep(1000);
                                 try
                                 {
                                     HandleUploadCheck(musicFile).Wait();
@@ -192,8 +192,6 @@ namespace YTMusicUploader.Business
 
         private async Task HandleUploadCheck(MusicFile musicFile)
         {
-            Logger.LogInfo("HandleUploadCheck", "Checking is file already uploaded: " + musicFile.Path);
-
             var alreadyUploaded = Requests.IsSongUploaded(musicFile.Path,
                                                           MainForm.Settings.AuthenticationCookie,
                                                           out string entityId,
@@ -219,8 +217,6 @@ namespace YTMusicUploader.Business
 
         private async Task HandleFileAlreadyUploaded(MusicFile musicFile, string entityId)
         {
-            Logger.LogInfo("HandleUploadCheck", "File detected to already be uploaded, flagging in database and skipping upload");
-
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
             MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
@@ -331,7 +327,7 @@ namespace YTMusicUploader.Business
                     }
                     catch (Exception e)
                     {
-                        Logger.Log(e);
+                        Logger.Log(e, "Couldn't retrive record Mbid from MusicBrainz", Log.LogTypeEnum.Warning);
                     }
 
                     try
@@ -346,7 +342,7 @@ namespace YTMusicUploader.Business
                     }
                     catch (Exception e)
                     {
-                        Logger.Log(e);
+                        Logger.Log(e, "Couldn't retrive Release Mbid from MusicBrainz", Log.LogTypeEnum.Warning);
                     }
 
                     try
@@ -363,7 +359,7 @@ namespace YTMusicUploader.Business
                     }
                     catch (Exception e)
                     {
-                        Logger.Log(e);
+                        Logger.Log(e, "Couldn't retrive entity id from YTMusic", Log.LogTypeEnum.Warning);
                     }
 
                     _uploadedCount++;

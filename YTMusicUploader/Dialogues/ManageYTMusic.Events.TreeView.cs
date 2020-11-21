@@ -40,10 +40,10 @@ namespace YTMusicUploader.Dialogues
                 {
                     if (selectedNode.Nodes == null || selectedNode.Nodes.Count == 0)
                     {
-                        new Thread((ThreadStart)delegate
+                        ThreadPool.QueueUserWorkItem(delegate
                         {
                             GetAlbums(selectedNode, ((MusicManageTreeNodeModel)selectedNode.Tag).ArtistTitle);
-                        }).Start();
+                        });
                     }
                 }
 

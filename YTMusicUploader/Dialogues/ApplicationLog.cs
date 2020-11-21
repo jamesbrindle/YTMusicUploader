@@ -17,6 +17,16 @@ namespace YTMusicUploader.Dialogues
         private int _previousIndex;
         private bool _sortDirection;
 
+        private Dictionary<string, string> _logTypeDic = new Dictionary<string, string>
+        {
+            {"0", "All" },
+            {"1", "Info" },
+            {"2", "Error" },
+            {"3", "Warning" },
+            {"4", "Critical" },
+            {"2,3,4", "Errors and Warnings" },
+        };
+
         private LogsRepo LogsRepo { get; set; }
 
         /// <summary>
@@ -31,9 +41,26 @@ namespace YTMusicUploader.Dialogues
 
         private void ApplicationLoad_Load(object sender, EventArgs e)
         {
-            OnLoad(e);
+            ddLogType.SelectedIndexChanged -= DdLogType_SelectedIndexChanged;
+            OnLoad(e);            
             ResumeDrawing(this);
+            BindLogTypes();
             new Thread((ThreadStart)delegate { Populate(); }).Start();
+        }
+
+        private void BindLogTypes()
+        {
+            ddLogType.DataSource = new BindingSource(_logTypeDic, null);
+            ddLogType.DisplayMember = "Value";
+            ddLogType.ValueMember = "Key";
+            ddLogType.SelectedValue = "2,3,4";
+
+            ddLogType.SelectedIndexChanged += DdLogType_SelectedIndexChanged;
+        }
+
+        private void DdLogType_SelectedIndexChanged(object sender, EventArgs  e)
+        {
+            Populate();
         }
 
         delegate void PopulateDelegate();
@@ -50,10 +77,21 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
-                dgvLog.DataSource = LogsRepo.LoadAll().Result;
-                dgvLog.Columns["Machine"].Visible = false;
-                dgvLog.Columns["LogTypeId"].Width = 75;
-                dgvLog.Columns["Id"].Width = 55;
+                try
+                {
+                    if (((string)ddLogType.SelectedValue) == "0")
+                        dgvLog.DataSource = LogsRepo.LoadAll().Result;
+                    else
+                        dgvLog.DataSource = LogsRepo.LoadSpecific(((string)ddLogType.SelectedValue)).Result;
+
+                    dgvLog.Columns["Machine"].Visible = false;
+                    dgvLog.Columns["LogTypeId"].Width = 75;
+                    dgvLog.Columns["Id"].Width = 55;
+                }
+                catch (Exception e)
+                {
+                    Logger.Log(e, "Unable to fetch logs from the database and bind gridview", Log.LogTypeEnum.Critcal);
+                }
 
                 SetTitle("Application Log");
                 SetLogsClearedMessage($"Logs are cleared after {Global.ClearLogsAfterDays} days.");
@@ -90,7 +128,10 @@ namespace YTMusicUploader.Dialogues
 
         private void PbRefresh_Click(object sender, EventArgs e)
         {
-            dgvLog.DataSource = LogsRepo.LoadAll().Result;
+            if (((string)ddLogType.SelectedValue) == "0")
+                dgvLog.DataSource = LogsRepo.LoadAll().Result;
+            else
+                dgvLog.DataSource = LogsRepo.LoadSpecific(((string)ddLogType.SelectedValue)).Result;
         }
 
         private void PbRefresh_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -119,12 +160,12 @@ namespace YTMusicUploader.Dialogues
                 _sortDirection ^= true; // toggle direction
 
             dgvLog.DataSource = SortData(
-                (List<MusicFile>)dgvLog.DataSource, dgvLog.Columns[e.ColumnIndex].Name, _sortDirection);
+                (List<Log>)dgvLog.DataSource, dgvLog.Columns[e.ColumnIndex].Name, _sortDirection);
 
             _previousIndex = e.ColumnIndex;
         }
 
-        public List<MusicFile> SortData(List<MusicFile> list, string column, bool ascending)
+        public List<Log> SortData(List<Log> list, string column, bool ascending)
         {
             return ascending ?
                 list.OrderBy(_ => _.GetType().GetProperty(column).GetValue(_)).ToList() :

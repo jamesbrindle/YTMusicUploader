@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using JBToolkit.Threads;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -18,10 +19,22 @@ namespace YTMusicUploader.Providers.Repos
         /// <returns>Setting model object</returns>
         public async Task<Settings> Load()
         {
-            using (var conn = DbConnection())
+            try
+            {
+                return await Load_R();
+            }
+            catch
+            {
+                ThreadHelper.SafeSleep(50);
+                return await Load_R();
+            }
+        }
+
+        private async Task<Settings> Load_R()
+        {
+            using (var conn = DbConnection(true))
             {
                 conn.Open();
-
                 var settings = conn.Query<Settings>(
                         @"SELECT 
                               Id, 
@@ -30,6 +43,7 @@ namespace YTMusicUploader.Providers.Repos
                               AuthenticationCookie,
                               SendLogsToSource
                           FROM Settings").FirstOrDefault();
+                conn.Close();
 
                 return await Task.FromResult(settings);
             }
@@ -41,6 +55,19 @@ namespace YTMusicUploader.Providers.Repos
         /// <param name="settings">Settings model object</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> Update(Settings settings)
+        {
+            try
+            {
+                return await Update_R(settings);
+            }
+            catch
+            {
+                ThreadHelper.SafeSleep(50);
+                return await Update_R(settings);
+            }
+        }
+
+        private async Task<DbOperationResult> Update_R(Settings settings)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -58,7 +85,7 @@ namespace YTMusicUploader.Providers.Repos
                                      SendLogsToSource = @SendLogsToSource
                               WHERE Id = @Id",
                             settings);
-
+                    conn.Close();
                 }
 
                 stopWatch.Stop();

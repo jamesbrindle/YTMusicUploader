@@ -49,11 +49,11 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
-                new Thread((ThreadStart)delegate
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     AppendUpdatesText("Loading artists from cache...", ColourHelper.HexStringToColor("#0f0466"));
                     BindArtists(false);
-                }).Start();
+                });
             }
         }
 
@@ -430,7 +430,7 @@ namespace YTMusicUploader.Dialogues
 
         private void ResetMusicFileEntryStates()
         {
-            new Thread((ThreadStart)delegate
+            ThreadPool.QueueUserWorkItem(delegate
             {
                 DisableAllActionButtons(true);
                 MainForm.MusicFileRepo.ResetAllMusicFileUploadedStates().Wait();
@@ -438,7 +438,7 @@ namespace YTMusicUploader.Dialogues
                                    ColourHelper.HexStringToColor("#0d5601"));
                 DisableAllActionButtons(false);
                 ShowPreloader(false);
-            }).Start();
+            });
         }
 
         private void ResetUserDatabase()

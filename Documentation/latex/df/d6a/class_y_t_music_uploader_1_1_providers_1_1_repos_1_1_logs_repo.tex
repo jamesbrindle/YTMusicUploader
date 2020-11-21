@@ -18,6 +18,8 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo
 \item 
 Task$<$ \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a29ef174ab2247fad12d438943965208a}{Load\+All}} ()
 \begin{DoxyCompactList}\small\item\em Loads all logs from the databse \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}} $>$ $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a24deb9133a29bdf70315ec88b9b118fb}{Load\+Specific}} (string log\+Types)
+\begin{DoxyCompactList}\small\item\em Loads specific logs from the databse \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a7467ef5e68e708b160cfd3efac2f5f76}{Add}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}} log)
 \begin{DoxyCompactList}\small\item\em Adds the log to the databse \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_abad6b4c98cebf46a2b12bb9324354e4b}{Delete\+Older\+Than}} (Date\+Time date\+Time)
@@ -90,6 +92,23 @@ Here is the call graph for this function\+:
 % FIG 5
 Here is the caller graph for this function\+:
 % FIG 6
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a24deb9133a29bdf70315ec88b9b118fb}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo_a24deb9133a29bdf70315ec88b9b118fb}} 
+\index{YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}!LoadSpecific@{LoadSpecific}}
+\index{LoadSpecific@{LoadSpecific}!YTMusicUploader.Providers.Repos.LogsRepo@{YTMusicUploader.Providers.Repos.LogsRepo}}
+\doxysubsubsection{\texorpdfstring{LoadSpecific()}{LoadSpecific()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log}{Log}}$>$ $>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Logs\+Repo.\+Load\+Specific (\begin{DoxyParamCaption}\item[{string}]{log\+Types }\end{DoxyParamCaption})}
+
+
+
+Loads specific logs from the databse 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_list}{List}} of Music\+File\+Objects
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.LogsRepo" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.LogsRepo" 3 "Sat Nov 21 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,6 +16,10 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .RI "Task< \fBList\fP< \fBLog\fP > > \fBLoadAll\fP ()"
 .br
 .RI "Loads all logs from the databse "
+.ti -1c
+.RI "Task< \fBList\fP< \fBLog\fP > > \fBLoadSpecific\fP (string logTypes)"
+.br
+.RI "Loads specific logs from the databse "
 .ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBAdd\fP (\fBLog\fP log)"
 .br
@@ -69,6 +73,17 @@ Deletes logs older than a particular date from the databae
 
 .PP
 Loads all logs from the databse 
+.PP
+\fBReturns\fP
+.RS 4
+\fBList\fP of MusicFileObjects
+.RE
+.PP
+
+.SS "Task<\fBList\fP<\fBLog\fP> > YTMusicUploader\&.Providers\&.Repos\&.LogsRepo\&.LoadSpecific (string logTypes)"
+
+.PP
+Loads specific logs from the databse 
 .PP
 \fBReturns\fP
 .RS 4

@@ -1,9 +1,11 @@
 ﻿using Dapper;
+using JBToolkit.Threads;
 using JBToolkit.Windows;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
+using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Business
@@ -90,48 +92,55 @@ namespace YTMusicUploader.Business
                     MusicFilesToDelete.Add(musicFile);
             }
 
-            using (var conn = new SQLiteConnection("Data Source=" + Global.DbLocation))
+            using (var conn = new SQLiteConnection("Data Source=" + Global.DbLocation + ";cache=shared"))
             {
                 SetStatus();
                 conn.Open();
-                int count = 0;
-                foreach (var file in NewFiles)
+
+                try
                 {
+                    int count = 0;
+                    foreach (var file in NewFiles)
+                    {
+                        if (MainForm.Aborting)
+                        {
+                            MainForm.SetStatusMessage("Idle", "Idle");
+                            return;
+                        }
+
+                        count++;
+                        if (count > MainForm.InitialFilesCount)
+                            if (count % 100 == 0)
+                                MainForm.SetDiscoveredFilesLabel(count.ToString());
+
+                        SetStatus();
+                        AddToDB(conn, new MusicFile(file.Path));
+                    }
+
                     if (MainForm.Aborting)
                     {
-                        MainForm.SetStatusMessage("Idle", "Idle");
+                        SetStatus("Idle", "Idle");
                         return;
                     }
 
-                    count++;
-                    if (count > MainForm.InitialFilesCount)
-                        if (count % 100 == 0)
-                            MainForm.SetDiscoveredFilesLabel(count.ToString());
-
-                    SetStatus();
-                    AddToDB(conn, new MusicFile(file.Path));
-                }
-
-                if (MainForm.Aborting)
-                {
-                    SetStatus("Idle", "Idle");
-                    return;
-                }
-
-                count = 0;
-                foreach (var musicFile in MusicFilesToDelete)
-                {
-                    if (MainForm.Aborting)
+                    count = 0;
+                    foreach (var musicFile in MusicFilesToDelete)
                     {
-                        MainForm.SetStatusMessage("Idle", "Idle");
-                        return;
-                    }
+                        if (MainForm.Aborting)
+                        {
+                            MainForm.SetStatusMessage("Idle", "Idle");
+                            return;
+                        }
 
-                    count++;
-                    RemoveFromDB(conn, musicFile.Path);
-                };
+                        count++;
+                        RemoveFromDB(conn, musicFile.Path);
+                    };
 
-                MainForm.SetDiscoveredFilesLabel(MainForm.MusicFileRepo.CountAll().Result.ToString());
+                    MainForm.SetDiscoveredFilesLabel(MainForm.MusicFileRepo.CountAll().Result.ToString());
+                }
+                catch { }
+
+                conn.Close();
             }
 
             SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Waiting for YouTube Music connection", "Waiting for YouTube Music connection");
@@ -143,11 +152,8 @@ namespace YTMusicUploader.Business
         /// </summary>
         public void RecountLibraryFiles()
         {
-            Logger.LogInfo("RecountLibraryFiles", "Recounting library files");
-
             try
             {
-
                 int count = 0;
                 foreach (var watchFolder in MainForm.WatchFolders)
                 {
@@ -160,12 +166,11 @@ namespace YTMusicUploader.Business
                     }
                 }
 
-                Logger.LogInfo("RecountLibraryFiles", "Recounting library files complete: " + count + " files");
                 MainForm.SetDiscoveredFilesLabel(count.ToString());
             }
             catch (Exception e)
             {
-                Logger.Log(e);
+                Logger.Log(e, Log.LogTypeEnum.Warning);
             }
         }
 

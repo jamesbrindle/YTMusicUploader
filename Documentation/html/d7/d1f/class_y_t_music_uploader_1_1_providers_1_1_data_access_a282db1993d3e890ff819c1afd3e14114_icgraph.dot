@@ -1,0 +1,37 @@
+digraph "YTMusicUploader.Providers.DataAccess.DbConnection"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="YTMusicUploader.Providers.\lDataAccess.DbConnection",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Create an SQLite connection to the database file in the users AppData path"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="YTMusicUploader.Providers.\lRepos.LogsRepo.Add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a7467ef5e68e708b160cfd3efac2f5f76",tooltip="Adds the log to the databse"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="YTMusicUploader.Providers.\lDataModels.Log.Save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html#ad5d3bb5eae4d148dfc43511f099cd172",tooltip="Adds to the log to the database"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="YTMusicUploader.Providers.\lRepos.MusicFileRepo.AddOrUpdate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#ad7ff2a25b5be24c8d0cd18f073765892",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="YTMusicUploader.Providers.\lRepos.LogsRepo.DeleteOlderThan",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#abad6b4c98cebf46a2b12bb9324354e4b",tooltip="Deletes logs older than a particular date from the databae"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="YTMusicUploader.Providers.\lRepos.LogsRepo.LoadAll",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a29ef174ab2247fad12d438943965208a",tooltip="Loads all logs from the databse"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="YTMusicUploader.Dialogues.\lApplicationLog.Populate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/dfb/class_y_t_music_uploader_1_1_dialogues_1_1_application_log.html#ab813c98ea2807a8d0fdc6e3b22d6d6a7",tooltip="Populates the DataGridView control with data."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="YTMusicUploader.Providers.\lRepos.LogsRepo.LoadSpecific",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a24deb9133a29bdf70315ec88b9b118fb",tooltip="Loads specific logs from the databse"];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="YTMusicUploader.Providers.\lDataAccess.PerformAnyDbUpgrades",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a777fee8af9abfbafeb10f09327101e08",tooltip="Runs on form load to ensure the database schema is at the latest version following an application upg..."];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="YTMusicUploader.Providers.\lDataAccess.CheckAndCopyDatabaseFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a0f9bb7c069a72090c6f86048509fa343",tooltip="Checks if the database file is present in the users AppData path. If it's not present it will copy ov..."];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="YTMusicUploader.MainForm.\lStartMainProcess",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ae262cc9d9873fca34d4a8d275b62d723",tooltip=" "];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="YTMusicUploader.MainForm.\lMainForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9",tooltip=" "];
+  Node11 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="YTMusicUploader.MainForm.\lRestart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad49bcebfe92cf336cecefee2c73a1883",tooltip=" "];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="YTMusicUploader.Business.\lQueueChecker.QueueChecker",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf",tooltip=" "];
+  Node9 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="YTMusicUploader.Providers.\lDataAccess.ResetDatabase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a382ab3bb9ef5c28ed9d0ee09cf5a9573",tooltip="Delete the app data database (user's database)"];
+}

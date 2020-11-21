@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Fri Nov 20 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sat Nov 21 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -68,17 +68,20 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .br
 .RI "Inserts a Music File entry into the database\&. If the entry already exists, but is flagged as 'removed', then the removed flag will be set to false "
 .ti -1c
-.RI "async Task \fBRestoreMusicFile\fP (int id)"
+.RI "Task \fBRestoreMusicFile\fP (int id)"
 .br
 .RI "Sets the 'removed' flag to false "
 .ti -1c
-.RI "async Task \fBResetAllMusicFileUploadedStates\fP ()"
+.RI "Task \fBResetAllMusicFileUploadedStates\fP ()"
 .br
 .RI "Reset all music file entry uploaded states "
 .ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBUpdate\fP (\fBMusicFile\fP musicFile)"
 .br
 .RI "Updates the Music File entry in the database with the fields of the given MusicFile object "
+.ti -1c
+.RI "void \fBAddOrUpdate\fP (\fBMusicFile\fP musicFile)"
+.br
 .ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (\fBMusicFile\fP musicFile, bool destroy=false)"
 .br
@@ -112,6 +115,8 @@ Music File database repository access\&.
 
 .SH "Member Function Documentation"
 .PP 
+.SS "void YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.AddOrUpdate (\fBMusicFile\fP musicFile)"
+
 .SS "async Task<int> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountAll ()"
 
 .PP
@@ -389,11 +394,11 @@ Loads a list of MusicFile objects with a successful upload
 .RE
 .PP
 
-.SS "async Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.ResetAllMusicFileUploadedStates ()"
+.SS "Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.ResetAllMusicFileUploadedStates ()"
 
 .PP
 Reset all music file entry uploaded states 
-.SS "async Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
+.SS "Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
 
 .PP
 Sets the 'removed' flag to false 

@@ -114,7 +114,7 @@ namespace YTMusicUploader.Providers
                 {
                     while (!UploadCheckCache.CleanUp)
                     {
-                        // The pretecher runs in parallel and doesn't leave any time
+                        // The prefecher runs in parallel and doesn't leave any time
                         // for the normal requests... So every second grant a full 100ms
 
                         UploadCheckCache.Sleep = true;
@@ -249,7 +249,7 @@ namespace YTMusicUploader.Providers
             }
             catch (Exception e)
             {
-                Logger.Log(e, "Error while checkking if song was uploaded:" + musicFilePath);
+                Logger.Log(e, "Error while checking if song was uploaded:" + musicFilePath);
 
                 return UploadCheckResult.NotPresent;
             }
@@ -524,7 +524,7 @@ namespace YTMusicUploader.Providers
                     foreach (JToken run in runs)
                     {
                         if (!parallel)
-                            Thread.Sleep(5);
+                            ThreadHelper.SafeSleep(5);
 
                         if (run.ToString().Contains("text"))
                         {
@@ -736,7 +736,7 @@ namespace YTMusicUploader.Providers
         {
             foreach (var runElement in runArray)
             {
-                Thread.Sleep(5);
+                ThreadHelper.SafeSleep(5);
 
                 if (runElement.text == null)
                     runElement.text = string.Empty;
@@ -854,7 +854,7 @@ namespace YTMusicUploader.Providers
             entityId = string.Empty;
             foreach (var artistCacheItem in ArtistCache.Artists)
             {
-                Thread.Sleep(1);
+                ThreadHelper.SafeSleep(1);
                 float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
                 if (artistSimilarity >= matchSuccessMinimum)
                 {
@@ -865,7 +865,7 @@ namespace YTMusicUploader.Providers
 
                     foreach (var songCacheItem in artistCacheItem.AlbumSongCollection.Songs)
                     {
-                        Thread.Sleep(1);
+                        ThreadHelper.SafeSleep(1);
                         if (!trackFound)
                         {
                             float trackSimilarity = Levenshtein.Similarity(track.UnQuote(), songCacheItem.Title.UnQuote());

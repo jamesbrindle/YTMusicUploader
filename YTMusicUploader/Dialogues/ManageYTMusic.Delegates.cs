@@ -141,7 +141,7 @@ namespace YTMusicUploader.Dialogues
                         pbCoverArt.Image = Properties.Resources.default_artwork_60;
                     else
                     {
-                        new Thread((ThreadStart)delegate
+                        ThreadPool.QueueUserWorkItem(delegate
                         {
                             byte[] imageBytes = MusicDataFetcher.GetImageBytesFromUrl(nodeTag.CovertArtUrl);
                             if (imageBytes == null)
@@ -157,7 +157,7 @@ namespace YTMusicUploader.Dialogues
                                     SetCovertArtImage(image);
                                 }
                             }
-                        }).Start();
+                        });
                     }
                 }
             }
@@ -295,6 +295,8 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
+                Logger.LogInfo("ManageYTMusic", text);
+
                 tbUpdates.SelectionColor = color;
                 tbUpdates.AppendText("- " + text + "\r\n");
                 tbUpdates.SelectionStart = tbUpdates.Text.Length;

@@ -141,6 +141,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\JB.Toolkit\packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="Ookii.Dialogs.WinForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158, processorArchitecture=MSIL">
       <HintPath>..\packages\Ookii.Dialogs.WinForms.1.1.0\lib\net45\Ookii.Dialogs.WinForms.dll</HintPath>
     </Reference>
@@ -370,6 +373,10 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForm.Tooltips.cs">
+      <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -459,6 +466,7 @@
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
     <EmbeddedResource Include="Dialogues\ApplicationLog.resx">
       <DependentUpon>ApplicationLog.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogues\ManageYTMusic.resx">
       <DependentUpon>ManageYTMusic.cs</DependentUpon>
@@ -536,6 +544,11 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\update_down.png" />
+    <None Include="Resources\update_up.png" />
+    <None Include="Resources\update_hover.png" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\unnamed.png" />
     <None Include="Resources\log_icon.png" />
     <None Include="Resources\log_down.png" />
     <None Include="Resources\log_hover.png" />
