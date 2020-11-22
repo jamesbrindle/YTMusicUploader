@@ -7,7 +7,7 @@ Automatically upload your local personal music library to YouTube Music and bulk
 &nbsp;
 &nbsp;
 
-**[Download Version 1.5.1 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.5.1)**
+**[Download Version 1.5.2 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.5.2)**
 &nbsp;
 &nbsp;
 
@@ -24,11 +24,11 @@ This is a .Net application written in C# that uploads your personal music librar
 
 &nbsp;
 
-[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1b.png)](https://github.com/jamesbrindle/YTMusicUploader)
+[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc1c.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
-[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6b.png)](https://github.com/jamesbrindle/YTMusicUploader)
+[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader-sc6c.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
-[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader_ytmusicmanage.png)](https://github.com/jamesbrindle/YTMusicUploader)
+[![N|Solid](https://portfolio.jb-net.co.uk/shared/ytmusicuploader_ytmusicmanagec.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
 &nbsp;
 

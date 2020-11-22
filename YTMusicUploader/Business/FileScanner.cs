@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
-using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Business
@@ -22,6 +21,7 @@ namespace YTMusicUploader.Business
         public List<MusicFile> MusicFilesToDelete { get; set; } = new List<MusicFile>();
         public List<MusicFile> CurrentMusicFiles { get; set; }
         public HashSet<string> CurrentMusicFilesHash { get; set; } = new HashSet<string>();
+        public bool Stopped { get; set; } = false;
 
         public FileScanner(MainForm mainForm)
         {
@@ -33,47 +33,73 @@ namespace YTMusicUploader.Business
         /// </summary>
         public void Process()
         {
+            Stopped = false;
             SetStatus();
+
+            if (MainForm.WatchFolders.Count == 0)
+            {
+                MainForm.MusicFileRepo.DeleteAll().Wait();
+                MainForm.SetDiscoveredFilesLabel("0");
+                MainForm.SetIssuesLabel("0");
+                MainForm.SetUploadedLabel("0");
+            }
 
             CurrentMusicFiles = MainForm.MusicFileRepo.LoadAll().Result;
             foreach (var musicFile in CurrentMusicFiles)
                 CurrentMusicFilesHash.Add(musicFile.Path);
-
-            if (MainForm.WatchFolders.Count == 0)
-                MainForm.MusicFileRepo.DeleteAll().Wait();
 
             //
             // Get files to add - Cross reference with the DB
             //
             foreach (var watchFolder in MainForm.WatchFolders)
             {
-                if (MainForm.Aborting)
-                {
-                    SetStatus("Idle", "Idle");
+                if (MainFormAborting())
                     return;
-                }
 
-                foreach (var file in FastDirectoryEnumerator.EnumerateFiles(watchFolder.Path,
-                                                                            "*.*",
-                                                                            SearchOption.AllDirectories))
+                if (Directory.Exists(watchFolder.Path))
                 {
-                    if (MainForm.Aborting)
+                    foreach (var file in FastDirectoryEnumerator.EnumerateFiles(watchFolder.Path,
+                                                                                "*.*",
+                                                                                SearchOption.AllDirectories))
                     {
-                        SetStatus("Idle", "Idle");
-                        return;
-                    }
-
-                    if (!CurrentMusicFilesHash.Contains(file.Path))
-                    {
-                        if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                        try
                         {
-                            NewFiles.Add(file);
-                            NewFilesHash.Add(file.Path);
+                            if (MainFormAborting())
+                                return;
+
+                            if (!CurrentMusicFilesHash.Contains(file.Path))
+                            {
+                                if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                                {
+                                    NewFiles.Add(file);
+                                    NewFilesHash.Add(file.Path);
+                                }
+                            }
+
+                            if (MainFormAborting())
+                                return;
+
+                            if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                                DiscoveredFilesHash.Add(file.Path);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Log(
+                                e,
+                                "FileScanner.Process - Error reading file (possibly removed): " +
+                                file.Path,
+                                Log.LogTypeEnum.Error,
+                                false);
                         }
                     }
+                }
+                else
+                {
+                    if (MainFormAborting())
+                        return;
 
-                    if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
-                        DiscoveredFilesHash.Add(file.Path);
+                    SetStatus("Error: Watch folder directory does not exists: " + watchFolder.Path.EllipsisPath(100), "Directory ");
+                    ThreadHelper.SafeSleep(5000);
                 }
             }
 
@@ -82,11 +108,8 @@ namespace YTMusicUploader.Business
             //
             foreach (var musicFile in CurrentMusicFiles)
             {
-                if (MainForm.Aborting)
-                {
-                    SetStatus("Idle", "Idle");
+                if (MainFormAborting())
                     return;
-                }
 
                 if (!DiscoveredFilesHash.Contains(musicFile.Path))
                     MusicFilesToDelete.Add(musicFile);
@@ -102,35 +125,25 @@ namespace YTMusicUploader.Business
                     int count = 0;
                     foreach (var file in NewFiles)
                     {
-                        if (MainForm.Aborting)
-                        {
-                            MainForm.SetStatusMessage("Idle", "Idle");
+                        if (MainFormAborting(conn))
                             return;
-                        }
 
                         count++;
-                        if (count > MainForm.InitialFilesCount)
-                            if (count % 100 == 0)
-                                MainForm.SetDiscoveredFilesLabel(count.ToString());
+                        if (count % 100 == 0)
+                            MainForm.SetDiscoveredFilesLabel(count.ToString());
 
                         SetStatus();
                         AddToDB(conn, new MusicFile(file.Path));
                     }
 
-                    if (MainForm.Aborting)
-                    {
-                        SetStatus("Idle", "Idle");
+                    if (MainFormAborting(conn))
                         return;
-                    }
 
                     count = 0;
                     foreach (var musicFile in MusicFilesToDelete)
                     {
-                        if (MainForm.Aborting)
-                        {
-                            MainForm.SetStatusMessage("Idle", "Idle");
+                        if (MainFormAborting(conn))
                             return;
-                        }
 
                         count++;
                         RemoveFromDB(conn, musicFile.Path);
@@ -144,6 +157,7 @@ namespace YTMusicUploader.Business
             }
 
             SetStatus(MainForm.ConnectedToYTMusic ? "Ready" : "Waiting for YouTube Music connection", "Waiting for YouTube Music connection");
+            Stopped = true;
         }
 
         /// <summary>
@@ -170,7 +184,7 @@ namespace YTMusicUploader.Business
             }
             catch (Exception e)
             {
-                Logger.Log(e, Log.LogTypeEnum.Warning);
+                Logger.Log(e, "RecountLibraryFiles", Log.LogTypeEnum.Warning);
             }
         }
 
@@ -228,8 +242,7 @@ namespace YTMusicUploader.Business
                 {
                     conn.Execute(
                        @"UPDATE MusicFiles
-                            SET Removed = 0,
-                                LastUpload = '0001-01-01 00:00:00'
+                            SET Removed = 0 
                          WHERE Id = @Id",
                        new { id });
                 }
@@ -254,6 +267,27 @@ namespace YTMusicUploader.Business
                           new { path });
             }
             catch { }
+        }
+
+        private bool MainFormAborting(SQLiteConnection conn = null)
+        {
+            if (MainForm.Aborting)
+            {
+                if (conn != null)
+                {
+                    try
+                    {
+                        conn.Close();
+                    }
+                    catch { }
+                }
+
+                Stopped = true;
+                MainForm.SetUploadingMessage("Restarting", "Restarting", null, true);
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>

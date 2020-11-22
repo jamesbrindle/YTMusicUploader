@@ -46,7 +46,9 @@ namespace YTMusicUploader.Providers.Repos
                               Hash,
                               LastUpload, 
                               Error,
-                              ErrorReason
+                              ErrorReason,
+                              UploadAttempts,
+                              LastUploadError
                           FROM MusicFiles
                           WHERE Id = @Id
                           AND (Removed IS NULL OR Removed != 1)",
@@ -88,7 +90,9 @@ namespace YTMusicUploader.Providers.Repos
                               Hash,
                               LastUpload, 
                               Error,
-                              ErrorReason
+                              ErrorReason,
+                              UploadAttempts,
+                              LastUploadError
                           FROM MusicFiles
                           WHERE Path = @Path
                           AND (Removed IS NULL OR Removed != 1)",
@@ -129,7 +133,9 @@ namespace YTMusicUploader.Providers.Repos
                               Hash,
                               LastUpload, 
                               Error,
-                              ErrorReason
+                              ErrorReason,
+                              UploadAttempts,
+                              LastUploadError
                           FROM MusicFiles
                           WHERE EntityId = @EntityId
                           ORDER BY Removed",
@@ -174,7 +180,9 @@ namespace YTMusicUploader.Providers.Repos
                               Hash,
                               LastUpload, 
                               Error,
-                              ErrorReason
+                              ErrorReason,
+                              UploadAttempts,
+                              LastUploadError
                           FROM MusicFiles
                           WHERE Hash = @Hash
                           AND Path != @Path
@@ -218,7 +226,9 @@ namespace YTMusicUploader.Providers.Repos
                               Hash,
                               LastUpload, 
                               Error,
-                              ErrorReason
+                              ErrorReason,
+                              UploadAttempts,
+                              LastUploadError
                           FROM MusicFiles
                           WHERE (Error = 0 OR Error IS NULL)
                           AND (MbId = '' OR MbId IS NULL)
@@ -263,7 +273,9 @@ namespace YTMusicUploader.Providers.Repos
                               Hash,
                               LastUpload, 
                               Error,
-                              ErrorReason
+                              ErrorReason,
+                              UploadAttempts,
+                              LastUploadError
                           FROM MusicFiles
                           WHERE (Error = 0 OR Error IS NULL)
                           AND (EntityId = '' OR EntityId IS NULL)
@@ -306,29 +318,33 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 string cmd = string.Format(
-                                @"SELECT 
-                                       Id, 
-                                       Path, 
-                                       MbId,
-                                       ReleaseMbId,
-                                       EntityId,
-                                       Hash,
-                                       LastUpload, 
-                                       Error,
-                                       ErrorReason
-                                  FROM MusicFiles
-                                  WHERE (Removed IS NULL OR Removed != 1)
-                                  {0} {1} {2}",
-                                includeErrorFiles
-                                    ? ""
-                                    : "AND Error = 0",
-                                ignoreRecentlyUploaded
-                                    ? "AND (LastUpload < '" + DateTime.Now.AddDays(Global.RecheckForUploadedSongsInDays * -1).ToString("yyyy-MM-dd HH:mm:ss") + "'" +
-                                       (includeErrorFiles
-                                           ? " OR Error = 1"
-                                           : "") + ")"
-                                    : "",
-                                lastUploadAscending ? "ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
+@"SELECT 
+        Id, 
+        Path, 
+        MbId,
+        ReleaseMbId,
+        EntityId,
+        Hash,
+        LastUpload, 
+        Error,
+        ErrorReason,
+        UploadAttempts,
+        LastUploadError
+FROM MusicFiles
+WHERE (Removed IS NULL OR Removed != 1)" + "\n" + @"
+{0} {1} {2}",
+includeErrorFiles
+    ? ""
+    : "AND Error = 0",
+ignoreRecentlyUploaded
+    ? "AND (LastUpload < '" + DateTime.Now.AddDays(Global.RecheckForUploadedSongsInDays * -1).ToString("yyyy-MM-dd HH:mm:ss") + "'\n" +
+    "   AND (Error IS NULL OR Error = 0))" + "\n" +
+        (includeErrorFiles
+            ? "      OR (Error = 1 AND (LastUploadError < '" + DateTime.Now.AddDays(-30).ToSQLDateTime() +
+                "' OR (UploadAttempts IS NULL OR UploadAttempts <= " + Global.YTMusic500ErrorRetryAttempts + "))"
+            : "") + ")"
+    : "",
+lastUploadAscending ? "\n" + @"ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
 
                 conn.Open();
                 var musicFiles = conn.Query<MusicFile>(cmd).ToList();
@@ -369,7 +385,9 @@ namespace YTMusicUploader.Providers.Repos
                                        Hash,
                                        LastUpload, 
                                        Error,
-                                       ErrorReason
+                                       ErrorReason,
+                                       UploadAttempts,
+                                       LastUploadError
                                   FROM MusicFiles
                                   WHERE (Removed IS NULL OR Removed != 1)
                                   AND Error = 1
@@ -414,7 +432,9 @@ namespace YTMusicUploader.Providers.Repos
                                        Hash,
                                        LastUpload, 
                                        Error,
-                                       ErrorReason
+                                       ErrorReason,
+                                       UploadAttempts,
+                                       LastUploadError
                                   FROM MusicFiles
                                   WHERE (Removed IS NULL OR Removed != 1)
                                   AND (Error = 0 OR Error IS NULL)
@@ -610,7 +630,9 @@ namespace YTMusicUploader.Providers.Repos
                                         EntityId,
                                         LastUpload, 
                                         Error,
-                                        ErrorReason) 
+                                        ErrorReason,
+                                        UploadAttempts,
+                                        LastUploadError) 
                                 VALUES (@Path, 
                                         @Hash,
                                         @MbId,
@@ -618,7 +640,9 @@ namespace YTMusicUploader.Providers.Repos
                                         @EntityId,
                                         @LastUpload, 
                                         @Error,
-                                        @ErrorReason);
+                                        @ErrorReason,
+                                        @UploadAttempts,
+                                        @LastUploadError);
                               SELECT last_insert_rowid()",
                             musicFile).First();
                         conn.Close();
@@ -635,7 +659,7 @@ namespace YTMusicUploader.Providers.Repos
                 stopWatch.Stop();
                 return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
-        }        
+        }
 
         /// <summary>
         /// Sets the 'removed' flag to false
@@ -739,7 +763,9 @@ namespace YTMusicUploader.Providers.Repos
                                  LastUpload = @LastUpload, 
                                  Error = @Error,
                                  ErrorReason = @ErrorReason,
-                                 Removed = @Removed
+                                 Removed = @Removed,
+                                 UploadAttempts = @UploadAttempts,
+                                 LastUploadError = @LastUploadError
                           WHERE Id = @Id;
                           SELECT last_insert_rowid()",
                         musicFile).First();
@@ -756,58 +782,54 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
-        public void AddOrUpdate(MusicFile musicFile)
+        /// <summary>
+        /// Resets the issue status of a MusicFile for the reason of a force retry
+        /// </summary>
+        /// <param name="id">MusicFile Id</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
+        public async Task<DbOperationResult> ResetIssueStatus(int id)
         {
-            // Not using the standard Repos namespace so we don't have to keep creating and
-            // opening new connections
+            try
+            {
+                return await ResetIssueStatus_R(id);
+            }
+            catch
+            {
+                ThreadHelper.SafeSleep(50);
+                return await ResetIssueStatus_R(id);
+            }
+        }
+
+        private async Task<DbOperationResult> ResetIssueStatus_R(int id)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
 
             try
             {
                 using (var conn = DbConnection())
                 {
                     conn.Open();
-
-                    int? id = conn.ExecuteScalar<int?>(
-                            @"SELECT Id  
-                              FROM MusicFiles
-                              WHERE Path = @Path
-                              LIMIT 1",
-                            new { musicFile.Path });
-
-                    if (id == null || id == 0)
-                    {
-                        conn.Execute(
-                                  @"INSERT 
-                                    INTO MusicFiles (
-			                                Path, 
-                                            Hash,
-			                                LastUpload, 
-			                                Error,
-			                                ErrorReason
-                                            )
-                                    SELECT @Path,
-                                           @Hash,
-	                                       @LastUpload,
-	                                       @Error,
-	                                       @ErrorReason",
-                                  musicFile);
-                    }
-                    else
-                    {
-                        conn.Execute(
-                           @"UPDATE MusicFiles
-                             SET Removed = 0,
+                    id = (int)conn.Query<long>(
+                        @"UPDATE MusicFiles
+                             SET Error = 0,
+                                 ErrorReason = '',
+                                 UploadAttempts = 0,
+                                 LastUploadError = '0001-01-01 00:00:00',
                                  LastUpload = '0001-01-01 00:00:00'
-                             WHERE Id = @Id",
-                               new { id });
-                    }
-
+                          WHERE Id = @id;
+                          SELECT last_insert_rowid()",
+                          new { id }).First();
                     conn.Close();
                 }
+
+                stopWatch.Stop();
+                return await Task.FromResult(DbOperationResult.Success(id, stopWatch.Elapsed));
             }
             catch (Exception e)
             {
-                Console.Out.WriteLine(e.Message);
+                stopWatch.Stop();
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
             }
         }
 

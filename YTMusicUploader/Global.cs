@@ -18,21 +18,24 @@ namespace YTMusicUploader
         private static bool? _multiThreadedRequests = null;
         private static int? _maxDegreesOfParallelism = null;
         private static int? _clearLogsAfterDays = null;
+        private static int? _recheckForUploadedSongsInDays = null;
         private static string _dbLocation = null;
         private static string _edgeFolder = null;
         private static string _edgeVersion = null;
         private static string _googleVisitorId = null;
-        private static string _youTubeBaseUrl = null;
-        private static string _youTubeMusicUploadUrl = null;
-        private static string _youTubeMusicParams = null;
-        private static string _musicBrainzBaseUrl = null;
-        private static string _musicBrainzUserAgent = null;
-        private static int? _recheckForUploadedSongsInDays = null;
-        private static float? _youTubeUploadedSimilarityPercentageForMatch = null;
-        private static string _workingDirectory = null;
-        private static string[] _supportedFiles = null;
+        private static string _yTBaseUrl = null;
+        private static string _yTMusicUploadUrl = null;
+        private static string _yTMusicParams = null;
         private static int? _yTMusic500ErrorRetryAttempts = null;
         private static int? _yTMusicIssuesMainProcessRetry = null;
+        private static float? _yTUploadedSimilarityPercentageForMatch = null;
+        private static string _musicBrainzBaseUrl = null;
+        private static string _musicBrainzUserAgent = null;
+       
+     
+        private static string _workingDirectory = null;
+        private static string[] _supportedFiles = null;
+        
 
         /// <summary>
         /// Returns application's version from Assembly
@@ -143,78 +146,6 @@ namespace YTMusicUploader
         }
 
         /// <summary>
-        /// Main API URL for YouTube Music
-        /// </summary>
-        public static string YouTubeMusicBaseUrl
-        {
-            get
-            {
-                if (_youTubeBaseUrl != null)
-                    return _youTubeBaseUrl;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["YTMusicMusicBaseUrl"] != null)
-                        _youTubeBaseUrl = ConfigurationManager.AppSettings["YTMusicMusicBaseUrl"];
-                }
-                catch
-                {
-                    _youTubeBaseUrl = "https://music.youtube.com/youtubei/v1/";
-                }
-
-                return _youTubeBaseUrl;
-            }
-        }
-
-        /// <summary>
-        /// Upload specific API URL for YouTube Music
-        /// </summary>
-        public static string YouTubeMusicUploadUrl
-        {
-            get
-            {
-                if (_youTubeMusicUploadUrl != null)
-                    return _youTubeMusicUploadUrl;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["YTMusicUploadUrl"] != null)
-                        _youTubeMusicUploadUrl = ConfigurationManager.AppSettings["YTMusicUploadUrl"];
-                }
-                catch
-                {
-                    _youTubeMusicUploadUrl = "https://upload.youtube.com/upload/usermusic/http?authuser=0";
-                }
-
-                return _youTubeMusicUploadUrl;
-            }
-        }
-
-        /// <summary>
-        /// Main URL parameters for typical YouTube music API calls
-        /// </summary>
-        public static string YouTubeMusicParams
-        {
-            get
-            {
-                if (_youTubeMusicParams != null)
-                    return _youTubeMusicParams;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["YTMusicParams"] != null)
-                        _youTubeMusicParams = ConfigurationManager.AppSettings["YTMusicParams"];
-                }
-                catch
-                {
-                    _youTubeMusicParams = "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
-                }
-
-                return _youTubeMusicParams;
-            }
-        }
-
-        /// <summary>
         /// Check already uploaded tracks with YouTube Music in parallel
         /// </summary>
         public static bool MultiThreadedRequests
@@ -287,6 +218,229 @@ namespace YTMusicUploader
         }
 
         /// <summary>
+        /// MusicBrainz Request cache Location
+        /// </summary>
+        public static string CacheLocation
+        {
+            get
+            {
+                string cacheDir = Path.Combine(AppDataLocation, @"Cache");
+                if (Directory.Exists(cacheDir))
+                    Directory.CreateDirectory(cacheDir);
+
+                return cacheDir;
+            }
+        }
+
+        /// <summary>
+        /// How many days delay before performing a recheck of the local music library against
+        /// what's already uploaded to YouTube Music
+        /// </summary>
+        public static int RecheckForUploadedSongsInDays
+        {
+            get
+            {
+                if (_recheckForUploadedSongsInDays != null)
+                    return (int)_recheckForUploadedSongsInDays;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["RecheckForUploadedSongsInDays"] != null)
+                        _recheckForUploadedSongsInDays = ConfigurationManager.AppSettings["RecheckForUploadedSongsInDays"].ToInt();
+                }
+                catch
+                {
+                    _recheckForUploadedSongsInDays = 30;
+                }
+
+                return (int)_recheckForUploadedSongsInDays;
+            }
+        }
+
+        /// <summary>
+        /// Returns the folder location where application's .exe resides 
+        /// (Tyically in the Program Files or Program Files x86 folder)
+        /// </summary>
+        public static string WorkingDirectory
+        {
+            get
+            {
+                if (_workingDirectory != null)
+                    return _workingDirectory;
+
+                _workingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                return _workingDirectory;
+            }
+        }
+
+        /// <summary>
+        /// Returns an array of YouTube Music upload support music file type extensions
+        /// </summary>
+        public static string[] SupportedFiles
+        {
+            get
+            {
+                if (_supportedFiles != null)
+                    return _supportedFiles;
+                try
+                {
+                    if (ConfigurationManager.AppSettings["GoogleVisitorId"] != null)
+                        _supportedFiles = ConfigurationManager.AppSettings["SupportedFileTypes"].Split(';');
+                }
+                catch
+                {
+                    _supportedFiles = new string[] { ".flac", ".m4a", ".mp3", ".oga", ".wma" };
+                }
+
+                return _supportedFiles;
+            }
+        }
+
+        /// <summary>
+        /// Main API URL for YouTube Music
+        /// </summary>
+        public static string YTMusicBaseUrl
+        {
+            get
+            {
+                if (_yTBaseUrl != null)
+                    return _yTBaseUrl;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusicMusicBaseUrl"] != null)
+                        _yTBaseUrl = ConfigurationManager.AppSettings["YTMusicMusicBaseUrl"];
+                }
+                catch
+                {
+                    _yTBaseUrl = "https://music.youtube.com/youtubei/v1/";
+                }
+
+                return _yTBaseUrl;
+            }
+        }
+
+        /// <summary>
+        /// Upload specific API URL for YouTube Music
+        /// </summary>
+        public static string YTMusicUploadUrl
+        {
+            get
+            {
+                if (_yTMusicUploadUrl != null)
+                    return _yTMusicUploadUrl;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusicUploadUrl"] != null)
+                        _yTMusicUploadUrl = ConfigurationManager.AppSettings["YTMusicUploadUrl"];
+                }
+                catch
+                {
+                    _yTMusicUploadUrl = "https://upload.youtube.com/upload/usermusic/http?authuser=0";
+                }
+
+                return _yTMusicUploadUrl;
+            }
+        }
+
+        /// <summary>
+        /// Main URL parameters for typical YouTube music API calls
+        /// </summary>
+        public static string YTMusicParams
+        {
+            get
+            {
+                if (_yTMusicParams != null)
+                    return _yTMusicParams;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusicParams"] != null)
+                        _yTMusicParams = ConfigurationManager.AppSettings["YTMusicParams"];
+                }
+                catch
+                {
+                    _yTMusicParams = "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
+                }
+
+                return _yTMusicParams;
+            }
+        }
+
+        /// <summary>
+        /// How many retry attempts to perform on a YT Music 500 error during upload
+        /// </summary>
+        public static int YTMusic500ErrorRetryAttempts
+        {
+            get
+            {
+                if (_yTMusic500ErrorRetryAttempts != null)
+                    return (int)_yTMusic500ErrorRetryAttempts;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusic500ErrorRetryAttempts"] != null)
+                        _yTMusic500ErrorRetryAttempts = ConfigurationManager.AppSettings["YTMusic500ErrorRetryAttempts"].ToInt();
+                }
+                catch
+                {
+                    _yTMusic500ErrorRetryAttempts = 4;
+                }
+
+                return (int)_yTMusic500ErrorRetryAttempts;
+            }
+        }
+
+        /// <summary>
+        /// How many times to repeat the main process when issues are present
+        /// </summary>
+        public static int YTMusicIssuesMainProcessRetry
+        {
+            get
+            {
+                if (_yTMusicIssuesMainProcessRetry != null)
+                    return (int)_yTMusicIssuesMainProcessRetry;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusicIssuesMainProcessRetry"] != null)
+                        _yTMusicIssuesMainProcessRetry = ConfigurationManager.AppSettings["YTMusicIssuesMainProcessRetry"].ToInt();
+                }
+                catch
+                {
+                    _yTMusicIssuesMainProcessRetry = 1;
+                }
+
+                return (int)_yTMusicIssuesMainProcessRetry;
+            }
+        }
+
+        /// <summary>
+        /// Levenstein similarity match success value (as float type) to match against already uploaded YouTube Music files
+        /// </summary>
+        public static float YTMusicUploadedSimilarityPercentageForMatch
+        {
+            get
+            {
+                if (_yTUploadedSimilarityPercentageForMatch != null)
+                    return (float)_yTUploadedSimilarityPercentageForMatch;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["YTMusicUploadedSimilarityPercentageForMatch"] != null)
+                        _yTUploadedSimilarityPercentageForMatch = float.Parse(ConfigurationManager.AppSettings["YTMusicUploadedSimilarityPercentageForMatch"]);
+                }
+                catch
+                {
+                    _yTUploadedSimilarityPercentageForMatch = 0.75f;
+                }
+
+                return (float)_yTUploadedSimilarityPercentageForMatch;
+            }
+        }      
+
+        /// <summary>
         /// MusicBrainz API Base URL
         /// </summary>
         public static string MusicBrainzBaseUrl
@@ -336,157 +490,6 @@ namespace YTMusicUploader
 
                 return _musicBrainzUserAgent;
             }
-        }
-
-        /// <summary>
-        /// MusicBrainz Request cache Location
-        /// </summary>
-        public static string CacheLocation
-        {
-            get
-            {
-                string cacheDir = Path.Combine(AppDataLocation, @"Cache");
-                if (Directory.Exists(cacheDir))
-                    Directory.CreateDirectory(cacheDir);
-
-                return cacheDir;
-            }
-        }
-
-        /// <summary>
-        /// How many days delay before performing a recheck of the local music library against
-        /// what's already uploaded to YouTube Music
-        /// </summary>
-        public static int RecheckForUploadedSongsInDays
-        {
-            get
-            {
-                if (_recheckForUploadedSongsInDays != null)
-                    return (int)_recheckForUploadedSongsInDays;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["RecheckForUploadedSongsInDays"] != null)
-                        _recheckForUploadedSongsInDays = ConfigurationManager.AppSettings["RecheckForUploadedSongsInDays"].ToInt();
-                }
-                catch
-                {
-                    _recheckForUploadedSongsInDays = 30;
-                }
-
-                return (int)_recheckForUploadedSongsInDays;
-            }
-        }
-
-        /// <summary>
-        /// How many retry attempts to perform on a YT Music 500 error during upload
-        /// </summary>
-        public static int YouTubeMusic500ErrorRetryAttempts
-        {
-            get
-            {
-                if (_yTMusic500ErrorRetryAttempts != null)
-                    return (int)_yTMusic500ErrorRetryAttempts;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["YTMusic500ErrorRetryAttempts"] != null)
-                        _yTMusic500ErrorRetryAttempts = ConfigurationManager.AppSettings["YTMusic500ErrorRetryAttempts"].ToInt();
-                }
-                catch
-                {
-                    _yTMusic500ErrorRetryAttempts = 4;
-                }
-
-                return (int)_yTMusic500ErrorRetryAttempts;
-            }
-        }
-
-        /// <summary>
-        /// How many times to repeat the main process when issues are present
-        /// </summary>
-        public static int YTMusicIssuesMainProcessRetry
-        {
-            get
-            {
-                if (_yTMusicIssuesMainProcessRetry != null)
-                    return (int)_yTMusicIssuesMainProcessRetry;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["YTMusicIssuesMainProcessRetry"] != null)
-                        _yTMusicIssuesMainProcessRetry = ConfigurationManager.AppSettings["YTMusicIssuesMainProcessRetry"].ToInt();
-                }
-                catch
-                {
-                    _yTMusicIssuesMainProcessRetry = 15;
-                }
-
-                return (int)_yTMusicIssuesMainProcessRetry;
-            }
-        }
-
-        /// <summary>
-        /// Levenstein similarity match success value (as float type) to match against already uploaded YouTube Music files
-        /// </summary>
-        public static float YouTubeMusicUploadedSimilarityPercentageForMatch
-        {
-            get
-            {
-                if (_youTubeUploadedSimilarityPercentageForMatch != null)
-                    return (float)_youTubeUploadedSimilarityPercentageForMatch;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["YTMusicUploadedSimilarityPercentageForMatch"] != null)
-                        _youTubeUploadedSimilarityPercentageForMatch = float.Parse(ConfigurationManager.AppSettings["YTMusicUploadedSimilarityPercentageForMatch"]);
-                }
-                catch
-                {
-                    _youTubeUploadedSimilarityPercentageForMatch = 0.75f;
-                }
-
-                return (float)_youTubeUploadedSimilarityPercentageForMatch;
-            }
-        }
-
-        /// <summary>
-        /// Returns the folder location where application's .exe resides 
-        /// (Tyically in the Program Files or Program Files x86 folder)
-        /// </summary>
-        public static string WorkingDirectory
-        {
-            get
-            {
-                if (_workingDirectory != null)
-                    return _workingDirectory;
-
-                _workingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                return _workingDirectory;
-            }
-        }
-
-        /// <summary>
-        /// Returns an array of YouTube Music upload support music file type extensions
-        /// </summary>
-        public static string[] SupportedFiles
-        {
-            get
-            {
-                if (_supportedFiles != null)
-                    return _supportedFiles;
-                try
-                {
-                    if (ConfigurationManager.AppSettings["GoogleVisitorId"] != null)
-                        _supportedFiles = ConfigurationManager.AppSettings["SupportedFileTypes"].Split(';');
-                }
-                catch
-                {
-                    _supportedFiles = new string[] { ".flac", ".m4a", ".mp3", ".oga", ".wma" };
-                }
-
-                return _supportedFiles;
-            }
-        }
+        }    
     }
 }

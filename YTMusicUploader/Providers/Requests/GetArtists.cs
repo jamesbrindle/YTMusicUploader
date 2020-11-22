@@ -36,15 +36,15 @@ namespace YTMusicUploader.Providers
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicBaseUrl +
+                var request = (HttpWebRequest)WebRequest.Create(Global.YTMusicBaseUrl +
                                                                 "browse" +
                                                                 (string.IsNullOrEmpty(continuationToken)
                                                                                 ? ""
                                                                                 : "?ctoken=" + continuationToken +
                                                                                   "&continuation=" + continuationToken) +
                                                                 (string.IsNullOrEmpty(continuationToken)
-                                                                                ? Global.YouTubeMusicParams
-                                                                                : Global.YouTubeMusicParams.Replace('?', '&')));
+                                                                                ? Global.YTMusicParams
+                                                                                : Global.YTMusicParams.Replace('?', '&')));
 
                 request = AddStandardHeaders(request, cookieValue);
 

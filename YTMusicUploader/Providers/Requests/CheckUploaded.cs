@@ -11,6 +11,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using YTMusicUploader.Business;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.RequestModels;
@@ -38,6 +39,7 @@ namespace YTMusicUploader.Providers
         public static ArtistCache ArtistCache { get; set; } = null;
         public static Thread UploadCheckPreloaderThread { get; set; } = null;
         public static Thread UploadCheckPreloaderSleepThread { get; set; } = null;
+        public static bool IssueWithGatheringUploadedMusic { get; set; } = false;
 
         /// <summary>
         /// Object to store pre fetched already uploaded check results
@@ -68,18 +70,60 @@ namespace YTMusicUploader.Providers
         {
             try
             {
-                Logger.LogInfo("LoadArtistCache", "Loading artists for cache");
+                if (!IssueWithGatheringUploadedMusic)
+                {
+                    var artistGetThread = new Thread((ThreadStart)delegate
+                    {
+                        Logger.LogInfo("LoadArtistCache", "Loading artists for cache");
 
-                UploadCheckCache.Pause = true;
-                ArtistCache = null;
-                ArtistCache = GetArtists(authenticationCookie);
-                UploadCheckCache.Pause = false;
+                        UploadCheckCache.Pause = true;
+                        ArtistCache = null;
+                        ArtistCache = GetArtists(authenticationCookie);
+                        UploadCheckCache.Pause = false;
 
-                Logger.LogInfo("LoadArtistCache", "Load artists complete");
+                        Logger.LogInfo("LoadArtistCache", "Load artists complete");
+                    });
+
+                    artistGetThread.Start();
+
+                    bool cancel = false;
+                    int threadTimer = 0;
+                    while (!cancel)
+                    {
+                        if (!artistGetThread.IsAlive)
+                        {
+                            cancel = true;
+                            break;
+                        }
+
+                        if (threadTimer > 360) // 6 minutes
+                        {
+                            MessageBox.Show(
+                                "There was an issue trying to fetch your 'Uploads' collection from YouTube Music. You should still be able to upload " +
+                                "songs but checking for already uploaded songs will be performed at a reduced rate due to no caching.\n\n" +
+                                "Please forward this message to:\n\nhttps://github.com/jamesbrindle/YTMusicUploader/issues", 
+                                "Issue Fetching YT Music Collection",
+                                MessageBoxButton.OK, 
+                                MessageBoxImage.Error);
+
+                            IssueWithGatheringUploadedMusic = true;
+                            cancel = true;
+                            try
+                            {
+                                artistGetThread.Abort();
+                            }
+                            catch { }
+                            throw new ApplicationException("LoadArtistCache - Load artist cache timeout expired. Probably bug");
+                        }
+
+                        Thread.Sleep(1000);
+                        threadTimer++;
+                    }
+                }
             }
             catch (Exception e)
             {
-                Logger.Log(e);
+                Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired. Probably bug", Log.LogTypeEnum.Critcal);
             }
         }
 
@@ -178,7 +222,7 @@ namespace YTMusicUploader.Providers
             }
             catch (Exception e)
             {
-                Logger.Log(e);
+                Logger.Log(e, "StartPrefetchingUploadedFilesCheck");
             }
         }
 
@@ -247,10 +291,8 @@ namespace YTMusicUploader.Providers
                     }
                 }
             }
-            catch (Exception e)
+            catch 
             {
-                Logger.Log(e, "Error while checking if song was uploaded:" + musicFilePath);
-
                 return UploadCheckResult.NotPresent;
             }
         }
@@ -468,7 +510,7 @@ namespace YTMusicUploader.Providers
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicBaseUrl + "search" + Global.YouTubeMusicParams);
+                var request = (HttpWebRequest)WebRequest.Create(Global.YTMusicBaseUrl + "search" + Global.YTMusicParams);
                 request = AddStandardHeaders(request, cookieValue);
 
                 request.ContentType = "application/json; charset=UTF-8";
@@ -515,7 +557,7 @@ namespace YTMusicUploader.Providers
                                           .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
                                           .Select(p => ((JProperty)p).Value).ToList();
 
-                    float matchSuccessMinimum = Global.YouTubeMusicUploadedSimilarityPercentageForMatch;
+                    float matchSuccessMinimum = Global.YTMusicUploadedSimilarityPercentageForMatch;
                     float artistSimilarity = 0.0f;
                     float albumSimilarity = 0.0f;
                     float trackSimilarity = 0.0f;

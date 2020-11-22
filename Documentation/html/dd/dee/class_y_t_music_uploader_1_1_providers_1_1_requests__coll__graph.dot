@@ -3,5 +3,5 @@ digraph "YTMusicUploader.Providers.Requests"
  // LATEX_PDF_SIZE
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{YTMusicUploader.Providers.\lRequests\n|+ ArtistCache\l+ UploadCheckPreloaderThread\l+ UploadCheckPreloaderSleep\lThread\l|+ IsAuthenticated()\l+ LoadArtistCache()\l+ StartPrefetchingUploaded\lFilesCheck()\l+ IsSongUploaded()\l+ DeleteAlbumOrTrackFromYTMusic()\l+ GetArtists()\l+ GetArtistSongs()\l+ UploadTrack()\l+ AddStandardHeaders()\l+ GetPostBytes()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="YouTube Music API Request Methods"];
+  Node1 [label="{YTMusicUploader.Providers.\lRequests\n|+ ArtistCache\l+ UploadCheckPreloaderThread\l+ UploadCheckPreloaderSleep\lThread\l+ IssueWithGatheringUploaded\lMusic\l|+ IsAuthenticated()\l+ LoadArtistCache()\l+ StartPrefetchingUploaded\lFilesCheck()\l+ IsSongUploaded()\l+ DeleteAlbumOrTrackFromYTMusic()\l+ GetArtists()\l+ GetArtistSongs()\l+ UploadTrack()\l+ AddStandardHeaders()\l+ GetPostBytes()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="YouTube Music API Request Methods"];
 }

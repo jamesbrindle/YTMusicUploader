@@ -158,8 +158,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a30164946b3b505acdde6df9cd2393015"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a30164946b3b505acdde6df9cd2393015">Update</a> (<a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> musicFile)</td></tr>
 <tr class="memdesc:a30164946b3b505acdde6df9cd2393015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the Music File entry in the database with the fields of the given MusicFile object  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a30164946b3b505acdde6df9cd2393015">More...</a><br /></td></tr>
 <tr class="separator:a30164946b3b505acdde6df9cd2393015"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7ff2a25b5be24c8d0cd18f073765892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#ad7ff2a25b5be24c8d0cd18f073765892">AddOrUpdate</a> (<a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> musicFile)</td></tr>
-<tr class="separator:ad7ff2a25b5be24c8d0cd18f073765892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3bea51acd573d8e1563d20052960177"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#ad3bea51acd573d8e1563d20052960177">ResetIssueStatus</a> (int id)</td></tr>
+<tr class="memdesc:ad3bea51acd573d8e1563d20052960177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the issue status of a MusicFile for the reason of a force retry  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#ad3bea51acd573d8e1563d20052960177">More...</a><br /></td></tr>
+<tr class="separator:ad3bea51acd573d8e1563d20052960177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88a351a8566be307ba2519224c4fa5a7"><td class="memItemLeft" align="right" valign="top">async Task&lt; <a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a88a351a8566be307ba2519224c4fa5a7">Delete</a> (<a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a> musicFile, bool destroy=false)</td></tr>
 <tr class="memdesc:a88a351a8566be307ba2519224c4fa5a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed' flag, whereas destroy is to completely delete it from the database  <a href="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a88a351a8566be307ba2519224c4fa5a7">More...</a><br /></td></tr>
 <tr class="separator:a88a351a8566be307ba2519224c4fa5a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,30 +199,6 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Music File database repository access. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad7ff2a25b5be24c8d0cd18f073765892"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7ff2a25b5be24c8d0cd18f073765892">&#9670;&nbsp;</a></span>AddOrUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void YTMusicUploader.Providers.Repos.MusicFileRepo.AddOrUpdate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html">MusicFile</a>&#160;</td>
-          <td class="paramname"><em>musicFile</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad7ff2a25b5be24c8d0cd18f073765892_cgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad7ff2a25b5be24c8d0cd18f073765892_cgraph" alt=""/></div>
-<!-- MAP 2 -->
-</div>
-
-</div>
-</div>
 <a id="a9c12e93c1d64640a6f646161d9f5ea4d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9c12e93c1d64640a6f646161d9f5ea4d">&#9670;&nbsp;</a></span>CountAll()</h2>
 
@@ -243,7 +220,7 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph" alt=""/></div>
-<!-- MAP 3 -->
+<!-- MAP 2 -->
 </div>
 
 </div>
@@ -269,7 +246,7 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph" alt=""/></div>
-<!-- MAP 4 -->
+<!-- MAP 3 -->
 </div>
 
 </div>
@@ -295,7 +272,7 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph" alt=""/></div>
-<!-- MAP 5 -->
+<!-- MAP 4 -->
 </div>
 
 </div>
@@ -377,7 +354,7 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a88a351a8566be307ba2519224c4fa5a7_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a88a351a8566be307ba2519224c4fa5a7_icgraph" alt=""/></div>
-<!-- MAP 6 -->
+<!-- MAP 5 -->
 </div>
 
 </div>
@@ -617,7 +594,7 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a2157133d88ff435ce8873f4b4aa369f1_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a2157133d88ff435ce8873f4b4aa369f1_icgraph" alt=""/></div>
-<!-- MAP 7 -->
+<!-- MAP 6 -->
 </div>
 
 </div>
@@ -790,6 +767,33 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ad3bea51acd573d8e1563d20052960177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3bea51acd573d8e1563d20052960177">&#9670;&nbsp;</a></span>ResetIssueStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task&lt;<a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html">DbOperationResult</a>&gt; YTMusicUploader.Providers.Repos.MusicFileRepo.ResetIssueStatus </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets the issue status of a MusicFile for the reason of a force retry </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>MusicFile Id</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html" title="Database process execution and query result object. Contains if there&#39;s any errors and the time taken...">DbOperationResult</a> - Showing success or fail, with messages and stats</dd></dl>
+
+</div>
+</div>
 <a id="ac9024103e00a4e34b6eab8ae4e364a0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9024103e00a4e34b6eab8ae4e364a0e">&#9670;&nbsp;</a></span>RestoreMusicFile()</h2>
 
@@ -844,7 +848,7 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a30164946b3b505acdde6df9cd2393015_icgraph.png" border="0" usemap="#d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a30164946b3b505acdde6df9cd2393015_icgraph" alt=""/></div>
-<!-- MAP 8 -->
+<!-- MAP 7 -->
 </div>
 
 </div>

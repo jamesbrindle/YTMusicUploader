@@ -1,6 +1,8 @@
 ﻿using JBToolkit.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -15,6 +17,9 @@ namespace YTMusicUploader.Dialogues
     {
         private int _previousIndex;
         private bool _sortDirection;
+        private bool _shown = false;
+
+        private bool ChangesMade { get; set; } = false;
 
         /// <summary>
         /// Form to display upload issues. Data fetched from the local database.
@@ -54,21 +59,40 @@ namespace YTMusicUploader.Dialogues
             {
                 try
                 {
-                    Logger.LogInfo("Populate - Issues", "Loading issues from the database");
+                    if (!_shown)
+                    {
 
-                    dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
-                    dvgLog.Columns["Hash"].Visible = false;
-                    dvgLog.Columns["Removed"].Visible = false;
-                    dvgLog.Columns["MbId"].Visible = false;
-                    dvgLog.Columns["ReleaseMbId"].Visible = false;
-                    dvgLog.Columns["EntityId"].Visible = false;
-                    dvgLog.Columns["Id"].Width = 55;
-                    dvgLog.Columns["Error"].Width = 45;
-                    dvgLog.Columns["Path"].FillWeight = 300;
-                    dvgLog.Columns["LastUpload"].Width = 100;
+                        Logger.LogInfo("Populate - Issues", "Loading issues from the database");
+                        dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
 
+                        dvgLog.Columns["Hash"].Visible = false;
+                        dvgLog.Columns["Removed"].Visible = false;
+                        dvgLog.Columns["MbId"].Visible = false;
+                        dvgLog.Columns["ReleaseMbId"].Visible = false;
+                        dvgLog.Columns["EntityId"].Visible = false;
+                        dvgLog.Columns["LastUpload"].Visible = false;
+                        dvgLog.Columns["Error"].Visible = false;
+                        dvgLog.Columns["Id"].Width = 55;
+                        dvgLog.Columns["Path"].FillWeight = 300;
+                        dvgLog.Columns["LastUpload"].Width = 100;
+
+                        var buttonColumn = new DataGridViewImageColumn
+                        {
+                            Name = "Reset",
+                            Image = Properties.Resources.reset
+                        };
+
+                        dvgLog.Columns.Add(buttonColumn);
+                        dvgLog.Columns["Reset"].Width = 50;
+
+                        _shown = true;
+                    }
+                    else
+                    {
+                        dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+                    }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Logger.Log(e, "Unable to fetch issues from the database and bind gridview", Log.LogTypeEnum.Critcal);
                 }
@@ -132,6 +156,32 @@ namespace YTMusicUploader.Dialogues
             return ascending ?
                 list.OrderBy(_ => _.GetType().GetProperty(column).GetValue(_)).ToList() :
                 list.OrderByDescending(_ => _.GetType().GetProperty(column).GetValue(_)).ToList();
+        }
+
+        private void DvgLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            if (e.ColumnIndex == 12)
+            {
+                int id = (int)dvgLog.Rows[e.RowIndex].Cells["Id"].Value;
+                var _ = MainForm.MusicFileRepo.ResetIssueStatus(id).Result;
+                dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+                MainForm.SetIssuesLabel((dvgLog.Rows.Count).ToString());
+                ChangesMade = true;
+            }
+        }
+
+        private void IssueLog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (ChangesMade)
+            {
+                ChangesMade = false;
+                DialogResult = DialogResult.Yes;
+            }
+            else
+                DialogResult = DialogResult.Cancel;
         }
     }
 }

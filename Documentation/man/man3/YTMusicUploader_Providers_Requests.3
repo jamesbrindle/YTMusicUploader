@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Requests" 3 "Sat Nov 21 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Requests" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -78,6 +78,9 @@ YTMusicUploader.Providers.Requests \- YouTube Music API Request Methods
 .br
 .ti -1c
 .RI "static Thread \fBUploadCheckPreloaderSleepThread\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "static bool \fBIssueWithGatheringUploadedMusic\fP = false\fC [get, set]\fP"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -285,6 +288,8 @@ True if the upload is successful, false otherwise
 .SH "Property Documentation"
 .PP 
 .SS "\fBArtistCache\fP YTMusicUploader\&.Providers\&.Requests\&.ArtistCache = null\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.Providers\&.Requests\&.IssueWithGatheringUploadedMusic = false\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
 
 .SS "Thread YTMusicUploader\&.Providers\&.Requests\&.UploadCheckPreloaderSleepThread = null\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
 

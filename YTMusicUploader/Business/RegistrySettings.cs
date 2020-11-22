@@ -34,7 +34,7 @@ namespace YTMusicUploader.Business
             }
             catch (Exception e)
             {
-                Logger.Log(e);
+                Logger.Log(e, "SetStartWithWindows");
             }
 
             await Task.Run(() => { });

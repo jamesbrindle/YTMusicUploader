@@ -22,7 +22,7 @@ namespace YTMusicUploader.Business
     {
         private MainForm MainForm;
         private List<MusicFile> MusicFiles;
-        public bool Stopped { get; set; } = true;
+        public bool Stopped { get; set; } = false;
         private Thread _artworkFetchThread = null;
 
         private int _errorsCount;
@@ -40,6 +40,8 @@ namespace YTMusicUploader.Business
         /// </summary>
         public async Task Process()
         {
+            Stopped = false;
+
             _errorsCount = await MainForm.MusicFileRepo.CountIssues();
             _uploadedCount = await MainForm.MusicFileRepo.CountUploaded();
             _discoveredFilesCount = await MainForm.MusicFileRepo.CountAll();
@@ -64,82 +66,113 @@ namespace YTMusicUploader.Business
                                 MainForm.MusicDataFetcher);
             }
 
-            foreach (var musicFile in MusicFiles)
+            try
             {
-                if (File.Exists(musicFile.Path))
+                foreach (var musicFile in MusicFiles)
                 {
-                    if (Requests.ArtistCache == null || Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2))
+                    if (MainFormIsAborting())
+                        return;
+
+                    if (File.Exists(musicFile.Path))
                     {
-                        MainForm.SetManageTYMusicButtonEnabled(false);
-                        MainForm.SetStatusMessage("Gathering uploaded artists from YouTube Music...", "Gathering uploaded artists from YT Music");
-                        Requests.LoadArtistCache(MainForm.Settings.AuthenticationCookie);
-                        MainForm.SetManageTYMusicButtonEnabled(true);
-                    }
-
-                    musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);
-
-                    if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
-                    {
-                        if (ThreadIsAborting())
-                            return;
-
-                        HandleFileRenamedOrMove(musicFile, existingMusicFile).Wait();
-                    }
-                    else
-                    {
-                        Stopped = false;
-                        while (!NetworkHelper.InternetConnectionIsUp())
-                        {
-                            if (ThreadIsAborting())
-                                return;
-
-                            ThreadHelper.SafeSleep(1000);
-                        }
-
-                        while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
-                        {
-                            MainForm.SetPaused(true);
-                            ThreadHelper.SafeSleep(1000);
-                        }
-                        if (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.CloseChanges)
-                            return;
-
                         try
                         {
-                            HandleUploadCheck(musicFile).Wait();
-                        }
-                        catch (Exception e)
-                        {
-                            bool success = false;
-                            for (int i = 0; i < 5; i++)
+                            if (MainFormIsAborting())
+                                return;
+
+                            if (Requests.ArtistCache == null || Requests.ArtistCache.LastSetTime < DateTime.Now.AddHours(-2))
                             {
-                                ThreadHelper.SafeSleep(1000);
+                                MainForm.SetManageTYMusicButtonEnabled(false);
+                                Requests.LoadArtistCache(MainForm.Settings.AuthenticationCookie);
+                                MainForm.SetManageTYMusicButtonEnabled(true);
+                            }
+
+                            if (MainFormIsAborting())
+                                return;
+
+                            musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);
+
+                            if (MainFormIsAborting())
+                                return;
+
+                            if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
+                            {
+                                if (MainFormIsAborting())
+                                    return;
+
+                                HandleFileRenamedOrMove(musicFile, existingMusicFile).Wait();
+                            }
+                            else
+                            {
+                                while (!NetworkHelper.InternetConnectionIsUp())
+                                {
+                                    if (MainFormIsAborting())
+                                        return;
+
+                                    ThreadHelper.SafeSleep(1000);
+                                }
+
+                                while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
+                                {
+                                    MainForm.SetPaused(true);
+                                    ThreadHelper.SafeSleep(1000);
+                                }
+
+                                if (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.CloseChanges)
+                                    return;
+
+                                if (MainFormIsAborting())
+                                    return;
+
                                 try
                                 {
                                     HandleUploadCheck(musicFile).Wait();
-                                    success = true;
-                                    break;
                                 }
-                                catch { }
-                            }
+                                catch (Exception e)
+                                {
+                                    bool success = false;
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        if (MainFormIsAborting())
+                                            return;
 
-                            var _ = e;
+                                        ThreadHelper.SafeSleep(1000);
+                                        try
+                                        {
+                                            HandleUploadCheck(musicFile).Wait();
+                                            success = true;
+                                            break;
+                                        }
+                                        catch { }
+                                    }
+
+                                    var _ = e;
 #if DEBUG
-                            Console.Out.WriteLine("FileUploader: Process: " + e.Message);
+                                    Console.Out.WriteLine("FileUploader: Process: " + e.Message);
 #endif
-                            if (!success)
-                                HandleFileNeedsUploading(musicFile).Wait();
-                        }
+                                    if (!success)
+                                        HandleFileNeedsUploading(musicFile).Wait();
+                                }
 
-                        await musicFile.Save();
+                                await musicFile.Save();
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Log(e, "Process.Process");
+                        }
+                    }
+                    else
+                    {
+                        _discoveredFilesCount--;
+                        MainForm.SetDiscoveredFilesLabel(_discoveredFilesCount.ToString());
+                        await musicFile.Delete();
                     }
                 }
-                else
-                {
-                    _discoveredFilesCount--;
-                    MainForm.SetDiscoveredFilesLabel(_discoveredFilesCount.ToString());
-                    await musicFile.Delete();
-                }
+            }
+            catch (Exception e)
+            {
+                Logger.Log(e, "Process.Process", Log.LogTypeEnum.Critcal);
             }
 
             await SetUploadDetails("Idle", null, true, false);
@@ -152,9 +185,12 @@ namespace YTMusicUploader.Business
             // this method section will keep running every time on startup as the hash will be the same and it thinks
             // the files have been moved... Need to consider a how to handle this.
 
+            if (MainFormIsAborting())
+                return;
+
             Logger.LogInfo(
                 "HandleFileRenamedOrMove",
-                "File rename or moved detected. From: " + existingMusicFile.Path + " to: " + musicFile.Path);
+                "File rename or moved detected. From: " + existingMusicFile.Path + " to: " + musicFile.Path, true);
 
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
@@ -192,6 +228,9 @@ namespace YTMusicUploader.Business
 
         private async Task HandleUploadCheck(MusicFile musicFile)
         {
+            if (MainFormIsAborting())
+                return;
+
             var alreadyUploaded = Requests.IsSongUploaded(musicFile.Path,
                                                           MainForm.Settings.AuthenticationCookie,
                                                           out string entityId,
@@ -199,7 +238,7 @@ namespace YTMusicUploader.Business
 
             if (alreadyUploaded != Requests.UploadCheckResult.NotPresent)
             {
-                if (ThreadIsAborting())
+                if (MainFormIsAborting())
                     return;
 
                 await HandleFileAlreadyUploaded(
@@ -208,7 +247,7 @@ namespace YTMusicUploader.Business
             }
             else
             {
-                if (ThreadIsAborting())
+                if (MainFormIsAborting())
                     return;
 
                 await HandleFileNeedsUploading(musicFile);
@@ -217,6 +256,9 @@ namespace YTMusicUploader.Business
 
         private async Task HandleFileAlreadyUploaded(MusicFile musicFile, string entityId)
         {
+            if (MainFormIsAborting())
+                return;
+
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
             MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
@@ -251,6 +293,9 @@ namespace YTMusicUploader.Business
 
         private async Task HandleFileNeedsUploading(MusicFile musicFile)
         {
+            if (MainFormIsAborting())
+                return;
+
             Logger.LogInfo("HandleFileNeedsUploading", "Begin file upload: " + musicFile.Path);
 
             try
@@ -259,16 +304,33 @@ namespace YTMusicUploader.Business
                 await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
 
                 bool success = false;
-                for (int i = 0; i < int.MaxValue; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if (new FileInfo(musicFile.Path).Length > 309329920)
+                    if (MainFormIsAborting())
+                        return;
+
+                    if (musicFile.Error != null &&
+                        (bool)musicFile.Error &&
+                        musicFile.UploadAttempts != null &&
+                        musicFile.UploadAttempts >= Global.YTMusic500ErrorRetryAttempts + 1 &&
+                        musicFile.LastUploadError > DateTime.Now.AddDays(-30))
+                    {
+                        break;
+                    }
+
+                    if (new FileInfo(musicFile.Path).Length > 299999999)
                     {
                         musicFile.Error = true;
                         musicFile.ErrorReason = "File size exeeds YTM limit of 300 MB per track.";
+                        musicFile.LastUploadError = DateTime.Now;
+                        musicFile.UploadAttempts = musicFile.UploadAttempts == null ? 0 : ((int)musicFile.UploadAttempts) + 1;
                         break;
                     }
                     else
                     {
+                        if (MainFormIsAborting())
+                            return;
+
                         Requests.UploadTrack(
                                 MainForm,
                                 MainForm.Settings.AuthenticationCookie,
@@ -276,12 +338,17 @@ namespace YTMusicUploader.Business
                                 MainForm.Settings.ThrottleSpeed,
                                 out string error);
 
+                        if (MainFormIsAborting())
+                            return;
+
                         if (!string.IsNullOrEmpty(error))
                         {
-                            if (i >= Global.YouTubeMusic500ErrorRetryAttempts)
+                            if (i >= Global.YTMusic500ErrorRetryAttempts)
                             {
                                 musicFile.Error = true;
                                 musicFile.ErrorReason = error;
+                                musicFile.LastUploadError = DateTime.Now;
+                                musicFile.UploadAttempts = musicFile.UploadAttempts == null ? 0 : ((int)musicFile.UploadAttempts) + 1;
 
                                 _errorsCount++;
                                 MainForm.SetIssuesLabel(_errorsCount.ToString());
@@ -291,9 +358,15 @@ namespace YTMusicUploader.Business
                             }
                             else
                             {
+                                musicFile.Error = true;
+                                musicFile.ErrorReason = error;
+                                musicFile.LastUploadError = DateTime.Now;
+                                musicFile.UploadAttempts = musicFile.UploadAttempts == null ? 0 : ((int)musicFile.UploadAttempts) + 1;
+
                                 MainForm.SetStatusMessage($"500 Error from YT Music. Waiting 10 seconds then trying again " +
-                                                                $"({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})",
-                                                          $"Retrying on 500 error ({i + 1}/{Global.YouTubeMusic500ErrorRetryAttempts})");
+                                                                $"({i + 1}/{Global.YTMusic500ErrorRetryAttempts})",
+                                                          $"Retrying on 500 error " +
+                                                          $"({i + 1}/{(musicFile.UploadAttempts == null || musicFile.UploadAttempts == 0 ? Global.YTMusic500ErrorRetryAttempts : 1)})");
 
                                 ThreadHelper.SafeSleep(10000); // 10 seconds                       
                             }
@@ -308,6 +381,9 @@ namespace YTMusicUploader.Business
 
                 if (success)
                 {
+                    if (MainFormIsAborting())
+                        return;
+
                     TrackAndReleaseMbId trackAndReleaseMbId = null;
                     if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
                         trackAndReleaseMbId = MainForm.MusicDataFetcher.GetTrackAndReleaseMbId(musicFile.Path, true);
@@ -359,7 +435,7 @@ namespace YTMusicUploader.Business
                     }
                     catch (Exception e)
                     {
-                        Logger.Log(e, "Couldn't retrive entity id from YTMusic", Log.LogTypeEnum.Warning);
+                        Logger.Log(e, "Couldn't retrive entity ID from YTMusic", Log.LogTypeEnum.Warning);
                     }
 
                     _uploadedCount++;
@@ -382,7 +458,6 @@ namespace YTMusicUploader.Business
         {
             try
             {
-
                 string tooltipText = string.Empty;
                 if (string.IsNullOrEmpty(musicPath))
                     tooltipText = "Idle";
@@ -455,7 +530,7 @@ namespace YTMusicUploader.Business
             }
             catch (Exception e)
             {
-                Logger.Log(e);
+                Logger.Log(e, "SetUploadDetails");
             }
         }
 
@@ -468,7 +543,6 @@ namespace YTMusicUploader.Business
 
             try
             {
-
                 if (_artworkFetchThread != null)
                 {
                     try
@@ -544,10 +618,7 @@ namespace YTMusicUploader.Business
                     _artworkFetchThread.Start();
                 }
             }
-            catch (Exception e)
-            {
-                Logger.Log(e);
-            }
+            catch { }
         }
 
         /// <summary>
@@ -575,18 +646,18 @@ namespace YTMusicUploader.Business
             }
             catch (Exception e)
             {
-                Logger.Log(e);
+                Logger.Log(e, "DoWeHaveAMusicFileWithTheSameHash");
             }
 
             return false;
         }
 
-        private bool ThreadIsAborting()
+        private bool MainFormIsAborting()
         {
             if (MainForm.Aborting)
             {
                 Stopped = true;
-                SetUploadDetails("Idle", null, true, false).Wait();
+                SetUploadDetails("Restarting", "Restarting", true, true).Wait();
                 Requests.UploadCheckCache.CleanUp = true;
                 return true;
             }

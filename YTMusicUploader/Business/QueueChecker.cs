@@ -18,6 +18,7 @@ namespace YTMusicUploader.Business
         public QueueChecker(MainForm mainForm)
         {
             MainForm = mainForm;
+            Stopped = false;
 
             QueueCheckerThread = new Thread((ThreadStart)delegate
             {
@@ -28,8 +29,11 @@ namespace YTMusicUploader.Business
                 {
                     try
                     {
-                        if (MainForm.Aborting || Stopped)
+                        if (MainForm.Aborting)
+                        {
+                            Stopped = true;
                             return;
+                        }
 
                         ThreadHelper.SafeSleep(1000);
                         if (Queue)
@@ -50,6 +54,7 @@ namespace YTMusicUploader.Business
                 IsBackground = true,
                 Priority = ThreadPriority.Lowest
             };
+
             QueueCheckerThread.Start();
         }
     }

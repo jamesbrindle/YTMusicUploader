@@ -40,7 +40,7 @@ namespace YTMusicUploader.Providers
                     return false;
                 }
 
-                var startUploadRequest = (HttpWebRequest)WebRequest.Create(Global.YouTubeMusicUploadUrl);
+                var startUploadRequest = (HttpWebRequest)WebRequest.Create(Global.YTMusicUploadUrl);
                 startUploadRequest = AddStandardHeaders(startUploadRequest, cookieValue);
 
                 startUploadRequest.ContentType = "application/x-www-form-urlencoded;charset=utf-8";

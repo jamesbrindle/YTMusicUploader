@@ -62,6 +62,8 @@ namespace YTMusicUploader.Dialogues
                     dvgLog.Columns["Removed"].Visible = false;
                     dvgLog.Columns["Error"].Visible = false;
                     dvgLog.Columns["ErrorReason"].Visible = false;
+                    dvgLog.Columns["UploadAttempts"].Visible = false;
+                    dvgLog.Columns["LastUploadError"].Visible = false;
                     dvgLog.Columns["Id"].Width = 55;
                     dvgLog.Columns["Path"].FillWeight = 300;
                     dvgLog.Columns["LastUpload"].Width = 100;

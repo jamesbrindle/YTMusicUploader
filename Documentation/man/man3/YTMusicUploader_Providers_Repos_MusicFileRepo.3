@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sat Nov 21 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -80,8 +80,9 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .br
 .RI "Updates the Music File entry in the database with the fields of the given MusicFile object "
 .ti -1c
-.RI "void \fBAddOrUpdate\fP (\fBMusicFile\fP musicFile)"
+.RI "async Task< \fBDbOperationResult\fP > \fBResetIssueStatus\fP (int id)"
 .br
+.RI "Resets the issue status of a MusicFile for the reason of a force retry "
 .ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (\fBMusicFile\fP musicFile, bool destroy=false)"
 .br
@@ -115,8 +116,6 @@ Music File database repository access\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "void YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.AddOrUpdate (\fBMusicFile\fP musicFile)"
-
 .SS "async Task<int> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.CountAll ()"
 
 .PP
@@ -398,6 +397,22 @@ Loads a list of MusicFile objects with a successful upload
 
 .PP
 Reset all music file entry uploaded states 
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.ResetIssueStatus (int id)"
+
+.PP
+Resets the issue status of a MusicFile for the reason of a force retry 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP MusicFile Id
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
 .SS "Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
 
 .PP

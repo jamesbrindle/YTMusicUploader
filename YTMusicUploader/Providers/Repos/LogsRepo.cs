@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using JBToolkit.Threads;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -77,12 +76,14 @@ namespace YTMusicUploader.Providers.Repos
                                         Machine,
                                         Source,
                                         Message, 
+                                        Version,
                                         StackTrace) 
                                 VALUES (@Event,
                                         @LogTypeId,
                                         @Machine,
                                         @Source,
                                         @Message,
+                                        @Version,
                                         @StackTrace);
                               SELECT last_insert_rowid()",
                         log);
@@ -105,29 +106,39 @@ namespace YTMusicUploader.Providers.Repos
         {
             try
             {
-                using (var conn = RemoteDbConnection())
+                if (!Logger.AllowRemoteLogAt.HasValue || 
+                    Logger.AllowRemoteLogAt < DateTime.Now)
                 {
-                    conn.Open();
-                    conn.Execute(
-                        @"INSERT 
+                    using (var conn = RemoteDbConnection())
+                    {
+                        conn.Open();
+                        conn.Execute(
+                            @"INSERT 
                                 INTO Logs (
                                         Event, 
                                         LogTypeId,
                                         Machine,
                                         Source,
                                         Message, 
+                                        Version,
                                         StackTrace) 
                                 VALUES (@Event,
                                         @LogTypeId,
                                         @Machine,
                                         @Source,
                                         @Message,
+                                        @Version,
                                         @StackTrace);",
-                        log);
-                    conn.Close();
+                            log);
+                        conn.Close();
+                    }
                 }
             }
-            catch { }
+            catch
+            {
+                // Prevent too many requests
+                Logger.AllowRemoteLogAt = DateTime.Now.AddMinutes(5);
+            }
         }
 
         /// <summary>

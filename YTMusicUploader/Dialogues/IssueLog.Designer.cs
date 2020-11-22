@@ -101,6 +101,7 @@
             this.dvgLog.RowHeadersVisible = false;
             this.dvgLog.Size = new System.Drawing.Size(988, 633);
             this.dvgLog.TabIndex = 0;
+            this.dvgLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DvgLog_CellContentClick);
             this.dvgLog.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvIssues_ColumnHeaderMouseClick);
             // 
             // lblTitle
@@ -153,6 +154,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "IssueLog";
             this.Style = MetroFramework.MetroColorStyle.Red;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IssueLog_FormClosing);
             this.Load += new System.EventHandler(this.IssueLog_Load);
             this.pnlIssueLog.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgLog)).EndInit();

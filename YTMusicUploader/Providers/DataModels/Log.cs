@@ -26,6 +26,7 @@ namespace YTMusicUploader.Providers.DataModels
         public string Machine { get; set; }
         public string Source { get; set; }
         public string Message { get; set; }
+        public string Version { get; set; }
         public string StackTrace { get; set; }
 
         /// <summary>

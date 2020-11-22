@@ -544,6 +544,7 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\reset.png" />
     <None Include="Resources\update_down.png" />
     <None Include="Resources\update_up.png" />
     <None Include="Resources\update_hover.png" />

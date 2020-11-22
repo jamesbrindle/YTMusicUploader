@@ -86,6 +86,7 @@ namespace YTMusicUploader.Dialogues
 
                     dgvLog.Columns["Machine"].Visible = false;
                     dgvLog.Columns["LogTypeId"].Width = 75;
+                    dgvLog.Columns["Version"].Width = 65;
                     dgvLog.Columns["Id"].Width = 55;
                 }
                 catch (Exception e)

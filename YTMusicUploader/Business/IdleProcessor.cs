@@ -19,6 +19,7 @@ namespace YTMusicUploader.Business
         public IdleProcessor(MainForm mainForm)
         {
             MainForm = mainForm;
+            Stopped = false;
 
             IdleProcessorThread = new Thread((ThreadStart)delegate
             {
@@ -28,7 +29,7 @@ namespace YTMusicUploader.Business
                     {
                         while (Paused)
                         {
-                            if (MainForm.Aborting || Stopped)
+                            if (MainFormAborting())
                                 return;
 
                             ThreadHelper.SafeSleep(2000);
@@ -36,7 +37,7 @@ namespace YTMusicUploader.Business
 
                         while (!NetworkHelper.InternetConnectionIsUp())
                         {
-                            if (MainForm.Aborting || Stopped)
+                            if (MainFormAborting())
                                 return;
 
                             ThreadHelper.SafeSleep(5000);
@@ -54,7 +55,7 @@ namespace YTMusicUploader.Business
                         ThreadHelper.SafeSleep(100);
                         PopulateRandomMusicEntryWithMissingEntityId();
 
-                        if (MainForm.Aborting || Stopped)
+                        if (MainFormAborting())
                             return;
 
                         ThreadHelper.SafeSleep(2000);
@@ -66,7 +67,19 @@ namespace YTMusicUploader.Business
                 IsBackground = true,
                 Priority = ThreadPriority.Lowest
             };
+
             IdleProcessorThread.Start();
+        }
+
+        private bool MainFormAborting()
+        {
+            if (MainForm.Aborting)
+            {
+                Stopped = true;
+                return true;
+            }
+
+            return false;
         }
 
         private void PopulateRandomMusicEntryWithMissingMbId()

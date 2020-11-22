@@ -1,5 +1,5 @@
-﻿using JBToolkit.Network;
-using JBToolkit.Threads;
+﻿using JBToolkit.Assemblies;
+using JBToolkit.Network;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -19,6 +19,8 @@ namespace YTMusicUploader
         private static SettingsRepo m_settingsRepo = null;
         private static string m_externalIp = string.Empty;
         private static string m_machineName = string.Empty;
+        public static DateTime? AllowRemoteLogAt { get; set; } = null;
+
         private static LogsRepo LogsRepo
         {
             get
@@ -96,7 +98,7 @@ namespace YTMusicUploader
         /// Log error from exception
         /// </summary>
         /// <param name="e">Exception to log</param>
-        public static void Log(Exception e)
+        public static void Log(Exception e, bool ignoreRemote = false)
         {
             try
             {
@@ -109,11 +111,12 @@ namespace YTMusicUploader
                         Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
                         Message = e.Message.Ellipse(1500 - 5),
                         StackTrace = e.StackTrace.Ellipse(4000 - 5),
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -127,7 +130,7 @@ namespace YTMusicUploader
         /// Log error from exception with error severity
         /// </summary>
         /// <param name="e">Exception to log</param>
-        public static void Log(Exception e, LogTypeEnum logType)
+        public static void Log(Exception e, LogTypeEnum logType, bool ignoreRemote = false)
         {
             try
             {
@@ -140,11 +143,12 @@ namespace YTMusicUploader
                         Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
                         Message = e.Message.Ellipse(1500 - 5),
                         StackTrace = e.StackTrace.Ellipse(4000 - 5),
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -158,7 +162,7 @@ namespace YTMusicUploader
         /// Log error from exception with additional messag prefix
         /// </summary>
         /// <param name="e">Exception to log</param>
-        public static void Log(Exception e, string additionalMessage)
+        public static void Log(Exception e, string additionalMessage, bool ignoreRemote = false)
         {
             try
             {
@@ -171,11 +175,12 @@ namespace YTMusicUploader
                         Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
                         Message = (additionalMessage + ": " + e.Message).Ellipse(1500 - 5),
                         StackTrace = e.StackTrace.Ellipse(4000 - 5),
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -190,7 +195,7 @@ namespace YTMusicUploader
         /// Log error from exception with error severity
         /// </summary>
         /// <param name="e">Exception to log</param>
-        public static void Log(Exception e, string additionalMessage, LogTypeEnum logType)
+        public static void Log(Exception e, string additionalMessage, LogTypeEnum logType, bool ignoreRemote = false)
         {
             try
             {
@@ -203,11 +208,12 @@ namespace YTMusicUploader
                         Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
                         Message = (additionalMessage + ": " + e.Message).Ellipse(1500 - 5),
                         StackTrace = e.StackTrace.Ellipse(4000 - 5),
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -224,7 +230,7 @@ namespace YTMusicUploader
         /// <param name="logType">Error or info</param>
         /// <param name="source">Where the message originated</param>
         /// <param name="message">The messsage to log</param>
-        public static void Log(LogTypeEnum logType, string source, string message)
+        public static void Log(LogTypeEnum logType, string source, string message, bool ignoreRemote = false)
         {
             try
             {
@@ -234,14 +240,15 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = logType,
-                        Source = source,
+                        Source = source.Ellipse(200 - 5),
                         Message = message.Ellipse(1500 - 5),
                         StackTrace = null,
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && logType != LogTypeEnum.Info)
+                    if (SendLogToSource && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -257,7 +264,7 @@ namespace YTMusicUploader
         /// </summary>
         /// <param name="source">Where the message originated</param>
         /// <param name="message">The messsage to log</param>
-        public static void LogInfo(string source, string message)
+        public static void LogInfo(string source, string message, bool ignoreRemote = false)
         {
             try
             {
@@ -267,13 +274,19 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = LogTypeEnum.Info,
-                        Source = source,
+                        Source = source.Ellipse(200 - 5),
                         Message = message.Ellipse(1500 - 5),
                         StackTrace = null,
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
+                    if (SendLogToSource && !ignoreRemote)
+                    {
+                        log.Machine += $"@{ExternalIp}";
+                        LogsRepo.RemoteAdd(log);
+                    }
                 });
             }
             catch { }
@@ -284,7 +297,7 @@ namespace YTMusicUploader
         /// </summary>
         /// <param name="source">Where the message originated</param>
         /// <param name="message">The messsage to log</param>
-        public static void LogError(string source, string message)
+        public static void LogError(string source, string message, bool ignoreRemote = false)
         {
             try
             {
@@ -294,14 +307,15 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = LogTypeEnum.Error,
-                        Source = source,
+                        Source = source.Ellipse(200 - 5),
                         Message = message.Ellipse(1500 - 5),
                         StackTrace = null,
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -317,7 +331,7 @@ namespace YTMusicUploader
         /// </summary>
         /// <param name="source">Where the message originated</param>
         /// <param name="message">The messsage to log</param>
-        public static void LogWarning(string source, string message)
+        public static void LogWarning(string source, string message, bool ignoreRemote = false)
         {
             try
             {
@@ -327,14 +341,15 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = LogTypeEnum.Warning,
-                        Source = source,
+                        Source = source.Ellipse(200 - 5),
                         Message = message.Ellipse(1500 - 5),
                         StackTrace = null,
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource  && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -350,7 +365,7 @@ namespace YTMusicUploader
         /// </summary>
         /// <param name="source">Where the message originated</param>
         /// <param name="message">The messsage to log</param>
-        public static void LogCritial(string source, string message)
+        public static void LogCritial(string source, string message, bool ignoreRemote = false)
         {
             try
             {
@@ -360,14 +375,15 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = LogTypeEnum.Critcal,
-                        Source = source,
+                        Source = source.Ellipse(200 - 5),
                         Message = message.Ellipse(1500 - 5),
                         StackTrace = null,
-                        Machine = MachineName.Ellipse(210)
+                        Machine = MachineName.Ellipse(210),
+                        Version = VersionHelper.GetVersionFull()
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource)
+                    if (SendLogToSource & !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);

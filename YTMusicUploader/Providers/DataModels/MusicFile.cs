@@ -41,6 +41,8 @@ namespace YTMusicUploader.Providers.DataModels
         public DateTime LastUpload { get; set; }
         public bool? Error { get; set; }
         public string ErrorReason { get; set; }
+        public int? UploadAttempts { get; set; }
+        public DateTime LastUploadError { get; set; }
         public bool? Removed { get; set; } = null;
 
         /// <summary>

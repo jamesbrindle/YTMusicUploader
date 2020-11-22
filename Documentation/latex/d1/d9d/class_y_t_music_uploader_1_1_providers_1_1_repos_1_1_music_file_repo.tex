@@ -50,8 +50,8 @@ Task \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music
 \begin{DoxyCompactList}\small\item\em Reset all music file entry uploaded states \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a30164946b3b505acdde6df9cd2393015}{Update}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} music\+File)
 \begin{DoxyCompactList}\small\item\em Updates the Music File entry in the database with the fields of the given Music\+File object \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad7ff2a25b5be24c8d0cd18f073765892}{Add\+Or\+Update}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} music\+File)
-\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad3bea51acd573d8e1563d20052960177}{Reset\+Issue\+Status}} (int id)
+\begin{DoxyCompactList}\small\item\em Resets the issue status of a Music\+File for the reason of a force retry \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a88a351a8566be307ba2519224c4fa5a7}{Delete}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} music\+File, bool destroy=false)
 \begin{DoxyCompactList}\small\item\em Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the \textquotesingle{}removed\textquotesingle{} flag, whereas destroy is to completely delete it from the database \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}{Delete\+By\+Entity\+Id}} (string entity\+Id)
@@ -73,14 +73,6 @@ Music File database repository access.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad7ff2a25b5be24c8d0cd18f073765892}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad7ff2a25b5be24c8d0cd18f073765892}} 
-\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!AddOrUpdate@{AddOrUpdate}}
-\index{AddOrUpdate@{AddOrUpdate}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
-\doxysubsubsection{\texorpdfstring{AddOrUpdate()}{AddOrUpdate()}}
-{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Add\+Or\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}}]{music\+File }\end{DoxyParamCaption})}
-
-Here is the call graph for this function\+:
-% FIG 2
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountAll@{CountAll}}
 \index{CountAll@{CountAll}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -95,7 +87,7 @@ Count all non-\/removed Music File entries
 Integer count
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 3
+% FIG 2
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountIssues@{CountIssues}}
 \index{CountIssues@{CountIssues}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -110,7 +102,7 @@ Count all non-\/removed Music File entries that have upload errors
 Integer count
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 4
+% FIG 3
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountUploaded@{CountUploaded}}
 \index{CountUploaded@{CountUploaded}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -125,7 +117,7 @@ Count all non-\/removed Music File entries with upload success
 Integer count
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 5
+% FIG 4
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -167,7 +159,7 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 6
+% FIG 5
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a61d540025b68ae4753ca2575da74b67b}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a61d540025b68ae4753ca2575da74b67b}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -320,7 +312,7 @@ Inserts a Music File entry into the database. If the entry already exists, but i
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 7
+% FIG 6
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Load@{Load}}
 \index{Load@{Load}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -420,6 +412,24 @@ Loads a list of Music\+File objects with a successful upload
 
 Reset all music file entry uploaded states 
 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad3bea51acd573d8e1563d20052960177}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad3bea51acd573d8e1563d20052960177}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!ResetIssueStatus@{ResetIssueStatus}}
+\index{ResetIssueStatus@{ResetIssueStatus}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{ResetIssueStatus()}{ResetIssueStatus()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Reset\+Issue\+Status (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Resets the issue status of a Music\+File for the reason of a force retry 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Music\+File Id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ac9024103e00a4e34b6eab8ae4e364a0e}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ac9024103e00a4e34b6eab8ae4e364a0e}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!RestoreMusicFile@{RestoreMusicFile}}
 \index{RestoreMusicFile@{RestoreMusicFile}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -454,7 +464,7 @@ Updates the Music File entry in the database with the fields of the given Music\
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 8
+% FIG 7
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

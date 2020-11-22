@@ -197,6 +197,10 @@ namespace YTMusicUploader.Providers
 
                     }
 
+                    //
+                    // Added additional logs types in 1.5.1
+                    // 
+
                     result = conn.Query<string>(
                                 @"SELECT Description
                                   FROM LogType
@@ -211,6 +215,45 @@ namespace YTMusicUploader.Providers
                              VALUES ('Warning'),
                                     ('Critical')");
                     }
+
+                    //
+                    // Added version to log in 1.5.2
+                    // 
+
+                    columns = conn.Query<string>(
+                            @"SELECT name 
+                              FROM PRAGMA_TABLE_INFO('Logs')").ToList();
+
+                    if (!columns.Contains("Version"))
+                    {
+                        conn.Execute(
+                            @"ALTER TABLE Logs
+                              ADD COLUMN Version TEXT");
+                    }
+
+                    //
+                    // Added failure attempts columns to MusicFile in 1.5.2
+                    // 
+
+                    columns = conn.Query<string>(
+                           @"SELECT name 
+                              FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+
+                    if (!columns.Contains("UploadAttempts"))
+                    {
+                        conn.Execute(
+                            @"ALTER TABLE MusicFiles
+                              ADD COLUMN UploadAttempts INTEGER");
+
+                        conn.Execute(
+                            @"ALTER TABLE MusicFiles
+                              ADD COLUMN LastUploadError TEXT ");
+
+                        conn.Execute(
+                           @"UPDATE MusicFiles
+                             SET LastUploadError = '0001-01-01 00:00:00'");
+                    }
+
                 }
                 catch { }
 

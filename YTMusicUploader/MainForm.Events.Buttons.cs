@@ -69,15 +69,22 @@ namespace YTMusicUploader
 
         private async Task AddWatchFolder()
         {
-            Logger.LogInfo("AddWatchFolder", "Watch folder added: " + FolderSelector.SelectedPath);
-
-            WatchFolderRepo.Insert(new WatchFolder
+            try
             {
-                Path = FolderSelector.SelectedPath
-            }).Wait();
+                Logger.LogInfo("AddWatchFolder", "Watch folder added: " + FolderSelector.SelectedPath);
 
-            await BindWatchFoldersList();
-            QueueChecker.Queue = true;
+                WatchFolderRepo.Insert(new WatchFolder
+                {
+                    Path = FolderSelector.SelectedPath
+                }).Wait();
+
+                await BindWatchFoldersList();
+                Restart();
+            }
+            catch(Exception e)
+            {
+                Logger.Log(e, "AddWatchFolder");
+            }           
         }
 
         private void BtnAddWatchFolder_MouseEnter(object sender, EventArgs e)
@@ -105,7 +112,6 @@ namespace YTMusicUploader
                 Task.Run(async () => await RemoveWachFolder());
             }
         }
-
         private async Task RemoveWachFolder()
         {
             try
@@ -119,10 +125,13 @@ namespace YTMusicUploader
                     RepopulateAmountLables();
                 }
             }
-            catch { }
+            catch(Exception e)
+            {
+                Logger.Log(e, "RemoveWachFolder");
+            }
 
             await BindWatchFoldersList();
-            QueueChecker.Queue = true;
+            Restart();
         }
 
         private void BtnRemoveWatchFolder_MouseEnter(object sender, EventArgs e)
@@ -149,7 +158,9 @@ namespace YTMusicUploader
                 if (IssueLogForm == null)
                     IssueLogForm = new IssueLog(this);
 
-                IssueLogForm.ShowDialog();
+                var result = IssueLogForm.ShowDialog();
+                if (result == DialogResult.Yes)
+                    Restart();
             }
             catch
             {

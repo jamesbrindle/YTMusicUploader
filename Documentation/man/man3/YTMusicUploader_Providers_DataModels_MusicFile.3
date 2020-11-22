@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataModels.MusicFile" 3 "Sat Nov 21 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataModels.MusicFile" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -63,6 +63,12 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .br
 .ti -1c
 .RI "string \fBErrorReason\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int? \fBUploadAttempts\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "DateTime \fBLastUploadError\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "bool? \fBRemoved\fP = null\fC [get, set]\fP"
@@ -143,6 +149,8 @@ Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 
 .SS "DateTime YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.LastUpload\fC [get]\fP, \fC [set]\fP"
 
+.SS "DateTime YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.LastUploadError\fC [get]\fP, \fC [set]\fP"
+
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.MbId\fC [get]\fP, \fC [set]\fP"
 
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Path\fC [get]\fP, \fC [set]\fP"
@@ -150,6 +158,8 @@ Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.ReleaseMbId\fC [get]\fP, \fC [set]\fP"
 
 .SS "bool? YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.Removed = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "int? YTMusicUploader\&.Providers\&.DataModels\&.MusicFile\&.UploadAttempts\fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

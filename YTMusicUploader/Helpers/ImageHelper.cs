@@ -30,15 +30,22 @@ namespace JBToolkit.Imaging
         /// <returns>True if the same, false otherwise</returns>
         public static bool IsSameImage(Image imageA, Image imageB)
         {
-            if (imageA.Width != imageB.Width) return false;
-            if (imageA.Height != imageB.Height) return false;
+            try
+            {
+                if (imageA.Width != imageB.Width) return false;
+                if (imageA.Height != imageB.Height) return false;
 
-            var hashA = imageA.XxHash();
-            var hashB = imageB.XxHash();
+                var hashA = imageA.XxHash();
+                var hashB = imageB.XxHash();
 
-            return !hashA
-                .Where((nextByte, index) => nextByte != hashB[index])
-                .Any();
+                return !hashA
+                    .Where((nextByte, index) => nextByte != hashB[index])
+                    .Any();
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
