@@ -156,7 +156,7 @@
             // 
             this.lblDiscoveredFilesLabel.AutoSize = true;
             this.lblDiscoveredFilesLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscoveredFilesLabel.Location = new System.Drawing.Point(444, 242);
+            this.lblDiscoveredFilesLabel.Location = new System.Drawing.Point(444, 241);
             this.lblDiscoveredFilesLabel.Name = "lblDiscoveredFilesLabel";
             this.lblDiscoveredFilesLabel.Size = new System.Drawing.Size(89, 13);
             this.lblDiscoveredFilesLabel.TabIndex = 9;
@@ -166,7 +166,7 @@
             // 
             this.lblDiscoveredFiles.AutoSize = true;
             this.lblDiscoveredFiles.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscoveredFiles.Location = new System.Drawing.Point(600, 242);
+            this.lblDiscoveredFiles.Location = new System.Drawing.Point(600, 241);
             this.lblDiscoveredFiles.Name = "lblDiscoveredFiles";
             this.lblDiscoveredFiles.Size = new System.Drawing.Size(13, 13);
             this.lblDiscoveredFiles.TabIndex = 10;
@@ -176,7 +176,7 @@
             // 
             this.lblIssuesLabel.AutoSize = true;
             this.lblIssuesLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIssuesLabel.Location = new System.Drawing.Point(444, 262);
+            this.lblIssuesLabel.Location = new System.Drawing.Point(444, 261);
             this.lblIssuesLabel.Name = "lblIssuesLabel";
             this.lblIssuesLabel.Size = new System.Drawing.Size(38, 13);
             this.lblIssuesLabel.TabIndex = 11;
@@ -224,7 +224,7 @@
             // 
             this.lblUploadedLabel.AutoSize = true;
             this.lblUploadedLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUploadedLabel.Location = new System.Drawing.Point(444, 282);
+            this.lblUploadedLabel.Location = new System.Drawing.Point(444, 281);
             this.lblUploadedLabel.Name = "lblUploadedLabel";
             this.lblUploadedLabel.Size = new System.Drawing.Size(58, 13);
             this.lblUploadedLabel.TabIndex = 20;
@@ -269,7 +269,7 @@
             // 
             this.lblIssues.AutoSize = true;
             this.lblIssues.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblIssues.Location = new System.Drawing.Point(600, 262);
+            this.lblIssues.Location = new System.Drawing.Point(600, 261);
             this.lblIssues.Name = "lblIssues";
             this.lblIssues.Size = new System.Drawing.Size(13, 13);
             this.lblIssues.TabIndex = 4;
@@ -281,7 +281,7 @@
             // 
             this.lblUploaded.AutoSize = true;
             this.lblUploaded.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblUploaded.Location = new System.Drawing.Point(600, 282);
+            this.lblUploaded.Location = new System.Drawing.Point(600, 281);
             this.lblUploaded.Name = "lblUploaded";
             this.lblUploaded.Size = new System.Drawing.Size(13, 13);
             this.lblUploaded.TabIndex = 5;
