@@ -91,7 +91,6 @@ namespace YTMusicUploader.Business
                                 return;
 
                             musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);
-
                             if (MainFormIsAborting())
                                 return;
 
@@ -198,14 +197,13 @@ namespace YTMusicUploader.Business
                 await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
                 MainForm.SetStatusMessage("Comparing file system against database for existing uploads", "Comparing file system against the DB");
             }
-            catch { } 
+            catch { }
 
             existingMusicFile.Path = musicFile.Path;
             existingMusicFile.LastUpload = DateTime.Now;
             existingMusicFile.Removed = false;
 
             TrackAndReleaseMbId trackAndReleaseMbId = null;
-
             if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
                 trackAndReleaseMbId = MainForm.MusicDataFetcher.GetTrackAndReleaseMbId(musicFile.Path, false);
 
@@ -278,7 +276,6 @@ namespace YTMusicUploader.Business
             musicFile.LastUpload = DateTime.Now;
             musicFile.Error = false;
             musicFile.EntityId = entityId;
-
             musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
                                         ? musicFile.MbId
                                         : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
@@ -294,7 +291,6 @@ namespace YTMusicUploader.Business
                                                         : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
                                                                                                  .FirstOrDefault()
                                                                                                  .ReleaseMbId);
-
             _uploadedCount++;
             MainForm.SetUploadedLabel(_uploadedCount.ToString());
         }
@@ -402,52 +398,31 @@ namespace YTMusicUploader.Business
 
                     musicFile.LastUpload = DateTime.Now;
                     musicFile.Error = false;
+                    musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
+                                                ? musicFile.MbId
+                                                : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
+                                                        ? trackAndReleaseMbId.MbId
+                                                        : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
+                                                                                                 .FirstOrDefault()
+                                                                                                 .MbId);
 
-                    try
-                    {
-                        musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
-                                                    ? musicFile.MbId
+                    musicFile.ReleaseMbId = !string.IsNullOrEmpty(musicFile.ReleaseMbId)
+                                                    ? musicFile.ReleaseMbId
                                                     : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
-                                                            ? trackAndReleaseMbId.MbId
+                                                            ? trackAndReleaseMbId.ReleaseMbId
                                                             : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
                                                                                                      .FirstOrDefault()
-                                                                                                     .MbId);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.Log(e, "Couldn't retrive record Mbid from MusicBrainz", Log.LogTypeEnum.Warning);
-                    }
+                                                                                                     .ReleaseMbId);
 
-                    try
-                    {
-                        musicFile.ReleaseMbId = !string.IsNullOrEmpty(musicFile.ReleaseMbId)
-                                                        ? musicFile.ReleaseMbId
-                                                        : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
-                                                                ? trackAndReleaseMbId.ReleaseMbId
-                                                                : Requests.UploadCheckCache.CachedObjects.Where(m => m.MusicFilePath == musicFile.Path)
-                                                                                                         .FirstOrDefault()
-                                                                                                         .ReleaseMbId);
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.Log(e, "Couldn't retrive Release Mbid from MusicBrainz", Log.LogTypeEnum.Warning);
-                    }
 
-                    try
+                    // We've uploaded it, so now see if we can get the YouTube Music entityId
+                    if (Requests.IsSongUploaded(musicFile.Path,
+                                            MainForm.Settings.AuthenticationCookie,
+                                            out string entityId,
+                                            MainForm.MusicDataFetcher,
+                                            false) != Requests.UploadCheckResult.NotPresent)
                     {
-                        // We've uploaded it, so now see if we can get the YouTube Music entityId
-                        if (Requests.IsSongUploaded(musicFile.Path,
-                                                MainForm.Settings.AuthenticationCookie,
-                                                out string entityId,
-                                                MainForm.MusicDataFetcher,
-                                                false) != Requests.UploadCheckResult.NotPresent)
-                        {
-                            musicFile.EntityId = entityId;
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Logger.Log(e, "Couldn't retrive entity ID from YTMusic", Log.LogTypeEnum.Warning);
+                        musicFile.EntityId = entityId;
                     }
 
                     _uploadedCount++;
