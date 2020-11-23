@@ -192,9 +192,13 @@ namespace YTMusicUploader.Business
                 "HandleFileRenamedOrMove",
                 "File rename or moved detected. From: " + existingMusicFile.Path + " to: " + musicFile.Path, true);
 
-            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
-            MainForm.SetStatusMessage("Comparing file system against database for existing uploads", "Comparing file system against the DB");
+            try
+            {
+                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
+                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
+                MainForm.SetStatusMessage("Comparing file system against database for existing uploads", "Comparing file system against the DB");
+            }
+            catch { } 
 
             existingMusicFile.Path = musicFile.Path;
             existingMusicFile.LastUpload = DateTime.Now;
@@ -259,9 +263,13 @@ namespace YTMusicUploader.Business
             if (MainFormIsAborting())
                 return;
 
-            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
-            MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
+            try
+            {
+                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
+                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
+                MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
+            }
+            catch { }
 
             TrackAndReleaseMbId trackAndReleaseMbId = null;
             if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
@@ -300,8 +308,12 @@ namespace YTMusicUploader.Business
 
             try
             {
-                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
+                try
+                {
+                    await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
+                    await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
+                }
+                catch { }
 
                 bool success = false;
                 for (int i = 0; i < 10; i++)
