@@ -81,10 +81,10 @@ namespace YTMusicUploader
                 await BindWatchFoldersList();
                 Restart();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Log(e, "AddWatchFolder");
-            }           
+            }
         }
 
         private void BtnAddWatchFolder_MouseEnter(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace YTMusicUploader
                     RepopulateAmountLables();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Logger.Log(e, "RemoveWachFolder");
             }
@@ -207,6 +207,7 @@ namespace YTMusicUploader
             {
                 ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChanges;
                 Requests.UploadCheckCache.Pause = false;
+
                 Restart();
                 ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChangesComplete;
             }
@@ -217,12 +218,14 @@ namespace YTMusicUploader
             }
 
             SetPaused(false);
-
             pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
             ThreadPool.QueueUserWorkItem(delegate
             {
                 ThreadHelper.SafeSleep(100);
                 SetManageTYMusicButtonImage(Properties.Resources.ytmusic_manage);
+
+                ThreadHelper.SafeSleep(250);
+                SetPaused(false);
             });
         }
 
@@ -303,7 +306,7 @@ namespace YTMusicUploader
                            Environment.NewLine +
                            "A new version of YT Music Uploader is available which will likely offer bug fixes and feature enhancements." +
                            Environment.NewLine + Environment.NewLine +
-                           "Current version: " + VersionHelper.GetVersionFull() +                           
+                           "Current version: " + VersionHelper.GetVersionFull() +
                            Environment.NewLine +
                            "Latest version: " + LatestVersionTag +
                            Environment.NewLine + Environment.NewLine +

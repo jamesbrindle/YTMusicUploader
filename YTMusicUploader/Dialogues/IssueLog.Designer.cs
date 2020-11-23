@@ -102,6 +102,7 @@
             this.dvgLog.Size = new System.Drawing.Size(988, 633);
             this.dvgLog.TabIndex = 0;
             this.dvgLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DvgLog_CellContentClick);
+            this.dvgLog.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DvgLog_CellMouseClick);
             this.dvgLog.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvIssues_ColumnHeaderMouseClick);
             // 
             // lblTitle

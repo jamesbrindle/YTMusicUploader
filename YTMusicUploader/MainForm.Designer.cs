@@ -589,10 +589,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 447);
+            this.Controls.Add(this.pbPaused);
             this.Controls.Add(this.pbLog);
             this.Controls.Add(this.roundGroupBox2);
             this.Controls.Add(this.roundGroupBox1);
-            this.Controls.Add(this.pbPaused);
             this.Controls.Add(this.pbYtMusicManage);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pbArtworkIdle);

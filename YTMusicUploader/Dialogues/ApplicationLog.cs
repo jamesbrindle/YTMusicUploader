@@ -85,8 +85,9 @@ namespace YTMusicUploader.Dialogues
                         dgvLog.DataSource = LogsRepo.LoadSpecific(((string)ddLogType.SelectedValue)).Result;
 
                     dgvLog.Columns["Machine"].Visible = false;
-                    dgvLog.Columns["LogTypeId"].Width = 75;
-                    dgvLog.Columns["Version"].Width = 65;
+                    dgvLog.Columns["LogTypeId"].Width = 65;
+                    dgvLog.Columns["Version"].Width = 55;
+                    dgvLog.Columns["Event"].Width = 100;
                     dgvLog.Columns["Id"].Width = 55;
                 }
                 catch (Exception e)

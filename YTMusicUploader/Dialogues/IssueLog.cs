@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -61,7 +60,6 @@ namespace YTMusicUploader.Dialogues
                 {
                     if (!_shown)
                     {
-
                         Logger.LogInfo("Populate - Issues", "Loading issues from the database");
                         dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
 
@@ -158,12 +156,17 @@ namespace YTMusicUploader.Dialogues
                 list.OrderByDescending(_ => _.GetType().GetProperty(column).GetValue(_)).ToList();
         }
 
+        private void DvgLog_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DvgLog_CellContentClick(sender, e);
+        }
+
         private void DvgLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
                 return;
 
-            if (e.ColumnIndex == 12)
+            if (e.ColumnIndex == 12 || (_shown && e.ColumnIndex == 0))
             {
                 int id = (int)dvgLog.Rows[e.RowIndex].Cells["Id"].Value;
                 var _ = MainForm.MusicFileRepo.ResetIssueStatus(id).Result;
@@ -173,8 +176,24 @@ namespace YTMusicUploader.Dialogues
             }
         }
 
+        private void DvgLog_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            if (e.ColumnIndex == 12 || (_shown && e.ColumnIndex == 0))
+            {
+                int id = (int)dvgLog.Rows[e.RowIndex].Cells["Id"].Value;
+                var _ = MainForm.MusicFileRepo.ResetIssueStatus(id).Result;
+                dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+                MainForm.SetIssuesLabel(dvgLog.Rows.Count.ToString());
+                ChangesMade = true;
+            }
+        }
+
         private void IssueLog_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _shown = true;
             if (ChangesMade)
             {
                 ChangesMade = false;
@@ -182,6 +201,6 @@ namespace YTMusicUploader.Dialogues
             }
             else
                 DialogResult = DialogResult.Cancel;
-        }
+        }        
     }
 }

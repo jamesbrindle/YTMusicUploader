@@ -274,7 +274,7 @@ namespace YTMusicUploader
 
             var initialFilesCount = await MusicFileRepo.CountAll();
             var issueCount = await MusicFileRepo.CountIssues();
-            var uploadsCount = await MusicFileRepo.CountUploaded();            
+            var uploadsCount = await MusicFileRepo.CountUploaded();
 
             InitialFilesCount = Task.FromResult(initialFilesCount).Result;
             SetDiscoveredFilesLabel(InitialFilesCount.ToString());
@@ -321,7 +321,7 @@ namespace YTMusicUploader
         }
 
         public void StartMainProcess(bool restarting = false)
-        { 
+        {
             IdleProcessor.Paused = true;
             DataAccess.CheckAndCopyDatabaseFile();
             Logger.LogInfo("StartMainProcess", "Main process thread starting");
@@ -481,24 +481,29 @@ namespace YTMusicUploader
 
         public void Restart()
         {
-            while (
-                !FileScanner.Stopped ||
-                !FileUploader.Stopped ||
-                !IdleProcessor.Stopped ||
-                !QueueChecker.Stopped)
+            Aborting = true;
+
+            ThreadPool.QueueUserWorkItem(delegate            
             {
-                ThreadHelper.SafeSleep(250);
-            }
+                while (
+                    !FileScanner.Stopped ||
+                    !FileUploader.Stopped ||
+                    !IdleProcessor.Stopped ||
+                    !QueueChecker.Stopped)
+                {
+                    ThreadHelper.SafeSleep(250);
+                }
 
-            FileScanner = new FileScanner(this);
-            FileUploader = new FileUploader(this);
-            IdleProcessor = new IdleProcessor(this);
-            QueueChecker = new QueueChecker(this);
+                FileScanner = new FileScanner(this);
+                FileUploader = new FileUploader(this);
+                IdleProcessor = new IdleProcessor(this);
+                QueueChecker = new QueueChecker(this);
 
-            FileScanner.Reset();
-            Aborting = false;
+                FileScanner.Reset();
+                Aborting = false;
 
-            StartMainProcess(true);
+                StartMainProcess(true);
+            });
         }
 
         public void ShowMessageBox(

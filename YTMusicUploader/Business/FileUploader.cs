@@ -191,13 +191,10 @@ namespace YTMusicUploader.Business
                 "HandleFileRenamedOrMove",
                 "File rename or moved detected. From: " + existingMusicFile.Path + " to: " + musicFile.Path, true);
 
-            try
-            {
-                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
-                MainForm.SetStatusMessage("Comparing file system against database for existing uploads", "Comparing file system against the DB");
-            }
-            catch { }
+
+            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
+            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
+            MainForm.SetStatusMessage("Comparing file system against database for existing uploads", "Comparing file system against the DB");
 
             existingMusicFile.Path = musicFile.Path;
             existingMusicFile.LastUpload = DateTime.Now;
@@ -261,13 +258,9 @@ namespace YTMusicUploader.Business
             if (MainFormIsAborting())
                 return;
 
-            try
-            {
-                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-                await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
-                MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
-            }
-            catch { }
+            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
+            await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, false);
+            MainForm.SetStatusMessage("Comparing and updating database with existing uploads", "Comparing files with YouTube Music");
 
             TrackAndReleaseMbId trackAndReleaseMbId = null;
             if (string.IsNullOrEmpty(musicFile.MbId) || string.IsNullOrEmpty(musicFile.ReleaseMbId))
@@ -304,12 +297,8 @@ namespace YTMusicUploader.Business
 
             try
             {
-                try
-                {
-                    await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-                    await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
-                }
-                catch { }
+                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
+                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
 
                 bool success = false;
                 for (int i = 0; i < 10; i++)
@@ -414,6 +403,8 @@ namespace YTMusicUploader.Business
                                                                                                      .FirstOrDefault()
                                                                                                      .ReleaseMbId);
 
+                    if (MainFormIsAborting())
+                        return;
 
                     // We've uploaded it, so now see if we can get the YouTube Music entityId
                     if (Requests.IsSongUploaded(musicFile.Path,
@@ -593,10 +584,10 @@ namespace YTMusicUploader.Business
                         }
                     });
 
-                    threadStarter += () =>
-                    {
-                        _artworkFetchThread = null;
-                    };
+                    //threadStarter += () =>
+                    //{
+                    //    _artworkFetchThread = null;
+                    //};
 
                     _artworkFetchThread = new Thread(threadStarter)
                     {
