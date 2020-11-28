@@ -591,8 +591,6 @@ namespace YTMusicUploader.Dialogues
 
         private void ManageYTMusic_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MainForm.SetPaused(false);
-
             if (ChangesMade)
                 DialogResult = DialogResult.Yes;
             else

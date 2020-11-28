@@ -544,6 +544,11 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Raw\logs.svg" />
+    <Content Include="Resources\Raw\pause_resume.svg" />
+    <None Include="Resources\pause_disabled.png" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\resume.png" />
     <None Include="Resources\reset.png" />
     <None Include="Resources\update_down.png" />
     <None Include="Resources\update_up.png" />

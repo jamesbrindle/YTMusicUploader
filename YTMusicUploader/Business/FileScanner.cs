@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
 using YTMusicUploader.Providers.DataModels;
+using static YTMusicUploader.MainForm;
 
 namespace YTMusicUploader.Business
 {
@@ -192,7 +193,8 @@ namespace YTMusicUploader.Business
         {
             if (string.IsNullOrEmpty(statusText))
             {
-                MainForm.SetUploadingMessage("Idle", null, null, true);
+                if (MainForm.ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
+                    MainForm.SetUploadingMessage("Idle", null, null, true);
 
                 if (MainForm.WatchFolders.Count > 0)
                     MainForm.SetStatusMessage("Looking for new files...", "Looking for new files");

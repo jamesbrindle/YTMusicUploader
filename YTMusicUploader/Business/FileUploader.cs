@@ -12,6 +12,7 @@ using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.RequestModels;
 using static YTMusicUploader.Business.MusicDataFetcher;
+using static YTMusicUploader.MainForm;
 
 namespace YTMusicUploader.Business
 {
@@ -174,7 +175,9 @@ namespace YTMusicUploader.Business
                 Logger.Log(e, "Process.Process", Log.LogTypeEnum.Critcal);
             }
 
-            await SetUploadDetails("Idle", null, true, false);
+            if (MainForm.ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
+                await SetUploadDetails("Idle", null, true, false);
+            
             Stopped = true;
         }
 

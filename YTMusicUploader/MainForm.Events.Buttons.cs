@@ -201,32 +201,34 @@ namespace YTMusicUploader
                 ManageYTMusic = new ManageYTMusic(this);
 
             SetPaused(true);
+            EnableTrayPauseResume(false);
 
             var result = ManageYTMusic.ShowDialog();
-            if (result == DialogResult.Yes)
+            if (!IsPausedFromTray)
             {
-                ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChanges;
+                if (result == DialogResult.Yes)
+                {
+                    ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChanges;
+                    Restart();
+                    ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChangesComplete;
+                }
+                else
+                    ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseNoChange;
+
                 Requests.UploadCheckCache.Pause = false;
-
-                Restart();
-                ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChangesComplete;
-            }
-            else
-            {
-                Requests.UploadCheckCache.Pause = false;
-                ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseNoChange;
-            }
-
-            SetPaused(false);
-            pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                ThreadHelper.SafeSleep(100);
-                SetManageTYMusicButtonImage(Properties.Resources.ytmusic_manage);
-
-                ThreadHelper.SafeSleep(250);
                 SetPaused(false);
-            });
+
+                pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
+                ThreadPool.QueueUserWorkItem(delegate
+                {
+                    ThreadHelper.SafeSleep(100);
+                    SetManageTYMusicButtonImage(Properties.Resources.ytmusic_manage);
+                    ThreadHelper.SafeSleep(250);
+                    SetPaused(false);
+                });
+            }
+            
+            EnableTrayPauseResume(true);
         }
 
         private void PbYtMusicManage_MouseDown(object sender, MouseEventArgs e)

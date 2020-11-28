@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YTMusicUploader.Providers;
 
 namespace YTMusicUploader
 {
@@ -128,9 +129,15 @@ namespace YTMusicUploader
             {
                 pbYtMusicManage.Enabled = enabled;
                 if (enabled)
+                {
+                    EnableTrayPauseResume(true);
                     pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
+                }
                 else
+                {
                     pbYtMusicManage.Image = Properties.Resources.ytmusic_manage_disabled;
+                    EnableTrayPauseResume(false);
+                }
             }
         }
 
@@ -389,6 +396,77 @@ namespace YTMusicUploader
             else
             {
                 btnConnectToYoutube.Enabled = enabled;
+            }
+        }
+
+        delegate void EnableTrayPauseResumeDelegate (bool enabled);
+        public void EnableTrayPauseResume(bool enabled)
+        {
+            if (TrayContextMenuStrip.InvokeRequired || btnConnectToYoutube.InvokeRequired)
+            {
+                EnableTrayPauseResumeDelegate d =
+                    new EnableTrayPauseResumeDelegate(EnableTrayPauseResume);
+                Invoke(d, new object[] { enabled });
+            }
+            else
+            {
+                if (enabled)
+                {
+                    PauseResumeEnabled = true;
+                    tsmPauseResume.ForeColor = Color.Black;
+
+                    if (IsPausedFromTray)
+                    {
+                        tsmPauseResume.Text = "Resume";
+                        tsmPauseResume.Image = Properties.Resources.resume;                       
+                    }
+                    else
+                    {
+                        tsmPauseResume.Text = "Pause";
+                        tsmPauseResume.Image = Properties.Resources.pause;
+                    }
+                }
+                else
+                {
+                    PauseResumeEnabled = false;
+                    tsmPauseResume.Text = "Pause";
+                    tsmPauseResume.ForeColor = SystemColors.ControlDark;
+                    tsmPauseResume.Image = Properties.Resources.pause_disabled;
+                }
+            }
+        }
+
+        delegate void TrayMenuPauseDelegate(bool pause);
+        private void TrayMenuPause(bool pause)
+        {
+            if (TrayContextMenuStrip.InvokeRequired || btnConnectToYoutube.InvokeRequired)
+            {
+                TrayMenuPauseDelegate d =
+                    new TrayMenuPauseDelegate(TrayMenuPause);
+                Invoke(d, new object[] { pause });
+            }
+            else
+            {
+                if (pause)
+                {
+                    tsmPauseResume.Text = "Resume";
+                    tsmPauseResume.Image = Properties.Resources.resume;
+                    IsPausedFromTray = true;
+                    Requests.UploadCheckCache.Pause = true;
+                    ManagingYTMusicStatus = MainForm.ManagingYTMusicStatusEnum.Showing;
+                    SetPaused(true);
+                }
+                else
+                {
+                    tsmPauseResume.Text = "Pause";
+                    tsmPauseResume.Image = Properties.Resources.pause;
+                    IsPausedFromTray = false;
+                    Requests.UploadCheckCache.Pause = false;
+                    ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChanges;
+                    SetPaused(false);
+                    Restart();
+                    ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChangesComplete;
+                }
             }
         }
 

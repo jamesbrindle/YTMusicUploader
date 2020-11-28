@@ -6,6 +6,9 @@ namespace YTMusicUploader
 {
     public partial class MainForm
     {
+        private bool PauseResumeEnabled { get; set; } = false;
+        private bool IsPausedFromTray { get; set; } = false;
+
         private void TrayIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -53,6 +56,17 @@ namespace YTMusicUploader
                 Activate();
                 Focus();
                 BringToFront();
+            }
+        }
+
+        private void TsmPauseResume_Click(object sender, EventArgs e)
+        {
+            if (PauseResumeEnabled)
+            {
+                if (IsPausedFromTray)
+                    TrayMenuPause(false);
+                else
+                    TrayMenuPause(true);
             }
         }
 

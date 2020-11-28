@@ -176,6 +176,7 @@ namespace YTMusicUploader
         {
             tsmShow.Click += new EventHandler(TsmShow_Click);
             tsmQuit.Click += new EventHandler(TsmQuit_Click);
+            tsmPauseResume.Click+= new EventHandler(TsmPauseResume_Click);
         }
 
         private async Task InitialiseFolderWatchers()
@@ -413,8 +414,11 @@ namespace YTMusicUploader
                 FileUploader.Process().Wait();
                 Logger.LogInfo("MainProcess", "Upload check and process upload process complete");
 
-                SetStatusMessage("Idle", "Idle");
-                SetUploadingMessage("Idle", "Idle", null, true);
+                if (ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
+                {
+                    SetStatusMessage("Idle", "Idle");
+                    SetUploadingMessage("Idle", "Idle", null, true);
+                }
 
                 if (WatchFolders.Count == 0)
                 {
@@ -502,6 +506,7 @@ namespace YTMusicUploader
                 FileScanner.Reset();
                 Aborting = false;
 
+                ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChangesComplete;
                 StartMainProcess(true);
             });
         }
