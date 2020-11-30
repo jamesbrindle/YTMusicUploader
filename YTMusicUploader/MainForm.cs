@@ -144,7 +144,7 @@ namespace YTMusicUploader
 
         private void RunDebugCommands()
         {
-            // Placeholder for running any debug tests
+            Requests.Playlist.GetPlaylists(Settings.AuthenticationCookie);
         }
 
         private void MainForm_Load(object sender, EventArgs e)

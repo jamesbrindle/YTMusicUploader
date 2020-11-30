@@ -103,9 +103,9 @@
             this.tblManageYTMusicUploads.Name = "tblManageYTMusicUploads";
             this.tblManageYTMusicUploads.RowCount = 5;
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 117F));
-            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -131,7 +131,7 @@
             this.pnlMusicDetailsPanel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.pnlMusicDetailsPanel.Name = "pnlMusicDetailsPanel";
             this.tblManageYTMusicUploads.SetRowSpan(this.pnlMusicDetailsPanel, 2);
-            this.pnlMusicDetailsPanel.Size = new System.Drawing.Size(410, 148);
+            this.pnlMusicDetailsPanel.Size = new System.Drawing.Size(410, 134);
             this.pnlMusicDetailsPanel.TabIndex = 6;
             // 
             // lblMbId
@@ -252,11 +252,11 @@
             this.pnlUpdatesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlUpdatesPanel.Controls.Add(this.tbUpdates);
             this.pnlUpdatesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlUpdatesPanel.Location = new System.Drawing.Point(578, 260);
+            this.pnlUpdatesPanel.Location = new System.Drawing.Point(578, 245);
             this.pnlUpdatesPanel.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.pnlUpdatesPanel.Name = "pnlUpdatesPanel";
             this.pnlUpdatesPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.pnlUpdatesPanel.Size = new System.Drawing.Size(411, 373);
+            this.pnlUpdatesPanel.Size = new System.Drawing.Size(411, 388);
             this.pnlUpdatesPanel.TabIndex = 3;
             // 
             // tbUpdates
@@ -266,7 +266,7 @@
             this.tbUpdates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbUpdates.Location = new System.Drawing.Point(4, 4);
             this.tbUpdates.Name = "tbUpdates";
-            this.tbUpdates.Size = new System.Drawing.Size(401, 363);
+            this.tbUpdates.Size = new System.Drawing.Size(401, 378);
             this.tbUpdates.TabIndex = 0;
             this.tbUpdates.Text = "";
             // 
@@ -275,17 +275,17 @@
             this.pnlActions.Controls.Add(this.lblCheckedCount);
             this.pnlActions.Controls.Add(this.pbPreloader);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActions.Location = new System.Drawing.Point(575, 231);
+            this.pnlActions.Location = new System.Drawing.Point(575, 219);
             this.pnlActions.Margin = new System.Windows.Forms.Padding(0);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(416, 26);
+            this.pnlActions.Size = new System.Drawing.Size(416, 23);
             this.pnlActions.TabIndex = 4;
             // 
             // lblCheckedCount
             // 
             this.lblCheckedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCheckedCount.AutoSize = true;
-            this.lblCheckedCount.Location = new System.Drawing.Point(0, 12);
+            this.lblCheckedCount.Location = new System.Drawing.Point(0, 9);
             this.lblCheckedCount.Name = "lblCheckedCount";
             this.lblCheckedCount.Size = new System.Drawing.Size(92, 13);
             this.lblCheckedCount.TabIndex = 1;
@@ -295,7 +295,7 @@
             // 
             this.pbPreloader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbPreloader.Image = global::YTMusicUploader.Properties.Resources.preloader_cricle;
-            this.pbPreloader.Location = new System.Drawing.Point(391, 2);
+            this.pbPreloader.Location = new System.Drawing.Point(391, -1);
             this.pbPreloader.Name = "pbPreloader";
             this.pbPreloader.Size = new System.Drawing.Size(22, 22);
             this.pbPreloader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -317,12 +317,12 @@
             this.tableLayoutPanel1.Controls.Add(this.PbDeleteYTUploaded, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(578, 154);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(578, 140);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 74);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 76);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // PbResetUploadStates
@@ -332,7 +332,7 @@
             this.PbResetUploadStates.Image = global::YTMusicUploader.Properties.Resources.reset_uploaded;
             this.PbResetUploadStates.Location = new System.Drawing.Point(30, 21);
             this.PbResetUploadStates.Name = "PbResetUploadStates";
-            this.PbResetUploadStates.Size = new System.Drawing.Size(94, 50);
+            this.PbResetUploadStates.Size = new System.Drawing.Size(94, 52);
             this.PbResetUploadStates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PbResetUploadStates.TabIndex = 0;
             this.PbResetUploadStates.TabStop = false;
@@ -349,7 +349,7 @@
             this.PbResetDatabase.Image = global::YTMusicUploader.Properties.Resources.reset_database;
             this.PbResetDatabase.Location = new System.Drawing.Point(157, 21);
             this.PbResetDatabase.Name = "PbResetDatabase";
-            this.PbResetDatabase.Size = new System.Drawing.Size(94, 50);
+            this.PbResetDatabase.Size = new System.Drawing.Size(94, 52);
             this.PbResetDatabase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PbResetDatabase.TabIndex = 1;
             this.PbResetDatabase.TabStop = false;
@@ -367,7 +367,7 @@
             this.PbDeleteYTUploaded.Image = global::YTMusicUploader.Properties.Resources.delete_from_youtube_disabled;
             this.PbDeleteYTUploaded.Location = new System.Drawing.Point(284, 21);
             this.PbDeleteYTUploaded.Name = "PbDeleteYTUploaded";
-            this.PbDeleteYTUploaded.Size = new System.Drawing.Size(94, 50);
+            this.PbDeleteYTUploaded.Size = new System.Drawing.Size(94, 52);
             this.PbDeleteYTUploaded.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PbDeleteYTUploaded.TabIndex = 2;
             this.PbDeleteYTUploaded.TabStop = false;

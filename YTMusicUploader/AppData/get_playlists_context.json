@@ -1,0 +1,38 @@
+﻿{
+  "browseId": "FEmusic_liked_playlists",
+  "context": {
+    "activePlayers": {},
+    "capabilities": {},
+    "clickTracking": {
+      "clickTrackingParams": "CAkQ1uICGAAiEwix3dL5nKrtAhXH7NUKHQPmB_Q="
+    },
+    "client": {
+      "browserName": "Firefox",
+      "browserVersion": "83.0",
+      "clientName": "WEB_REMIX",
+      "clientVersion": "0.1",
+      "experimentIds": [],
+      "experimentsToken": "",
+      "gl": "GB",
+      "hl": "en-GB",
+      "locationInfo": {
+        "locationPermissionAuthorizationStatus": "LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED"
+      },
+      "musicAppInfo": {
+        "musicActivityMasterSwitch": "MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE",
+        "musicLocationMasterSwitch": "MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE",
+        "pwaInstallabilityStatus": "PWA_INSTALLABILITY_STATUS_UNKNOWN"
+      },
+      "osName": "Windows",
+      "osVersion": "10.0",
+      "utcOffsetMinutes": 0
+    },
+    "request": {
+      "internalExperimentFlags": [],
+      "sessionIndex": 0
+    },
+    "user": {
+      "enableSafetyMode": false
+    }
+  }
+}

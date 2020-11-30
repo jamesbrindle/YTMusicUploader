@@ -452,9 +452,11 @@
     <Compile Include="Providers\RequestModels\BrowseArtistsResultsContinuationContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistsResultsContext.cs" />
     <Compile Include="Providers\RequestModels\ArtistCache.cs" />
+    <Compile Include="Providers\RequestModels\BrowsePlaylists.cs" />
     <Compile Include="Providers\RequestModels\DeleteFromYTMusicRequestContext.cs" />
     <Compile Include="Providers\RequestModels\IRequestModel.cs" />
     <Compile Include="Providers\RequestModels\MusicManageTreeNodeModel.cs" />
+    <Compile Include="Providers\RequestModels\Playlist.cs" />
     <Compile Include="Providers\RequestModels\SearchContext.cs" />
     <Compile Include="Providers\RequestModels\SearchResultsContext.cs" />
     <Compile Include="Providers\Requests.cs" />
@@ -462,6 +464,13 @@
     <Compile Include="Providers\Requests\GetArtistSongs.cs" />
     <Compile Include="Providers\Requests\GetArtists.cs" />
     <Compile Include="Providers\Requests\CheckUploaded.cs" />
+    <Compile Include="Providers\Requests\Playlist\AddPlaylistItems.cs" />
+    <Compile Include="Providers\Requests\Playlist\CreatePlaylist.cs" />
+    <Compile Include="Providers\Requests\Playlist\DeletePlaylist.cs" />
+    <Compile Include="Providers\Requests\Playlist\EditPlaylist.cs" />
+    <Compile Include="Providers\Requests\Playlist\GetPlaylist.cs" />
+    <Compile Include="Providers\Requests\Playlist\GetPlaylists.cs" />
+    <Compile Include="Providers\Requests\Playlist\RemovePlaylistItems.cs" />
     <Compile Include="Providers\Requests\UploadTrack.cs" />
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
     <EmbeddedResource Include="Dialogues\ApplicationLog.resx">
@@ -514,6 +523,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\get_artist_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AppData\get_playlists_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\search_uploads_context.json">
