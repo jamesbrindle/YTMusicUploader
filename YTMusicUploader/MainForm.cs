@@ -436,7 +436,10 @@ namespace YTMusicUploader
 #if DEBUG
                 Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
 #endif
-                Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Critical);
+                if (e.Message.ToLower().Contains("thread was being aborted"))
+                    Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Warning);
+                else
+                    Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Critical);
             }
 
             IdleProcessor.Paused = false;

@@ -22,7 +22,15 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 string cmd = string.Format(
-                                @"SELECT * 
+                                @"SELECT 
+                                    Id,
+                                    Event,
+                                    LogTypeId,
+                                    Machine,
+                                    Source,
+                                    Message,
+                                    [Version],
+                                    StackTrace
                                   FROM Logs
                                   ORDER BY Id DESC");
 
@@ -43,7 +51,15 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 string cmd = string.Format(
-                                @"SELECT * 
+                                @"SELECT
+                                    Id,
+                                    Event,
+                                    LogTypeId,
+                                    Machine,
+                                    Source,
+                                    Message,
+                                    [Version],
+                                    StackTrace
                                   FROM Logs
                                   WHERE LogTypeId IN ({0})
                                   ORDER BY Id DESC", logTypes);

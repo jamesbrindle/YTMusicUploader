@@ -257,6 +257,30 @@ namespace YTMusicUploader.Providers
                            @"UPDATE MusicFiles
                              SET LastUploadError = '0001-01-01 00:00:00'");
                     }
+
+                    //
+                    // Corrected column 'Version' data type in 1.5.4 - Should be text
+                    //
+
+                    string versionDataType = conn.Query<string>(
+                            "SELECT TYPEOF(Version) FROM Logs LIMIT 1").ToList()
+                                                                       .FirstOrDefault();
+
+                    if (versionDataType != null && versionDataType.ToLower() != "text")
+                    {
+                        conn.Execute(
+                          @"DROP TABLE ""Logs"";
+                            CREATE TABLE ""Logs"" (
+                                ""Id""    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+                                ""Event"" TEXT NOT NULL,
+                                ""LogTypeId"" INTEGER NOT NULL,
+                                ""Machine""   TEXT NOT NULL,
+                                ""Source""    TEXT NOT NULL,
+                                ""Message""   TEXT NOT NULL,
+                                ""Version""   TEXT,
+                                ""StackTrace""    TEXT     
+                            ); ");
+                    }
                 }
                 catch { }
 

@@ -303,7 +303,7 @@ namespace YTMusicUploader.Providers.Repos
             {
                 return await LoadAll_R(includeErrorFiles, lastUploadAscending, ignoreRecentlyUploaded);
             }
-            catch(Exception e)
+            catch
             {
                 ThreadHelper.SafeSleep(50);
                 return await LoadAll_R(includeErrorFiles, lastUploadAscending, ignoreRecentlyUploaded);
