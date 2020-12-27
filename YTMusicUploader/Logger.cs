@@ -108,9 +108,9 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = LogTypeEnum.Error,
-                        Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
-                        Message = e.Message.Ellipse(1500 - 5),
-                        StackTrace = e.StackTrace.Ellipse(4000 - 5),
+                        Source = GetExceptionSource(e).Ellipse(200 - 5),
+                        Message = GetExceptionMessage(e).Ellipse(1500 - 5),
+                        StackTrace = GetExceptionStackTrace(e).Ellipse(4000 - 5),
                         Machine = MachineName.Ellipse(210),
                         Version = VersionHelper.GetVersionFull()
                     };
@@ -140,9 +140,9 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = logType,
-                        Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
-                        Message = e.Message.Ellipse(1500 - 5),
-                        StackTrace = e.StackTrace.Ellipse(4000 - 5),
+                        Source = GetExceptionSource(e).Ellipse(200 - 5),
+                        Message = GetExceptionMessage(e).Ellipse(1500 - 5),
+                        StackTrace = GetExceptionStackTrace(e).Ellipse(4000 - 5),
                         Machine = MachineName.Ellipse(210),
                         Version = VersionHelper.GetVersionFull()
                     };
@@ -172,9 +172,9 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = LogTypeEnum.Error,
-                        Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
-                        Message = (additionalMessage + ": " + e.Message).Ellipse(1500 - 5),
-                        StackTrace = e.StackTrace.Ellipse(4000 - 5),
+                        Source = GetExceptionSource(e).Ellipse(200 - 5),
+                        Message = (additionalMessage + ": " + GetExceptionMessage(e)).Ellipse(1500 - 5),
+                        StackTrace = GetExceptionStackTrace(e).Ellipse(4000 - 5),
                         Machine = MachineName.Ellipse(210),
                         Version = VersionHelper.GetVersionFull()
                     };
@@ -205,9 +205,9 @@ namespace YTMusicUploader
                     {
                         Event = DateTime.Now,
                         LogTypeId = logType,
-                        Source = new StackTrace(e).GetFrame(0).GetMethod().Name.Ellipse(200 - 5),
-                        Message = (additionalMessage + ": " + e.Message).Ellipse(1500 - 5),
-                        StackTrace = e.StackTrace.Ellipse(4000 - 5),
+                        Source = GetExceptionSource(e).Ellipse(200 - 5),
+                        Message = (additionalMessage + ": " + GetExceptionMessage(e)).Ellipse(1500 - 5),
+                        StackTrace = GetExceptionStackTrace(e).Ellipse(4000 - 5),
                         Machine = MachineName.Ellipse(210),
                         Version = VersionHelper.GetVersionFull()
                     };
@@ -222,7 +222,8 @@ namespace YTMusicUploader
                 });
             }
             catch { }
-        }
+        } 
+
 
         /// <summary>
         /// Log custom message
@@ -248,12 +249,11 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
+                    if (SendLogToSource && logType != LogTypeEnum.Info && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
                     }
-
                 });
             }
             catch { }
@@ -281,12 +281,7 @@ namespace YTMusicUploader
                         Version = VersionHelper.GetVersionFull()
                     };
 
-                    Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
-                    {
-                        log.Machine += $"@{ExternalIp}";
-                        LogsRepo.RemoteAdd(log);
-                    }
+                    Task.Run(async () => await LogsRepo.Add(log));                    
                 });
             }
             catch { }
@@ -374,7 +369,7 @@ namespace YTMusicUploader
                     var log = new Log
                     {
                         Event = DateTime.Now,
-                        LogTypeId = LogTypeEnum.Critcal,
+                        LogTypeId = LogTypeEnum.Critical,
                         Source = source.Ellipse(200 - 5),
                         Message = message.Ellipse(1500 - 5),
                         StackTrace = null,
@@ -388,10 +383,33 @@ namespace YTMusicUploader
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
                     }
-
                 });
             }
             catch { }
+        }
+
+        private static string GetExceptionSource(Exception e)
+        {
+            if (e.Message.ToLower().Contains("one or more errors occurred"))
+                return new StackTrace(e.InnerException).GetFrame(0).GetMethod().Name;
+
+            return new StackTrace(e).GetFrame(0).GetMethod().Name;
+        }
+
+        private static string GetExceptionMessage(Exception e)
+        {
+            if (e.Message.ToLower().Contains("one or more errors occurred"))
+                return e.InnerException.Message;
+
+            return e.Message;
+        }
+
+        private static string GetExceptionStackTrace(Exception e)
+        {
+            if (e.Message.ToLower().Contains("one or more errors occurred"))
+                return e.InnerException.StackTrace;
+
+            return e.StackTrace;
         }
 
         /// <summary>

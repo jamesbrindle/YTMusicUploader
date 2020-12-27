@@ -324,6 +324,7 @@ namespace YTMusicUploader
         public void StartMainProcess(bool restarting = false)
         {
             IdleProcessor.Paused = true;
+            SetStatusMessage("Checking database integrity", "Checking database integrity");
             DataAccess.CheckAndCopyDatabaseFile();
             Logger.LogInfo("StartMainProcess", "Main process thread starting");
 
@@ -435,7 +436,7 @@ namespace YTMusicUploader
 #if DEBUG
                 Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
 #endif
-                Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Critcal);
+                Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Critical);
             }
 
             IdleProcessor.Paused = false;

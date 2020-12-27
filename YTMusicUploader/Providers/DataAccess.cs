@@ -6,6 +6,8 @@ using System;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader.Providers
 {
@@ -49,6 +51,8 @@ namespace YTMusicUploader.Providers
 
                 PerformAnyDbUpgrades();
             }
+
+            CheckDatabaseIntegrity();
         }
 
         /// <summary>
@@ -253,11 +257,40 @@ namespace YTMusicUploader.Providers
                            @"UPDATE MusicFiles
                              SET LastUploadError = '0001-01-01 00:00:00'");
                     }
-
                 }
                 catch { }
 
                 conn.Close();
+            }
+        }
+
+        public static void CheckDatabaseIntegrity()
+        {
+            try
+            {
+                Logger.LogInfo("CheckDatabaseIntegrity", "Checking database integrity");
+
+                var _s = new SettingsRepo().Load();
+                var _w = new WatchFolderRepo().Load();
+                var _m = new MusicFileRepo().LoadAll(true);
+                var _l = new LogsRepo().LoadSpecific("3");
+
+                Logger.LogInfo("CheckDatabaseIntegrity", "Database integrity check complete - No issues");
+            }
+            catch (Exception e)
+            {
+                if (
+                    MessageBox.Show(
+                        $"Unfortunately the database integrity check has failed ({e.Message}). YT Music Uploader cannot continue in this state. " +
+                        $"If you click 'OK', YT Music Uploader will reset the database to its original state. You'll lose any uploaded file states but the program" +
+                        $" should then work. Otherwise click cancel to attempt to rectify the database yourself located in: %localappdata%\\YTMusicUploader",
+                        "Database Integrity Check Fail",
+                        MessageBoxButton.OKCancel,
+                        MessageBoxImage.Error) == MessageBoxResult.OK)
+                {
+                    ResetDatabase();
+                    Logger.LogInfo("CheckDatabaseIntegrity", "Database has been reset due to integrity check failure. Comfirmed by user.");
+                }
             }
         }
 

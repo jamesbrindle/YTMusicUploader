@@ -123,7 +123,10 @@ namespace YTMusicUploader.Providers
             }
             catch (Exception e)
             {
-                Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired. Probably bug", Log.LogTypeEnum.Critcal);
+                if (!e.Message.ToLower().Contains("thread was being aborted"))
+                    Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired due to thread aborting after system change.", Log.LogTypeEnum.Warning);
+                else
+                    Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired. Probably bug", Log.LogTypeEnum.Critical);
             }
         }
 

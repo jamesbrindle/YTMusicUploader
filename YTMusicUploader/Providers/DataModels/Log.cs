@@ -18,7 +18,7 @@ namespace YTMusicUploader.Providers.DataModels
             Info = 1,
             Error = 2,
             Warning = 3,
-            Critcal = 4
+            Critical = 4
         }
 
         public DateTime Event { get; set; }

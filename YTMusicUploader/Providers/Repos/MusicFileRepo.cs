@@ -48,7 +48,7 @@ namespace YTMusicUploader.Providers.Repos
                               Error,
                               ErrorReason,
                               UploadAttempts,
-                              LastUploadError
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                           FROM MusicFiles
                           WHERE Id = @Id
                           AND (Removed IS NULL OR Removed != 1)",
@@ -92,7 +92,7 @@ namespace YTMusicUploader.Providers.Repos
                               Error,
                               ErrorReason,
                               UploadAttempts,
-                              LastUploadError
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                           FROM MusicFiles
                           WHERE Path = @Path
                           AND (Removed IS NULL OR Removed != 1)",
@@ -135,7 +135,7 @@ namespace YTMusicUploader.Providers.Repos
                               Error,
                               ErrorReason,
                               UploadAttempts,
-                              LastUploadError
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                           FROM MusicFiles
                           WHERE EntityId = @EntityId
                           ORDER BY Removed",
@@ -182,7 +182,7 @@ namespace YTMusicUploader.Providers.Repos
                               Error,
                               ErrorReason,
                               UploadAttempts,
-                              LastUploadError
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                           FROM MusicFiles
                           WHERE Hash = @Hash
                           AND Path != @Path
@@ -228,7 +228,7 @@ namespace YTMusicUploader.Providers.Repos
                               Error,
                               ErrorReason,
                               UploadAttempts,
-                              LastUploadError
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                           FROM MusicFiles
                           WHERE (Error = 0 OR Error IS NULL)
                           AND (MbId = '' OR MbId IS NULL)
@@ -275,7 +275,7 @@ namespace YTMusicUploader.Providers.Repos
                               Error,
                               ErrorReason,
                               UploadAttempts,
-                              LastUploadError
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                           FROM MusicFiles
                           WHERE (Error = 0 OR Error IS NULL)
                           AND (EntityId = '' OR EntityId IS NULL)
@@ -303,7 +303,7 @@ namespace YTMusicUploader.Providers.Repos
             {
                 return await LoadAll_R(includeErrorFiles, lastUploadAscending, ignoreRecentlyUploaded);
             }
-            catch
+            catch(Exception e)
             {
                 ThreadHelper.SafeSleep(50);
                 return await LoadAll_R(includeErrorFiles, lastUploadAscending, ignoreRecentlyUploaded);
@@ -318,33 +318,33 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 string cmd = string.Format(
-@"SELECT 
-        Id, 
-        Path, 
-        MbId,
-        ReleaseMbId,
-        EntityId,
-        Hash,
-        LastUpload, 
-        Error,
-        ErrorReason,
-        UploadAttempts,
-        LastUploadError
-FROM MusicFiles
-WHERE (Removed IS NULL OR Removed != 1)" + "\n" + @"
-{0} {1} {2}",
-includeErrorFiles
-    ? ""
-    : "AND Error = 0",
-ignoreRecentlyUploaded
-    ? "AND (LastUpload < '" + DateTime.Now.AddDays(Global.RecheckForUploadedSongsInDays * -1).ToString("yyyy-MM-dd HH:mm:ss") + "'\n" +
-    "   AND (Error IS NULL OR Error = 0))" + "\n" +
-        (includeErrorFiles
-            ? "      OR (Error = 1 AND (LastUploadError < '" + DateTime.Now.AddDays(-30).ToSQLDateTime() +
-                "' OR (UploadAttempts IS NULL OR UploadAttempts <= " + Global.YTMusic500ErrorRetryAttempts + "))"
-            : "") + ")"
-    : "",
-lastUploadAscending ? "\n" + @"ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
+                    @"SELECT 
+                            Id, 
+                            Path, 
+                            MbId,
+                            ReleaseMbId,
+                            EntityId,
+                            Hash,
+                            LastUpload, 
+                            Error,
+                            ErrorReason,
+                            UploadAttempts,
+                            IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
+                    FROM MusicFiles
+                    WHERE (Removed IS NULL OR Removed != 1)" + "\n" + @"
+                    {0} {1} {2}",
+                    includeErrorFiles
+                        ? ""
+                        : "AND Error = 0",
+                    ignoreRecentlyUploaded
+                        ? "AND (LastUpload < '" + DateTime.Now.AddDays(Global.RecheckForUploadedSongsInDays * -1).ToString("yyyy-MM-dd HH:mm:ss") + "'\n" +
+                        "   AND (Error IS NULL OR Error = 0))" + "\n" +
+                            (includeErrorFiles
+                                ? "      OR (Error = 1 AND (IFNULL(LastUploadError, '0001-01-01 00:00:00') < '" + DateTime.Now.AddDays(-30).ToSQLDateTime() +
+                                    "' OR (UploadAttempts IS NULL OR UploadAttempts <= " + Global.YTMusic500ErrorRetryAttempts + "))"
+                                : "") + ")"
+                        : "",
+                    lastUploadAscending ? "\n" + @"ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
 
                 conn.Open();
                 var musicFiles = conn.Query<MusicFile>(cmd).ToList();
@@ -387,7 +387,7 @@ lastUploadAscending ? "\n" + @"ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
                                        Error,
                                        ErrorReason,
                                        UploadAttempts,
-                                       LastUploadError
+                                       IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                                   FROM MusicFiles
                                   WHERE (Removed IS NULL OR Removed != 1)
                                   AND Error = 1
@@ -434,7 +434,7 @@ lastUploadAscending ? "\n" + @"ORDER BY LastUpload, IFNULL(Error, 0) ASC" : "");
                                        Error,
                                        ErrorReason,
                                        UploadAttempts,
-                                       LastUploadError
+                                       IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
                                   FROM MusicFiles
                                   WHERE (Removed IS NULL OR Removed != 1)
                                   AND (Error = 0 OR Error IS NULL)

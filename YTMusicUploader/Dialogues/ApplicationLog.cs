@@ -92,7 +92,7 @@ namespace YTMusicUploader.Dialogues
                 }
                 catch (Exception e)
                 {
-                    Logger.Log(e, "Unable to fetch logs from the database and bind gridview", Log.LogTypeEnum.Critcal);
+                    Logger.Log(e, "Unable to fetch logs from the database and bind gridview", Log.LogTypeEnum.Critical);
                 }
 
                 SetTitle("Application Log");

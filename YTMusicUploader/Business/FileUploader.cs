@@ -172,7 +172,7 @@ namespace YTMusicUploader.Business
             }
             catch (Exception e)
             {
-                Logger.Log(e, "Process.Process", Log.LogTypeEnum.Critcal);
+                Logger.Log(e, "Process.Process", Log.LogTypeEnum.Critical);
             }
 
             if (MainForm.ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
