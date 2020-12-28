@@ -182,7 +182,7 @@ namespace YTMusicUploader
         {
             tsmShow.Click += new EventHandler(TsmShow_Click);
             tsmQuit.Click += new EventHandler(TsmQuit_Click);
-            tsmPauseResume.Click+= new EventHandler(TsmPauseResume_Click);
+            tsmPauseResume.Click += new EventHandler(TsmPauseResume_Click);
         }
 
         private async Task InitialiseFolderWatchers()
@@ -333,7 +333,7 @@ namespace YTMusicUploader
             SetStatusMessage("Checking database integrity", "Checking database integrity");
             DataAccess.CheckAndCopyDatabaseFile();
             Logger.LogInfo("StartMainProcess", "Main process thread starting");
-           
+
 
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {
@@ -443,10 +443,15 @@ namespace YTMusicUploader
 #if DEBUG
                 Console.Out.WriteLine("Main Process Thread Error: " + e.Message);
 #endif
-                if (e.Message.ToLower().Contains("thread was being aborted"))
+                if (e.Message.ToLower().Contains("thread was being aborted") ||
+                    (e.InnerException != null && e.InnerException.Message.ToLower().Contains("thread was being aborted")))
+                {
                     Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Warning);
+                }
                 else
+                {
                     Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Critical);
+                }
             }
 
             IdleProcessor.Paused = false;
@@ -478,7 +483,7 @@ namespace YTMusicUploader
             UpdaterPath = EmbeddedResourceHelper.GetEmbeddedResourcePath(
                 "YTMusicUploader.Updater.exe",
                 "Embedded",
-                EmbeddedResourceHelper.TargetAssemblyType.Executing, 
+                EmbeddedResourceHelper.TargetAssemblyType.Executing,
                 false);
 
             if (VersionHelper.LatestVersionGreaterThanCurrentVersion(out string htmlUrl, out string latestVersion))
@@ -504,7 +509,7 @@ namespace YTMusicUploader
         {
             Aborting = true;
 
-            ThreadPool.QueueUserWorkItem(delegate            
+            ThreadPool.QueueUserWorkItem(delegate
             {
                 while (
                     !FileScanner.Stopped ||
