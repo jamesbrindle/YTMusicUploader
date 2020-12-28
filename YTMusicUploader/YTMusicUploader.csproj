@@ -330,11 +330,13 @@
     <Compile Include="Helpers\ColourHelper.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Business\EdgeDependencyChecker.cs" />
+    <Compile Include="Helpers\EmbeddedResourceHelper.cs" />
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Business\MusicDataFetcher.cs" />
     <Compile Include="Helpers\FuzzyLogic.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\InstalledApplicationHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Business\RegistrySettings.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />
@@ -556,6 +558,7 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Embedded\YTMusicUploader.Updater.exe" />
     <Content Include="Resources\Raw\logs.svg" />
     <Content Include="Resources\Raw\pause_resume.svg" />
     <None Include="Resources\pause_disabled.png" />

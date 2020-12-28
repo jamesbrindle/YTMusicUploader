@@ -2,10 +2,13 @@
 using JBToolkit.Threads;
 using MetroFramework;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YTMusicUploader.Dialogues;
+using YTMusicUploader.Helpers;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 
@@ -312,7 +315,7 @@ namespace YTMusicUploader
                            Environment.NewLine +
                            "Latest version: " + LatestVersionTag +
                            Environment.NewLine + Environment.NewLine +
-                           "Would you like to be directed to the download page?",
+                           "Would you like to install the new version (automatic download and install)?",
                            "New YT Music Uploader Available",
                            MessageBoxButtons.YesNoCancel,
                            MessageBoxIcon.Question,
@@ -326,7 +329,18 @@ namespace YTMusicUploader
             });
 
             if (result == DialogResult.Yes)
-                System.Diagnostics.Process.Start(LatestVersionUrl);
+            {
+                string platform = InstalledApplicationHelper.GetInstalledPlatform();
+                string downloadUrl = LatestVersionUrl + $"/YT.Music.Uploader.v{LatestVersionTag.Replace("v", "")}.Installer-{platform}.msi";
+                string downloadPath = Path.Combine(Global.AppDataLocation, "Updates");
+                string version = LatestVersionTag.Replace("v", "");
+                string installedLocation = System.Reflection.Assembly.GetEntryAssembly().Location;
+
+                var process = new Process();
+                process.StartInfo.FileName = UpdaterPath;
+                process.StartInfo.Arguments = $"\"{downloadUrl}\" \"{downloadPath}\" \"{version}\" \"{installedLocation}\"";
+                process.Start();
+            }
         }
 
         private void PbUpdate_MouseDown(object sender, MouseEventArgs e)

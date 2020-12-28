@@ -264,7 +264,7 @@ namespace YTMusicUploader
         /// </summary>
         /// <param name="source">Where the message originated</param>
         /// <param name="message">The messsage to log</param>
-        public static void LogInfo(string source, string message, bool ignoreRemote = false)
+        public static void LogInfo(string source, string message)
         {
             try
             {

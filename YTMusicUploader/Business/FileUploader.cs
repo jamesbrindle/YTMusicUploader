@@ -192,7 +192,7 @@ namespace YTMusicUploader.Business
 
             Logger.LogInfo(
                 "HandleFileRenamedOrMove",
-                "File rename or moved detected. From: " + existingMusicFile.Path + " to: " + musicFile.Path, true);
+                "File rename or moved detected. From: " + existingMusicFile.Path + " to: " + musicFile.Path);
 
 
             await SetUploadDetails("Already Present: " + DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);

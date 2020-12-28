@@ -15,6 +15,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YTMusicUploader.AssemblyHelper;
 using YTMusicUploader.Business;
 using YTMusicUploader.Dialogues;
 using YTMusicUploader.Providers;
@@ -96,6 +97,11 @@ namespace YTMusicUploader
         //
         private string LatestVersionTag { get; set; } = null;
         private string LatestVersionUrl { get; set; } = null;
+
+        //
+        // Updater
+        //
+        private string UpdaterPath { get; set; } = null;
 
         public MainForm(bool hidden) : base(formResizable: false)
         {
@@ -327,6 +333,7 @@ namespace YTMusicUploader
             SetStatusMessage("Checking database integrity", "Checking database integrity");
             DataAccess.CheckAndCopyDatabaseFile();
             Logger.LogInfo("StartMainProcess", "Main process thread starting");
+           
 
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {
@@ -468,6 +475,12 @@ namespace YTMusicUploader
 
         private void CheckForLatestVersion()
         {
+            UpdaterPath = EmbeddedResourceHelper.GetEmbeddedResourcePath(
+                "YTMusicUploader.Updater.exe",
+                "Embedded",
+                EmbeddedResourceHelper.TargetAssemblyType.Executing, 
+                false);
+
             if (VersionHelper.LatestVersionGreaterThanCurrentVersion(out string htmlUrl, out string latestVersion))
             {
                 LatestVersionUrl = htmlUrl;
@@ -540,7 +553,12 @@ namespace YTMusicUploader
             }
         }
 
-        public void QuitApplication()
+        public void KillApplication()
+        {
+            QuitApplication(true);
+        }
+
+        public void QuitApplication(bool kill = false)
         {
             Logger.LogInfo("MainForm_FormClosing", "Application closing");
 
@@ -551,19 +569,22 @@ namespace YTMusicUploader
             FileUploader.Stopped = true;
             TrayIcon.Visible = false;
 
-            try
+            if (!kill)
             {
-                ConnectToYTMusicForm.BrowserControl.Dispose();
-            }
-            catch
-            { }
+                try
+                {
+                    ConnectToYTMusicForm.BrowserControl.Dispose();
+                }
+                catch
+                { }
 
-            try
-            {
-                ConnectToYTMusicForm.Dispose();
+                try
+                {
+                    ConnectToYTMusicForm.Dispose();
+                }
+                catch
+                { }
             }
-            catch
-            { }
 
             try
             {
@@ -607,17 +628,20 @@ namespace YTMusicUploader
             }
             catch { }
 
-            try
+            if (!kill)
             {
-                Application.Exit();
-            }
-            catch { }
+                try
+                {
+                    Application.Exit();
+                }
+                catch { }
 
-            try
-            {
-                Environment.Exit(0);
+                try
+                {
+                    Environment.Exit(0);
+                }
+                catch { }
             }
-            catch { }
 
             try
             {

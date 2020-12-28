@@ -21,7 +21,6 @@ namespace YTMusicUploader
         [STAThread]
         static void Main(string[] args)
         {
-
             //
             // Don't allow 2 instances of application to open
             // Try and focus existing window instead
@@ -87,8 +86,16 @@ namespace YTMusicUploader
         private static void ProcessWcfMessage(object sender, DataReceivedEventArgs e)
         {
             if (e.Data == "Show")
+            {
                 if (MainForm != null)
+                {
                     MainForm.ShowForm();
+                }
+            }
+            else if (e.Data == "Close")
+            {
+                MainForm.KillApplication();
+            }
         }
     }
 }
