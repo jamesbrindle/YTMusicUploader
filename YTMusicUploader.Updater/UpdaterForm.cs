@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Updater.Business.Pipes;
@@ -42,6 +43,8 @@ namespace YTMusicUploader.Updater
             InstalledLocation = installedLocation;
 
             InitializeComponent();
+            AssemblyHelper.PreloadAssemblies();
+            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(AssemblyResolve);
 
             ThreadStart starter = MainProcess;
             starter += () =>
@@ -135,13 +138,17 @@ namespace YTMusicUploader.Updater
 
         private void DownloadNewVersion()
         {
+            TaskbarHelper.SetTaskbarProgress(0, 100);
             SetStatus($"Downloading version {Version}");
             InstallerPath = Path.Combine(DownloadPath, $"YT.Music.Uploader.v{Version}.Installer-{Platform}.msi");
 
             if (File.Exists(InstallerPath))
             {
                 if (new FileInfo(InstallerPath).Length > 70000000)
+                {
+                    TaskbarHelper.SetTaskbarProgress(100, 100);
                     return;
+                }
                 else
                     File.Delete(InstallerPath);
             }
@@ -168,6 +175,7 @@ namespace YTMusicUploader.Updater
 
         private void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
         {
+            TaskbarHelper.SetTaskbarProgress(e.ProgressPercentage, 100);
             SetStatus($"Downloading version {Version} ({e.ProgressPercentage}%)");
         }
 
@@ -203,6 +211,11 @@ namespace YTMusicUploader.Updater
             }
             else
                 lblStatus.Text = statusText;
+        }
+
+        private static Assembly AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            return AssemblyHelper.LoadAssembly(args.Name);
         }
     }
 }

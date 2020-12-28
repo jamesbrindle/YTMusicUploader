@@ -7739,8 +7739,8 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{2E793CCB-34A0-475B-AE28-2591549B7507}"
-        "PackageCode" = "8:{0A8909BD-9A83-4302-A694-45BB4CBF89C0}"
+        "ProductCode" = "8:{5B30663B-C6D8-4AE9-B2A4-8E5253EA43D4}"
+        "PackageCode" = "8:{4ACA1229-2304-4FF3-93C0-7218BFCF9533}"
         "UpgradeCode" = "8:{AB84D0C0-CDF7-4BDF-90B0-C4808DB11DAB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

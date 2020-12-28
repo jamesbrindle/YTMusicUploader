@@ -331,7 +331,7 @@ namespace YTMusicUploader
             if (result == DialogResult.Yes)
             {
                 string platform = InstalledApplicationHelper.GetInstalledPlatform();
-                string downloadUrl = LatestVersionUrl + $"/YT.Music.Uploader.v{LatestVersionTag.Replace("v", "")}.Installer-{platform}.msi";
+                string downloadUrl = LatestVersionUrl.Replace("/tag/", "/download/") + $"/YT.Music.Uploader.v{LatestVersionTag.Replace("v", "")}.Installer-{platform}.msi";
                 string downloadPath = Path.Combine(Global.AppDataLocation, "Updates");
                 string version = LatestVersionTag.Replace("v", "");
                 string installedLocation = System.Reflection.Assembly.GetEntryAssembly().Location;

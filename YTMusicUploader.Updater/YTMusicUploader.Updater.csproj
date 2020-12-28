@@ -36,6 +36,14 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
@@ -51,7 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Pipes\IIpcContracts.cs" />
+    <Compile Include="Helpers\AssemblyHelper.cs" />
     <Compile Include="Helpers\InstalledApplicationsHelper.cs" />
+    <Compile Include="Helpers\TaskbarHelper.cs" />
     <Compile Include="Helpers\ThreadHelper.cs" />
     <Compile Include="Business\Pipes\WcfClient.cs" />
     <Compile Include="UpdaterForm.cs">
@@ -88,7 +98,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Embed\Microsoft.WindowsAPICodePack.dll" />
+    <EmbeddedResource Include="Embed\Microsoft.WindowsAPICodePack.Shell.dll" />
     <Content Include="favicon.ico" />
+    <Content Include="lib\Microsoft.WindowsAPICodePack.dll" />
+    <Content Include="lib\Microsoft.WindowsAPICodePack.Shell.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

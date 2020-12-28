@@ -46,7 +46,7 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.lblStatus.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblStatus.Location = new System.Drawing.Point(2, 150);
             this.lblStatus.Name = "lblStatus";
