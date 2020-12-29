@@ -150,7 +150,7 @@ namespace YTMusicUploader
 
         private void RunDebugCommands()
         {
-            Requests.Playlist.GetPlaylists(Settings.AuthenticationCookie);
+         //   Requests.Playlist.GetPlaylist(Settings.AuthenticationCookie, "VLPLwfn8HfxxcjvbMIv12j3UpgW_UzlcD_8n");
         }
 
         private void MainForm_Load(object sender, EventArgs e)

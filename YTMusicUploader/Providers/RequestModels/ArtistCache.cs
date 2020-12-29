@@ -123,5 +123,18 @@ namespace YTMusicUploader.Providers.RequestModels
             public string CoverArtUrl { get; set; }
             public string Duration { get; set; }
         }
+
+        public class PlaylistSongCollection : List<PlaylistSong>
+        { }
+
+        public class PlaylistSong
+        {
+            public string EntityId { get; set; }
+            public string Title { get; set; }
+            public string CoverArtUrl { get; set; }
+            public string Duration { get; set; }
+            public string AlbumTitle { get; set; }
+            public string ArtistTitle { get; set; }
+        }
     }
 }

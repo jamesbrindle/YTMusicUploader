@@ -1,13 +1,8 @@
 ﻿using JBToolkit.StreamHelpers;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using YTMusicUploader.Providers.RequestModels;
 
 namespace YTMusicUploader.Providers
@@ -26,6 +21,8 @@ namespace YTMusicUploader.Providers
             public static PlaylistCollection GetPlaylists(
                 string cookieValue)
             {
+                var playListCol = new PlaylistCollection();
+
                 try
                 {
                     var request = (HttpWebRequest)WebRequest.Create(Global.YTMusicBaseUrl +
@@ -61,9 +58,36 @@ namespace YTMusicUploader.Providers
                             var streamReader = new StreamReader(brotli);
                             result = streamReader.ReadToEnd();
 
-                            var playListsResult = JsonConvert.DeserializeObject<BrowsePlaylistResultsContext>(result);
-                            
-                            // Uncomplete
+                            var playListsResultContext = JsonConvert.DeserializeObject<BrowsePlaylistResultsContext>(result);
+                            var playListResults = playListsResultContext.contents
+                                                                        .singleColumnBrowseResultsRenderer
+                                                                        .tabs[0]
+                                                                        .tabRenderer
+                                                                        .content
+                                                                        .sectionListRenderer
+                                                                        .contents[1]
+                                                                        .itemSectionRenderer
+                                                                        .contents[0]
+                                                                        .gridRenderer
+                                                                        .items;
+
+                            foreach (var item in playListResults)
+                            {
+                                if (item.musicTwoRowItemRenderer.title.runs[0].text != "New playlist" &&
+                                    item.musicTwoRowItemRenderer.title.runs[0].text != "Your likes")
+                                {
+                                    playListCol.Add(new RequestModels.Playlist
+                                    {
+                                        Title = item.musicTwoRowItemRenderer.title.runs[0].text,
+                                        Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                                   item.musicTwoRowItemRenderer.subtitle.runs[1].text +
+                                                   item.musicTwoRowItemRenderer.subtitle.runs[2].text,
+                                        Id = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId
+                                    });
+
+                                   
+                                }
+                            }
                         }
                     }
                 }
@@ -75,7 +99,7 @@ namespace YTMusicUploader.Providers
 #endif
                 }
 
-                return new PlaylistCollection();
+                return playListCol;
             }
         }
     }

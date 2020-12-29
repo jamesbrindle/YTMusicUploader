@@ -469,7 +469,6 @@
     <Compile Include="Providers\Requests\Playlist\AddPlaylistItems.cs" />
     <Compile Include="Providers\Requests\Playlist\CreatePlaylist.cs" />
     <Compile Include="Providers\Requests\Playlist\DeletePlaylist.cs" />
-    <Compile Include="Providers\Requests\Playlist\EditPlaylist.cs" />
     <Compile Include="Providers\Requests\Playlist\GetPlaylist.cs" />
     <Compile Include="Providers\Requests\Playlist\GetPlaylists.cs" />
     <Compile Include="Providers\Requests\Playlist\RemovePlaylistItems.cs" />
@@ -528,6 +527,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\get_playlists_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AppData\get_playlist_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\search_uploads_context.json">
