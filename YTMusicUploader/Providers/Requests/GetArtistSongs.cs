@@ -166,6 +166,15 @@ namespace YTMusicUploader.Providers
 
                                 CoverArtUrl = coverArtUrl,
 
+                                VideoId = content.musicResponsiveListItemRenderer
+                                                 .flexColumns[0]
+                                                 .musicResponsiveListItemFlexColumnRenderer
+                                                 .text
+                                                 .runs[0]
+                                                 .navigationEndpoint
+                                                 .watchEndpoint
+                                                 .videoId,
+
                                 EntityId = GetTrackEntityID(content.musicResponsiveListItemRenderer
                                                                    .menu
                                                                    .menuRenderer)
@@ -274,6 +283,15 @@ namespace YTMusicUploader.Providers
                                               .text
                                               .runs[0]
                                               .text,
+
+                            VideoId = content.musicResponsiveListItemRenderer
+                                             .flexColumns[0]
+                                             .musicResponsiveListItemFlexColumnRenderer
+                                             .text
+                                             .runs[0]
+                                             .navigationEndpoint
+                                             .watchEndpoint
+                                             .videoId,
 
                             EntityId = GetTrackEntityID(content.musicResponsiveListItemRenderer
                                                           .menu

@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.RequestModels;
 using static YTMusicUploader.Providers.RequestModels.ArtistCache;
 
@@ -262,7 +263,11 @@ namespace YTMusicUploader.Providers
                                                       .runs[0]
                                                       .text,
 
-                                    VideoId = GetTrackEntityID(content.musicResponsiveListItemRenderer
+                                    VideoId = GetVideoEntityId(content.musicResponsiveListItemRenderer
+                                                          .menu
+                                                          .menuRenderer),
+
+                                    SetVideoId = GetSetVideoEntityId(content.musicResponsiveListItemRenderer
                                                           .menu
                                                           .menuRenderer),
 
@@ -277,6 +282,7 @@ namespace YTMusicUploader.Providers
 #if DEBUG
                                 Console.Out.WriteLine(e.Message);
 #endif
+                                Logger.Log(e, "GetInitalPlaylistSongs - Error fetching playlist items", Log.LogTypeEnum.Error);
                             }
                         }
 
@@ -362,7 +368,7 @@ namespace YTMusicUploader.Providers
                                                       .runs[0]
                                                       .text,
 
-                                    VideoId = GetTrackEntityID(content.musicResponsiveListItemRenderer
+                                    VideoId = GetVideoEntityId(content.musicResponsiveListItemRenderer
                                                           .menu
                                                           .menuRenderer),
 
@@ -377,6 +383,7 @@ namespace YTMusicUploader.Providers
 #if DEBUG
                                 Console.Out.WriteLine(e.Message);
 #endif
+                                Logger.Log(e, "GetContinuationPlaylistSongs - Error fetching playlist items", Log.LogTypeEnum.Error);
                             }
                         }
 
@@ -388,7 +395,7 @@ namespace YTMusicUploader.Providers
             }
         }
 
-        private static string GetTrackEntityID(BrowsePlaylistResultsContext.Menurenderer menuRenderer)
+        private static string GetVideoEntityId(BrowsePlaylistResultsContext.Menurenderer menuRenderer)
         {
             foreach (var item in menuRenderer.items)
             {
@@ -401,6 +408,27 @@ namespace YTMusicUploader.Providers
                                        .serviceEndpoint
                                        .playlistEditEndpoint
                                        .actions[0].removedVideoId;
+                    }
+                    catch { }
+                }
+            }
+
+            return string.Empty;
+        }
+
+        private static string GetSetVideoEntityId(BrowsePlaylistResultsContext.Menurenderer menuRenderer)
+        {
+            foreach (var item in menuRenderer.items)
+            {
+                if (item.menuServiceItemRenderer != null)
+                {
+                    try
+                    {
+                        if (item.menuServiceItemRenderer.text.runs[0].text.ToLower() == "remove from playlist")
+                            return item.menuServiceItemRenderer
+                                       .serviceEndpoint
+                                       .playlistEditEndpoint
+                                       .actions[0].setVideoId;
                     }
                     catch { }
                 }

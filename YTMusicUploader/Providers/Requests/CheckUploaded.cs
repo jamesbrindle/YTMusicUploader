@@ -59,6 +59,7 @@ namespace YTMusicUploader.Providers
                 public string ReleaseMbId { get; set; }
                 public string EntityId { get; set; }
                 public string BrowseId { get; set; }
+                public string VideoId { get; set; }
                 public bool Result { get; set; }
             }
         }
@@ -102,9 +103,9 @@ namespace YTMusicUploader.Providers
                             MessageBox.Show(
                                 "There was an issue trying to fetch your 'Uploads' collection from YouTube Music. You should still be able to upload " +
                                 "songs but checking for already uploaded songs will be performed at a reduced rate due to no caching.\n\n" +
-                                "Please forward this message to:\n\nhttps://github.com/jamesbrindle/YTMusicUploader/issues", 
+                                "Please forward this message to:\n\nhttps://github.com/jamesbrindle/YTMusicUploader/issues",
                                 "Issue Fetching YT Music Collection",
-                                MessageBoxButton.OK, 
+                                MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                             IssueWithGatheringUploadedMusic = true;
@@ -199,8 +200,9 @@ namespace YTMusicUploader.Providers
                             UploadCheckCache.CachedObjects.Add(new UploadCheckCache.MusicFileCacheObject
                             {
                                 MusicFilePath = cacheObject.Path,
-                                Result = IsSongUploaded(cacheObject.Path, cookieValue, out string entityId, musicDataFetcher, false) != UploadCheckResult.NotPresent,
+                                Result = IsSongUploaded(cacheObject.Path, cookieValue, out string entityId, out string videoId, musicDataFetcher, false) != UploadCheckResult.NotPresent,
                                 EntityId = entityId,
+                                VideoId = videoId,
 
                                 MbId = !string.IsNullOrEmpty(cacheObject.MbId)
                                                     ? cacheObject.MbId
@@ -252,11 +254,13 @@ namespace YTMusicUploader.Providers
             string musicFilePath,
             string cookieValue,
             out string entityId,
+            out string videoId,
             MusicDataFetcher musicDataFetcher = null,
             bool checkCheck = true,
             bool parallel = true)
         {
             entityId = string.Empty;
+            videoId = string.Empty;
 
             try
             {
@@ -267,6 +271,7 @@ namespace YTMusicUploader.Providers
                                                 .FirstOrDefault();
 
                     entityId = cache.EntityId;
+                    videoId = cache.VideoId;
                     return cache.Result
                                     ? UploadCheckResult.Present_FromCache
                                     : UploadCheckResult.NotPresent;
@@ -290,7 +295,7 @@ namespace YTMusicUploader.Providers
 
                     try
                     {
-                        return IsSongUploadedMulitpleNameVariation(artist, album, track, cookieValue, parallel, out entityId)
+                        return IsSongUploadedMulitpleNameVariation(artist, album, track, cookieValue, parallel, out entityId, out videoId)
                                         ? UploadCheckResult.Present_NewRequest
                                         : UploadCheckResult.NotPresent;
                     }
@@ -300,7 +305,7 @@ namespace YTMusicUploader.Providers
                     }
                 }
             }
-            catch 
+            catch
             {
                 return UploadCheckResult.NotPresent;
             }
@@ -325,7 +330,8 @@ namespace YTMusicUploader.Providers
             string track,
             string cookieValue,
             bool parallel,
-            out string entityId)
+            out string entityId,
+            out string videoId)
         {
             // Make sure they're not null
             artist = artist ?? "";
@@ -335,7 +341,7 @@ namespace YTMusicUploader.Providers
             string originalAlbum = album;
             string originalTrack = track;
 
-            bool result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+            bool result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
             if (result)
                 return result;
 
@@ -346,7 +352,7 @@ namespace YTMusicUploader.Providers
                     album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
                     if (album != originalAlbum)
                     {
-                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                         if (result)
                             return result;
 
@@ -360,7 +366,7 @@ namespace YTMusicUploader.Providers
                     album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
                     if (album != originalAlbum)
                     {
-                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                        result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                         if (result)
                             return result;
 
@@ -400,7 +406,7 @@ namespace YTMusicUploader.Providers
 
             if (track != originalTrack)
             {
-                result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                 if (result)
                     return result;
 
@@ -412,7 +418,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                     if (result)
                         return result;
 
@@ -426,7 +432,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, @"(?<=\()(.*?)(?=\))", "").Replace("()", "").Replace("  ", " ").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                     if (result)
                         return result;
 
@@ -440,7 +446,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                     if (result)
                         return result;
 
@@ -455,7 +461,7 @@ namespace YTMusicUploader.Providers
                 track = track.UnQuote();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                     if (result)
                         return result;
 
@@ -470,7 +476,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, artist, "").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                     if (result)
                         return result;
 
@@ -484,7 +490,7 @@ namespace YTMusicUploader.Providers
                 track = Regex.Replace(track, album, "").Trim();
                 if (track != originalTrack)
                 {
-                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId);
+                    result = IsSongUploaded(artist, album, track, cookieValue, parallel, out entityId, out videoId);
                     if (result)
                         return result;
                 }
@@ -513,9 +519,11 @@ namespace YTMusicUploader.Providers
             string track,
             string cookieValue,
             bool parallel,
-            out string entityId)
+            out string entityId,
+            out string videoId)
         {
             entityId = string.Empty;
+            videoId = string.Empty;
 
             try
             {
@@ -563,8 +571,8 @@ namespace YTMusicUploader.Providers
 
                     var runObject = JObject.Parse(result);
                     var runs = runObject.Descendants()
-                                          .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
-                                          .Select(p => ((JProperty)p).Value).ToList();
+                                        .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "runs")
+                                        .Select(p => ((JProperty)p).Value).ToList();
 
                     float matchSuccessMinimum = Global.YTMusicUploadedSimilarityPercentageForMatch;
                     float artistSimilarity = 0.0f;
@@ -590,7 +598,8 @@ namespace YTMusicUploader.Providers
                                                                    track,
                                                                    matchSuccessMinimum,
                                                                    parallel,
-                                                                   out entityId);
+                                                                   out entityId,
+                                                                   out videoId);
                                 }
                                 else
                                 {
@@ -651,12 +660,24 @@ namespace YTMusicUploader.Providers
                                                     trackSimilarity >= matchSuccessMinimum)
                                                 {
 
-                                                    var deleteRuns = run.Parent.Parent.Parent.Parent.Descendants()
+                                                    var entityIdRuns = run.Parent.Parent.Parent.Parent.Descendants()
                                                                         .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "entityId")
                                                                         .Select(p => ((JProperty)p).Value).ToList();
 
-                                                    if (deleteRuns.Count > 0)
-                                                        entityId = deleteRuns[0].ToString();
+                                                    if (entityIdRuns.Count > 0)
+                                                    {
+                                                        entityId = entityIdRuns[0].ToString();
+                                                    }
+
+                                                    var videoIdRuns = run.Parent.Parent.Parent.Parent.Parent.Parent.Parent
+                                                                         .Descendants()
+                                                                         .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "videoId")
+                                                                         .Select(p => ((JProperty)p).Value).ToList();
+
+                                                    if (videoIdRuns.Count > 0)
+                                                    {
+                                                        videoId = videoIdRuns[0].ToString();
+                                                    }
                                                 }
                                             }
                                             else
@@ -664,12 +685,35 @@ namespace YTMusicUploader.Providers
                                                 if (artistSimilarity >= matchSuccessMinimum &&
                                                     trackSimilarity >= matchSuccessMinimum)
                                                 {
-                                                    var deleteRuns = run.Parent.Parent.Parent.Parent.Descendants()
-                                                                        .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "entityId")
-                                                                        .Select(p => ((JProperty)p).Value).ToList();
+                                                    var entityIdRuns = run.Parent.Parent.Parent.Parent
+                                                                          .Descendants()
+                                                                          .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "entityId")
+                                                                          .Select(p => ((JProperty)p).Value).ToList();
 
-                                                    if (deleteRuns.Count > 0)
-                                                        entityId = deleteRuns[0].ToString();
+                                                    if (entityIdRuns.Count > 0)
+                                                    {
+                                                        entityId = entityIdRuns[0].ToString();
+                                                    }
+                                                    else
+                                                    {
+                                                        if (!string.IsNullOrEmpty(entityId))
+                                                            Console.Out.WriteLine("here");
+                                                    }
+
+                                                    var videoIdRuns = run.Parent.Parent.Parent.Parent.Parent.Parent.Parent
+                                                                          .Descendants()
+                                                                          .Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "videoId")
+                                                                          .Select(p => ((JProperty)p).Value).ToList();
+
+                                                    if (videoIdRuns.Count > 0)
+                                                    {
+                                                        videoId = videoIdRuns[0].ToString();
+                                                    }
+                                                    else
+                                                    {
+                                                        if (!string.IsNullOrEmpty(entityId))
+                                                            Console.Out.WriteLine("here");
+                                                    }
                                                 }
                                             }
                                         }
@@ -703,7 +747,8 @@ namespace YTMusicUploader.Providers
                                                    track,
                                                    matchSuccessMinimum,
                                                    parallel,
-                                                   out entityId);
+                                                   out entityId,
+                                                   out videoId);
                 }
             }
             catch (Exception e)
@@ -810,9 +855,12 @@ namespace YTMusicUploader.Providers
             string track,
             float matchSuccessMinimum,
             bool parallel,
-            out string entityId)
+            out string entityId,
+            out string videoId)
         {
             entityId = string.Empty;
+            videoId = string.Empty;
+
             if (ArtistCache != null)
             {
                 if (parallel)
@@ -822,7 +870,8 @@ namespace YTMusicUploader.Providers
                                                      album,
                                                      track,
                                                      matchSuccessMinimum,
-                                                     out entityId);
+                                                     out entityId,
+                                                     out videoId);
                 }
                 else
                 {
@@ -831,7 +880,8 @@ namespace YTMusicUploader.Providers
                                                      album,
                                                      track,
                                                      matchSuccessMinimum,
-                                                     out entityId);
+                                                     out entityId,
+                                                     out videoId);
                 }
 
                 if (!string.IsNullOrEmpty(entityId))
@@ -847,9 +897,12 @@ namespace YTMusicUploader.Providers
             string album,
             string track,
             float matchSuccessMinimum,
-            out string entityId)
+            out string entityId,
+            out string videoId)
         {
             string tempEntityId = string.Empty;
+            string tempVideoId = string.Empty;
+
             Parallel.ForEach(ArtistCache.Artists.AsParallel(), (artistCacheItem, stateA, indexA) =>
             {
                 float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
@@ -867,6 +920,7 @@ namespace YTMusicUploader.Providers
                             if (trackSimilarity > matchSuccessMinimum)
                             {
                                 tempEntityId = songCacheItem.EntityId;
+                                tempVideoId = songCacheItem.VideoId;
                                 trackFound = true;
                                 stateB.Break();
                             }
@@ -879,6 +933,7 @@ namespace YTMusicUploader.Providers
                                 if (trackSimilarity > matchSuccessMinimum)
                                 {
                                     tempEntityId = songCacheItem.EntityId;
+                                    tempVideoId = songCacheItem.VideoId;
                                     trackFound = true;
                                     stateB.Break();
                                 }
@@ -892,6 +947,7 @@ namespace YTMusicUploader.Providers
             });
 
             entityId = tempEntityId;
+            videoId = tempVideoId;
         }
 
         private static void IsPresentInArtistsCache_Standard(
@@ -900,9 +956,12 @@ namespace YTMusicUploader.Providers
             string album,
             string track,
             float matchSuccessMinimum,
-            out string entityId)
+            out string entityId,
+            out string videoId)
         {
             entityId = string.Empty;
+            videoId = string.Empty;
+
             foreach (var artistCacheItem in ArtistCache.Artists)
             {
                 ThreadHelper.SafeSleep(1);
@@ -923,6 +982,7 @@ namespace YTMusicUploader.Providers
                             if (trackSimilarity > matchSuccessMinimum)
                             {
                                 entityId = songCacheItem.EntityId;
+                                videoId = songCacheItem.VideoId;
                                 trackFound = true;
                                 break;
                             }
@@ -935,6 +995,7 @@ namespace YTMusicUploader.Providers
                                 if (trackSimilarity > matchSuccessMinimum)
                                 {
                                     entityId = songCacheItem.EntityId;
+                                    videoId = songCacheItem.VideoId;
                                     trackFound = true;
                                     break;
                                 }

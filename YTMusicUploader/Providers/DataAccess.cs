@@ -281,6 +281,40 @@ namespace YTMusicUploader.Providers
                                 ""StackTrace""    TEXT     
                             ); ");
                     }
+
+                    //
+                    // Version 1.6.0 - Added song 'VideoId' column
+                    //               - Added 'PlaylistFiles' table
+                    //
+
+                    columns = conn.Query<string>(
+                            @"SELECT name 
+                              FROM PRAGMA_TABLE_INFO('MusicFiles')").ToList();
+
+                    if (!columns.Contains("VideoId"))
+                    {
+                        conn.Execute(
+                            @"ALTER TABLE MusicFiles
+                              ADD COLUMN VideoId TEXT");
+                    }
+
+                    bool playlistTableExists = conn.Query<string>(
+                        @"SELECT name 
+                          FROM sqlite_master WHERE type='table' AND name='PlaylistFiles';").ToList().Count > 0;
+
+                    if (!playlistTableExists)
+                    {
+                        conn.Execute(
+                            @"CREATE TABLE ""PlaylistFiles"" (
+                                ""Id""    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                ""Title"" TEXT,
+                                ""Description""   TEXT,
+                                ""PlaylistId""    TEXT,
+                                ""Path""  TEXT NOT NULL,
+                                ""LastModifiedDate""  TEXT NOT NULL,
+                                ""LastUpload""    TEXT
+                            ); ");
+                    }
                 }
                 catch { }
 

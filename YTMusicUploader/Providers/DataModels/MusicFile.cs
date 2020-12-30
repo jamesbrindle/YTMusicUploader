@@ -37,6 +37,7 @@ namespace YTMusicUploader.Providers.DataModels
         public string MbId { get; set; }
         public string ReleaseMbId { get; set; }
         public string EntityId { get; set; }
+        public string VideoId { get; set; }
         public string Hash { get; set; }
         public DateTime LastUpload { get; set; }
         public bool? Error { get; set; }

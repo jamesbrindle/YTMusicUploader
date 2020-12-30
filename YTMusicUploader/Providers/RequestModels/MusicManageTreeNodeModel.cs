@@ -21,6 +21,7 @@
         public string Uploaded { get; set; }
         public string DatabaseExistence { get; set; }
         public string EntityOrBrowseId { get; set; }
+        public string AltEntityId { get; set; }
         public string MbId { get; set; }
         public string CovertArtUrl { get; set; }
     }

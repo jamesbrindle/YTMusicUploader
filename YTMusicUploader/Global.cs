@@ -35,7 +35,8 @@ namespace YTMusicUploader
      
         private static string _workingDirectory = null;
         private static string[] _supportedFiles = null;
-        
+        private static string[] _supportedPlaylistFiles = null;
+
 
         /// <summary>
         /// Returns application's version from Assembly
@@ -276,7 +277,7 @@ namespace YTMusicUploader
         /// <summary>
         /// Returns an array of YouTube Music upload support music file type extensions
         /// </summary>
-        public static string[] SupportedFiles
+        public static string[] SupportedMusicFiles
         {
             get
             {
@@ -284,8 +285,8 @@ namespace YTMusicUploader
                     return _supportedFiles;
                 try
                 {
-                    if (ConfigurationManager.AppSettings["GoogleVisitorId"] != null)
-                        _supportedFiles = ConfigurationManager.AppSettings["SupportedFileTypes"].Split(';');
+                    if (ConfigurationManager.AppSettings["SupportedMusicFiles"] != null)
+                        _supportedFiles = ConfigurationManager.AppSettings["SupportedMusicFiles"].Split(';');
                 }
                 catch
                 {
@@ -293,6 +294,29 @@ namespace YTMusicUploader
                 }
 
                 return _supportedFiles;
+            }
+        }
+
+        /// <summary>
+        /// Returns an array of YouTube Music upload support music file type extensions
+        /// </summary>
+        public static string[] SupportedPlaylistFiles
+        {
+            get
+            {
+                if (_supportedPlaylistFiles != null)
+                    return _supportedPlaylistFiles;
+                try
+                {
+                    if (ConfigurationManager.AppSettings["SupportedPlaylistFiles"] != null)
+                        _supportedPlaylistFiles = ConfigurationManager.AppSettings["SupportedPlaylistFiles"].Split(';');
+                }
+                catch
+                {
+                    _supportedPlaylistFiles = new string[] { ".m3u", ".m3u8", ".wpl", ".xml" };
+                }
+
+                return _supportedPlaylistFiles;
             }
         }
 

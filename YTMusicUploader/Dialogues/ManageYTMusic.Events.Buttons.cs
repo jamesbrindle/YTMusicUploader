@@ -159,7 +159,7 @@ namespace YTMusicUploader.Dialogues
         private void PbDeleteYTUploaded_Click(object sender, EventArgs e)
         {
             if (MetroMessageBox.Show(this,
-                    "\r\nThis will delete the selected tracks from YouTube Music.\r\n\r\n" +
+                    "\r\nThis will delete the selected tracks from YouTube Music or your playlist.\r\n\r\n" +
                         "Are you sure you want to do this?",
                     "Confirm Action",
                     MessageBoxButtons.YesNo,

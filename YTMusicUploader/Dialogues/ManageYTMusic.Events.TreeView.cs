@@ -85,12 +85,14 @@ namespace YTMusicUploader.Dialogues
             }
 
             bool nonFetchedArtistAlbumsSelected = false;
-            int trackCheckedCount = CountChecked(ref nonFetchedArtistAlbumsSelected);
+            int trackCheckedCount = CountChecked(ref nonFetchedArtistAlbumsSelected, tvUploads.Nodes[0]) +
+                                    CountChecked(ref nonFetchedArtistAlbumsSelected, tvUploads.Nodes[1]);
+
             lblCheckedCount.Text = $"{trackCheckedCount} track{(trackCheckedCount == 1 ? "" : "s")} checked" +
-                                   (nonFetchedArtistAlbumsSelected ? " (non-fetched artist tracks selected)" : "");
+                                   (nonFetchedArtistAlbumsSelected ? " (non-fetched artist / playlist tracks selected)" : "");
 
 
-            bool artistNodesChecked = false;
+            bool artistNodesChecked = false;           
             foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
             {
                 if (artistNode.Checked)
@@ -100,7 +102,17 @@ namespace YTMusicUploader.Dialogues
                 }
             }
 
-            if (trackCheckedCount > 0 || artistNodesChecked)
+            bool playlistNodesChecked = false;
+            foreach (TreeNode playlistNode in tvUploads.Nodes[0].Nodes)
+            {
+                if (playlistNode.Checked)
+                {
+                    playlistNodesChecked = true;
+                    break;
+                }
+            }
+
+            if (trackCheckedCount > 0 || artistNodesChecked || playlistNodesChecked)
             {
                 PbDeleteYTUploaded.Image = Properties.Resources.delete_from_youtube;
                 PbDeleteYTUploaded.Enabled = true;

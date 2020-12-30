@@ -88,6 +88,54 @@ namespace YTMusicUploader.Providers.RequestModels
             }
         }
 
+        public class PlaylistCollection : List<Playlist>
+        {
+            public void RemovePlayistItem(string playlistEntityId, string trackVideoId)
+            {
+                var playlist = this.Where(a => a.BrowseId == playlistEntityId).FirstOrDefault();
+
+                for (int i = playlist.Songs.Count - 1; i >= 0; i--)
+                {
+                    if (playlist.Songs[i].VideoId == trackVideoId)
+                        playlist.Songs.RemoveAt(i);
+                }
+
+                if (playlist.Songs.Count == 0)
+                    this.Remove(playlist);
+            }
+
+            public void RemovePlaylist(string playlistEntityId)
+            {
+                var playlist = this.Where(a => a.BrowseId == playlistEntityId).FirstOrDefault();
+                if (playlist != null && playlist.Songs != null && playlist.Songs.Count > 0)
+                {
+                    for (int i = playlist.Songs.Count - 1; i >= 0; i--)
+                        playlist.Songs.Remove(playlist.Songs[i]);
+                }
+
+                this.Remove(playlist);
+            }
+        }
+
+        public class Playlist
+        {
+            public enum PrivacyStatusEmum
+            {
+                Private,
+                Public,
+                Unlisted
+            }
+
+            public string BrowseId { get; set; }
+            public string Title { get; set; }
+            public string Subtitle { get; set; }
+            public string Description { get; set; }
+            public string CoverArtUrl { get; set; }
+            public string Duration { get; set; }
+            public PrivacyStatusEmum? PrivacyStatus { get; set; } = null;
+            public PlaylistSongCollection Songs { get; set; }
+        }
+
         public class Artist
         {
             public string ArtistName { get; set; }
@@ -120,6 +168,7 @@ namespace YTMusicUploader.Providers.RequestModels
         public class Song
         {
             public string EntityId { get; set; }
+            public string VideoId { get; set; }
             public string Title { get; set; }
             public string CoverArtUrl { get; set; }
             public string Duration { get; set; }
@@ -131,6 +180,7 @@ namespace YTMusicUploader.Providers.RequestModels
         public class PlaylistSong
         {
             public string VideoId { get; set; }
+            public string SetVideoId { get; set; }
             public string Title { get; set; }
             public string CoverArtUrl { get; set; }
             public string Duration { get; set; }

@@ -3,7 +3,9 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
+using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.RequestModels;
+using static YTMusicUploader.Providers.RequestModels.ArtistCache;
 
 namespace YTMusicUploader.Providers
 {
@@ -76,15 +78,22 @@ namespace YTMusicUploader.Providers
                                 if (item.musicTwoRowItemRenderer.title.runs[0].text != "New playlist" &&
                                     item.musicTwoRowItemRenderer.title.runs[0].text != "Your likes")
                                 {
-                                    playListCol.Add(new RequestModels.Playlist
+                                    try
                                     {
-                                        Title = item.musicTwoRowItemRenderer.title.runs[0].text,
-                                        Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                        playListCol.Add(new Playlist
+                                        {
+                                            Title = item.musicTwoRowItemRenderer.title.runs[0].text,
+                                            Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
                                                    item.musicTwoRowItemRenderer.subtitle.runs[1].text +
                                                    item.musicTwoRowItemRenderer.subtitle.runs[2].text,
-                                        BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
-                                        CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
-                                    });
+                                            BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
+                                            CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
+                                        });
+                                    }
+                                    catch(Exception e) 
+                                    {
+                                        Logger.Log(e, "GetPlaylists - Error fetching a playlist", Log.LogTypeEnum.Error);
+                                    }
                                 }
                             }
                         }

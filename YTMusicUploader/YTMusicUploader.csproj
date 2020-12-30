@@ -446,6 +446,7 @@
     <Compile Include="Providers\Repos\MusicFileRepo.cs" />
     <Compile Include="Providers\DataModels\MusicFile.cs" />
     <Compile Include="Providers\DataAccess.cs" />
+    <Compile Include="Providers\Repos\PlaylistFileRepo.cs" />
     <Compile Include="Providers\Repos\SettingsRepo.cs" />
     <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistRequestContext.cs" />
@@ -457,9 +458,10 @@
     <Compile Include="Providers\RequestModels\BrowsePlaylistResultsContext.cs" />
     <Compile Include="Providers\RequestModels\BrowsePlaylistsResultsContext.cs" />
     <Compile Include="Providers\RequestModels\DeleteFromYTMusicRequestContext.cs" />
+    <Compile Include="Providers\RequestModels\DeletePlaylistRequestContext.cs" />
+    <Compile Include="Providers\RequestModels\DeletePlaylistItemRequestContext.cs" />
     <Compile Include="Providers\RequestModels\IRequestModel.cs" />
     <Compile Include="Providers\RequestModels\MusicManageTreeNodeModel.cs" />
-    <Compile Include="Providers\RequestModels\Playlist.cs" />
     <Compile Include="Providers\RequestModels\SearchContext.cs" />
     <Compile Include="Providers\RequestModels\SearchResultsContext.cs" />
     <Compile Include="Providers\Requests.cs" />
@@ -515,6 +517,9 @@
       <SubType>Designer</SubType>
       <CustomToolNamespace>YTMusicUploader.MusicBrainz.API.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="AppData\delete_playlist_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="AppData\delete_song_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -525,6 +530,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\get_artist_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AppData\delete_playlist_item_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\get_playlists_context.json">
@@ -542,6 +550,7 @@
     <None Include="AppData\84.0.522.63.7z">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Compile Include="Business\PlaylistProcessor.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -557,6 +566,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Providers\DataModels\PlaylistFile.cs" />
     <None Include="Resources\Raw\YT Music Uploader - Social Image.psd" />
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>

@@ -20,8 +20,10 @@ namespace YTMusicUploader.Business
         public HashSet<string> NewFilesHash { get; set; } = new HashSet<string>();
         public HashSet<string> DiscoveredFilesHash { get; set; } = new HashSet<string>();
         public List<MusicFile> MusicFilesToDelete { get; set; } = new List<MusicFile>();
+        public List<PlaylistFile> PlaylistFilesToDelete { get; set; } = new List<PlaylistFile>();
         public List<MusicFile> CurrentMusicFiles { get; set; }
-        public HashSet<string> CurrentMusicFilesHash { get; set; } = new HashSet<string>();
+        public List<PlaylistFile> CurrentPlaylistFiles { get; set; }
+        public HashSet<string> currentProcessingFilesHash { get; set; } = new HashSet<string>();
         public bool Stopped { get; set; } = false;
 
         public FileScanner(MainForm mainForm)
@@ -40,6 +42,7 @@ namespace YTMusicUploader.Business
             if (MainForm.WatchFolders.Count == 0)
             {
                 MainForm.MusicFileRepo.DeleteAll().Wait();
+                MainForm.PlaylistFileRepo.DeleteAll().Wait();
                 MainForm.SetDiscoveredFilesLabel("0");
                 MainForm.SetIssuesLabel("0");
                 MainForm.SetUploadedLabel("0");
@@ -47,7 +50,11 @@ namespace YTMusicUploader.Business
 
             CurrentMusicFiles = MainForm.MusicFileRepo.LoadAll().Result;
             foreach (var musicFile in CurrentMusicFiles)
-                CurrentMusicFilesHash.Add(musicFile.Path);
+                currentProcessingFilesHash.Add(musicFile.Path);
+
+            CurrentPlaylistFiles = MainForm.PlaylistFileRepo.LoadAll().Result;
+            foreach (var playlistFile in CurrentPlaylistFiles)
+                currentProcessingFilesHash.Add(playlistFile.Path);
 
             //
             // Get files to add - Cross reference with the DB
@@ -68,9 +75,10 @@ namespace YTMusicUploader.Business
                             if (MainFormAborting())
                                 return;
 
-                            if (!CurrentMusicFilesHash.Contains(file.Path))
+                            if (!currentProcessingFilesHash.Contains(file.Path))
                             {
-                                if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                                if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedMusicFiles) ||
+                                    Path.GetExtension(file.Name.ToLower()).In(Global.SupportedPlaylistFiles))
                                 {
                                     NewFiles.Add(file);
                                     NewFilesHash.Add(file.Path);
@@ -80,8 +88,11 @@ namespace YTMusicUploader.Business
                             if (MainFormAborting())
                                 return;
 
-                            if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                            if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedMusicFiles) ||
+                                Path.GetExtension(file.Name.ToLower()).In(Global.SupportedPlaylistFiles))
+                            {
                                 DiscoveredFilesHash.Add(file.Path);
+                            }
                         }
                         catch (Exception e)
                         {
@@ -107,6 +118,7 @@ namespace YTMusicUploader.Business
             //
             // Get files to delete - Cross reference with the DB
             //
+
             foreach (var musicFile in CurrentMusicFiles)
             {
                 if (MainFormAborting())
@@ -114,6 +126,15 @@ namespace YTMusicUploader.Business
 
                 if (!DiscoveredFilesHash.Contains(musicFile.Path))
                     MusicFilesToDelete.Add(musicFile);
+            }
+
+            foreach (var playlistFile in CurrentPlaylistFiles)
+            {
+                if (MainFormAborting())
+                    return;
+
+                if (!DiscoveredFilesHash.Contains(playlistFile.Path))
+                    PlaylistFilesToDelete.Add(playlistFile);
             }
 
             using (var conn = new SQLiteConnection("Data Source=" + Global.DbLocation + ";cache=shared"))
@@ -134,20 +155,34 @@ namespace YTMusicUploader.Business
                             MainForm.SetDiscoveredFilesLabel(count.ToString());
 
                         SetStatus();
-                        AddToDB(conn, new MusicFile(file.Path));
+
+                        if (Path.GetExtension(file.Path).ToLower().In(Global.SupportedMusicFiles))
+                            AddMusiFileToDB(conn, new MusicFile(file.Path));
+
+                        else if (Path.GetExtension(file.Path).ToLower().In(Global.SupportedPlaylistFiles))
+                            AddPlaylistFileToDB(conn, new PlaylistFile(file.Path, file.LastWriteTime));
                     }
 
                     if (MainFormAborting(conn))
                         return;
 
-                    count = 0;
                     foreach (var musicFile in MusicFilesToDelete)
                     {
                         if (MainFormAborting(conn))
                             return;
 
-                        count++;
-                        RemoveFromDB(conn, musicFile.Path);
+                        RemoveMusicFileFromDB(conn, musicFile.Path);
+                    };
+
+                    if (MainFormAborting(conn))
+                        return;
+
+                    foreach (var playlistFile in PlaylistFilesToDelete)
+                    {
+                        if (MainFormAborting(conn))
+                            return;
+
+                        RemovePlaylistFileFromDb(conn, playlistFile.Path);
                     };
 
                     MainForm.SetDiscoveredFilesLabel(MainForm.MusicFileRepo.CountAll().Result.ToString());
@@ -176,7 +211,8 @@ namespace YTMusicUploader.Business
                                                                                 "*.*",
                                                                                 SearchOption.AllDirectories))
                     {
-                        if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedFiles))
+                        if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedMusicFiles) ||
+                            Path.GetExtension(file.Name.ToLower()).In(Global.SupportedPlaylistFiles))
                             count++;
                     }
                 }
@@ -208,7 +244,7 @@ namespace YTMusicUploader.Business
                 MainForm.SetSystemTrayIconText(systemTrayIconText);
         }
 
-        private void AddToDB(SQLiteConnection conn, MusicFile musicFile)
+        private void AddMusiFileToDB(SQLiteConnection conn, MusicFile musicFile)
         {
             // Not using the standard Repos namespace so we don't have to keep creating and
             // opening new connections
@@ -255,7 +291,48 @@ namespace YTMusicUploader.Business
             }
         }
 
-        private void RemoveFromDB(SQLiteConnection conn, string path)
+        private void AddPlaylistFileToDB(SQLiteConnection conn, PlaylistFile playlistFile)
+        {
+            // Not using the standard Repos namespace so we don't have to keep creating and
+            // opening new connections
+
+            try
+            {
+                int? id = conn.ExecuteScalar<int?>(
+                        @"SELECT Id  
+                          FROM PlaylistFiles
+                          WHERE Path = @Path
+                          LIMIT 1",
+                        new { playlistFile.Path });
+
+                if (id == null || id == 0)
+                {
+                    conn.Execute(
+                              @"INSERT 
+                                    INTO PlaylistFiles (
+			                                Path,
+			                                LastModifiedDate)
+                                    SELECT @Path,
+                                           @LastModifiedDate",
+                              new { playlistFile.Path, playlistFile.LastModifiedDate });
+                }
+                else
+                {
+                    conn.Execute(
+                       @"UPDATE PlaylistFiles
+                            SET Path =  @Path,
+                                LastModifiedDate = @LastModifiedDate
+                         WHERE Id = @Id",
+                       new { playlistFile.Path, playlistFile.LastModifiedDate, id });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Out.WriteLine(e.Message);
+            }
+        }
+
+        private void RemoveMusicFileFromDB(SQLiteConnection conn, string path)
         {
             // Not using the standard Repos namespace so we don't have to keep creating and
             // opening new connections
@@ -265,6 +342,21 @@ namespace YTMusicUploader.Business
                 conn.Execute(
                           @"UPDATE MusicFiles
                                SET Removed = 1
+                            WHERE Path = @Path",
+                          new { path });
+            }
+            catch { }
+        }
+
+        private void RemovePlaylistFileFromDb(SQLiteConnection conn, string path)
+        {
+            // Not using the standard Repos namespace so we don't have to keep creating and
+            // opening new connections
+
+            try
+            {
+                conn.Execute(
+                          @"DELETE FROM PlaylistFiles
                             WHERE Path = @Path",
                           new { path });
             }
@@ -301,7 +393,8 @@ namespace YTMusicUploader.Business
             NewFilesHash = new HashSet<string>();
             DiscoveredFilesHash = new HashSet<string>();
             MusicFilesToDelete = new List<MusicFile>();
-            CurrentMusicFilesHash = new HashSet<string>();
+            PlaylistFilesToDelete = new List<PlaylistFile>();
+            currentProcessingFilesHash = new HashSet<string>();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using JBToolkit.Imaging;
+﻿using JBToolkit;
+using JBToolkit.Imaging;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -6,6 +8,7 @@ using System.Threading;
 using System.Windows.Forms;
 using YTMusicUploader.Business;
 using YTMusicUploader.Providers.RequestModels;
+using static YTMusicUploader.Providers.RequestModels.ArtistCache;
 
 namespace YTMusicUploader.Dialogues
 {
@@ -365,6 +368,211 @@ namespace YTMusicUploader.Dialogues
             {
                 int end = parentNode.Text.LastIndexOf("(");
                 parentNode.Text = parentNode.Text.Substring(0, end).Trim() + " (" + parentNode.Nodes.Count + ")";
+            }
+        }
+
+
+        delegate void BindPlaylistNodesFromSelectDelegate(
+            TreeNode playlistNode,
+            Playlist playlist,
+            bool expand = true,
+            bool showFetchedMessage = true,
+            bool isDeleting = false);
+        private void BindPlaylistNodesFromSelect(
+            TreeNode playlistNode,
+            Playlist playlist,
+            bool expand = true,
+            bool showFetchedMessage = true,
+            bool isDeleting = false)
+        {
+            if (tvUploads.InvokeRequired)
+            {
+                BindPlaylistNodesFromSelectDelegate d = new BindPlaylistNodesFromSelectDelegate(BindPlaylistNodesFromSelect);
+                Invoke(d, new object[] { playlistNode, playlist, expand, showFetchedMessage, isDeleting });
+            }
+            else
+            {
+                SetTreeViewEnabled(false);
+                if (playlistNode != null)
+                {
+                    playlistNode.Tag = new MusicManageTreeNodeModel
+                    {
+                        NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Playlist,
+                        PlaylistTitle = playlist.Title,
+                        Duration = playlist.Duration,
+                        EntityOrBrowseId = playlist.BrowseId,
+                        CovertArtUrl = playlist.CoverArtUrl,
+                        SongTitleOrDescription = playlist.Description
+                    };
+
+                    var playlistItems = new List<TreeNode>();
+                    foreach (var song in playlist.Songs)
+                    {
+                        var playlistItem = new TreeNode
+                        {
+                            Name = Guid.NewGuid().ToString(),
+                            Text = song.Title,
+                            Tag = Tag = new MusicManageTreeNodeModel
+                            {
+                                NodeType = MusicManageTreeNodeModel.NodeTypeEnum.PlaylistItem,
+                                ArtistTitle = song.ArtistTitle,
+                                AlbumTitle = song.AlbumTitle,
+                                CovertArtUrl = song.CoverArtUrl,
+                                Duration = song.Duration,
+                                SongTitleOrDescription = song.Title,
+                                DatabaseExistence = "N/A (Playlist)",
+                                MbId = "-",
+                                EntityOrBrowseId = song.VideoId,
+                                AltEntityId = song.SetVideoId,
+                                Uploaded = "-"
+                            }
+                        };
+
+                        playlistItems.Add(playlistItem);
+                    }
+
+                    playlistNode.Nodes.AddRange(playlistItems.ToArray());
+                    playlistNode.Text = playlistNode.Text + " (" + playlistNode.Nodes.Count + ")";
+
+                    if (showFetchedMessage)
+                        AppendUpdatesText($"Fetched {playlistItems.Count} playlist items.",
+                                          ColourHelper.HexStringToColor("#0d5601"));
+                    if (expand)
+                        playlistNode.Expand();
+
+                    if (playlistNode.Checked)
+                        CheckAllChildNodes(playlistNode, true);
+
+                    if (!isDeleting)
+                        SetMusicDetails((MusicManageTreeNodeModel)playlistNode.Tag);
+                }
+
+                if (!isDeleting)
+                {
+                    ShowPreloader(false);
+                    SetTreeViewEnabled(true);
+                    DisableAllActionButtons(false);
+                }
+            }
+        }
+
+        delegate void BindAlbumNodesFromSelectDelegate(
+            TreeNode artistNode,
+            AlbumSongCollection albumSongCollection,
+            bool expand = true,
+            bool showFetchedMessage = true,
+            bool isDeleting = false);
+        private void BindAlbumNodesFromSelect(
+            TreeNode artistNode,
+            AlbumSongCollection albumSongCollection,
+            bool expand = true,
+            bool showFetchedMessage = true,
+            bool isDeleting = false)
+        {
+            if (tvUploads.InvokeRequired)
+            {
+                BindAlbumNodesFromSelectDelegate d = new BindAlbumNodesFromSelectDelegate(BindAlbumNodesFromSelect);
+                Invoke(d, new object[] { artistNode, albumSongCollection, expand, showFetchedMessage, isDeleting });
+            }
+            else
+            {
+                SetTreeViewEnabled(false);
+                if (artistNode != null)
+                {
+                    var albumNodes = new List<TreeNode>();
+                    foreach (var album in albumSongCollection.Albums)
+                    {
+                        var songNodes = new List<TreeNode>();
+                        string releaseMbId = string.Empty;
+
+                        foreach (var song in album.Songs)
+                        {
+                            var musicFile = MainForm.MusicFileRepo.LoadFromEntityId(song.EntityId).Result;
+                            string databaseExistenceText = "Not found or not mapped";
+
+                            if (musicFile != null && musicFile.Id != 0 && musicFile.Id != -1)
+                            {
+                                databaseExistenceText = $"Exists ({musicFile.Id})";
+                                releaseMbId = string.IsNullOrEmpty(musicFile.ReleaseMbId) ? releaseMbId : musicFile.ReleaseMbId;
+                            }
+
+                            songNodes.Add(new TreeNode
+                            {
+                                Name = song.EntityId,
+                                Text = song.Title,
+                                Tag = Tag = new MusicManageTreeNodeModel
+                                {
+                                    NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Song,
+                                    ArtistTitle = ((MusicManageTreeNodeModel)artistNode.Tag).ArtistTitle,
+                                    AlbumTitle = album.Title,
+                                    SongTitleOrDescription = song.Title,
+                                    Duration = song.Duration,
+                                    CovertArtUrl = song.CoverArtUrl,
+                                    DatabaseExistence = databaseExistenceText,
+                                    MbId = musicFile == null || string.IsNullOrEmpty(musicFile.MbId) ? "-" : musicFile.MbId,
+                                    EntityOrBrowseId = song.EntityId,
+                                    Uploaded = musicFile == null ? "-" : musicFile.LastUpload.ToString("dd/MM/yyyy HH:mm")
+                                }
+                            });
+                        }
+
+                        var albumNode = new TreeNode
+                        {
+                            Name = Guid.NewGuid().ToString(),
+                            Text = album.Title,
+                            Tag = Tag = new MusicManageTreeNodeModel
+                            {
+                                NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Album,
+                                ArtistTitle = ((MusicManageTreeNodeModel)artistNode.Tag).ArtistTitle,
+                                AlbumTitle = album.Title,
+                                CovertArtUrl = album.CoverArtUrl,
+                                DatabaseExistence = string.IsNullOrEmpty(releaseMbId) ? "Not found or not mapped" : "Tracks exists for this album",
+                                MbId = string.IsNullOrEmpty(releaseMbId) ? "-" : releaseMbId,
+                                EntityOrBrowseId = album.EntityId,
+                                Uploaded = "-"
+                            }
+                        };
+
+                        albumNode.Nodes.AddRange(songNodes.ToArray());
+                        albumNode.Text = albumNode.Text + " (" + songNodes.Count + ")";
+                        albumNodes.Add(albumNode);
+                    };
+
+                    AddChildNodes(artistNode, albumNodes);
+
+                    int albumCount = albumSongCollection.Albums.Count;
+                    int songCount = albumSongCollection.Songs.Count;
+
+                    string albumText = "albums";
+                    string songText = "tracks";
+
+                    if (albumCount == 1)
+                        albumText = "album";
+
+                    if (songCount == 1)
+                        songText = "track";
+
+                    if (showFetchedMessage)
+                        AppendUpdatesText($"Fetched {albumCount} {albumText}, {songCount} {songText}.",
+                                          ColourHelper.HexStringToColor("#0d5601"));
+
+                    artistNode.Text = artistNode.Text + " (" + artistNode.Nodes.Count + ")";
+                    if (expand)
+                        artistNode.Expand();
+
+                    if (artistNode.Checked)
+                        CheckAllChildNodes(artistNode, true);
+
+                    if (!isDeleting)
+                        SetMusicDetails((MusicManageTreeNodeModel)artistNode.Tag);
+                }
+
+                if (!isDeleting)
+                {
+                    ShowPreloader(false);
+                    SetTreeViewEnabled(true);
+                    DisableAllActionButtons(false);
+                }
             }
         }
     }

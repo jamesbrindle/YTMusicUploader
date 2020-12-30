@@ -1,0 +1,38 @@
+﻿{
+  "context": {
+    "client": {
+      "clientName": "WEB_REMIX",
+      "clientVersion": "0.1",
+      "hl": "en-GB",
+      "gl": "GB",
+      "experimentIds": [],
+      "experimentsToken": "",
+      "browserName": "Firefox",
+      "browserVersion": "84.0",
+      "osName": "Windows",
+      "osVersion": "10.0",
+      "platform": "DESKTOP",
+      "utcOffsetMinutes": 0,
+      "locationInfo": { "locationPermissionAuthorizationStatus": "LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED" },
+      "musicAppInfo": {
+        "musicActivityMasterSwitch": "MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE",
+        "musicLocationMasterSwitch": "MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE",
+        "pwaInstallabilityStatus": "PWA_INSTALLABILITY_STATUS_UNKNOWN"
+      }
+    },
+    "capabilities": {},
+    "request": {
+      "internalExperimentFlags": [
+        {
+          "key": "force_music_enable_outertube_search",
+          "value": "true"
+        }
+      ],
+      "sessionIndex": "0"
+    },
+    "clickTracking": { "clickTrackingParams": "CBEQ8FsiEwij_d25vfbtAhXNq9UKHZmZCNM=" },
+    "activePlayers": {},
+    "user": { "enableSafetyMode": false }
+  },
+  "playlistId": ""
+}

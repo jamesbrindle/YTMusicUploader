@@ -50,6 +50,7 @@ namespace YTMusicUploader
         public SettingsRepo SettingsRepo { get; set; } = new SettingsRepo();
         public WatchFolderRepo WatchFolderRepo { get; set; } = new WatchFolderRepo();
         public MusicFileRepo MusicFileRepo { get; set; } = new MusicFileRepo();
+        public PlaylistFileRepo PlaylistFileRepo { get; set; } = new PlaylistFileRepo();
 
         //
         // Repo Models

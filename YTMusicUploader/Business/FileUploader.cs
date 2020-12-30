@@ -236,6 +236,7 @@ namespace YTMusicUploader.Business
             var alreadyUploaded = Requests.IsSongUploaded(musicFile.Path,
                                                           MainForm.Settings.AuthenticationCookie,
                                                           out string entityId,
+                                                          out string videoId,
                                                           MainForm.MusicDataFetcher);
 
             if (alreadyUploaded != Requests.UploadCheckResult.NotPresent)
@@ -245,7 +246,8 @@ namespace YTMusicUploader.Business
 
                 await HandleFileAlreadyUploaded(
                             musicFile,
-                            entityId);
+                            entityId,
+                            videoId);
             }
             else
             {
@@ -256,7 +258,7 @@ namespace YTMusicUploader.Business
             }
         }
 
-        private async Task HandleFileAlreadyUploaded(MusicFile musicFile, string entityId)
+        private async Task HandleFileAlreadyUploaded(MusicFile musicFile, string entityId, string videoId)
         {
             if (MainFormIsAborting())
                 return;
@@ -272,6 +274,7 @@ namespace YTMusicUploader.Business
             musicFile.LastUpload = DateTime.Now;
             musicFile.Error = false;
             musicFile.EntityId = entityId;
+            musicFile.VideoId = videoId;
             musicFile.MbId = !string.IsNullOrEmpty(musicFile.MbId)
                                         ? musicFile.MbId
                                         : (!Requests.UploadCheckCache.CachedObjectHash.Contains(musicFile.Path)
@@ -413,10 +416,12 @@ namespace YTMusicUploader.Business
                     if (Requests.IsSongUploaded(musicFile.Path,
                                             MainForm.Settings.AuthenticationCookie,
                                             out string entityId,
+                                            out string videoId,
                                             MainForm.MusicDataFetcher,
                                             false) != Requests.UploadCheckResult.NotPresent)
                     {
                         musicFile.EntityId = entityId;
+                        musicFile.VideoId = videoId;
                     }
 
                     _uploadedCount++;

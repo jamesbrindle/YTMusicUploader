@@ -110,6 +110,7 @@ namespace YTMusicUploader.Business
                         musicFile.Path,
                         MainForm.Settings.AuthenticationCookie,
                         out string entityId,
+                        out string videoId,
                         MainForm.MusicDataFetcher,
                         false,
                         false);
@@ -117,6 +118,7 @@ namespace YTMusicUploader.Business
                     if (!string.IsNullOrEmpty(entityId))
                     {
                         musicFile.EntityId = entityId;
+                        musicFile.VideoId = videoId;
                         musicFile.Save().Wait();
                     }
                 }
