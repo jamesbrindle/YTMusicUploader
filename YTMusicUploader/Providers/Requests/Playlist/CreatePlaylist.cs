@@ -15,7 +15,7 @@ namespace YTMusicUploader.Providers
     /// </summary>
     public partial class Requests
     {
-        public partial class Playlist
+        public partial class Playlists
         {
             public void CreatePlaylist()
             {

@@ -79,6 +79,7 @@ namespace YTMusicUploader.Providers
                         UploadCheckCache.Pause = true;
                         ArtistCache = null;
                         ArtistCache = GetArtists(authenticationCookie);
+                        ArtistCache.Playlists = Playlists.GetPlaylists(authenticationCookie);
                         UploadCheckCache.Pause = false;
 
                         Logger.LogInfo("LoadArtistCache", "Load artists complete");

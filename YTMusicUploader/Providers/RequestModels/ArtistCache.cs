@@ -11,6 +11,7 @@ namespace YTMusicUploader.Providers.RequestModels
     {
         public DateTime LastSetTime { get; set; } = DateTime.Now;
         public ArtistCollection Artists { get; set; } = new ArtistCollection();
+        public PlaylistCollection Playlists { get; set; } = new PlaylistCollection();
 
         public class ArtistCollection : List<Artist>
         {
@@ -129,7 +130,7 @@ namespace YTMusicUploader.Providers.RequestModels
 
         public class PlaylistSong
         {
-            public string EntityId { get; set; }
+            public string VideoId { get; set; }
             public string Title { get; set; }
             public string CoverArtUrl { get; set; }
             public string Duration { get; set; }

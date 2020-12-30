@@ -16,9 +16,9 @@ namespace YTMusicUploader.Dialogues
                 {
                     try
                     {
-                        if (tvUploads.Nodes[0].Nodes.Count > treeNode.Index + 10)
+                        if (tvUploads.Nodes[1].Nodes.Count > treeNode.Index + 10)
                         {
-                            tvUploads.SelectedNode = tvUploads.Nodes[0].Nodes[treeNode.Index + 10];
+                            tvUploads.SelectedNode = tvUploads.Nodes[1].Nodes[treeNode.Index + 10];
                             tvUploads.SelectedNode.EnsureVisible();
                             tvUploads.SelectedNode = null;
                         }
@@ -33,7 +33,7 @@ namespace YTMusicUploader.Dialogues
             var selectedNode = e.Node;
             if (selectedNode != null)
             {
-                foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+                foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
                     artistNode.BackColor = Color.White;
 
                 if (((MusicManageTreeNodeModel)selectedNode.Tag).NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Artist)
@@ -45,9 +45,25 @@ namespace YTMusicUploader.Dialogues
                             GetAlbums(selectedNode, ((MusicManageTreeNodeModel)selectedNode.Tag).ArtistTitle);
                         });
                     }
+                    else
+                        SetMusicDetails((MusicManageTreeNodeModel)selectedNode.Tag);
                 }
-
-                SetMusicDetails((MusicManageTreeNodeModel)selectedNode.Tag);
+                else if (((MusicManageTreeNodeModel)selectedNode.Tag).NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Playlist)
+                {
+                    if (selectedNode.Nodes == null || selectedNode.Nodes.Count == 0)
+                    {
+                        ThreadPool.QueueUserWorkItem(delegate
+                        {
+                            GetPlaylistItems(selectedNode, 
+                                             ((MusicManageTreeNodeModel)selectedNode.Tag).PlaylistTitle, 
+                                             ((MusicManageTreeNodeModel)selectedNode.Tag).EntityOrBrowseId);
+                        });
+                    }
+                    else
+                        SetMusicDetails((MusicManageTreeNodeModel)selectedNode.Tag);
+                }
+                else
+                    SetMusicDetails((MusicManageTreeNodeModel)selectedNode.Tag);
             }
         }
 
@@ -75,7 +91,7 @@ namespace YTMusicUploader.Dialogues
 
 
             bool artistNodesChecked = false;
-            foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+            foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
             {
                 if (artistNode.Checked)
                 {

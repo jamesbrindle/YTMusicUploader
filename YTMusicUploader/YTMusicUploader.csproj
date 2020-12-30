@@ -454,7 +454,8 @@
     <Compile Include="Providers\RequestModels\BrowseArtistsResultsContinuationContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistsResultsContext.cs" />
     <Compile Include="Providers\RequestModels\ArtistCache.cs" />
-    <Compile Include="Providers\RequestModels\BrowsePlaylists.cs" />
+    <Compile Include="Providers\RequestModels\BrowsePlaylistResultsContext.cs" />
+    <Compile Include="Providers\RequestModels\BrowsePlaylistsResultsContext.cs" />
     <Compile Include="Providers\RequestModels\DeleteFromYTMusicRequestContext.cs" />
     <Compile Include="Providers\RequestModels\IRequestModel.cs" />
     <Compile Include="Providers\RequestModels\MusicManageTreeNodeModel.cs" />

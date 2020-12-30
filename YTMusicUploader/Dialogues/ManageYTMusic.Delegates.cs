@@ -11,6 +11,35 @@ namespace YTMusicUploader.Dialogues
 {
     public partial class ManageYTMusic
     {
+        delegate void AddPlaylistsNodesToTreeDelegate(List<TreeNode> playlistNodes);
+        private void AddPlaylistsNodesToTree(List<TreeNode> playlistNodes)
+        {
+            if (tvUploads.InvokeRequired)
+            {
+                AddPlaylistsNodesToTreeDelegate d = new AddPlaylistsNodesToTreeDelegate(AddPlaylistsNodesToTree);
+                Invoke(d, new object[] { playlistNodes });
+            }
+            else
+            {
+                tvUploads.Nodes.Clear();
+
+                SuspendDrawing(tvUploads);
+                tvUploads.Nodes.Add(new TreeNode
+                {
+                    Name = "playlists",
+                    Text = "Playlists",
+                    Tag = Tag = new MusicManageTreeNodeModel
+                    {
+                        NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Root
+                    }
+                });
+
+                AddChildNodesFromArtistBind(tvUploads.Nodes[0], playlistNodes);
+
+                tvUploads.Nodes[0].Text = tvUploads.Nodes[0].Text + " (" + tvUploads.Nodes[0].Nodes.Count + ")";             
+            }
+        }
+
         delegate void AddArtistNodesToTreeDelegate(List<TreeNode> artistNodes);
         private void AddArtistNodesToTree(List<TreeNode> artistNodes)
         {
@@ -21,9 +50,6 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
-                tvUploads.Nodes.Clear();
-
-                SuspendDrawing(tvUploads);
                 tvUploads.Nodes.Add(new TreeNode
                 {
                     Name = "root",
@@ -34,10 +60,10 @@ namespace YTMusicUploader.Dialogues
                     }
                 });
 
-                AddChildNodesFromArtistBind(tvUploads.Nodes[0], artistNodes);
+                AddChildNodesFromArtistBind(tvUploads.Nodes[1], artistNodes);
 
-                tvUploads.Nodes[0].Text = tvUploads.Nodes[0].Text + " (" + tvUploads.Nodes[0].Nodes.Count + ")";
-                tvUploads.Nodes[0].Expand();
+                tvUploads.Nodes[1].Text = tvUploads.Nodes[1].Text + " (" + tvUploads.Nodes[1].Nodes.Count + ")";
+                tvUploads.Nodes[1].Expand();
                 ResumeDrawing(tvUploads);
             }
         }
@@ -114,9 +140,18 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
-                lblArtistTitle.Text = nodeTag.ArtistTitle;
-                lblAlbumTitle.Text = nodeTag.AlbumTitle;
-                lblSongTitle.Text = nodeTag.SongTitle;
+                if (nodeTag.NodeType == MusicManageTreeNodeModel.NodeTypeEnum.Playlist)
+                {
+                    lblAlbumTitle.Text = nodeTag.PlaylistTitle;
+                    lblArtistTitle.Text = "Playlist";
+                }
+                else
+                {
+                    lblArtistTitle.Text = nodeTag.ArtistTitle;
+                    lblAlbumTitle.Text = nodeTag.AlbumTitle;                    
+                }
+
+                lblSongTitle.Text = nodeTag.SongTitleOrDescription;
                 lblDuration.Text = nodeTag.Duration;
                 lblDatabaseExistence.Text = nodeTag.DatabaseExistence;
                 lblMbId.Text = nodeTag.MbId;

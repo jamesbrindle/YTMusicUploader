@@ -16,7 +16,7 @@ namespace YTMusicUploader.Dialogues
             tvUploads.AfterSelect -= TvUploads_AfterSelect;
             if (tbSearchArtists.Text == "")
             {
-                foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+                foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
                     artistNode.BackColor = Color.White;
 
                 tvUploads.AfterSelect += TvUploads_AfterSelect;
@@ -28,7 +28,7 @@ namespace YTMusicUploader.Dialogues
 
             if (tvUploads.Nodes != null && tvUploads.Nodes.Count > 0)
             {
-                foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+                foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
                 {
                     artistNode.BackColor = Color.White;
                     if (artistNode.Text.ToLower().Contains(tbSearchArtists.Text))
@@ -45,7 +45,7 @@ namespace YTMusicUploader.Dialogues
 
                 if (heightlightedNode != null)
                 {
-                    foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+                    foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
                     {
                         if (artistNode.Text.ToLower().Contains(tbSearchArtists.Text))
                             _tnMatchList.Add(artistNode);
@@ -75,7 +75,7 @@ namespace YTMusicUploader.Dialogues
                     ScrollUploadsArtistNodeToCentre(_tnMatchList[_currentMatchNodeIndex]);
                     tvUploads.SelectedNode = null;
 
-                    foreach (TreeNode artistNode in tvUploads.Nodes[0].Nodes)
+                    foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
                     {
                         if (artistNode != _tnMatchList[_currentMatchNodeIndex])
                             artistNode.BackColor = Color.White;

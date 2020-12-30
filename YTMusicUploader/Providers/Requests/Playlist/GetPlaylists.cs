@@ -16,7 +16,7 @@ namespace YTMusicUploader.Providers
     /// </summary>
     public partial class Requests
     {
-        public partial class Playlist
+        public partial class Playlists
         {
             public static PlaylistCollection GetPlaylists(
                 string cookieValue)
@@ -58,7 +58,7 @@ namespace YTMusicUploader.Providers
                             var streamReader = new StreamReader(brotli);
                             result = streamReader.ReadToEnd();
 
-                            var playListsResultContext = JsonConvert.DeserializeObject<BrowsePlaylistResultsContext>(result);
+                            var playListsResultContext = JsonConvert.DeserializeObject<BrowsePlaylistsResultsContext>(result);
                             var playListResults = playListsResultContext.contents
                                                                         .singleColumnBrowseResultsRenderer
                                                                         .tabs[0]
@@ -82,10 +82,9 @@ namespace YTMusicUploader.Providers
                                         Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
                                                    item.musicTwoRowItemRenderer.subtitle.runs[1].text +
                                                    item.musicTwoRowItemRenderer.subtitle.runs[2].text,
-                                        Id = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId
+                                        BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
+                                        CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
                                     });
-
-                                   
                                 }
                             }
                         }

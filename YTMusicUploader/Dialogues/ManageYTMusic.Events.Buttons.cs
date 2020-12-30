@@ -24,7 +24,7 @@ namespace YTMusicUploader.Dialogues
         private void PbRefresh_Click(object sender, EventArgs e)
         {
             DisableAllActionButtons(true);
-            new Thread((ThreadStart)delegate { GetArtists(); }).Start();
+            new Thread((ThreadStart)delegate { GetArtistsAndPlaylists(); }).Start();
         }
 
         private void PbRefresh_MouseDown(object sender, MouseEventArgs e)

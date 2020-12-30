@@ -19,7 +19,7 @@ namespace YTMusicUploader.Providers
     /// </summary>
     public partial class Requests
     {
-        public partial class Playlist
+        public partial class Playlists
         {
             /// <summary>
             /// HttpWebRequest POST request - Recursively fetches all the songs of an artist from YouTube Music's 'Upload' section
@@ -33,13 +33,14 @@ namespace YTMusicUploader.Providers
             public static Playlist GetPlaylist(
             string cookieValue,
             string browseId,
-            PlaylistSongCollection playlistSongCollection = null,
+            Playlist playlist = null,
             string continuationToken = null)
             {
-                var playlist = new Playlist();
+                if (playlist == null)
+                    playlist = new Playlist();
 
-                if (playlistSongCollection == null)
-                    playlistSongCollection = new PlaylistSongCollection();
+                if (playlist.Songs == null)
+                    playlist.Songs = new PlaylistSongCollection();
 
                 try
                 {
@@ -86,19 +87,92 @@ namespace YTMusicUploader.Providers
                         {
                             var streamReader = new StreamReader(brotli);
                             result = streamReader.ReadToEnd();
-                        }
+                        }                       
 
                         if (string.IsNullOrEmpty(continuationToken))
                         {
-                            playlistSongCollection = GetInitalPlaylistSongs(playlistSongCollection, result, out string continuation);
+                            var playListData = JsonConvert.DeserializeObject<BrowsePlaylistResultsContext>(result);
+                            playlist.BrowseId = browseId;
+                            playlist.Title = playListData.header
+                                                         .musicEditablePlaylistDetailHeaderRenderer
+                                                         .header
+                                                         .musicDetailHeaderRenderer
+                                                         .title
+                                                         .runs[0]
+                                                         .text;
+
+                            playlist.Subtitle = playListData.header
+                                                            .musicEditablePlaylistDetailHeaderRenderer
+                                                            .header
+                                                            .musicDetailHeaderRenderer
+                                                            .subtitle.runs[0].text +
+                                                playListData.header
+                                                            .musicEditablePlaylistDetailHeaderRenderer
+                                                            .header
+                                                            .musicDetailHeaderRenderer
+                                                            .subtitle.runs[1].text +
+                                                playListData.header
+                                                            .musicEditablePlaylistDetailHeaderRenderer
+                                                            .header
+                                                            .musicDetailHeaderRenderer
+                                                            .subtitle.runs[2].text;
+
+                            playlist.Description = playListData.header
+                                                        .musicEditablePlaylistDetailHeaderRenderer
+                                                        .editHeader
+                                                        .musicPlaylistEditHeaderRenderer
+                                                        .description != null
+                                                            ? playListData.header
+                                                                          .musicEditablePlaylistDetailHeaderRenderer
+                                                                          .editHeader
+                                                                          .musicPlaylistEditHeaderRenderer
+                                                                          .description
+                                                                          .runs[0]
+                                                                          .text
+                                                            : "";
+
+                            playlist.Duration = playListData.header
+                                                               .musicEditablePlaylistDetailHeaderRenderer
+                                                               .header
+                                                               .musicDetailHeaderRenderer
+                                                               .secondSubtitle
+                                                               .runs[2]
+                                                               .text;
+
+                            playlist.CoverArtUrl = playListData.header
+                                                               .musicEditablePlaylistDetailHeaderRenderer
+                                                               .header
+                                                               .musicDetailHeaderRenderer
+                                                               .thumbnail
+                                                               .croppedSquareThumbnailRenderer
+                                                               .thumbnail
+                                                               .thumbnails[0].url;
+
+                            try
+                            {
+                                playlist.PrivacyStatus = (Playlist.PrivacyStatusEmum)Enum.Parse(
+                                                            typeof(Playlist.PrivacyStatusEmum),
+                                                            playListData.header
+                                                                    .musicEditablePlaylistDetailHeaderRenderer
+                                                                    .editHeader
+                                                                    .musicPlaylistEditHeaderRenderer
+                                                                    .privacy,
+                                                            true);
+                            }
+                            catch
+                            {
+                                playlist.PrivacyStatus = Playlist.PrivacyStatusEmum.Private;
+                            }
+
+                            playlist.Songs = GetInitalPlaylistSongs(playlist.Songs, result, out string continuation);
                             if (!string.IsNullOrEmpty(continuation))
-                                return GetPlaylist(cookieValue, browseId, playlistSongCollection, continuation);
+                                return GetPlaylist(cookieValue, browseId, playlist, continuation);
                         }
                         else
                         {
-                            playlistSongCollection = GetContinuationPlaylistSongs(playlistSongCollection, result, out string continuation);
+                            playlist.Songs = GetContinuationPlaylistSongs(playlist.Songs, result, out string continuation);
                             if (!string.IsNullOrEmpty(continuation))
-                                return GetPlaylist(cookieValue, browseId, playlistSongCollection, continuation);
+                                return GetPlaylist(cookieValue, browseId, playlist, continuation);
                         }
                     }
                 }
@@ -114,22 +188,225 @@ namespace YTMusicUploader.Providers
             }
 
             private static PlaylistSongCollection GetInitalPlaylistSongs(
-                PlaylistSongCollection playlistSoongCollection, 
-                string result, 
+                PlaylistSongCollection playlistSongCollection,
+                string result,
                 out string continuation)
             {
-                continuation = null;
-                return null;
+                continuation = string.Empty;
+                var jo = JObject.Parse(result);
+                var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicPlaylistShelfRenderer")
+                                                               .Select(p => ((JProperty)p).Value).ToList();
+
+                foreach (JToken token in musicShelfRendererTokens)
+                {
+                    var msr = token.ToObject<BrowsePlaylistResultsContext.Musicplaylistshelfrenderer>();
+                    if (msr.continuations != null &&
+                        msr.continuations.Length > 0 &&
+                        msr.continuations[0].nextContinuationData != null &&
+                        msr.continuations[0].nextContinuationData.continuation != null)
+                    {
+                        continuation = msr.continuations[0].nextContinuationData.continuation;
+                    }
+
+                    int i = 0;
+                    foreach (var content in msr.contents)
+                    {
+                        if (content.musicResponsiveListItemRenderer.fixedColumns != null)
+                        {
+                            try
+                            {
+                                string coverArtUrl = content.musicResponsiveListItemRenderer
+                                                            .thumbnail
+                                                            .musicThumbnailRenderer
+                                                            .thumbnail
+                                                            .thumbnails[0].url;
+
+                                var song = new PlaylistSong
+                                {
+                                    Title = content.musicResponsiveListItemRenderer
+                                                   .flexColumns[0]
+                                                   .musicResponsiveListItemFlexColumnRenderer
+                                                   .text
+                                                   .runs[0]
+                                                   .text,
+
+                                    ArtistTitle = content.musicResponsiveListItemRenderer
+                                                   .flexColumns[1]
+                                                   .musicResponsiveListItemFlexColumnRenderer
+                                                   .text
+                                                   .runs != null
+                                                        ? content.musicResponsiveListItemRenderer
+                                                           .flexColumns[1]
+                                                           .musicResponsiveListItemFlexColumnRenderer
+                                                           .text
+                                                           .runs[0]
+                                                           .text
+                                                        : "",
+
+                                    AlbumTitle = content.musicResponsiveListItemRenderer
+                                                   .flexColumns[2]
+                                                   .musicResponsiveListItemFlexColumnRenderer
+                                                   .text
+                                                   .runs != null
+                                                        ? content.musicResponsiveListItemRenderer
+                                                           .flexColumns[2]
+                                                           .musicResponsiveListItemFlexColumnRenderer
+                                                           .text
+                                                           .runs[0]
+                                                           .text
+                                                        : "",
+
+                                    Duration = content.musicResponsiveListItemRenderer
+                                                      .fixedColumns[0].musicResponsiveListItemFixedColumnRenderer
+                                                      .text
+                                                      .runs[0]
+                                                      .text,
+
+                                    VideoId = GetTrackEntityID(content.musicResponsiveListItemRenderer
+                                                          .menu
+                                                          .menuRenderer),
+
+                                    CoverArtUrl = coverArtUrl
+                                };
+
+                                playlistSongCollection.Add(song);
+                            }
+                            catch (Exception e)
+                            {
+                                var _ = e;
+#if DEBUG
+                                Console.Out.WriteLine(e.Message);
+#endif
+                            }
+                        }
+
+                        i++;
+                    }
+                }
+
+                return playlistSongCollection;
             }
 
             private static PlaylistSongCollection GetContinuationPlaylistSongs(
-                PlaylistSongCollection playlistSoongCollection, 
-                string result, 
+                PlaylistSongCollection playlistSongCollection,
+                string result,
                 out string continuation)
             {
-                continuation = null;
-                return null;
+                continuation = string.Empty;
+                var jo = JObject.Parse(result);
+                var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicPlaylistShelfContinuation")
+                                                               .Select(p => ((JProperty)p).Value).ToList();
+
+                foreach (JToken token in musicShelfRendererTokens)
+                {
+                    var msr = token.ToObject<BrowsePlaylistResultsContext.Musicplaylistshelfrenderer>();
+                    if (msr.continuations != null &&
+                        msr.continuations.Length > 0 &&
+                        msr.continuations[0].nextContinuationData != null &&
+                        msr.continuations[0].nextContinuationData.continuation != null)
+                    {
+                        continuation = msr.continuations[0].nextContinuationData.continuation;
+                    }
+
+                    int i = 0;
+                    foreach (var content in msr.contents)
+                    {
+                        if (content.musicResponsiveListItemRenderer.fixedColumns != null)
+                        {
+                            try
+                            {
+                                string coverArtUrl = content.musicResponsiveListItemRenderer
+                                                            .thumbnail
+                                                            .musicThumbnailRenderer
+                                                            .thumbnail
+                                                            .thumbnails[0].url;
+
+                                var song = new PlaylistSong
+                                {
+                                    Title = content.musicResponsiveListItemRenderer
+                                                   .flexColumns[0]
+                                                   .musicResponsiveListItemFlexColumnRenderer
+                                                   .text
+                                                   .runs[0]
+                                                   .text,
+
+                                    ArtistTitle = content.musicResponsiveListItemRenderer
+                                                   .flexColumns[1]
+                                                   .musicResponsiveListItemFlexColumnRenderer
+                                                   .text
+                                                   .runs != null
+                                                        ? content.musicResponsiveListItemRenderer
+                                                           .flexColumns[1]
+                                                           .musicResponsiveListItemFlexColumnRenderer
+                                                           .text
+                                                           .runs[0]
+                                                           .text
+                                                        : "",
+
+                                    AlbumTitle = content.musicResponsiveListItemRenderer
+                                                   .flexColumns[2]
+                                                   .musicResponsiveListItemFlexColumnRenderer
+                                                   .text
+                                                   .runs != null
+                                                        ? content.musicResponsiveListItemRenderer
+                                                           .flexColumns[2]
+                                                           .musicResponsiveListItemFlexColumnRenderer
+                                                           .text
+                                                           .runs[0]
+                                                           .text
+                                                        : "",
+
+                                    Duration = content.musicResponsiveListItemRenderer
+                                                      .fixedColumns[0].musicResponsiveListItemFixedColumnRenderer
+                                                      .text
+                                                      .runs[0]
+                                                      .text,
+
+                                    VideoId = GetTrackEntityID(content.musicResponsiveListItemRenderer
+                                                          .menu
+                                                          .menuRenderer),
+
+                                    CoverArtUrl = coverArtUrl
+                                };
+
+                                playlistSongCollection.Add(song);
+                            }
+                            catch (Exception e)
+                            {
+                                var _ = e;
+#if DEBUG
+                                Console.Out.WriteLine(e.Message);
+#endif
+                            }
+                        }
+
+                        i++;
+                    }
+                }
+
+                return playlistSongCollection;
             }
+        }
+
+        private static string GetTrackEntityID(BrowsePlaylistResultsContext.Menurenderer menuRenderer)
+        {
+            foreach (var item in menuRenderer.items)
+            {
+                if (item.menuServiceItemRenderer != null)
+                {
+                    try
+                    {
+                        if (item.menuServiceItemRenderer.text.runs[0].text.ToLower() == "remove from playlist")
+                            return item.menuServiceItemRenderer
+                                       .serviceEndpoint
+                                       .playlistEditEndpoint
+                                       .actions[0].removedVideoId;
+                    }
+                    catch { }
+                }
+            }
+
+            return string.Empty;
         }
     }
 }

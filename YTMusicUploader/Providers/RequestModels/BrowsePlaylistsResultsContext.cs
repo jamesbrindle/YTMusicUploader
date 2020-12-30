@@ -4,7 +4,7 @@ namespace YTMusicUploader.Providers.RequestModels
     /// <summary>
     /// Deserialised HttpWebRequest response body received from YouTube Music after a search
     /// </summary>
-    public class BrowsePlaylistResultsContext : IRequestModel
+    public class BrowsePlaylistsResultsContext : IRequestModel
     {
         public Responsecontext responseContext { get; set; }
         public string trackingParams { get; set; }
