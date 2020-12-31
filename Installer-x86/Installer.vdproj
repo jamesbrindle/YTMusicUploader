@@ -201,6 +201,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2D146D2BCD12441D93DBF7DCC259A2AB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2E134FB31612483FB3FD2F86A9A150F6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2F157904846E5603E683E31AFBEE544F"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
         "MsmSig" = "8:_UNDEFINED"
@@ -299,6 +311,12 @@
         {
         "MsmKey" = "8:_413DADBC84E0C9195CBAB458BFCDB04D"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_42B7F6CBA0DD44BEB9743AF73AFA483E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -406,6 +424,12 @@
         "Entry"
         {
         "MsmKey" = "8:_584A3EF8A9312B206C03FABDAB0FB8B0"
+        "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_584A3EF8A9312B206C03FABDAB0FB8B0"
         "OwnerKey" = "8:_1E18CF264BBC6B75FF161D37F1C48D2D"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -502,6 +526,12 @@
         "Entry"
         {
         "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
+        "OwnerKey" = "8:_D515B0D880736A5A001665640BECB5E9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -509,6 +539,18 @@
         {
         "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
         "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
+        "OwnerKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
+        "OwnerKey" = "8:_6A99698D5581B3A2F2596FFC8A1DF1AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -532,7 +574,31 @@
         "Entry"
         {
         "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_43F6B54CBBC0B338097C08062FD8B5F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_413DADBC84E0C9195CBAB458BFCDB04D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_B717C575093FA5CFDBBB443804A6B9F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -628,13 +694,31 @@
         "Entry"
         {
         "MsmKey" = "8:_779CCA240CED2E78EB4F29BBE1F585B2"
+        "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_779CCA240CED2E78EB4F29BBE1F585B2"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_77E6EA220C4F4E7C95D99820AE9EC078"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_79DE8637FD790C4376B273594C2A6E5E"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7AB65832FB3E4AB3A0698F7BD311B2C0"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -671,6 +755,12 @@
         {
         "MsmKey" = "8:_8C3459DF442950F9E8E7B03879A2A053"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8E65E329B25A48E08FAB3487E184B5CD"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -977,6 +1067,12 @@
         {
         "MsmKey" = "8:_D3D1CDD0D2660C611B5685F4B7702548"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D515B0D880736A5A001665640BECB5E9"
+        "OwnerKey" = "8:_D1951648C2597620674D661C0A235702"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3232,6 +3328,46 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D146D2BCD12441D93DBF7DCC259A2AB"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\create_playlist_context.json"
+            "TargetName" = "8:create_playlist_context.json"
+            "Tag" = "8:"
+            "Folder" = "8:_F9CE9B9AADA94722AF0BDD1AEE39B4B4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2E134FB31612483FB3FD2F86A9A150F6"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\add_playlist_item_context.json"
+            "TargetName" = "8:add_playlist_item_context.json"
+            "Tag" = "8:"
+            "Folder" = "8:_F9CE9B9AADA94722AF0BDD1AEE39B4B4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2F157904846E5603E683E31AFBEE544F"
             {
             "AssemblyRegister" = "3:1"
@@ -3653,6 +3789,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42B7F6CBA0DD44BEB9743AF73AFA483E"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\get_playlists_context.json"
+            "TargetName" = "8:get_playlists_context.json"
+            "Tag" = "8:"
+            "Folder" = "8:_F9CE9B9AADA94722AF0BDD1AEE39B4B4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_43D6B636B1A90A49B865EFE5ED83190A"
@@ -5019,6 +5175,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77E6EA220C4F4E7C95D99820AE9EC078"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\delete_playlist_item_context.json"
+            "TargetName" = "8:delete_playlist_item_context.json"
+            "Tag" = "8:"
+            "Folder" = "8:_F9CE9B9AADA94722AF0BDD1AEE39B4B4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_79DE8637FD790C4376B273594C2A6E5E"
             {
             "AssemblyRegister" = "3:1"
@@ -5048,6 +5224,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7AB65832FB3E4AB3A0698F7BD311B2C0"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\get_playlist_context.json"
+            "TargetName" = "8:get_playlist_context.json"
+            "Tag" = "8:"
+            "Folder" = "8:_F9CE9B9AADA94722AF0BDD1AEE39B4B4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_81E8A0B2C1DB97D5180108B45A8F6C70"
@@ -5203,6 +5399,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E65E329B25A48E08FAB3487E184B5CD"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\AppData\\delete_playlist_context.json"
+            "TargetName" = "8:delete_playlist_context.json"
+            "Tag" = "8:"
+            "Folder" = "8:_F9CE9B9AADA94722AF0BDD1AEE39B4B4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8F72AD87E728286D746A27913C39F9C1"
@@ -7679,15 +7895,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{0BF9D4F3-1753-4B84-AC85-37F14D7D2FF3}"
-        "PackageCode" = "8:{165BED8C-3243-4DCE-A0FB-7BA59D9D50DB}"
+        "ProductCode" = "8:{30F58A96-02EA-43BA-A251-0CFE57C7374E}"
+        "PackageCode" = "8:{06D6AC0A-B45A-4EE3-9C45-D62FF0CE1CC3}"
         "UpgradeCode" = "8:{1E18ED3F-C210-4589-BEB4-58E2680D3C71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.0"
+        "ProductVersion" = "8:1.6.1"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"
@@ -8229,7 +8445,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_858C89B90B894F97A8CDE5C10D88F13E"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\YTMusicUploader\\obj\\x86\\Debug\\YTMusicUploader.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"

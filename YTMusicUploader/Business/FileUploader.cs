@@ -159,7 +159,15 @@ namespace YTMusicUploader.Business
                         }
                         catch (Exception e)
                         {
-                            Logger.Log(e, "Process.Process");
+                            if (e.Message.ToLower().Contains("thread was being aborted") ||
+                               (e.InnerException != null && e.InnerException.Message.ToLower().Contains("thread was being aborted")))
+                            {
+                                Logger.Log(e, "Process.Process", Log.LogTypeEnum.Warning);
+                            }
+                            else
+                            {
+                                Logger.Log(e, "Process.Process", Log.LogTypeEnum.Critical);
+                            }
                         }
                     }
                     else
@@ -172,7 +180,15 @@ namespace YTMusicUploader.Business
             }
             catch (Exception e)
             {
-                Logger.Log(e, "Process.Process", Log.LogTypeEnum.Critical);
+                if (e.Message.ToLower().Contains("thread was being aborted") ||
+                   (e.InnerException != null && e.InnerException.Message.ToLower().Contains("thread was being aborted")))
+                {
+                    Logger.Log(e, "Process.Process", Log.LogTypeEnum.Warning);
+                }
+                else
+                {
+                    Logger.Log(e, "Process.Process", Log.LogTypeEnum.Critical);
+                }
             }
 
             if (MainForm.ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
