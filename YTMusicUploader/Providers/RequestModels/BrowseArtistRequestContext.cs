@@ -1,7 +1,7 @@
 ﻿namespace YTMusicUploader.Providers.RequestModels
 {
     /// <summary>
-    /// Deserialised HttpWebRequest request body received for a YouTube Music search
+    /// Deserialised HttpWebRequest request body sent for a YouTube Music search
     /// </summary>
     public class BrowseArtistRequestContext : IRequestModel
     {

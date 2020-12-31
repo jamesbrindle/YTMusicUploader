@@ -47,7 +47,7 @@ namespace YTMusicUploader.Updater
                 {
                     foreach (string subkey_name in subKey.GetSubKeyNames())
                     {
-                        using (RegistryKey key = subKey.OpenSubKey(subkey_name))
+                        using (var key = subKey.OpenSubKey(subkey_name))
                         {
                             if (!string.IsNullOrEmpty(key.GetValue("DisplayName") as string))
                             {

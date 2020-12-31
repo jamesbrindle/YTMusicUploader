@@ -57,7 +57,7 @@ namespace YTMusicUploader.Providers
                         result = streamReader.ReadToEnd();
                     }
 
-                    var json = JsonConvert.DeserializeObject(result);
+                    object json = JsonConvert.DeserializeObject(result);
                 }
             }
             catch (Exception)

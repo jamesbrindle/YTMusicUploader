@@ -67,7 +67,7 @@ namespace YTMusicUploader.Dialogues
                                   ColourHelper.HexStringToColor("#e20000"));
 
                 DeselectAllActionButtons();
-                ResetMusicFileEntryStates();
+                ResetMusicFileAndPlaylistEntryStates();
             }
         }
 

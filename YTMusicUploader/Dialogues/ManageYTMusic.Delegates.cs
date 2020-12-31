@@ -19,7 +19,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (tvUploads.InvokeRequired)
             {
-                AddPlaylistsNodesToTreeDelegate d = new AddPlaylistsNodesToTreeDelegate(AddPlaylistsNodesToTree);
+                var d = new AddPlaylistsNodesToTreeDelegate(AddPlaylistsNodesToTree);
                 Invoke(d, new object[] { playlistNodes });
             }
             else
@@ -39,7 +39,7 @@ namespace YTMusicUploader.Dialogues
 
                 AddChildNodesFromArtistBind(tvUploads.Nodes[0], playlistNodes);
 
-                tvUploads.Nodes[0].Text = tvUploads.Nodes[0].Text + " (" + tvUploads.Nodes[0].Nodes.Count + ")";             
+                tvUploads.Nodes[0].Text = tvUploads.Nodes[0].Text + " (" + tvUploads.Nodes[0].Nodes.Count + ")";
             }
         }
 
@@ -48,7 +48,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (tvUploads.InvokeRequired)
             {
-                AddArtistNodesToTreeDelegate d = new AddArtistNodesToTreeDelegate(AddArtistNodesToTree);
+                var d = new AddArtistNodesToTreeDelegate(AddArtistNodesToTree);
                 Invoke(d, new object[] { artistNodes });
             }
             else
@@ -76,7 +76,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (tvUploads.InvokeRequired)
             {
-                AddChildNodesDelegate d = new AddChildNodesDelegate(AddChildNodes);
+                var d = new AddChildNodesDelegate(AddChildNodes);
                 Invoke(d, new object[] { parentNode, childNodeList });
             }
             else
@@ -97,7 +97,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (pbPreloader.InvokeRequired)
             {
-                SetStatusDelegate d = new SetStatusDelegate(ShowPreloader);
+                var d = new SetStatusDelegate(ShowPreloader);
                 Invoke(d, new object[] { showPreloader });
             }
             else
@@ -111,7 +111,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (tvUploads.InvokeRequired || pbRefresh.InvokeRequired)
             {
-                SetTreeViewEnabledDelegate d = new SetTreeViewEnabledDelegate(SetTreeViewEnabled);
+                var d = new SetTreeViewEnabledDelegate(SetTreeViewEnabled);
                 Invoke(d, new object[] { enabled });
             }
             else
@@ -138,7 +138,7 @@ namespace YTMusicUploader.Dialogues
                 lblUploaded.InvokeRequired ||
                 pbCoverArt.InvokeRequired)
             {
-                SetMusicDetailsDelegate d = new SetMusicDetailsDelegate(SetMusicDetails);
+                var d = new SetMusicDetailsDelegate(SetMusicDetails);
                 Invoke(d, new object[] { nodeTag });
             }
             else
@@ -151,7 +151,7 @@ namespace YTMusicUploader.Dialogues
                 else
                 {
                     lblArtistTitle.Text = nodeTag.ArtistTitle;
-                    lblAlbumTitle.Text = nodeTag.AlbumTitle;                    
+                    lblAlbumTitle.Text = nodeTag.AlbumTitle;
                 }
 
                 lblSongTitle.Text = nodeTag.SongTitleOrDescription;
@@ -206,7 +206,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (pbCoverArt.InvokeRequired)
             {
-                SetCovertArtImageDelegate d = new SetCovertArtImageDelegate(SetCovertArtImage);
+                var d = new SetCovertArtImageDelegate(SetCovertArtImage);
                 Invoke(d, new object[] { image });
             }
             else
@@ -220,7 +220,7 @@ namespace YTMusicUploader.Dialogues
                 PbResetDatabase.InvokeRequired ||
                 PbDeleteYTUploaded.InvokeRequired)
             {
-                DeselectAllActionButtonsDelegate d = new DeselectAllActionButtonsDelegate(DeselectAllActionButtons);
+                var d = new DeselectAllActionButtonsDelegate(DeselectAllActionButtons);
                 Invoke(d, new object[] { });
             }
             else
@@ -246,7 +246,7 @@ namespace YTMusicUploader.Dialogues
                 tvUploads.InvokeRequired ||
                 tbSearchArtists.InvokeRequired)
             {
-                DisableAllActionButtonsDelegate d = new DisableAllActionButtonsDelegate(DisableAllActionButtons);
+                var d = new DisableAllActionButtonsDelegate(DisableAllActionButtons);
                 Invoke(d, new object[] { disabled });
             }
             else
@@ -312,7 +312,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (PbDeleteYTUploaded.InvokeRequired)
             {
-                DisableDeleteFromYTMusicButtonDelegate d = new DisableDeleteFromYTMusicButtonDelegate(DisableDeleteFromYTMusicButton);
+                var d = new DisableDeleteFromYTMusicButtonDelegate(DisableDeleteFromYTMusicButton);
                 Invoke(d, new object[] { });
             }
             else
@@ -328,7 +328,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (tbUpdates.InvokeRequired)
             {
-                AppendUpdatesTextDelegate d = new AppendUpdatesTextDelegate(AppendUpdatesText);
+                var d = new AppendUpdatesTextDelegate(AppendUpdatesText);
                 Invoke(d, new object[] { text, color });
             }
             else
@@ -347,7 +347,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (lblCheckedCount.InvokeRequired)
             {
-                SetCheckedLabelDelegate d = new SetCheckedLabelDelegate(SetCheckedLabel);
+                var d = new SetCheckedLabelDelegate(SetCheckedLabel);
                 Invoke(d, new object[] { text });
             }
             else
@@ -361,7 +361,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (tvUploads.InvokeRequired)
             {
-                ChangeChildCountDelegate d = new ChangeChildCountDelegate(ChangeChildCount);
+                var d = new ChangeChildCountDelegate(ChangeChildCount);
                 Invoke(d, new object[] { parentNode });
             }
             else
@@ -374,20 +374,20 @@ namespace YTMusicUploader.Dialogues
 
         delegate void BindPlaylistNodesFromSelectDelegate(
             TreeNode playlistNode,
-            Playlist playlist,
+            OnlinePlaylist playlist,
             bool expand = true,
             bool showFetchedMessage = true,
             bool isDeleting = false);
         private void BindPlaylistNodesFromSelect(
             TreeNode playlistNode,
-            Playlist playlist,
+            OnlinePlaylist playlist,
             bool expand = true,
             bool showFetchedMessage = true,
             bool isDeleting = false)
         {
             if (tvUploads.InvokeRequired)
             {
-                BindPlaylistNodesFromSelectDelegate d = new BindPlaylistNodesFromSelectDelegate(BindPlaylistNodesFromSelect);
+                var d = new BindPlaylistNodesFromSelectDelegate(BindPlaylistNodesFromSelect);
                 Invoke(d, new object[] { playlistNode, playlist, expand, showFetchedMessage, isDeleting });
             }
             else
@@ -395,6 +395,7 @@ namespace YTMusicUploader.Dialogues
                 SetTreeViewEnabled(false);
                 if (playlistNode != null)
                 {
+                    var dbPlaylistEntry = MainForm.PlaylistFileRepo.LoadFromPlayListId(playlist.BrowseId).Result;
                     playlistNode.Tag = new MusicManageTreeNodeModel
                     {
                         NodeType = MusicManageTreeNodeModel.NodeTypeEnum.Playlist,
@@ -402,7 +403,10 @@ namespace YTMusicUploader.Dialogues
                         Duration = playlist.Duration,
                         EntityOrBrowseId = playlist.BrowseId,
                         CovertArtUrl = playlist.CoverArtUrl,
-                        SongTitleOrDescription = playlist.Description
+                        SongTitleOrDescription = playlist.Description,
+                        DatabaseExistence = dbPlaylistEntry != null
+                                                ? $"Exists ({dbPlaylistEntry.Id})"
+                                                : "Not found or not mapped"
                     };
 
                     var playlistItems = new List<TreeNode>();
@@ -419,10 +423,10 @@ namespace YTMusicUploader.Dialogues
                                 AlbumTitle = song.AlbumTitle,
                                 CovertArtUrl = song.CoverArtUrl,
                                 Duration = song.Duration,
-                                SongTitleOrDescription = song.Title,
-                                DatabaseExistence = "N/A (Playlist)",
+                                SongTitleOrDescription = song.Title,                                
                                 MbId = "-",
                                 EntityOrBrowseId = song.VideoId,
+                                DatabaseExistence = "-",
                                 AltEntityId = song.SetVideoId,
                                 Uploaded = "-"
                             }
@@ -471,7 +475,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (tvUploads.InvokeRequired)
             {
-                BindAlbumNodesFromSelectDelegate d = new BindAlbumNodesFromSelectDelegate(BindAlbumNodesFromSelect);
+                var d = new BindAlbumNodesFromSelectDelegate(BindAlbumNodesFromSelect);
                 Invoke(d, new object[] { artistNode, albumSongCollection, expand, showFetchedMessage, isDeleting });
             }
             else

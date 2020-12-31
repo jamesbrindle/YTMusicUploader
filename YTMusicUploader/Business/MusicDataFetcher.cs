@@ -489,7 +489,7 @@ namespace YTMusicUploader.Business
         {
             try
             {
-                TagLib.File file = TagLib.File.Create(path);
+                var file = TagLib.File.Create(path);
                 using (var stream = new MemoryStream())
                 {
                     var artIpicture = file.Tag.Pictures.FirstOrDefault();
@@ -683,7 +683,7 @@ namespace YTMusicUploader.Business
         /// <returns>TagLib File</returns>
         public static TagLib.File GetMusicTagLibFile(string path)
         {
-            TagLib.File file = TagLib.File.Create(path);
+            var file = TagLib.File.Create(path);
             return file;
         }
 
@@ -703,7 +703,7 @@ namespace YTMusicUploader.Business
                     var stream = response.GetResponseStream();
                     if (stream != null)
                     {
-                        using (BinaryReader br = new BinaryReader(stream))
+                        using (var br = new BinaryReader(stream))
                         {
                             int len = (int)response.ContentLength;
                             buf = br.ReadBytes(len);
@@ -730,7 +730,7 @@ namespace YTMusicUploader.Business
         private static Bitmap ResizeBitmap(Bitmap bmp)
         {
             var result = new Bitmap(50, 50);
-            using (Graphics g = Graphics.FromImage(result))
+            using (var g = Graphics.FromImage(result))
                 g.DrawImage(bmp, 0, 0, 50, 50);
 
             return result;

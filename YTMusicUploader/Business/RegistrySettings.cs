@@ -21,14 +21,14 @@ namespace YTMusicUploader.Business
             {
                 if (startWithWindows)
                 {
-                    var path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-                    RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
+                    string path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+                    var key = Registry.CurrentUser.OpenSubKey(path, true);
                     key.SetValue("YT Music Uploader", "\"" + Application.ExecutablePath.ToString() + "\" -hidden");
                 }
                 else
                 {
-                    var path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-                    RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
+                    string path = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
+                    var key = Registry.CurrentUser.OpenSubKey(path, true);
                     key.DeleteValue("YT Music Uploader", false);
                 }
             }

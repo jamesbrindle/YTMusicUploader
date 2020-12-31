@@ -38,7 +38,7 @@ namespace YTMusicUploader.Providers.Repos
                 var logs = conn.Query<Log>(cmd).ToList();
                 conn.Close();
 
-                return Task.FromResult(logs);               
+                return Task.FromResult(logs);
             }
         }
 
@@ -68,7 +68,7 @@ namespace YTMusicUploader.Providers.Repos
                 var logs = conn.Query<Log>(cmd).ToList();
                 conn.Close();
 
-                return Task.FromResult(logs);                
+                return Task.FromResult(logs);
             }
         }
 
@@ -122,7 +122,7 @@ namespace YTMusicUploader.Providers.Repos
         {
             try
             {
-                if (!Logger.AllowRemoteLogAt.HasValue || 
+                if (!Logger.AllowRemoteLogAt.HasValue ||
                     Logger.AllowRemoteLogAt < DateTime.Now)
                 {
                     using (var conn = RemoteDbConnection())
@@ -164,7 +164,7 @@ namespace YTMusicUploader.Providers.Repos
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> DeleteOlderThan(DateTime dateTime)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try

@@ -69,7 +69,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Update_R(Settings settings)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try

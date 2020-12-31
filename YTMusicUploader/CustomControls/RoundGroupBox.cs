@@ -52,7 +52,7 @@ namespace JBToolkit.WinForms
         public int Radious { get; set; }
         private GraphicsPath GetRoundRectagle(Rectangle b, int r)
         {
-            GraphicsPath path = new GraphicsPath();
+            var path = new GraphicsPath();
             path.AddArc(b.X, b.Y, r, r, 180, 90);
             path.AddArc(b.X + b.Width - r - 1, b.Y, r, r, 270, 90);
             path.AddArc(b.X + b.Width - r - 1, b.Y + b.Height - r - 1, r, r, 0, 90);

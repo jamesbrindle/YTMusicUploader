@@ -125,7 +125,7 @@
 
                 var serializer = new DataContractJsonSerializer(typeof(T));
 
-                if (await cache.TryGetCachedItem(url, out Stream stream).ConfigureAwait(false))
+                if (await cache.TryGetCachedItem(url, out var stream).ConfigureAwait(false))
                 {
                     var result = (T)serializer.ReadObject(stream);
                     stream.Close();

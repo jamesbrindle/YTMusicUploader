@@ -1,7 +1,7 @@
 ﻿namespace YTMusicUploader.Providers.RequestModels
 {
     /// <summary>
-    /// Deserialised HttpWebRequest request body request for a YouTube Music entity deletion
+    /// Deserialised HttpWebRequest request body sent for a YouTube Music entity deletion
     /// </summary>
     public class DeleteFromYTMusicRequestContext
     {

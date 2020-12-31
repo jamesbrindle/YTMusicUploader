@@ -115,10 +115,10 @@ namespace YTMusicUploader.Dialogues
 
         private void CoreWebView2_WebResourceRequested(object sender, CoreWebView2WebResourceRequestedEventArgs e)
         {
-            Uri myUri = new Uri("https://music.youtube.com/");
+            var myUri = new Uri("https://music.youtube.com/");
             if (myUri.IsBaseOf(e.Request.RequestUri))
             {
-                var json = JsonConvert.SerializeObject(e.Request.Headers);
+                string json = JsonConvert.SerializeObject(e.Request.Headers);
                 dynamic obj = JsonConvert.DeserializeObject(json);
 
                 try

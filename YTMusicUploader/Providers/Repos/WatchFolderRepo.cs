@@ -71,7 +71,7 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 conn.Open();
-                var watchFolderId = conn.ExecuteScalar<int?>(
+                int? watchFolderId = conn.ExecuteScalar<int?>(
                         @"SELECT Id  
                           FROM WatchFolders
                           WHERE Path = @Path
@@ -105,7 +105,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Insert_R(WatchFolder watchFolder)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -185,7 +185,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Delete_R(int id)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -230,7 +230,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Delete_R(string path)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try

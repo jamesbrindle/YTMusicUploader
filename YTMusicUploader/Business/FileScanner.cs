@@ -11,7 +11,7 @@ using static YTMusicUploader.MainForm;
 namespace YTMusicUploader.Business
 {
     /// <summary>
-    /// Responsive for scanning library music files and adding and managing discovered files to the database.
+    /// Responsible for scanning library music files and adding and managing discovered files to the database.
     /// </summary>
     public class FileScanner
     {

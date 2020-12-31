@@ -17,7 +17,7 @@ namespace JBToolkit.Imaging
         /// </summary>
         public static byte[] XxHash(this Image image)
         {
-            var bytes = new byte[1];
+            byte[] bytes = new byte[1];
             bytes = (byte[])new ImageConverter().ConvertTo(image, bytes.GetType());
             return XxHashFactory.ComputeHash(bytes).Hash;
         }
@@ -35,8 +35,8 @@ namespace JBToolkit.Imaging
                 if (imageA.Width != imageB.Width) return false;
                 if (imageA.Height != imageB.Height) return false;
 
-                var hashA = imageA.XxHash();
-                var hashB = imageB.XxHash();
+                byte[] hashA = imageA.XxHash();
+                byte[] hashB = imageB.XxHash();
 
                 return !hashA
                     .Where((nextByte, index) => nextByte != hashB[index])
@@ -54,7 +54,7 @@ namespace JBToolkit.Imaging
         public static Bitmap ResizeBitmap(Bitmap bmp, int width, int height)
         {
             var result = new Bitmap(width, height);
-            using (Graphics g = Graphics.FromImage(result))
+            using (var g = Graphics.FromImage(result))
                 g.DrawImage(bmp, 0, 0, width, height);
 
             return result;

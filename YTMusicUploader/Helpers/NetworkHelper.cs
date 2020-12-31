@@ -46,7 +46,7 @@ namespace JBToolkit.Network
                 client.Headers["User-Agent"] = "Mozilla/4.0 (Compatible; Windows NT 5.1; MSIE 6.0) " +
                     "(compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)";
 
-                foreach (var url in checkIPUrl)
+                foreach (string url in checkIPUrl)
                 {
                     try
                     {
@@ -68,15 +68,15 @@ namespace JBToolkit.Network
         {
             text = text.Replace(" ", "+");
             byte[] bytes = Convert.FromBase64String(text);
-            using (Aes uncover = Aes.Create())
+            using (var uncover = Aes.Create())
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(
+                var pdb = new Rfc2898DeriveBytes(
                     "anEncryptionKey", new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
                 uncover.Key = pdb.GetBytes(32);
                 uncover.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
+                using (var ms = new MemoryStream())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, uncover.CreateDecryptor(), CryptoStreamMode.Write))
+                    using (var cs = new CryptoStream(ms, uncover.CreateDecryptor(), CryptoStreamMode.Write))
                     {
                         cs.Write(bytes, 0, bytes.Length);
                         cs.Close();

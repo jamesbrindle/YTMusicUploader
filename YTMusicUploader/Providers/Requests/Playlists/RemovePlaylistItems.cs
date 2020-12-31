@@ -16,9 +16,26 @@ namespace YTMusicUploader.Providers
     /// </summary>
     public partial class Requests
     {
+        /// <summary>
+        /// YouTube Music API request methods specifically for playlist manipulation
+        /// </summary>
         public partial class Playlists
         {
-            public static bool DeletePlaylist(string cookieValue, string playlistId, out string errorMessage)
+            /// <summary>
+            /// HttpWebRequest POST request to send to YTM to remove a playlist item (track) from an existing playlist
+            /// </summary>
+            /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
+            /// <param name="playlistId">Playlist id to remove a track from</param>
+            /// <param name="videoEntityId">VideoId (unique track entityId) of the track to remove</param>
+            /// <param name="setVideoEntityId">SetVideoId (alt unbique track entityId) of the track to remove</param>
+            /// <param name="errorMessage">(Output) Error message if error encountered while sending the request</param>
+            /// <returns>True if the request was successful, false otherwise</returns>
+            public static bool RemovePlaylistItems(
+                string cookieValue,
+                string playlistId,
+                string videoEntityId,
+                string setVideoEntityId,
+                out string errorMessage)
             {
                 errorMessage = string.Empty;
 
@@ -29,7 +46,7 @@ namespace YTMusicUploader.Providers
                 {
                     var request = (HttpWebRequest)WebRequest.Create(
                                                             Global.YTMusicBaseUrl +
-                                                            "playlist/delete" +
+                                                            "browse/edit_playlist" +
                                                             Global.YTMusicParams);
 
                     request = AddStandardHeaders(request, cookieValue);
@@ -40,13 +57,15 @@ namespace YTMusicUploader.Providers
                     request.Headers["X-Goog-Visitor-Id"] = Global.GoogleVisitorId;
                     request.Headers["Authorization"] = GetAuthorisation(GetSAPISIDFromCookie(cookieValue));
 
-                    var context = JsonConvert.DeserializeObject<DeletePlaylistRequestContext>(
+                    var context = JsonConvert.DeserializeObject<DeletePlaylistItemRequestContext>(
                                                   SafeFileStream.ReadAllText(
                                                                       Path.Combine(
                                                                               Global.WorkingDirectory,
-                                                                              @"AppData\delete_playlist_context.json")));
+                                                                              @"AppData\delete_playlist_item_context.json")));
 
                     context.playlistId = playlistId;
+                    context.actions[0].setVideoId = setVideoEntityId;
+                    context.actions[0].removedVideoId = videoEntityId;
 
                     byte[] postBytes = GetPostBytes(JsonConvert.SerializeObject(context));
                     request.ContentLength = postBytes.Length;

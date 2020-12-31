@@ -106,7 +106,7 @@ namespace JBToolkit.Windows
         /// <returns>List of directories</string></returns>
         public static List<string> GetAllDirectoriesTraversive(this string targetDirectory)
         {
-            List<string> directories = new List<string>();
+            var directories = new List<string>();
             TraverseDirectories(targetDirectory, directories);
 
             return directories;
@@ -133,8 +133,8 @@ namespace JBToolkit.Windows
         /// </summary>
         public static List<string> GetAllFilesTraversive(string targetDirectory)
         {
-            List<string> directories = new List<string>();
-            List<string> files = new List<string>();
+            var directories = new List<string>();
+            var files = new List<string>();
 
             TraverseDirectories(targetDirectory, directories);
 
@@ -155,8 +155,8 @@ namespace JBToolkit.Windows
         /// </summary>
         public static List<FileInfo> GetAllFileInfoTraversive(string targetDirectory)
         {
-            List<string> directories = new List<string>();
-            List<FileInfo> files = new List<FileInfo>();
+            var directories = new List<string>();
+            var files = new List<FileInfo>();
             TraverseDirectories(targetDirectory, directories);
 
             for (int i = 0; i < directories.Count; i++)
@@ -233,7 +233,7 @@ namespace JBToolkit.Windows
             bool defaultUser)
         {
             int result = SHGetKnownFolderPath(new Guid(_knownFolderGuids[(int)knownFolder]),
-                (uint)flags, new IntPtr(defaultUser ? -1 : 0), out IntPtr outPath);
+                (uint)flags, new IntPtr(defaultUser ? -1 : 0), out var outPath);
             if (result >= 0)
             {
                 return Marshal.PtrToStringUni(outPath);
@@ -318,7 +318,7 @@ namespace JBToolkit.Windows
             // it must exist for it to be locked
             if (File.Exists(path))
             {
-                FileInfo file = new FileInfo(path);
+                var file = new FileInfo(path);
                 FileStream stream = null;
 
                 try

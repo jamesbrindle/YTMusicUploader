@@ -7,7 +7,7 @@ Automatically upload your local personal music library to YouTube Music and bulk
 &nbsp;
 &nbsp;
 
-**[Download Version 1.5.7 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.5.7)**
+**[Download Version 1.6.0 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.6.0)**
 &nbsp;
 &nbsp;
 
@@ -36,7 +36,9 @@ This is a .Net application written in C# that uploads your personal music librar
 
 - Connect and authenticate with YouTube Music.
 - Upload music to YouTube Music.
+- Automatic creation of YouTube Music playlists from local .m3u, .m3u8, .wpl, .pls, ,zpl playlist files.
 - Delete uploaded music from YouTube Music.
+- Delete playlists from YouTube Music.
 - Checks YouTube Music to see if the music file has already been uploaded. ***It will perform this check once per month on all watched library files and is quite dependant on music file meta data being present and accurate.***
 - Add and remove library watch folders.
 - File system watcher to monitor for changes in watched folders.
@@ -49,9 +51,12 @@ This is a .Net application written in C# that uploads your personal music librar
 
 &nbsp;
 - **This application does not send any telemetry data of any kind to its source if the 'Send Diagnostic Data' checkbox is not set'**
-- **Valid file formats are the same as YouTube Music:  .flac, .m4a, .mp3, .oga, .wma**
+- **Valid music file formats are the same as YouTube Music:  .flac, .m4a, .mp3, .oga, .wma**
+- **Valid music playlist file formats are:  .m3u, .m3u8, .wpl, .pls, .zpl**
 - **Maximum number of files you can upload to YouTube Music is 100, 000**
+- **Maximum number of playlist items YouTube Music will allow is 5,000**
 - **Maximum file size YouTube Music will allow is 300 MB**
+- **Although you have the ability to delete from YouTube Music within the app, this application is strictly a one way synchronisation app.**
 &nbsp;
 
 &nbsp;
@@ -170,12 +175,6 @@ I'm going to be using this application for personal use, so I'll know straight a
 &nbsp;
 &nbsp;
 
-### Further Development Considerations
-
-- Would like to add the ability to upload playlists *([sigma67](https://ytmusicapi.readthedocs.io/en/latest/) has included this ability in his API so it's definately do-able).*
-&nbsp;
-&nbsp;
-
 ### Special Thanks
 
 - [sigma67](https://ytmusicapi.readthedocs.io/en/latest/) - Who created a Python YouTube Music API that I could reference. [sigma67: Github](https://github.com/sigma67/ytmusicapi).
@@ -184,6 +183,7 @@ I'm going to be using this application for personal use, so I'll know straight a
 - [0xDEADBEEF](https://stackoverflow.com/users/909365/0xdeadbeef) - Who made a simple class to bandwidth throttle a byte stream on a post on [StackOverflow](https://stackoverflow.com/questions/371032/bandwidth-throttling-in-c-sharp).
 - [avatar29A](https://github.com/avatar29A/MusicBrainz) - For the MusicBrainz .Net API implementation.
 - [DjSt3rios](https://github.com/DjSt3rios) - For some WebView2 insight.
+- [tmk907](https://github.com/tmk907) - Who created a very good, easy to use, multi-type playlist reader. [tmk907: Github](https://github.com/tmk907/PlaylistsNET).
 
 
 

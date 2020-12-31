@@ -4,14 +4,20 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using YTMusicUploader.Providers.DataModels;
 
 namespace YTMusicUploader.Providers.Repos
 {
+    /// <summary>
+    /// Playlist File database repository access.
+    /// </summary>
     public class PlaylistFileRepo : DataAccess
     {
+        /// <summary>
+        /// Load all playlist file entries from the database
+        /// </summary>
+        /// <returns>PlayListFile list</returns>
         public async Task<List<PlaylistFile>> LoadAll()
         {
             try
@@ -29,7 +35,7 @@ namespace YTMusicUploader.Providers.Repos
         {
             using (var conn = DbConnection(true))
             {
-                string cmd = 
+                string cmd =
                         @"SELECT 
                               Id, 
                               Title,
@@ -46,6 +52,11 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Loads a PlayListFile entry from the database by a given path
+        /// </summary>
+        /// <param name="path">Path of playlist file</param>
+        /// <returns>PlayListFile object</returns>
         public async Task<PlaylistFile> LoadFromPath(string path)
         {
             try
@@ -71,7 +82,7 @@ namespace YTMusicUploader.Providers.Repos
                               Description,
                               PlaylistId,
                               Path,
-                              IFNULL(LastModifiedDate, '0001-01-01 00:00:00') [LastModifiedDate]
+                              IFNULL(LastModifiedDate, '0001-01-01 00:00:00') [LastModifiedDate],
                               IFNULL(LastUpload, '0001-01-01 00:00:00') [LastUpload]
                           FROM PlaylistFiles
                           WHERE Path = @Path",
@@ -81,6 +92,11 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Loads a PlayListFile entry from the database by a given playlistId (actuall browseId)
+        /// </summary>
+        /// <param name="playlistId">playlistId (actuull browseId) of playlist</param>
+        /// <returns>PlayListFile object</returns>
         public async Task<PlaylistFile> LoadFromPlayListId(string playlistId)
         {
             try
@@ -106,7 +122,7 @@ namespace YTMusicUploader.Providers.Repos
                               Description,
                               PlaylistId,
                               Path,
-                              IFNULL(LastModifiedDate, '0001-01-01 00:00:00') [LastModifiedDate]
+                              IFNULL(LastModifiedDate, '0001-01-01 00:00:00') [LastModifiedDate],
                               IFNULL(LastUpload, '0001-01-01 00:00:00') [LastUpload]
                           FROM PlaylistFiles
                           WHERE PlaylistId = @playlistId",
@@ -116,6 +132,11 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Inserts a new PlayListFile entry into the database
+        /// </summary>
+        /// <param name="playlistFile">PlayListFile object</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> Insert(PlaylistFile playlistFile)
         {
             try
@@ -131,7 +152,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Insert_R(PlaylistFile playlistFile)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -170,9 +191,9 @@ namespace YTMusicUploader.Providers.Repos
         }
 
         /// <summary>
-        /// Updates the Music File entry in the database with the fields of the given MusicFile object
+        /// Updates a PlayListFile entry in the database
         /// </summary>
-        /// <param name="musicFile">Given MusicFile obejct to update with</param>
+        /// <param name="playlistFile">PlaylistFile object</param>
         /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> Update(PlaylistFile playlistFile)
         {
@@ -189,7 +210,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Update_R(PlaylistFile playlistFile)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -198,7 +219,7 @@ namespace YTMusicUploader.Providers.Repos
                 {
                     conn.Open();
                     playlistFile.Id = (int)conn.Query<long>(
-                        @"UPDATE PlaylistFie
+                        @"UPDATE PlaylistFiles
                              SET Title = @Title,
                                  Description = @Description,
                                  PlaylistId = @PlaylistId,
@@ -221,6 +242,41 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Resets all PlayListFile entry states, forcing a re-processing of all scanned playlist files
+        /// </summary>
+        public Task ResetAllPlaylistUploadedStates()
+        {
+            try
+            {
+                return ResetAllPlaylistUploadedStates_R();
+            }
+            catch
+            {
+                ThreadHelper.SafeSleep(50);
+                return ResetAllPlaylistUploadedStates_R();
+            }
+        }
+
+        private async Task ResetAllPlaylistUploadedStates_R()
+        {
+            using (var conn = DbConnection())
+            {
+                conn.Open();
+                conn.Execute(
+                        @"UPDATE MusicFiles
+                            SET LastUpload = '0001-01-01 00:00:00'");
+                conn.Close();
+            }
+
+            await Task.Run(() => { });
+        }
+
+        /// <summary>
+        /// Deletes a PlaylistFile entry from the database by a given file path
+        /// </summary>
+        /// <param name="path">Path of play list file</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> DeleteFromPath(string path)
         {
             try
@@ -236,7 +292,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> DeleteFromPath_R(string path)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -261,6 +317,11 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Deletes a PlaylistFile entry from the database by a given playlist id (actually browseId)
+        /// </summary>
+        /// <param name="playlistId">PlaylistId (actually browseId) of playlist</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> DeleteFromPlaylistId(string playlistId)
         {
             try
@@ -276,7 +337,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> DeleteFromPlaylistId_R(string playlistId)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -301,6 +362,11 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Delete a PlayListFile entry from the database
+        /// </summary>
+        /// <param name="playlistFile">PlaylistFile object to delete</param>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> Delete(PlaylistFile playlistFile)
         {
             try
@@ -316,7 +382,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Delete_R(PlaylistFile playlistFile)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -341,6 +407,10 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
+        /// Deletes all PlayListFile entries from the database
+        /// </summary>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
         public async Task<DbOperationResult> DeleteAll()
         {
             try
@@ -356,7 +426,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> DeleteAll_R()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try

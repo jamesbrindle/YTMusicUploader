@@ -42,7 +42,7 @@ namespace YTMusicUploader.Dialogues
         private void ApplicationLoad_Load(object sender, EventArgs e)
         {
             ddLogType.SelectedIndexChanged -= DdLogType_SelectedIndexChanged;
-            OnLoad(e);            
+            OnLoad(e);
             ResumeDrawing(this);
             BindLogTypes();
             new Thread((ThreadStart)delegate { Populate(); }).Start();
@@ -58,7 +58,7 @@ namespace YTMusicUploader.Dialogues
             ddLogType.SelectedIndexChanged += DdLogType_SelectedIndexChanged;
         }
 
-        private void DdLogType_SelectedIndexChanged(object sender, EventArgs  e)
+        private void DdLogType_SelectedIndexChanged(object sender, EventArgs e)
         {
             Populate();
         }
@@ -72,7 +72,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (dgvLog.InvokeRequired)
             {
-                PopulateDelegate d = new PopulateDelegate(Populate);
+                var d = new PopulateDelegate(Populate);
                 Invoke(d, new object[] { });
             }
             else
@@ -105,7 +105,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (lblTitle.InvokeRequired)
             {
-                SetTitleDelegate d = new SetTitleDelegate(SetTitle);
+                var d = new SetTitleDelegate(SetTitle);
                 Invoke(d, new object[] { text });
             }
             else
@@ -119,7 +119,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (lblLogClearMessage.InvokeRequired)
             {
-                SetLogsClearedMessageDelegate d = new SetLogsClearedMessageDelegate(SetLogsClearedMessage);
+                var d = new SetLogsClearedMessageDelegate(SetLogsClearedMessage);
                 Invoke(d, new object[] { text });
             }
             else

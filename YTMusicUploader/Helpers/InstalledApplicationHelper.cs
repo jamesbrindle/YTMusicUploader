@@ -4,8 +4,14 @@ using System.Linq;
 
 namespace YTMusicUploader.Helpers
 {
+    /// <summary>
+    /// Checks if the YT Music Uploader application is installed and if so what version (used for auto update)
+    /// </summary>
     public static class InstalledApplicationHelper
     {
+        /// <summary>
+        /// Checks if the YT Music Uploader application is installed and if so what version (used for auto update)
+        /// </summary>
         public class InstalledProgram
         {
             public enum PlatFormType
@@ -23,6 +29,9 @@ namespace YTMusicUploader.Helpers
             public string ModifyPath { get; set; }
         }
 
+        /// <summary>
+        /// Retrieves all installed programs as from the registry
+        /// </summary>
         public static List<InstalledProgram> GetInstalledPrograms()
         {
             var installedPrograms = new List<InstalledProgram>();
@@ -42,7 +51,7 @@ namespace YTMusicUploader.Helpers
                 {
                     foreach (string subkey_name in subKey.GetSubKeyNames())
                     {
-                        using (RegistryKey key = subKey.OpenSubKey(subkey_name))
+                        using (var key = subKey.OpenSubKey(subkey_name))
                         {
                             if (!string.IsNullOrEmpty(key.GetValue("DisplayName") as string))
                             {
@@ -71,12 +80,15 @@ namespace YTMusicUploader.Helpers
             return installedPrograms;
         }
 
+        /// <summary>
+        /// Gets the platform of the installed YT Music Uploader application as from the registry
+        /// </summary>
         public static string GetInstalledPlatform()
         {
             try
             {
                 var installedApps = GetInstalledPrograms();
-                var plaform = installedApps.Where(a => a.DisplayName.ToLower().Contains("yt music uploader")).FirstOrDefault().Plaform.ToString().ToLower();
+                string plaform = installedApps.Where(a => a.DisplayName.ToLower().Contains("yt music uploader")).FirstOrDefault().Plaform.ToString().ToLower();
 
                 if (string.IsNullOrEmpty(plaform))
                     return "x64";

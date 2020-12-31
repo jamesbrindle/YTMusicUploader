@@ -65,7 +65,7 @@ namespace YTMusicUploader.Providers
         private static string GetAuthorisation(string sapisid)
         {
             int unixTimestamp = (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(unixTimestamp + " " + sapisid + " https://music.youtube.com"));
+            byte[] hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(unixTimestamp + " " + sapisid + " https://music.youtube.com"));
             var sb = new StringBuilder(hash.Length * 2);
 
             foreach (byte b in hash)

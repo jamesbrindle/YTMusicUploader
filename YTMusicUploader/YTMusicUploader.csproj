@@ -339,6 +339,7 @@
     <Compile Include="Helpers\InstalledApplicationHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Business\RegistrySettings.cs" />
+    <Compile Include="Providers\Playlist\PlaylistReader.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />
     <Compile Include="Business\ThrottleStream.cs" />
     <Compile Include="Helpers\ThreadHelper.cs" />
@@ -442,6 +443,29 @@
     <Compile Include="Providers\MusicBrainz\Services\WorkService.cs" />
     <Compile Include="Providers\MusicBrainz\UrlBuilder.cs" />
     <Compile Include="Providers\MusicBrainz\WebServiceException.cs" />
+    <Compile Include="Providers\Playlist\Content\BasePlaylist.cs" />
+    <Compile Include="Providers\Playlist\Content\HlsContent.cs" />
+    <Compile Include="Providers\Playlist\Content\IPlaylistParser.cs" />
+    <Compile Include="Providers\Playlist\Content\IPlaylistWriter.cs" />
+    <Compile Include="Providers\Playlist\Content\M3uContent.cs" />
+    <Compile Include="Providers\Playlist\Content\PlaylistParserFactory.cs" />
+    <Compile Include="Providers\Playlist\Content\PlaylistToTextHelper.cs" />
+    <Compile Include="Providers\Playlist\Content\PlsContent.cs" />
+    <Compile Include="Providers\Playlist\Content\WplContent.cs" />
+    <Compile Include="Providers\Playlist\Content\ZplContent.cs" />
+    <Compile Include="Providers\Playlist\Models\BasePlaylist.cs" />
+    <Compile Include="Providers\Playlist\Models\BasePlaylistEntry.cs" />
+    <Compile Include="Providers\Playlist\Models\HlsPlaylist.cs" />
+    <Compile Include="Providers\Playlist\Models\HlsPlaylistEntry.cs" />
+    <Compile Include="Providers\Playlist\Models\M3uPlaylist.cs" />
+    <Compile Include="Providers\Playlist\Models\M3UPlaylistEntry.cs" />
+    <Compile Include="Providers\Playlist\Models\PlsPlaylist.cs" />
+    <Compile Include="Providers\Playlist\Models\PlsPlaylistEntry.cs" />
+    <Compile Include="Providers\Playlist\Models\WplPlaylist.cs" />
+    <Compile Include="Providers\Playlist\Models\WplPlaylistEntry.cs" />
+    <Compile Include="Providers\Playlist\Models\ZplPlaylist.cs" />
+    <Compile Include="Providers\Playlist\Models\ZplPlaylistEntry.cs" />
+    <Compile Include="Providers\Playlist\Utils\Utils.cs" />
     <Compile Include="Providers\Repos\LogsRepo.cs" />
     <Compile Include="Providers\Repos\MusicFileRepo.cs" />
     <Compile Include="Providers\DataModels\MusicFile.cs" />
@@ -449,6 +473,7 @@
     <Compile Include="Providers\Repos\PlaylistFileRepo.cs" />
     <Compile Include="Providers\Repos\SettingsRepo.cs" />
     <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
+    <Compile Include="Providers\RequestModels\AddPlaylistItemContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistRequestContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistResultsContinuationContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistResultsContext.cs" />
@@ -457,6 +482,7 @@
     <Compile Include="Providers\RequestModels\ArtistCache.cs" />
     <Compile Include="Providers\RequestModels\BrowsePlaylistResultsContext.cs" />
     <Compile Include="Providers\RequestModels\BrowsePlaylistsResultsContext.cs" />
+    <Compile Include="Providers\RequestModels\CreatePlaylistRequestContext.cs" />
     <Compile Include="Providers\RequestModels\DeleteFromYTMusicRequestContext.cs" />
     <Compile Include="Providers\RequestModels\DeletePlaylistRequestContext.cs" />
     <Compile Include="Providers\RequestModels\DeletePlaylistItemRequestContext.cs" />
@@ -469,12 +495,12 @@
     <Compile Include="Providers\Requests\GetArtistSongs.cs" />
     <Compile Include="Providers\Requests\GetArtists.cs" />
     <Compile Include="Providers\Requests\CheckUploaded.cs" />
-    <Compile Include="Providers\Requests\Playlist\AddPlaylistItems.cs" />
-    <Compile Include="Providers\Requests\Playlist\CreatePlaylist.cs" />
-    <Compile Include="Providers\Requests\Playlist\DeletePlaylist.cs" />
-    <Compile Include="Providers\Requests\Playlist\GetPlaylist.cs" />
-    <Compile Include="Providers\Requests\Playlist\GetPlaylists.cs" />
-    <Compile Include="Providers\Requests\Playlist\RemovePlaylistItems.cs" />
+    <Compile Include="Providers\Requests\Playlists\AddPlaylistItems.cs" />
+    <Compile Include="Providers\Requests\Playlists\CreatePlaylist.cs" />
+    <Compile Include="Providers\Requests\Playlists\DeletePlaylist.cs" />
+    <Compile Include="Providers\Requests\Playlists\GetPlaylist.cs" />
+    <Compile Include="Providers\Requests\Playlists\GetPlaylists.cs" />
+    <Compile Include="Providers\Requests\Playlists\RemovePlaylistItems.cs" />
     <Compile Include="Providers\Requests\UploadTrack.cs" />
     <Compile Include="Providers\Requests\CheckAuthorisation.cs" />
     <EmbeddedResource Include="Dialogues\ApplicationLog.resx">
@@ -517,6 +543,12 @@
       <SubType>Designer</SubType>
       <CustomToolNamespace>YTMusicUploader.MusicBrainz.API.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="AppData\add_playlist_item_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="AppData\create_playlist_context.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="AppData\delete_playlist_context.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

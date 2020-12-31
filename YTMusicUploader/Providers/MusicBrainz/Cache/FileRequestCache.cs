@@ -22,7 +22,7 @@ namespace YTMusicUploader.MusicBrainz.API.Cache
 
         public FileRequestCache()
         {
-            var appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
             this.path = Path.Combine(appdata, "MusicBrainz", "Cache");
 
@@ -75,7 +75,7 @@ namespace YTMusicUploader.MusicBrainz.API.Cache
 
             var now = DateTime.Now;
 
-            foreach (var file in Directory.EnumerateFiles(path, "*.mb-cache"))
+            foreach (string file in Directory.EnumerateFiles(path, "*.mb-cache"))
             {
                 if ((now - CacheEntry.GetTimestamp(file)) > Timeout)
                 {
@@ -94,7 +94,7 @@ namespace YTMusicUploader.MusicBrainz.API.Cache
             //    Directory.Delete(path);
             //}
 
-            foreach (var file in Directory.EnumerateFiles(path, "*.mb-cache"))
+            foreach (string file in Directory.EnumerateFiles(path, "*.mb-cache"))
             {
                 File.Delete(file);
             }
@@ -118,13 +118,13 @@ namespace YTMusicUploader.MusicBrainz.API.Cache
                 const int REQUEST_LENGTH = HEADER_LENGTH - 8; // sizeof(long)
 
                 // The byte buffer to hold the request string.
-                var buffer = new byte[REQUEST_LENGTH];
+                byte[] buffer = new byte[REQUEST_LENGTH];
 
                 int size = Math.Min(request.Length, REQUEST_LENGTH);
 
                 Encoding.UTF8.GetBytes(request, 0, size, buffer, 0);
 
-                var file = GetCacheFileName(path, buffer, size);
+                string file = GetCacheFileName(path, buffer, size);
 
                 if (!File.Exists(file))
                 {
@@ -171,13 +171,13 @@ namespace YTMusicUploader.MusicBrainz.API.Cache
                 const int REQUEST_LENGTH = HEADER_LENGTH - 8; // sizeof(long)
 
                 // The byte buffer to hold the request string.
-                var buffer = new byte[REQUEST_LENGTH];
+                byte[] buffer = new byte[REQUEST_LENGTH];
 
                 int size = Math.Min(request.Length, REQUEST_LENGTH);
 
                 Encoding.UTF8.GetBytes(request, 0, size, buffer, 0);
 
-                var name = GetCacheFileName(path, buffer, size);
+                string name = GetCacheFileName(path, buffer, size);
 
                 using (var stream = File.OpenWrite(name))
                 using (var writer = new BinaryWriter(stream))
@@ -242,9 +242,9 @@ namespace YTMusicUploader.MusicBrainz.API.Cache
 
             private static long DateTimeToUtcTimestamp(DateTime dateTime)
             {
-                DateTime baseDate = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                var baseDate = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
-                TimeSpan span = dateTime.ToUniversalTime() - baseDate;
+                var span = dateTime.ToUniversalTime() - baseDate;
 
                 return (long)span.TotalSeconds;
             }

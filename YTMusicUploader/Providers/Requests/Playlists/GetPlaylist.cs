@@ -20,25 +20,29 @@ namespace YTMusicUploader.Providers
     /// </summary>
     public partial class Requests
     {
+        /// <summary>
+        /// YouTube Music API request methods specifically for playlist manipulation
+        /// </summary>
         public partial class Playlists
         {
             /// <summary>
-            /// HttpWebRequest POST request - Recursively fetches all the songs of an artist from YouTube Music's 'Upload' section
+            /// HttpWebRequest POST request to send to YTM, which gets a playlist given a playlist or browse id 
+            /// (You can get this from the 'Requests.Playlists.GetPlaylists (plural)') request method. And then recurisvely
+            /// fetches all tracks listed in the playlist
             /// </summary>
             /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
-            /// <param name="browseId">YouTube Music's navigation ID for an individual artist, retreived from 'GetArtists' request</param>
-            /// <param name="songs">Input ArtistCache 'Songs' object (should be empty when initialising - this is a recursive method)</param>
-            /// <param name="continuationToken">Token from YouTube Music indicated more results to fetch, and the token to get them
-            /// (shoult be empty when initialising - this is a recursive method)</param>
-            /// <returns>ArtistCache object</returns>
-            public static Playlist GetPlaylist(
+            /// <param name="browseId">Playlist id or browse id to retreive the playlist for</param>
+            /// <param name="playlist">Shuuld be null initially. This object is used for recursive purposes</param>
+            /// <param name="continuationToken">Should be null initially. This object is used for recursive purposes.</param>
+            /// <returns>OnlinePlaylist object</returns>
+            public static OnlinePlaylist GetPlaylist(
             string cookieValue,
             string browseId,
-            Playlist playlist = null,
+            OnlinePlaylist playlist = null,
             string continuationToken = null)
             {
                 if (playlist == null)
-                    playlist = new Playlist();
+                    playlist = new OnlinePlaylist();
 
                 if (playlist.Songs == null)
                     playlist.Songs = new PlaylistSongCollection();
@@ -88,7 +92,7 @@ namespace YTMusicUploader.Providers
                         {
                             var streamReader = new StreamReader(brotli);
                             result = streamReader.ReadToEnd();
-                        }                       
+                        }
 
                         if (string.IsNullOrEmpty(continuationToken))
                         {
@@ -151,8 +155,8 @@ namespace YTMusicUploader.Providers
 
                             try
                             {
-                                playlist.PrivacyStatus = (Playlist.PrivacyStatusEmum)Enum.Parse(
-                                                            typeof(Playlist.PrivacyStatusEmum),
+                                playlist.PrivacyStatus = (OnlinePlaylist.PrivacyStatusEmum)Enum.Parse(
+                                                            typeof(OnlinePlaylist.PrivacyStatusEmum),
                                                             playListData.header
                                                                     .musicEditablePlaylistDetailHeaderRenderer
                                                                     .editHeader
@@ -162,7 +166,7 @@ namespace YTMusicUploader.Providers
                             }
                             catch
                             {
-                                playlist.PrivacyStatus = Playlist.PrivacyStatusEmum.Private;
+                                playlist.PrivacyStatus = OnlinePlaylist.PrivacyStatusEmum.Private;
                             }
 
                             playlist.Songs = GetInitalPlaylistSongs(playlist.Songs, result, out string continuation);
@@ -198,7 +202,7 @@ namespace YTMusicUploader.Providers
                 var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicPlaylistShelfRenderer")
                                                                .Select(p => ((JProperty)p).Value).ToList();
 
-                foreach (JToken token in musicShelfRendererTokens)
+                foreach (var token in musicShelfRendererTokens)
                 {
                     var msr = token.ToObject<BrowsePlaylistResultsContext.Musicplaylistshelfrenderer>();
                     if (msr.continuations != null &&
@@ -303,7 +307,7 @@ namespace YTMusicUploader.Providers
                 var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicPlaylistShelfContinuation")
                                                                .Select(p => ((JProperty)p).Value).ToList();
 
-                foreach (JToken token in musicShelfRendererTokens)
+                foreach (var token in musicShelfRendererTokens)
                 {
                     var msr = token.ToObject<BrowsePlaylistResultsContext.Musicplaylistshelfrenderer>();
                     if (msr.continuations != null &&

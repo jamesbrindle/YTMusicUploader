@@ -1,5 +1,4 @@
 ﻿using JBToolkit.Threads;
-using System;
 using System.Threading;
 
 namespace YTMusicUploader.Business
@@ -38,7 +37,7 @@ namespace YTMusicUploader.Business
                         ThreadHelper.SafeSleep(1000);
                         if (Queue)
                         {
-                            while (!MainForm.FileUploader.Stopped)
+                            while (!MainForm.FileUploader.Stopped || !MainForm.PlaylistProcessor.Stopped)
                                 ThreadHelper.SafeSleep(1000);
 
                             MainForm.Restart();

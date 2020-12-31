@@ -1,5 +1,8 @@
 ﻿namespace YTMusicUploader.Providers.RequestModels
 {
+    /// <summary>
+    /// Model for Manage YouTube Music dialogue's TreeView
+    /// </summary>
     public class MusicManageTreeNodeModel
     {
         public enum NodeTypeEnum

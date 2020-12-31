@@ -32,9 +32,9 @@ namespace YTMusicUploader.Updater
         /// and then installing it.
         /// </summary>
         public UpdaterForm(
-            string downloadUrl, 
+            string downloadUrl,
             string downloadPath,
-            string version, 
+            string version,
             string installedLocation)
         {
             DownloadUrl = downloadUrl;
@@ -159,7 +159,7 @@ namespace YTMusicUploader.Updater
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            using (WebClient wc = new WebClient())
+            using (var wc = new WebClient())
             {
                 wc.DownloadProgressChanged += DownloadProgress;
                 wc.DownloadFileCompleted += DownloadComplete;
@@ -199,14 +199,14 @@ namespace YTMusicUploader.Updater
             var process = new Process();
             process.StartInfo.FileName = InstalledLocation;
             process.Start();
-        }       
+        }
 
         delegate void SetStatusDelegate(string statusText);
         private void SetStatus(string statusText)
         {
             if (lblStatus.InvokeRequired)
             {
-                SetStatusDelegate d = new SetStatusDelegate(SetStatus);
+                var d = new SetStatusDelegate(SetStatus);
                 Invoke(d, new object[] { statusText });
             }
             else

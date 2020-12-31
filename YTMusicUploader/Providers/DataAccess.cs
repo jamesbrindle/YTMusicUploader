@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using JBToolkit.Network;
-using JBToolkit.Threads;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data.SQLite;
@@ -285,6 +284,7 @@ namespace YTMusicUploader.Providers
                     //
                     // Version 1.6.0 - Added song 'VideoId' column
                     //               - Added 'PlaylistFiles' table
+                    //               - FILE RESCAN REQUIRED
                     //
 
                     columns = conn.Query<string>(
@@ -314,6 +314,10 @@ namespace YTMusicUploader.Providers
                                 ""LastModifiedDate""  TEXT NOT NULL,
                                 ""LastUpload""    TEXT
                             ); ");
+
+                        conn.Execute(
+                           @"UPDATE MusicFiles
+                                SET LastUpload = '0001-01-01 00:00:00'");
                     }
                 }
                 catch { }
@@ -328,10 +332,11 @@ namespace YTMusicUploader.Providers
             {
                 Logger.LogInfo("CheckDatabaseIntegrity", "Checking database integrity");
 
-                var _s = new SettingsRepo().Load();
-                var _w = new WatchFolderRepo().Load();
-                var _m = new MusicFileRepo().LoadAll(true);
-                var _l = new LogsRepo().LoadSpecific("3");
+                var _s = new SettingsRepo().Load().Result;
+                var _w = new WatchFolderRepo().Load().Result;
+                var _m = new MusicFileRepo().LoadAll(true).Result;
+                var _p = new PlaylistFileRepo().LoadAll().Result;
+                var _l = new LogsRepo().LoadSpecific("3").Result;
 
                 Logger.LogInfo("CheckDatabaseIntegrity", "Database integrity check complete - No issues");
             }

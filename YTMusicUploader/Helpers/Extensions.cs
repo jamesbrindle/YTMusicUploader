@@ -7,7 +7,6 @@ using System.Dynamic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -235,7 +234,7 @@ namespace System
         /// <returns></returns>
         public static List<int> GetAllIndexesOfString(this string source, string searchString)
         {
-            List<int> ret = new List<int>();
+            var ret = new List<int>();
             int len = searchString.Length;
             int start = -len;
             while (true)
@@ -298,7 +297,7 @@ namespace System
             }
             else
             {
-                List<int> positions = text.GetAllIndexesOfString(firstString);
+                var positions = text.GetAllIndexesOfString(firstString);
 
                 int Pos1 = positions[0] + firstString.Length;
                 int Pos2 = positions[1];
@@ -440,7 +439,7 @@ namespace System
         /// </summary>
         public static string RemoveNonAlphaNumerics(this string text)
         {
-            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+            var rgx = new Regex("[^a-zA-Z0-9 -]");
             return rgx.Replace(text, "");
         }
 
@@ -664,7 +663,7 @@ namespace System
         /// </summary>
         public static void AddRange<T, S>(this ICollection<T> list, params S[] values) where S : T
         {
-            foreach (S value in values)
+            foreach (var value in values)
             {
                 list.Add(value);
             }
@@ -680,7 +679,7 @@ namespace System
                 throw new ArgumentNullException("xml");
             }
 
-            StringBuilder buffer = new StringBuilder(xml.Length);
+            var buffer = new StringBuilder(xml.Length);
 
             foreach (char c in xml)
             {
@@ -752,17 +751,17 @@ namespace System
         {
             try
             {
-                List<T> list = new List<T>();
+                var list = new List<T>();
 
                 foreach (var row in dataTable.AsEnumerable())
                 {
-                    T obj = new T();
+                    var obj = new T();
 
                     foreach (var prop in obj.GetType().GetProperties())
                     {
                         try
                         {
-                            PropertyInfo propertyInfo = obj.GetType().GetProperty(prop.Name);
+                            var propertyInfo = obj.GetType().GetProperty(prop.Name);
                             propertyInfo.SetValue(obj, Convert.ChangeType(row[prop.Name], propertyInfo.PropertyType), null);
                         }
                         catch
@@ -790,16 +789,16 @@ namespace System
         /// <returns>DataTable of list</returns>
         public static DataTable ToDataTable<T>(this IEnumerable<T> list)
         {
-            Type type = typeof(T);
+            var type = typeof(T);
             var properties = type.GetProperties();
 
-            DataTable dataTable = new DataTable();
-            foreach (PropertyInfo info in properties)
+            var dataTable = new DataTable();
+            foreach (var info in properties)
             {
                 dataTable.Columns.Add(new DataColumn(info.Name, Nullable.GetUnderlyingType(info.PropertyType) ?? info.PropertyType));
             }
 
-            foreach (T entity in list)
+            foreach (var entity in list)
             {
                 object[] values = new object[properties.Length];
                 for (int i = 0; i < properties.Length; i++)
@@ -820,9 +819,9 @@ namespace System
         /// <returns>Datatable</returns>
         public static DataTable ToDataTable(this object obj)
         {
-            DataTable dt = new DataTable("OutputData");
+            var dt = new DataTable("OutputData");
 
-            DataRow dr = dt.NewRow();
+            var dr = dt.NewRow();
             dt.Rows.Add(dr);
 
             obj.GetType().GetProperties().ToList().ForEach(f =>

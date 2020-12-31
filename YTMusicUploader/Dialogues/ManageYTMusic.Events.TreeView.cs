@@ -54,8 +54,8 @@ namespace YTMusicUploader.Dialogues
                     {
                         ThreadPool.QueueUserWorkItem(delegate
                         {
-                            GetPlaylistItems(selectedNode, 
-                                             ((MusicManageTreeNodeModel)selectedNode.Tag).PlaylistTitle, 
+                            GetPlaylistItems(selectedNode,
+                                             ((MusicManageTreeNodeModel)selectedNode.Tag).PlaylistTitle,
                                              ((MusicManageTreeNodeModel)selectedNode.Tag).EntityOrBrowseId);
                         });
                     }
@@ -92,7 +92,7 @@ namespace YTMusicUploader.Dialogues
                                    (nonFetchedArtistAlbumsSelected ? " (non-fetched artist / playlist tracks selected)" : "");
 
 
-            bool artistNodesChecked = false;           
+            bool artistNodesChecked = false;
             foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
             {
                 if (artistNode.Checked)

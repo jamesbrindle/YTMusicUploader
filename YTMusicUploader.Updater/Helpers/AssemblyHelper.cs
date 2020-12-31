@@ -42,14 +42,14 @@ namespace YTMusicUploader.Updater
 
             try
             {
-                using (Stream stm = Assembly.GetExecutingAssembly().GetManifestResourceStream("Embed." + fileName))
+                using (var stm = Assembly.GetExecutingAssembly().GetManifestResourceStream("Embed." + fileName))
                 {
                     if (stm != null)
                     {
                         byte[] ba = new byte[(int)stm.Length];
                         stm.Read(ba, 0, (int)stm.Length);
 
-                        Assembly asm = Assembly.Load(ba);
+                        var asm = Assembly.Load(ba);
                         AssemblyDictionary.Add(asm.FullName, asm);
 
                         return;
@@ -66,7 +66,7 @@ namespace YTMusicUploader.Updater
             if (extractResourceToTempPath)
             {
                 string outputPath = ExtractEmbeddedResourceToTempPath(fileName);
-                Assembly asm = Assembly.LoadFrom(outputPath);
+                var asm = Assembly.LoadFrom(outputPath);
                 AssemblyDictionary.Add(asm.FullName, asm);
             }
         }
@@ -102,7 +102,7 @@ namespace YTMusicUploader.Updater
                 string outputFilename)
         {
 
-            using (Stream s = Assembly.GetExecutingAssembly()
+            using (var s = Assembly.GetExecutingAssembly()
                                         .GetManifestResourceStream(Assembly.GetExecutingAssembly().GetName()
                                         .Name.Replace("-", "_") + ".Embed." + fileName))
             {
@@ -111,7 +111,7 @@ namespace YTMusicUploader.Updater
                     byte[] buffer = new byte[s.Length];
                     s.Read(buffer, 0, buffer.Length);
 
-                    using (BinaryWriter sw = new BinaryWriter(
+                    using (var sw = new BinaryWriter(
                         File.Open(Path.Combine(outputDirectory, string.IsNullOrEmpty(outputFilename)
                             ? fileName
                             : outputFilename),
@@ -121,6 +121,6 @@ namespace YTMusicUploader.Updater
                     return;
                 }
             }
-        }      
+        }
     }
 }

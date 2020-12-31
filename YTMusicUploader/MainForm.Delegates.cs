@@ -13,7 +13,7 @@ namespace YTMusicUploader
         {
             if (lblStatus.InvokeRequired)
             {
-                SetStatusMessageDelegate d = new SetStatusMessageDelegate(SetStatusMessage);
+                var d = new SetStatusMessageDelegate(SetStatusMessage);
                 Invoke(d, new object[] { statusMessage, systemTrayIconText });
             }
             else
@@ -31,7 +31,7 @@ namespace YTMusicUploader
             if (pbArtwork.InvokeRequired ||
                 lblStatus.InvokeRequired)
             {
-                SetPausedDelegate d = new SetPausedDelegate(SetPaused);
+                var d = new SetPausedDelegate(SetPaused);
                 Invoke(d, new object[] { paused });
             }
             else
@@ -40,7 +40,7 @@ namespace YTMusicUploader
                 {
                     lblStatus.Text = "Paused";
                     lblUploadingMessage.Text = "Paused";
-                    SetSystemTrayIconText("Paused");                    
+                    SetSystemTrayIconText("Paused");
                     pbPaused.Visible = true;
                 }
                 else
@@ -69,7 +69,7 @@ namespace YTMusicUploader
                 if (pbConnectedToYoutube.InvokeRequired ||
                     pbNotConnectedToYoutube.InvokeRequired)
                 {
-                    SetConnectedToYouTubeMusicDelegate d = new SetConnectedToYouTubeMusicDelegate(SetConnectedToYouTubeMusic);
+                    var d = new SetConnectedToYouTubeMusicDelegate(SetConnectedToYouTubeMusic);
                     Invoke(d, new object[] { connectedToYouTubeMusic });
                 }
                 else
@@ -94,7 +94,7 @@ namespace YTMusicUploader
         {
             if (cbStartWithWindows.InvokeRequired)
             {
-                SetStartWithWindowsDelegate d = new SetStartWithWindowsDelegate(SetStartWithWindows);
+                var d = new SetStartWithWindowsDelegate(SetStartWithWindows);
                 Invoke(d, new object[] { startWithWindows });
             }
             else
@@ -108,7 +108,7 @@ namespace YTMusicUploader
         {
             if (cbStartWithWindows.InvokeRequired)
             {
-                SetSendLogsToSourceDelegate d = new SetSendLogsToSourceDelegate(SetSendLogsToSource);
+                var d = new SetSendLogsToSourceDelegate(SetSendLogsToSource);
                 Invoke(d, new object[] { sendLogsToSource });
             }
             else
@@ -122,7 +122,7 @@ namespace YTMusicUploader
         {
             if (pbYtMusicManage.InvokeRequired)
             {
-                SetManageTYMusicButtonEnabledDelegate d = new SetManageTYMusicButtonEnabledDelegate(SetManageTYMusicButtonEnabled);
+                var d = new SetManageTYMusicButtonEnabledDelegate(SetManageTYMusicButtonEnabled);
                 Invoke(d, new object[] { enabled });
             }
             else
@@ -146,7 +146,7 @@ namespace YTMusicUploader
         {
             if (pbYtMusicManage.InvokeRequired)
             {
-                SetManageTYMusicButtonImageDelegate d = new SetManageTYMusicButtonImageDelegate(SetManageTYMusicButtonImage);
+                var d = new SetManageTYMusicButtonImageDelegate(SetManageTYMusicButtonImage);
                 Invoke(d, new object[] { image });
             }
             else
@@ -158,7 +158,7 @@ namespace YTMusicUploader
         {
             if (pbAbout.InvokeRequired)
             {
-                SetAboutButtonImageDelegate d = new SetAboutButtonImageDelegate(SetAboutButtonImage);
+                var d = new SetAboutButtonImageDelegate(SetAboutButtonImage);
                 Invoke(d, new object[] { image });
             }
             else
@@ -170,7 +170,7 @@ namespace YTMusicUploader
         {
             if (pbLog.InvokeRequired)
             {
-                SetLogButtonImageDelegate d = new SetLogButtonImageDelegate(SetLogButtonImage);
+                var d = new SetLogButtonImageDelegate(SetLogButtonImage);
                 Invoke(d, new object[] { image });
             }
             else
@@ -182,7 +182,7 @@ namespace YTMusicUploader
         {
             if (pbUpdate.InvokeRequired)
             {
-                SetUpdateButtonImageDelegate d = new SetUpdateButtonImageDelegate(SetUpdateButtonImage);
+                var d = new SetUpdateButtonImageDelegate(SetUpdateButtonImage);
                 Invoke(d, new object[] { image });
             }
             else
@@ -194,7 +194,7 @@ namespace YTMusicUploader
         {
             if (tbThrottleSpeed.InvokeRequired)
             {
-                SetThrottleSpeedDelegate d = new SetThrottleSpeedDelegate(SetThrottleSpeed);
+                var d = new SetThrottleSpeedDelegate(SetThrottleSpeed);
                 Invoke(d, new object[] { mbps });
             }
             else
@@ -213,7 +213,7 @@ namespace YTMusicUploader
         {
             if (lblVersion.InvokeRequired)
             {
-                SetVersionDelegate d = new SetVersionDelegate(SetVersion);
+                var d = new SetVersionDelegate(SetVersion);
                 Invoke(d, new object[] { version });
             }
             else
@@ -228,7 +228,7 @@ namespace YTMusicUploader
         {
             if (pbUpdate.InvokeRequired)
             {
-                SetVersionWarningVisibleDelegate d = new SetVersionWarningVisibleDelegate(SetVersionWarningVisible);
+                var d = new SetVersionWarningVisibleDelegate(SetVersionWarningVisible);
                 Invoke(d, new object[] { visible });
             }
             else
@@ -252,7 +252,7 @@ namespace YTMusicUploader
                 pbArtwork.InvokeRequired ||
                 pbArtworkIdle.InvokeRequired)
             {
-                SetUploadingMessageDelegate d = new SetUploadingMessageDelegate(SetUploadingMessage);
+                var d = new SetUploadingMessageDelegate(SetUploadingMessage);
                 Invoke(d, new object[] { text, tooltipText, artworkImage, changingArtworkImage });
             }
             else
@@ -292,7 +292,7 @@ namespace YTMusicUploader
         {
             if (lblDiscoveredFiles.InvokeRequired)
             {
-                SetDiscoveredFilesLabelDelegate d = new SetDiscoveredFilesLabelDelegate(SetDiscoveredFilesLabel);
+                var d = new SetDiscoveredFilesLabelDelegate(SetDiscoveredFilesLabel);
                 Invoke(d, new object[] { text });
             }
             else
@@ -306,7 +306,7 @@ namespace YTMusicUploader
         {
             if (lblIssues.InvokeRequired)
             {
-                SetIssuesLabelDelegate d = new SetIssuesLabelDelegate(SetIssuesLabel);
+                var d = new SetIssuesLabelDelegate(SetIssuesLabel);
                 Invoke(d, new object[] { text });
             }
             else
@@ -320,7 +320,7 @@ namespace YTMusicUploader
         {
             if (lblIssues.InvokeRequired)
             {
-                GetIssuesLabelDelegate d = new GetIssuesLabelDelegate(GetIssuesLabel);
+                var d = new GetIssuesLabelDelegate(GetIssuesLabel);
                 return (string)Invoke(d, new object[] { });
             }
             else
@@ -334,7 +334,7 @@ namespace YTMusicUploader
         {
             if (lblUploaded.InvokeRequired)
             {
-                SetUploadedLabelDelegate d = new SetUploadedLabelDelegate(SetUploadedLabel);
+                var d = new SetUploadedLabelDelegate(SetUploadedLabel);
                 Invoke(d, new object[] { text });
             }
             else
@@ -348,7 +348,7 @@ namespace YTMusicUploader
         {
             if (lblUploaded.InvokeRequired)
             {
-                GetUploadLabelDelegate d = new GetUploadLabelDelegate(GetUploadLabel);
+                var d = new GetUploadLabelDelegate(GetUploadLabel);
                 return (string)Invoke(d, new object[] { });
             }
             else
@@ -362,7 +362,7 @@ namespace YTMusicUploader
         {
             if (lbWatchFolders.InvokeRequired)
             {
-                BindWatchFoldersListDelegate d = new BindWatchFoldersListDelegate(BindWatchFoldersList);
+                var d = new BindWatchFoldersListDelegate(BindWatchFoldersList);
                 Invoke(d, new object[] { });
             }
             else
@@ -389,7 +389,7 @@ namespace YTMusicUploader
         {
             if (btnConnectToYoutube.InvokeRequired)
             {
-                SetConnectToYouTubeButtonEnabledDelegate d =
+                var d =
                     new SetConnectToYouTubeButtonEnabledDelegate(SetConnectToYouTubeButtonEnabled);
                 Invoke(d, new object[] { enabled });
             }
@@ -399,12 +399,12 @@ namespace YTMusicUploader
             }
         }
 
-        delegate void EnableTrayPauseResumeDelegate (bool enabled);
+        delegate void EnableTrayPauseResumeDelegate(bool enabled);
         public void EnableTrayPauseResume(bool enabled)
         {
             if (TrayContextMenuStrip.InvokeRequired || btnConnectToYoutube.InvokeRequired)
             {
-                EnableTrayPauseResumeDelegate d =
+                var d =
                     new EnableTrayPauseResumeDelegate(EnableTrayPauseResume);
                 Invoke(d, new object[] { enabled });
             }
@@ -418,7 +418,7 @@ namespace YTMusicUploader
                     if (IsPausedFromTray)
                     {
                         tsmPauseResume.Text = "Resume";
-                        tsmPauseResume.Image = Properties.Resources.resume;                       
+                        tsmPauseResume.Image = Properties.Resources.resume;
                     }
                     else
                     {
@@ -441,7 +441,7 @@ namespace YTMusicUploader
         {
             if (TrayContextMenuStrip.InvokeRequired || btnConnectToYoutube.InvokeRequired)
             {
-                TrayMenuPauseDelegate d =
+                var d =
                     new TrayMenuPauseDelegate(TrayMenuPause);
                 Invoke(d, new object[] { pause });
             }
@@ -475,7 +475,7 @@ namespace YTMusicUploader
         {
             if (InvokeRequired)
             {
-                ShowFormDelegate d = new ShowFormDelegate(ShowForm);
+                var d = new ShowFormDelegate(ShowForm);
                 Invoke(d, new object[] { });
             }
             else

@@ -46,7 +46,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (dvgLog.InvokeRequired)
             {
-                PopulateDelegate d = new PopulateDelegate(Populate);
+                var d = new PopulateDelegate(Populate);
                 Invoke(d, new object[] { });
             }
             else
@@ -70,7 +70,7 @@ namespace YTMusicUploader.Dialogues
                     dvgLog.Columns["MbId"].DefaultCellStyle = GetHyperLinkStyleForGridCell();
 
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Logger.Log(e, "Unable to fetch uploads from the database and bind gridview", Log.LogTypeEnum.Critical);
                 }
@@ -83,8 +83,8 @@ namespace YTMusicUploader.Dialogues
         {
             // Set the Font and Uderline into the Content of the grid cell .  
             {
-                DataGridViewCellStyle hyperlinkStyle = new DataGridViewCellStyle();
-                Font l_objFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+                var hyperlinkStyle = new DataGridViewCellStyle();
+                var l_objFont = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
                 hyperlinkStyle.Font = l_objFont;
                 hyperlinkStyle.ForeColor = Color.Blue;
                 return hyperlinkStyle;
@@ -96,7 +96,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (lblTitle.InvokeRequired)
             {
-                SetTitleDelegate d = new SetTitleDelegate(SetTitle);
+                var d = new SetTitleDelegate(SetTitle);
                 Invoke(d, new object[] { text });
             }
             else

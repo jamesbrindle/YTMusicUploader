@@ -1,5 +1,4 @@
-﻿
-namespace YTMusicUploader.MusicBrainz.API
+﻿namespace YTMusicUploader.MusicBrainz.API
 {
     using System;
     using System.Collections;

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using YTMusicUploader.Providers.Repos;
 
@@ -20,10 +18,11 @@ namespace YTMusicUploader.Providers.DataModels
 
         public string Title { get; set; }
         public string Description { get; set; }
-        public string PlaylistId { get; set; }        
+        public string PlaylistId { get; set; }
         public string Path { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public DateTime? LastUpload { get; set; }
+        public List<PlaylistFileItem> PlaylistItems { get; set; } = new List<PlaylistFileItem>();
 
         public async override Task<DbOperationResult> Delete()
         {
@@ -50,12 +49,12 @@ namespace YTMusicUploader.Providers.DataModels
             }
         }
 
-        public class PlaylistFileItems
+        public class PlaylistFileItem
         {
             public string Path { get; set; }
-            public string ArtistTitle { get; set; }
-            public string AlbumTitle { get; set; }
-            public string SongTitle { get; set; }           
+            public string Artist { get; set; }
+            public string Album { get; set; }
+            public string Track { get; set; }
             public string VideoId { get; set; }
         }
     }

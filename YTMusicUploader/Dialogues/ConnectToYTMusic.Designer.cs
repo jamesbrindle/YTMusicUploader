@@ -44,9 +44,9 @@
             this.lblSignInMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSignInMessage.Location = new System.Drawing.Point(23, 34);
             this.lblSignInMessage.Name = "lblSignInMessage";
-            this.lblSignInMessage.Size = new System.Drawing.Size(328, 13);
+            this.lblSignInMessage.Size = new System.Drawing.Size(221, 13);
             this.lblSignInMessage.TabIndex = 0;
-            this.lblSignInMessage.Text = "Sign into YouTube Music to retrieve your authorisation cookie.";
+            this.lblSignInMessage.Text = "Sign into to connect with YouTube Music.";
             // 
             // pnlBrowser
             // 
@@ -67,6 +67,7 @@
             this.browser.MinimumSize = new System.Drawing.Size(600, 400);
             this.browser.Name = "browser";
             this.browser.Size = new System.Drawing.Size(988, 633);
+            this.browser.Source = new System.Uri("about:blank", System.UriKind.Absolute);
             this.browser.TabIndex = 0;
             this.browser.Text = "YouTube Music";
             this.browser.ZoomFactor = 1D;

@@ -11,7 +11,7 @@ namespace YTMusicUploader.Providers.RequestModels
     {
         public DateTime LastSetTime { get; set; } = DateTime.Now;
         public ArtistCollection Artists { get; set; } = new ArtistCollection();
-        public PlaylistCollection Playlists { get; set; } = new PlaylistCollection();
+        public OnlinePlaylistCollection Playlists { get; set; } = new OnlinePlaylistCollection();
 
         public class ArtistCollection : List<Artist>
         {
@@ -88,7 +88,7 @@ namespace YTMusicUploader.Providers.RequestModels
             }
         }
 
-        public class PlaylistCollection : List<Playlist>
+        public class OnlinePlaylistCollection : List<OnlinePlaylist>
         {
             public void RemovePlayistItem(string playlistEntityId, string trackVideoId)
             {
@@ -117,7 +117,7 @@ namespace YTMusicUploader.Providers.RequestModels
             }
         }
 
-        public class Playlist
+        public class OnlinePlaylist
         {
             public enum PrivacyStatusEmum
             {

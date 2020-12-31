@@ -17,7 +17,7 @@ using static YTMusicUploader.MainForm;
 namespace YTMusicUploader.Business
 {
     /// <summary>
-    /// Responsive for managing uploading music files to YouTube Music.
+    /// Responsible for managing uploading music files to YouTube Music.
     /// </summary>
     public class FileUploader
     {
@@ -95,7 +95,7 @@ namespace YTMusicUploader.Business
                             if (MainFormIsAborting())
                                 return;
 
-                            if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out MusicFile existingMusicFile))
+                            if (DoWeHaveAMusicFileWithTheSameHash(musicFile, out var existingMusicFile))
                             {
                                 if (MainFormIsAborting())
                                     return;
@@ -177,7 +177,7 @@ namespace YTMusicUploader.Business
 
             if (MainForm.ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
                 await SetUploadDetails("Idle", null, true, false);
-            
+
             Stopped = true;
         }
 

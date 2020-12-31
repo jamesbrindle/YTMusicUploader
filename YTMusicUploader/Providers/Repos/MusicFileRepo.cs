@@ -104,6 +104,7 @@ namespace YTMusicUploader.Providers.Repos
             }
         }
 
+        /// <summary>
         /// Load single MusicFile object by file by YouTube entity Id
         /// </summary>
         /// <returns>MusicFile object</returns>
@@ -143,6 +144,51 @@ namespace YTMusicUploader.Providers.Repos
                           WHERE EntityId = @EntityId
                           ORDER BY Removed",
                         new { entityId }).FirstOrDefault();
+                conn.Close();
+                return await Task.FromResult(musicFile);
+            }
+        }
+
+        /// <summary>
+        /// Load single MusicFile object by file by YouTube video Id
+        /// </summary>
+        /// <returns>MusicFile object</returns>
+        public async Task<MusicFile> LoadFromVideoId(string videoId)
+        {
+            try
+            {
+                return await LoadFromVideoId_R(videoId);
+            }
+            catch
+            {
+                ThreadHelper.SafeSleep(50);
+                return await LoadFromVideoId_R(videoId);
+            }
+        }
+
+        private async Task<MusicFile> LoadFromVideoId_R(string videoId)
+        {
+            using (var conn = DbConnection(true))
+            {
+                conn.Open();
+                var musicFile = conn.Query<MusicFile>(
+                        @"SELECT 
+                              Id, 
+                              Path, 
+                              MbId,
+                              ReleaseMbId,
+                              EntityId,
+                              VideoId,
+                              Hash,
+                              LastUpload, 
+                              Error,
+                              ErrorReason,
+                              UploadAttempts,
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
+                          FROM MusicFiles
+                          WHERE VideoId = @VideoId
+                          ORDER BY Removed",
+                        new { videoId }).FirstOrDefault();
                 conn.Close();
                 return await Task.FromResult(musicFile);
             }
@@ -481,7 +527,7 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 conn.Open();
-                var count = conn.Query<int>(
+                int count = conn.Query<int>(
                         @"SELECT COUNT(Id) 
                           FROM MusicFiles
                           WHERE (Removed IS NULL OR Removed != 1)").FirstOrDefault();
@@ -513,7 +559,7 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 conn.Open();
-                var count = conn.Query<int>(
+                int count = conn.Query<int>(
                         @"SELECT COUNT(Id) 
                           FROM MusicFiles
                           WHERE Error = 1
@@ -546,7 +592,7 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 conn.Open();
-                var count = conn.Query<int>(
+                int count = conn.Query<int>(
                         @"SELECT COUNT(Id) 
                           FROM MusicFiles
                           WHERE LastUpload IS NOT NULL AND LastUpload != '0001-01-01 00:00:00'
@@ -582,7 +628,7 @@ namespace YTMusicUploader.Providers.Repos
             using (var conn = DbConnection(true))
             {
                 conn.Open();
-                var musicFileId = conn.ExecuteScalar<int?>(
+                int? musicFileId = conn.ExecuteScalar<int?>(
                         @"SELECT Id  
                           FROM MusicFiles
                           WHERE Path = @Path
@@ -618,7 +664,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Insert_R(MusicFile musicFile)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -756,7 +802,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Update_R(MusicFile musicFile)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -814,7 +860,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> ResetIssueStatus_R(int id)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -890,7 +936,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> DeleteByEntityId_R(string entityId)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -937,7 +983,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Delete_R(int id, bool destroy = false)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -996,7 +1042,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> Delete_R(string path)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -1043,7 +1089,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> DeleteWatchFolder_R(string path)
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try
@@ -1088,7 +1134,7 @@ namespace YTMusicUploader.Providers.Repos
 
         private async Task<DbOperationResult> DeleteAll_R()
         {
-            Stopwatch stopWatch = new Stopwatch();
+            var stopWatch = new Stopwatch();
             stopWatch.Start();
 
             try

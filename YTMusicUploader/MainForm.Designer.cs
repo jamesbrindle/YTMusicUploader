@@ -139,7 +139,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(35, 20);
             this.lblVersion.TabIndex = 14;
-            this.lblVersion.Text = "v1.5.4";
+            this.lblVersion.Text = "v1.6.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblStatus

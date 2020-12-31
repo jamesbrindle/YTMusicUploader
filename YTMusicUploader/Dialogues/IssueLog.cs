@@ -51,7 +51,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (dvgLog.InvokeRequired)
             {
-                PopulateDelegate d = new PopulateDelegate(Populate);
+                var d = new PopulateDelegate(Populate);
                 Invoke(d, new object[] { });
             }
             else
@@ -104,7 +104,7 @@ namespace YTMusicUploader.Dialogues
         {
             if (lblTitle.InvokeRequired)
             {
-                SetTitleDelegate d = new SetTitleDelegate(SetTitle);
+                var d = new SetTitleDelegate(SetTitle);
                 Invoke(d, new object[] { text });
             }
             else
@@ -201,6 +201,6 @@ namespace YTMusicUploader.Dialogues
             }
             else
                 DialogResult = DialogResult.Cancel;
-        }        
+        }
     }
 }

@@ -18,12 +18,21 @@ namespace YTMusicUploader.Providers
     /// </summary>
     public partial class Requests
     {
+        /// <summary>
+        /// YouTube Music API request methods specifically for playlist manipulation
+        /// </summary>
         public partial class Playlists
         {
-            public static PlaylistCollection GetPlaylists(
+            /// <summary>
+            /// HttpWebRequest POST request to send to YTM which fetches a list (collection) of Playlists (without playlist tracks).
+            /// Use the 'Requests.Playlists.GetPlaylist (singular)' method to get an individual playlist complete with track listing.
+            /// </summary>
+            /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
+            /// <returns>OnlinePlaylistCollection object (list of playlists without tracks)</returns>
+            public static OnlinePlaylistCollection GetPlaylists(
                 string cookieValue)
             {
-                var playListCol = new PlaylistCollection();
+                var playListCol = new OnlinePlaylistCollection();
 
                 try
                 {
@@ -80,7 +89,7 @@ namespace YTMusicUploader.Providers
                                 {
                                     try
                                     {
-                                        playListCol.Add(new Playlist
+                                        playListCol.Add(new OnlinePlaylist
                                         {
                                             Title = item.musicTwoRowItemRenderer.title.runs[0].text,
                                             Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
@@ -90,7 +99,7 @@ namespace YTMusicUploader.Providers
                                             CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
                                         });
                                     }
-                                    catch(Exception e) 
+                                    catch (Exception e)
                                     {
                                         Logger.Log(e, "GetPlaylists - Error fetching a playlist", Log.LogTypeEnum.Error);
                                     }

@@ -1,5 +1,8 @@
 ﻿namespace YTMusicUploader.Providers.RequestModels
 {
+    /// <summary>
+    /// Deserialised HttpWebRequest request body sent for deleting a playlist item
+    /// </summary>
     public class DeletePlaylistItemRequestContext
     {
         public Context context { get; set; }

@@ -66,7 +66,7 @@ namespace JBToolkit
 
             newnum = string.Empty;
 
-            foreach (var c in input)
+            foreach (char c in input)
             {
                 if (isHexDigit.IsMatch(c.ToString()))
                 {
@@ -144,7 +144,7 @@ namespace JBToolkit
         {
             // Make the ColorMatrix.
             float b = brightness;
-            ColorMatrix cm = new ColorMatrix(new float[][]
+            var cm = new ColorMatrix(new float[][]
             {
                 new float[] {b, 0, 0, 0, 0},
                 new float[] {0, b, 0, 0, 0},
@@ -152,7 +152,7 @@ namespace JBToolkit
                 new float[] {0, 0, 0, 1, 0},
                 new float[] {0, 0, 0, 0, 1},
             });
-            ImageAttributes attributes = new ImageAttributes();
+            var attributes = new ImageAttributes();
             attributes.SetColorMatrix(cm);
 
             // Draw the image onto the new bitmap while applying
@@ -163,11 +163,11 @@ namespace JBToolkit
                 new Point(image.Width, 0),
                 new Point(0, image.Height),
             };
-            Rectangle rect = new Rectangle(0, 0, image.Width, image.Height);
+            var rect = new Rectangle(0, 0, image.Width, image.Height);
 
             // Make the result bitmap.
-            Bitmap bm = new Bitmap(image.Width, image.Height);
-            using (Graphics gr = Graphics.FromImage(bm))
+            var bm = new Bitmap(image.Width, image.Height);
+            using (var gr = Graphics.FromImage(bm))
             {
                 gr.DrawImage(image, points, rect,
                     GraphicsUnit.Pixel, attributes);
@@ -182,9 +182,9 @@ namespace JBToolkit
         /// </summary>
         public static Bitmap LightenImage(Bitmap bmp)
         {
-            Rectangle r = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            var r = new Rectangle(0, 0, bmp.Width, bmp.Height);
             int alpha = 128;
-            using (Graphics g = Graphics.FromImage(bmp))
+            using (var g = Graphics.FromImage(bmp))
             {
                 using (Brush cloud_brush = new SolidBrush(Color.FromArgb(alpha, Color.White)))
                 {
@@ -222,7 +222,7 @@ namespace JBToolkit
                 colorString = Regex.Replace(colorString, "G", "");
                 colorString = Regex.Replace(colorString, "B", "");
 
-                var colourParts = Regex.Split(colorString, "=");
+                string[] colourParts = Regex.Split(colorString, "=");
 
                 color = Color.FromArgb(Convert.ToInt32(colourParts[1]), Convert.ToInt32(colourParts[2]),
                     Convert.ToInt32(colourParts[3]), Convert.ToInt32(colourParts[4]));
@@ -242,14 +242,14 @@ namespace JBToolkit
                 '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
             };
 
-            var bytes = new byte[3];
+            byte[] bytes = new byte[3];
             bytes[0] = color.R;
             bytes[1] = color.G;
             bytes[2] = color.B;
 
-            var chars = new char[bytes.Length * 2];
+            char[] chars = new char[bytes.Length * 2];
 
-            for (var i = 0; i < bytes.Length; i++)
+            for (int i = 0; i < bytes.Length; i++)
             {
                 int b = bytes[i];
                 chars[i * 2] = hexDigits[b >> 4];
@@ -272,11 +272,11 @@ namespace JBToolkit
 
             var bounds = control.Bounds;
             var siblings = parent.Controls;
-            var index = siblings.IndexOf(control);
+            int index = siblings.IndexOf(control);
 
             Bitmap behind = null;
 
-            for (var i = siblings.Count - 1; i > index; i--)
+            for (int i = siblings.Count - 1; i > index; i--)
             {
                 var c = siblings[i];
                 if (!c.Bounds.IntersectsWith(bounds))
@@ -313,12 +313,12 @@ namespace JBToolkit
             public static Color GetRandomColour()
             {
                 var r = new Random();
-                var rInt = r.Next(0, 896); // the largest amount of colours this class will generate
+                int rInt = r.Next(0, 896); // the largest amount of colours this class will generate
 
                 var colorGen = new ColourGenerator();
-                var randomColourStr = "FFFFFF";
+                string randomColourStr = "FFFFFF";
 
-                for (var i = 0; i < rInt; i++)
+                for (int i = 0; i < rInt; i++)
                 {
                     randomColourStr = colorGen.NextColour();
                 }
@@ -328,7 +328,7 @@ namespace JBToolkit
 
             public string NextColour()
             {
-                var colour = string.Format(PatternGenerator.NextPattern(index),
+                string colour = string.Format(PatternGenerator.NextPattern(index),
                     intensityGenerator.NextIntensity(index));
                 index++;
                 return colour;
@@ -377,7 +377,7 @@ namespace JBToolkit
 
                     current = walker.Current.Value;
                 }
-                var currentText = current.ToString("X");
+                string currentText = current.ToString("X");
                 if (currentText.Length == 1)
                 {
                     currentText = "0" + currentText;
@@ -436,7 +436,7 @@ namespace JBToolkit
                 }
                 else
                 {
-                    var levelsUp = 1;
+                    int levelsUp = 1;
                     Current = Current.Parent;
                     while (Current.Parent != null && Current == Current.Parent.ChildB)
                     {
@@ -452,7 +452,7 @@ namespace JBToolkit
                         levelsUp++;
                     }
 
-                    for (var i = 0; i < levelsUp; i++)
+                    for (int i = 0; i < levelsUp; i++)
                     {
                         Current = Current.ChildA;
                     }

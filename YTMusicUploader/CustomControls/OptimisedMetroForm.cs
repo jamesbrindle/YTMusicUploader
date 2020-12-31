@@ -279,7 +279,7 @@ namespace JBToolkit.WinForms
         {
             int currentDPI = 96;
 
-            using (Graphics g = this.CreateGraphics())
+            using (var g = this.CreateGraphics())
             {
                 currentDPI = (int)g.DpiX;
             }

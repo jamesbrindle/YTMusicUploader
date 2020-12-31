@@ -230,7 +230,7 @@ namespace YTMusicUploader
                     SetPaused(false);
                 });
             }
-            
+
             EnableTrayPauseResume(true);
         }
 

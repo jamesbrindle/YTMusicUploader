@@ -16,19 +16,21 @@ namespace YTMusicUploader.Providers
     /// </summary>
     public partial class Requests
     {
+        /// <summary>
+        /// YouTube Music API request methods specifically for playlist manipulation
+        /// </summary>
         public partial class Playlists
         {
-            public static bool RemovePlaylistItems(
-                string cookieValue, 
-                string playlistId, 
-                string videoEntityId,
-                string setVideoEntityId,
-                out string errorMessage)
+            /// <summary>
+            /// HttpWebRequest POST request to send to add a playlist item (track) to an existing YouTube Music playlist
+            /// </summary>
+            /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
+            /// <param name="playlistId">YT Music playlistid (or browseId) to add to</param>
+            /// <param name="videoId">This is the unique track id to add</param>
+            /// <returns>True if successfully, false otherwise</returns>
+            public static bool AddPlaylistItem(string cookieValue, string playlistId, string videoId, out string errorMessage)
             {
                 errorMessage = string.Empty;
-
-                if (playlistId.StartsWith("VL"))
-                    playlistId = playlistId.Substring(2, playlistId.Length - 2);
 
                 try
                 {
@@ -45,15 +47,17 @@ namespace YTMusicUploader.Providers
                     request.Headers["X-Goog-Visitor-Id"] = Global.GoogleVisitorId;
                     request.Headers["Authorization"] = GetAuthorisation(GetSAPISIDFromCookie(cookieValue));
 
-                    var context = JsonConvert.DeserializeObject<DeletePlaylistItemRequestContext>(
+                    var context = JsonConvert.DeserializeObject<AddPlaylistItemContext>(
                                                   SafeFileStream.ReadAllText(
                                                                       Path.Combine(
                                                                               Global.WorkingDirectory,
-                                                                              @"AppData\delete_playlist_item_context.json")));
+                                                                              @"AppData\add_playlist_item_context.json")));
+
+                    if (playlistId.StartsWith("VL"))
+                        playlistId = playlistId.Substring(2, playlistId.Length - 2);
 
                     context.playlistId = playlistId;
-                    context.actions[0].setVideoId = setVideoEntityId;
-                    context.actions[0].removedVideoId = videoEntityId;
+                    context.actions[0].addedVideoId = videoId;
 
                     byte[] postBytes = GetPostBytes(JsonConvert.SerializeObject(context));
                     request.ContentLength = postBytes.Length;

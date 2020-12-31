@@ -94,6 +94,7 @@ namespace YTMusicUploader.Dialogues
             var playlistNodes = new List<TreeNode>();
             foreach (var playlist in Requests.ArtistCache.Playlists)
             {
+                var dbPlaylistEntry = MainForm.PlaylistFileRepo.LoadFromPlayListId(playlist.BrowseId).Result;
                 var playlistNode = new TreeNode
                 {
                     Name = playlist.BrowseId,
@@ -104,7 +105,10 @@ namespace YTMusicUploader.Dialogues
                         PlaylistTitle = playlist.Title,
                         Duration = playlist.Duration,
                         EntityOrBrowseId = playlist.BrowseId,
-                        CovertArtUrl = playlist.CoverArtUrl
+                        CovertArtUrl = playlist.CoverArtUrl,
+                        DatabaseExistence = dbPlaylistEntry != null
+                                                ? $"Exists ({dbPlaylistEntry.Id})"
+                                                : "Not found or not mapped"
                     }
                 };
 
@@ -115,6 +119,7 @@ namespace YTMusicUploader.Dialogues
             var artistNodes = new List<TreeNode>();
             foreach (var artist in Requests.ArtistCache.Artists)
             {
+
                 var artistNode = new TreeNode
                 {
                     Name = artist.BrowseId,
@@ -173,7 +178,7 @@ namespace YTMusicUploader.Dialogues
             }
         }
 
-        private void GetPlaylistItems(TreeNode playlistNode, string playlistTitle, string entityOrBrowseId, bool isDeleting = false)
+        private void GetPlaylistItems(TreeNode playlistNode, string playlistTitle, string playlistOrBrowseId, bool isDeleting = false)
         {
             DisableAllActionButtons(true);
             SetTreeViewEnabled(false);
@@ -184,11 +189,11 @@ namespace YTMusicUploader.Dialogues
                 AppendUpdatesText($"Fetching songs for playlist: {playlistTitle}...", ColourHelper.HexStringToColor("#0f0466"));
                 new Thread((ThreadStart)delegate
                 {
-                    var playlist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, entityOrBrowseId);
+                    var playlist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistOrBrowseId);
 
                     for (int i = 0; i < Requests.ArtistCache.Playlists.Count; i++)
                     {
-                        if (Requests.ArtistCache.Playlists[i].BrowseId == entityOrBrowseId)
+                        if (Requests.ArtistCache.Playlists[i].BrowseId == playlistOrBrowseId)
                         {
                             Requests.ArtistCache.Playlists[i] = playlist;
                             BindPlaylistNodesFromSelect(playlistNode, playlist, !isDeleting, !isDeleting, isDeleting);
@@ -200,11 +205,11 @@ namespace YTMusicUploader.Dialogues
             }
             else
             {
-                var playlist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, entityOrBrowseId);
+                var playlist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistOrBrowseId);
 
                 for (int i = 0; i < Requests.ArtistCache.Playlists.Count; i++)
                 {
-                    if (Requests.ArtistCache.Playlists[i].BrowseId == entityOrBrowseId)
+                    if (Requests.ArtistCache.Playlists[i].BrowseId == playlistOrBrowseId)
                     {
                         Requests.ArtistCache.Playlists[i] = playlist;
                         BindPlaylistNodesFromSelect(playlistNode, playlist, !isDeleting, !isDeleting, isDeleting);
@@ -295,13 +300,16 @@ namespace YTMusicUploader.Dialogues
             return count;
         }
 
-        private void ResetMusicFileEntryStates()
+        private void ResetMusicFileAndPlaylistEntryStates()
         {
             ThreadPool.QueueUserWorkItem(delegate
             {
                 DisableAllActionButtons(true);
+
                 MainForm.MusicFileRepo.ResetAllMusicFileUploadedStates().Wait();
-                AppendUpdatesText("Music file entry state reset complete.",
+                MainForm.PlaylistFileRepo.ResetAllPlaylistUploadedStates().Wait();
+
+                AppendUpdatesText("Music file and playlist entry state reset complete.",
                                    ColourHelper.HexStringToColor("#0d5601"));
                 DisableAllActionButtons(false);
                 ShowPreloader(false);
@@ -341,7 +349,7 @@ namespace YTMusicUploader.Dialogues
             }).Start();
         }
 
-        public void DeleteTracksFromYouTubeMusicUnderArtists()
+        private void DeleteTracksFromYouTubeMusicUnderArtists()
         {
             foreach (TreeNode artistNode in tvUploads.Nodes[1].Nodes)
             {
@@ -364,7 +372,7 @@ namespace YTMusicUploader.Dialogues
 
                 albumNodes.AsParallel().ForAllInApproximateOrder(albumNode =>
                 {
-                    List<TreeNode> tracksToDelete = new List<TreeNode>();
+                    var tracksToDelete = new List<TreeNode>();
                     foreach (TreeNode trackNode in albumNode.Nodes)
                         if (trackNode.Checked)
                             tracksToDelete.Add(trackNode);
@@ -376,7 +384,7 @@ namespace YTMusicUploader.Dialogues
                     {
                         if (Requests.DeleteAlbumOrTrackFromYTMusic(MainForm.Settings.AuthenticationCookie, albumEntityId, out string errorMessage))
                         {
-                            foreach (TreeNode songNode in tracksToDelete)
+                            foreach (var songNode in tracksToDelete)
                             {
                                 string songEntityId = ((MusicManageTreeNodeModel)songNode.Tag).EntityOrBrowseId;
                                 MainForm.MusicFileRepo.DeleteByEntityId(songEntityId).Wait();
@@ -460,7 +468,7 @@ namespace YTMusicUploader.Dialogues
             ChangeChildCount(tvUploads.Nodes[1]);
         }
 
-        public void DeleteTracksFromYouTubeMusicUnderPlaylists()
+        private void DeleteTracksFromYouTubeMusicUnderPlaylists()
         {
             DisableAllActionButtons(true);
             SetTreeViewEnabled(false);
@@ -486,7 +494,7 @@ namespace YTMusicUploader.Dialogues
                     }
                     else
                     {
-                        AppendUpdatesText($"Error Deleting playlist: {((MusicManageTreeNodeModel)playlistNode.Tag).PlaylistTitle}:: " + 
+                        AppendUpdatesText($"Error Deleting playlist: {((MusicManageTreeNodeModel)playlistNode.Tag).PlaylistTitle}:: " +
                                               $"{errorMessage}",
                                               ColourHelper.HexStringToColor("#0d5601"));
                     }
@@ -509,8 +517,8 @@ namespace YTMusicUploader.Dialogues
                         string setVideoId = musicManagePlaylistItemModel.AltEntityId;
 
                         if (Requests.Playlists.RemovePlaylistItems(
-                            MainForm.Settings.AuthenticationCookie, 
-                            playlistId, 
+                            MainForm.Settings.AuthenticationCookie,
+                            playlistId,
                             videoId,
                             setVideoId,
                             out string errorMessage))
@@ -540,12 +548,6 @@ namespace YTMusicUploader.Dialogues
             // Need to set this to null so a) TreeView doesn't scroll and b) A GET request isn't triggered
             tvUploads.SelectedNode = null;
             ChangeChildCount(tvUploads.Nodes[0]);
-        }
-
-        public void ChangeCount(TreeNode node)
-        {
-            int end = node.Text.LastIndexOf("(");
-            node.Text = node.Text.Substring(0, end).Trim() + " (" + node.Nodes.Count + ")";
         }
 
         private void ManageYTMusic_FormClosing(object sender, FormClosingEventArgs e)

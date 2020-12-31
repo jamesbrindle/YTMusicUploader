@@ -31,8 +31,8 @@ namespace YTMusicUploader
         private static float? _yTUploadedSimilarityPercentageForMatch = null;
         private static string _musicBrainzBaseUrl = null;
         private static string _musicBrainzUserAgent = null;
-       
-     
+
+
         private static string _workingDirectory = null;
         private static string[] _supportedFiles = null;
         private static string[] _supportedPlaylistFiles = null;
@@ -313,7 +313,7 @@ namespace YTMusicUploader
                 }
                 catch
                 {
-                    _supportedPlaylistFiles = new string[] { ".m3u", ".m3u8", ".wpl", ".xml" };
+                    _supportedPlaylistFiles = new string[] { ".m3u", ".m3u8", ".wpl", ".pls", ".zpl" };
                 }
 
                 return _supportedPlaylistFiles;
@@ -462,7 +462,7 @@ namespace YTMusicUploader
 
                 return (float)_yTUploadedSimilarityPercentageForMatch;
             }
-        }      
+        }
 
         /// <summary>
         /// MusicBrainz API Base URL
@@ -514,6 +514,6 @@ namespace YTMusicUploader
 
                 return _musicBrainzUserAgent;
             }
-        }    
+        }
     }
 }

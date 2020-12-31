@@ -51,7 +51,7 @@ namespace YTMusicUploader.MusicBrainz.API
         public string CreateBrowseUrl(string entity, string relatedEntity, string mbid, string type, string status,
             int limit, int offset, params string[] inc)
         {
-            var url = CreateBrowseUrl(entity, relatedEntity, mbid, limit, offset, string.Join("+", inc));
+            string url = CreateBrowseUrl(entity, relatedEntity, mbid, limit, offset, string.Join("+", inc));
 
             if (validate && !ValidateBrowseParam(Resources.Constants.BrowseStatus, status))
             {

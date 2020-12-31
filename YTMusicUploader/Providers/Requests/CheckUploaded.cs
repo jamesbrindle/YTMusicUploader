@@ -580,7 +580,7 @@ namespace YTMusicUploader.Providers
                     float trackSimilarity = 0.0f;
 
                     bool foundTrack = false;
-                    foreach (JToken run in runs)
+                    foreach (var run in runs)
                     {
                         if (!parallel)
                             ThreadHelper.SafeSleep(5);

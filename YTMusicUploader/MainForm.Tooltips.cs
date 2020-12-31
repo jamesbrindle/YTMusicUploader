@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace YTMusicUploader
 {
@@ -204,7 +199,7 @@ namespace YTMusicUploader
                 InitialDelay = 1500,
             };
             UploadIssuesTooltip.SetToolTip(lblIssues,
-                "\nShows the number of files that could not be uploaded to YouTube Music.\n" + 
+                "\nShows the number of files that could not be uploaded to YouTube Music.\n" +
                 "Click for more details.");
 
             UploadIssuesLabelTooltip = new ToolTip

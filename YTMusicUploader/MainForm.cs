@@ -63,6 +63,7 @@ namespace YTMusicUploader
         //
         public FileScanner FileScanner { get; set; }
         public FileUploader FileUploader { get; set; }
+        public PlaylistProcessor PlaylistProcessor { get; set; }
         public QueueChecker QueueChecker { get; set; }
         public IdleProcessor IdleProcessor { get; set; }
 
@@ -139,6 +140,7 @@ namespace YTMusicUploader
 
             FileScanner = new FileScanner(this);
             FileUploader = new FileUploader(this);
+            PlaylistProcessor = new PlaylistProcessor(this);
             IdleProcessor = new IdleProcessor(this);
             QueueChecker = new QueueChecker(this);
 
@@ -151,7 +153,7 @@ namespace YTMusicUploader
 
         private void RunDebugCommands()
         {
-
+            // Debugging code here
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -280,9 +282,9 @@ namespace YTMusicUploader
             if (WatchFolders.Count == 0)
                 SetAmountLabelsToZero();
 
-            var initialFilesCount = await MusicFileRepo.CountAll();
-            var issueCount = await MusicFileRepo.CountIssues();
-            var uploadsCount = await MusicFileRepo.CountUploaded();
+            int initialFilesCount = await MusicFileRepo.CountAll();
+            int issueCount = await MusicFileRepo.CountIssues();
+            int uploadsCount = await MusicFileRepo.CountUploaded();
 
             InitialFilesCount = Task.FromResult(initialFilesCount).Result;
             SetDiscoveredFilesLabel(InitialFilesCount.ToString());
@@ -423,6 +425,10 @@ namespace YTMusicUploader
                 FileUploader.Process().Wait();
                 Logger.LogInfo("MainProcess", "Upload check and process upload process complete");
 
+                Logger.LogInfo("MainProcess", "Starting playlist processing");
+                PlaylistProcessor.Process();
+                Logger.LogInfo("MainProcess", "Playlist processing complete");
+
                 if (ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
                 {
                     SetStatusMessage("Idle", "Idle");
@@ -515,6 +521,7 @@ namespace YTMusicUploader
                 while (
                     !FileScanner.Stopped ||
                     !FileUploader.Stopped ||
+                    !PlaylistProcessor.Stopped ||
                     !IdleProcessor.Stopped ||
                     !QueueChecker.Stopped)
                 {
@@ -525,6 +532,7 @@ namespace YTMusicUploader
                 FileUploader = new FileUploader(this);
                 IdleProcessor = new IdleProcessor(this);
                 QueueChecker = new QueueChecker(this);
+                PlaylistProcessor = new PlaylistProcessor(this);
 
                 FileScanner.Reset();
                 Aborting = false;
@@ -573,6 +581,7 @@ namespace YTMusicUploader
             IdleProcessor.Stopped = true;
             QueueChecker.Stopped = true;
             FileUploader.Stopped = true;
+            PlaylistProcessor.Stopped = true;
             TrayIcon.Visible = false;
 
             if (!kill)

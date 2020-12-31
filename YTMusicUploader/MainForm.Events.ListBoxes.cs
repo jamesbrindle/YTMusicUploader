@@ -38,7 +38,7 @@ namespace YTMusicUploader
 
         private void LbWatchFolders_MouseDown(object sender, MouseEventArgs e)
         {
-            Point pt = new Point(e.X, e.Y);
+            var pt = new Point(e.X, e.Y);
             int index = ((ListBox)sender).IndexFromPoint(pt);
 
             if (index <= -1)

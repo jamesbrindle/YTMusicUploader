@@ -222,7 +222,7 @@ namespace YTMusicUploader
                 });
             }
             catch { }
-        } 
+        }
 
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace YTMusicUploader
                         Version = VersionHelper.GetVersionFull()
                     };
 
-                    Task.Run(async () => await LogsRepo.Add(log));                    
+                    Task.Run(async () => await LogsRepo.Add(log));
                 });
             }
             catch { }
@@ -344,7 +344,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource  && !ignoreRemote)
+                    if (SendLogToSource && !ignoreRemote)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);

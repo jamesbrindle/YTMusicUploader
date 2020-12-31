@@ -168,10 +168,10 @@ namespace YTMusicUploader.AssemblyHelper
                         sw.Write(buffer);
 
                     return;
-                }                
+                }
             }
-            
+
             throw new Exception("Cannot find embedded resource '" + targetAssemblyName.Replace("-", "_") + "." + resourcePath + "." + fileName);
-        }       
+        }
     }
 }

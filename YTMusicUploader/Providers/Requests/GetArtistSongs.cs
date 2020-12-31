@@ -125,7 +125,7 @@ namespace YTMusicUploader.Providers
             var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "musicShelfRenderer")
                                                            .Select(p => ((JProperty)p).Value).ToList();
 
-            foreach (JToken token in musicShelfRendererTokens)
+            foreach (var token in musicShelfRendererTokens)
             {
                 var msr = token.ToObject<BrowseArtistResultsContext.Musicshelfrenderer>();
                 if (msr.continuations != null &&
@@ -245,7 +245,7 @@ namespace YTMusicUploader.Providers
 
             var result = JsonConvert.DeserializeObject<BrowseArtistResultsContinuationContext>(httpResponseResults);
 
-            foreach (JToken token in musicShelfRendererTokens)
+            foreach (var token in musicShelfRendererTokens)
             {
                 var msr = token.ToObject<BrowseArtistResultsContext.Musicshelfrenderer>();
                 if (msr.continuations != null &&

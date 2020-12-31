@@ -47,7 +47,7 @@ namespace JBToolkit.WinForms
                         // mouse wheel up
                         try
                         {
-                            PropertyInfo verticalOffset = this.GetType().GetProperty("VerticalOffset", BindingFlags.NonPublic | BindingFlags.Instance);
+                            var verticalOffset = this.GetType().GetProperty("VerticalOffset", BindingFlags.NonPublic | BindingFlags.Instance);
                             verticalOffset.SetValue(this, this.VerticalScrollingOffset - 2, null);
                         }
                         catch { }

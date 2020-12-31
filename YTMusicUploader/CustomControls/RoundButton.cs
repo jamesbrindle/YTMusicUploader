@@ -107,13 +107,13 @@ namespace JBToolkit.WinForms
             roundedRect = new RoundedRectangleF(Width, Height, radius);
             e.Graphics.FillRectangle(Brushes.Transparent, ClientRectangle);
 
-            var R1 = (active1.R + inactive1.R) / 2;
-            var G1 = (active1.G + inactive1.G) / 2;
-            var B1 = (active1.B + inactive1.B) / 2;
+            int R1 = (active1.R + inactive1.R) / 2;
+            int G1 = (active1.G + inactive1.G) / 2;
+            int B1 = (active1.B + inactive1.B) / 2;
 
-            var R2 = (active2.R + inactive2.R) / 2;
-            var G2 = (active2.G + inactive2.G) / 2;
-            var B2 = (active2.B + inactive2.B) / 2;
+            int R2 = (active2.R + inactive2.R) / 2;
+            int G2 = (active2.G + inactive2.G) / 2;
+            int B2 = (active2.B + inactive2.B) / 2;
 
             var rect = new Rectangle(0, 0, Width, Height);
 
