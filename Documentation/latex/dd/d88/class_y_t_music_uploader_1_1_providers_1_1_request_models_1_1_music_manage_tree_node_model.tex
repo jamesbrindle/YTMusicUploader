@@ -2,15 +2,30 @@
 \label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model}\index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}
 
 
+Model for Manage You\+Tube Music dialogue\textquotesingle{}s Tree\+View  
+
+
+
+
 Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Request\+Models.\+Music\+Manage\+Tree\+Node\+Model\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{d3/d17/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422}{Node\+Type\+Enum}} \{ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422afa03eb688ad8aa1db593d33dabd89bad}{Node\+Type\+Enum.\+Root}}, 
+enum \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422}{Node\+Type\+Enum}} \{ \newline
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422afa03eb688ad8aa1db593d33dabd89bad}{Node\+Type\+Enum.\+Root}}, 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422a4047c5607db6be8e0081725f0d164309}{Node\+Type\+Enum.\+Artist}}, 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422ac4f8393e0c007b946261398d0314a257}{Node\+Type\+Enum.\+Album}}, 
-\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422a816681f7ec9c9061b5c183095aff399e}{Node\+Type\+Enum.\+Song}}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422a816681f7ec9c9061b5c183095aff399e}{Node\+Type\+Enum.\+Song}}, 
+\newline
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422abfb6800020a06f5986570499d33f3ce5}{Node\+Type\+Enum.\+Playlist}}, 
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422acc367dd09840c5cdc7e83ebcfc2715f3}{Node\+Type\+Enum.\+Playlist\+Item}}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Properties}
@@ -22,7 +37,9 @@ string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_model
 \item 
 string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_aac39f556564df61eef6333550d645f00}{Album\+Title}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
-string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_af4cfdc5fc135d77a0658098e8a7b1dee}{Song\+Title}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_aa35239ee1d2ad872a51c2888569b9190}{Song\+Title\+Or\+Description}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a2dfabe96ec3c05db7af667d463e45d80}{Playlist\+Title}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a906e6b31b59746fe385c5d5a4524c60c}{Duration}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
@@ -32,10 +49,17 @@ string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_model
 \item 
 string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_adc6b14ca4077ac49d0d5dcf28fe7b896}{Entity\+Or\+Browse\+Id}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
+string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a59f2a48492c5e75077f09c26fb0eb066}{Alt\+Entity\+Id}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
 string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_ac91c5258124a9c7785aad983fee06aeb}{Mb\+Id}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 string \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a3bb73dfe29a2bb5348e2c36db02de452}{Covert\+Art\+Url}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Model for Manage You\+Tube Music dialogue\textquotesingle{}s Tree\+View 
+
 
 
 \doxysubsection{Member Enumeration Documentation}
@@ -62,6 +86,14 @@ Album&\\
 Song&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Playlist@{Playlist}!YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}\index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!Playlist@{Playlist}}}\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422abfb6800020a06f5986570499d33f3ce5}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422abfb6800020a06f5986570499d33f3ce5}} 
+Playlist&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PlaylistItem@{PlaylistItem}!YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}\index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!PlaylistItem@{PlaylistItem}}}\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422acc367dd09840c5cdc7e83ebcfc2715f3}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422acc367dd09840c5cdc7e83ebcfc2715f3}} 
+Playlist\+Item&\\
+\hline
+
 \end{DoxyEnumFields}
 
 
@@ -71,6 +103,12 @@ Song&\\
 \index{AlbumTitle@{AlbumTitle}!YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}
 \doxysubsubsection{\texorpdfstring{AlbumTitle}{AlbumTitle}}
 {\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Request\+Models.\+Music\+Manage\+Tree\+Node\+Model.\+Album\+Title\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a59f2a48492c5e75077f09c26fb0eb066}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a59f2a48492c5e75077f09c26fb0eb066}} 
+\index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!AltEntityId@{AltEntityId}}
+\index{AltEntityId@{AltEntityId}!YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}
+\doxysubsubsection{\texorpdfstring{AltEntityId}{AltEntityId}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Request\+Models.\+Music\+Manage\+Tree\+Node\+Model.\+Alt\+Entity\+Id\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a0380996743fa4f8d915ee74c82d937fb}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a0380996743fa4f8d915ee74c82d937fb}} 
 \index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!ArtistTitle@{ArtistTitle}}
@@ -114,11 +152,17 @@ Song&\\
 \doxysubsubsection{\texorpdfstring{NodeType}{NodeType}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a5063cfaef647f935731477f8d29c5422}{Node\+Type\+Enum}} Y\+T\+Music\+Uploader.\+Providers.\+Request\+Models.\+Music\+Manage\+Tree\+Node\+Model.\+Node\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_af4cfdc5fc135d77a0658098e8a7b1dee}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_af4cfdc5fc135d77a0658098e8a7b1dee}} 
-\index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!SongTitle@{SongTitle}}
-\index{SongTitle@{SongTitle}!YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}
-\doxysubsubsection{\texorpdfstring{SongTitle}{SongTitle}}
-{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Request\+Models.\+Music\+Manage\+Tree\+Node\+Model.\+Song\+Title\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a2dfabe96ec3c05db7af667d463e45d80}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_a2dfabe96ec3c05db7af667d463e45d80}} 
+\index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!PlaylistTitle@{PlaylistTitle}}
+\index{PlaylistTitle@{PlaylistTitle}!YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}
+\doxysubsubsection{\texorpdfstring{PlaylistTitle}{PlaylistTitle}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Request\+Models.\+Music\+Manage\+Tree\+Node\+Model.\+Playlist\+Title\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_aa35239ee1d2ad872a51c2888569b9190}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_aa35239ee1d2ad872a51c2888569b9190}} 
+\index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!SongTitleOrDescription@{SongTitleOrDescription}}
+\index{SongTitleOrDescription@{SongTitleOrDescription}!YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}}
+\doxysubsubsection{\texorpdfstring{SongTitleOrDescription}{SongTitleOrDescription}}
+{\footnotesize\ttfamily string Y\+T\+Music\+Uploader.\+Providers.\+Request\+Models.\+Music\+Manage\+Tree\+Node\+Model.\+Song\+Title\+Or\+Description\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_ab20c7e527acb32a4845d9df90bf62fc0}\label{class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model_ab20c7e527acb32a4845d9df90bf62fc0}} 
 \index{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel@{YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel}!Uploaded@{Uploaded}}
@@ -130,4 +174,4 @@ Song&\\
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Request\+Models/\mbox{\hyperlink{_music_manage_tree_node_model_8cs}{Music\+Manage\+Tree\+Node\+Model.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Request\+Models/\mbox{\hyperlink{_music_manage_tree_node_model_8cs}{Music\+Manage\+Tree\+Node\+Model.\+cs}}\end{DoxyCompactItemize}

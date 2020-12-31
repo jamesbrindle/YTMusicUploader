@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browseendpointcontextsupportedconfigs2 =
+[
+    [ "browseEndpointContextMusicConfig", "db/d46/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browseendpointcontextsupportedconfigs2.html#ab9f94fc40414a7d802a3dd306cd37b54", null ]
+];

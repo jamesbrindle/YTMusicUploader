@@ -1,0 +1,6 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation25afd8393043497fabd0725d802ae1d7 =
+[
+    [ "displayPriority", "d8/d22/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation25afd8393043497fabd0725d802ae1d7.html#a5d9a76e7098ea1c4dc066fd23e55333e", null ],
+    [ "size", "d8/d22/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation25afd8393043497fabd0725d802ae1d7.html#af2e9a5039180fe145807ad05f364749d", null ],
+    [ "text", "d8/d22/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation25afd8393043497fabd0725d802ae1d7.html#a062ea3cd154a73c792136083c80a3ff6", null ]
+];

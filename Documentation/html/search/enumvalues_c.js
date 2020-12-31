@@ -1,4 +1,24 @@
 var searchData=
 [
-  ['quicklaunch_1930',['QuickLaunch',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8afa04b88c3bb16d29ac6e2428d62da52f',1,'JBToolkit::Windows']]]
+  ['pictures_2514',['Pictures',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ab11ddc7e1671c0bd22dc89dd757508d4',1,'JBToolkit::Windows']]],
+  ['playlist_2515',['Playlist',['../dd/d88/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model.html#a5063cfaef647f935731477f8d29c5422abfb6800020a06f5986570499d33f3ce5',1,'YTMusicUploader::Providers::RequestModels::MusicManageTreeNodeModel']]],
+  ['playlistitem_2516',['PlaylistItem',['../dd/d88/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_music_manage_tree_node_model.html#a5063cfaef647f935731477f8d29c5422acc367dd09840c5cdc7e83ebcfc2715f3',1,'YTMusicUploader::Providers::RequestModels::MusicManageTreeNodeModel']]],
+  ['pls_2517',['PLS',['../d3/dab/namespace_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_content.html#aa1b2a9f57d6e64fba1764563296d598ca697f3af30f48986f6228148346b66c70',1,'YTMusicUploader::Providers::Playlist::Content']]],
+  ['present_5ffromcache_2518',['Present_FromCache',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a72eb54f3b45a371d5ae1969d5b750ecea45ad1f24bc22e10d56bd3636f0856e71',1,'YTMusicUploader::Providers::Requests']]],
+  ['present_5fnewrequest_2519',['Present_NewRequest',['../d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a72eb54f3b45a371d5ae1969d5b750ecea50de085f64803269847678359f5eae8f',1,'YTMusicUploader::Providers::Requests']]],
+  ['printers_2520',['Printers',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a60f1dce8720de1ea3748470cd7d4746e',1,'JBToolkit::Windows']]],
+  ['private_2521',['Private',['../d5/d09/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_artist_cache_1_1_online_playlist.html#ad324a1029928210a49ded6dcb997320ea47f9082fc380ca62d531096aa1d110f1',1,'YTMusicUploader::Providers::RequestModels::ArtistCache::OnlinePlaylist']]],
+  ['programdata_2522',['ProgramData',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ad8d284ac3a243f3ee06cda4f58f98b08',1,'JBToolkit::Windows']]],
+  ['programfiles_2523',['ProgramFiles',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a71566b665272d2a148350e95fc3f33b4',1,'JBToolkit::Windows']]],
+  ['programfilesx64_2524',['ProgramFilesX64',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a59518a9b4fc88151f3a8d86e791dd7fb',1,'JBToolkit::Windows']]],
+  ['programfilesx86_2525',['ProgramFilesX86',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8abe3c9f4b03f380d34038bc825a51fbd5',1,'JBToolkit::Windows']]],
+  ['programs_2526',['Programs',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a975d1c13e7672fe6f144e3439bba958b',1,'JBToolkit::Windows']]],
+  ['public_2527',['Public',['../d5/d09/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_artist_cache_1_1_online_playlist.html#ad324a1029928210a49ded6dcb997320ea3d067bedfe2f4677470dd6ccf64d05ed',1,'YTMusicUploader.Providers.RequestModels.ArtistCache.OnlinePlaylist.Public()'],['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a3d067bedfe2f4677470dd6ccf64d05ed',1,'JBToolkit.Windows.Public()']]],
+  ['publicdesktop_2528',['PublicDesktop',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ab7db088c6e81cfed994d72f3d167f257',1,'JBToolkit::Windows']]],
+  ['publicdocuments_2529',['PublicDocuments',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a4c46faedb02069b826faade3471b1f0a',1,'JBToolkit::Windows']]],
+  ['publicdownloads_2530',['PublicDownloads',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8ae07d71cecd5ab33b28e3d9df8e6e0896',1,'JBToolkit::Windows']]],
+  ['publicfolder_2531',['PublicFolder',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a22722a95048f6afdee8d713eb98c22a3',1,'JBToolkit::Windows']]],
+  ['publicmusic_2532',['PublicMusic',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a8df1a03c3ea144f0ae009a0b511f50c3',1,'JBToolkit::Windows']]],
+  ['publicpictures_2533',['PublicPictures',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8aec41413be7fde84a8d0ab8429cd3f557',1,'JBToolkit::Windows']]],
+  ['publicvideos_2534',['PublicVideos',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a830614329d2e7c9f1c510c52d8ab8d5d',1,'JBToolkit::Windows']]]
 ];

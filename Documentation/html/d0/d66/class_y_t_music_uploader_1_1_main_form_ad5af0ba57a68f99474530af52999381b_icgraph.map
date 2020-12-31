@@ -1,0 +1,8 @@
+<map id="YTMusicUploader.MainForm.SetDiscoveredFilesLabel" name="YTMusicUploader.MainForm.SetDiscoveredFilesLabel">
+<area shape="rect" id="node1" title=" " alt="" coords="264,136,455,177"/>
+<area shape="rect" id="node2" href="$dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ac79b28d31e906a37a700c7574a7b6290" title="Executes the scan" alt="" coords="17,5,204,47"/>
+<area shape="rect" id="node3" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="17,71,204,112"/>
+<area shape="rect" id="node4" href="$dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#ac6fbaca1fd66679b56ace361aae3718d" title="Updates the &#39;Discovered Files&#39; count on the main form. Ideally used when updating the form while an u..." alt="" coords="5,136,216,177"/>
+<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92" title=" " alt="" coords="15,201,206,243"/>
+<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad4623e9f4c53d928f7b896a787d9f990" title=" " alt="" coords="15,267,206,308"/>
+</map>

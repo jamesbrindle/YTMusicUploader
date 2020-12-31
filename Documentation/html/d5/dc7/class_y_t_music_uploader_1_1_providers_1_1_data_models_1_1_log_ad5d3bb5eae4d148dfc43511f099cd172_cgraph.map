@@ -1,0 +1,7 @@
+<map id="YTMusicUploader.Providers.DataModels.Log.Save" name="YTMusicUploader.Providers.DataModels.Log.Save">
+<area shape="rect" id="node1" title="Adds to the log to the database" alt="" coords="5,71,191,112"/>
+<area shape="rect" id="node2" href="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a7467ef5e68e708b160cfd3efac2f5f76" title="Adds the log to the databse" alt="" coords="239,71,424,112"/>
+<area shape="rect" id="node3" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a282db1993d3e890ff819c1afd3e14114" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="473,5,658,47"/>
+<area shape="rect" id="node4" href="$d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a294611423979cc1924b6436a62a5333f" title="Database process execution and query result object for &#39;failure&#39;. Contains the error reason and the t..." alt="" coords="473,71,658,112"/>
+<area shape="rect" id="node5" href="$d0/d1c/class_y_t_music_uploader_1_1_providers_1_1_db_operation_result.html#a7d211fda363a2bc57c5bc92991d4b39d" title="Database process execution and query result object for &#39;success&#39;. Contains the time taken to perform ..." alt="" coords="472,136,659,177"/>
+</map>

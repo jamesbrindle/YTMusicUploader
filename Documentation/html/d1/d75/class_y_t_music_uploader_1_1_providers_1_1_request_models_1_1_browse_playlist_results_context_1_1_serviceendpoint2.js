@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_serviceendpoint2 =
+[
+    [ "clickTrackingParams", "d1/d75/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_serviceendpoint2.html#a520c59a9a2146e91916bd7f1ee9c4a89", null ],
+    [ "deletePlaylistEndpoint", "d1/d75/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_serviceendpoint2.html#af3e890aa2c8f44e7ece68720edf0c3b0", null ]
+];

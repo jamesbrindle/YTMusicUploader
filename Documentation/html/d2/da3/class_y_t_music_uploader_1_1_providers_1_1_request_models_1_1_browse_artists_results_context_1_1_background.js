@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_background =
+[
+    [ "verticalGradient", "d2/da3/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_background.html#a54e18f4cbf2e0b4a5895446b57e7dc54", null ]
+];

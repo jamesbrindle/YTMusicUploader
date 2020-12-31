@@ -1,9 +1,0 @@
-digraph "YTMusicUploader.MusicBrainz.API.Services.IWorkService"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{YTMusicUploader.MusicBrainz.\lAPI.Services.IWorkService\n||+ GetAsync()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
-  Node2 [label="{YTMusicUploader.MusicBrainz.\lAPI.Services.WorkService\n||+ WorkService()\l+ GetAsync()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d59/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_work_service.html",tooltip=" "];
-}

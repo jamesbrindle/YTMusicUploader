@@ -1,0 +1,6 @@
+<map id="YTMusicUploader.Providers.DbOperationResult.Fail" name="YTMusicUploader.Providers.DbOperationResult.Fail">
+<area shape="rect" id="node1" title="Database process execution and query result object for &#39;failure&#39;. Contains the error reason and the t..." alt="" coords="508,39,693,80"/>
+<area shape="rect" id="node2" href="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a7467ef5e68e708b160cfd3efac2f5f76" title="Adds the log to the databse" alt="" coords="257,5,442,47"/>
+<area shape="rect" id="node4" href="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#abad6b4c98cebf46a2b12bb9324354e4b" title="Deletes logs older than a particular date from the databae" alt="" coords="239,71,460,112"/>
+<area shape="rect" id="node3" href="$d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html#ad5d3bb5eae4d148dfc43511f099cd172" title="Adds to the log to the database" alt="" coords="5,5,191,47"/>
+</map>

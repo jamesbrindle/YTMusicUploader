@@ -1,0 +1,205 @@
+.TH "YTMusicUploader.Providers.Repos.PlaylistFileRepo" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Repos.PlaylistFileRepo \- \fBPlaylist\fP File database repository access\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "async Task< \fBList\fP< \fBPlaylistFile\fP > > \fBLoadAll\fP ()"
+.br
+.RI "Load all playlist file entries from the database "
+.ti -1c
+.RI "async Task< \fBPlaylistFile\fP > \fBLoadFromPath\fP (string path)"
+.br
+.RI "Loads a PlayListFile entry from the database by a given path "
+.ti -1c
+.RI "async Task< \fBPlaylistFile\fP > \fBLoadFromPlayListId\fP (string playlistId)"
+.br
+.RI "Loads a PlayListFile entry from the database by a given playlistId (actuall browseId) "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBInsert\fP (\fBPlaylistFile\fP playlistFile)"
+.br
+.RI "Inserts a new PlayListFile entry into the database "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBUpdate\fP (\fBPlaylistFile\fP playlistFile)"
+.br
+.RI "Updates a PlayListFile entry in the database "
+.ti -1c
+.RI "Task \fBResetAllPlaylistUploadedStates\fP ()"
+.br
+.RI "Resets all PlayListFile entry states, forcing a re-processing of all scanned playlist files "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteFromPath\fP (string path)"
+.br
+.RI "Deletes a PlaylistFile entry from the database by a given file path "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteFromPlaylistId\fP (string playlistId)"
+.br
+.RI "Deletes a PlaylistFile entry from the database by a given playlist id (actually browseId) "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (\fBPlaylistFile\fP playlistFile)"
+.br
+.RI "Delete a PlayListFile entry from the database "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBDeleteAll\fP ()"
+.br
+.RI "Deletes all PlayListFile entries from the database "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBPlaylist\fP File database repository access\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.Delete (\fBPlaylistFile\fP playlistFile)"
+
+.PP
+Delete a PlayListFile entry from the database 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplaylistFile\fP PlaylistFile object to delete
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.DeleteAll ()"
+
+.PP
+Deletes all PlayListFile entries from the database 
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.DeleteFromPath (string path)"
+
+.PP
+Deletes a PlaylistFile entry from the database by a given file path 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Path of play list file
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.DeleteFromPlaylistId (string playlistId)"
+
+.PP
+Deletes a PlaylistFile entry from the database by a given playlist id (actually browseId) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplaylistId\fP PlaylistId (actually browseId) of playlist
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.Insert (\fBPlaylistFile\fP playlistFile)"
+
+.PP
+Inserts a new PlayListFile entry into the database 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplaylistFile\fP PlayListFile object
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+.SS "async Task<\fBList\fP<\fBPlaylistFile\fP> > YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.LoadAll ()"
+
+.PP
+Load all playlist file entries from the database 
+.PP
+\fBReturns\fP
+.RS 4
+PlayListFile list
+.RE
+.PP
+
+.SS "async Task<\fBPlaylistFile\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.LoadFromPath (string path)"
+
+.PP
+Loads a PlayListFile entry from the database by a given path 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP Path of playlist file
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+PlayListFile object
+.RE
+.PP
+
+.SS "async Task<\fBPlaylistFile\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.LoadFromPlayListId (string playlistId)"
+
+.PP
+Loads a PlayListFile entry from the database by a given playlistId (actuall browseId) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplaylistId\fP playlistId (actuull browseId) of playlist
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+PlayListFile object
+.RE
+.PP
+
+.SS "Task YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.ResetAllPlaylistUploadedStates ()"
+
+.PP
+Resets all PlayListFile entry states, forcing a re-processing of all scanned playlist files 
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\&.Update (\fBPlaylistFile\fP playlistFile)"
+
+.PP
+Updates a PlayListFile entry in the database 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplaylistFile\fP PlaylistFile object
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

@@ -1,0 +1,6 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_musicinlinebadgerenderer =
+[
+    [ "accessibilityData", "de/d4e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_musicinlinebadgerenderer.html#ac0255221a0ed9f7e286e6473e42a14b4", null ],
+    [ "icon", "de/d4e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_musicinlinebadgerenderer.html#a240761215fc0707304bbd626d619abc0", null ],
+    [ "trackingParams", "de/d4e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_musicinlinebadgerenderer.html#a8dddef74b1a493b827b4cdfe326825c9", null ]
+];

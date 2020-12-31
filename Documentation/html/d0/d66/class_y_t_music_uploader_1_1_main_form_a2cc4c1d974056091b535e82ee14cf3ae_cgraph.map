@@ -1,0 +1,16 @@
+<map id="YTMusicUploader.MainForm.StartMainProcess" name="YTMusicUploader.MainForm.StartMainProcess">
+<area shape="rect" id="node1" title=" " alt="" coords="5,407,196,448"/>
+<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a0f9bb7c069a72090c6f86048509fa343" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="244,341,507,383"/>
+<area shape="rect" id="node12" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a799073d452dba59c8412e483f124eb73" title="Count all non&#45;removed Music File entries that have upload errors" alt="" coords="263,407,488,448"/>
+<area shape="rect" id="node13" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="280,472,471,513"/>
+<area shape="rect" id="node3" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a5e5f1675721aa65a8016748b32d809ee" title=" " alt="" coords="555,201,789,243"/>
+<area shape="rect" id="node11" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a777fee8af9abfbafeb10f09327101e08" title="Runs on form load to ensure the database schema is at the latest version following an application upg..." alt="" coords="1089,325,1325,367"/>
+<area shape="rect" id="node4" href="$d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html#a1225233e12f57aafdf4730f2e38d748d" title="Loads the application settings data from the database" alt="" coords="847,5,1032,47"/>
+<area shape="rect" id="node5" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html#ac18f0d293fb211f7050912a9686990a0" title="Loads a list of library watch folders from the database" alt="" coords="840,71,1039,112"/>
+<area shape="rect" id="node6" href="$df/da4/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_playlist_file_repo.html#a45782e52b6a1e548c136e02b2768ad1b" title="Load all playlist file entries from the database" alt="" coords="837,136,1041,177"/>
+<area shape="rect" id="node7" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a39d2da3fb475240cc9bedef41b3375b9" title="Loads a list of all MusicFiles objects with optional filter or order by criteria" alt="" coords="841,201,1037,243"/>
+<area shape="rect" id="node8" href="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a24deb9133a29bdf70315ec88b9b118fb" title="Loads specific logs from the databse" alt="" coords="1108,260,1307,301"/>
+<area shape="rect" id="node10" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a382ab3bb9ef5c28ed9d0ee09cf5a9573" title="Delete the app data database (user&#39;s database)" alt="" coords="846,319,1033,360"/>
+<area shape="rect" id="node9" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a282db1993d3e890ff819c1afd3e14114" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="1373,293,1559,335"/>
+<area shape="rect" id="node14" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="577,472,767,513"/>
+</map>

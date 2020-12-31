@@ -11,15 +11,17 @@ namespace \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_business_1_1_pipes}{
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_edge_dependency_checker}{Edge\+Dependency\+Checker}}
 \begin{DoxyCompactList}\small\item\em Used for checking Edge Core file dependencies \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner}{File\+Scanner}}
-\begin{DoxyCompactList}\small\item\em Responsive for scanning library music files and adding and managing discovered files to the database. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Responsible for scanning library music files and adding and managing discovered files to the database. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_uploader}{File\+Uploader}}
-\begin{DoxyCompactList}\small\item\em Responsive for managing uploading music files to You\+Tube Music. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Responsible for managing uploading music files to You\+Tube Music. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_idle_processor}{Idle\+Processor}}
 \begin{DoxyCompactList}\small\item\em Performs operations while the application is in idle state, such as retreiving data from \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} and updating the Music\+File database entries with the retreived data \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}}
 \begin{DoxyCompactList}\small\item\em Gets meta data / tag information from the music file itself and looks up any missing data using a \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_music_brainz}{Music\+Brainz}} A\+PI implementation (for instance album cover art, in which it will lookup Cover\+Art\+Archive\+: \href{https://coverartarchive.org/}{\texttt{ https\+://coverartarchive.\+org/}} \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_file_meta_data}{Music\+File\+Meta\+Data}}
 \begin{DoxyCompactList}\small\item\em Custom music file meta tag object \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor}{Playlist\+Processor}}
+\begin{DoxyCompactList}\small\item\em Responsible for scanning library playlist file and either creating them on YT Music or adding to them on YT Music \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_queue_checker}{Queue\+Checker}}
 \begin{DoxyCompactList}\small\item\em Constantly watches for the folder watcher state changed variable (Queue) in order to queue a new process when the music library changes (file added, deleted etc) \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_registry_settings}{Registry\+Settings}}

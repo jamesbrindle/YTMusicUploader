@@ -1,0 +1,94 @@
+.TH "YTMusicUploader.Providers.DataModels.PlaylistFile" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.DataModels.PlaylistFile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBPlaylistFileItem\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPlaylistFile\fP ()"
+.br
+.ti -1c
+.RI "\fBPlaylistFile\fP (string path, DateTime lastModifiedDate)"
+.br
+.ti -1c
+.RI "async override Task< \fBDbOperationResult\fP > \fBDelete\fP ()"
+.br
+.ti -1c
+.RI "async override Task< \fBDbOperationResult\fP > \fBSave\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBTitle\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBDescription\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBPlaylistId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBPath\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "DateTime \fBLastModifiedDate\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "DateTime? \fBLastUpload\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBList\fP< \fBPlaylistFileItem\fP > \fBPlaylistItems\fP = new \fBList\fP<\fBPlaylistFileItem\fP>()\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.PlaylistFile ()"
+
+.SS "YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.PlaylistFile (string path, DateTime lastModifiedDate)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.Delete ()\fC [virtual]\fP"
+
+.PP
+Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
+.SS "async override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.Save ()\fC [virtual]\fP"
+
+.PP
+Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.Description\fC [get]\fP, \fC [set]\fP"
+
+.SS "DateTime YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.LastModifiedDate\fC [get]\fP, \fC [set]\fP"
+
+.SS "DateTime? YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.LastUpload\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.Path\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.PlaylistId\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBList\fP<\fBPlaylistFileItem\fP> YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.PlaylistItems = new \fBList\fP<\fBPlaylistFileItem\fP>()\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.DataModels\&.PlaylistFile\&.Title\fC [get]\fP, \fC [set]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

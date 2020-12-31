@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_item1 =
+[
+    [ "notificationTextRenderer", "dc/dbd/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_item1.html#a46a9136b4eb99d8c9af0c153254d3b24", null ]
+];

@@ -1,8 +1,8 @@
-.TH "YTMusicUploader.Business.FileScanner" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business.FileScanner" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-YTMusicUploader.Business.FileScanner \- Responsive for scanning library music files and adding and managing discovered files to the database\&.  
+YTMusicUploader.Business.FileScanner \- Responsible for scanning library music files and adding and managing discovered files to the database\&.  
 
 .SH SYNOPSIS
 .br
@@ -42,15 +42,24 @@ YTMusicUploader.Business.FileScanner \- Responsive for scanning library music fi
 .RI "\fBList\fP< \fBMusicFile\fP > \fBMusicFilesToDelete\fP = new \fBList\fP<\fBMusicFile\fP>()\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "\fBList\fP< \fBPlaylistFile\fP > \fBPlaylistFilesToDelete\fP = new \fBList\fP<\fBPlaylistFile\fP>()\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "\fBList\fP< \fBMusicFile\fP > \fBCurrentMusicFiles\fP\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "HashSet< string > \fBCurrentMusicFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
+.RI "\fBList\fP< \fBPlaylistFile\fP > \fBCurrentPlaylistFiles\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "HashSet< string > \fBCurrentProcessingFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBStopped\fP = false\fC [get, set]\fP"
 .br
 .in -1c
 .SH "Detailed Description"
 .PP 
-Responsive for scanning library music files and adding and managing discovered files to the database\&. 
+Responsible for scanning library music files and adding and managing discovered files to the database\&. 
 
 
 .SH "Constructor & Destructor Documentation"
@@ -75,7 +84,9 @@ Resets the properties, such as discovered file, current music files and hashes
 .PP 
 .SS "\fBList\fP<\fBMusicFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.CurrentMusicFiles\fC [get]\fP, \fC [set]\fP"
 
-.SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.CurrentMusicFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
+.SS "\fBList\fP<\fBPlaylistFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.CurrentPlaylistFiles\fC [get]\fP, \fC [set]\fP"
+
+.SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.CurrentProcessingFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
 
 .SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.DiscoveredFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
 
@@ -84,6 +95,10 @@ Resets the properties, such as discovered file, current music files and hashes
 .SS "\fBList\fP<\fBFileData\fP> YTMusicUploader\&.Business\&.FileScanner\&.NewFiles = new \fBList\fP<\fBFileData\fP>()\fC [get]\fP, \fC [set]\fP"
 
 .SS "HashSet<string> YTMusicUploader\&.Business\&.FileScanner\&.NewFilesHash = new HashSet<string>()\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBList\fP<\fBPlaylistFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.PlaylistFilesToDelete = new \fBList\fP<\fBPlaylistFile\fP>()\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.Business\&.FileScanner\&.Stopped = false\fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

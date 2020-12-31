@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_41acee4a9a1dee0f91ac61b7d2042812 =
+[
+    [ "watchEndpointMusicConfig", "d2/d0a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_41acee4a9a1dee0f91ac61b7d2042812.html#aa2759e95c0e93094d732d7dec5111f64", null ]
+];

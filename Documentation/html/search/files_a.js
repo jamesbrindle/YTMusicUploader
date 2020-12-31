@@ -1,26 +1,10 @@
 var searchData=
 [
-  ['mainform_2ecs_1498',['MainForm.cs',['../d9/d54/_main_form_8cs.html',1,'']]],
-  ['mainform_2edelegates_2ecs_1499',['MainForm.Delegates.cs',['../dd/d3b/_main_form_8_delegates_8cs.html',1,'']]],
-  ['mainform_2edesigner_2ecs_1500',['MainForm.Designer.cs',['../d4/d23/_main_form_8_designer_8cs.html',1,'']]],
-  ['mainform_2eevents_2ebuttons_2ecs_1501',['MainForm.Events.Buttons.cs',['../d6/dfc/_main_form_8_events_8_buttons_8cs.html',1,'']]],
-  ['mainform_2eevents_2echeckboxes_2ecs_1502',['MainForm.Events.Checkboxes.cs',['../d3/d38/_main_form_8_events_8_checkboxes_8cs.html',1,'']]],
-  ['mainform_2eevents_2efilesystemwatcher_2ecs_1503',['MainForm.Events.FileSystemWatcher.cs',['../d4/d3d/_main_form_8_events_8_file_system_watcher_8cs.html',1,'']]],
-  ['mainform_2eevents_2elistboxes_2ecs_1504',['MainForm.Events.ListBoxes.cs',['../d9/d61/_main_form_8_events_8_list_boxes_8cs.html',1,'']]],
-  ['mainform_2eevents_2emenu_2ecs_1505',['MainForm.Events.Menu.cs',['../d9/de5/_main_form_8_events_8_menu_8cs.html',1,'']]],
-  ['mainform_2eevents_2etextboxes_2ecs_1506',['MainForm.Events.TextBoxes.cs',['../d7/de1/_main_form_8_events_8_text_boxes_8cs.html',1,'']]],
-  ['mainform_2etooltips_2ecs_1507',['MainForm.Tooltips.cs',['../d0/d93/_main_form_8_tooltips_8cs.html',1,'']]],
-  ['manageytmusic_2ecs_1508',['ManageYTMusic.cs',['../d8/d0c/_manage_y_t_music_8cs.html',1,'']]],
-  ['manageytmusic_2edelegates_2ecs_1509',['ManageYTMusic.Delegates.cs',['../d7/d65/_manage_y_t_music_8_delegates_8cs.html',1,'']]],
-  ['manageytmusic_2edesigner_2ecs_1510',['ManageYTMusic.Designer.cs',['../d7/d5e/_manage_y_t_music_8_designer_8cs.html',1,'']]],
-  ['manageytmusic_2eevents_2ebuttons_2ecs_1511',['ManageYTMusic.Events.Buttons.cs',['../da/d37/_manage_y_t_music_8_events_8_buttons_8cs.html',1,'']]],
-  ['manageytmusic_2eevents_2etextbox_2ecs_1512',['ManageYTMusic.Events.TextBox.cs',['../de/d98/_manage_y_t_music_8_events_8_text_box_8cs.html',1,'']]],
-  ['manageytmusic_2eevents_2etreeview_2ecs_1513',['ManageYTMusic.Events.TreeView.cs',['../d1/d8a/_manage_y_t_music_8_events_8_tree_view_8cs.html',1,'']]],
-  ['medium_2ecs_1514',['Medium.cs',['../d4/d7b/_medium_8cs.html',1,'']]],
-  ['messages_2edesigner_2ecs_1515',['Messages.Designer.cs',['../d0/d9f/_messages_8_designer_8cs.html',1,'']]],
-  ['musicbrainzclient_2ecs_1516',['MusicBrainzClient.cs',['../de/d2f/_music_brainz_client_8cs.html',1,'']]],
-  ['musicdatafetcher_2ecs_1517',['MusicDataFetcher.cs',['../d6/df0/_music_data_fetcher_8cs.html',1,'']]],
-  ['musicfile_2ecs_1518',['MusicFile.cs',['../dd/de8/_music_file_8cs.html',1,'']]],
-  ['musicfilerepo_2ecs_1519',['MusicFileRepo.cs',['../df/d06/_music_file_repo_8cs.html',1,'']]],
-  ['musicmanagetreenodemodel_2ecs_1520',['MusicManageTreeNodeModel.cs',['../da/d4c/_music_manage_tree_node_model_8cs.html',1,'']]]
+  ['label_2ecs_2024',['Label.cs',['../d1/dd2/_label_8cs.html',1,'']]],
+  ['labelinfo_2ecs_2025',['LabelInfo.cs',['../d2/d66/_label_info_8cs.html',1,'']]],
+  ['license_2etxt_2026',['LICENSE.txt',['../d1/d7f/x64_2_debug_2_y_t_music_uploader_8exe_8_web_view2_2_e_b_web_view_2_subresource_01_filter_2_unind5f0fadb0d26e94109bd811fb51d258a3.html',1,'(Global Namespace)'],['../df/dc9/x86_2_debug_2_y_t_music_uploader_8exe_8_web_view2_2_e_b_web_view_2_subresource_01_filter_2_unind18f0d0a5a6e93d3a508b0b135d70740f.html',1,'(Global Namespace)'],['../da/d52/x86_2_debug_2_y_t_music_uploader_8exe_8_web_view2_2_e_b_web_view_2_subresource_01_filter_2_unind16b5103fa3250163b722a2dafe98da94.html',1,'(Global Namespace)']]],
+  ['lifespan_2ecs_2027',['LifeSpan.cs',['../df/da8/_life_span_8cs.html',1,'']]],
+  ['log_2ecs_2028',['Log.cs',['../d5/d20/_log_8cs.html',1,'']]],
+  ['logger_2ecs_2029',['Logger.cs',['../da/d92/_logger_8cs.html',1,'']]],
+  ['logsrepo_2ecs_2030',['LogsRepo.cs',['../df/d8e/_logs_repo_8cs.html',1,'']]]
 ];

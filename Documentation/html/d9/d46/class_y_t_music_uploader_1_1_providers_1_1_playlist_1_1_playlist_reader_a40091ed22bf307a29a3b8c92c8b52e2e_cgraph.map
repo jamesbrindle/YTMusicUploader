@@ -1,0 +1,7 @@
+<map id="YTMusicUploader.Providers.Playlist.PlaylistReader.ReadPlaylistFile" name="YTMusicUploader.Providers.Playlist.PlaylistReader.ReadPlaylistFile">
+<area shape="rect" id="node1" title="Read a playlist file from a give path and returns a PlaylistFile (Data Model) complete with absolute ..." alt="" coords="5,78,256,119"/>
+<area shape="rect" id="node2" href="$d5/d54/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_content_1_1_playlist_parser_factory.html#ac28943e59b60a357b2403ebd2ef13aba" title=" " alt="" coords="309,5,508,61"/>
+<area shape="rect" id="node3" href="$dc/d9e/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_utils.html#aef206590d6c1b976926193290449bed0" title=" " alt="" coords="561,78,748,119"/>
+<area shape="rect" id="node4" href="$dc/d9e/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_utils.html#a493ef5de9b3eaa76e732b4fea017ac3c" title=" " alt="" coords="304,137,513,178"/>
+<area shape="rect" id="node5" href="$dc/d9e/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_utils.html#a755432f90a308fe61fc99153914bae56" title=" " alt="" coords="562,143,747,185"/>
+</map>

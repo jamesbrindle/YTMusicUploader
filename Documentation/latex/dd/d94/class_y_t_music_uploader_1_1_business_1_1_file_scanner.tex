@@ -2,13 +2,19 @@
 \label{class_y_t_music_uploader_1_1_business_1_1_file_scanner}\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
 
 
-Responsive for scanning library music files and adding and managing discovered files to the database.  
+Responsible for scanning library music files and adding and managing discovered files to the database.  
 
 
 
 
 Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{d8/d3e/class_y_t_music_uploader_1_1_business_1_1_file_scanner__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -31,14 +37,20 @@ Hash\+Set$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1
 \item 
 \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a1efea8966e2d7a8da44b19057804026e}{Music\+Files\+To\+Delete}} = new \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
+\mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aaaf512501bea5ccbfe5a5974b46bdfe1}{Playlist\+Files\+To\+Delete}} = new \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}}$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
 \mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa9515774329587c06771d08f35a0b4cd}{Current\+Music\+Files}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
-Hash\+Set$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a59731bc58512f7b4c85c21b5b3854b14}{Current\+Music\+Files\+Hash}} = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a8f9a3b809c60be848198b0eddb575547}{Current\+Playlist\+Files}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Hash\+Set$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aed9d9cbc03cad9a45d924cc6dcead92b}{Current\+Processing\+Files\+Hash}} = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_file_scanner_af431857f2ccbaf3a8b0493ddbd280efd}{Stopped}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Responsive for scanning library music files and adding and managing discovered files to the database. 
+Responsible for scanning library music files and adding and managing discovered files to the database. 
 
 
 
@@ -63,7 +75,13 @@ Responsive for scanning library music files and adding and managing discovered f
 Executes the scan 
 
 Here is the call graph for this function\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac79b28d31e906a37a700c7574a7b6290_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac6fbaca1fd66679b56ace361aae3718d}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac6fbaca1fd66679b56ace361aae3718d}} 
 \index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!RecountLibraryFiles@{RecountLibraryFiles}}
 \index{RecountLibraryFiles@{RecountLibraryFiles}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
@@ -75,7 +93,13 @@ Here is the call graph for this function\+:
 Updates the \textquotesingle{}Discovered Files\textquotesingle{} count on the main form. Ideally used when updating the form while an upload process is taking place 
 
 Here is the call graph for this function\+:
-% FIG 2
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner_ac6fbaca1fd66679b56ace361aae3718d_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aca7c721e5249d14720bd65ac83b593f4}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aca7c721e5249d14720bd65ac83b593f4}} 
 \index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!Reset@{Reset}}
 \index{Reset@{Reset}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
@@ -87,7 +111,13 @@ Here is the call graph for this function\+:
 Resets the properties, such as discovered file, current music files and hashes 
 
 Here is the caller graph for this function\+:
-% FIG 3
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner_aca7c721e5249d14720bd65ac83b593f4_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Property Documentation}
@@ -97,11 +127,17 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{CurrentMusicFiles}{CurrentMusicFiles}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Current\+Music\+Files\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a59731bc58512f7b4c85c21b5b3854b14}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a59731bc58512f7b4c85c21b5b3854b14}} 
-\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!CurrentMusicFilesHash@{CurrentMusicFilesHash}}
-\index{CurrentMusicFilesHash@{CurrentMusicFilesHash}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
-\doxysubsubsection{\texorpdfstring{CurrentMusicFilesHash}{CurrentMusicFilesHash}}
-{\footnotesize\ttfamily Hash\+Set$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Current\+Music\+Files\+Hash = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a8f9a3b809c60be848198b0eddb575547}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_a8f9a3b809c60be848198b0eddb575547}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!CurrentPlaylistFiles@{CurrentPlaylistFiles}}
+\index{CurrentPlaylistFiles@{CurrentPlaylistFiles}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{CurrentPlaylistFiles}{CurrentPlaylistFiles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}}$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Current\+Playlist\+Files\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aed9d9cbc03cad9a45d924cc6dcead92b}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aed9d9cbc03cad9a45d924cc6dcead92b}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!CurrentProcessingFilesHash@{CurrentProcessingFilesHash}}
+\index{CurrentProcessingFilesHash@{CurrentProcessingFilesHash}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{CurrentProcessingFilesHash}{CurrentProcessingFilesHash}}
+{\footnotesize\ttfamily Hash\+Set$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Current\+Processing\+Files\+Hash = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa45213ac30fb4ca0a724db3360dbc375}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aa45213ac30fb4ca0a724db3360dbc375}} 
 \index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!DiscoveredFilesHash@{DiscoveredFilesHash}}
@@ -127,8 +163,20 @@ Here is the caller graph for this function\+:
 \doxysubsubsection{\texorpdfstring{NewFilesHash}{NewFilesHash}}
 {\footnotesize\ttfamily Hash\+Set$<$string$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+New\+Files\+Hash = new Hash\+Set$<$string$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aaaf512501bea5ccbfe5a5974b46bdfe1}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_aaaf512501bea5ccbfe5a5974b46bdfe1}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!PlaylistFilesToDelete@{PlaylistFilesToDelete}}
+\index{PlaylistFilesToDelete@{PlaylistFilesToDelete}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{PlaylistFilesToDelete}{PlaylistFilesToDelete}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}}$>$ Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Playlist\+Files\+To\+Delete = new \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}}$>$()\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_file_scanner_af431857f2ccbaf3a8b0493ddbd280efd}\label{class_y_t_music_uploader_1_1_business_1_1_file_scanner_af431857f2ccbaf3a8b0493ddbd280efd}} 
+\index{YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}!Stopped@{Stopped}}
+\index{Stopped@{Stopped}!YTMusicUploader.Business.FileScanner@{YTMusicUploader.Business.FileScanner}}
+\doxysubsubsection{\texorpdfstring{Stopped}{Stopped}}
+{\footnotesize\ttfamily bool Y\+T\+Music\+Uploader.\+Business.\+File\+Scanner.\+Stopped = false\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Business/\mbox{\hyperlink{_file_scanner_8cs}{File\+Scanner.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Business/\mbox{\hyperlink{_file_scanner_8cs}{File\+Scanner.\+cs}}\end{DoxyCompactItemize}

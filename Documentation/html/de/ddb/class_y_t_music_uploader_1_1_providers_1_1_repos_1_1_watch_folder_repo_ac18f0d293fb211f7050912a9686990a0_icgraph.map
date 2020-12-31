@@ -1,0 +1,9 @@
+<map id="YTMusicUploader.Providers.Repos.WatchFolderRepo.Load" name="YTMusicUploader.Providers.Repos.WatchFolderRepo.Load">
+<area shape="rect" id="node1" title="Loads a list of library watch folders from the database" alt="" coords="1323,39,1521,80"/>
+<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a5e5f1675721aa65a8016748b32d809ee" title=" " alt="" coords="1040,39,1275,80"/>
+<area shape="rect" id="node3" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a0f9bb7c069a72090c6f86048509fa343" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="729,39,992,80"/>
+<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a2cc4c1d974056091b535e82ee14cf3ae" title=" " alt="" coords="491,39,681,80"/>
+<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="252,5,443,47"/>
+<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad49bcebfe92cf336cecefee2c73a1883" title=" " alt="" coords="252,71,443,112"/>
+<area shape="rect" id="node7" href="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,71,204,112"/>
+</map>

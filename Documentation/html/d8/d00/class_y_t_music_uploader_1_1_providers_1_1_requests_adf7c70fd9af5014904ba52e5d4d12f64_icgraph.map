@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Providers.Requests.GetArtists" name="YTMusicUploader.Providers.Requests.GetArtists">
+<area shape="rect" id="node1" title="HttpWebRequest POST request &#45; Recursively fetches all the artists from YouTube Music&#39;s &#39;Upload&#39; secti..." alt="" coords="473,5,659,47"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6808d6ec5334bfe6a329d6a29be79ae5" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="240,5,425,47"/>
+<area shape="rect" id="node3" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="5,5,192,47"/>
+</map>

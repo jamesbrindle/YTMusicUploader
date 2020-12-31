@@ -1,8 +1,9 @@
-.TH "YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel
+YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel \- Model for Manage YouTube Music dialogue's TreeView  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -10,7 +11,7 @@ YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel
 
 .in +1c
 .ti -1c
-.RI "enum \fBNodeTypeEnum\fP { \fBNodeTypeEnum\&.Root\fP, \fBNodeTypeEnum\&.Artist\fP, \fBNodeTypeEnum\&.Album\fP, \fBNodeTypeEnum\&.Song\fP }"
+.RI "enum \fBNodeTypeEnum\fP { \fBNodeTypeEnum\&.Root\fP, \fBNodeTypeEnum\&.Artist\fP, \fBNodeTypeEnum\&.Album\fP, \fBNodeTypeEnum\&.Song\fP, \fBNodeTypeEnum\&.Playlist\fP, \fBNodeTypeEnum\&.PlaylistItem\fP }"
 .br
 .in -1c
 .SS "Properties"
@@ -26,7 +27,10 @@ YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel
 .RI "string \fBAlbumTitle\fP\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "string \fBSongTitle\fP\fC [get, set]\fP"
+.RI "string \fBSongTitleOrDescription\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBPlaylistTitle\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "string \fBDuration\fP\fC [get, set]\fP"
@@ -41,12 +45,20 @@ YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel
 .RI "string \fBEntityOrBrowseId\fP\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "string \fBAltEntityId\fP\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "string \fBMbId\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "string \fBCovertArtUrl\fP\fC [get, set]\fP"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+Model for Manage YouTube Music dialogue's TreeView 
+
+
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "enum \fBYTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.NodeTypeEnum\fP\fC [strong]\fP"
@@ -62,9 +74,15 @@ YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel
 \fB\fIAlbum \fP\fP
 .TP
 \fB\fISong \fP\fP
+.TP
+\fB\fIPlaylist \fP\fP
+.TP
+\fB\fIPlaylistItem \fP\fP
 .SH "Property Documentation"
 .PP 
 .SS "string YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.AlbumTitle\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.AltEntityId\fC [get]\fP, \fC [set]\fP"
 
 .SS "string YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.ArtistTitle\fC [get]\fP, \fC [set]\fP"
 
@@ -80,7 +98,9 @@ YTMusicUploader.Providers.RequestModels.MusicManageTreeNodeModel
 
 .SS "\fBNodeTypeEnum\fP YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.NodeType\fC [get]\fP, \fC [set]\fP"
 
-.SS "string YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.SongTitle\fC [get]\fP, \fC [set]\fP"
+.SS "string YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.PlaylistTitle\fC [get]\fP, \fC [set]\fP"
+
+.SS "string YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.SongTitleOrDescription\fC [get]\fP, \fC [set]\fP"
 
 .SS "string YTMusicUploader\&.Providers\&.RequestModels\&.MusicManageTreeNodeModel\&.Uploaded\fC [get]\fP, \fC [set]\fP"
 

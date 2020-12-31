@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService.SearchAsync" name="YTMusicUploader.MusicBrainz.API.Services.ReleaseGroupService.SearchAsync">
+<area shape="rect" id="node1" title="Search for a release&#45;group in the MusicBrainz database, matching the given query." alt="" coords="5,43,233,99"/>
+<area shape="rect" id="node2" href="$dc/d55/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service.html#ad7f924d7a979b3732ca2c4a6ff8530f0" title="Search for a release&#45;group in the MusicBrainz database, matching the given query." alt="" coords="281,5,509,61"/>
+<area shape="rect" id="node3" href="$dd/db6/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_parameters.html#a5cbd53dce6d04938c2dac03db7c0d0c0" title=" " alt="" coords="293,86,497,127"/>
+</map>

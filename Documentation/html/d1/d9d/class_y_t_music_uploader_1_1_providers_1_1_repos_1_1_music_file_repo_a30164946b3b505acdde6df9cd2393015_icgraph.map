@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Repos.MusicFileRepo.Update" name="YTMusicUploader.Providers.Repos.MusicFileRepo.Update">
+<area shape="rect" id="node1" title="Updates the Music File entry in the database with the fields of the given MusicFile object" alt="" coords="239,5,433,47"/>
+<area shape="rect" id="node2" href="$df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html#a6d852cd37ed75db01fb143d2bebc0244" title="Insert or update the database" alt="" coords="5,5,191,47"/>
+</map>

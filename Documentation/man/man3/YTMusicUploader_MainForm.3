@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MainForm" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MainForm" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,7 +25,10 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBInstallEdge\fP ()"
 .br
 .ti -1c
-.RI "void \fBStartMainProcess\fP ()"
+.RI "void \fBStartMainProcess\fP (bool restarting=false)"
+.br
+.ti -1c
+.RI "void \fBSetAmountLabelsToZero\fP ()"
 .br
 .ti -1c
 .RI "void \fBRepopulateAmountLables\fP (bool includeDiscoveredFiles=false)"
@@ -37,7 +40,10 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBShowMessageBox\fP (string title, string message, MessageBoxButtons buttons, MessageBoxIcon icon, int height)"
 .br
 .ti -1c
-.RI "void \fBQuitApplication\fP ()"
+.RI "void \fBKillApplication\fP ()"
+.br
+.ti -1c
+.RI "void \fBQuitApplication\fP (bool kill=false)"
 .br
 .ti -1c
 .RI "void \fBSetStatusMessage\fP (string statusMessage, string systemTrayIconText=null)"
@@ -106,6 +112,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBSetConnectToYouTubeButtonEnabled\fP (bool enabled)"
 .br
 .ti -1c
+.RI "void \fBEnableTrayPauseResume\fP (bool enabled)"
+.br
+.ti -1c
 .RI "void \fBShowForm\fP ()"
 .br
 .in -1c
@@ -145,6 +154,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "\fBMusicFileRepo\fP \fBMusicFileRepo\fP = new \fBMusicFileRepo\fP()\fC [get, set]\fP"
 .br
 .ti -1c
+.RI "\fBPlaylistFileRepo\fP \fBPlaylistFileRepo\fP = new \fBPlaylistFileRepo\fP()\fC [get, set]\fP"
+.br
+.ti -1c
 .RI "\fBSettings\fP \fBSettings\fP\fC [get, set]\fP"
 .br
 .ti -1c
@@ -155,6 +167,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "\fBFileUploader\fP \fBFileUploader\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBPlaylistProcessor\fP \fBPlaylistProcessor\fP\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "\fBQueueChecker\fP \fBQueueChecker\fP\fC [get, set]\fP"
@@ -280,19 +295,25 @@ Clean up any resources being used\&.
 .RE
 .PP
 
+.SS "void YTMusicUploader\&.MainForm\&.EnableTrayPauseResume (bool enabled)"
+
 .SS "string YTMusicUploader\&.MainForm\&.GetIssuesLabel ()"
 
 .SS "string YTMusicUploader\&.MainForm\&.GetUploadLabel ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.InstallEdge ()"
 
-.SS "void YTMusicUploader\&.MainForm\&.QuitApplication ()"
+.SS "void YTMusicUploader\&.MainForm\&.KillApplication ()"
+
+.SS "void YTMusicUploader\&.MainForm\&.QuitApplication (bool kill = \fCfalse\fP)"
 
 .SS "void YTMusicUploader\&.MainForm\&.RepopulateAmountLables (bool includeDiscoveredFiles = \fCfalse\fP)"
 
 .SS "void YTMusicUploader\&.MainForm\&.Restart ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetAboutButtonImage (Image image)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetAmountLabelsToZero ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetConnectedToYouTubeMusic (bool connectedToYouTubeMusic)"
 
@@ -334,7 +355,7 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.ShowMessageBox (string title, string message, MessageBoxButtons buttons, MessageBoxIcon icon, int height)"
 
-.SS "void YTMusicUploader\&.MainForm\&.StartMainProcess ()"
+.SS "void YTMusicUploader\&.MainForm\&.StartMainProcess (bool restarting = \fCfalse\fP)"
 
 .SH "Property Documentation"
 .PP 
@@ -387,6 +408,10 @@ Clean up any resources being used\&.
 .SS "\fBMusicFileRepo\fP YTMusicUploader\&.MainForm\&.MusicFileRepo = new \fBMusicFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.NewVersionTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBPlaylistFileRepo\fP YTMusicUploader\&.MainForm\&.PlaylistFileRepo = new \fBPlaylistFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBPlaylistProcessor\fP YTMusicUploader\&.MainForm\&.PlaylistProcessor\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBQueueChecker\fP YTMusicUploader\&.MainForm\&.QueueChecker\fC [get]\fP, \fC [set]\fP"
 

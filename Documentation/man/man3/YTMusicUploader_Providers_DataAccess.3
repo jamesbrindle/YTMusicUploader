@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataAccess" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataAccess" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,7 +8,7 @@ YTMusicUploader.Providers.DataAccess \- Abastract database repository access cla
 .br
 .PP
 .PP
-Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.LogsRepo\fP, \fBYTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\fP, \fBYTMusicUploader\&.Providers\&.Repos\&.SettingsRepo\fP, and \fBYTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\fP\&.
+Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.LogsRepo\fP, \fBYTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\fP, \fBYTMusicUploader\&.Providers\&.Repos\&.PlaylistFileRepo\fP, \fBYTMusicUploader\&.Providers\&.Repos\&.SettingsRepo\fP, and \fBYTMusicUploader\&.Providers\&.Repos\&.WatchFolderRepo\fP\&.
 .SS "Static Public Member Functions"
 
 .in +1c
@@ -25,6 +25,9 @@ Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.LogsRepo\fP, \fBYTMusicUpl
 .br
 .RI "Runs on form load to ensure the database schema is at the latest version following an application upgrade "
 .ti -1c
+.RI "static void \fBCheckDatabaseIntegrity\fP ()"
+.br
+.ti -1c
 .RI "static SQLiteConnection \fBDbConnection\fP (bool readOnly=false)"
 .br
 .RI "Create an SQLite connection to the database file in the users AppData path "
@@ -40,6 +43,8 @@ Abastract database repository access class\&.
 
 .PP
 Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder 
+.SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.CheckDatabaseIntegrity ()\fC [static]\fP"
+
 .SS "static SQLiteConnection YTMusicUploader\&.Providers\&.DataAccess\&.DbConnection (bool readOnly = \fCfalse\fP)\fC [static]\fP"
 
 .PP

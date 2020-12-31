@@ -1,0 +1,10 @@
+<map id="YTMusicUploader.Providers.Playlist.Models.BasePlaylistEntry" name="YTMusicUploader.Providers.Playlist.Models.BasePlaylistEntry">
+<area shape="rect" id="node1" title="Music playlist library implementation" alt="" coords="627,5,845,97"/>
+<area shape="rect" id="node2" href="$da/d2e/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_hls_playlist_entry.html" title="Music playlist library implementation" alt="" coords="160,175,368,281"/>
+<area shape="rect" id="node5" href="$d2/d9f/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_entry.html" title="Music playlist library implementation" alt="" coords="393,145,607,311"/>
+<area shape="rect" id="node6" href="$d0/dcc/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_pls_playlist_entry.html" title="Music playlist library implementation" alt="" coords="632,167,840,289"/>
+<area shape="rect" id="node7" href="$d2/de0/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_wpl_playlist_entry.html" title="Music playlist library implementation" alt="" coords="865,153,1077,303"/>
+<area shape="rect" id="node8" href="$dd/d84/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_zpl_playlist_entry.html" title="Music playlist library implementation" alt="" coords="1101,153,1307,303"/>
+<area shape="rect" id="node3" href="$d3/dcd/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_hls_master_playlist_entry.html" title="Music playlist library implementation" alt="" coords="5,359,253,597"/>
+<area shape="rect" id="node4" href="$d5/df4/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_hls_media_playlist_entry.html" title="Music playlist library implementation" alt="" coords="277,381,520,575"/>
+</map>

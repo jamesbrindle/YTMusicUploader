@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationd3f408a22961c3b723bec7fd182efbb4 =
+[
+    [ "musicShelfContinuation", "df/d0f/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationd3f408a22961c3b723bec7fd182efbb4.html#a2cd24fd47459d3cf35f6293063f1b912", null ]
+];

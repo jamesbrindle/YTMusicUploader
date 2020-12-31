@@ -8,11 +8,23 @@ Music File database repository access.
 
 
 Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{d8/da9/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{d4/d25/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,7 +33,9 @@ async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_m
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}{Load\+From\+Path}} (string path)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by file path from the database \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede}{Load\+From\+Entity\+Id}} (string entity\+Id)
-\item 
+\begin{DoxyCompactList}\small\item\em Load single Music\+File object by file by You\+Tube entity Id \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a5174e67e4072fdaf9b0cd005757cef9e}{Load\+From\+Video\+Id}} (string video\+Id)
+\begin{DoxyCompactList}\small\item\em Load single Music\+File object by file by You\+Tube video Id \end{DoxyCompactList}\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1c9cb64300bd688e1d751ec5720dd216}{Get\+Duplicate}} (string hash, string path)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by hash and from the database that doesn\textquotesingle{}t match the given path (i.\+e. a duplicate hash) \end{DoxyCompactList}\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd}{Get\+Randmon\+Music\+File\+With\+Missing\+Mb\+Id}} ()
@@ -87,7 +101,13 @@ Count all non-\/removed Music File entries
 Integer count
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 2
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a9c12e93c1d64640a6f646161d9f5ea4d_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountIssues@{CountIssues}}
 \index{CountIssues@{CountIssues}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -102,7 +122,13 @@ Count all non-\/removed Music File entries that have upload errors
 Integer count
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 3
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a799073d452dba59c8412e483f124eb73_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!CountUploaded@{CountUploaded}}
 \index{CountUploaded@{CountUploaded}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -117,7 +143,13 @@ Count all non-\/removed Music File entries with upload success
 Integer count
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 4
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1904d56d0e45d79eba50da29d65ad219_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a4dba4edf26d86fbec4abed0e5a1652d0}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -159,7 +191,13 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 5
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a88a351a8566be307ba2519224c4fa5a7_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a61d540025b68ae4753ca2575da74b67b}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a61d540025b68ae4753ca2575da74b67b}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Delete@{Delete}}
 \index{Delete@{Delete}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -193,6 +231,14 @@ Deletes all Music File entries from the database
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a73f58bd09067c3085ddf57553cc5a240_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!DeleteByEntityId@{DeleteByEntityId}}
 \index{DeleteByEntityId@{DeleteByEntityId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -312,7 +358,13 @@ Inserts a Music File entry into the database. If the entry already exists, but i
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 6
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a2157133d88ff435ce8873f4b4aa369f1_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_af96c85bc0698ec0a576deb97e81084d1}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!Load@{Load}}
 \index{Load@{Load}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -348,6 +400,14 @@ Loads a list of all Music\+Files objects with optional filter or order by criter
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_list}{List}} of Music\+File\+Objects
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a39d2da3fb475240cc9bedef41b3375b9_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_acc49580059eeddb6f118ea581ec2fede}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadFromEntityId@{LoadFromEntityId}}
 \index{LoadFromEntityId@{LoadFromEntityId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -356,9 +416,7 @@ Loads a list of all Music\+Files objects with optional filter or order by criter
 
 
 
-
-
-Load single Music\+File object by file by You\+Tube entity Id
+Load single Music\+File object by file by You\+Tube entity Id 
 
 \begin{DoxyReturn}{Returns}
 Music\+File object
@@ -372,6 +430,19 @@ Music\+File object
 
 
 Load single Music\+File object by file path from the database 
+
+\begin{DoxyReturn}{Returns}
+Music\+File object
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a5174e67e4072fdaf9b0cd005757cef9e}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a5174e67e4072fdaf9b0cd005757cef9e}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadFromVideoId@{LoadFromVideoId}}
+\index{LoadFromVideoId@{LoadFromVideoId}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{LoadFromVideoId()}{LoadFromVideoId()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+From\+Video\+Id (\begin{DoxyParamCaption}\item[{string}]{video\+Id }\end{DoxyParamCaption})}
+
+
+
+Load single Music\+File object by file by You\+Tube video Id 
 
 \begin{DoxyReturn}{Returns}
 Music\+File object
@@ -464,9 +535,15 @@ Updates the Music File entry in the database with the fields of the given Music\
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 7
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a30164946b3b505acdde6df9cd2393015_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Repos/\mbox{\hyperlink{_music_file_repo_8cs}{Music\+File\+Repo.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Repos/\mbox{\hyperlink{_music_file_repo_8cs}{Music\+File\+Repo.\+cs}}\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,6 +23,11 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .ti -1c
 .RI "async Task< \fBMusicFile\fP > \fBLoadFromEntityId\fP (string entityId)"
 .br
+.RI "Load single MusicFile object by file by YouTube entity Id "
+.ti -1c
+.RI "async Task< \fBMusicFile\fP > \fBLoadFromVideoId\fP (string videoId)"
+.br
+.RI "Load single MusicFile object by file by YouTube video Id "
 .ti -1c
 .RI "Task< \fBMusicFile\fP > \fBGetDuplicate\fP (string hash, string path)"
 .br
@@ -352,7 +357,7 @@ Loads a list of all MusicFiles objects with optional filter or order by criteria
 .SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadFromEntityId (string entityId)"
 
 .PP
-Load single MusicFile object by file by YouTube entity Id
+Load single MusicFile object by file by YouTube entity Id 
 .PP
 \fBReturns\fP
 .RS 4
@@ -364,6 +369,17 @@ MusicFile object
 
 .PP
 Load single MusicFile object by file path from the database 
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
+.SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadFromVideoId (string videoId)"
+
+.PP
+Load single MusicFile object by file by YouTube video Id 
 .PP
 \fBReturns\fP
 .RS 4

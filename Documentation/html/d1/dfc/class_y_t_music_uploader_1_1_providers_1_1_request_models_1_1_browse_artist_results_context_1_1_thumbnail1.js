@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_thumbnail1 =
+[
+    [ "thumbnails", "d1/dfc/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_thumbnail1.html#a65bb6c5da1535ada5f649549920769ed", null ]
+];

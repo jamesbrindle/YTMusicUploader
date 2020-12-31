@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainzWithAlbumNameVariation" name="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainzWithAlbumNameVariation">
+<area shape="rect" id="node1" title="Get the recording (track data) from MusicBrainz via query using the artist, album an track names...." alt="" coords="5,5,248,61"/>
+<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a7892203555b075bcf4bbb7da3a43ba0e" title="Get the recording (track data) from MusicBrainz via query using the artist, album an track names" alt="" coords="296,5,537,61"/>
+<area shape="rect" id="node3" href="$db/d6f/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_recording_service.html#aa65773bd4edd753f4b269f3eefccb5dc" title="Search for an recording in the MusicBrainz database, matching the given query." alt="" coords="585,5,792,61"/>
+</map>

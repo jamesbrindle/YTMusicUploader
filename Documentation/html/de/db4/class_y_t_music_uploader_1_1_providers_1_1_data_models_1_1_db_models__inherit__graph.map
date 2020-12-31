@@ -1,0 +1,9 @@
+<map id="YTMusicUploader.Providers.DataModels.DbModels" name="YTMusicUploader.Providers.DataModels.DbModels">
+<area shape="rect" id="node1" title=" " alt="" coords="424,145,609,252"/>
+<area shape="rect" id="node3" href="$d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html" title="Information or error log object" alt="" coords="5,366,191,561"/>
+<area shape="rect" id="node4" href="$df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html" title="Music library file and status" alt="" coords="215,300,400,627"/>
+<area shape="rect" id="node5" href="$de/df4/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file.html" title=" " alt="" coords="424,351,609,575"/>
+<area shape="rect" id="node6" href="$dc/d52/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_settings.html" title="Application settings data" alt="" coords="633,388,819,539"/>
+<area shape="rect" id="node7" href="$d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html" title="Selected libraries to scan and watch data" alt="" coords="843,410,1028,517"/>
+<area shape="rect" id="node2" href="$d9/da3/interface_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_i_db_model.html" title=" " alt="" coords="477,5,556,97"/>
+</map>

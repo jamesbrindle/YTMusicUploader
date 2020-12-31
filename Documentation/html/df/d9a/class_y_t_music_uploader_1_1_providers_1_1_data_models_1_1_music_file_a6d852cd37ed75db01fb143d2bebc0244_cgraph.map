@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Providers.DataModels.MusicFile.Save" name="YTMusicUploader.Providers.DataModels.MusicFile.Save">
+<area shape="rect" id="node1" title="Insert or update the database" alt="" coords="5,39,191,80"/>
+<area shape="rect" id="node2" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a2157133d88ff435ce8873f4b4aa369f1" title="Inserts a Music File entry into the database. If the entry already exists, but is flagged as &#39;removed..." alt="" coords="243,5,429,47"/>
+<area shape="rect" id="node3" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a30164946b3b505acdde6df9cd2393015" title="Updates the Music File entry in the database with the fields of the given MusicFile object" alt="" coords="239,71,433,112"/>
+</map>

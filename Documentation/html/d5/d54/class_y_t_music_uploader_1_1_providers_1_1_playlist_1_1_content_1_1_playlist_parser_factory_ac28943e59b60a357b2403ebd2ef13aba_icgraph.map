@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Playlist.Content.PlaylistParserFactory.GetPlaylistParser" name="YTMusicUploader.Providers.Playlist.Content.PlaylistParserFactory.GetPlaylistParser">
+<area shape="rect" id="node1" title=" " alt="" coords="304,5,503,61"/>
+<area shape="rect" id="node2" href="$d9/d46/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_playlist_reader.html#a40091ed22bf307a29a3b8c92c8b52e2e" title="Read a playlist file from a give path and returns a PlaylistFile (Data Model) complete with absolute ..." alt="" coords="5,13,256,54"/>
+</map>

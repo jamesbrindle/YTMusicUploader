@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_collaborationsettingscommand =
+[
+    [ "clickTrackingParams", "d7/d5c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_collaborationsettingscommand.html#a03d6e31ee6ba1c6a79fc2f0fbb441c78", null ],
+    [ "playlistEditorEndpoint", "d7/d5c/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_collaborationsettingscommand.html#ac33513aaf0b9eae69471d41cdc71998d", null ]
+];

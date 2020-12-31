@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d9/da3/interface_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_i_db_model.html" title=" " alt="" coords="5,136,191,177"/>
+<area shape="rect" id="node2" href="$d5/df5/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_db_models.html" title=" " alt="" coords="239,136,424,177"/>
+<area shape="rect" id="node3" href="$d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html" title="Information or error log object" alt="" coords="472,5,657,47"/>
+<area shape="rect" id="node4" href="$df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html" title="Music library file and status" alt="" coords="472,71,657,112"/>
+<area shape="rect" id="node5" href="$de/df4/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file.html" title=" " alt="" coords="472,136,657,177"/>
+<area shape="rect" id="node6" href="$dc/d52/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_settings.html" title="Application settings data" alt="" coords="472,201,657,243"/>
+<area shape="rect" id="node7" href="$d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html" title="Selected libraries to scan and watch data" alt="" coords="472,267,657,308"/>
+</map>

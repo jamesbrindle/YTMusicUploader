@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['leave_1905',['Leave',['../d8/d9d/namespace_j_b_toolkit_1_1_win_forms.html#a8b98fc50d2a867579c3aa23493fd9444aa52945dbe283de2f7e9d63ca3417f36a',1,'JBToolkit::WinForms']]],
-  ['links_1906',['Links',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8abd908db5ccb07777ced8023dffc802f4',1,'JBToolkit::Windows']]],
-  ['localappdata_1907',['LocalAppData',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a9ebf416ec9071e4938b73c845295ff2c',1,'JBToolkit::Windows']]]
+  ['info_2503',['Info',['../d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html#a76540180dce5859f034fa66e83cca6c0a4059b0251f66a18cb56f544728796875',1,'YTMusicUploader::Providers::DataModels::Log']]]
 ];

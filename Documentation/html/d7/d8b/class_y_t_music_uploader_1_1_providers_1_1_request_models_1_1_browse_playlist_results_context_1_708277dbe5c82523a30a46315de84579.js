@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_708277dbe5c82523a30a46315de84579 =
+[
+    [ "thumbnail", "d7/d8b/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_708277dbe5c82523a30a46315de84579.html#a2c10b7e4abd102cfa2adc70caa6ff6cf", null ],
+    [ "trackingParams", "d7/d8b/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_708277dbe5c82523a30a46315de84579.html#a6c38310bf4ca74ca27a39adbdfc511ed", null ]
+];

@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation788bcec8f3ab2e29ad241789e023ad6e =
+[
+    [ "musicVideoType", "db/dd9/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation788bcec8f3ab2e29ad241789e023ad6e.html#aa5ce2b9dbc2fe10de964a76b01d136d4", null ]
+];

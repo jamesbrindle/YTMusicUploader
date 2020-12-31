@@ -1,0 +1,7 @@
+<map id="YTMusicUploader.MusicBrainz.API.QueryParameters.ToString" name="YTMusicUploader.MusicBrainz.API.QueryParameters.ToString">
+<area shape="rect" id="node1" title=" " alt="" coords="336,108,540,149"/>
+<area shape="rect" id="node2" href="$d4/d88/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_artist_service.html#ac33c2b150f9243a6ac8bd29b3edcbab5" title="Search for an artist in the MusicBrainz database, matching the given query." alt="" coords="19,5,274,47"/>
+<area shape="rect" id="node3" href="$d6/d8b/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_service.html#ae9e48d7fd45574b377979e680ea8d3f2" title="Search for a release in the MusicBrainz database, matching the given query." alt="" coords="11,71,282,112"/>
+<area shape="rect" id="node4" href="$dc/d55/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service.html#a5b432244e5f6ada4eadb06b8055aee65" title="Search for a release&#45;group in the MusicBrainz database, matching the given query." alt="" coords="33,137,261,193"/>
+<area shape="rect" id="node5" href="$d5/d51/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_recording_service.html#aed9b8ec499574b2a1b67c0bf70302660" title="Search for an recording in the MusicBrainz database, matching the given query." alt="" coords="5,217,288,259"/>
+</map>

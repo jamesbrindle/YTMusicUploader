@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataModels.Log" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataModels.Log" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,7 +13,7 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 
 .in +1c
 .ti -1c
-.RI "enum \fBLogTypeEnum\fP { \fBLogTypeEnum\&.Info\fP = 1, \fBLogTypeEnum\&.Error\fP = 2, \fBLogTypeEnum\&.Warning\fP = 3, \fBLogTypeEnum\&.Critcal\fP = 4 }"
+.RI "enum \fBLogTypeEnum\fP { \fBLogTypeEnum\&.Info\fP = 1, \fBLogTypeEnum\&.Error\fP = 2, \fBLogTypeEnum\&.Warning\fP = 3, \fBLogTypeEnum\&.Critical\fP = 4 }"
 .br
 .RI "Defined the type of log - Error or info "
 .in -1c
@@ -75,7 +75,7 @@ Defined the type of log - Error or info
 .TP
 \fB\fIWarning \fP\fP
 .TP
-\fB\fICritcal \fP\fP
+\fB\fICritical \fP\fP
 .SH "Member Function Documentation"
 .PP 
 .SS "override Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.DataModels\&.Log\&.Delete ()\fC [virtual]\fP"

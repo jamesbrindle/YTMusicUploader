@@ -8,11 +8,23 @@ Abastract database repository access class.
 
 
 Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/df1/class_y_t_music_uploader_1_1_providers_1_1_data_access__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{d3/d07/class_y_t_music_uploader_1_1_providers_1_1_data_access__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,6 +34,8 @@ static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_acc
 \begin{DoxyCompactList}\small\item\em Delete the app data database (user\textquotesingle{}s database) \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08}{Perform\+Any\+Db\+Upgrades}} ()
 \begin{DoxyCompactList}\small\item\em Runs on form load to ensure the database schema is at the latest version following an application upgrade \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_access_a5e5f1675721aa65a8016748b32d809ee}{Check\+Database\+Integrity}} ()
+\item 
 static S\+Q\+Lite\+Connection \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_access_a282db1993d3e890ff819c1afd3e14114}{Db\+Connection}} (bool read\+Only=false)
 \begin{DoxyCompactList}\small\item\em Create an S\+Q\+Lite connection to the database file in the users App\+Data path \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -43,9 +57,43 @@ Abastract database repository access class.
 Checks if the database file is present in the users App\+Data path. If it\textquotesingle{}s not present it will copy over the template database file from the Program Files (or working directory) App\+Data folder 
 
 Here is the call graph for this function\+:
-% FIG 2
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a0f9bb7c069a72090c6f86048509fa343_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
-% FIG 3
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a0f9bb7c069a72090c6f86048509fa343_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_access_a5e5f1675721aa65a8016748b32d809ee}\label{class_y_t_music_uploader_1_1_providers_1_1_data_access_a5e5f1675721aa65a8016748b32d809ee}} 
+\index{YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}!CheckDatabaseIntegrity@{CheckDatabaseIntegrity}}
+\index{CheckDatabaseIntegrity@{CheckDatabaseIntegrity}!YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}}
+\doxysubsubsection{\texorpdfstring{CheckDatabaseIntegrity()}{CheckDatabaseIntegrity()}}
+{\footnotesize\ttfamily static void Y\+T\+Music\+Uploader.\+Providers.\+Data\+Access.\+Check\+Database\+Integrity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a5e5f1675721aa65a8016748b32d809ee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a5e5f1675721aa65a8016748b32d809ee_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_access_a282db1993d3e890ff819c1afd3e14114}\label{class_y_t_music_uploader_1_1_providers_1_1_data_access_a282db1993d3e890ff819c1afd3e14114}} 
 \index{YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}!DbConnection@{DbConnection}}
 \index{DbConnection@{DbConnection}!YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}}
@@ -60,7 +108,13 @@ Create an S\+Q\+Lite connection to the database file in the users App\+Data path
 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
-% FIG 4
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a282db1993d3e890ff819c1afd3e14114_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08}\label{class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08}} 
 \index{YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}!PerformAnyDbUpgrades@{PerformAnyDbUpgrades}}
 \index{PerformAnyDbUpgrades@{PerformAnyDbUpgrades}!YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}}
@@ -72,9 +126,21 @@ Here is the caller graph for this function\+:
 Runs on form load to ensure the database schema is at the latest version following an application upgrade 
 
 Here is the call graph for this function\+:
-% FIG 5
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
-% FIG 6
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a777fee8af9abfbafeb10f09327101e08_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_data_access_a382ab3bb9ef5c28ed9d0ee09cf5a9573}\label{class_y_t_music_uploader_1_1_providers_1_1_data_access_a382ab3bb9ef5c28ed9d0ee09cf5a9573}} 
 \index{YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}!ResetDatabase@{ResetDatabase}}
 \index{ResetDatabase@{ResetDatabase}!YTMusicUploader.Providers.DataAccess@{YTMusicUploader.Providers.DataAccess}}
@@ -86,9 +152,23 @@ Here is the caller graph for this function\+:
 Delete the app data database (user\textquotesingle{}s database) 
 
 Here is the call graph for this function\+:
-% FIG 7
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a382ab3bb9ef5c28ed9d0ee09cf5a9573_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access_a382ab3bb9ef5c28ed9d0ee09cf5a9573_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+One\+Drive/\+Documents/\+Work/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\mbox{\hyperlink{_data_access_8cs}{Data\+Access.\+cs}}\end{DoxyCompactItemize}
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\mbox{\hyperlink{_data_access_8cs}{Data\+Access.\+cs}}\end{DoxyCompactItemize}

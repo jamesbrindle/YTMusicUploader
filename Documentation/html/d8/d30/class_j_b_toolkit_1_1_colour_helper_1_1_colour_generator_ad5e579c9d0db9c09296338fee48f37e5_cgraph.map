@@ -1,0 +1,5 @@
+<map id="JBToolkit.ColourHelper.ColourGenerator.GetRandomColour" name="JBToolkit.ColourHelper.ColourGenerator.GetRandomColour">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node2" href="$d8/d62/class_j_b_toolkit_1_1_colour_helper.html#a8f9f5252b34ac3aac424f98478cd6c35" title="Color hex to System.Drawing.Color" alt="" coords="248,5,428,47"/>
+<area shape="rect" id="node3" href="$d8/d62/class_j_b_toolkit_1_1_colour_helper.html#a62df29d9c1e844544f26ae211f9995a2" title="Extract the hex color digits from a string" alt="" coords="476,5,675,47"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.MusicBrainz.API.Cache.IRequestCache" name="YTMusicUploader.MusicBrainz.API.Cache.IRequestCache">
+<area shape="rect" id="node1" title="A simple cache interface." alt="" coords="119,5,323,112"/>
+<area shape="rect" id="node2" href="$da/d0e/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_file_request_cache.html" title="Caches requests to MusicBrainz API on disk." alt="" coords="5,160,209,325"/>
+<area shape="rect" id="node3" href="$d2/dcb/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_cache_1_1_null_cache.html" title="A cache that does not cache anything." alt="" coords="233,189,437,296"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Repos.LogsRepo.LoadAll" name="YTMusicUploader.Providers.Repos.LogsRepo.LoadAll">
+<area shape="rect" id="node1" title="Loads all logs from the databse" alt="" coords="5,5,191,47"/>
+<area shape="rect" id="node2" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a282db1993d3e890ff819c1afd3e14114" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="239,5,424,47"/>
+</map>

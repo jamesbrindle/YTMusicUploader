@@ -1,9 +1,0 @@
-digraph "Exception"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{Exception\n||}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
-  Node2 [label="{YTMusicUploader.MusicBrainz.\lAPI.WebServiceException\n|+ StatusCode\l+ Uri\l|+ WebServiceException()\l+ WebServiceException()\l+ WebServiceException()\l+ WebServiceException()\l+ GetObjectData()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/de3/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_web_service_exception.html",tooltip="Exception containing error information returned by the MusicBrainz webservice."];
-}

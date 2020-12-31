@@ -1,0 +1,180 @@
+.TH "YTMusicUploader.Providers.Requests.Playlists" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Requests.Playlists \- YouTube Music API request methods specifically for playlist manipulation  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBAddPlaylistItem\fP (string cookieValue, string playlistId, string videoId, out string errorMessage)"
+.br
+.RI "HttpWebRequest POST request to send to add a playlist item (track) to an existing YouTube Music playlist "
+.ti -1c
+.RI "static bool \fBCreatePlaylist\fP (string cookieValue, string title, string description, \fBList\fP< string > videoIds, PrivacyStatusEmum privacyStatus, out string playlistId, out string browseId, out string errorMessage)"
+.br
+.RI "HttpWebRequest POST request to send to YTM to create a new playlist "
+.ti -1c
+.RI "static bool \fBDeletePlaylist\fP (string cookieValue, string playlistId, out string errorMessage)"
+.br
+.RI "HttpWebRequest POST request to send to delete a playlist "
+.ti -1c
+.RI "static OnlinePlaylist \fBGetPlaylist\fP (string cookieValue, string browseId, OnlinePlaylist playlist=null, string continuationToken=null)"
+.br
+.RI "HttpWebRequest POST request to send to YTM, which gets a playlist given a playlist or browse id (You can get this from the '\fBRequests\&.Playlists\&.GetPlaylists\fP (plural)') request method\&. And then recurisvely fetches all tracks listed in the playlist "
+.ti -1c
+.RI "static OnlinePlaylistCollection \fBGetPlaylists\fP (string cookieValue)"
+.br
+.RI "HttpWebRequest POST request to send to YTM which fetches a list (collection) of \fBPlaylists\fP (without playlist tracks)\&. Use the '\fBRequests\&.Playlists\&.GetPlaylist\fP (singular)' method to get an individual playlist complete with track listing\&. "
+.ti -1c
+.RI "static bool \fBRemovePlaylistItems\fP (string cookieValue, string playlistId, string videoEntityId, string setVideoEntityId, out string errorMessage)"
+.br
+.RI "HttpWebRequest POST request to send to YTM to remove a playlist item (track) from an existing playlist "
+.in -1c
+.SH "Detailed Description"
+.PP 
+YouTube Music API request methods specifically for playlist manipulation 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.AddPlaylistItem (string cookieValue, string playlistId, string videoId, out string errorMessage)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to add a playlist item (track) to an existing YouTube Music playlist 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIplaylistId\fP YT Music playlistid (or browseId) to add to
+.br
+\fIvideoId\fP This is the unique track id to add
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if successfully, false otherwise
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.CreatePlaylist (string cookieValue, string title, string description, \fBList\fP< string > videoIds, PrivacyStatusEmum privacyStatus, out string playlistId, out string browseId, out string errorMessage)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YTM to create a new playlist 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fItitle\fP Title to call the playlist
+.br
+\fIdescription\fP Description of the playlist (does not allow HTML tags)
+.br
+\fIvideoIds\fP \fBList\fP of video ids (track ids) to create the playlist with
+.br
+\fIprivacyStatus\fP PRIVATE, PUBLIC or UNLISTED - Default it PUBLIC
+.br
+\fIplaylistId\fP (Output) playlist id once created
+.br
+\fIbrowseId\fP (Output) browse id once create (It's just the playlist ID prefixed with 'VL')
+.br
+\fIerrorMessage\fP (Output)Any error message encountered during the request
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if request is successful, false otherwise
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.DeletePlaylist (string cookieValue, string playlistId, out string errorMessage)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to delete a playlist 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIplaylistId\fP \fBPlaylist\fP id (or browse id) to delete
+.br
+\fIerrorMessage\fP (Output) error message from error encountered during the request
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if request is successful, false otherwise
+.RE
+.PP
+
+.SS "static OnlinePlaylist YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.GetPlaylist (string cookieValue, string browseId, OnlinePlaylist playlist = \fCnull\fP, string continuationToken = \fCnull\fP)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YTM, which gets a playlist given a playlist or browse id (You can get this from the '\fBRequests\&.Playlists\&.GetPlaylists\fP (plural)') request method\&. And then recurisvely fetches all tracks listed in the playlist 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIbrowseId\fP \fBPlaylist\fP id or browse id to retreive the playlist for
+.br
+\fIplaylist\fP Shuuld be null initially\&. This object is used for recursive purposes
+.br
+\fIcontinuationToken\fP Should be null initially\&. This object is used for recursive purposes\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+OnlinePlaylist object
+.RE
+.PP
+
+.SS "static OnlinePlaylistCollection YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.GetPlaylists (string cookieValue)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YTM which fetches a list (collection) of \fBPlaylists\fP (without playlist tracks)\&. Use the '\fBRequests\&.Playlists\&.GetPlaylist\fP (singular)' method to get an individual playlist complete with track listing\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+OnlinePlaylistCollection object (list of playlists without tracks)
+.RE
+.PP
+
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.RemovePlaylistItems (string cookieValue, string playlistId, string videoEntityId, string setVideoEntityId, out string errorMessage)\fC [static]\fP"
+
+.PP
+HttpWebRequest POST request to send to YTM to remove a playlist item (track) from an existing playlist 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcookieValue\fP Cookie from a previous YouTube Music sign in via this application (stored in the database)
+.br
+\fIplaylistId\fP \fBPlaylist\fP id to remove a track from
+.br
+\fIvideoEntityId\fP VideoId (unique track entityId) of the track to remove
+.br
+\fIsetVideoEntityId\fP SetVideoId (alt unbique track entityId) of the track to remove
+.br
+\fIerrorMessage\fP (Output) Error message if error encountered while sending the request
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if the request was successful, false otherwise
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

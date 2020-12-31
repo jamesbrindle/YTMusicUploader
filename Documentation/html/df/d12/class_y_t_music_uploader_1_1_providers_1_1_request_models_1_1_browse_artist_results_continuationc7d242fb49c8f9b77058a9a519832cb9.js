@@ -1,0 +1,8 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationc7d242fb49c8f9b77058a9a519832cb9 =
+[
+    [ "cancelButton", "df/d12/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationc7d242fb49c8f9b77058a9a519832cb9.html#ae5237f4524599e545be9ec275bf9ab4e", null ],
+    [ "confirmButton", "df/d12/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationc7d242fb49c8f9b77058a9a519832cb9.html#a69c5af8cf95f32bafa8d60bb99b181a7", null ],
+    [ "dialogMessages", "df/d12/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationc7d242fb49c8f9b77058a9a519832cb9.html#a110cbdc15e534bd8dbf6f3db7202183b", null ],
+    [ "title", "df/d12/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationc7d242fb49c8f9b77058a9a519832cb9.html#a6f1d4ee2693ae298cbd5d87eb42910c6", null ],
+    [ "trackingParams", "df/d12/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuationc7d242fb49c8f9b77058a9a519832cb9.html#aecf1677821ff868bfd041cf8c57103e4", null ]
+];

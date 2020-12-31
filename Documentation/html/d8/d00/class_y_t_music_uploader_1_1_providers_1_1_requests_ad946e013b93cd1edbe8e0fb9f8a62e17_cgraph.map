@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Providers.Requests.UploadTrack" name="YTMusicUploader.Providers.Requests.UploadTrack">
+<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YouTube to upload a music file." alt="" coords="5,39,191,80"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="239,5,443,47"/>
+<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="248,71,433,112"/>
+</map>

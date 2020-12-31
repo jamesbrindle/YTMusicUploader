@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_playlisteditorendpoint1 =
+[
+    [ "openCollaborationPage", "dc/de9/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_playlisteditorendpoint1.html#aa2f9353a99823e4e34e3755e79476251", null ],
+    [ "playlistId", "dc/de9/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_playlisteditorendpoint1.html#a2b7ab7d88bb87b851bd79f39cdcff207", null ]
+];

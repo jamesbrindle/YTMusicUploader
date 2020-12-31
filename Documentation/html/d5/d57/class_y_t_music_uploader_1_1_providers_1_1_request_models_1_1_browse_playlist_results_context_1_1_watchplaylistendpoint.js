@@ -1,0 +1,5 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_watchplaylistendpoint =
+[
+    [ "_params", "d5/d57/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_watchplaylistendpoint.html#a1257ef6535756fa2bc7f6e7e4844f6e9", null ],
+    [ "playlistId", "d5/d57/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_watchplaylistendpoint.html#a09b87ce95acbc77cf480efecea392125", null ]
+];

@@ -1,0 +1,258 @@
+\hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists}{}\doxysection{Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists Class Reference}
+\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists}\index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
+
+
+You\+Tube Music A\+PI request methods specifically for playlist manipulation  
+
+
+
+
+Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{dd/d7d/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0}{Add\+Playlist\+Item}} (string cookie\+Value, string playlist\+Id, string video\+Id, out string error\+Message)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to add a playlist item (track) to an existing You\+Tube Music playlist \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d}{Create\+Playlist}} (string cookie\+Value, string title, string description, \mbox{\hyperlink{class_list}{List}}$<$ string $>$ video\+Ids, Privacy\+Status\+Emum privacy\+Status, out string playlist\+Id, out string browse\+Id, out string error\+Message)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM to create a new playlist \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab83bb19ef5166ad8b4e0ff3b8bdbc3bc}{Delete\+Playlist}} (string cookie\+Value, string playlist\+Id, out string error\+Message)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to delete a playlist \end{DoxyCompactList}\item 
+static Online\+Playlist \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5}{Get\+Playlist}} (string cookie\+Value, string browse\+Id, Online\+Playlist playlist=null, string continuation\+Token=null)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM, which gets a playlist given a playlist or browse id (You can get this from the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}{Requests.\+Playlists.\+Get\+Playlists}} (plural)\textquotesingle{}) request method. And then recurisvely fetches all tracks listed in the playlist \end{DoxyCompactList}\item 
+static Online\+Playlist\+Collection \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}{Get\+Playlists}} (string cookie\+Value)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM which fetches a list (collection) of \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists}{Playlists}} (without playlist tracks). Use the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5}{Requests.\+Playlists.\+Get\+Playlist}} (singular)\textquotesingle{} method to get an individual playlist complete with track listing. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab6db75e9f89303b63221c27d85937688}{Remove\+Playlist\+Items}} (string cookie\+Value, string playlist\+Id, string video\+Entity\+Id, string set\+Video\+Entity\+Id, out string error\+Message)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM to remove a playlist item (track) from an existing playlist \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+You\+Tube Music A\+PI request methods specifically for playlist manipulation 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0}} 
+\index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!AddPlaylistItem@{AddPlaylistItem}}
+\index{AddPlaylistItem@{AddPlaylistItem}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
+\doxysubsubsection{\texorpdfstring{AddPlaylistItem()}{AddPlaylistItem()}}
+{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Add\+Playlist\+Item (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{playlist\+Id,  }\item[{string}]{video\+Id,  }\item[{out string}]{error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http\+Web\+Request P\+O\+ST request to send to add a playlist item (track) to an existing You\+Tube Music playlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+{\em playlist\+Id} & YT Music playlistid (or browse\+Id) to add to\\
+\hline
+{\em video\+Id} & This is the unique track id to add\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successfully, false otherwise
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d}} 
+\index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!CreatePlaylist@{CreatePlaylist}}
+\index{CreatePlaylist@{CreatePlaylist}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
+\doxysubsubsection{\texorpdfstring{CreatePlaylist()}{CreatePlaylist()}}
+{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Create\+Playlist (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{title,  }\item[{string}]{description,  }\item[{\mbox{\hyperlink{class_list}{List}}$<$ string $>$}]{video\+Ids,  }\item[{Privacy\+Status\+Emum}]{privacy\+Status,  }\item[{out string}]{playlist\+Id,  }\item[{out string}]{browse\+Id,  }\item[{out string}]{error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http\+Web\+Request P\+O\+ST request to send to Y\+TM to create a new playlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+{\em title} & Title to call the playlist\\
+\hline
+{\em description} & Description of the playlist (does not allow H\+T\+ML tags)\\
+\hline
+{\em video\+Ids} & \mbox{\hyperlink{class_list}{List}} of video ids (track ids) to create the playlist with\\
+\hline
+{\em privacy\+Status} & P\+R\+I\+V\+A\+TE, P\+U\+B\+L\+IC or U\+N\+L\+I\+S\+T\+ED -\/ Default it P\+U\+B\+L\+IC\\
+\hline
+{\em playlist\+Id} & (Output) playlist id once created\\
+\hline
+{\em browse\+Id} & (Output) browse id once create (It\textquotesingle{}s just the playlist ID prefixed with \textquotesingle{}VL\textquotesingle{})\\
+\hline
+{\em error\+Message} & (Output)Any error message encountered during the request\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if request is successful, false otherwise
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab83bb19ef5166ad8b4e0ff3b8bdbc3bc}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab83bb19ef5166ad8b4e0ff3b8bdbc3bc}} 
+\index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!DeletePlaylist@{DeletePlaylist}}
+\index{DeletePlaylist@{DeletePlaylist}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
+\doxysubsubsection{\texorpdfstring{DeletePlaylist()}{DeletePlaylist()}}
+{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Delete\+Playlist (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{playlist\+Id,  }\item[{out string}]{error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http\+Web\+Request P\+O\+ST request to send to delete a playlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+{\em playlist\+Id} & \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_providers_1_1_playlist}{Playlist}} id (or browse id) to delete\\
+\hline
+{\em error\+Message} & (Output) error message from error encountered during the request\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if request is successful, false otherwise
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab83bb19ef5166ad8b4e0ff3b8bdbc3bc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5}} 
+\index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!GetPlaylist@{GetPlaylist}}
+\index{GetPlaylist@{GetPlaylist}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
+\doxysubsubsection{\texorpdfstring{GetPlaylist()}{GetPlaylist()}}
+{\footnotesize\ttfamily static Online\+Playlist Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Get\+Playlist (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{browse\+Id,  }\item[{Online\+Playlist}]{playlist = {\ttfamily null},  }\item[{string}]{continuation\+Token = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http\+Web\+Request P\+O\+ST request to send to Y\+TM, which gets a playlist given a playlist or browse id (You can get this from the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}{Requests.\+Playlists.\+Get\+Playlists}} (plural)\textquotesingle{}) request method. And then recurisvely fetches all tracks listed in the playlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+{\em browse\+Id} & \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_providers_1_1_playlist}{Playlist}} id or browse id to retreive the playlist for\\
+\hline
+{\em playlist} & Shuuld be null initially. This object is used for recursive purposes\\
+\hline
+{\em continuation\+Token} & Should be null initially. This object is used for recursive purposes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Online\+Playlist object
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}} 
+\index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!GetPlaylists@{GetPlaylists}}
+\index{GetPlaylists@{GetPlaylists}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
+\doxysubsubsection{\texorpdfstring{GetPlaylists()}{GetPlaylists()}}
+{\footnotesize\ttfamily static Online\+Playlist\+Collection Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Get\+Playlists (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http\+Web\+Request P\+O\+ST request to send to Y\+TM which fetches a list (collection) of \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists}{Playlists}} (without playlist tracks). Use the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5}{Requests.\+Playlists.\+Get\+Playlist}} (singular)\textquotesingle{} method to get an individual playlist complete with track listing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Online\+Playlist\+Collection object (list of playlists without tracks)
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab6db75e9f89303b63221c27d85937688}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab6db75e9f89303b63221c27d85937688}} 
+\index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!RemovePlaylistItems@{RemovePlaylistItems}}
+\index{RemovePlaylistItems@{RemovePlaylistItems}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
+\doxysubsubsection{\texorpdfstring{RemovePlaylistItems()}{RemovePlaylistItems()}}
+{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Remove\+Playlist\+Items (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{playlist\+Id,  }\item[{string}]{video\+Entity\+Id,  }\item[{string}]{set\+Video\+Entity\+Id,  }\item[{out string}]{error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Http\+Web\+Request P\+O\+ST request to send to Y\+TM to remove a playlist item (track) from an existing playlist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cookie\+Value} & Cookie from a previous You\+Tube Music sign in via this application (stored in the database)\\
+\hline
+{\em playlist\+Id} & \mbox{\hyperlink{namespace_y_t_music_uploader_1_1_providers_1_1_playlist}{Playlist}} id to remove a track from\\
+\hline
+{\em video\+Entity\+Id} & Video\+Id (unique track entity\+Id) of the track to remove\\
+\hline
+{\em set\+Video\+Entity\+Id} & Set\+Video\+Id (alt unbique track entity\+Id) of the track to remove\\
+\hline
+{\em error\+Message} & (Output) Error message if error encountered while sending the request\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the request was successful, false otherwise
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab6db75e9f89303b63221c27d85937688_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\+Playlists/\mbox{\hyperlink{_add_playlist_items_8cs}{Add\+Playlist\+Items.\+cs}}\item 
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\+Playlists/\mbox{\hyperlink{_create_playlist_8cs}{Create\+Playlist.\+cs}}\item 
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\+Playlists/\mbox{\hyperlink{_delete_playlist_8cs}{Delete\+Playlist.\+cs}}\item 
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\+Playlists/\mbox{\hyperlink{_get_playlist_8cs}{Get\+Playlist.\+cs}}\item 
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\+Playlists/\mbox{\hyperlink{_get_playlists_8cs}{Get\+Playlists.\+cs}}\item 
+D\+:/\+Repositories/\+Y\+T\+Music\+Uploader/\+Y\+T\+Music\+Uploader/\+Providers/\+Requests/\+Playlists/\mbox{\hyperlink{_remove_playlist_items_8cs}{Remove\+Playlist\+Items.\+cs}}\end{DoxyCompactItemize}

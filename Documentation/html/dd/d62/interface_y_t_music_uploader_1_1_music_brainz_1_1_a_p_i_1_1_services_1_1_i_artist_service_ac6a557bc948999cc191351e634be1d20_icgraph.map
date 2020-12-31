@@ -1,0 +1,8 @@
+<map id="YTMusicUploader.MusicBrainz.API.Services.IArtistService.SearchAsync" name="YTMusicUploader.MusicBrainz.API.Services.IArtistService.SearchAsync">
+<area shape="rect" id="node1" title="Search for an artist in the MusicBrainz database, matching the given query." alt="" coords="1416,13,1675,54"/>
+<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ab9b74b81d70a6ddbddf6ef3f4ba76330" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="1137,5,1368,61"/>
+<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a950a4ab40983cdbc70821eaa9becb990" title="Get the release (typically, the album data) from MusicBrainz via query using the artist,..." alt="" coords="847,5,1089,61"/>
+<area shape="rect" id="node4" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#ad2e53a86a26a47a3418bb0916ae78245" title="First looks at the file meta data for the release MBID, then makes a request to MusicBrainz if it&#39;s n..." alt="" coords="571,13,799,54"/>
+<area shape="rect" id="node5" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a16e09113cfa0bdfdae26991e96468663" title="Makes a requst to ConvertArchive to try and retrive the album art cover image" alt="" coords="288,5,523,61"/>
+<area shape="rect" id="node6" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a2627f8f48ebb5018d313f8428f3be26b" title="Returns album artwork. First it will look at actual file to see if one is embedded,..." alt="" coords="5,13,240,54"/>
+</map>

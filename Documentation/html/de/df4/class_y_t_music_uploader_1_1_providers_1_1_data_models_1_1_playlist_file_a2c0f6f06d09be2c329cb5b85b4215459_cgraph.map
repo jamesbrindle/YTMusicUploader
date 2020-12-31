@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Providers.DataModels.PlaylistFile.Save" name="YTMusicUploader.Providers.DataModels.PlaylistFile.Save">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,196,80"/>
+<area shape="rect" id="node2" href="$df/da4/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_playlist_file_repo.html#ac7687673ff877a4501167bb677c56e88" title="Inserts a new PlayListFile entry into the database" alt="" coords="249,5,442,47"/>
+<area shape="rect" id="node3" href="$df/da4/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_playlist_file_repo.html#a064fff41740438cc0c0ef767bff58ae4" title="Updates a PlayListFile entry in the database" alt="" coords="244,71,447,112"/>
+</map>

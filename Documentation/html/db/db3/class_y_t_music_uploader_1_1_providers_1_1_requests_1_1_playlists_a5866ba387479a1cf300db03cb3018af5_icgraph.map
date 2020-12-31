@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Requests.Playlists.GetPlaylist" name="YTMusicUploader.Providers.Requests.Playlists.GetPlaylist">
+<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YTM, which gets a playlist given a playlist or browse id (You ..." alt="" coords="240,5,439,47"/>
+<area shape="rect" id="node2" href="$de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a8c028fea8912ceb647e300013f6ae3a6" title="Execute the playlist management process" alt="" coords="5,5,192,47"/>
+</map>

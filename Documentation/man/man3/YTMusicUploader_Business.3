@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,11 +23,11 @@ YTMusicUploader.Business
 .ti -1c
 .RI "class \fBFileScanner\fP"
 .br
-.RI "Responsive for scanning library music files and adding and managing discovered files to the database\&. "
+.RI "Responsible for scanning library music files and adding and managing discovered files to the database\&. "
 .ti -1c
 .RI "class \fBFileUploader\fP"
 .br
-.RI "Responsive for managing uploading music files to YouTube Music\&. "
+.RI "Responsible for managing uploading music files to YouTube Music\&. "
 .ti -1c
 .RI "class \fBIdleProcessor\fP"
 .br
@@ -40,6 +40,10 @@ YTMusicUploader.Business
 .RI "class \fBMusicFileMetaData\fP"
 .br
 .RI "Custom music file meta tag object "
+.ti -1c
+.RI "class \fBPlaylistProcessor\fP"
+.br
+.RI "Responsible for scanning library playlist file and either creating them on YT Music or adding to them on YT Music "
 .ti -1c
 .RI "class \fBQueueChecker\fP"
 .br

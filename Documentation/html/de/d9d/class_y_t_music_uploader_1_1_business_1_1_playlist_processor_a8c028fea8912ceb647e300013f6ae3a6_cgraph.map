@@ -1,0 +1,9 @@
+<map id="YTMusicUploader.Business.PlaylistProcessor.Process" name="YTMusicUploader.Business.PlaylistProcessor.Process">
+<area shape="rect" id="node1" title="Execute the playlist management process" alt="" coords="5,129,192,171"/>
+<area shape="rect" id="node2" href="$db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists.html#a5866ba387479a1cf300db03cb3018af5" title="HttpWebRequest POST request to send to YTM, which gets a playlist given a playlist or browse id (You ..." alt="" coords="240,88,439,129"/>
+<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a3bcf1e921f38ef9b11f77586e2ef1b28" title=" " alt="" coords="244,169,435,211"/>
+<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="487,5,691,47"/>
+<area shape="rect" id="node4" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="496,71,681,112"/>
+<area shape="rect" id="node5" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="496,136,681,177"/>
+<area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="493,201,684,243"/>
+</map>

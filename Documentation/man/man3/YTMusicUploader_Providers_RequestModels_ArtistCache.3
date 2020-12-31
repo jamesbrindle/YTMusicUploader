@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.RequestModels.ArtistCache" 3 "Sun Nov 22 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.RequestModels.ArtistCache" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -26,6 +26,18 @@ YTMusicUploader.Providers.RequestModels.ArtistCache \- Used to store temporary a
 .RI "class \fBArtistCollection\fP"
 .br
 .ti -1c
+.RI "class \fBOnlinePlaylist\fP"
+.br
+.ti -1c
+.RI "class \fBOnlinePlaylistCollection\fP"
+.br
+.ti -1c
+.RI "class \fBPlaylistSong\fP"
+.br
+.ti -1c
+.RI "class \fBPlaylistSongCollection\fP"
+.br
+.ti -1c
 .RI "class \fBSong\fP"
 .br
 .ti -1c
@@ -41,6 +53,9 @@ YTMusicUploader.Providers.RequestModels.ArtistCache \- Used to store temporary a
 .ti -1c
 .RI "\fBArtistCollection\fP \fBArtists\fP = new \fBArtistCollection\fP()\fC [get, set]\fP"
 .br
+.ti -1c
+.RI "\fBOnlinePlaylistCollection\fP \fBPlaylists\fP = new \fBOnlinePlaylistCollection\fP()\fC [get, set]\fP"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -52,6 +67,8 @@ Used to store temporary artist details from YouTube Music to be used for lookups
 .SS "\fBArtistCollection\fP YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.Artists = new \fBArtistCollection\fP()\fC [get]\fP, \fC [set]\fP"
 
 .SS "DateTime YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.LastSetTime = DateTime\&.Now\fC [get]\fP, \fC [set]\fP"
+
+.SS "\fBOnlinePlaylistCollection\fP YTMusicUploader\&.Providers\&.RequestModels\&.ArtistCache\&.Playlists = new \fBOnlinePlaylistCollection\fP()\fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

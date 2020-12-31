@@ -1,7 +1,0 @@
-digraph "YTMusicUploader.Providers.DbOperationResult"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{YTMusicUploader.Providers.\lDbOperationResult\n|+ Id\l+ IsError\l+ ErrorReason\l+ ExecutionTime\l|+ Success()\l+ Fail()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Database process execution and query result object. Contains if there's any errors and the time taken..."];
-}

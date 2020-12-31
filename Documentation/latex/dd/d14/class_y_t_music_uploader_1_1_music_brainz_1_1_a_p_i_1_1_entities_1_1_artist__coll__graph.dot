@@ -1,7 +1,0 @@
-digraph "YTMusicUploader.MusicBrainz.API.Entities.Artist"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{YTMusicUploader.MusicBrainz.\lAPI.Entities.Artist\n|+ Score\l+ Id\l+ Type\l+ Name\l+ SortName\l+ Gender\l+ LifeSpan\l+ Area\l+ Country\l+ Disambiguation\land 7 more...\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="An artist is generally a musician (or musician persona), group of musicians or other music profession..."];
-}

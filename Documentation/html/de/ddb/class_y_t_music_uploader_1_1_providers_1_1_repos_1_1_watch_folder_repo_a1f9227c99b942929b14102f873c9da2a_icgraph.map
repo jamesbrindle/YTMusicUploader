@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Repos.WatchFolderRepo.Insert" name="YTMusicUploader.Providers.Repos.WatchFolderRepo.Insert">
+<area shape="rect" id="node1" title="Inserts a library Watch Folder entry into the database from the fields of a WatchFolder model object" alt="" coords="255,5,457,47"/>
+<area shape="rect" id="node2" href="$d2/d8f/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_watch_folder.html#a22bddb4f7cd608a26adc32cf23e98e52" title="Insert into the database" alt="" coords="5,5,207,47"/>
+</map>

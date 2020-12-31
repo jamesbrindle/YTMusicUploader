@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint5 =
+[
+    [ "browseId", "d4/d05/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_browseendpoint5.html#acf49626994d1bdda8749e5b222b87358", null ]
+];

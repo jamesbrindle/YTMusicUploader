@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_delete_from_y_t_music_request_context_1_1_locationinfo =
+[
+    [ "locationPermissionAuthorizationStatus", "d5/dff/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_delete_from_y_t_music_request_context_1_1_locationinfo.html#ae5cf0d118c7d0cc1a854c8922344601b", null ]
+];

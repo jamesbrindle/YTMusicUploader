@@ -1,0 +1,12 @@
+<map id="YTMusicUploader.MainForm.SetSystemTrayIconText" name="YTMusicUploader.MainForm.SetSystemTrayIconText">
+<area shape="rect" id="node1" title=" " alt="" coords="968,104,1159,145"/>
+<area shape="rect" id="node2" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a3bcf1e921f38ef9b11f77586e2ef1b28" title=" " alt="" coords="729,71,920,112"/>
+<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="729,136,920,177"/>
+<area shape="rect" id="node3" href="$de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a8c028fea8912ceb647e300013f6ae3a6" title="Execute the playlist management process" alt="" coords="493,5,679,47"/>
+<area shape="rect" id="node4" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="493,71,679,112"/>
+<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a33b18473c12b74d584bb628356a820dc" title=" " alt="" coords="491,136,681,177"/>
+<area shape="rect" id="node8" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a2cc4c1d974056091b535e82ee14cf3ae" title=" " alt="" coords="491,201,681,243"/>
+<area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="252,136,443,177"/>
+<area shape="rect" id="node9" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad49bcebfe92cf336cecefee2c73a1883" title=" " alt="" coords="252,201,443,243"/>
+<area shape="rect" id="node10" href="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,201,204,243"/>
+</map>

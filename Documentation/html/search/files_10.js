@@ -1,9 +1,25 @@
 var searchData=
 [
-  ['safefilestream_2ecs_1550',['SafeFileStream.cs',['../d4/d03/_safe_file_stream_8cs.html',1,'']]],
-  ['searchcontext_2ecs_1551',['SearchContext.cs',['../d0/d84/_search_context_8cs.html',1,'']]],
-  ['searchresultscontext_2ecs_1552',['SearchResultsContext.cs',['../dc/d92/_search_results_context_8cs.html',1,'']]],
-  ['settings_2ecs_1553',['Settings.cs',['../d2/d74/_settings_8cs.html',1,'']]],
-  ['settings_2edesigner_2ecs_1554',['Settings.Designer.cs',['../d1/d1c/_settings_8_designer_8cs.html',1,'']]],
-  ['settingsrepo_2ecs_1555',['SettingsRepo.cs',['../d9/d8f/_settings_repo_8cs.html',1,'']]]
+  ['rating_2ecs_2074',['Rating.cs',['../d4/d22/_rating_8cs.html',1,'']]],
+  ['readme_2emd_2075',['README.md',['../d9/dd6/_r_e_a_d_m_e_8md.html',1,'']]],
+  ['recording_2ecs_2076',['Recording.cs',['../d0/de3/_recording_8cs.html',1,'']]],
+  ['recordinglist_2ecs_2077',['RecordingList.cs',['../de/dac/_recording_list_8cs.html',1,'']]],
+  ['recordingservice_2ecs_2078',['RecordingService.cs',['../d8/d18/_recording_service_8cs.html',1,'']]],
+  ['registrysettings_2ecs_2079',['RegistrySettings.cs',['../d2/d70/_registry_settings_8cs.html',1,'']]],
+  ['relation_2ecs_2080',['Relation.cs',['../da/dd4/_relation_8cs.html',1,'']]],
+  ['release_2ecs_2081',['Release.cs',['../db/d83/_release_8cs.html',1,'']]],
+  ['releasegroup_2ecs_2082',['ReleaseGroup.cs',['../d9/d6b/_release_group_8cs.html',1,'']]],
+  ['releasegrouplist_2ecs_2083',['ReleaseGroupList.cs',['../db/d31/_release_group_list_8cs.html',1,'']]],
+  ['releasegroupservice_2ecs_2084',['ReleaseGroupService.cs',['../db/d76/_release_group_service_8cs.html',1,'']]],
+  ['releaselist_2ecs_2085',['ReleaseList.cs',['../d6/d1c/_release_list_8cs.html',1,'']]],
+  ['releaseservice_2ecs_2086',['ReleaseService.cs',['../d8/db4/_release_service_8cs.html',1,'']]],
+  ['removeplaylistitems_2ecs_2087',['RemovePlaylistItems.cs',['../d4/d1c/_remove_playlist_items_8cs.html',1,'']]],
+  ['requests_2ecs_2088',['Requests.cs',['../d7/d81/_requests_8cs.html',1,'']]],
+  ['resources_2edesigner_2ecs_2089',['Resources.Designer.cs',['../d6/d0e/_resources_8_designer_8cs.html',1,'']]],
+  ['roundbutton_2ecs_2090',['RoundButton.cs',['../d5/daa/_round_button_8cs.html',1,'']]],
+  ['roundgroupbox_2ecs_2091',['RoundGroupBox.cs',['../d4/da8/_round_group_box_8cs.html',1,'']]],
+  ['roundpicturebox_2ecs_2092',['RoundPictureBox.cs',['../d3/dd4/_round_picture_box_8cs.html',1,'']]],
+  ['roundrectangle_2ecs_2093',['RoundRectangle.cs',['../da/d64/_round_rectangle_8cs.html',1,'']]],
+  ['roundtextbox_2ecs_2094',['RoundTextBox.cs',['../de/d16/_round_text_box_8cs.html',1,'']]],
+  ['roundtooltip_2ecs_2095',['RoundTooltip.cs',['../d8/d9f/_round_tooltip_8cs.html',1,'']]]
 ];

@@ -1,0 +1,7 @@
+<map id="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainzWithAlbumNameVariation" name="YTMusicUploader.Business.MusicDataFetcher.GetRecordingFromMusicBrainzWithAlbumNameVariation">
+<area shape="rect" id="node1" title="Get the recording (track data) from MusicBrainz via query using the artist, album an track names from..." alt="" coords="5,35,248,91"/>
+<area shape="rect" id="node2" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a43170b48c1c9469ccb685fcd0baf011c" title="Returns MusicFileMetaData object of music file meta data such as:" alt="" coords="296,5,561,47"/>
+<area shape="rect" id="node4" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a7892203555b075bcf4bbb7da3a43ba0e" title="Get the recording (track data) from MusicBrainz via query using the artist, album an track names" alt="" coords="308,71,549,127"/>
+<area shape="rect" id="node3" href="$dc/db7/class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher.html#a50e0a63ee984508b8677e836e27ca4cb" title="Gets a TabLib (TabLib library object of music file meta data) file object of a given music music file" alt="" coords="609,5,856,47"/>
+<area shape="rect" id="node5" href="$db/d6f/interface_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_i_recording_service.html#aa65773bd4edd753f4b269f3eefccb5dc" title="Search for an recording in the MusicBrainz database, matching the given query." alt="" coords="629,71,836,127"/>
+</map>

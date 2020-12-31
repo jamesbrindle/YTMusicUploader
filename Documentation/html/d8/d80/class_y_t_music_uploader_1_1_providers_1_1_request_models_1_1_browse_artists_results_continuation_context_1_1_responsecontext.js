@@ -1,0 +1,6 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_responsecontext =
+[
+    [ "maxAgeSeconds", "d8/d80/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_responsecontext.html#a9dd8727376dfbb089ae7156fde0831cb", null ],
+    [ "serviceTrackingParams", "d8/d80/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_responsecontext.html#ab743a28f3e9be3328c360b8abb16bc51", null ],
+    [ "visitorData", "d8/d80/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_responsecontext.html#af23f5d3e50d9f26182f7da6e4fe26360", null ]
+];
