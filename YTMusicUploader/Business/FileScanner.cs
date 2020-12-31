@@ -23,7 +23,7 @@ namespace YTMusicUploader.Business
         public List<PlaylistFile> PlaylistFilesToDelete { get; set; } = new List<PlaylistFile>();
         public List<MusicFile> CurrentMusicFiles { get; set; }
         public List<PlaylistFile> CurrentPlaylistFiles { get; set; }
-        public HashSet<string> currentProcessingFilesHash { get; set; } = new HashSet<string>();
+        public HashSet<string> CurrentProcessingFilesHash { get; set; } = new HashSet<string>();
         public bool Stopped { get; set; } = false;
 
         public FileScanner(MainForm mainForm)
@@ -50,11 +50,11 @@ namespace YTMusicUploader.Business
 
             CurrentMusicFiles = MainForm.MusicFileRepo.LoadAll().Result;
             foreach (var musicFile in CurrentMusicFiles)
-                currentProcessingFilesHash.Add(musicFile.Path);
+                CurrentProcessingFilesHash.Add(musicFile.Path);
 
             CurrentPlaylistFiles = MainForm.PlaylistFileRepo.LoadAll().Result;
             foreach (var playlistFile in CurrentPlaylistFiles)
-                currentProcessingFilesHash.Add(playlistFile.Path);
+                CurrentProcessingFilesHash.Add(playlistFile.Path);
 
             //
             // Get files to add - Cross reference with the DB
@@ -75,7 +75,7 @@ namespace YTMusicUploader.Business
                             if (MainFormAborting())
                                 return;
 
-                            if (!currentProcessingFilesHash.Contains(file.Path))
+                            if (!CurrentProcessingFilesHash.Contains(file.Path))
                             {
                                 if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedMusicFiles) ||
                                     Path.GetExtension(file.Name.ToLower()).In(Global.SupportedPlaylistFiles))
@@ -394,7 +394,7 @@ namespace YTMusicUploader.Business
             DiscoveredFilesHash = new HashSet<string>();
             MusicFilesToDelete = new List<MusicFile>();
             PlaylistFilesToDelete = new List<PlaylistFile>();
-            currentProcessingFilesHash = new HashSet<string>();
+            CurrentProcessingFilesHash = new HashSet<string>();
         }
     }
 }
