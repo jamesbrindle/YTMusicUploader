@@ -66,6 +66,7 @@ namespace YTMusicUploader.Dialogues
                         dvgLog.Columns["Hash"].Visible = false;
                         dvgLog.Columns["Removed"].Visible = false;
                         dvgLog.Columns["MbId"].Visible = false;
+                        dvgLog.Columns["VideoId"].Visible = false;
                         dvgLog.Columns["ReleaseMbId"].Visible = false;
                         dvgLog.Columns["EntityId"].Visible = false;
                         dvgLog.Columns["LastUpload"].Visible = false;

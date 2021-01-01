@@ -453,7 +453,8 @@ namespace YTMusicUploader
                 if (e.Message.ToLower().Contains("thread was being aborted") ||
                     (e.InnerException != null && e.InnerException.Message.ToLower().Contains("thread was being aborted")))
                 {
-                    Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Warning);
+                    // Non-detrimental - Ignore to not clog up the application log
+                    // Logger.Log(e, "Main Process thread error", Log.LogTypeEnum.Warning);
                 }
                 else
                 {

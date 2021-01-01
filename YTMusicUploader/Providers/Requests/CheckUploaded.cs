@@ -55,8 +55,8 @@ namespace YTMusicUploader.Providers
             public class MusicFileCacheObject
             {
                 public string MusicFilePath { get; set; }
-                public string MbId { get; set; }
-                public string ReleaseMbId { get; set; }
+                public string MbId { get; set; } = null;
+                public string ReleaseMbId { get; set; } = null;
                 public string EntityId { get; set; }
                 public string BrowseId { get; set; }
                 public string VideoId { get; set; }
@@ -115,7 +115,7 @@ namespace YTMusicUploader.Providers
                                 artistGetThread.Abort();
                             }
                             catch { }
-                            throw new ApplicationException("LoadArtistCache - Load artist cache timeout expired. Probably bug");
+                            throw new ApplicationException("LoadArtistCache - Load artist cache timeout expired.");
                         }
 
                         Thread.Sleep(1000);
@@ -128,11 +128,12 @@ namespace YTMusicUploader.Providers
                 if (e.Message.ToLower().Contains("thread was being aborted") ||
                     (e.InnerException != null && e.InnerException.Message.ToLower().Contains("thread was being aborted")))
                 {
-                    Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired due to thread aborting after system change.", Log.LogTypeEnum.Warning);
+                    // Non-detrimental - Ignore to not clog up the application log
+                    // Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired due to thread aborting after system change.", Log.LogTypeEnum.Warning);
                 }
                 else
                 {
-                    Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired. Probably bug", Log.LogTypeEnum.Critical);
+                    Logger.Log(e, "LoadArtistCache - Load artist cache timeout expired.", Log.LogTypeEnum.Critical);
                 }
             }
         }

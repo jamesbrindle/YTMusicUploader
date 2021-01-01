@@ -58,6 +58,7 @@ namespace YTMusicUploader.Dialogues
                     dvgLog.DataSource = MainForm.MusicFileRepo.LoadUploaded().Result;
                     dvgLog.Columns["ReleaseMbId"].Visible = false;
                     dvgLog.Columns["EntityId"].Visible = false;
+                    dvgLog.Columns["VideoId"].Visible = false;
                     dvgLog.Columns["Hash"].Visible = false;
                     dvgLog.Columns["Removed"].Visible = false;
                     dvgLog.Columns["Error"].Visible = false;

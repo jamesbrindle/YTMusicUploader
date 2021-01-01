@@ -12,7 +12,7 @@ using static YTMusicUploader.Providers.RequestModels.ArtistCache;
 namespace YTMusicUploader.Business
 {
     /// <summary>
-    /// Responsible for scanning library playlist file and either creating them on YT Music or adding to them on YT Music
+    /// Responsible for scanning library playlist files and either creating them on YT Music or adding to them on YT Music
     /// </summary>
     public class PlaylistProcessor
     {
@@ -139,7 +139,8 @@ namespace YTMusicUploader.Business
                 if (e.Message.ToLower().Contains("thread was being aborted") ||
                    (e.InnerException != null && e.InnerException.Message.ToLower().Contains("thread was being aborted")))
                 {
-                    Logger.Log(e, "PlaylistProcessor", Log.LogTypeEnum.Warning);
+                    // Non-detrimental - Ignore to not clog up the application log
+                    // Logger.Log(e, "PlaylistProcessor", Log.LogTypeEnum.Warning);
                 }
                 else
                 {
