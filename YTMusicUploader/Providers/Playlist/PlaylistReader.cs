@@ -2,6 +2,7 @@
 using System.IO;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.Playlist.Content;
+using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader.Providers.Playlist
 {
@@ -32,15 +33,15 @@ namespace YTMusicUploader.Providers.Playlist
                     case ".wpl":
                         var content_wpl = new WplContent();
                         var playlist_wpl = content_wpl.GetFromStream(sr.BaseStream);
-                        playlistFile.Title = playlist_wpl.Title;
+                        playlistFile.Title = playlist_wpl.Title.Trim();
                         break;
                     case ".zpl":
                         var content_zpl = new ZplContent();
                         var playlist_zpl = content_zpl.GetFromStream(sr.BaseStream);
-                        playlistFile.Title = playlist_zpl.Title;
+                        playlistFile.Title = playlist_zpl.Title.Trim();
                         break;
                     default:
-                        playlistFile.Title = Path.GetFileNameWithoutExtension(path);
+                        playlistFile.Title = Path.GetFileNameWithoutExtension(path).Trim();
                         break;
                 }
 
@@ -51,6 +52,8 @@ namespace YTMusicUploader.Providers.Playlist
 
                 playlistFile.Path = path;
                 playlistFile.LastModifiedDate = new FileInfo(path).LastWriteTime;
+
+                var musicFileRepo = new MusicFileRepo();
 
                 foreach (string musicFilePath in paths)
                 {

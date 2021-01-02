@@ -251,9 +251,10 @@ namespace YTMusicUploader.Business
             if (MainFormIsAborting())
                 return;
 
+            string entityId = musicFile.EntityId;
             var alreadyUploaded = Requests.IsSongUploaded(musicFile.Path,
                                                           MainForm.Settings.AuthenticationCookie,
-                                                          out string entityId,
+                                                          ref entityId,
                                                           out string videoId,
                                                           MainForm.MusicDataFetcher);
 
@@ -453,13 +454,15 @@ namespace YTMusicUploader.Business
                     if (MainFormIsAborting())
                         return;
 
+                    string entityId = musicFile.EntityId;
+
                     // We've uploaded it, so now see if we can get the YouTube Music entityId
                     if (Requests.IsSongUploaded(musicFile.Path,
-                                            MainForm.Settings.AuthenticationCookie,
-                                            out string entityId,
-                                            out string videoId,
-                                            MainForm.MusicDataFetcher,
-                                            false) != Requests.UploadCheckResult.NotPresent)
+                                                MainForm.Settings.AuthenticationCookie,
+                                                ref entityId,
+                                                out string videoId,
+                                                MainForm.MusicDataFetcher,
+                                                false) != Requests.UploadCheckResult.NotPresent)
                     {
                         musicFile.EntityId = entityId;
                         musicFile.VideoId = videoId;

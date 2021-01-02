@@ -78,6 +78,7 @@ namespace YTMusicUploader
         public bool InstallingEdge { get; set; }
         public bool Aborting { get; set; } = false;
         public ManagingYTMusicStatusEnum ManagingYTMusicStatus { get; set; } = ManagingYTMusicStatusEnum.NeverShown;
+        public bool DatabaseIntegrityCheckDone { get; set; } = false;
 
         private bool StartHidden = false;
 
@@ -201,11 +202,11 @@ namespace YTMusicUploader
                                    NotifyFilters.Size |
                                    NotifyFilters.Attributes |
                                    NotifyFilters.FileName |
-                                   NotifyFilters.LastAccess |
                                    NotifyFilters.LastWrite |
                                    NotifyFilters.Size,
                     Filter = "*.*",
-                    EnableRaisingEvents = true
+                    EnableRaisingEvents = true,
+                    IncludeSubdirectories = true
                 });
 
                 FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
@@ -333,10 +334,16 @@ namespace YTMusicUploader
         public void StartMainProcess(bool restarting = false)
         {
             IdleProcessor.Paused = true;
-            SetStatusMessage("Checking database integrity", "Checking database integrity");
-            DataAccess.CheckAndCopyDatabaseFile();
-            Logger.LogInfo("StartMainProcess", "Main process thread starting");
 
+            // Only perform at start up
+            if (!DatabaseIntegrityCheckDone)
+            {
+                SetStatusMessage("Checking database integrity", "Checking database integrity");
+                DataAccess.CheckAndCopyDatabaseFile();
+                DatabaseIntegrityCheckDone = true;
+            }
+
+            Logger.LogInfo("StartMainProcess", "Main process thread starting");
 
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {

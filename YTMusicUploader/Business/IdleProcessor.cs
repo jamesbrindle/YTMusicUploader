@@ -106,10 +106,11 @@ namespace YTMusicUploader.Business
                 var musicFile = MainForm.MusicFileRepo.GetRandmonMusicFileWithMissingEntityId().Result;
                 if (musicFile != null && !string.IsNullOrEmpty(musicFile.Path))
                 {
+                    string entityId = musicFile.EntityId;
                     Requests.IsSongUploaded(
                         musicFile.Path,
                         MainForm.Settings.AuthenticationCookie,
-                        out string entityId,
+                        ref entityId,
                         out string videoId,
                         MainForm.MusicDataFetcher,
                         false,

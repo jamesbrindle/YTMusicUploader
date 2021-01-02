@@ -1,6 +1,7 @@
 ﻿using JBToolkit.FuzzyLogic;
 using JBToolkit.Network;
 using JBToolkit.Threads;
+using JBToolkit.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -117,6 +118,21 @@ namespace YTMusicUploader.Business
                                     playlistItem.VideoId = musicFile.VideoId;
                                     playlistFile.PlaylistItems.Add(playlistToAdd);
                                 }
+                                else
+                                {
+                                    // Check the file hash instead, in case the playlist file path is somehow different
+                                    // to the watch folder file path (i.e. network folder locations or symbolics links)
+
+                                    string hash = DirectoryHelper.GetFileHash(playlistItem.Path).Result;
+                                    musicFile = MainForm.MusicFileRepo.LoadFromHash(hash).Result;
+
+                                    if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
+                                    {
+                                        var playlistToAdd = playlistItem;
+                                        playlistItem.VideoId = musicFile.VideoId;
+                                        playlistFile.PlaylistItems.Add(playlistToAdd);
+                                    }
+                                }
                             }
 
                             if (MainFormAborting())
@@ -147,6 +163,8 @@ namespace YTMusicUploader.Business
                     Logger.Log(e, "Fatal error in PlaylistProcessor", Log.LogTypeEnum.Critical);
                 }
             }
+
+            Stopped = true;
         }
 
         private void HandleOnlinePlaylistPresent(OnlinePlaylist onlinePlaylist, PlaylistFile playlistFile)
@@ -264,33 +282,36 @@ namespace YTMusicUploader.Business
 
             if (MainFormAborting())
                 return;
-
-            if (Requests.Playlists.CreatePlaylist(
-                    MainForm.Settings.AuthenticationCookie,
-                    playlistFile.Title,
-                    playlistFile.Description,
-                    playlistFile.PlaylistItems.Select(m => m.VideoId).ToList(),
-                    OnlinePlaylist.PrivacyStatusEmum.Private,
-                    out string playlistId,
-                    out string browseId,
-                    out string errorMessage))
+            
+            if (playlistFile.PlaylistItems != null && playlistFile.PlaylistItems.Count > 0) // Don't bother if playlist empty
             {
-                playlistFile.PlaylistId = browseId;
-                playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
-                playlistFile.LastUpload = playlistFile.LastModifiedDate;
-                playlistFile.Save().Wait();
-
-                try
+                if (Requests.Playlists.CreatePlaylist(
+                        MainForm.Settings.AuthenticationCookie,
+                        playlistFile.Title,
+                        playlistFile.Description,
+                        playlistFile.PlaylistItems.Select(m => m.VideoId).ToList(),
+                        OnlinePlaylist.PrivacyStatusEmum.Private,
+                        out string playlistId,
+                        out string browseId,
+                        out string errorMessage))
                 {
-                    Requests.ArtistCache.Playlists = Requests.Playlists.GetPlaylists(MainForm.Settings.AuthenticationCookie);
-                }
-                catch { }
+                    playlistFile.PlaylistId = browseId;
+                    playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
+                    playlistFile.LastUpload = playlistFile.LastModifiedDate;
+                    playlistFile.Save().Wait();
 
-                Logger.LogInfo("HandleOnlinePlaylistNeedsCreating", $"Created online playlist: {playlistFile.Title}: Success");
-            }
-            else
-            {
-                Logger.LogError("HandleOnlinePlaylistNeedsCreating", $"Error creating playlist: {playlistFile.Title}: " + errorMessage);
+                    try
+                    {
+                        Requests.ArtistCache.Playlists = Requests.Playlists.GetPlaylists(MainForm.Settings.AuthenticationCookie);
+                    }
+                    catch { }
+
+                    Logger.LogInfo("HandleOnlinePlaylistNeedsCreating", $"Created online playlist: {playlistFile.Title}: Success");
+                }
+                else
+                {
+                    Logger.LogError("HandleOnlinePlaylistNeedsCreating", $"Error creating playlist: {playlistFile.Title}: " + errorMessage);
+                }
             }
         }
 

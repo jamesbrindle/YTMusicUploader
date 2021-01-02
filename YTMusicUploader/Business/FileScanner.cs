@@ -211,8 +211,7 @@ namespace YTMusicUploader.Business
                                                                                 "*.*",
                                                                                 SearchOption.AllDirectories))
                     {
-                        if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedMusicFiles) ||
-                            Path.GetExtension(file.Name.ToLower()).In(Global.SupportedPlaylistFiles))
+                        if (Path.GetExtension(file.Name.ToLower()).In(Global.SupportedMusicFiles))
                             count++;
                     }
                 }

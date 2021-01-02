@@ -195,6 +195,51 @@ namespace YTMusicUploader.Providers.Repos
         }
 
         /// <summary>
+        /// Load single MusicFile object by file hash from the database
+        /// </summary>
+        /// <returns>MusicFile object</returns>
+        public async Task<MusicFile> LoadFromHash(string hash)
+        {
+            try
+            {
+                return await LoadFromHash_R(hash);
+            }
+            catch
+            {
+                ThreadHelper.SafeSleep(50);
+                return await LoadFromHash_R(hash);
+            }
+        }
+
+        private async Task<MusicFile> LoadFromHash_R(string hash)
+        {
+            using (var conn = DbConnection(true))
+            {
+                conn.Open();
+                var musicFile = conn.Query<MusicFile>(
+                        @"SELECT 
+                              Id, 
+                              Path, 
+                              MbId,
+                              ReleaseMbId,
+                              EntityId,
+                              VideoId,
+                              Hash,
+                              LastUpload, 
+                              Error,
+                              ErrorReason,
+                              UploadAttempts,
+                              IFNULL(LastUploadError, '0001-01-01 00:00:00') [LastUploadError]
+                          FROM MusicFiles
+                          WHERE Hash = @Hash
+                          AND (Removed IS NULL OR Removed != 1)",
+                        new { hash }).FirstOrDefault();
+                conn.Close();
+                return await Task.FromResult(musicFile);
+            }
+        }
+
+        /// <summary>
         /// Load single MusicFile object by hash and from the database that doesn't match
         /// the given path (i.e. a duplicate hash)
         /// </summary>

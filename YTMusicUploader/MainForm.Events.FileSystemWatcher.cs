@@ -37,13 +37,12 @@ namespace YTMusicUploader
         {
             ThreadPool.QueueUserWorkItem(delegate
             {
-                while (LastFolderChangeTime > DateTime.Now.AddSeconds(-10))
+                while (LastFolderChangeTime > DateTime.Now.AddSeconds(-5))
                     ThreadHelper.SafeSleep(1000);
 
                 LastFolderChangeTime = null;
                 FileScanner.RecountLibraryFiles();
                 QueueChecker.Queue = true;
-
             });
         }
     }
