@@ -28,9 +28,9 @@ namespace YTMusicUploader.Providers
             /// <param name="playlistId">YT Music playlistid (or browseId) to add to</param>
             /// <param name="videoId">This is the unique track id to add</param>
             /// <returns>True if successfully, false otherwise</returns>
-            public static bool AddPlaylistItem(string cookieValue, string playlistId, string videoId, out string errorMessage)
+            public static bool AddPlaylistItem(string cookieValue, string playlistId, string videoId, out Exception ex)
             {
-                errorMessage = string.Empty;
+                ex = null;
 
                 try
                 {
@@ -69,7 +69,6 @@ namespace YTMusicUploader.Providers
                         requestStream.Close();
                     }
 
-                    postBytes = null;
                     using (var response = (HttpWebResponse)request.GetResponse())
                     {
                         string result;
@@ -83,14 +82,13 @@ namespace YTMusicUploader.Providers
 
                         if (result.ToLower().Contains("error"))
                         {
-                            errorMessage = "Error: " + result;
-                            return false;
+                            throw new Exception("Error: " + result);
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    errorMessage = "Error: " + e.Message;
+                    ex = e;
                     return false;
                 }
 

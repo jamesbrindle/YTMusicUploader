@@ -45,6 +45,9 @@ namespace YTMusicUploader.Providers.Playlist
                         break;
                 }
 
+                if (string.IsNullOrEmpty(playlistFile.Title))
+                    playlistFile.Title = Path.GetFileNameWithoutExtension(path).Trim();
+
                 sr.BaseStream.Position = 0;
                 var parser = PlaylistParserFactory.GetPlaylistParser(playlistExtension);
                 var playlist = parser.GetFromStream(sr.BaseStream);

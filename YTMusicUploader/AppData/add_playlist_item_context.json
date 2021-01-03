@@ -39,11 +39,7 @@
     "clickTracking": {
       "clickTrackingParams": "CAAQisQGIhMI8Lq8utH47QIVSbJRCh08zAXC"
     },
-    "activePlayers": [
-      {
-        "playerContextParams": "Q0FFU0FnZ0I="
-      }
-    ],
+    "activePlayers": [],
     "user": {
       "enableSafetyMode": false
     }

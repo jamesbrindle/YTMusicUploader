@@ -126,51 +126,61 @@ namespace YTMusicUploader.Providers.Playlist.Content
             var currentEntry = new M3uPlaylistEntry { Album = "", AlbumArtist = "", Title = "" };
             foreach (string currentLine in playlistLines)
             {
-                var match = Regex.Match(currentLine, @"^#EXTINF:(-?\d*),(.*)$");
-                if (match.Success)
+                try
                 {
-                    double seconds = string.IsNullOrEmpty(match.Groups[1].Value) ? 0 : double.Parse(match.Groups[1].Value);
-                    currentEntry.Duration = TimeSpan.FromSeconds(seconds);
-                    currentEntry.Title = match.Groups[2].Value;
-                    continue;
-                }
+                    var match = Regex.Match(currentLine, @"^#EXTINF:(-?\d*),(.*)$");
+                    if (match.Success)
+                    {
+                        double seconds = string.IsNullOrEmpty(match.Groups[1].Value) ? 0 : double.Parse(match.Groups[1].Value);
+                        currentEntry.Duration = TimeSpan.FromSeconds(seconds);
+                        currentEntry.Title = match.Groups[2].Value;
+                        continue;
+                    }
 
-                match = Regex.Match(currentLine, @"^#(EXTALB):(.*)$");
-                if (match.Success)
-                {
-                    currentEntry.Album = match.Groups[2].Value;
-                    continue;
-                }
+                    match = Regex.Match(currentLine, @"^#(EXTALB):(.*)$");
+                    if (match.Success)
+                    {
+                        currentEntry.Album = match.Groups[2].Value;
+                        continue;
+                    }
 
-                match = Regex.Match(currentLine, @"^#(EXTART):(.*)$");
-                if (match.Success)
-                {
-                    currentEntry.AlbumArtist = match.Groups[2].Value;
-                    continue;
-                }
+                    match = Regex.Match(currentLine, @"^#(EXTART):(.*)$");
+                    if (match.Success)
+                    {
+                        currentEntry.AlbumArtist = match.Groups[2].Value;
+                        continue;
+                    }
 
-                match = Regex.Match(currentLine, @"^#(EXT.*):(.*)$");
-                if (match.Success)
-                {
-                    currentEntry.CustomProperties.Add(match.Groups[1].Value, match.Groups[2].Value);
-                    continue;
-                }
+                    match = Regex.Match(currentLine, @"^#(EXT.*):(.*)$");
+                    if (match.Success)
+                    {
+                        currentEntry.CustomProperties.Add(match.Groups[1].Value, match.Groups[2].Value);
+                        continue;
+                    }
 
-                match = Regex.Match(currentLine, @"^#(?!EXT)(.*)$");
-                if (match.Success)
-                {
-                    currentEntry.Comments.Add(match.Groups[1].Value);
-                    continue;
-                }
+                    match = Regex.Match(currentLine, @"^#(?!EXT)(.*)$");
+                    if (match.Success)
+                    {
+                        currentEntry.Comments.Add(match.Groups[1].Value);
+                        continue;
+                    }
 
-                currentEntry.Path = WebUtility.UrlDecode(currentLine);
-                playlist.PlaylistEntries.Add(currentEntry);
-                currentEntry = new M3uPlaylistEntry
+                    currentEntry.Path = WebUtility.UrlDecode(currentLine);
+                    playlist.PlaylistEntries.Add(currentEntry);
+                    currentEntry = new M3uPlaylistEntry
+                    {
+                        Album = "",
+                        AlbumArtist = "",
+                        Title = ""
+                    };
+                }
+                catch (Exception e)
                 {
-                    Album = "",
-                    AlbumArtist = "",
-                    Title = ""
-                };
+                    var _ = e;
+#if DEBUG
+                    Console.Out.WriteLine(e.Message);
+#endif
+                }
             }
 
             return playlist;

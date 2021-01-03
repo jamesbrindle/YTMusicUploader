@@ -45,9 +45,9 @@ namespace YTMusicUploader.Providers
                 PrivacyStatusEmum privacyStatus,
                 out string playlistId,
                 out string browseId,
-                out string errorMessage)
+                out Exception ex)
             {
-                errorMessage = string.Empty;
+                ex = null;
                 browseId = string.Empty;
                 playlistId = string.Empty;
 
@@ -101,8 +101,7 @@ namespace YTMusicUploader.Providers
 
                         if (result.ToLower().Contains("error"))
                         {
-                            errorMessage = "Error: " + result;
-                            return false;
+                            throw new Exception("Error: " + result);
                         }
                         else
                         {
@@ -125,7 +124,7 @@ namespace YTMusicUploader.Providers
                 }
                 catch (Exception e)
                 {
-                    errorMessage = "Error: " + e.Message;
+                    ex = e;
                     return false;
                 }
 
