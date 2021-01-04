@@ -30,7 +30,7 @@ namespace YTMusicUploader.Business
         /// <summary>
         /// Execute the playlist management process
         /// </summary>
-        public void Process()
+        public void Process(bool forceRefreshPlaylists = false)
         {
             Stopped = false;
             SetStatus("Processing playlist files", "Processing playlist files");
@@ -38,32 +38,22 @@ namespace YTMusicUploader.Business
             try
             {
                 PlaylistFiles = MainForm.PlaylistFileRepo.LoadAll().Result;
+                if (forceRefreshPlaylists)
+                    Requests.ArtistCache.Playlists = Requests.Playlists.GetPlaylists(MainForm.Settings.AuthenticationCookie);
+
                 OnlinePlaylists = Requests.ArtistCache.Playlists;
 
                 if (PlaylistFiles != null)
                 {
                     foreach (var playlistFile in PlaylistFiles)
-                    {
+                    {   
+                        ConnectionCheckWait();
                         if (MainFormAborting())
                             return;
 
-                        while (!NetworkHelper.InternetConnectionIsUp())
-                        {
-                            if (MainFormAborting())
-                                return;
-
-                            ThreadHelper.SafeSleep(1000);
-                        }
-
-                        while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
-                        {
-                            MainForm.SetPaused(true);
-                            ThreadHelper.SafeSleep(1000);
-                        }
-
                         if (playlistFile.LastModifiedDate != playlistFile.LastUpload ||
-                           (File.Exists(playlistFile.Path) && playlistFile.LastModifiedDate != new FileInfo(playlistFile.Path).LastWriteTime) ||
-                           (playlistFile.PlaylistId != null && MatchOnlinePlaylist(playlistFile.PlaylistId, true) == null))
+                          (File.Exists(playlistFile.Path) && playlistFile.LastModifiedDate != new FileInfo(playlistFile.Path).LastWriteTime) ||
+                          (playlistFile.PlaylistId != null && MatchOnlinePlaylist(playlistFile.PlaylistId, true) == null))
                         {
                             try
                             {
@@ -74,22 +64,9 @@ namespace YTMusicUploader.Business
                                 playlistFile.Title = updatedPlaylistFile.Title;
                                 OnlinePlaylist onlinePlaylist = null;
 
+                                ConnectionCheckWait();
                                 if (MainFormAborting())
                                     return;
-
-                                while (!NetworkHelper.InternetConnectionIsUp())
-                                {
-                                    if (MainFormAborting())
-                                        return;
-
-                                    ThreadHelper.SafeSleep(1000);
-                                }
-
-                                while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
-                                {
-                                    MainForm.SetPaused(true);
-                                    ThreadHelper.SafeSleep(1000);
-                                }
 
                                 if (!string.IsNullOrEmpty(playlistFile.PlaylistId) && MatchOnlinePlaylist(playlistFile.PlaylistId, true) != null)
                                     onlinePlaylist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistFile.PlaylistId);
@@ -170,24 +147,11 @@ namespace YTMusicUploader.Business
             Stopped = true;
         }
 
-        private void HandleOnlinePlaylistPresent(OnlinePlaylist onlinePlaylist, PlaylistFile playlistFile)
+        private void HandleOnlinePlaylistPresent(OnlinePlaylist onlinePlaylist, PlaylistFile playlistFile, bool forceRefreshPlaylists = false)
         {
+            ConnectionCheckWait();
             if (MainFormAborting())
                 return;
-
-            while (!NetworkHelper.InternetConnectionIsUp())
-            {
-                if (MainFormAborting())
-                    return;
-
-                ThreadHelper.SafeSleep(1000);
-            }
-
-            while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
-            {
-                MainForm.SetPaused(true);
-                ThreadHelper.SafeSleep(1000);
-            }
 
             if (onlinePlaylist.Songs.Count < 5000)
             {
@@ -213,44 +177,38 @@ namespace YTMusicUploader.Business
 
                 foreach (var playlistItem in playlistFile.PlaylistItems)
                 {
+                    ConnectionCheckWait();
                     if (MainFormAborting())
                         return;
-
-                    while (!NetworkHelper.InternetConnectionIsUp())
-                    {
-                        if (MainFormAborting())
-                            return;
-
-                        ThreadHelper.SafeSleep(1000);
-                    }
-
-                    while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
-                    {
-                        MainForm.SetPaused(true);
-                        ThreadHelper.SafeSleep(1000);
-                    }
 
                     for (int i = 0; i < 7; i++)
                     {
                         if (Requests.Playlists.AddPlaylistItem(
-                            MainForm.Settings.AuthenticationCookie,
-                            playlistFile.PlaylistId,
-                            playlistItem.VideoId,
-                            out Exception e))
+                                MainForm.Settings.AuthenticationCookie,
+                                playlistFile.PlaylistId,
+                                playlistItem.VideoId,
+                                out Exception e))
                         {
                             Logger.LogInfo("HandleOnlinePlaylistPresent", $"Adding item to online playlist: {playlistFile.Title}: Success");
                             break;
                         }
                         else
                         {
-                            if (i == 4)
+                            if (e.Message.Contains("404") && !forceRefreshPlaylists)
                             {
-                                Logger.Log(e, $"Error adding item to online playlist: {playlistFile.Title}", Log.LogTypeEnum.Error);
-                                break;
+                                // Then playlist recently deleted. So create new one by running original 'Process()'
+                                Process(true);
+                                return;
                             }
                             else
                             {
-                                ThreadHelper.SafeSleep(3000);
+                                if (i == 4)
+                                {
+                                    Logger.Log(e, $"Error adding item to online playlist: {playlistFile.Title}", Log.LogTypeEnum.Error);
+                                    break;
+                                }
+                                else
+                                    ThreadHelper.SafeSleep(3000);
                             }
                         }
                     }
@@ -264,22 +222,9 @@ namespace YTMusicUploader.Business
 
         private void HandleOnlinePlaylistNeedsCreating(PlaylistFile playlistFile)
         {
+            ConnectionCheckWait();
             if (MainFormAborting())
                 return;
-
-            while (!NetworkHelper.InternetConnectionIsUp())
-            {
-                if (MainFormAborting())
-                    return;
-
-                ThreadHelper.SafeSleep(1000);
-            }
-
-            while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
-            {
-                MainForm.SetPaused(true);
-                ThreadHelper.SafeSleep(1000);
-            }
 
             if (string.IsNullOrEmpty(playlistFile.Description))
                 playlistFile.Description = "Created by YT Music Uploader";
@@ -303,14 +248,14 @@ namespace YTMusicUploader.Business
                 for (int i = 0; i < 7; i++)
                 {
                     if (Requests.Playlists.CreatePlaylist(
-                       MainForm.Settings.AuthenticationCookie,
-                       playlistFile.Title,
-                       playlistFile.Description,
-                       playlistFile.PlaylistItems.Select(m => m.VideoId).ToList(),
-                       OnlinePlaylist.PrivacyStatusEmum.Private,
-                       out string playlistId,
-                       out string browseId,
-                       out Exception e))
+                           MainForm.Settings.AuthenticationCookie,
+                           playlistFile.Title,
+                           playlistFile.Description,
+                           playlistFile.PlaylistItems.Select(m => m.VideoId).ToList(),
+                           OnlinePlaylist.PrivacyStatusEmum.Private,
+                           out string playlistId,
+                           out string browseId,
+                           out Exception e))
                     {
                         playlistFile.PlaylistId = browseId;
                         playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
@@ -334,9 +279,7 @@ namespace YTMusicUploader.Business
                             break;
                         }
                         else
-                        {
                             ThreadHelper.SafeSleep(3000);
-                        }
                     }
                 }
             }
@@ -399,6 +342,26 @@ namespace YTMusicUploader.Business
 
             if (!string.IsNullOrEmpty(systemTrayIconText))
                 MainForm.SetSystemTrayIconText(systemTrayIconText);
+        }
+
+        private void ConnectionCheckWait()
+        {
+            if (MainFormAborting())
+                return;
+
+            while (!NetworkHelper.InternetConnectionIsUp())
+            {
+                if (MainFormAborting())
+                    return;
+
+                ThreadHelper.SafeSleep(1000);
+            }
+
+            while (MainForm.ManagingYTMusicStatus == MainForm.ManagingYTMusicStatusEnum.Showing)
+            {
+                MainForm.SetPaused(true);
+                ThreadHelper.SafeSleep(1000);
+            }
         }
 
         private bool MainFormAborting()

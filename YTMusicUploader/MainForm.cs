@@ -394,43 +394,15 @@ namespace YTMusicUploader
                 FileScanner.Process();
                 Logger.LogInfo("MainProcess", "File scan complete");
 
-                while (!ConnectedToYTMusic)
-                {
-                    if (Aborting)
-                    {
-                        if (WatchFolders.Count == 0)
-                            SetAmountLabelsToZero();
-
-                        SetStatusMessage("Stopping", "Stopping");
-                        return;
-                    }
-
-                    ThreadHelper.SafeSleep(1000);
-                }
-
-                while (!NetworkHelper.InternetConnectionIsUp())
-                {
-                    SetStatusMessage("No internet connection", "No internet connection");
-                    ThreadHelper.SafeSleep(5000);
-                }
-
-                while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
-                {
-                    try
-                    {
-                        SetConnectedToYouTubeMusic(false);
-                        ThreadHelper.SafeSleep(1000);
-                        Settings = SettingsRepo.Load().Result;
-                    }
-                    catch { }
-                }
-
-                SetConnectedToYouTubeMusic(true);
+                YTMAuthenticationCheckWait();
                 RepopulateAmountLables();
 
                 Logger.LogInfo("MainProcess", "Starting upload check and upload process");
                 FileUploader.Process().Wait();
                 Logger.LogInfo("MainProcess", "Upload check and process upload process complete");
+
+                YTMAuthenticationCheckWait();
+                RepopulateAmountLables();
 
                 Logger.LogInfo("MainProcess", "Starting playlist processing");
                 PlaylistProcessor.Process();
@@ -470,6 +442,42 @@ namespace YTMusicUploader
             }
 
             IdleProcessor.Paused = false;
+        }
+
+        private void YTMAuthenticationCheckWait()
+        {
+            while (!ConnectedToYTMusic)
+            {
+                if (Aborting)
+                {
+                    if (WatchFolders.Count == 0)
+                        SetAmountLabelsToZero();
+
+                    SetStatusMessage("Stopping", "Stopping");
+                    return;
+                }
+
+                ThreadHelper.SafeSleep(1000);
+            }
+
+            while (!NetworkHelper.InternetConnectionIsUp())
+            {
+                SetStatusMessage("No internet connection", "No internet connection");
+                ThreadHelper.SafeSleep(5000);
+            }
+
+            while (!Requests.IsAuthenticated(Settings.AuthenticationCookie))
+            {
+                try
+                {
+                    SetConnectedToYouTubeMusic(false);
+                    ThreadHelper.SafeSleep(1000);
+                    Settings = SettingsRepo.Load().Result;
+                }
+                catch { }
+            }
+
+            SetConnectedToYouTubeMusic(true);
         }
 
         public void SetAmountLabelsToZero()

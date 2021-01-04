@@ -51,6 +51,9 @@ namespace YTMusicUploader.Providers
                 browseId = string.Empty;
                 playlistId = string.Empty;
 
+                if (description == null)
+                    description = string.Empty;
+
                 try
                 {
                     var request = (HttpWebRequest)WebRequest.Create(
