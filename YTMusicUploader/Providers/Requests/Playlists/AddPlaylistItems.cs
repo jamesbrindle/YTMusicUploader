@@ -31,6 +31,7 @@ namespace YTMusicUploader.Providers
             public static bool AddPlaylistItem(string cookieValue, string playlistId, string videoId, out Exception ex)
             {
                 ex = null;
+                string originalRequest = string.Empty;
 
                 try
                 {
@@ -59,8 +60,17 @@ namespace YTMusicUploader.Providers
                     context.playlistId = playlistId;
                     context.actions[0].addedVideoId = videoId;
 
+                    var delta = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
+                    double utcMinuteOffset = delta.TotalMinutes;
+                    context.context.client.utcOffsetMinutes = (int)utcMinuteOffset;
+
                     byte[] postBytes = GetPostBytes(JsonConvert.SerializeObject(context));
-                    request.ContentLength = postBytes.Length;
+
+                    try
+                    {
+                        originalRequest = JsonConvert.SerializeObject(context);
+                    }
+                    catch { }
 
                     request.ContentLength = postBytes.Length;
                     using (var requestStream = request.GetRequestStream())
@@ -81,13 +91,12 @@ namespace YTMusicUploader.Providers
                         }
 
                         if (result.ToLower().Contains("error"))
-                        {
                             throw new Exception("Error: " + result);
-                        }
                     }
                 }
                 catch (Exception e)
                 {
+                    Logger.LogError("AddPlaylistItem", "Error adding to playlist: " + playlistId, false, originalRequest);
                     ex = e;
                     return false;
                 }

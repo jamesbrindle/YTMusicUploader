@@ -292,7 +292,7 @@ namespace YTMusicUploader
         /// </summary>
         /// <param name="source">Where the message originated</param>
         /// <param name="message">The messsage to log</param>
-        public static void LogError(string source, string message, bool ignoreRemote = false)
+        public static void LogError(string source, string message, bool ignoreRemote = false, string stackTrace = null)
         {
             try
             {
@@ -304,7 +304,7 @@ namespace YTMusicUploader
                         LogTypeId = LogTypeEnum.Error,
                         Source = source.Ellipse(200 - 5),
                         Message = message.Ellipse(1500 - 5),
-                        StackTrace = null,
+                        StackTrace = stackTrace,
                         Machine = MachineName.Ellipse(210),
                         Version = VersionHelper.GetVersionFull()
                     };

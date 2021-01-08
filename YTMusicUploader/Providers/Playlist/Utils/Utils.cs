@@ -18,6 +18,9 @@ namespace YTMusicUploader.Providers.Playlist
             if (IsStream(filePath)) return filePath;
             if (IsAbsolutePath(filePath)) return filePath;
 
+            if (filePath.StartsWith("\\\\"))
+                return filePath;
+
             if (filePath[0] == '/' || filePath[0] == '\\') //relative path and starts with / or \
             {
                 filePath = filePath.Substring(1);

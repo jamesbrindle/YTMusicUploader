@@ -48,6 +48,7 @@ namespace YTMusicUploader.Providers
                 out Exception ex)
             {
                 ex = null;
+                string originalRequest = string.Empty;
                 browseId = string.Empty;
                 playlistId = string.Empty;
 
@@ -80,6 +81,16 @@ namespace YTMusicUploader.Providers
                     context.privacyStatus = privacyStatus.ToString().ToUpper();
                     context.videoIds = videoIds.ToArray();
 
+                    var delta = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
+                    double utcMinuteOffset = delta.TotalMinutes;
+                    context.context.client.utcOffsetMinutes = (int)utcMinuteOffset;
+
+                    try
+                    {
+                        originalRequest = JsonConvert.SerializeObject(context);
+                    }
+                    catch { }
+
                     byte[] postBytes = GetPostBytes(JsonConvert.SerializeObject(context));
                     request.ContentLength = postBytes.Length;
 
@@ -103,9 +114,7 @@ namespace YTMusicUploader.Providers
                         }
 
                         if (result.ToLower().Contains("error"))
-                        {
-                            throw new Exception("Error: " + result);
-                        }
+                            throw new Exception("Error: " + result + ": Original Http Request: " + originalRequest);
                         else
                         {
                             var runObject = JObject.Parse(result);
@@ -127,6 +136,7 @@ namespace YTMusicUploader.Providers
                 }
                 catch (Exception e)
                 {
+                    Logger.LogError("CreatePlaylist", "Error creating playlist: " + title, false, originalRequest);
                     ex = e;
                     return false;
                 }

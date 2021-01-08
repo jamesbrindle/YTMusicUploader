@@ -2,6 +2,7 @@
 using System.IO;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.Playlist.Content;
+using YTMusicUploader.Providers.Playlist.Models;
 using YTMusicUploader.Providers.Repos;
 
 namespace YTMusicUploader.Providers.Playlist
@@ -52,6 +53,9 @@ namespace YTMusicUploader.Providers.Playlist
                 var parser = PlaylistParserFactory.GetPlaylistParser(playlistExtension);
                 var playlist = parser.GetFromStream(sr.BaseStream);
                 var paths = playlist.GetTracksPaths();
+
+                if ((paths == null || paths.Count == 0) && playlistExtension.In(".m3u", ".m3u8"))
+                    paths = M3uPlaylist.GetPlaylistFromCorruptM3u(path);
 
                 playlistFile.Path = path;
                 playlistFile.LastModifiedDate = new FileInfo(path).LastWriteTime;

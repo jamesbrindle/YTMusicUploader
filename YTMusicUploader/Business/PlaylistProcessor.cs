@@ -46,14 +46,14 @@ namespace YTMusicUploader.Business
                 if (PlaylistFiles != null)
                 {
                     foreach (var playlistFile in PlaylistFiles)
-                    {   
+                    {
                         ConnectionCheckWait();
                         if (MainFormAborting())
                             return;
 
                         if (playlistFile.LastModifiedDate != playlistFile.LastUpload ||
-                          (File.Exists(playlistFile.Path) && playlistFile.LastModifiedDate != new FileInfo(playlistFile.Path).LastWriteTime) ||
-                          (playlistFile.PlaylistId != null && MatchOnlinePlaylist(playlistFile.PlaylistId, true) == null))
+                           (File.Exists(playlistFile.Path) && playlistFile.LastModifiedDate != new FileInfo(playlistFile.Path).LastWriteTime) ||
+                           (playlistFile.PlaylistId != null && MatchOnlinePlaylist(playlistFile.PlaylistId, true) == null))
                         {
                             try
                             {
