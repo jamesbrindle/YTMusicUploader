@@ -248,10 +248,6 @@ namespace YTMusicUploader.Providers
                                   ADD COLUMN Version TEXT");
 
                             conn.Execute(
-                                @"UPDATE Settings
-                                  SET Version = '1.6.5'");
-
-                            conn.Execute(
                                @"UPDATE MusicFiles
                                  SET LastUpload = '0001-01-01 00:00:00',
                                      Error = 0,
@@ -260,6 +256,12 @@ namespace YTMusicUploader.Providers
                                      EntityId = NULL,
                                      VideoId = NULL");
                         }
+
+                        // Set DB version to App version (MAKE SURE IT's THE LAST THING ON THIS METHOD)
+
+                        conn.Execute(string.Format(
+                                @"UPDATE Settings
+                                  SET Version = '{0}'", Global.ApplicationVersion.ToLower().Replace("v", "")));
                     }
                     catch { }
 

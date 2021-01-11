@@ -7,7 +7,7 @@ Automatically upload your local personal music library to YouTube Music and bulk
 &nbsp;
 &nbsp;
 
-**[Download Version 1.6.4 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.6.4)**
+**[Download Version 1.6.6 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.6.6)**
 &nbsp;
 &nbsp;
 
