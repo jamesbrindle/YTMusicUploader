@@ -254,8 +254,11 @@ namespace YTMusicUploader.Providers
                             conn.Execute(
                                @"UPDATE MusicFiles
                                  SET LastUpload = '0001-01-01 00:00:00',
+                                     Error = 0,
+                                     ErrorReason = NULL,
+                                     UploadAttempts = NULL,
+                                     EntityId = NULL,
                                      VideoId = NULL");
-
                         }
                     }
                     catch { }

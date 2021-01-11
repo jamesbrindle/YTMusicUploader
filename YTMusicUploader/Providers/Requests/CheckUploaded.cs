@@ -282,12 +282,6 @@ namespace YTMusicUploader.Providers
                     if (musicDataFetcher == null)
                         musicDataFetcher = new MusicDataFetcher();
 
-                    // Has been uploaded in the past - Check if it's still uploaded using this entity id
-                    if (!string.IsNullOrEmpty(entityId))
-                    {
-
-                    }
-
                     var musicFileMetaData = musicDataFetcher.GetMusicFileMetaData(musicFilePath);
                     if (musicFileMetaData == null ||
                         musicFileMetaData.Artist == null ||
