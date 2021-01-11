@@ -35,7 +35,7 @@ namespace YTMusicUploader.Providers.Playlist.Models
             {
                 string[] lines = JBToolkit.StreamHelpers.SafeFileStream.ReadAllLines(playlistPath);
 
-                foreach (var line in lines)
+                foreach (string line in lines)
                 {
                     try
                     {

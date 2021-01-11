@@ -380,8 +380,8 @@ namespace YTMusicUploader.Business
                                 musicFile.Error = true;
                                 musicFile.ErrorReason = error;
                                 musicFile.LastUploadError = DateTime.Now;
-                                musicFile.UploadAttempts = musicFile.UploadAttempts == null 
-                                                                ? 0 
+                                musicFile.UploadAttempts = musicFile.UploadAttempts == null
+                                                                ? 0
                                                                 : ((int)musicFile.UploadAttempts) + 1;
 
                                 _errorsCount++;
@@ -395,8 +395,8 @@ namespace YTMusicUploader.Business
                                 musicFile.Error = true;
                                 musicFile.ErrorReason = error;
                                 musicFile.LastUploadError = DateTime.Now;
-                                musicFile.UploadAttempts = musicFile.UploadAttempts == null 
-                                                                ? 0 
+                                musicFile.UploadAttempts = musicFile.UploadAttempts == null
+                                                                ? 0
                                                                 : ((int)musicFile.UploadAttempts) + 1;
 
                                 MainForm.SetStatusMessage($"500 Error from YT Music. Waiting 10 seconds then trying again " +

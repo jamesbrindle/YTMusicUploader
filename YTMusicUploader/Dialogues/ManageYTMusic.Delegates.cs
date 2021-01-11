@@ -423,7 +423,7 @@ namespace YTMusicUploader.Dialogues
                                 AlbumTitle = song.AlbumTitle,
                                 CovertArtUrl = song.CoverArtUrl,
                                 Duration = song.Duration,
-                                SongTitleOrDescription = song.Title,                                
+                                SongTitleOrDescription = song.Title,
                                 MbId = "-",
                                 EntityOrBrowseId = song.VideoId,
                                 DatabaseExistence = "-",

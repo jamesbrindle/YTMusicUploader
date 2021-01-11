@@ -319,7 +319,7 @@ namespace YTMusicUploader.Dialogues
         private void ResetUserDatabase()
         {
             DisableAllActionButtons(true);
-            DataAccess.ResetDatabase();
+            Database.Maintenance.ResetDatabase();
             AppendUpdatesText("Database reset complete.",
                                ColourHelper.HexStringToColor("#0d5601"));
             DisableAllActionButtons(false);

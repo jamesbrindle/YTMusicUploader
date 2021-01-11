@@ -339,6 +339,8 @@
     <Compile Include="Helpers\InstalledApplicationHelper.cs" />
     <Compile Include="Helpers\NetworkHelper.cs" />
     <Compile Include="Business\RegistrySettings.cs" />
+    <Compile Include="Providers\DbMaintenance\Database.Upgrade.cs" />
+    <Compile Include="Providers\DbMaintenance\Database.Maintenance.cs" />
     <Compile Include="Providers\Playlist\PlaylistReader.cs" />
     <Compile Include="Helpers\SafeFileStream.cs" />
     <Compile Include="Business\ThrottleStream.cs" />

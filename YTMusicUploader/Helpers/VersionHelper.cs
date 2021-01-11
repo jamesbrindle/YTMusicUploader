@@ -1,5 +1,6 @@
 ﻿using Octokit;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace JBToolkit.Assemblies
@@ -52,7 +53,8 @@ namespace JBToolkit.Assemblies
             {
                 var client = new GitHubClient(new ProductHeaderValue("YTMusicUploader"));
                 var releases = client.Repository.Release.GetAll("jamesbrindle", "YTMusicUploader").Result;
-                var latest = releases[0];
+
+                var latest = releases.Where(r => !r.Prerelease).FirstOrDefault();
                 htmlUrl = latest.HtmlUrl;
 
                 return latest.TagName.Replace("v", "");

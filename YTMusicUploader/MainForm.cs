@@ -339,7 +339,7 @@ namespace YTMusicUploader
             if (!DatabaseIntegrityCheckDone)
             {
                 SetStatusMessage("Checking database integrity", "Checking database integrity");
-                DataAccess.CheckAndCopyDatabaseFile();
+                Database.Maintenance.CheckDatabaseIntegrity();
                 DatabaseIntegrityCheckDone = true;
             }
 

@@ -187,7 +187,7 @@ namespace YTMusicUploader.Business
                                 MainForm.Settings.AuthenticationCookie,
                                 playlistFile.PlaylistId,
                                 playlistItem.VideoId,
-                                out Exception e))
+                                out var e))
                         {
                             Logger.LogInfo("HandleOnlinePlaylistPresent", $"Adding item to online playlist: {playlistFile.Title}: Success");
                             break;
@@ -255,7 +255,7 @@ namespace YTMusicUploader.Business
                            OnlinePlaylist.PrivacyStatusEmum.Private,
                            out string playlistId,
                            out string browseId,
-                           out Exception e))
+                           out var e))
                     {
                         playlistFile.PlaylistId = browseId;
                         playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;

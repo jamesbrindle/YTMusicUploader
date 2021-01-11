@@ -679,9 +679,7 @@ namespace YTMusicUploader.Providers
                                                                          .Select(p => ((JProperty)p).Value).ToList();
 
                                                     if (videoIdRuns.Count > 0)
-                                                    {
                                                         videoId = videoIdRuns[0].ToString();
-                                                    }
                                                 }
                                             }
                                             else
@@ -709,11 +707,6 @@ namespace YTMusicUploader.Providers
 
                                                     if (videoIdRuns.Count > 0)
                                                         videoId = videoIdRuns[0].ToString();
-                                                    else
-                                                    {
-                                                        if (!string.IsNullOrEmpty(entityId))
-                                                            Console.Out.WriteLine("here");
-                                                    }
                                                 }
                                             }
                                         }
@@ -919,11 +912,11 @@ namespace YTMusicUploader.Providers
                             trackFound = true;
                             var found = artistCacheItem.AlbumSongCollection.Songs.Where(s => s.EntityId == currentEntityId).FirstOrDefault();
                             tempEntityId = found.EntityId;
-                            tempVideoId = found.EntityId;
+                            tempVideoId = found.VideoId;
                         }
                     }
                     else
-                    {                       
+                    {
                         Parallel.ForEach(artistCacheItem.AlbumSongCollection.Songs.AsParallel(), (songCacheItem, stateB, indexB) =>
                         {
                             if (!trackFound)
@@ -993,7 +986,7 @@ namespace YTMusicUploader.Providers
                             trackFound = true;
                             var found = artistCacheItem.AlbumSongCollection.Songs.Where(s => s.EntityId == currentEntityId).FirstOrDefault();
                             tempEntityId = found.EntityId;
-                            videoId = found.EntityId;
+                            videoId = found.VideoId;
                         }
                     }
                     else
