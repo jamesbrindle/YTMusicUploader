@@ -153,7 +153,7 @@ namespace YTMusicUploader.Business
             if (MainFormAborting())
                 return;
 
-            if (onlinePlaylist.Songs.Count < 5000)
+            if (onlinePlaylist.Songs != null && onlinePlaylist.Songs.Count < 5000)
             {
                 foreach (var onlinePlaylistItem in onlinePlaylist.Songs)
                 {
@@ -296,35 +296,51 @@ namespace YTMusicUploader.Business
                 {
                     if (isId)
                     {
-                        return OnlinePlaylists.Where(p => p.BrowseId == playlistTitleOrId).FirstOrDefault();
+                        return OnlinePlaylists.Where(p => p.BrowseId == playlistTitleOrId).Any() 
+                                ? OnlinePlaylists.Where(p => p.BrowseId == playlistTitleOrId).FirstOrDefault()
+                                : null;
                     }
                     else
                     {
                         foreach (var onlinePlaylist in OnlinePlaylists)
                         {
                             float playlistTitleSimilarity = Levenshtein.Similarity(playlistTitleOrId.UnQuote(), onlinePlaylist.Title.UnQuote());
-                            if (playlistTitleSimilarity > 0.95)
+                            if (playlistTitleSimilarity == 1 && !string.IsNullOrEmpty(onlinePlaylist.BrowseId))
                                 return onlinePlaylist;
                         }
 
                         foreach (var onlinePlaylist in OnlinePlaylists)
                         {
                             float playlistTitleSimilarity = Levenshtein.Similarity(playlistTitleOrId.UnQuote(), onlinePlaylist.Title.UnQuote());
-                            if (playlistTitleSimilarity > 0.9)
+                            if (playlistTitleSimilarity > 0.95 && !string.IsNullOrEmpty(onlinePlaylist.BrowseId))
                                 return onlinePlaylist;
                         }
 
                         foreach (var onlinePlaylist in OnlinePlaylists)
                         {
                             float playlistTitleSimilarity = Levenshtein.Similarity(playlistTitleOrId.UnQuote(), onlinePlaylist.Title.UnQuote());
-                            if (playlistTitleSimilarity > 0.8)
+                            if (playlistTitleSimilarity > 0.9 && !string.IsNullOrEmpty(onlinePlaylist.BrowseId))
                                 return onlinePlaylist;
                         }
 
                         foreach (var onlinePlaylist in OnlinePlaylists)
                         {
                             float playlistTitleSimilarity = Levenshtein.Similarity(playlistTitleOrId.UnQuote(), onlinePlaylist.Title.UnQuote());
-                            if (playlistTitleSimilarity > 0.75)
+                            if (playlistTitleSimilarity > 0.85 && !string.IsNullOrEmpty(onlinePlaylist.BrowseId))
+                                return onlinePlaylist;
+                        }
+
+                        foreach (var onlinePlaylist in OnlinePlaylists)
+                        {
+                            float playlistTitleSimilarity = Levenshtein.Similarity(playlistTitleOrId.UnQuote(), onlinePlaylist.Title.UnQuote());
+                            if (playlistTitleSimilarity > 0.8 && !string.IsNullOrEmpty(onlinePlaylist.BrowseId))
+                                return onlinePlaylist;
+                        }
+
+                        foreach (var onlinePlaylist in OnlinePlaylists)
+                        {
+                            float playlistTitleSimilarity = Levenshtein.Similarity(playlistTitleOrId.UnQuote(), onlinePlaylist.Title.UnQuote());
+                            if (playlistTitleSimilarity > 0.75 && !string.IsNullOrEmpty(onlinePlaylist.BrowseId))
                                 return onlinePlaylist;
                         }
                     }
