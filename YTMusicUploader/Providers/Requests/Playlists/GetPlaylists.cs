@@ -1,7 +1,9 @@
 ﻿using JBToolkit.StreamHelpers;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.RequestModels;
@@ -30,14 +32,24 @@ namespace YTMusicUploader.Providers
             /// <param name="cookieValue">Cookie from a previous YouTube Music sign in via this application (stored in the database)</param>
             /// <returns>OnlinePlaylistCollection object (list of playlists without tracks)</returns>
             public static OnlinePlaylistCollection GetPlaylists(
-                string cookieValue)
+                string cookieValue,
+                string continuationToken = null,
+                OnlinePlaylistCollection playListCol = null)
             {
-                var playListCol = new OnlinePlaylistCollection();
+                if (playListCol == null)
+                    playListCol = new OnlinePlaylistCollection();
 
                 try
                 {
                     var request = (HttpWebRequest)WebRequest.Create(Global.YTMusicBaseUrl +
-                                                                    "browse?" + Global.YTMusicParams);
+                                                                     "browse" +
+                                                                    (string.IsNullOrEmpty(continuationToken)
+                                                                                    ? ""
+                                                                                    : "?ctoken=" + continuationToken +
+                                                                                      "&continuation=" + continuationToken) +
+                                                                    (string.IsNullOrEmpty(continuationToken)
+                                                                                    ? Global.YTMusicParams
+                                                                                    : Global.YTMusicParams.Replace('?', '&')));
 
                     request = AddStandardHeaders(request, cookieValue);
 
@@ -69,41 +81,121 @@ namespace YTMusicUploader.Providers
                             var streamReader = new StreamReader(brotli);
                             result = streamReader.ReadToEnd();
 
-                            var playListsResultContext = JsonConvert.DeserializeObject<BrowsePlaylistsResultsContext>(result);
-                            var playListResults = playListsResultContext.contents
-                                                                        .singleColumnBrowseResultsRenderer
-                                                                        .tabs[0]
-                                                                        .tabRenderer
-                                                                        .content
-                                                                        .sectionListRenderer
-                                                                        .contents[1]
-                                                                        .itemSectionRenderer
-                                                                        .contents[0]
-                                                                        .gridRenderer
-                                                                        .items;
-
-                            foreach (var item in playListResults)
+                            if (string.IsNullOrEmpty(continuationToken))
                             {
-                                if (item.musicTwoRowItemRenderer.title.runs[0].text != "New playlist" &&
-                                    item.musicTwoRowItemRenderer.title.runs[0].text != "Your likes")
+                                var playListsResultContext = JsonConvert.DeserializeObject<BrowsePlaylistsResultsContext>(result);
+                                var playListResults = playListsResultContext.contents
+                                                                            .singleColumnBrowseResultsRenderer
+                                                                            .tabs[0]
+                                                                            .tabRenderer
+                                                                            .content
+                                                                            .sectionListRenderer
+                                                                            .contents[1]
+                                                                            .itemSectionRenderer
+                                                                            .contents[0]
+                                                                            .gridRenderer
+                                                                            .items;
+
+                                foreach (var item in playListResults)
                                 {
-                                    try
+                                    if (item.musicTwoRowItemRenderer.title.runs[0].text != "New playlist" &&
+                                        item.musicTwoRowItemRenderer.title.runs[0].text != "Your likes")
                                     {
-                                        playListCol.Add(new OnlinePlaylist
+                                        try
                                         {
-                                            Title = item.musicTwoRowItemRenderer.title.runs[0].text,
-                                            Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
-                                                   item.musicTwoRowItemRenderer.subtitle.runs[1].text +
-                                                   item.musicTwoRowItemRenderer.subtitle.runs[2].text,
-                                            BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
-                                            CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
-                                        });
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        Logger.Log(e, "GetPlaylists - Error fetching a playlist", Log.LogTypeEnum.Error);
+                                            playListCol.Add(new OnlinePlaylist
+                                            {
+                                                Title = item.musicTwoRowItemRenderer.title.runs[0].text,
+                                                Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                                       item.musicTwoRowItemRenderer.subtitle.runs[1].text +
+                                                       item.musicTwoRowItemRenderer.subtitle.runs[2].text,
+                                                BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
+                                                CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
+                                            });
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            Logger.Log(e, "GetPlaylists - Error fetching a playlist", Log.LogTypeEnum.Error);
+                                        }
                                     }
                                 }
+
+                                string continuation = string.Empty;
+                                var jo = JObject.Parse(result);
+                                var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "itemSectionRenderer")
+                                                                               .Select(p => ((JProperty)p).Value).ToList();
+
+                                foreach (var token in musicShelfRendererTokens)
+                                {
+                                    Console.Out.WriteLine(token);
+
+                                    var msr = token.ToObject<BrowsePlaylistsResultsContext.Itemsectionrenderer>();
+                                    if (msr != null &&
+                                        msr.contents[0].gridRenderer.continuations != null &&
+                                        msr.contents[0].gridRenderer.continuations.Length > 0 &&
+                                        msr.contents[0].gridRenderer.continuations[0].nextContinuationData != null &&
+                                        msr.contents[0].gridRenderer.continuations[0].nextContinuationData.continuation != null)
+                                    {
+                                        continuation = msr.contents[0].gridRenderer.continuations[0].nextContinuationData.continuation;
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(continuation))
+                                    return GetPlaylists(cookieValue, continuation, playListCol);                                
+                            }
+                            else
+                            {
+                                var playListsResultContext = JsonConvert.DeserializeObject<BrowsePlaylistsResultsContinuationContext>(result);
+                                var playListResults = playListsResultContext.continuationContents
+                                                                            .gridContinuation
+                                                                            .items;
+
+                                foreach (var item in playListResults)
+                                {
+                                    if (item.musicTwoRowItemRenderer.title.runs[0].text != "New playlist" &&
+                                        item.musicTwoRowItemRenderer.title.runs[0].text != "Your likes")
+                                    {
+                                        try
+                                        {
+                                            playListCol.Add(new OnlinePlaylist
+                                            {
+                                                Title = item.musicTwoRowItemRenderer.title.runs[0].text,
+                                                Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                                       item.musicTwoRowItemRenderer.subtitle.runs[1].text +
+                                                       item.musicTwoRowItemRenderer.subtitle.runs[2].text,
+                                                BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
+                                                CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
+                                            });
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            Logger.Log(e, "GetPlaylists - Error fetching a playlist", Log.LogTypeEnum.Error);
+                                        }
+                                    }
+                                }
+
+                                string continuation = string.Empty;
+                                var jo = JObject.Parse(result);
+                                var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "itemSectionRenderer")
+                                                                               .Select(p => ((JProperty)p).Value).ToList();
+
+                                foreach (var token in musicShelfRendererTokens)
+                                {
+                                    Console.Out.WriteLine(token);
+
+                                    var msr = token.ToObject<BrowsePlaylistsResultsContext.Itemsectionrenderer>();
+                                    if (msr != null &&
+                                        msr.contents[0].gridRenderer.continuations != null &&
+                                        msr.contents[0].gridRenderer.continuations.Length > 0 &&
+                                        msr.contents[0].gridRenderer.continuations[0].nextContinuationData != null &&
+                                        msr.contents[0].gridRenderer.continuations[0].nextContinuationData.continuation != null)
+                                    {
+                                        continuation = msr.contents[0].gridRenderer.continuations[0].nextContinuationData.continuation;
+                                    }
+                                }
+
+                                if (!string.IsNullOrEmpty(continuation))
+                                    return GetPlaylists(cookieValue, continuation, playListCol);                                
                             }
                         }
                     }

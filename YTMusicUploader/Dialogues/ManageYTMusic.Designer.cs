@@ -104,8 +104,8 @@
             this.tblManageYTMusicUploads.RowCount = 5;
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 103F));
-            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
+            this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -275,17 +275,17 @@
             this.pnlActions.Controls.Add(this.lblCheckedCount);
             this.pnlActions.Controls.Add(this.pbPreloader);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActions.Location = new System.Drawing.Point(575, 219);
+            this.pnlActions.Location = new System.Drawing.Point(575, 216);
             this.pnlActions.Margin = new System.Windows.Forms.Padding(0);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(416, 23);
+            this.pnlActions.Size = new System.Drawing.Size(416, 26);
             this.pnlActions.TabIndex = 4;
             // 
             // lblCheckedCount
             // 
             this.lblCheckedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCheckedCount.AutoSize = true;
-            this.lblCheckedCount.Location = new System.Drawing.Point(0, 9);
+            this.lblCheckedCount.Location = new System.Drawing.Point(0, 12);
             this.lblCheckedCount.Name = "lblCheckedCount";
             this.lblCheckedCount.Size = new System.Drawing.Size(92, 13);
             this.lblCheckedCount.TabIndex = 1;
@@ -295,7 +295,7 @@
             // 
             this.pbPreloader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbPreloader.Image = global::YTMusicUploader.Properties.Resources.preloader_cricle;
-            this.pbPreloader.Location = new System.Drawing.Point(391, -1);
+            this.pbPreloader.Location = new System.Drawing.Point(391, 2);
             this.pbPreloader.Name = "pbPreloader";
             this.pbPreloader.Size = new System.Drawing.Size(22, 22);
             this.pbPreloader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -322,7 +322,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 76);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 73);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // PbResetUploadStates
@@ -332,7 +332,7 @@
             this.PbResetUploadStates.Image = global::YTMusicUploader.Properties.Resources.reset_uploaded;
             this.PbResetUploadStates.Location = new System.Drawing.Point(30, 21);
             this.PbResetUploadStates.Name = "PbResetUploadStates";
-            this.PbResetUploadStates.Size = new System.Drawing.Size(94, 52);
+            this.PbResetUploadStates.Size = new System.Drawing.Size(94, 49);
             this.PbResetUploadStates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PbResetUploadStates.TabIndex = 0;
             this.PbResetUploadStates.TabStop = false;
@@ -349,7 +349,7 @@
             this.PbResetDatabase.Image = global::YTMusicUploader.Properties.Resources.reset_database;
             this.PbResetDatabase.Location = new System.Drawing.Point(157, 21);
             this.PbResetDatabase.Name = "PbResetDatabase";
-            this.PbResetDatabase.Size = new System.Drawing.Size(94, 52);
+            this.PbResetDatabase.Size = new System.Drawing.Size(94, 49);
             this.PbResetDatabase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PbResetDatabase.TabIndex = 1;
             this.PbResetDatabase.TabStop = false;
@@ -367,7 +367,7 @@
             this.PbDeleteYTUploaded.Image = global::YTMusicUploader.Properties.Resources.delete_from_youtube_disabled;
             this.PbDeleteYTUploaded.Location = new System.Drawing.Point(284, 21);
             this.PbDeleteYTUploaded.Name = "PbDeleteYTUploaded";
-            this.PbDeleteYTUploaded.Size = new System.Drawing.Size(94, 52);
+            this.PbDeleteYTUploaded.Size = new System.Drawing.Size(94, 49);
             this.PbDeleteYTUploaded.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PbDeleteYTUploaded.TabIndex = 2;
             this.PbDeleteYTUploaded.TabStop = false;
