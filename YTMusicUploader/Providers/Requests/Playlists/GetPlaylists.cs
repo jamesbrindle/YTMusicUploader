@@ -123,7 +123,8 @@ namespace YTMusicUploader.Providers
                                 string continuation = string.Empty;
                                 var jo = JObject.Parse(result);
                                 var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "itemSectionRenderer")
-                                                                               .Select(p => ((JProperty)p).Value).ToList();
+                                                                               .Select(p => ((JProperty)p).Value)
+                                                                               .ToList();
 
                                 foreach (var token in musicShelfRendererTokens)
                                 {
@@ -176,21 +177,23 @@ namespace YTMusicUploader.Providers
 
                                 string continuation = string.Empty;
                                 var jo = JObject.Parse(result);
-                                var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "itemSectionRenderer")
-                                                                               .Select(p => ((JProperty)p).Value).ToList();
+                                var musicShelfRendererTokens = jo.Descendants().Where(t => t.Type == JTokenType.Property && ((JProperty)t).Name == "continuationContents")
+                                                                               .Select(p => ((JProperty)p).Value)
+                                                                               .ToList();
 
                                 foreach (var token in musicShelfRendererTokens)
                                 {
                                     Console.Out.WriteLine(token);
 
-                                    var msr = token.ToObject<BrowsePlaylistsResultsContext.Itemsectionrenderer>();
+                                    var msr = token.ToObject<BrowsePlaylistsResultsContinuationContext.Continuationcontents>();
                                     if (msr != null &&
-                                        msr.contents[0].gridRenderer.continuations != null &&
-                                        msr.contents[0].gridRenderer.continuations.Length > 0 &&
-                                        msr.contents[0].gridRenderer.continuations[0].nextContinuationData != null &&
-                                        msr.contents[0].gridRenderer.continuations[0].nextContinuationData.continuation != null)
+                                        msr.gridContinuation != null &&
+                                        msr.gridContinuation.continuations != null &&
+                                        msr.gridContinuation.continuations.Length > 0 &&
+                                        msr.gridContinuation.continuations[0].nextContinuationData != null &&
+                                        msr.gridContinuation.continuations[0].nextContinuationData.continuation != null)
                                     {
-                                        continuation = msr.contents[0].gridRenderer.continuations[0].nextContinuationData.continuation;
+                                        continuation = msr.gridContinuation.continuations[0].nextContinuationData.continuation;
                                     }
                                 }
 

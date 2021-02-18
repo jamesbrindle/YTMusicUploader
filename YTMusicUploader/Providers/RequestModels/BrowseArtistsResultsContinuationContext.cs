@@ -3,7 +3,7 @@
     /// <summary>
     /// Deserialised HttpWebRequest response body received from YouTube Music after a search
     /// </summary>
-    public class BrowseArtistsResultsContinuationContext
+    public class BrowseArtistsResultsContinuationContext : IRequestModel
     {
         public Responsecontext responseContext { get; set; }
         public string trackingParams { get; set; }

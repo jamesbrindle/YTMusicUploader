@@ -1,8 +1,7 @@
 ﻿
 namespace YTMusicUploader.Providers.RequestModels
 {
-
-    public class BrowsePlaylistsResultsContinuationContext : IRequestModel
+    public class BrowsePlaylistsResultsContinuationContext
     {
         public Responsecontext responseContext { get; set; }
         public string trackingParams { get; set; }
@@ -36,6 +35,7 @@ namespace YTMusicUploader.Providers.RequestModels
         public class Gridcontinuation
         {
             public Item[] items { get; set; }
+            public Continuation[] continuations { get; set; }
             public string trackingParams { get; set; }
             public string itemSize { get; set; }
         }
@@ -518,5 +518,15 @@ namespace YTMusicUploader.Providers.RequestModels
             public string label { get; set; }
         }
 
+        public class Continuation
+        {
+            public Nextcontinuationdata nextContinuationData { get; set; }
+        }
+
+        public class Nextcontinuationdata
+        {
+            public string continuation { get; set; }
+            public string clickTrackingParams { get; set; }
+        }
     }
 }
