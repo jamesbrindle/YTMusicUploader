@@ -7895,15 +7895,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{DA388C34-4BDB-4CC7-968B-898E07A1ECE7}"
-        "PackageCode" = "8:{2B63F07C-5ABE-43A9-8EB0-27EF7316A663}"
+        "ProductCode" = "8:{E1C9D2D9-677E-4E44-9A85-468D73F595EB}"
+        "PackageCode" = "8:{83CFFD39-2F9A-434F-8C48-A0071A8A1C1A}"
         "UpgradeCode" = "8:{1E18ED3F-C210-4589-BEB4-58E2680D3C71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.7"
+        "ProductVersion" = "8:1.6.8"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"
@@ -8445,7 +8445,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_858C89B90B894F97A8CDE5C10D88F13E"
             {
-            "SourcePath" = "8:..\\YTMusicUploader\\obj\\x86\\Release\\YTMusicUploader.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"
