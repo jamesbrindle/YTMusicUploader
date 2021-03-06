@@ -28,6 +28,8 @@ namespace YTMusicUploader
         private static string _yTMusicParams = null;
         private static int? _yTMusic500ErrorRetryAttempts = null;
         private static int? _yTMusicIssuesMainProcessRetry = null;
+        private static int? _playlistCreationWait = null;
+        private static int? _playlistAddWait = null;
         private static float? _yTUploadedSimilarityPercentageForMatch = null;
         private static string _musicBrainzBaseUrl = null;
         private static string _musicBrainzUserAgent = null;
@@ -413,6 +415,54 @@ namespace YTMusicUploader
                 }
 
                 return (int)_yTMusic500ErrorRetryAttempts;
+            }
+        }
+
+        /// <summary>
+        /// How many seconds to wait before creating the next new playlist - To overcome YTM playlist creation limit restrictions
+        /// </summary>
+        public static int PlaylistCreationWait
+        {
+            get
+            {
+                if (_playlistCreationWait != null)
+                    return (int)_playlistCreationWait;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["PlaylistCreationWait"] != null)
+                        _playlistCreationWait = ConfigurationManager.AppSettings["PlaylistCreationWait"].ToInt();
+                }
+                catch
+                {
+                    _playlistCreationWait = 15;
+                }
+
+                return (int)_playlistCreationWait;
+            }
+        }
+
+        /// <summary>
+        /// How many seconds to wait before adding an item to an existing playlist - To overcome YTM playlist creation limit restrictions
+        /// </summary>
+        public static int PlaylistAddWait
+        {
+            get
+            {
+                if (_playlistAddWait != null)
+                    return (int)_playlistAddWait;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["PlaylistAddWait"] != null)
+                        _playlistAddWait = ConfigurationManager.AppSettings["PlaylistAddWait"].ToInt();
+                }
+                catch
+                {
+                    _playlistAddWait = 2;
+                }
+
+                return (int)_playlistAddWait;
             }
         }
 
