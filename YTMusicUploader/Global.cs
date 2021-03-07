@@ -35,11 +35,9 @@ namespace YTMusicUploader
         private static string _musicBrainzBaseUrl = null;
         private static string _musicBrainzUserAgent = null;
 
-
         private static string _workingDirectory = null;
         private static string[] _supportedFiles = null;
         private static string[] _supportedPlaylistFiles = null;
-
 
         /// <summary>
         /// Returns application's version from Assembly

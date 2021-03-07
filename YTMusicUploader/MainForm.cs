@@ -159,7 +159,7 @@ namespace YTMusicUploader
             {
                 while (true)
                 {
-                    if (!_scanAndUploadThread.IsAlive && DateTime.Now > SessionTime.AddMinutes(2))
+                    if (!_scanAndUploadThread.IsAlive && DateTime.Now > SessionTime.AddMinutes(Global.SessionRestartHours))
                     {
                         SessionTime = DateTime.Now;
                         StartMainProcess();
