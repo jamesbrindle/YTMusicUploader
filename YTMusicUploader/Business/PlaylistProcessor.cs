@@ -45,9 +45,16 @@ namespace YTMusicUploader.Business
 
                 if (PlaylistFiles != null)
                 {
+                    int index = 1;
+                    bool ytmPlaylistCreationLimitReached = false;
+
                     foreach (var playlistFile in PlaylistFiles)
                     {
                         ConnectionCheckWait();
+
+                        SetStatus($"Checking playlist file ({index}/{PlaylistFiles.Count})",
+                                  $"Checking playlist file ({index}/{PlaylistFiles.Count})");
+
                         if (MainFormAborting())
                             return;
 
@@ -84,7 +91,7 @@ namespace YTMusicUploader.Business
                                 if (MainFormAborting())
                                     return;
 
-                                foreach (var playlistItem in updatedPlaylistFile.PlaylistItems)
+                                updatedPlaylistFile.PlaylistItems.AsParallel().ForAllInApproximateOrder(playlistItem =>
                                 {
                                     if (MainFormAborting())
                                         return;
@@ -95,6 +102,8 @@ namespace YTMusicUploader.Business
                                     if (string.IsNullOrEmpty(musicFile.VideoId))
                                     {
                                         string entityId = string.Empty;
+                                        ConnectionCheckWait();
+
                                         if (Requests.IsSongUploaded(musicFile.Path,
                                                                     MainForm.Settings.AuthenticationCookie,
                                                                     ref entityId,
@@ -124,6 +133,8 @@ namespace YTMusicUploader.Business
                                         if (string.IsNullOrEmpty(musicFile.VideoId))
                                         {
                                             string entityId = string.Empty;
+                                            ConnectionCheckWait();
+
                                             if (Requests.IsSongUploaded(musicFile.Path,
                                                                         MainForm.Settings.AuthenticationCookie,
                                                                         ref entityId,
@@ -143,18 +154,28 @@ namespace YTMusicUploader.Business
                                             playlistFile.PlaylistItems.Add(playlistToAdd);
                                         }
                                     }
-                                }
+                                });
 
                                 if (MainFormAborting())
                                     return;
 
                                 if (onlinePlaylist != null)
                                 {
-                                    HandleOnlinePlaylistPresent(onlinePlaylist, playlistFile);
+                                    HandleOnlinePlaylistPresent(
+                                        onlinePlaylist,
+                                        playlistFile,
+                                        index,
+                                        PlaylistFiles.Count,
+                                        out ytmPlaylistCreationLimitReached);
                                 }
                                 else
                                 {
-                                    HandleOnlinePlaylistNeedsCreating(playlistFile);
+                                    HandleOnlinePlaylistNeedsCreating(
+                                        playlistFile,
+                                        index,
+                                        PlaylistFiles.Count,
+                                        out ytmPlaylistCreationLimitReached);
+
                                     ThreadHelper.SafeSleep(Global.PlaylistCreationWait);
                                 }
                             }
@@ -163,6 +184,17 @@ namespace YTMusicUploader.Business
                                 Logger.Log(e, $"PlaylistProcessor - Error processing playlist: {playlistFile.Title}");
                             }
                         }
+
+                        if (ytmPlaylistCreationLimitReached)
+                        {
+                            SetStatus($"YTM playlist creation limited reached - Stopping playlist processing for this session.",
+                                      $"YTM playlist creation limited reached");
+
+                            ThreadHelper.SafeSleep(10000);
+                            break;
+                        }
+
+                        index++;
                     }
                 }
             }
@@ -175,16 +207,22 @@ namespace YTMusicUploader.Business
                     // Logger.Log(e, "PlaylistProcessor", Log.LogTypeEnum.Warning);
                 }
                 else
-                {
                     Logger.Log(e, "Fatal error in PlaylistProcessor", Log.LogTypeEnum.Critical);
-                }
             }
 
             Stopped = true;
         }
 
-        private void HandleOnlinePlaylistPresent(OnlinePlaylist onlinePlaylist, PlaylistFile playlistFile, bool forceRefreshPlaylists = false)
+        private void HandleOnlinePlaylistPresent(
+            OnlinePlaylist onlinePlaylist,
+            PlaylistFile playlistFile,
+            int currentPlaylistIndex,
+            int totalPlaylists,
+            out bool limitedReached,
+            bool forceRefreshPlaylists = false)
         {
+            limitedReached = false;
+
             ConnectionCheckWait();
             if (MainFormAborting())
                 return;
@@ -213,9 +251,14 @@ namespace YTMusicUploader.Business
 
                 foreach (var playlistItem in playlistFile.PlaylistItems)
                 {
+                    int index = 1;
+
                     ConnectionCheckWait();
                     if (MainFormAborting())
                         return;
+
+                    SetStatus($"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}: Adding track to existing {index}/{playlistFile.PlaylistItems}",
+                              $"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}");
 
                     for (int i = 0; i < 3; i++)
                     {
@@ -238,8 +281,9 @@ namespace YTMusicUploader.Business
                             }
                             else
                             {
-                                if (i == 4)
+                                if (i == 2)
                                 {
+                                    limitedReached = true;
                                     Logger.Log(e, $"Error adding item to online playlist: {playlistFile.Title}", Log.LogTypeEnum.Error);
                                     break;
                                 }
@@ -247,9 +291,13 @@ namespace YTMusicUploader.Business
                                     ThreadHelper.SafeSleep(3000);
                             }
                         }
+
+                        if (limitedReached)
+                            break;
                     }
 
                     ThreadHelper.SafeSleep(Global.PlaylistAddWait);
+                    index++;
                 }
             }
 
@@ -258,8 +306,10 @@ namespace YTMusicUploader.Business
             playlistFile.Save().Wait();
         }
 
-        private void HandleOnlinePlaylistNeedsCreating(PlaylistFile playlistFile)
+        private void HandleOnlinePlaylistNeedsCreating(PlaylistFile playlistFile, int currentPlaylistIndex, int totalPlaylists, out bool limitReached)
         {
+            limitReached = false;
+
             ConnectionCheckWait();
             if (MainFormAborting())
                 return;
@@ -285,6 +335,9 @@ namespace YTMusicUploader.Business
             {
                 for (int i = 0; i < 3; i++)
                 {
+                    SetStatus($"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}: Creating new ({playlistFile.PlaylistItems.Count} tracks)",
+                              $"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}");
+
                     if (Requests.Playlists.CreatePlaylist(
                            MainForm.Settings.AuthenticationCookie,
                            playlistFile.Title,
@@ -311,8 +364,9 @@ namespace YTMusicUploader.Business
                     }
                     else
                     {
-                        if (i == 4)
+                        if (i == 2)
                         {
+                            limitReached = true;
                             Logger.Log(e, $"Error creating playlist: {playlistFile.Title}", Log.LogTypeEnum.Error);
                             break;
                         }
@@ -334,7 +388,7 @@ namespace YTMusicUploader.Business
                 {
                     if (isId)
                     {
-                        return OnlinePlaylists.Where(p => p.BrowseId == playlistTitleOrId).Any() 
+                        return OnlinePlaylists.Where(p => p.BrowseId == playlistTitleOrId).Any()
                                 ? OnlinePlaylists.Where(p => p.BrowseId == playlistTitleOrId).FirstOrDefault()
                                 : null;
                     }

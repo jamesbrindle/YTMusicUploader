@@ -26,6 +26,8 @@ namespace YTMusicUploader
 {
     public partial class MainForm : OptimisedMetroForm
     {
+        public DateTime SessionTime { get; set; } = DateTime.Now;
+
         public enum ManagingYTMusicStatusEnum
         {
             Showing,
@@ -94,6 +96,7 @@ namespace YTMusicUploader
         private Thread _installingEdgeThread;
         private Thread _connectToYouTubeMusicThread;
         private Thread _scanAndUploadThread;
+        private Thread _restartThread;
 
         //
         // Version
@@ -150,6 +153,23 @@ namespace YTMusicUploader
             InitialiseSystemTrayIconMenuButtons();
             ConnectToYouTubeMusic();
             StartMainProcess();
+
+            //  Restart everything after 24 hours (is the application is continually run)
+            _restartThread = new Thread((ThreadStart)delegate
+            {
+                while (true)
+                {
+                    if (!_scanAndUploadThread.IsAlive && DateTime.Now > SessionTime.AddMinutes(2))
+                    {
+                        SessionTime = DateTime.Now;
+                        StartMainProcess();
+                    }
+
+                    ThreadHelper.SafeSleep(60000); // Check every minute
+                }
+            })
+            { IsBackground = true };
+            _restartThread.Start();
         }
 
         private void RunDebugCommands()
@@ -170,7 +190,7 @@ namespace YTMusicUploader
             OnLoad(e);
             ResumeDrawing(this);
         }
-
+        
         private void InitialiseTimers()
         {
             ThrottleTextChangedTimer = new System.Windows.Forms.Timer
@@ -650,6 +670,12 @@ namespace YTMusicUploader
             try
             {
                 _connectToYouTubeMusicThread.Abort();
+            }
+            catch { }
+
+            try
+            {
+                _restartThread.Abort();
             }
             catch { }
 

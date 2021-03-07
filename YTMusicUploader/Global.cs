@@ -30,6 +30,7 @@ namespace YTMusicUploader
         private static int? _yTMusicIssuesMainProcessRetry = null;
         private static int? _playlistCreationWait = null;
         private static int? _playlistAddWait = null;
+        private static int? _sessionRestartHours = null;
         private static float? _yTUploadedSimilarityPercentageForMatch = null;
         private static string _musicBrainzBaseUrl = null;
         private static string _musicBrainzUserAgent = null;
@@ -435,7 +436,7 @@ namespace YTMusicUploader
                 }
                 catch
                 {
-                    _playlistCreationWait = 15;
+                    _playlistCreationWait = 30;
                 }
 
                 return (int)_playlistCreationWait;
@@ -463,6 +464,30 @@ namespace YTMusicUploader
                 }
 
                 return (int)_playlistAddWait;
+            }
+        }
+
+        /// <summary>
+        /// How many hours to wait until starting the whole 'check / upload / process playlists etc'
+        /// </summary>
+        public static int SessionRestartHours
+        {
+            get
+            {
+                if (_sessionRestartHours != null)
+                    return (int)_sessionRestartHours;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["SessionRestartHours"] != null)
+                        _sessionRestartHours = ConfigurationManager.AppSettings["SessionRestartHours"].ToInt();
+                }
+                catch
+                {
+                    _sessionRestartHours = 12;
+                }
+
+                return (int)_sessionRestartHours;
             }
         }
 

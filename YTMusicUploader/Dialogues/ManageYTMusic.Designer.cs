@@ -83,7 +83,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(399, 13);
             this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "See and delete YouTube Music uploads and manage your uploads database.";
+            this.lblTitle.Text = "View and delete YouTube Music and playlist uploads and manage your uploads database.";
             // 
             // tblManageYTMusicUploads
             // 

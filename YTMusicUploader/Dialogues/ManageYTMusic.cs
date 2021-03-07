@@ -190,7 +190,6 @@ namespace YTMusicUploader.Dialogues
                 new Thread((ThreadStart)delegate
                 {
                     var playlist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistOrBrowseId);
-
                     for (int i = 0; i < Requests.ArtistCache.Playlists.Count; i++)
                     {
                         if (Requests.ArtistCache.Playlists[i].BrowseId == playlistOrBrowseId)
@@ -206,7 +205,6 @@ namespace YTMusicUploader.Dialogues
             else
             {
                 var playlist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistOrBrowseId);
-
                 for (int i = 0; i < Requests.ArtistCache.Playlists.Count; i++)
                 {
                     if (Requests.ArtistCache.Playlists[i].BrowseId == playlistOrBrowseId)
@@ -476,7 +474,6 @@ namespace YTMusicUploader.Dialogues
             for (int i = tvUploads.Nodes[0].Nodes.Count - 1; i >= 0; i--)
             {
                 var playlistNode = tvUploads.Nodes[0].Nodes[i];
-
                 if (playlistNode.Checked)
                 {
                     var musicManagePlaylistModel = (MusicManageTreeNodeModel)playlistNode.Tag;

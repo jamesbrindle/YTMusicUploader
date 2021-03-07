@@ -82,7 +82,7 @@ namespace YTMusicUploader
                 InitialDelay = 750,
             };
             YtMusicManageTooltip.SetToolTip(pbYtMusicManage,
-                "\nSee and delete albums and tracks uploaded to YouTube Music.");
+                "\nView and delete albums, tracks and playlists uploaded to YouTube Music.");
 
             NewVersionTooltip = new ToolTip
             {
