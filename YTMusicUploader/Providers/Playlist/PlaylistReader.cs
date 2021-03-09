@@ -51,6 +51,10 @@ namespace YTMusicUploader.Providers.Playlist
 
                 sr.BaseStream.Position = 0;
                 var parser = PlaylistParserFactory.GetPlaylistParser(playlistExtension);
+
+                if (sr.BaseStream.Length == 0) // empty playlist
+                    throw new ApplicationException("Empty Playlist");
+
                 var playlist = parser.GetFromStream(sr.BaseStream);
                 var paths = playlist.GetTracksPaths();
 
