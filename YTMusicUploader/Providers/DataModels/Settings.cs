@@ -14,6 +14,8 @@ namespace YTMusicUploader.Providers.DataModels
         public int ThrottleSpeed { get; set; } = -1;
         public string AuthenticationCookie { get; set; } = null;
         public bool SendLogsToSource { get; set; } = true;
+        public bool UploadPlaylists { get; set; } = true;
+        public DateTime? LastPlaylistUpload { get; set; } = null;
 
         /// <summary>
         /// Updates the database

@@ -26,8 +26,6 @@ namespace YTMusicUploader
 {
     public partial class MainForm : OptimisedMetroForm
     {
-        public DateTime SessionTime { get; set; } = DateTime.Now;
-
         public enum ManagingYTMusicStatusEnum
         {
             Showing,
@@ -157,11 +155,19 @@ namespace YTMusicUploader
             //  Restart everything after 24 hours (is the application is continually run)
             _restartThread = new Thread((ThreadStart)delegate
             {
+                while(Settings == null)
+                    ThreadHelper.SafeSleep(500); 
+
                 while (true)
                 {
-                    if (!_scanAndUploadThread.IsAlive && DateTime.Now > SessionTime.AddMinutes(Global.SessionRestartHours))
+                    if (!Settings.LastPlaylistUpload.HasValue)
+                        Settings.LastPlaylistUpload = DateTime.Now.AddHours(Global.SessionRestartHours * -1).AddHours(-2);
+
+                    if (!_scanAndUploadThread.IsAlive && DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours))
                     {
-                        SessionTime = DateTime.Now;
+                        Settings.LastPlaylistUpload = DateTime.Now;
+                        Settings.Save().Wait();
+
                         StartMainProcess();
                     }
 
@@ -190,7 +196,7 @@ namespace YTMusicUploader
             OnLoad(e);
             ResumeDrawing(this);
         }
-        
+
         private void InitialiseTimers()
         {
             ThrottleTextChangedTimer = new System.Windows.Forms.Timer
@@ -424,9 +430,18 @@ namespace YTMusicUploader
                 YTMAuthenticationCheckWait();
                 RepopulateAmountLables();
 
-                Logger.LogInfo("MainProcess", "Starting playlist processing");
-                PlaylistProcessor.Process();
-                Logger.LogInfo("MainProcess", "Playlist processing complete");
+                if (Settings.UploadPlaylists)
+                {
+                    if (DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours))
+                    {
+                        Settings.LastPlaylistUpload = DateTime.Now;
+                        Settings.Save().Wait();
+
+                        Logger.LogInfo("MainProcess", "Starting playlist processing");
+                        PlaylistProcessor.Process();
+                        Logger.LogInfo("MainProcess", "Playlist processing complete");
+                    }
+                }
 
                 if (ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
                 {

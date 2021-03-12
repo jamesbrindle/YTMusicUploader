@@ -41,7 +41,9 @@ namespace YTMusicUploader.Providers.Repos
                               StartWithWindows, 
                               ThrottleSpeed, 
                               AuthenticationCookie,
-                              SendLogsToSource
+                              SendLogsToSource,
+                              UploadPlaylists,
+                              LastPlaylistUpload
                           FROM Settings").FirstOrDefault();
                 conn.Close();
 
@@ -82,7 +84,9 @@ namespace YTMusicUploader.Providers.Repos
                                  SET StartWithWindows = @StartWithWindows, 
                                      ThrottleSpeed = @ThrottleSpeed,  
                                      AuthenticationCookie = @AuthenticationCookie,
-                                     SendLogsToSource = @SendLogsToSource
+                                     SendLogsToSource = @SendLogsToSource,
+                                     UploadPlaylists = @UploadPlaylists,
+                                     LastPlaylistUpload = @LastPlaylistUpload
                               WHERE Id = @Id",
                             settings);
                     conn.Close();

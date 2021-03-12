@@ -79,6 +79,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLog.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -109,6 +110,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
+            this.lblTitle.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(76, 34);
             this.lblTitle.Name = "lblTitle";
@@ -135,6 +137,7 @@
             // 
             // pbIssueLogIcon
             // 
+            this.pbIssueLogIcon.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbIssueLogIcon.Image = global::YTMusicUploader.Properties.Resources.log_icon;
             this.pbIssueLogIcon.Location = new System.Drawing.Point(26, 20);
             this.pbIssueLogIcon.Name = "pbIssueLogIcon";
@@ -146,6 +149,7 @@
             // lblLogClearMessage
             // 
             this.lblLogClearMessage.AutoSize = true;
+            this.lblLogClearMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblLogClearMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogClearMessage.Location = new System.Drawing.Point(478, 34);
             this.lblLogClearMessage.Name = "lblLogClearMessage";
@@ -155,6 +159,7 @@
             // 
             // ddLogType
             // 
+            this.ddLogType.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ddLogType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddLogType.FormattingEnabled = true;
             this.ddLogType.Location = new System.Drawing.Point(330, 31);
@@ -184,6 +189,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
             this.Controls.Add(this.pnlIssueLog);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(765, 400);
             this.Name = "ApplicationLog";

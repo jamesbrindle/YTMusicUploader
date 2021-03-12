@@ -55,6 +55,9 @@
             this.roundGroupBox2 = new JBToolkit.WinForms.RoundGroupBox();
             this.lbWatchFolders = new System.Windows.Forms.ListBox();
             this.roundGroupBox1 = new JBToolkit.WinForms.RoundGroupBox();
+            this.pbUploadPlaylistsInfo = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbAlsoUploadPlaylists = new MetroFramework.Controls.MetroCheckBox();
             this.lblStartWithWindows = new System.Windows.Forms.Label();
             this.tbThrottleSpeed = new JBToolkit.WinForms.RoundTextBox();
             this.lblSendDiagnosticData = new System.Windows.Forms.Label();
@@ -81,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.roundGroupBox2.SuspendLayout();
             this.roundGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUploadPlaylistsInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaused)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbYtMusicManage)).BeginInit();
@@ -95,6 +99,7 @@
             // lblSub
             // 
             this.lblSub.AutoSize = true;
+            this.lblSub.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblSub.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSub.Location = new System.Drawing.Point(24, 62);
             this.lblSub.Name = "lblSub";
@@ -108,7 +113,8 @@
             this.panel1.Controls.Add(this.pbUpdate);
             this.panel1.Controls.Add(this.lblVersion);
             this.panel1.Controls.Add(this.lblStatus);
-            this.panel1.Location = new System.Drawing.Point(0, 415);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.panel1.Location = new System.Drawing.Point(0, 421);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(735, 29);
@@ -116,7 +122,7 @@
             // 
             // pbUpdate
             // 
-            this.pbUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbUpdate.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbUpdate.Image = global::YTMusicUploader.Properties.Resources.update_up;
             this.pbUpdate.Location = new System.Drawing.Point(657, 2);
             this.pbUpdate.Name = "pbUpdate";
@@ -139,11 +145,12 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(35, 20);
             this.lblVersion.TabIndex = 14;
-            this.lblVersion.Text = "v1.6.2";
+            this.lblVersion.Text = "v1.7.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblStatus
             // 
+            this.lblStatus.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.White;
             this.lblStatus.Location = new System.Drawing.Point(11, 1);
@@ -156,8 +163,9 @@
             // lblDiscoveredFilesLabel
             // 
             this.lblDiscoveredFilesLabel.AutoSize = true;
+            this.lblDiscoveredFilesLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblDiscoveredFilesLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscoveredFilesLabel.Location = new System.Drawing.Point(444, 241);
+            this.lblDiscoveredFilesLabel.Location = new System.Drawing.Point(444, 257);
             this.lblDiscoveredFilesLabel.Name = "lblDiscoveredFilesLabel";
             this.lblDiscoveredFilesLabel.Size = new System.Drawing.Size(89, 13);
             this.lblDiscoveredFilesLabel.TabIndex = 9;
@@ -166,8 +174,9 @@
             // lblDiscoveredFiles
             // 
             this.lblDiscoveredFiles.AutoSize = true;
+            this.lblDiscoveredFiles.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblDiscoveredFiles.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscoveredFiles.Location = new System.Drawing.Point(600, 241);
+            this.lblDiscoveredFiles.Location = new System.Drawing.Point(600, 257);
             this.lblDiscoveredFiles.Name = "lblDiscoveredFiles";
             this.lblDiscoveredFiles.Size = new System.Drawing.Size(13, 13);
             this.lblDiscoveredFiles.TabIndex = 10;
@@ -176,8 +185,9 @@
             // lblIssuesLabel
             // 
             this.lblIssuesLabel.AutoSize = true;
+            this.lblIssuesLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblIssuesLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIssuesLabel.Location = new System.Drawing.Point(444, 261);
+            this.lblIssuesLabel.Location = new System.Drawing.Point(444, 277);
             this.lblIssuesLabel.Name = "lblIssuesLabel";
             this.lblIssuesLabel.Size = new System.Drawing.Size(38, 13);
             this.lblIssuesLabel.TabIndex = 11;
@@ -213,8 +223,9 @@
             // 
             // lblUploadingMessage
             // 
+            this.lblUploadingMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblUploadingMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUploadingMessage.Location = new System.Drawing.Point(94, 354);
+            this.lblUploadingMessage.Location = new System.Drawing.Point(94, 360);
             this.lblUploadingMessage.Name = "lblUploadingMessage";
             this.lblUploadingMessage.Size = new System.Drawing.Size(608, 40);
             this.lblUploadingMessage.TabIndex = 19;
@@ -224,8 +235,9 @@
             // lblUploadedLabel
             // 
             this.lblUploadedLabel.AutoSize = true;
+            this.lblUploadedLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUploadedLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUploadedLabel.Location = new System.Drawing.Point(444, 281);
+            this.lblUploadedLabel.Location = new System.Drawing.Point(444, 297);
             this.lblUploadedLabel.Name = "lblUploadedLabel";
             this.lblUploadedLabel.Size = new System.Drawing.Size(58, 13);
             this.lblUploadedLabel.TabIndex = 20;
@@ -280,7 +292,7 @@
             // 
             this.lblIssues.AutoSize = true;
             this.lblIssues.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblIssues.Location = new System.Drawing.Point(600, 261);
+            this.lblIssues.Location = new System.Drawing.Point(600, 277);
             this.lblIssues.Name = "lblIssues";
             this.lblIssues.Size = new System.Drawing.Size(13, 13);
             this.lblIssues.TabIndex = 4;
@@ -292,7 +304,7 @@
             // 
             this.lblUploaded.AutoSize = true;
             this.lblUploaded.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblUploaded.Location = new System.Drawing.Point(600, 281);
+            this.lblUploaded.Location = new System.Drawing.Point(600, 297);
             this.lblUploaded.Name = "lblUploaded";
             this.lblUploaded.Size = new System.Drawing.Size(13, 13);
             this.lblUploaded.TabIndex = 5;
@@ -310,6 +322,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::YTMusicUploader.Properties.Resources.Header;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
@@ -322,6 +335,7 @@
             // 
             this.roundGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.roundGroupBox2.Controls.Add(this.lbWatchFolders);
+            this.roundGroupBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.roundGroupBox2.Location = new System.Drawing.Point(26, 97);
             this.roundGroupBox2.Name = "roundGroupBox2";
             this.roundGroupBox2.Radious = 25;
@@ -338,6 +352,7 @@
             // 
             this.lbWatchFolders.BackColor = System.Drawing.Color.White;
             this.lbWatchFolders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbWatchFolders.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lbWatchFolders.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lbWatchFolders.FormattingEnabled = true;
             this.lbWatchFolders.Location = new System.Drawing.Point(11, 36);
@@ -350,6 +365,9 @@
             // roundGroupBox1
             // 
             this.roundGroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.roundGroupBox1.Controls.Add(this.pbUploadPlaylistsInfo);
+            this.roundGroupBox1.Controls.Add(this.label1);
+            this.roundGroupBox1.Controls.Add(this.cbAlsoUploadPlaylists);
             this.roundGroupBox1.Controls.Add(this.lblStartWithWindows);
             this.roundGroupBox1.Controls.Add(this.tbThrottleSpeed);
             this.roundGroupBox1.Controls.Add(this.lblSendDiagnosticData);
@@ -360,7 +378,7 @@
             this.roundGroupBox1.Location = new System.Drawing.Point(432, 97);
             this.roundGroupBox1.Name = "roundGroupBox1";
             this.roundGroupBox1.Radious = 25;
-            this.roundGroupBox1.Size = new System.Drawing.Size(263, 129);
+            this.roundGroupBox1.Size = new System.Drawing.Size(263, 147);
             this.roundGroupBox1.TabIndex = 28;
             this.roundGroupBox1.TabStop = false;
             this.roundGroupBox1.Text = "Options";
@@ -369,11 +387,55 @@
             this.roundGroupBox1.TitleForeColor = System.Drawing.Color.White;
             this.roundGroupBox1.TitleHatchStyle = System.Drawing.Drawing2D.HatchStyle.Percent60;
             // 
+            // pbUploadPlaylistsInfo
+            // 
+            this.pbUploadPlaylistsInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbUploadPlaylistsInfo.Image = global::YTMusicUploader.Properties.Resources.info_up;
+            this.pbUploadPlaylistsInfo.Location = new System.Drawing.Point(193, 62);
+            this.pbUploadPlaylistsInfo.Name = "pbUploadPlaylistsInfo";
+            this.pbUploadPlaylistsInfo.Size = new System.Drawing.Size(15, 15);
+            this.pbUploadPlaylistsInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbUploadPlaylistsInfo.TabIndex = 30;
+            this.pbUploadPlaylistsInfo.TabStop = false;
+            this.pbUploadPlaylistsInfo.Click += new System.EventHandler(this.PbUploadPlaylistsInfo_Click);
+            this.pbUploadPlaylistsInfo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbUploadPlaylistsInfo_MouseDown);
+            this.pbUploadPlaylistsInfo.MouseEnter += new System.EventHandler(this.PbUploadPlaylistsInfo_MouseEnter);
+            this.pbUploadPlaylistsInfo.MouseLeave += new System.EventHandler(this.PbUploadPlaylistsInfo_MouseLeave);
+            this.pbUploadPlaylistsInfo.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbUploadPlaylistsInfo_MouseUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Also Upload Playlists";
+            // 
+            // cbAlsoUploadPlaylists
+            // 
+            this.cbAlsoUploadPlaylists.AutoSize = true;
+            this.cbAlsoUploadPlaylists.Checked = true;
+            this.cbAlsoUploadPlaylists.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbAlsoUploadPlaylists.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbAlsoUploadPlaylists.Location = new System.Drawing.Point(163, 61);
+            this.cbAlsoUploadPlaylists.Name = "cbAlsoUploadPlaylists";
+            this.cbAlsoUploadPlaylists.Size = new System.Drawing.Size(26, 15);
+            this.cbAlsoUploadPlaylists.Style = MetroFramework.MetroColorStyle.Red;
+            this.cbAlsoUploadPlaylists.TabIndex = 28;
+            this.cbAlsoUploadPlaylists.Text = " ";
+            this.cbAlsoUploadPlaylists.UseSelectable = true;
+            this.cbAlsoUploadPlaylists.UseStyleColors = true;
+            this.cbAlsoUploadPlaylists.CheckedChanged += new System.EventHandler(this.CbAlsoUploadPlaylists_CheckedChanged);
+            // 
             // lblStartWithWindows
             // 
             this.lblStartWithWindows.AutoSize = true;
+            this.lblStartWithWindows.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblStartWithWindows.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartWithWindows.Location = new System.Drawing.Point(11, 36);
+            this.lblStartWithWindows.Location = new System.Drawing.Point(11, 35);
             this.lblStartWithWindows.Name = "lblStartWithWindows";
             this.lblStartWithWindows.Size = new System.Drawing.Size(109, 13);
             this.lblStartWithWindows.TabIndex = 6;
@@ -383,9 +445,10 @@
             // 
             this.tbThrottleSpeed.BackColor = System.Drawing.Color.Transparent;
             this.tbThrottleSpeed.Br = System.Drawing.Color.White;
+            this.tbThrottleSpeed.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tbThrottleSpeed.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.tbThrottleSpeed.ForeColor = System.Drawing.Color.Black;
-            this.tbThrottleSpeed.Location = new System.Drawing.Point(163, 93);
+            this.tbThrottleSpeed.Location = new System.Drawing.Point(163, 112);
             this.tbThrottleSpeed.Name = "tbThrottleSpeed";
             this.tbThrottleSpeed.PasswordChar = '\0';
             this.tbThrottleSpeed.ReadOnly = false;
@@ -401,8 +464,9 @@
             // lblSendDiagnosticData
             // 
             this.lblSendDiagnosticData.AutoSize = true;
+            this.lblSendDiagnosticData.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblSendDiagnosticData.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSendDiagnosticData.Location = new System.Drawing.Point(11, 68);
+            this.lblSendDiagnosticData.Location = new System.Drawing.Point(11, 90);
             this.lblSendDiagnosticData.Name = "lblSendDiagnosticData";
             this.lblSendDiagnosticData.Size = new System.Drawing.Size(118, 13);
             this.lblSendDiagnosticData.TabIndex = 27;
@@ -411,8 +475,9 @@
             // lblThrottleUploadSpeed
             // 
             this.lblThrottleUploadSpeed.AutoSize = true;
+            this.lblThrottleUploadSpeed.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblThrottleUploadSpeed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThrottleUploadSpeed.Location = new System.Drawing.Point(11, 99);
+            this.lblThrottleUploadSpeed.Location = new System.Drawing.Point(11, 118);
             this.lblThrottleUploadSpeed.Name = "lblThrottleUploadSpeed";
             this.lblThrottleUploadSpeed.Size = new System.Drawing.Size(124, 13);
             this.lblThrottleUploadSpeed.TabIndex = 4;
@@ -424,7 +489,7 @@
             this.cbSendErrorLogsToSource.Checked = true;
             this.cbSendErrorLogsToSource.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSendErrorLogsToSource.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbSendErrorLogsToSource.Location = new System.Drawing.Point(163, 67);
+            this.cbSendErrorLogsToSource.Location = new System.Drawing.Point(163, 89);
             this.cbSendErrorLogsToSource.Name = "cbSendErrorLogsToSource";
             this.cbSendErrorLogsToSource.Size = new System.Drawing.Size(26, 15);
             this.cbSendErrorLogsToSource.Style = MetroFramework.MetroColorStyle.Red;
@@ -438,7 +503,7 @@
             // 
             this.cbStartWithWindows.AutoSize = true;
             this.cbStartWithWindows.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbStartWithWindows.Location = new System.Drawing.Point(163, 35);
+            this.cbStartWithWindows.Location = new System.Drawing.Point(163, 34);
             this.cbStartWithWindows.Name = "cbStartWithWindows";
             this.cbStartWithWindows.Size = new System.Drawing.Size(26, 15);
             this.cbStartWithWindows.Style = MetroFramework.MetroColorStyle.Red;
@@ -450,8 +515,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(214, 99);
+            this.label3.Location = new System.Drawing.Point(214, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 7;
@@ -459,8 +525,9 @@
             // 
             // pbPaused
             // 
+            this.pbPaused.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbPaused.Image = global::YTMusicUploader.Properties.Resources.paused;
-            this.pbPaused.Location = new System.Drawing.Point(27, 349);
+            this.pbPaused.Location = new System.Drawing.Point(27, 355);
             this.pbPaused.Name = "pbPaused";
             this.pbPaused.Size = new System.Drawing.Size(50, 50);
             this.pbPaused.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -503,8 +570,9 @@
             // 
             // pbArtworkIdle
             // 
+            this.pbArtworkIdle.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbArtworkIdle.Image = global::YTMusicUploader.Properties.Resources.idle;
-            this.pbArtworkIdle.Location = new System.Drawing.Point(27, 349);
+            this.pbArtworkIdle.Location = new System.Drawing.Point(27, 355);
             this.pbArtworkIdle.Name = "pbArtworkIdle";
             this.pbArtworkIdle.Size = new System.Drawing.Size(50, 50);
             this.pbArtworkIdle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -513,7 +581,7 @@
             // 
             // pbArtwork
             // 
-            this.pbArtwork.Location = new System.Drawing.Point(27, 349);
+            this.pbArtwork.Location = new System.Drawing.Point(27, 355);
             this.pbArtwork.Name = "pbArtwork";
             this.pbArtwork.Size = new System.Drawing.Size(50, 50);
             this.pbArtwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -523,8 +591,9 @@
             // 
             // pbConnectedToYoutube
             // 
+            this.pbConnectedToYoutube.Cursor = System.Windows.Forms.Cursors.Default;
             this.pbConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.tick;
-            this.pbConnectedToYoutube.Location = new System.Drawing.Point(645, 317);
+            this.pbConnectedToYoutube.Location = new System.Drawing.Point(645, 331);
             this.pbConnectedToYoutube.Name = "pbConnectedToYoutube";
             this.pbConnectedToYoutube.Size = new System.Drawing.Size(14, 14);
             this.pbConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -537,13 +606,14 @@
             this.btnConnectToYoutube.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(4)))), ((int)(((byte)(4)))));
             this.btnConnectToYoutube.Active2 = System.Drawing.Color.LightCoral;
             this.btnConnectToYoutube.BackColor = System.Drawing.Color.Transparent;
+            this.btnConnectToYoutube.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnectToYoutube.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnConnectToYoutube.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.btnConnectToYoutube.ForeColor = System.Drawing.Color.White;
             this.btnConnectToYoutube.Image = global::YTMusicUploader.Properties.Resources.ytmusic_aicon;
             this.btnConnectToYoutube.Inactive1 = System.Drawing.Color.Red;
             this.btnConnectToYoutube.Inactive2 = System.Drawing.Color.LightCoral;
-            this.btnConnectToYoutube.Location = new System.Drawing.Point(442, 310);
+            this.btnConnectToYoutube.Location = new System.Drawing.Point(442, 324);
             this.btnConnectToYoutube.Name = "btnConnectToYoutube";
             this.btnConnectToYoutube.Radius = 4;
             this.btnConnectToYoutube.Size = new System.Drawing.Size(193, 26);
@@ -587,8 +657,9 @@
             // 
             // pbNotConnectedToYoutube
             // 
+            this.pbNotConnectedToYoutube.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbNotConnectedToYoutube.Image = global::YTMusicUploader.Properties.Resources.cross;
-            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(645, 319);
+            this.pbNotConnectedToYoutube.Location = new System.Drawing.Point(645, 331);
             this.pbNotConnectedToYoutube.Name = "pbNotConnectedToYoutube";
             this.pbNotConnectedToYoutube.Size = new System.Drawing.Size(12, 12);
             this.pbNotConnectedToYoutube.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -600,7 +671,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 447);
+            this.ClientSize = new System.Drawing.Size(736, 453);
             this.Controls.Add(this.pbPaused);
             this.Controls.Add(this.pbLog);
             this.Controls.Add(this.roundGroupBox2);
@@ -624,10 +695,11 @@
             this.Controls.Add(this.lblSub);
             this.Controls.Add(this.pbAbout);
             this.Controls.Add(this.pbNotConnectedToYoutube);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(736, 447);
-            this.MinimumSize = new System.Drawing.Size(736, 447);
+            this.MaximumSize = new System.Drawing.Size(736, 453);
+            this.MinimumSize = new System.Drawing.Size(736, 453);
             this.Name = "MainForm";
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "YT Music Uploader";
@@ -645,6 +717,7 @@
             this.roundGroupBox2.ResumeLayout(false);
             this.roundGroupBox1.ResumeLayout(false);
             this.roundGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUploadPlaylistsInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaused)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbYtMusicManage)).EndInit();
@@ -703,6 +776,9 @@
         private System.Windows.Forms.PictureBox pbLog;
         private System.Windows.Forms.PictureBox pbUpdate;
         private System.Windows.Forms.ToolStripMenuItem tsmPauseResume;
+        private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroCheckBox cbAlsoUploadPlaylists;
+        private System.Windows.Forms.PictureBox pbUploadPlaylistsInfo;
     }
 }
 

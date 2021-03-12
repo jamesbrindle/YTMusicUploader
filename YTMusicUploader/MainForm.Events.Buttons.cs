@@ -404,5 +404,48 @@ namespace YTMusicUploader
         {
             pbAbout.Image = Properties.Resources.yt_logo_hover;
         }
+
+        // Upload Playlists Checkbox Option Info
+
+
+        private void PbUploadPlaylistsInfo_Click(object sender, EventArgs e)
+        {
+            MetroMessageBox.Show(
+               this,
+               Environment.NewLine + 
+               "Unfortunatley, YouTube / YouTube Music has a playlists creation limit of 25 per day and 10 for rapid playlist creation (i.e. via automation / API). " +
+               "After which YTM will block any playlist creation for 24 hours." +
+               Environment.NewLine + Environment.NewLine +
+               $"This application prevents 'rapid creation' by waiting between {Global.PlaylistCreationWait} and {Global.PlaylistCreationWait * 2} " + 
+               "seconds after creating a playlist and to not abuse YTM playlist creation policy " + 
+               "and then will cease playlist creation. Therefore it may take some time / days for all your playlists to be uploaded. An 'upload playlist session' will be automatically " +
+               $"started after {Global.SessionRestartHours} hours if left running. You do not need to restart the application." +
+               Environment.NewLine + Environment.NewLine +
+               "If you find this application is interfering with your playlist creation on the YTM website you can turn uploading playlists off.",
+               "Include the Uploading of Playlists",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Information,
+               345);
+        }
+
+        private void PbUploadPlaylistsInfo_MouseDown(object sender, MouseEventArgs e)
+        {
+            pbUploadPlaylistsInfo.Image = Properties.Resources.info_down;
+        }
+
+        private void PbUploadPlaylistsInfo_MouseEnter(object sender, EventArgs e)
+        {
+            pbUploadPlaylistsInfo.Image = Properties.Resources.info_hover;
+        }
+
+        private void PbUploadPlaylistsInfo_MouseLeave(object sender, EventArgs e)
+        {
+            pbUploadPlaylistsInfo.Image = Properties.Resources.info_up;
+        }
+
+        private void PbUploadPlaylistsInfo_MouseUp(object sender, MouseEventArgs e)
+        {
+            pbUploadPlaylistsInfo.Image = Properties.Resources.info_hover;
+        }
     }
 }

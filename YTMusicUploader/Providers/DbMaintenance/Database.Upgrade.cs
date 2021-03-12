@@ -257,6 +257,29 @@ namespace YTMusicUploader.Providers
                                      VideoId = NULL");
                         }
 
+                        //
+                        // Added option to enable or disable playlist upload in 1.7.0
+                        // 
+
+                        columns = conn.Query<string>(
+                                @"SELECT name 
+                                  FROM PRAGMA_TABLE_INFO('Settings')").ToList();
+
+                        if (!columns.Contains("UploadPlaylists"))
+                        {
+                            conn.Execute(
+                                @"ALTER TABLE Settings
+                                  ADD COLUMN UploadPlaylists INTEGER DEFAULT 1");
+
+                            conn.Execute(
+                                @"UPDATE Settings
+                                  SET UploadPlaylists = 1");
+
+                            conn.Execute(
+                                @"ALTER TABLE Settings
+                                  ADD COLUMN LastPlaylistUpload TEXT");
+                        }
+
                         // Set DB version to App version (MAKE SURE IT's THE LAST THING ON THIS METHOD)
 
                         conn.Execute(string.Format(

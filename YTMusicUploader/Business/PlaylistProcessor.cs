@@ -21,6 +21,7 @@ namespace YTMusicUploader.Business
         public List<PlaylistFile> PlaylistFiles { get; set; }
         public OnlinePlaylistCollection OnlinePlaylists { get; set; }
         public bool Stopped { get; set; } = false;
+        private int NewPlaylistsCreated { get; set; } = 0;
 
         public PlaylistProcessor(MainForm mainForm)
         {
@@ -34,6 +35,8 @@ namespace YTMusicUploader.Business
         {
             Stopped = false;
             SetStatus("Processing playlist files", "Processing playlist files");
+
+            NewPlaylistsCreated = 0;
 
             try
             {
@@ -170,11 +173,16 @@ namespace YTMusicUploader.Business
                                 }
                                 else
                                 {
-                                    HandleOnlinePlaylistNeedsCreating(
-                                        playlistFile,
-                                        index,
-                                        PlaylistFiles.Count,
-                                        out ytmPlaylistCreationLimitReached);                                    
+                                    if (NewPlaylistsCreated <= Global.MaxNewPlaylistsPerSession)
+                                    {
+                                        HandleOnlinePlaylistNeedsCreating(
+                                            playlistFile,
+                                            index,
+                                            PlaylistFiles.Count,
+                                            out ytmPlaylistCreationLimitReached);
+                                    }
+                                    else
+                                        ytmPlaylistCreationLimitReached = true;
                                 }
                             }
                             catch (Exception e)
@@ -363,6 +371,8 @@ namespace YTMusicUploader.Business
                         playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
                         playlistFile.LastUpload = playlistFile.LastModifiedDate;
                         playlistFile.Save().Wait();
+
+                        NewPlaylistsCreated++;
 
                         try
                         {

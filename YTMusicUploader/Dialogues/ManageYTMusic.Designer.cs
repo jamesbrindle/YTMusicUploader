@@ -81,9 +81,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Location = new System.Drawing.Point(73, 35);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(399, 13);
+            this.lblTitle.Size = new System.Drawing.Size(468, 13);
             this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "View and delete YouTube Music and playlist uploads and manage your uploads database.";
+            this.lblTitle.Text = "View and delete YouTube Music and playlist uploads and manage your uploads databa" +
+    "se.";
             // 
             // tblManageYTMusicUploads
             // 
@@ -99,6 +100,7 @@
             this.tblManageYTMusicUploads.Controls.Add(this.tableLayoutPanel1, 1, 2);
             this.tblManageYTMusicUploads.Controls.Add(this.tvUploads, 0, 1);
             this.tblManageYTMusicUploads.Controls.Add(this.panel2, 0, 0);
+            this.tblManageYTMusicUploads.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tblManageYTMusicUploads.Location = new System.Drawing.Point(23, 76);
             this.tblManageYTMusicUploads.Name = "tblManageYTMusicUploads";
             this.tblManageYTMusicUploads.RowCount = 5;
@@ -137,6 +139,7 @@
             // lblMbId
             // 
             this.lblMbId.AutoSize = true;
+            this.lblMbId.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMbId.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lblMbId.Location = new System.Drawing.Point(127, 92);
             this.lblMbId.Name = "lblMbId";
@@ -403,6 +406,7 @@
             // tvUploads
             // 
             this.tvUploads.CheckBoxes = true;
+            this.tvUploads.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tvUploads.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvUploads.Location = new System.Drawing.Point(3, 34);
             this.tvUploads.Margin = new System.Windows.Forms.Padding(3, 0, 20, 0);
@@ -417,6 +421,7 @@
             // 
             this.panel2.Controls.Add(this.tbSearchArtists);
             this.panel2.Controls.Add(this.label3);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
@@ -429,6 +434,7 @@
             this.tbSearchArtists.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSearchArtists.BackColor = System.Drawing.Color.Transparent;
             this.tbSearchArtists.Br = System.Drawing.Color.White;
+            this.tbSearchArtists.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tbSearchArtists.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.tbSearchArtists.ForeColor = System.Drawing.Color.Black;
             this.tbSearchArtists.Location = new System.Drawing.Point(91, 1);
@@ -444,6 +450,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(-2, 8);
             this.label3.Name = "label3";
@@ -470,6 +477,7 @@
             // 
             // pbIssueLogIcon
             // 
+            this.pbIssueLogIcon.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbIssueLogIcon.Image = global::YTMusicUploader.Properties.Resources.ytmusic_manage_40px;
             this.pbIssueLogIcon.Location = new System.Drawing.Point(23, 20);
             this.pbIssueLogIcon.Name = "pbIssueLogIcon";
@@ -482,11 +490,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1037, 732);
             this.Controls.Add(this.tblManageYTMusicUploads);
             this.Controls.Add(this.pbRefresh);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 400);

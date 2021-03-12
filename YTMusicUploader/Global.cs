@@ -30,6 +30,7 @@ namespace YTMusicUploader
         private static int? _yTMusicIssuesMainProcessRetry = null;
         private static int? _playlistCreationWait = null;
         private static int? _playlistAddWait = null;
+        private static int? _maxNewPlaylistsPerSession = null;
         private static int? _sessionRestartHours = null;
         private static float? _yTUploadedSimilarityPercentageForMatch = null;
         private static string _musicBrainzBaseUrl = null;
@@ -462,6 +463,30 @@ namespace YTMusicUploader
                 }
 
                 return (int)_playlistAddWait;
+            }
+        }
+
+        /// <summary>
+        /// Maximumm number of playlists that can  be created per session (session defined by hours as in property below this)
+        /// </summary>
+        public static int MaxNewPlaylistsPerSession
+        {
+            get
+            {
+                if (_maxNewPlaylistsPerSession != null)
+                    return (int)_maxNewPlaylistsPerSession;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["MaxNewPlaylistsPerSession"] != null)
+                        _maxNewPlaylistsPerSession = ConfigurationManager.AppSettings["MaxNewPlaylistsPerSession"].ToInt();
+                }
+                catch
+                {
+                    _maxNewPlaylistsPerSession = 24;
+                }
+
+                return (int)_maxNewPlaylistsPerSession;
             }
         }
 

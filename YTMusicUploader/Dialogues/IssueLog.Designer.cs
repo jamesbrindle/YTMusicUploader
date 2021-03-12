@@ -76,6 +76,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dvgLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dvgLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgLog.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,6 +109,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
+            this.lblTitle.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(74, 34);
             this.lblTitle.Name = "lblTitle";
@@ -134,6 +136,7 @@
             // 
             // pbIssueLogIcon
             // 
+            this.pbIssueLogIcon.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbIssueLogIcon.Image = global::YTMusicUploader.Properties.Resources.unhappy;
             this.pbIssueLogIcon.Location = new System.Drawing.Point(24, 20);
             this.pbIssueLogIcon.Name = "pbIssueLogIcon";
@@ -151,6 +154,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
             this.Controls.Add(this.pnlIssueLog);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "IssueLog";

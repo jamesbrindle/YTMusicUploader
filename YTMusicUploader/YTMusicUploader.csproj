@@ -607,6 +607,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Embedded\YTMusicUploader.Updater.exe" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\info_down.png" />
+    <None Include="Resources\info_up.png" />
+    <None Include="Resources\info_hover.png" />
     <Content Include="Resources\Raw\logs.svg" />
     <Content Include="Resources\Raw\pause_resume.svg" />
     <None Include="Resources\pause_disabled.png" />
