@@ -198,7 +198,6 @@ namespace YTMusicUploader
         private void PbYtMusicManage_Click(object sender, EventArgs e)
         {
             ManagingYTMusicStatus = ManagingYTMusicStatusEnum.Showing;
-            Requests.UploadCheckCache.Pause = true;
 
             if (ManageYTMusic == null || ManageYTMusic.IsDisposed)
                 ManageYTMusic = new ManageYTMusic(this);
@@ -218,7 +217,6 @@ namespace YTMusicUploader
                 else
                     ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseNoChange;
 
-                Requests.UploadCheckCache.Pause = false;
                 SetPaused(false);
 
                 pbYtMusicManage.Image = Properties.Resources.ytmusic_manage;
@@ -412,12 +410,12 @@ namespace YTMusicUploader
         {
             MetroMessageBox.Show(
                this,
-               Environment.NewLine + 
+               Environment.NewLine +
                "Unfortunatley, YouTube / YouTube Music has a playlists creation limit of 25 per day and 10 for rapid playlist creation (i.e. via automation / API). " +
                "After which YTM will block any playlist creation for 24 hours." +
                Environment.NewLine + Environment.NewLine +
-               $"This application prevents 'rapid creation' by waiting between {Global.PlaylistCreationWait} and {Global.PlaylistCreationWait * 2} " + 
-               "seconds after creating a playlist and to not abuse YTM playlist creation policy " + 
+               $"This application prevents 'rapid creation' by waiting between {Global.PlaylistCreationWait} and {Global.PlaylistCreationWait * 2} " +
+               "seconds after creating a playlist and to not abuse YTM playlist creation policy " +
                "and then will cease playlist creation. Therefore it may take some time / days for all your playlists to be uploaded. An 'upload playlist session' will be automatically " +
                $"started after {Global.SessionRestartHours} hours if left running. You do not need to restart the application." +
                Environment.NewLine + Environment.NewLine +
@@ -426,6 +424,13 @@ namespace YTMusicUploader
                MessageBoxButtons.OK,
                MessageBoxIcon.Information,
                345);
+
+            pbUploadPlaylistsInfo.Image = Properties.Resources.info_up;
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                ThreadHelper.SafeSleep(100);
+                SetUploadPlaylistsInfoButtonImage(Properties.Resources.info_up);
+            });
         }
 
         private void PbUploadPlaylistsInfo_MouseDown(object sender, MouseEventArgs e)

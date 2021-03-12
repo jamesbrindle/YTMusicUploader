@@ -33,6 +33,9 @@ namespace YTMusicUploader.Business
         /// </summary>
         public void Process(bool forceRefreshPlaylists = false)
         {
+            while (MainForm.Paused)
+                ThreadHelper.SafeSleep(500);
+
             Stopped = false;
             SetStatus("Processing playlist files", "Processing playlist files");
 
@@ -54,6 +57,9 @@ namespace YTMusicUploader.Business
                     foreach (var playlistFile in PlaylistFiles)
                     {
                         ConnectionCheckWait();
+
+                        while (MainForm.Paused)
+                            ThreadHelper.SafeSleep(500);
 
                         SetStatus($"Checking playlist file ({index}/{PlaylistFiles.Count})",
                                   $"Checking playlist file ({index}/{PlaylistFiles.Count})");
@@ -96,6 +102,9 @@ namespace YTMusicUploader.Business
 
                                 updatedPlaylistFile.PlaylistItems.AsParallel().ForAllInApproximateOrder(playlistItem =>
                                 {
+                                    while (MainForm.Paused)
+                                        ThreadHelper.SafeSleep(500);
+
                                     if (MainFormAborting())
                                         return;
 
@@ -277,6 +286,9 @@ namespace YTMusicUploader.Business
 
                     SetStatus($"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}: Adding track to existing {index}/{playlistFile.PlaylistItems}",
                               $"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}");
+
+                    while (MainForm.Paused)
+                        ThreadHelper.SafeSleep(500);
 
                     for (int i = 0; i < 2; i++)
                     {

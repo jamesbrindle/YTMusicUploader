@@ -8,6 +8,31 @@ namespace YTMusicUploader
 {
     public partial class MainForm
     {
+        delegate void EnableOptionButtonsDelegate(bool enable);
+        public void EnableOptionButtons(bool enable)
+        {
+            if (btnAddWatchFolder.InvokeRequired ||
+                btnRemoveWatchFolder.InvokeRequired ||
+                cbAlsoUploadPlaylists.InvokeRequired ||
+                cbSendErrorLogsToSource.InvokeRequired ||
+                cbStartWithWindows.InvokeRequired ||
+                tbThrottleSpeed.InvokeRequired)
+            {
+                var d = new EnableOptionButtonsDelegate(EnableOptionButtons);
+                Invoke(d, new object[] { enable });
+            }
+            else
+            {
+                btnAddWatchFolder.Enabled = enable;
+                btnRemoveWatchFolder.Enabled = enable;
+                cbAlsoUploadPlaylists.Enabled = enable;
+                cbSendErrorLogsToSource.Enabled = enable;
+                cbStartWithWindows.Enabled = enable;
+                tbThrottleSpeed.Enabled = enable;
+            }
+        }
+
+
         delegate void SetStatusMessageDelegate(string statusMessage, string systemTrayIconText = null);
         public void SetStatusMessage(string statusMessage, string systemTrayIconText = null)
         {
@@ -41,6 +66,8 @@ namespace YTMusicUploader
                     lblStatus.Text = "Paused";
                     lblUploadingMessage.Text = "Paused";
                     SetSystemTrayIconText("Paused");
+                    Requests.UploadCheckCache.Pause = true;
+                    Paused = true;
                     pbPaused.Visible = true;
                 }
                 else
@@ -48,6 +75,8 @@ namespace YTMusicUploader
                     lblStatus.Text = "Idle";
                     lblUploadingMessage.Text = "Idle";
                     SetSystemTrayIconText("Idle");
+                    Requests.UploadCheckCache.Pause = false;
+                    Paused = true;
                     pbPaused.Visible = false;
                 }
             }
@@ -100,6 +129,20 @@ namespace YTMusicUploader
             else
             {
                 cbStartWithWindows.Checked = startWithWindows;
+            }
+        }
+
+        delegate void SetAlsoUploadPlaylistsDelegate(bool uploadPlaylists);
+        public void SetAlsoUploadPlaylists(bool uploadPlaylists)
+        {
+            if (cbAlsoUploadPlaylists.InvokeRequired)
+            {
+                var d = new SetAlsoUploadPlaylistsDelegate(SetAlsoUploadPlaylists);
+                Invoke(d, new object[] { uploadPlaylists });
+            }
+            else
+            {
+                cbAlsoUploadPlaylists.Checked = uploadPlaylists;
             }
         }
 
@@ -163,6 +206,18 @@ namespace YTMusicUploader
             }
             else
                 pbAbout.Image = image;
+        }
+
+        delegate void SetUploadPlaylistsInfoButtonImageDelegate(Image image);
+        public void SetUploadPlaylistsInfoButtonImage(Image image)
+        {
+            if (pbUploadPlaylistsInfo.InvokeRequired)
+            {
+                var d = new SetUploadPlaylistsInfoButtonImageDelegate(SetUploadPlaylistsInfoButtonImage);
+                Invoke(d, new object[] { image });
+            }
+            else
+                pbUploadPlaylistsInfo.Image = image;
         }
 
         delegate void SetLogButtonImageDelegate(Image image);
@@ -452,7 +507,6 @@ namespace YTMusicUploader
                     tsmPauseResume.Text = "Resume";
                     tsmPauseResume.Image = Properties.Resources.resume;
                     IsPausedFromTray = true;
-                    Requests.UploadCheckCache.Pause = true;
                     ManagingYTMusicStatus = MainForm.ManagingYTMusicStatusEnum.Showing;
                     SetPaused(true);
                 }
@@ -461,7 +515,6 @@ namespace YTMusicUploader
                     tsmPauseResume.Text = "Pause";
                     tsmPauseResume.Image = Properties.Resources.pause;
                     IsPausedFromTray = false;
-                    Requests.UploadCheckCache.Pause = false;
                     ManagingYTMusicStatus = ManagingYTMusicStatusEnum.CloseChanges;
                     SetPaused(false);
                     Restart();

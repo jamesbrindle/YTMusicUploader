@@ -209,6 +209,7 @@
             // 
             this.btnRemoveWatchFolder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveWatchFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemoveWatchFolder.Enabled = false;
             this.btnRemoveWatchFolder.Image = global::YTMusicUploader.Properties.Resources.minus;
             this.btnRemoveWatchFolder.Location = new System.Drawing.Point(0, 0);
             this.btnRemoveWatchFolder.Name = "btnRemoveWatchFolder";
@@ -410,16 +411,15 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.Size = new System.Drawing.Size(129, 13);
             this.label1.TabIndex = 29;
-            this.label1.Text = "Also Upload Playlists";
+            this.label1.Text = "Include Playlists Upload";
             // 
             // cbAlsoUploadPlaylists
             // 
             this.cbAlsoUploadPlaylists.AutoSize = true;
-            this.cbAlsoUploadPlaylists.Checked = true;
-            this.cbAlsoUploadPlaylists.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbAlsoUploadPlaylists.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbAlsoUploadPlaylists.Enabled = false;
             this.cbAlsoUploadPlaylists.Location = new System.Drawing.Point(163, 61);
             this.cbAlsoUploadPlaylists.Name = "cbAlsoUploadPlaylists";
             this.cbAlsoUploadPlaylists.Size = new System.Drawing.Size(26, 15);
@@ -446,6 +446,7 @@
             this.tbThrottleSpeed.BackColor = System.Drawing.Color.Transparent;
             this.tbThrottleSpeed.Br = System.Drawing.Color.White;
             this.tbThrottleSpeed.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tbThrottleSpeed.Enabled = false;
             this.tbThrottleSpeed.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.tbThrottleSpeed.ForeColor = System.Drawing.Color.Black;
             this.tbThrottleSpeed.Location = new System.Drawing.Point(163, 112);
@@ -454,7 +455,6 @@
             this.tbThrottleSpeed.ReadOnly = false;
             this.tbThrottleSpeed.Size = new System.Drawing.Size(44, 25);
             this.tbThrottleSpeed.TabIndex = 3;
-            this.tbThrottleSpeed.Text = "∞";
             this.tbThrottleSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.tbThrottleSpeed.TextChanged += new System.EventHandler(this.TbThrottleSpeed_TextChanged);
             this.tbThrottleSpeed.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbThrottleSpeed_KeyDown);
@@ -486,9 +486,8 @@
             // cbSendErrorLogsToSource
             // 
             this.cbSendErrorLogsToSource.AutoSize = true;
-            this.cbSendErrorLogsToSource.Checked = true;
-            this.cbSendErrorLogsToSource.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSendErrorLogsToSource.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbSendErrorLogsToSource.Enabled = false;
             this.cbSendErrorLogsToSource.Location = new System.Drawing.Point(163, 89);
             this.cbSendErrorLogsToSource.Name = "cbSendErrorLogsToSource";
             this.cbSendErrorLogsToSource.Size = new System.Drawing.Size(26, 15);
@@ -503,6 +502,7 @@
             // 
             this.cbStartWithWindows.AutoSize = true;
             this.cbStartWithWindows.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbStartWithWindows.Enabled = false;
             this.cbStartWithWindows.Location = new System.Drawing.Point(163, 34);
             this.cbStartWithWindows.Name = "cbStartWithWindows";
             this.cbStartWithWindows.Size = new System.Drawing.Size(26, 15);
@@ -627,6 +627,7 @@
             // btnAddWatchFolder
             // 
             this.btnAddWatchFolder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddWatchFolder.Enabled = false;
             this.btnAddWatchFolder.Image = global::YTMusicUploader.Properties.Resources.plus;
             this.btnAddWatchFolder.Location = new System.Drawing.Point(351, 317);
             this.btnAddWatchFolder.Name = "btnAddWatchFolder";

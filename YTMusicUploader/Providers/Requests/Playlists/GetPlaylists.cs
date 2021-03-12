@@ -142,7 +142,7 @@ namespace YTMusicUploader.Providers
                                 }
 
                                 if (!string.IsNullOrEmpty(continuation))
-                                    return GetPlaylists(cookieValue, continuation, playListCol);                                
+                                    return GetPlaylists(cookieValue, continuation, playListCol);
                             }
                             else
                             {
@@ -198,7 +198,7 @@ namespace YTMusicUploader.Providers
                                 }
 
                                 if (!string.IsNullOrEmpty(continuation))
-                                    return GetPlaylists(cookieValue, continuation, playListCol);                                
+                                    return GetPlaylists(cookieValue, continuation, playListCol);
                             }
                         }
                     }

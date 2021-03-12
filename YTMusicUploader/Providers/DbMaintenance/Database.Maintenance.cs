@@ -91,7 +91,9 @@ namespace YTMusicUploader.Providers
                 Upgrade.CheckAndRun();
             }
 
-
+            /// <summary>
+            /// Checks if the database is OK
+            /// </summary>
             public static void CheckDatabaseIntegrity()
             {
                 try

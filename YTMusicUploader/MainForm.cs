@@ -26,6 +26,8 @@ namespace YTMusicUploader
 {
     public partial class MainForm : OptimisedMetroForm
     {
+        public bool Paused { get; set; } = false;
+
         public enum ManagingYTMusicStatusEnum
         {
             Showing,
@@ -155,8 +157,8 @@ namespace YTMusicUploader
             //  Restart everything after 24 hours (is the application is continually run)
             _restartThread = new Thread((ThreadStart)delegate
             {
-                while(Settings == null)
-                    ThreadHelper.SafeSleep(500); 
+                while (Settings == null)
+                    ThreadHelper.SafeSleep(500);
 
                 while (true)
                 {
@@ -302,6 +304,7 @@ namespace YTMusicUploader
             await RegistrySettings.SetStartWithWindows(Settings.StartWithWindows);
             SetSendLogsToSource(Settings.SendLogsToSource);
             SetStartWithWindows(Settings.StartWithWindows);
+            SetAlsoUploadPlaylists(Settings.UploadPlaylists);
 
             await BindWatchFoldersList();
             await InitialiseFolderWatchers();
@@ -321,6 +324,7 @@ namespace YTMusicUploader
             Logger.ClearHistoricLogs();
 
             RunDebugCommands();
+            EnableOptionButtons(true);
         }
 
         private void ConnectToYouTubeMusic()
