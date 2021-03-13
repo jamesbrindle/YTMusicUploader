@@ -229,7 +229,7 @@ namespace YTMusicUploader.Business
             if (string.IsNullOrEmpty(statusText))
             {
                 if (MainForm.ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
-                    MainForm.SetUploadingMessage("Idle", null, null, true);
+                    MainForm.SetUploadingMessage("Idle", null, null, null, true);
 
                 if (MainForm.WatchFolders.Count > 0)
                     MainForm.SetStatusMessage("Looking for new files...", "Looking for new files");
@@ -376,7 +376,7 @@ namespace YTMusicUploader.Business
                 }
 
                 Stopped = true;
-                MainForm.SetUploadingMessage("Restarting", "Restarting", null, true);
+                MainForm.SetUploadingMessage("Restarting", null, "Restarting", null, true);
                 return true;
             }
 

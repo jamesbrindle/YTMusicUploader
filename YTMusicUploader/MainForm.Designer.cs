@@ -52,6 +52,9 @@
             this.lblUploaded = new System.Windows.Forms.LinkLabel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblArtistMeta = new System.Windows.Forms.Label();
+            this.lblAlbumMeta = new System.Windows.Forms.Label();
+            this.lblTrackMeta = new System.Windows.Forms.Label();
             this.roundGroupBox2 = new JBToolkit.WinForms.RoundGroupBox();
             this.lbWatchFolders = new System.Windows.Forms.ListBox();
             this.roundGroupBox1 = new JBToolkit.WinForms.RoundGroupBox();
@@ -196,7 +199,7 @@
             // pnlRemoveFromWatchFolder
             // 
             this.pnlRemoveFromWatchFolder.Controls.Add(this.btnRemoveWatchFolder);
-            this.pnlRemoveFromWatchFolder.Location = new System.Drawing.Point(379, 317);
+            this.pnlRemoveFromWatchFolder.Location = new System.Drawing.Point(381, 276);
             this.pnlRemoveFromWatchFolder.Name = "pnlRemoveFromWatchFolder";
             this.pnlRemoveFromWatchFolder.Size = new System.Drawing.Size(21, 17);
             this.pnlRemoveFromWatchFolder.TabIndex = 18;
@@ -226,9 +229,9 @@
             // 
             this.lblUploadingMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblUploadingMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUploadingMessage.Location = new System.Drawing.Point(94, 360);
+            this.lblUploadingMessage.Location = new System.Drawing.Point(30, 365);
             this.lblUploadingMessage.Name = "lblUploadingMessage";
-            this.lblUploadingMessage.Size = new System.Drawing.Size(608, 40);
+            this.lblUploadingMessage.Size = new System.Drawing.Size(665, 40);
             this.lblUploadingMessage.TabIndex = 19;
             this.lblUploadingMessage.Text = "Idle";
             this.lblUploadingMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -332,15 +335,39 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // lblArtistMeta
+            // 
+            this.lblArtistMeta.AutoSize = true;
+            this.lblArtistMeta.Location = new System.Drawing.Point(98, 302);
+            this.lblArtistMeta.Name = "lblArtistMeta";
+            this.lblArtistMeta.Size = new System.Drawing.Size(0, 13);
+            this.lblArtistMeta.TabIndex = 31;
+            // 
+            // lblAlbumMeta
+            // 
+            this.lblAlbumMeta.AutoSize = true;
+            this.lblAlbumMeta.Location = new System.Drawing.Point(98, 320);
+            this.lblAlbumMeta.Name = "lblAlbumMeta";
+            this.lblAlbumMeta.Size = new System.Drawing.Size(0, 13);
+            this.lblAlbumMeta.TabIndex = 32;
+            // 
+            // lblTrackMeta
+            // 
+            this.lblTrackMeta.AutoSize = true;
+            this.lblTrackMeta.Location = new System.Drawing.Point(98, 338);
+            this.lblTrackMeta.Name = "lblTrackMeta";
+            this.lblTrackMeta.Size = new System.Drawing.Size(0, 13);
+            this.lblTrackMeta.TabIndex = 33;
+            // 
             // roundGroupBox2
             // 
             this.roundGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.roundGroupBox2.Controls.Add(this.lbWatchFolders);
             this.roundGroupBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.roundGroupBox2.Location = new System.Drawing.Point(26, 97);
+            this.roundGroupBox2.Location = new System.Drawing.Point(27, 97);
             this.roundGroupBox2.Name = "roundGroupBox2";
             this.roundGroupBox2.Radious = 25;
-            this.roundGroupBox2.Size = new System.Drawing.Size(380, 214);
+            this.roundGroupBox2.Size = new System.Drawing.Size(380, 173);
             this.roundGroupBox2.TabIndex = 29;
             this.roundGroupBox2.TabStop = false;
             this.roundGroupBox2.Text = "Watch Folders";
@@ -358,7 +385,7 @@
             this.lbWatchFolders.FormattingEnabled = true;
             this.lbWatchFolders.Location = new System.Drawing.Point(11, 36);
             this.lbWatchFolders.Name = "lbWatchFolders";
-            this.lbWatchFolders.Size = new System.Drawing.Size(359, 169);
+            this.lbWatchFolders.Size = new System.Drawing.Size(359, 130);
             this.lbWatchFolders.TabIndex = 1;
             this.lbWatchFolders.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.LbWatchFolders_DrawItem);
             this.lbWatchFolders.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LbWatchFolders_MouseDown);
@@ -392,7 +419,7 @@
             // 
             this.pbUploadPlaylistsInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbUploadPlaylistsInfo.Image = global::YTMusicUploader.Properties.Resources.info_up;
-            this.pbUploadPlaylistsInfo.Location = new System.Drawing.Point(193, 62);
+            this.pbUploadPlaylistsInfo.Location = new System.Drawing.Point(193, 61);
             this.pbUploadPlaylistsInfo.Name = "pbUploadPlaylistsInfo";
             this.pbUploadPlaylistsInfo.Size = new System.Drawing.Size(15, 15);
             this.pbUploadPlaylistsInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -527,10 +554,10 @@
             // 
             this.pbPaused.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbPaused.Image = global::YTMusicUploader.Properties.Resources.paused;
-            this.pbPaused.Location = new System.Drawing.Point(27, 355);
+            this.pbPaused.Location = new System.Drawing.Point(30, 302);
             this.pbPaused.Name = "pbPaused";
+            this.pbPaused.Padding = new System.Windows.Forms.Padding(2, 9, 0, 0);
             this.pbPaused.Size = new System.Drawing.Size(50, 50);
-            this.pbPaused.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbPaused.TabIndex = 25;
             this.pbPaused.TabStop = false;
             this.pbPaused.Visible = false;
@@ -572,16 +599,16 @@
             // 
             this.pbArtworkIdle.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbArtworkIdle.Image = global::YTMusicUploader.Properties.Resources.idle;
-            this.pbArtworkIdle.Location = new System.Drawing.Point(27, 355);
+            this.pbArtworkIdle.Location = new System.Drawing.Point(30, 302);
             this.pbArtworkIdle.Name = "pbArtworkIdle";
-            this.pbArtworkIdle.Size = new System.Drawing.Size(50, 50);
-            this.pbArtworkIdle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbArtworkIdle.Size = new System.Drawing.Size(127, 50);
+            this.pbArtworkIdle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbArtworkIdle.TabIndex = 22;
             this.pbArtworkIdle.TabStop = false;
             // 
             // pbArtwork
             // 
-            this.pbArtwork.Location = new System.Drawing.Point(27, 355);
+            this.pbArtwork.Location = new System.Drawing.Point(30, 302);
             this.pbArtwork.Name = "pbArtwork";
             this.pbArtwork.Size = new System.Drawing.Size(50, 50);
             this.pbArtwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -629,7 +656,7 @@
             this.btnAddWatchFolder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddWatchFolder.Enabled = false;
             this.btnAddWatchFolder.Image = global::YTMusicUploader.Properties.Resources.plus;
-            this.btnAddWatchFolder.Location = new System.Drawing.Point(351, 317);
+            this.btnAddWatchFolder.Location = new System.Drawing.Point(353, 276);
             this.btnAddWatchFolder.Name = "btnAddWatchFolder";
             this.btnAddWatchFolder.Size = new System.Drawing.Size(16, 16);
             this.btnAddWatchFolder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -673,13 +700,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 453);
+            this.Controls.Add(this.pbArtworkIdle);
             this.Controls.Add(this.pbPaused);
+            this.Controls.Add(this.lblTrackMeta);
+            this.Controls.Add(this.lblAlbumMeta);
+            this.Controls.Add(this.lblArtistMeta);
             this.Controls.Add(this.pbLog);
             this.Controls.Add(this.roundGroupBox2);
             this.Controls.Add(this.roundGroupBox1);
             this.Controls.Add(this.pbYtMusicManage);
             this.Controls.Add(this.pnlHeader);
-            this.Controls.Add(this.pbArtworkIdle);
             this.Controls.Add(this.pbArtwork);
             this.Controls.Add(this.lblUploaded);
             this.Controls.Add(this.lblIssues);
@@ -780,6 +810,9 @@
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroCheckBox cbAlsoUploadPlaylists;
         private System.Windows.Forms.PictureBox pbUploadPlaylistsInfo;
+        private System.Windows.Forms.Label lblArtistMeta;
+        private System.Windows.Forms.Label lblAlbumMeta;
+        private System.Windows.Forms.Label lblTrackMeta;
     }
 }
 

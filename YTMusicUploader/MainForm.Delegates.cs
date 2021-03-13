@@ -1,7 +1,9 @@
 ﻿using JBToolkit.Windows;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YTMusicUploader.Business;
 using YTMusicUploader.Providers;
 
 namespace YTMusicUploader
@@ -54,7 +56,12 @@ namespace YTMusicUploader
         public void SetPaused(bool paused)
         {
             if (pbArtwork.InvokeRequired ||
-                lblStatus.InvokeRequired)
+                lblStatus.InvokeRequired ||
+                lblUploadingMessage.InvokeRequired ||
+                pbPaused.InvokeRequired ||
+                lblArtistMeta.InvokeRequired ||
+                lblAlbumMeta.InvokeRequired ||
+                lblTrackMeta.InvokeRequired)
             {
                 var d = new SetPausedDelegate(SetPaused);
                 Invoke(d, new object[] { paused });
@@ -69,11 +76,16 @@ namespace YTMusicUploader
                     Requests.UploadCheckCache.Pause = true;
                     Paused = true;
                     pbPaused.Visible = true;
+                    pbArtworkIdle.Visible = false;
+                    lblArtistMeta.Text = string.Empty;
+                    lblAlbumMeta.Text = string.Empty;
+                    lblTrackMeta.Text = string.Empty;
                 }
                 else
                 {
                     lblStatus.Text = "Idle";
                     lblUploadingMessage.Text = "Idle";
+                    pbArtworkIdle.Visible = true;
                     SetSystemTrayIconText("Idle");
                     Requests.UploadCheckCache.Pause = false;
                     Paused = false;
@@ -294,25 +306,37 @@ namespace YTMusicUploader
 
         delegate void SetUploadingMessageDelegate(
                         string text,
+                        MusicFileMetaData metaData,
                         string tooltipText = null,
                         Image artworkImage = null,
                         bool changingArtworkImage = false);
         public void SetUploadingMessage(
                         string text,
+                        MusicFileMetaData metaData,
                         string tooltipText = null,
                         Image artworkImage = null,
                         bool changingArtworkImage = false)
         {
             if (lblUploadingMessage.InvokeRequired ||
                 pbArtwork.InvokeRequired ||
-                pbArtworkIdle.InvokeRequired)
+                pbArtworkIdle.InvokeRequired ||
+                lblArtistMeta.InvokeRequired ||
+                lblAlbumMeta.InvokeRequired ||
+                lblTrackMeta.InvokeRequired)
             {
                 var d = new SetUploadingMessageDelegate(SetUploadingMessage);
-                Invoke(d, new object[] { text, tooltipText, artworkImage, changingArtworkImage });
+                Invoke(d, new object[] { text, metaData, tooltipText, artworkImage, changingArtworkImage });
             }
             else
             {
                 lblUploadingMessage.Text = text;
+
+                if (text.ToLower() == "idle")
+                {
+                    lblArtistMeta.Text = string.Empty;
+                    lblAlbumMeta.Text = string.Empty;
+                    lblTrackMeta.Text = string.Empty;
+                }
 
                 try
                 {
@@ -331,12 +355,62 @@ namespace YTMusicUploader
 
                         if (tooltipText != null)
                             ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
+
+                        lblArtistMeta.Text = metaData == null || metaData.Artist == null ? string.Empty : metaData.Artist.Ellipse(57);
+                        lblAlbumMeta.Text = metaData == null || metaData.Album == null ? string.Empty : metaData.Album.Ellipse(57);
+                        lblTrackMeta.Text = metaData == null || metaData.Track == null ? string.Empty : metaData.Track.Ellipse(57);
                     }
                     else
                     {
                         if (tooltipText != null)
                             ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
+
+                        lblArtistMeta.Text = metaData == null || metaData.Artist == null ? string.Empty : metaData.Artist.Ellipse(57);
+                        lblAlbumMeta.Text = metaData == null || metaData.Album == null ? string.Empty : metaData.Album.Ellipse(57);
+                        lblTrackMeta.Text = metaData == null || metaData.Track == null ? string.Empty : metaData.Track.Ellipse(57);
                     }
+                }
+                catch { }
+            }
+        }
+
+        delegate void SetProcessingPlaylistMessageDelegate(
+                string text,
+                string playlistName,
+                string tooltipText = null);
+        public void SetProcessingPlaylistMessage(
+                        string text,
+                        string playlistName,
+                        string tooltipText = null)
+        {
+            if (lblUploadingMessage.InvokeRequired ||
+                pbArtwork.InvokeRequired ||
+                pbArtworkIdle.InvokeRequired ||
+                lblArtistMeta.InvokeRequired ||
+                lblAlbumMeta.InvokeRequired ||
+                lblTrackMeta.InvokeRequired)
+            {
+                var d = new SetProcessingPlaylistMessageDelegate(SetProcessingPlaylistMessage);
+                Invoke(d, new object[] { text, playlistName, tooltipText });
+            }
+            else
+            {
+                lblUploadingMessage.Text = text;
+
+                try
+                {
+                    pbArtworkIdle.Visible = false;
+                    pbArtwork.Visible = true;
+                    pbArtworkIdle.Visible = false;
+                    pbArtwork.Image = Properties.Resources.Playlist;
+
+                    if (tooltipText != null)
+                        ArtWorkTooltip.SetToolTip(pbArtwork, tooltipText);
+
+                    lblArtistMeta.Text = string.Empty;
+                    lblAlbumMeta.Text = string.IsNullOrEmpty(playlistName) ? string.Empty : playlistName.Ellipse(57);
+                    lblTrackMeta.Text = string.Empty;
+
                 }
                 catch { }
             }

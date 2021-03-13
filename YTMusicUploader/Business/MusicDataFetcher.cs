@@ -154,7 +154,7 @@ namespace YTMusicUploader.Business
         /// <returns>TrackAndReleaseMbId object</returns>
         public TrackAndReleaseMbId GetTrackAndReleaseMbId(string path, bool tryWithMusicBrainz)
         {
-            var metaData = GetMusicFileMetaData(path);
+            var metaData = GetMusicFileMetaData(path, out string _);
 
             if (metaData != null && !string.IsNullOrEmpty(metaData.MbId) && !string.IsNullOrEmpty(metaData.ReleaseMbId))
                 return new TrackAndReleaseMbId
@@ -233,7 +233,7 @@ namespace YTMusicUploader.Business
         /// <returns>MusicBrainz Recording object</returns>
         public Recording GetRecordingFromMusicBrainzWithAlbumNameVariation(string path)
         {
-            var data = GetMusicFileMetaData(path);
+            var data = GetMusicFileMetaData(path, out string _);
             if (data != null)
             {
                 string artist = data.Artist;
@@ -573,11 +573,14 @@ namespace YTMusicUploader.Business
         /// </summary>
         /// <param name="path">Full path to music file</param>
         /// <returns>Multi-line string</returns>
-        public MusicFileMetaData GetMusicFileMetaData(string path)
+        public MusicFileMetaData GetMusicFileMetaData(string path, out string metaDataString)
         {
+            metaDataString = null;
+
             try
             {
                 var tags = GetMusicTagLibFile(path);
+                var sb = new StringBuilder();
 
                 string mbId = string.Empty;
                 string releaseMbId = string.Empty;
@@ -585,7 +588,11 @@ namespace YTMusicUploader.Business
                 string album = string.Empty;
                 string track = string.Empty;
                 TimeSpan? duration = null;
+                string durationString = string.Empty;
                 int bitsPerSecond = -1;
+                string bitsPerSecondString = string.Empty;
+                long fileSize = -1;
+                string fileSizeString = string.Empty;
 
                 if (tags != null && tags.Tag != null)
                 {
@@ -595,7 +602,31 @@ namespace YTMusicUploader.Business
                     album = tags.Tag.Album;
                     track = tags.Tag.Title;
                     bitsPerSecond = tags.Properties.AudioBitrate;
+                    bitsPerSecondString = tags.Properties.AudioBitrate + " Kbps";
                     duration = tags.Properties.Duration;
+
+                    try
+                    {
+                        fileSize = new FileInfo(path).Length;
+                        if (fileSize != -1)
+                            fileSizeString = Math.Round((Convert.ToDouble(fileSize) / Convert.ToDouble(1024) / Convert.ToDouble(1024)), 2) + "MB";
+                    }
+                    catch { }
+
+                    durationString = string.Format("{0:00}:{1:00}:{2:00}",
+                                             tags.Properties.Duration.Hours,
+                                             tags.Properties.Duration.Minutes,
+                                             tags.Properties.Duration.Seconds);
+
+                    sb.AppendLine();
+                    sb.AppendLine("Artist: " + (string.IsNullOrEmpty(artist) ? "-" : artist));
+                    sb.AppendLine("Album: " + (string.IsNullOrEmpty(album) ? "-" : album));
+                    sb.AppendLine("Track: " + (string.IsNullOrEmpty(track) ? "-" : track));
+                    sb.AppendLine("Duration: " + (string.IsNullOrEmpty(durationString) ? "-" : durationString));
+                    sb.AppendLine("Bitrate: " + (string.IsNullOrEmpty(bitsPerSecondString) ? "-" : bitsPerSecondString));
+                    sb.AppendLine("File Size: " + (string.IsNullOrEmpty(fileSizeString) ? "-" : fileSizeString));
+
+                    metaDataString = sb.ToString();
                 }
 
                 return new MusicFileMetaData
@@ -606,7 +637,8 @@ namespace YTMusicUploader.Business
                     Album = album,
                     Track = track,
                     Duration = (TimeSpan)duration,
-                    Bitrate = bitsPerSecond
+                    Bitrate = bitsPerSecond,
+                    FileSize = fileSize
                 };
             }
             catch (Exception e)
@@ -614,62 +646,6 @@ namespace YTMusicUploader.Business
                 var _ = e;
 #if DEBUG
                 Console.Out.WriteLine("GetMusicFileMetaData: " + e.Message);
-#endif
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Returns a single multi-line string of music file meta data such as:
-        ///   - Artist
-        ///   - Album name
-        ///   - Track name
-        ///   - Duration
-        ///   - Bitrate
-        /// </summary>
-        /// <param name="path">Full path to music file</param>
-        /// <returns>Multi-line string</returns>
-        public async Task<string> GetMusicFileMetaDataString(string path)
-        {
-            try
-            {
-                var sb = new StringBuilder();
-                var tags = GetMusicTagLibFile(path);
-
-                string artist = string.Empty;
-                string album = string.Empty;
-                string track = string.Empty;
-                string duration = string.Empty;
-                string bitsPerSecond = string.Empty;
-
-                if (tags != null && tags.Tag != null)
-                {
-                    artist = tags.Tag.FirstPerformer ?? tags.Tag.FirstAlbumArtist;
-                    album = tags.Tag.Album;
-                    track = tags.Tag.Title;
-                    bitsPerSecond = tags.Properties.AudioBitrate + " Kbps";
-                    duration = string.Format("{0:00}:{1:00}:{2:00}",
-                                             tags.Properties.Duration.Hours,
-                                             tags.Properties.Duration.Minutes,
-                                             tags.Properties.Duration.Seconds);
-
-                }
-
-                sb.AppendLine();
-                sb.AppendLine("Artist: " + (string.IsNullOrEmpty(artist) ? "-" : artist));
-                sb.AppendLine("Album: " + (string.IsNullOrEmpty(album) ? "-" : album));
-                sb.AppendLine("Track: " + (string.IsNullOrEmpty(track) ? "-" : track));
-                sb.AppendLine("Duration: " + (string.IsNullOrEmpty(duration) ? "-" : duration));
-                sb.AppendLine("Bitrate: " + (string.IsNullOrEmpty(bitsPerSecond) ? "-" : bitsPerSecond));
-
-                return await Task.FromResult(sb.ToString());
-            }
-            catch (Exception e)
-            {
-                var _ = e;
-#if DEBUG
-                Console.Out.WriteLine("GetMusicFileMetaDataString: " + e.Message);
 #endif
             }
 
@@ -749,5 +725,6 @@ namespace YTMusicUploader.Business
         public string Track { get; set; }
         public TimeSpan Duration { get; set; }
         public int Bitrate { get; set; }
+        public long FileSize { get; set; }
     }
 }

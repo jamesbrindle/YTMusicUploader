@@ -439,9 +439,6 @@ namespace YTMusicUploader
 
                     if (DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours))
                     {
-                        Settings.CurrentSessionPlaylistUploadCount = 0;
-                        Settings.Save().Wait();
-
                         Logger.LogInfo("MainProcess", "Starting playlist processing");
                         PlaylistProcessor.Process();
                         Logger.LogInfo("MainProcess", "Playlist processing complete");
@@ -451,7 +448,7 @@ namespace YTMusicUploader
                 if (ManagingYTMusicStatus != ManagingYTMusicStatusEnum.Showing)
                 {
                     SetStatusMessage("Idle", "Idle");
-                    SetUploadingMessage("Idle", "Idle", null, true);
+                    SetUploadingMessage("Idle", null, "Idle", null, true);
                 }
 
                 if (WatchFolders.Count == 0)

@@ -611,6 +611,9 @@
     <None Include="Resources\info_down.png" />
     <None Include="Resources\info_up.png" />
     <None Include="Resources\info_hover.png" />
+    <None Include="Resources\idle_square.png" />
+    <None Include="Resources\idle.png" />
+    <None Include="Resources\Playlist.png" />
     <Content Include="Resources\Raw\logs.svg" />
     <Content Include="Resources\Raw\pause_resume.svg" />
     <None Include="Resources\pause_disabled.png" />
@@ -661,7 +664,6 @@
     <None Include="Resources\Header.png" />
     <None Include="Resources\Logo\YT Music Uploader - Social Image.png" />
     <None Include="Resources\Raw\idle.svg" />
-    <None Include="Resources\idle.png" />
     <None Include="Resources\path855-7.png" />
     <None Include="Resources\default_artwork.jpg" />
     <None Include="Resources\Logo\yt_logo_padded.png" />

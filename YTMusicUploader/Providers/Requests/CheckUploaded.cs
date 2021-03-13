@@ -282,7 +282,7 @@ namespace YTMusicUploader.Providers
                     if (musicDataFetcher == null)
                         musicDataFetcher = new MusicDataFetcher();
 
-                    var musicFileMetaData = musicDataFetcher.GetMusicFileMetaData(musicFilePath);
+                    var musicFileMetaData = musicDataFetcher.GetMusicFileMetaData(musicFilePath, out string _);
                     if (musicFileMetaData == null ||
                         musicFileMetaData.Artist == null ||
                         musicFileMetaData.Track == null)

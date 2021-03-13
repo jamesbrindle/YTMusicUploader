@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 using static YTMusicUploader.Providers.RequestModels.ArtistCache;
@@ -61,6 +62,13 @@ namespace YTMusicUploader.Business
                         SetStatus($"Checking playlist file ({index}/{PlaylistFiles.Count})",
                                   $"Checking playlist file ({index}/{PlaylistFiles.Count})");
 
+                        MainForm.SetProcessingPlaylistMessage(
+                            playlistFile.Path,
+                            string.IsNullOrEmpty(playlistFile.Title)
+                                            ? Path.GetFileNameWithoutExtension(playlistFile.Path)
+                                            : playlistFile.Title,
+                            GetProcessingPlaylistTootipText(playlistFile));
+
                         if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                             return;
 
@@ -79,6 +87,13 @@ namespace YTMusicUploader.Business
                                 var updatedPlaylistFile = Providers.Playlist.PlaylistReader.ReadPlaylistFile(playlistFile.Path);
                                 playlistFile.Title = updatedPlaylistFile.Title;
                                 OnlinePlaylist onlinePlaylist = null;
+
+                                MainForm.SetProcessingPlaylistMessage(
+                                            playlistFile.Path,
+                                            string.IsNullOrEmpty(playlistFile.Title)
+                                                            ? Path.GetFileNameWithoutExtension(playlistFile.Path)
+                                                            : playlistFile.Title,
+                                            GetProcessingPlaylistTootipText(playlistFile));
 
                                 ConnectionCheckWait();
                                 if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
@@ -191,12 +206,7 @@ namespace YTMusicUploader.Business
                                             out ytmPlaylistCreationLimitReached);
                                     }
                                     else
-                                    {
-                                        MainForm.Settings.LastPlaylistUpload = DateTime.Now;
-                                        MainForm.Settings.Save().Wait();
-
                                         ytmPlaylistCreationLimitReached = true;
-                                    }
                                 }
                             }
                             catch (Exception e)
@@ -217,12 +227,16 @@ namespace YTMusicUploader.Business
                             SetStatus($"YTM playlist creation limited reached - Stopping playlist processing for this session.",
                                       $"YTM playlist creation limited reached");
 
+                            MainForm.Settings.CurrentSessionPlaylistUploadCount = 0;
+                            MainForm.Settings.LastPlaylistUpload = DateTime.Now;
+                            MainForm.Settings.Save().Wait();
+
                             Logger.LogWarning(
                                 "PlaylistProcessor.Process",
                                 "YTM playlist creation limited reached - Stopping playlist processing for this session.",
                                 true);
 
-                            ThreadHelper.SafeSleep(10000);
+                            ThreadHelper.SafeSleep(15000);
                             break;
                         }
 
@@ -297,6 +311,13 @@ namespace YTMusicUploader.Business
 
                     for (int i = 0; i < 2; i++)
                     {
+                        MainForm.SetProcessingPlaylistMessage(
+                                    playlistFile.Path,
+                                    string.IsNullOrEmpty(playlistFile.Title)
+                                                    ? Path.GetFileNameWithoutExtension(playlistFile.Path)
+                                                    : playlistFile.Title,
+                                    GetProcessingPlaylistTootipText(playlistFile));
+
                         if (Requests.Playlists.AddPlaylistItem(
                                 MainForm.Settings.AuthenticationCookie,
                                 playlistFile.PlaylistId,
@@ -373,6 +394,13 @@ namespace YTMusicUploader.Business
                 {
                     SetStatus($"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}: Creating new ({playlistFile.PlaylistItems.Count} tracks)",
                               $"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}");
+
+                    MainForm.SetProcessingPlaylistMessage(
+                                playlistFile.Path,
+                                string.IsNullOrEmpty(playlistFile.Title)
+                                                ? Path.GetFileNameWithoutExtension(playlistFile.Path)
+                                                : playlistFile.Title,
+                                GetProcessingPlaylistTootipText(playlistFile));
 
                     if (Requests.Playlists.CreatePlaylist(
                            MainForm.Settings.AuthenticationCookie,
@@ -498,6 +526,21 @@ namespace YTMusicUploader.Business
             if (!string.IsNullOrEmpty(systemTrayIconText))
                 MainForm.SetSystemTrayIconText(systemTrayIconText);
         }
+        private static string GetProcessingPlaylistTootipText(PlaylistFile playlistFile)
+        {
+            if (string.IsNullOrEmpty(playlistFile.Title) && playlistFile.PlaylistItems.Count == 0)
+                return "Processing";
+            else
+            {
+                var sb = new StringBuilder();
+
+                sb.AppendLine($"Playlist File");
+                sb.AppendLine($"Title: {playlistFile.Title}");
+                sb.AppendLine($"Tracks: {playlistFile.PlaylistItems.Count}");
+
+                return sb.ToString();
+            }
+        }
 
         private void ConnectionCheckWait()
         {
@@ -524,7 +567,7 @@ namespace YTMusicUploader.Business
             if (MainForm.Aborting)
             {
                 Stopped = true;
-                MainForm.SetUploadingMessage("Restarting", "Restarting", null, true);
+                MainForm.SetUploadingMessage("Restarting", null, "Restarting", null, true);
                 return true;
             }
 

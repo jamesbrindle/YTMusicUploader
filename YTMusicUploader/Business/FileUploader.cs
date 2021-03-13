@@ -489,10 +489,12 @@ namespace YTMusicUploader.Business
             try
             {
                 string tooltipText = string.Empty;
+                MusicFileMetaData metaData = null;
+
                 if (string.IsNullOrEmpty(musicPath))
                     tooltipText = "Idle";
                 else
-                    tooltipText = await MainForm.MusicDataFetcher.GetMusicFileMetaDataString(musicPath);
+                    metaData = MainForm.MusicDataFetcher.GetMusicFileMetaData(musicPath, out tooltipText);
 
                 if (!setArtworkImage)
                 {
@@ -500,6 +502,7 @@ namespace YTMusicUploader.Business
 
                     MainForm.SetUploadingMessage(
                                message,
+                               metaData,
                                tooltipText,
                                null,
                                false);
@@ -524,6 +527,7 @@ namespace YTMusicUploader.Business
                         {
                             MainForm.SetUploadingMessage(
                                         message,
+                                        metaData,
                                         tooltipText,
                                         null,
                                         true);
@@ -535,6 +539,7 @@ namespace YTMusicUploader.Business
                             {
                                 MainForm.SetUploadingMessage(
                                             message,
+                                            metaData,
                                             tooltipText,
                                             null,
                                             false);
@@ -543,6 +548,7 @@ namespace YTMusicUploader.Business
                             {
                                 MainForm.SetUploadingMessage(
                                             message,
+                                            metaData,
                                             tooltipText,
                                             image,
                                             true);
@@ -552,7 +558,7 @@ namespace YTMusicUploader.Business
                     else
                     {
                         // Only used for when 'uploading' a track - Will attempt to get info for MusicBrainz (i.e. cover image)
-                        SetCoverArtImageThreaded(message, tooltipText, musicPath);
+                        SetCoverArtImageThreaded(message, metaData, tooltipText, musicPath);
                     }
 
                     await Task.Run(() => { });
@@ -564,7 +570,7 @@ namespace YTMusicUploader.Business
             }
         }
 
-        private void SetCoverArtImageThreaded(string message, string tooltipText, string musicPath)
+        private void SetCoverArtImageThreaded(string message, MusicFileMetaData metaData, string tooltipText, string musicPath)
         {
             // Thread to set the cover artwork image, because this can take some unwanted time when
             // checking lots of music files to see if they're already uploaded to YouTube Music
@@ -588,6 +594,7 @@ namespace YTMusicUploader.Business
                     {
                         MainForm.SetUploadingMessage(
                                       message,
+                                      metaData,
                                       tooltipText,
                                       null,
                                       false);
@@ -598,6 +605,7 @@ namespace YTMusicUploader.Business
                         {
                             MainForm.SetUploadingMessage(
                                         message,
+                                        metaData,
                                         tooltipText,
                                         null,
                                         true);
@@ -606,6 +614,7 @@ namespace YTMusicUploader.Business
                         {
                             MainForm.SetUploadingMessage(
                                         message,
+                                        metaData,
                                         tooltipText,
                                         Properties.Resources.default_artwork,
                                         true);
@@ -622,6 +631,7 @@ namespace YTMusicUploader.Business
                         {
                             MainForm.SetUploadingMessage(
                                         message,
+                                        metaData,
                                         tooltipText,
                                         null,
                                         false);
@@ -630,6 +640,7 @@ namespace YTMusicUploader.Business
                         {
                             MainForm.SetUploadingMessage(
                                         message,
+                                        metaData,
                                         tooltipText,
                                         image,
                                         true);
