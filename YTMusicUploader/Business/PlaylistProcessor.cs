@@ -21,7 +21,6 @@ namespace YTMusicUploader.Business
         public List<PlaylistFile> PlaylistFiles { get; set; }
         public OnlinePlaylistCollection OnlinePlaylists { get; set; }
         public bool Stopped { get; set; } = false;
-        private int NewPlaylistsCreated { get; set; } = 0;
 
         public PlaylistProcessor(MainForm mainForm)
         {
@@ -38,8 +37,6 @@ namespace YTMusicUploader.Business
 
             Stopped = false;
             SetStatus("Processing playlist files", "Processing playlist files");
-
-            NewPlaylistsCreated = 0;
 
             try
             {
@@ -64,7 +61,7 @@ namespace YTMusicUploader.Business
                         SetStatus($"Checking playlist file ({index}/{PlaylistFiles.Count})",
                                   $"Checking playlist file ({index}/{PlaylistFiles.Count})");
 
-                        if (MainFormAborting())
+                        if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                             return;
 
                         if (playlistFile.LastModifiedDate != playlistFile.LastUpload ||
@@ -73,7 +70,10 @@ namespace YTMusicUploader.Business
                         {
                             try
                             {
-                                if (MainFormAborting())
+                                if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
+                                    return;
+
+                                if (!MainForm.Settings.UploadPlaylists)
                                     return;
 
                                 var updatedPlaylistFile = Providers.Playlist.PlaylistReader.ReadPlaylistFile(playlistFile.Path);
@@ -81,7 +81,7 @@ namespace YTMusicUploader.Business
                                 OnlinePlaylist onlinePlaylist = null;
 
                                 ConnectionCheckWait();
-                                if (MainFormAborting())
+                                if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                                     return;
 
                                 if (!string.IsNullOrEmpty(playlistFile.PlaylistId) && MatchOnlinePlaylist(playlistFile.PlaylistId, true) != null)
@@ -97,7 +97,7 @@ namespace YTMusicUploader.Business
                                     }
                                 }
 
-                                if (MainFormAborting())
+                                if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                                     return;
 
                                 updatedPlaylistFile.PlaylistItems.AsParallel().ForAllInApproximateOrder(playlistItem =>
@@ -105,7 +105,7 @@ namespace YTMusicUploader.Business
                                     while (MainForm.Paused)
                                         ThreadHelper.SafeSleep(500);
 
-                                    if (MainFormAborting())
+                                    if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                                         return;
 
                                     // We can only create or update a playlist if we have the YT Music video (entity) ID
@@ -168,7 +168,7 @@ namespace YTMusicUploader.Business
                                     }
                                 });
 
-                                if (MainFormAborting())
+                                if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                                     return;
 
                                 if (onlinePlaylist != null)
@@ -182,7 +182,7 @@ namespace YTMusicUploader.Business
                                 }
                                 else
                                 {
-                                    if (NewPlaylistsCreated <= Global.MaxNewPlaylistsPerSession)
+                                    if (MainForm.Settings.CurrentSessionPlaylistUploadCount <= Global.MaxNewPlaylistsPerSession)
                                     {
                                         HandleOnlinePlaylistNeedsCreating(
                                             playlistFile,
@@ -191,7 +191,12 @@ namespace YTMusicUploader.Business
                                             out ytmPlaylistCreationLimitReached);
                                     }
                                     else
+                                    {
+                                        MainForm.Settings.LastPlaylistUpload = DateTime.Now;
+                                        MainForm.Settings.Save().Wait();
+
                                         ytmPlaylistCreationLimitReached = true;
+                                    }
                                 }
                             }
                             catch (Exception e)
@@ -251,7 +256,7 @@ namespace YTMusicUploader.Business
             limitedReached = false;
 
             ConnectionCheckWait();
-            if (MainFormAborting())
+            if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                 return;
 
             if (onlinePlaylist.Songs != null && onlinePlaylist.Songs.Count < 5000)
@@ -281,7 +286,7 @@ namespace YTMusicUploader.Business
                     int index = 1;
 
                     ConnectionCheckWait();
-                    if (MainFormAborting())
+                    if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                         return;
 
                     SetStatus($"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}: Adding track to existing {index}/{playlistFile.PlaylistItems}",
@@ -342,7 +347,7 @@ namespace YTMusicUploader.Business
             limitReached = false;
 
             ConnectionCheckWait();
-            if (MainFormAborting())
+            if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                 return;
 
             if (string.IsNullOrEmpty(playlistFile.Description))
@@ -359,7 +364,7 @@ namespace YTMusicUploader.Business
                 }
             }
 
-            if (MainFormAborting())
+            if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                 return;
 
             if (playlistFile.PlaylistItems != null && playlistFile.PlaylistItems.Count > 0) // Don't bother if playlist empty
@@ -384,7 +389,8 @@ namespace YTMusicUploader.Business
                         playlistFile.LastUpload = playlistFile.LastModifiedDate;
                         playlistFile.Save().Wait();
 
-                        NewPlaylistsCreated++;
+                        MainForm.Settings.CurrentSessionPlaylistUploadCount++;
+                        MainForm.Settings.Save().Wait();
 
                         try
                         {
@@ -495,12 +501,12 @@ namespace YTMusicUploader.Business
 
         private void ConnectionCheckWait()
         {
-            if (MainFormAborting())
+            if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                 return;
 
             while (!NetworkHelper.InternetConnectionIsUp())
             {
-                if (MainFormAborting())
+                if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                     return;
 
                 ThreadHelper.SafeSleep(1000);

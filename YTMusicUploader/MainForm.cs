@@ -162,18 +162,16 @@ namespace YTMusicUploader
 
                 while (true)
                 {
-                    if (!Settings.LastPlaylistUpload.HasValue)
-                        Settings.LastPlaylistUpload = DateTime.Now.AddHours(Global.SessionRestartHours * -1).AddHours(-2);
-
-                    if (!_scanAndUploadThread.IsAlive && DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours))
+                    if (Settings.UploadPlaylists)
                     {
-                        Settings.LastPlaylistUpload = DateTime.Now;
-                        Settings.Save().Wait();
+                        if (!Settings.LastPlaylistUpload.HasValue)
+                            Settings.LastPlaylistUpload = DateTime.Now.AddHours(Global.SessionRestartHours * -1).AddHours(-2);
 
-                        StartMainProcess();
+                        if (!_scanAndUploadThread.IsAlive && DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours))
+                            StartMainProcess();
                     }
 
-                    ThreadHelper.SafeSleep(60000); // Check every minute
+                    ThreadHelper.SafeSleep(15000); 
                 }
             })
             { IsBackground = true };
@@ -436,9 +434,12 @@ namespace YTMusicUploader
 
                 if (Settings.UploadPlaylists)
                 {
+                    if (!Settings.LastPlaylistUpload.HasValue)
+                        Settings.LastPlaylistUpload = DateTime.Now.AddHours(Global.SessionRestartHours * -1).AddHours(-2);
+
                     if (DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours))
                     {
-                        Settings.LastPlaylistUpload = DateTime.Now;
+                        Settings.CurrentSessionPlaylistUploadCount = 0;
                         Settings.Save().Wait();
 
                         Logger.LogInfo("MainProcess", "Starting playlist processing");

@@ -278,6 +278,10 @@ namespace YTMusicUploader.Providers
                             conn.Execute(
                                 @"ALTER TABLE Settings
                                   ADD COLUMN LastPlaylistUpload TEXT");
+
+                            conn.Execute(
+                                @"ALTER TABLE Settings
+                                  ADD COLUMN CurrentSessionPlaylistUploadCount INTEGER DEFAULT 1");
                         }
 
                         // Set DB version to App version (MAKE SURE IT's THE LAST THING ON THIS METHOD)

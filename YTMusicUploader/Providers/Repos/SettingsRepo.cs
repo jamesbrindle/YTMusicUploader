@@ -43,7 +43,8 @@ namespace YTMusicUploader.Providers.Repos
                               AuthenticationCookie,
                               SendLogsToSource,
                               UploadPlaylists,
-                              LastPlaylistUpload
+                              LastPlaylistUpload,
+                              CurrentSessionPlaylistUploadCount
                           FROM Settings").FirstOrDefault();
                 conn.Close();
 
@@ -86,7 +87,8 @@ namespace YTMusicUploader.Providers.Repos
                                      AuthenticationCookie = @AuthenticationCookie,
                                      SendLogsToSource = @SendLogsToSource,
                                      UploadPlaylists = @UploadPlaylists,
-                                     LastPlaylistUpload = @LastPlaylistUpload
+                                     LastPlaylistUpload = @LastPlaylistUpload,
+                                     CurrentSessionPlaylistUploadCount = @CurrentSessionPlaylistUploadCount
                               WHERE Id = @Id",
                             settings);
                     conn.Close();

@@ -76,7 +76,7 @@ namespace YTMusicUploader
                     lblUploadingMessage.Text = "Idle";
                     SetSystemTrayIconText("Idle");
                     Requests.UploadCheckCache.Pause = false;
-                    Paused = true;
+                    Paused = false;
                     pbPaused.Visible = false;
                 }
             }
