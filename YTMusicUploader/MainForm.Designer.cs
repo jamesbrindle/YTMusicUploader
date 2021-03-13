@@ -199,7 +199,7 @@
             // pnlRemoveFromWatchFolder
             // 
             this.pnlRemoveFromWatchFolder.Controls.Add(this.btnRemoveWatchFolder);
-            this.pnlRemoveFromWatchFolder.Location = new System.Drawing.Point(381, 276);
+            this.pnlRemoveFromWatchFolder.Location = new System.Drawing.Point(381, 277);
             this.pnlRemoveFromWatchFolder.Name = "pnlRemoveFromWatchFolder";
             this.pnlRemoveFromWatchFolder.Size = new System.Drawing.Size(21, 17);
             this.pnlRemoveFromWatchFolder.TabIndex = 18;
@@ -229,9 +229,10 @@
             // 
             this.lblUploadingMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblUploadingMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUploadingMessage.Location = new System.Drawing.Point(30, 365);
+            this.lblUploadingMessage.Location = new System.Drawing.Point(27, 365);
+            this.lblUploadingMessage.Margin = new System.Windows.Forms.Padding(0);
             this.lblUploadingMessage.Name = "lblUploadingMessage";
-            this.lblUploadingMessage.Size = new System.Drawing.Size(665, 40);
+            this.lblUploadingMessage.Size = new System.Drawing.Size(668, 40);
             this.lblUploadingMessage.TabIndex = 19;
             this.lblUploadingMessage.Text = "Idle";
             this.lblUploadingMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -367,7 +368,7 @@
             this.roundGroupBox2.Location = new System.Drawing.Point(27, 97);
             this.roundGroupBox2.Name = "roundGroupBox2";
             this.roundGroupBox2.Radious = 25;
-            this.roundGroupBox2.Size = new System.Drawing.Size(380, 173);
+            this.roundGroupBox2.Size = new System.Drawing.Size(380, 175);
             this.roundGroupBox2.TabIndex = 29;
             this.roundGroupBox2.TabStop = false;
             this.roundGroupBox2.Text = "Watch Folders";
@@ -598,10 +599,10 @@
             // pbArtworkIdle
             // 
             this.pbArtworkIdle.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pbArtworkIdle.Image = global::YTMusicUploader.Properties.Resources.idle;
+            this.pbArtworkIdle.Image = global::YTMusicUploader.Properties.Resources.idle_square;
             this.pbArtworkIdle.Location = new System.Drawing.Point(30, 302);
             this.pbArtworkIdle.Name = "pbArtworkIdle";
-            this.pbArtworkIdle.Size = new System.Drawing.Size(127, 50);
+            this.pbArtworkIdle.Size = new System.Drawing.Size(50, 50);
             this.pbArtworkIdle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbArtworkIdle.TabIndex = 22;
             this.pbArtworkIdle.TabStop = false;
@@ -656,7 +657,7 @@
             this.btnAddWatchFolder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddWatchFolder.Enabled = false;
             this.btnAddWatchFolder.Image = global::YTMusicUploader.Properties.Resources.plus;
-            this.btnAddWatchFolder.Location = new System.Drawing.Point(353, 276);
+            this.btnAddWatchFolder.Location = new System.Drawing.Point(353, 277);
             this.btnAddWatchFolder.Name = "btnAddWatchFolder";
             this.btnAddWatchFolder.Size = new System.Drawing.Size(16, 16);
             this.btnAddWatchFolder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

@@ -21,7 +21,7 @@ namespace YTMusicUploader.Business
         private MainForm MainForm { get; set; }
         public List<PlaylistFile> PlaylistFiles { get; set; }
         public OnlinePlaylistCollection OnlinePlaylists { get; set; }
-        public bool Stopped { get; set; } = false;
+        public bool Stopped { get; set; } = true;
 
         public PlaylistProcessor(MainForm mainForm)
         {

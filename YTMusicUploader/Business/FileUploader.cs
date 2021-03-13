@@ -23,7 +23,7 @@ namespace YTMusicUploader.Business
     {
         private MainForm MainForm;
         private List<MusicFile> MusicFiles;
-        public bool Stopped { get; set; } = false;
+        public bool Stopped { get; set; } = true;
         private Thread _artworkFetchThread = null;
 
         private int _errorsCount;
@@ -115,11 +115,17 @@ namespace YTMusicUploader.Business
                                 while (MainForm.ManagingYTMusicStatus == ManagingYTMusicStatusEnum.Showing)
                                 {
                                     MainForm.SetPaused(true);
+                                    if (MainFormIsAborting())
+                                        return;
+
                                     ThreadHelper.SafeSleep(1000);
                                 }
 
                                 if (MainForm.ManagingYTMusicStatus == ManagingYTMusicStatusEnum.CloseChanges)
+                                {
+                                    Stopped = true;
                                     return;
+                                }
 
                                 if (MainFormIsAborting())
                                     return;
@@ -332,8 +338,8 @@ namespace YTMusicUploader.Business
 
             try
             {
-                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, false, false);
-                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 210), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
+                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 248), musicFile.Path, false, false);
+                await SetUploadDetails(DirectoryHelper.EllipsisPath(musicFile.Path, 248), musicFile.Path, true, true); // Peform MusicBrainz lookup if required
 
                 bool success = false;
                 for (int i = 0; i < 10; i++)

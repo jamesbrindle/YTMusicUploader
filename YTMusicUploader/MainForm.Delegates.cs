@@ -70,26 +70,27 @@ namespace YTMusicUploader
             {
                 if (paused)
                 {
+                    Paused = true;
                     lblStatus.Text = "Paused";
                     lblUploadingMessage.Text = "Paused";
                     SetSystemTrayIconText("Paused");
-                    Requests.UploadCheckCache.Pause = true;
-                    Paused = true;
+                    Requests.UploadCheckCache.Pause = true;                    
                     pbPaused.Visible = true;
                     pbArtworkIdle.Visible = false;
+                    pbArtwork.Visible = false;
                     lblArtistMeta.Text = string.Empty;
                     lblAlbumMeta.Text = string.Empty;
                     lblTrackMeta.Text = string.Empty;
                 }
                 else
                 {
+                    Paused = false;
                     lblStatus.Text = "Idle";
                     lblUploadingMessage.Text = "Idle";
                     pbArtworkIdle.Visible = true;
+                    pbPaused.Visible = false;
                     SetSystemTrayIconText("Idle");
                     Requests.UploadCheckCache.Pause = false;
-                    Paused = false;
-                    pbPaused.Visible = false;
                 }
             }
         }

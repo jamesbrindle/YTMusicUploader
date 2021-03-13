@@ -24,7 +24,7 @@ namespace YTMusicUploader.Business
         public List<MusicFile> CurrentMusicFiles { get; set; }
         public List<PlaylistFile> CurrentPlaylistFiles { get; set; }
         public HashSet<string> CurrentProcessingFilesHash { get; set; } = new HashSet<string>();
-        public bool Stopped { get; set; } = false;
+        public bool Stopped { get; set; } = true;
 
         public FileScanner(MainForm mainForm)
         {

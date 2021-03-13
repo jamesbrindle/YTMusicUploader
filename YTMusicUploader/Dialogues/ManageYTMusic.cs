@@ -36,6 +36,8 @@ namespace YTMusicUploader.Dialogues
             ClearFields();
             SetTextBoxCueBanner(tbSearchArtists, "Press 'Enter' for next match.");
 
+            ChangesMade = false;
+
             DisableAllActionButtons(true);
             SetTreeViewEnabled(false);
             ShowPreloader(true);
