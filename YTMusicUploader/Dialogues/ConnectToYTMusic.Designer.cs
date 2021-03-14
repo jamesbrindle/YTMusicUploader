@@ -68,7 +68,6 @@
             this.browser.MinimumSize = new System.Drawing.Size(600, 400);
             this.browser.Name = "browser";
             this.browser.Size = new System.Drawing.Size(988, 633);
-            this.browser.Source = new System.Uri("about:blank", System.UriKind.Absolute);
             this.browser.TabIndex = 0;
             this.browser.Text = "YouTube Music";
             this.browser.ZoomFactor = 1D;
