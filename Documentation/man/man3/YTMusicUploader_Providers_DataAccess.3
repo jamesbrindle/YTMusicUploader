@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataAccess" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataAccess" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,21 +13,6 @@ Inherited by \fBYTMusicUploader\&.Providers\&.Repos\&.LogsRepo\fP, \fBYTMusicUpl
 
 .in +1c
 .ti -1c
-.RI "static void \fBCheckAndCopyDatabaseFile\fP ()"
-.br
-.RI "Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder "
-.ti -1c
-.RI "static void \fBResetDatabase\fP ()"
-.br
-.RI "Delete the app data database (user's database) "
-.ti -1c
-.RI "static void \fBPerformAnyDbUpgrades\fP ()"
-.br
-.RI "Runs on form load to ensure the database schema is at the latest version following an application upgrade "
-.ti -1c
-.RI "static void \fBCheckDatabaseIntegrity\fP ()"
-.br
-.ti -1c
 .RI "static SQLiteConnection \fBDbConnection\fP (bool readOnly=false)"
 .br
 .RI "Create an SQLite connection to the database file in the users AppData path "
@@ -39,12 +24,6 @@ Abastract database repository access class\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.CheckAndCopyDatabaseFile ()\fC [static]\fP"
-
-.PP
-Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder 
-.SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.CheckDatabaseIntegrity ()\fC [static]\fP"
-
 .SS "static SQLiteConnection YTMusicUploader\&.Providers\&.DataAccess\&.DbConnection (bool readOnly = \fCfalse\fP)\fC [static]\fP"
 
 .PP
@@ -56,14 +35,6 @@ Create an SQLite connection to the database file in the users AppData path
 .RE
 .PP
 
-.SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.PerformAnyDbUpgrades ()\fC [static]\fP"
-
-.PP
-Runs on form load to ensure the database schema is at the latest version following an application upgrade 
-.SS "static void YTMusicUploader\&.Providers\&.DataAccess\&.ResetDatabase ()\fC [static]\fP"
-
-.PP
-Delete the app data database (user's database) 
 
 .SH "Author"
 .PP 

@@ -2,7 +2,7 @@
 \label{class_y_t_music_uploader_1_1_business_1_1_playlist_processor}\index{YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}}
 
 
-Responsible for scanning library playlist file and either creating them on YT Music or adding to them on YT Music  
+Responsible for scanning library playlist files and either creating them on YT Music or adding to them on YT Music  
 
 
 
@@ -20,7 +20,7 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor
 \item 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_aed3b841b6b5a7d7fde1ec1603cf2147c}{Playlist\+Processor}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_main_form}{Main\+Form}} main\+Form)
 \item 
-void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a8c028fea8912ceb647e300013f6ae3a6}{Process}} ()
+void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_ad3e7ac373721251aeb81eca62ecf9e48}{Process}} (bool force\+Refresh\+Playlists=false)
 \begin{DoxyCompactList}\small\item\em Execute the playlist management process \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Properties}
 \begin{DoxyCompactItemize}
@@ -29,12 +29,12 @@ void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_process
 \item 
 Online\+Playlist\+Collection \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a65b7b73bdeba4e11a3f8ab305df2a5a1}{Online\+Playlists}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
-bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a6a40b5e2d0d2ae56bf2edf257fe44d50}{Stopped}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a6a40b5e2d0d2ae56bf2edf257fe44d50}{Stopped}} = true\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Responsible for scanning library playlist file and either creating them on YT Music or adding to them on YT Music 
+Responsible for scanning library playlist files and either creating them on YT Music or adding to them on YT Music 
 
 
 
@@ -48,11 +48,11 @@ Responsible for scanning library playlist file and either creating them on YT Mu
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a8c028fea8912ceb647e300013f6ae3a6}\label{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a8c028fea8912ceb647e300013f6ae3a6}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_ad3e7ac373721251aeb81eca62ecf9e48}\label{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_ad3e7ac373721251aeb81eca62ecf9e48}} 
 \index{YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}!Process@{Process}}
 \index{Process@{Process}!YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}}
 \doxysubsubsection{\texorpdfstring{Process()}{Process()}}
-{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Process (\begin{DoxyParamCaption}\item[{bool}]{force\+Refresh\+Playlists = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -63,7 +63,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a8c028fea8912ceb647e300013f6ae3a6_cgraph}
+\includegraphics[width=350pt]{de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor_ad3e7ac373721251aeb81eca62ecf9e48_cgraph}
 \end{center}
 \end{figure}
 
@@ -85,7 +85,7 @@ Here is the call graph for this function\+:
 \index{YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}!Stopped@{Stopped}}
 \index{Stopped@{Stopped}!YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}}
 \doxysubsubsection{\texorpdfstring{Stopped}{Stopped}}
-{\footnotesize\ttfamily bool Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Stopped = false\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+{\footnotesize\ttfamily bool Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Stopped = true\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 
 

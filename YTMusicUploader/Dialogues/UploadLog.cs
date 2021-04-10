@@ -14,6 +14,8 @@ namespace YTMusicUploader.Dialogues
     /// </summary>
     public partial class UploadLog : OptimisedMetroForm
     {
+        public ToolTip RefreshTooltip { get; set; }
+
         private int _previousIndex;
         private bool _sortDirection;
 
@@ -26,6 +28,7 @@ namespace YTMusicUploader.Dialogues
         {
             MainForm = mainForm;
             InitializeComponent();
+            InitialiseTooltips();
             SuspendDrawing(this);
         }
 
@@ -35,6 +38,19 @@ namespace YTMusicUploader.Dialogues
             ResumeDrawing(this);
 
             new Thread((ThreadStart)delegate { Populate(); }).Start();
+        }
+
+        private void InitialiseTooltips()
+        {
+            RefreshTooltip = new ToolTip
+            {
+                ToolTipTitle = "Refresh Data Source",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            RefreshTooltip.SetToolTip(pbRefresh,
+                "\nRefresh the list from the database");
         }
 
         delegate void PopulateDelegate();

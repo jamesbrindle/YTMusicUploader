@@ -17,12 +17,14 @@ var class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo =
     [ "Load", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#af96c85bc0698ec0a576deb97e81084d1", null ],
     [ "LoadAll", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a39d2da3fb475240cc9bedef41b3375b9", null ],
     [ "LoadFromEntityId", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#acc49580059eeddb6f118ea581ec2fede", null ],
+    [ "LoadFromHash", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#ac747c4ea21a7190922ed1bc64c98b44a", null ],
     [ "LoadFromPath", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a3159a3199de8d365fe9da29ffd3997ba", null ],
     [ "LoadFromVideoId", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a5174e67e4072fdaf9b0cd005757cef9e", null ],
     [ "LoadIssues", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a1332e55e11b634ee3814a7946aec8ca1", null ],
     [ "LoadUploaded", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a400b2cfc689853d8b597700f32fd673e", null ],
     [ "ResetAllMusicFileUploadedStates", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a032c790c1d528d2064c382eb53ef974a", null ],
     [ "ResetIssueStatus", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#ad3bea51acd573d8e1563d20052960177", null ],
+    [ "ResetIssueStatusAll", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a5312454b0683be741f99c650232e59da", null ],
     [ "RestoreMusicFile", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#ac9024103e00a4e34b6eab8ae4e364a0e", null ],
     [ "Update", "d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a30164946b3b505acdde6df9cd2393015", null ]
 ];

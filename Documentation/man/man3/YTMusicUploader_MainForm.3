@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.MainForm" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.MainForm" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -46,6 +46,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBQuitApplication\fP (bool kill=false)"
 .br
 .ti -1c
+.RI "void \fBEnableOptionButtons\fP (bool enable)"
+.br
+.ti -1c
 .RI "void \fBSetStatusMessage\fP (string statusMessage, string systemTrayIconText=null)"
 .br
 .ti -1c
@@ -61,6 +64,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBSetStartWithWindows\fP (bool startWithWindows)"
 .br
 .ti -1c
+.RI "void \fBSetAlsoUploadPlaylists\fP (bool uploadPlaylists)"
+.br
+.ti -1c
 .RI "void \fBSetSendLogsToSource\fP (bool sendLogsToSource)"
 .br
 .ti -1c
@@ -71,6 +77,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetAboutButtonImage\fP (Image image)"
+.br
+.ti -1c
+.RI "void \fBSetUploadPlaylistsInfoButtonImage\fP (Image image)"
 .br
 .ti -1c
 .RI "void \fBSetLogButtonImage\fP (Image image)"
@@ -88,7 +97,10 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .RI "void \fBSetVersionWarningVisible\fP (bool visible)"
 .br
 .ti -1c
-.RI "void \fBSetUploadingMessage\fP (string text, string tooltipText=null, Image artworkImage=null, bool changingArtworkImage=false)"
+.RI "void \fBSetUploadingMessage\fP (string text, \fBMusicFileMetaData\fP metaData, string tooltipText=null, Image artworkImage=null, bool changingArtworkImage=false)"
+.br
+.ti -1c
+.RI "void \fBSetProcessingPlaylistMessage\fP (string text, string playlistName, string tooltipText=null)"
 .br
 .ti -1c
 .RI "void \fBSetDiscoveredFilesLabel\fP (string text)"
@@ -129,6 +141,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .SS "Properties"
 
 .in +1c
+.ti -1c
+.RI "bool \fBPaused\fP = false\fC [get, set]\fP"
+.br
 .ti -1c
 .RI "\fBConnectToYTMusic\fP \fBConnectToYTMusicForm\fP\fC [get, set]\fP"
 .br
@@ -194,6 +209,9 @@ Inherits \fBOptimisedMetroForm\fP\&.
 .br
 .ti -1c
 .RI "\fBManagingYTMusicStatusEnum\fP \fBManagingYTMusicStatus\fP = \fBManagingYTMusicStatusEnum\&.NeverShown\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBDatabaseIntegrityCheckDone\fP = false\fC [get, set]\fP"
 .br
 .ti -1c
 .RI "\fBMusicDataFetcher\fP \fBMusicDataFetcher\fP\fC [get, set]\fP"
@@ -295,6 +313,8 @@ Clean up any resources being used\&.
 .RE
 .PP
 
+.SS "void YTMusicUploader\&.MainForm\&.EnableOptionButtons (bool enable)"
+
 .SS "void YTMusicUploader\&.MainForm\&.EnableTrayPauseResume (bool enabled)"
 
 .SS "string YTMusicUploader\&.MainForm\&.GetIssuesLabel ()"
@@ -312,6 +332,8 @@ Clean up any resources being used\&.
 .SS "void YTMusicUploader\&.MainForm\&.Restart ()"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetAboutButtonImage (Image image)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetAlsoUploadPlaylists (bool uploadPlaylists)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetAmountLabelsToZero ()"
 
@@ -331,6 +353,8 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetPaused (bool paused)"
 
+.SS "void YTMusicUploader\&.MainForm\&.SetProcessingPlaylistMessage (string text, string playlistName, string tooltipText = \fCnull\fP)"
+
 .SS "void YTMusicUploader\&.MainForm\&.SetSendLogsToSource (bool sendLogsToSource)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetStartWithWindows (bool startWithWindows)"
@@ -345,7 +369,9 @@ Clean up any resources being used\&.
 
 .SS "void YTMusicUploader\&.MainForm\&.SetUploadedLabel (string text)"
 
-.SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text, string tooltipText = \fCnull\fP, Image artworkImage = \fCnull\fP, bool changingArtworkImage = \fCfalse\fP)"
+.SS "void YTMusicUploader\&.MainForm\&.SetUploadingMessage (string text, \fBMusicFileMetaData\fP metaData, string tooltipText = \fCnull\fP, Image artworkImage = \fCnull\fP, bool changingArtworkImage = \fCfalse\fP)"
+
+.SS "void YTMusicUploader\&.MainForm\&.SetUploadPlaylistsInfoButtonImage (Image image)"
 
 .SS "void YTMusicUploader\&.MainForm\&.SetVersion (string version)"
 
@@ -381,6 +407,8 @@ Clean up any resources being used\&.
 
 .SS "\fBConnectToYTMusic\fP YTMusicUploader\&.MainForm\&.ConnectToYTMusicForm\fC [get]\fP, \fC [set]\fP"
 
+.SS "bool YTMusicUploader\&.MainForm\&.DatabaseIntegrityCheckDone = false\fC [get]\fP, \fC [set]\fP"
+
 .SS "ToolTip YTMusicUploader\&.MainForm\&.DiscoveredFilesLabelTooltip\fC [get]\fP, \fC [set]\fP"
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.DiscoveredFilesTooltip\fC [get]\fP, \fC [set]\fP"
@@ -408,6 +436,8 @@ Clean up any resources being used\&.
 .SS "\fBMusicFileRepo\fP YTMusicUploader\&.MainForm\&.MusicFileRepo = new \fBMusicFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
 
 .SS "ToolTip YTMusicUploader\&.MainForm\&.NewVersionTooltip\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.MainForm\&.Paused = false\fC [get]\fP, \fC [set]\fP"
 
 .SS "\fBPlaylistFileRepo\fP YTMusicUploader\&.MainForm\&.PlaylistFileRepo = new \fBPlaylistFileRepo\fP()\fC [get]\fP, \fC [set]\fP"
 

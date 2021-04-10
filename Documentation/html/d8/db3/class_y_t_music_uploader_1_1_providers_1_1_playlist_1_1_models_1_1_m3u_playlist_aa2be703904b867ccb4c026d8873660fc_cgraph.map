@@ -1,0 +1,4 @@
+<map id="YTMusicUploader.Providers.Playlist.Models.M3uPlaylist.GetPlaylistFromCorruptM3u" name="YTMusicUploader.Providers.Playlist.Models.M3uPlaylist.GetPlaylistFromCorruptM3u">
+<area shape="rect" id="node1" title="This handles playlists created in a particular version of VLC and saved as .mp3u. For some odd reason..." alt="" coords="5,5,213,61"/>
+<area shape="rect" id="node2" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#a2ac95a60ee4901fdb33234218dda7f72" title="Read text file and return lines without locking it. If it is locked it should read anyway" alt="" coords="261,13,452,54"/>
+</map>

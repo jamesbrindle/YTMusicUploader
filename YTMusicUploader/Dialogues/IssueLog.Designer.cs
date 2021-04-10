@@ -36,10 +36,12 @@
             this.pnlIssueLog = new System.Windows.Forms.Panel();
             this.dvgLog = new JBToolkit.WinForms.FastScrollDataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.pbReset = new System.Windows.Forms.PictureBox();
             this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
             this.pnlIssueLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
             this.SuspendLayout();
@@ -117,6 +119,23 @@
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Issue Log. Loading...";
             // 
+            // pbReset
+            // 
+            this.pbReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbReset.Enabled = false;
+            this.pbReset.Image = global::YTMusicUploader.Properties.Resources.reset_large_disabled;
+            this.pbReset.Location = new System.Drawing.Point(931, 40);
+            this.pbReset.Name = "pbReset";
+            this.pbReset.Size = new System.Drawing.Size(27, 22);
+            this.pbReset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbReset.TabIndex = 5;
+            this.pbReset.TabStop = false;
+            this.pbReset.Click += new System.EventHandler(this.PbReset_Click);
+            this.pbReset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbReset_MouseDown);
+            this.pbReset.MouseEnter += new System.EventHandler(this.PbReset_MouseEnter);
+            this.pbReset.MouseLeave += new System.EventHandler(this.PbReset_MouseLeave);
+            this.pbReset.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbReset_MouseUp);
+            // 
             // pbRefresh
             // 
             this.pbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -150,6 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.Controls.Add(this.pbReset);
             this.Controls.Add(this.pbRefresh);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);
@@ -163,6 +183,7 @@
             this.Load += new System.EventHandler(this.IssueLog_Load);
             this.pnlIssueLog.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
             this.ResumeLayout(false);
@@ -176,5 +197,6 @@
         private System.Windows.Forms.PictureBox pbIssueLogIcon;
         private JBToolkit.WinForms.FastScrollDataGridView dvgLog;
         private System.Windows.Forms.PictureBox pbRefresh;
+        private System.Windows.Forms.PictureBox pbReset;
     }
 }

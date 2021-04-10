@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Playlist.Models.M3uPlaylist" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Playlist.Models.M3uPlaylist" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,6 +15,14 @@ Inherits \fBYTMusicUploader\&.Providers\&.Playlist\&.Models\&.BasePlaylist< M3uP
 .ti -1c
 .RI "\fBM3uPlaylist\fP ()"
 .br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBList\fP< string > \fBGetPlaylistFromCorruptM3u\fP (string playlistPath)"
+.br
+.RI "This handles playlists created in a particular version of VLC and saved as \&.mp3u\&. For some odd reason VLC isn't saving them correctly\&. In fact, you can't even open that playlist in VLC! "
 .in -1c
 .SS "Properties"
 
@@ -34,6 +42,24 @@ See https://github.com/tmk907/PlaylistsNET
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "YTMusicUploader\&.Providers\&.Playlist\&.Models\&.M3uPlaylist\&.M3uPlaylist ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBList\fP<string> YTMusicUploader\&.Providers\&.Playlist\&.Models\&.M3uPlaylist\&.GetPlaylistFromCorruptM3u (string playlistPath)\fC [static]\fP"
+
+.PP
+This handles playlists created in a particular version of VLC and saved as \&.mp3u\&. For some odd reason VLC isn't saving them correctly\&. In fact, you can't even open that playlist in VLC! None-the-less, the playlist does include the file paths, therefore we can parse them\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplaylistPath\fP Full path to playlist file
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Music file paths as a string list
+.RE
+.PP
 
 .SH "Property Documentation"
 .PP 

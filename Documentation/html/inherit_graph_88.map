@@ -1,10 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d6/d1b/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_base_playlist_entry.html" title="Music playlist library implementation" alt="" coords="5,168,224,209"/>
-<area shape="rect" id="node2" href="$da/d2e/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_hls_playlist_entry.html" title="Music playlist library implementation" alt="" coords="275,37,483,79"/>
-<area shape="rect" id="node5" href="$d2/d9f/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_entry.html" title="Music playlist library implementation" alt="" coords="272,103,487,144"/>
-<area shape="rect" id="node6" href="$d0/dcc/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_pls_playlist_entry.html" title="Music playlist library implementation" alt="" coords="275,168,483,209"/>
-<area shape="rect" id="node7" href="$d2/de0/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_wpl_playlist_entry.html" title="Music playlist library implementation" alt="" coords="273,233,485,275"/>
-<area shape="rect" id="node8" href="$dd/d84/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_zpl_playlist_entry.html" title="Music playlist library implementation" alt="" coords="276,299,483,340"/>
-<area shape="rect" id="node3" href="$d3/dcd/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_hls_master_playlist_entry.html" title="Music playlist library implementation" alt="" coords="535,5,783,47"/>
-<area shape="rect" id="node4" href="$d5/df4/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_hls_media_playlist_entry.html" title="Music playlist library implementation" alt="" coords="537,71,780,112"/>
+<area shape="rect" id="node1" href="$d9/dd5/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_base_playlist.html" title=" " alt="" coords="5,5,193,61"/>
+<area shape="rect" id="node2" href="$d4/d24/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_pls_playlist.html" title="Music playlist library implementation" alt="" coords="241,13,427,54"/>
 </map>

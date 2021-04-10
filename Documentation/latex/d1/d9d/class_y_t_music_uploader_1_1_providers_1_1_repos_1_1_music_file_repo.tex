@@ -36,6 +36,8 @@ async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_m
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by file by You\+Tube entity Id \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a5174e67e4072fdaf9b0cd005757cef9e}{Load\+From\+Video\+Id}} (string video\+Id)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by file by You\+Tube video Id \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ac747c4ea21a7190922ed1bc64c98b44a}{Load\+From\+Hash}} (string hash)
+\begin{DoxyCompactList}\small\item\em Load single Music\+File object by file hash from the database \end{DoxyCompactList}\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a1c9cb64300bd688e1d751ec5720dd216}{Get\+Duplicate}} (string hash, string path)
 \begin{DoxyCompactList}\small\item\em Load single Music\+File object by hash and from the database that doesn\textquotesingle{}t match the given path (i.\+e. a duplicate hash) \end{DoxyCompactList}\item 
 Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a8bf14ba9910311720ffcf6c9a1a429fd}{Get\+Randmon\+Music\+File\+With\+Missing\+Mb\+Id}} ()
@@ -66,6 +68,8 @@ async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_ope
 \begin{DoxyCompactList}\small\item\em Updates the Music File entry in the database with the fields of the given Music\+File object \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ad3bea51acd573d8e1563d20052960177}{Reset\+Issue\+Status}} (int id)
 \begin{DoxyCompactList}\small\item\em Resets the issue status of a Music\+File for the reason of a force retry \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a5312454b0683be741f99c650232e59da}{Reset\+Issue\+Status\+All}} ()
+\begin{DoxyCompactList}\small\item\em Resets the issue status of all Music\+Files for the reason of a force retry \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a88a351a8566be307ba2519224c4fa5a7}{Delete}} (\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} music\+File, bool destroy=false)
 \begin{DoxyCompactList}\small\item\em Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the \textquotesingle{}removed\textquotesingle{} flag, whereas destroy is to completely delete it from the database \end{DoxyCompactList}\item 
 async Task$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_adda3fbe08e12af479c3fb80de3c66568}{Delete\+By\+Entity\+Id}} (string entity\+Id)
@@ -162,7 +166,7 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & Database ID of Music File entry\\
+{\em id} & \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_database}{Database}} ID of Music File entry\\
 \hline
 {\em destroy} & If true, deletes from the database. If false, just sets the \textquotesingle{}Removed\textquotesingle{} flag\\
 \hline
@@ -421,6 +425,19 @@ Load single Music\+File object by file by You\+Tube entity Id
 \begin{DoxyReturn}{Returns}
 Music\+File object
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ac747c4ea21a7190922ed1bc64c98b44a}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ac747c4ea21a7190922ed1bc64c98b44a}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadFromHash@{LoadFromHash}}
+\index{LoadFromHash@{LoadFromHash}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{LoadFromHash()}{LoadFromHash()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Load\+From\+Hash (\begin{DoxyParamCaption}\item[{string}]{hash }\end{DoxyParamCaption})}
+
+
+
+Load single Music\+File object by file hash from the database 
+
+\begin{DoxyReturn}{Returns}
+Music\+File object
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a3159a3199de8d365fe9da29ffd3997ba}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!LoadFromPath@{LoadFromPath}}
 \index{LoadFromPath@{LoadFromPath}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -501,6 +518,19 @@ Resets the issue status of a Music\+File for the reason of a force retry
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a5312454b0683be741f99c650232e59da}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a5312454b0683be741f99c650232e59da}} 
+\index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!ResetIssueStatusAll@{ResetIssueStatusAll}}
+\index{ResetIssueStatusAll@{ResetIssueStatusAll}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
+\doxysubsubsection{\texorpdfstring{ResetIssueStatusAll()}{ResetIssueStatusAll()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}}$>$ Y\+T\+Music\+Uploader.\+Providers.\+Repos.\+Music\+File\+Repo.\+Reset\+Issue\+Status\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the issue status of all Music\+Files for the reason of a force retry 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_db_operation_result}{Db\+Operation\+Result}} -\/ Showing success or fail, with messages and stats
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ac9024103e00a4e34b6eab8ae4e364a0e}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_ac9024103e00a4e34b6eab8ae4e364a0e}} 
 \index{YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}!RestoreMusicFile@{RestoreMusicFile}}
 \index{RestoreMusicFile@{RestoreMusicFile}!YTMusicUploader.Providers.Repos.MusicFileRepo@{YTMusicUploader.Providers.Repos.MusicFileRepo}}
@@ -513,7 +543,7 @@ Sets the \textquotesingle{}removed\textquotesingle{} flag to false
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & Database ID of music file\\
+{\em id} & \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_database}{Database}} ID of music file\\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a30164946b3b505acdde6df9cd2393015}\label{class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo_a30164946b3b505acdde6df9cd2393015}} 

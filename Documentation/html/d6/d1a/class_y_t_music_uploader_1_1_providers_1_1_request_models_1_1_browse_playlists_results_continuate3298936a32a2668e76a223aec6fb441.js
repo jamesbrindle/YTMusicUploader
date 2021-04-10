@@ -1,0 +1,7 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_continuate3298936a32a2668e76a223aec6fb441 =
+[
+    [ "icon", "d6/d1a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_continuate3298936a32a2668e76a223aec6fb441.html#a19dee7eff15243225520c82f3f78c14d", null ],
+    [ "navigationEndpoint", "d6/d1a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_continuate3298936a32a2668e76a223aec6fb441.html#a6efa9b260755dd5348cff7acefe6a096", null ],
+    [ "text", "d6/d1a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_continuate3298936a32a2668e76a223aec6fb441.html#a67f640b5d2e7578f147ebd489522c6c3", null ],
+    [ "trackingParams", "d6/d1a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_continuate3298936a32a2668e76a223aec6fb441.html#ab4b65f9541a63317d48d8a339198690b", null ]
+];

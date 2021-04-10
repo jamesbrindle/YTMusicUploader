@@ -1,0 +1,6 @@
+<map id="YTMusicUploader.Providers.Requests.Playlists.GetPlaylists" name="YTMusicUploader.Providers.Requests.Playlists.GetPlaylists">
+<area shape="rect" id="node1" title="HttpWebRequest POST request to send to YTM which fetches a list (collection) of Playlists (without pl..." alt="" coords="475,39,681,80"/>
+<area shape="rect" id="node2" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a6808d6ec5334bfe6a329d6a29be79ae5" title="Set the uploaded artist cached gathered from YouTube Music" alt="" coords="241,5,426,47"/>
+<area shape="rect" id="node4" href="$de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#ad3e7ac373721251aeb81eca62ecf9e48" title="Execute the playlist management process" alt="" coords="240,71,427,112"/>
+<area shape="rect" id="node3" href="$d9/dab/class_y_t_music_uploader_1_1_business_1_1_file_uploader.html#a5ecabcb283073e1b7fe3cefaa0c19cc7" title="Execute the upload process" alt="" coords="5,5,192,47"/>
+</map>

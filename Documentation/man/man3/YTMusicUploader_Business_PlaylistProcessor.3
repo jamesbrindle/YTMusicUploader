@@ -1,8 +1,8 @@
-.TH "YTMusicUploader.Business.PlaylistProcessor" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business.PlaylistProcessor" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-YTMusicUploader.Business.PlaylistProcessor \- Responsible for scanning library playlist file and either creating them on YT Music or adding to them on YT Music  
+YTMusicUploader.Business.PlaylistProcessor \- Responsible for scanning library playlist files and either creating them on YT Music or adding to them on YT Music  
 
 .SH SYNOPSIS
 .br
@@ -14,7 +14,7 @@ YTMusicUploader.Business.PlaylistProcessor \- Responsible for scanning library p
 .RI "\fBPlaylistProcessor\fP (\fBMainForm\fP mainForm)"
 .br
 .ti -1c
-.RI "void \fBProcess\fP ()"
+.RI "void \fBProcess\fP (bool forceRefreshPlaylists=false)"
 .br
 .RI "Execute the playlist management process "
 .in -1c
@@ -28,12 +28,12 @@ YTMusicUploader.Business.PlaylistProcessor \- Responsible for scanning library p
 .RI "OnlinePlaylistCollection \fBOnlinePlaylists\fP\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "bool \fBStopped\fP = false\fC [get, set]\fP"
+.RI "bool \fBStopped\fP = true\fC [get, set]\fP"
 .br
 .in -1c
 .SH "Detailed Description"
 .PP 
-Responsible for scanning library playlist file and either creating them on YT Music or adding to them on YT Music 
+Responsible for scanning library playlist files and either creating them on YT Music or adding to them on YT Music 
 
 
 .SH "Constructor & Destructor Documentation"
@@ -42,7 +42,7 @@ Responsible for scanning library playlist file and either creating them on YT Mu
 
 .SH "Member Function Documentation"
 .PP 
-.SS "void YTMusicUploader\&.Business\&.PlaylistProcessor\&.Process ()"
+.SS "void YTMusicUploader\&.Business\&.PlaylistProcessor\&.Process (bool forceRefreshPlaylists = \fCfalse\fP)"
 
 .PP
 Execute the playlist management process 
@@ -52,7 +52,7 @@ Execute the playlist management process
 
 .SS "\fBList\fP<\fBPlaylistFile\fP> YTMusicUploader\&.Business\&.PlaylistProcessor\&.PlaylistFiles\fC [get]\fP, \fC [set]\fP"
 
-.SS "bool YTMusicUploader\&.Business\&.PlaylistProcessor\&.Stopped = false\fC [get]\fP, \fC [set]\fP"
+.SS "bool YTMusicUploader\&.Business\&.PlaylistProcessor\&.Stopped = true\fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

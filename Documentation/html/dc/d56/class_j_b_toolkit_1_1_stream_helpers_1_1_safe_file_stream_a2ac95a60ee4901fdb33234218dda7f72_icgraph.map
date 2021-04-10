@@ -1,0 +1,5 @@
+<map id="JBToolkit.StreamHelpers.SafeFileStream.ReadAllLines" name="JBToolkit.StreamHelpers.SafeFileStream.ReadAllLines">
+<area shape="rect" id="node1" title="Read text file and return lines without locking it. If it is locked it should read anyway" alt="" coords="560,13,751,54"/>
+<area shape="rect" id="node2" href="$d8/db3/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist.html#aa2be703904b867ccb4c026d8873660fc" title="This handles playlists created in a particular version of VLC and saved as .mp3u. For some odd reason..." alt="" coords="304,5,512,61"/>
+<area shape="rect" id="node3" href="$d9/d46/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_playlist_reader.html#a40091ed22bf307a29a3b8c92c8b52e2e" title="Read a playlist file from a give path and returns a PlaylistFile (Data Model) complete with absolute ..." alt="" coords="5,13,256,54"/>
+</map>

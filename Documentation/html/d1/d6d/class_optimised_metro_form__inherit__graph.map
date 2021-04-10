@@ -1,9 +1,9 @@
 <map id="OptimisedMetroForm" name="OptimisedMetroForm">
 <area shape="rect" id="node1" title=" " alt="" coords="561,5,705,83"/>
-<area shape="rect" id="node2" href="$d5/dfb/class_y_t_music_uploader_1_1_dialogues_1_1_application_log.html" title="Application Log (info and error) Dialogue" alt="" coords="5,255,195,391"/>
+<area shape="rect" id="node2" href="$d5/dfb/class_y_t_music_uploader_1_1_dialogues_1_1_application_log.html" title="Application Log (info and error) Dialogue" alt="" coords="5,248,195,399"/>
 <area shape="rect" id="node3" href="$d8/d24/class_y_t_music_uploader_1_1_dialogues_1_1_connect_to_y_t_music.html" title="Shows a WebView2 control https://docs.microsoft.com/en&#45;us/microsoft&#45;edge/webview2/" alt="" coords="219,248,408,399"/>
-<area shape="rect" id="node4" href="$da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html" title="Upload Issues Log Dialogue" alt="" coords="432,248,621,399"/>
+<area shape="rect" id="node4" href="$da/d4d/class_y_t_music_uploader_1_1_dialogues_1_1_issue_log.html" title="Upload Issues Log Dialogue" alt="" coords="432,233,621,413"/>
 <area shape="rect" id="node5" href="$d3/d77/class_y_t_music_uploader_1_1_dialogues_1_1_manage_y_t_music.html" title="Dialogue Form to delete song / albums from YT Music" alt="" coords="645,263,835,384"/>
-<area shape="rect" id="node6" href="$d8/d32/class_y_t_music_uploader_1_1_dialogues_1_1_upload_log.html" title="Success Upload Log Dialogue" alt="" coords="859,255,1048,391"/>
+<area shape="rect" id="node6" href="$d8/d32/class_y_t_music_uploader_1_1_dialogues_1_1_upload_log.html" title="Success Upload Log Dialogue" alt="" coords="859,248,1048,399"/>
 <area shape="rect" id="node7" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html" title=" " alt="" coords="1073,131,1263,516"/>
 </map>

@@ -18,15 +18,15 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlis
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0}{Add\+Playlist\+Item}} (string cookie\+Value, string playlist\+Id, string video\+Id, out string error\+Message)
+static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a7c61db07ca567f914fa3456c0a6cd30c}{Add\+Playlist\+Item}} (string cookie\+Value, string playlist\+Id, string video\+Id, out \mbox{\hyperlink{class_exception}{Exception}} ex)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to add a playlist item (track) to an existing You\+Tube Music playlist \end{DoxyCompactList}\item 
-static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d}{Create\+Playlist}} (string cookie\+Value, string title, string description, \mbox{\hyperlink{class_list}{List}}$<$ string $>$ video\+Ids, Privacy\+Status\+Emum privacy\+Status, out string playlist\+Id, out string browse\+Id, out string error\+Message)
+static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a78fe7e13ec33ecd29fca6182ded1fe65}{Create\+Playlist}} (string cookie\+Value, string title, string description, \mbox{\hyperlink{class_list}{List}}$<$ string $>$ video\+Ids, Privacy\+Status\+Emum privacy\+Status, out string playlist\+Id, out string browse\+Id, out \mbox{\hyperlink{class_exception}{Exception}} ex)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM to create a new playlist \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab83bb19ef5166ad8b4e0ff3b8bdbc3bc}{Delete\+Playlist}} (string cookie\+Value, string playlist\+Id, out string error\+Message)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to delete a playlist \end{DoxyCompactList}\item 
 static Online\+Playlist \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5}{Get\+Playlist}} (string cookie\+Value, string browse\+Id, Online\+Playlist playlist=null, string continuation\+Token=null)
-\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM, which gets a playlist given a playlist or browse id (You can get this from the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}{Requests.\+Playlists.\+Get\+Playlists}} (plural)\textquotesingle{}) request method. And then recurisvely fetches all tracks listed in the playlist \end{DoxyCompactList}\item 
-static Online\+Playlist\+Collection \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}{Get\+Playlists}} (string cookie\+Value)
+\begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM, which gets a playlist given a playlist or browse id (You can get this from the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a89e55bb751ad66e25c24cb82bc0c0a15}{Requests.\+Playlists.\+Get\+Playlists}} (plural)\textquotesingle{}) request method. And then recurisvely fetches all tracks listed in the playlist \end{DoxyCompactList}\item 
+static Online\+Playlist\+Collection \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a89e55bb751ad66e25c24cb82bc0c0a15}{Get\+Playlists}} (string cookie\+Value, string continuation\+Token=null, Online\+Playlist\+Collection play\+List\+Col=null)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM which fetches a list (collection) of \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists}{Playlists}} (without playlist tracks). Use the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5}{Requests.\+Playlists.\+Get\+Playlist}} (singular)\textquotesingle{} method to get an individual playlist complete with track listing. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab6db75e9f89303b63221c27d85937688}{Remove\+Playlist\+Items}} (string cookie\+Value, string playlist\+Id, string video\+Entity\+Id, string set\+Video\+Entity\+Id, out string error\+Message)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to Y\+TM to remove a playlist item (track) from an existing playlist \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -38,11 +38,11 @@ You\+Tube Music A\+PI request methods specifically for playlist manipulation
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a7c61db07ca567f914fa3456c0a6cd30c}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a7c61db07ca567f914fa3456c0a6cd30c}} 
 \index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!AddPlaylistItem@{AddPlaylistItem}}
 \index{AddPlaylistItem@{AddPlaylistItem}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
 \doxysubsubsection{\texorpdfstring{AddPlaylistItem()}{AddPlaylistItem()}}
-{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Add\+Playlist\+Item (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{playlist\+Id,  }\item[{string}]{video\+Id,  }\item[{out string}]{error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Add\+Playlist\+Item (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{playlist\+Id,  }\item[{string}]{video\+Id,  }\item[{out \mbox{\hyperlink{class_exception}{Exception}}}]{ex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -65,14 +65,14 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a06af6e9784c321618edae9664acfc4b0_cgraph}
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a7c61db07ca567f914fa3456c0a6cd30c_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a78fe7e13ec33ecd29fca6182ded1fe65}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a78fe7e13ec33ecd29fca6182ded1fe65}} 
 \index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!CreatePlaylist@{CreatePlaylist}}
 \index{CreatePlaylist@{CreatePlaylist}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
 \doxysubsubsection{\texorpdfstring{CreatePlaylist()}{CreatePlaylist()}}
-{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Create\+Playlist (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{title,  }\item[{string}]{description,  }\item[{\mbox{\hyperlink{class_list}{List}}$<$ string $>$}]{video\+Ids,  }\item[{Privacy\+Status\+Emum}]{privacy\+Status,  }\item[{out string}]{playlist\+Id,  }\item[{out string}]{browse\+Id,  }\item[{out string}]{error\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static bool Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Create\+Playlist (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{title,  }\item[{string}]{description,  }\item[{\mbox{\hyperlink{class_list}{List}}$<$ string $>$}]{video\+Ids,  }\item[{Privacy\+Status\+Emum}]{privacy\+Status,  }\item[{out string}]{playlist\+Id,  }\item[{out string}]{browse\+Id,  }\item[{out \mbox{\hyperlink{class_exception}{Exception}}}]{ex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -105,7 +105,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_acf1e9249403d9fc0a838f293cfce018d_cgraph}
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a78fe7e13ec33ecd29fca6182ded1fe65_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab83bb19ef5166ad8b4e0ff3b8bdbc3bc}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab83bb19ef5166ad8b4e0ff3b8bdbc3bc}} 
@@ -146,7 +146,7 @@ Here is the call graph for this function\+:
 
 
 
-Http\+Web\+Request P\+O\+ST request to send to Y\+TM, which gets a playlist given a playlist or browse id (You can get this from the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}{Requests.\+Playlists.\+Get\+Playlists}} (plural)\textquotesingle{}) request method. And then recurisvely fetches all tracks listed in the playlist 
+Http\+Web\+Request P\+O\+ST request to send to Y\+TM, which gets a playlist given a playlist or browse id (You can get this from the \textquotesingle{}\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a89e55bb751ad66e25c24cb82bc0c0a15}{Requests.\+Playlists.\+Get\+Playlists}} (plural)\textquotesingle{}) request method. And then recurisvely fetches all tracks listed in the playlist 
 
 
 \begin{DoxyParams}{Parameters}
@@ -178,11 +178,11 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5866ba387479a1cf300db03cb3018af5_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a89e55bb751ad66e25c24cb82bc0c0a15}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a89e55bb751ad66e25c24cb82bc0c0a15}} 
 \index{YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}!GetPlaylists@{GetPlaylists}}
 \index{GetPlaylists@{GetPlaylists}!YTMusicUploader.Providers.Requests.Playlists@{YTMusicUploader.Providers.Requests.Playlists}}
 \doxysubsubsection{\texorpdfstring{GetPlaylists()}{GetPlaylists()}}
-{\footnotesize\ttfamily static Online\+Playlist\+Collection Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Get\+Playlists (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static Online\+Playlist\+Collection Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Playlists.\+Get\+Playlists (\begin{DoxyParamCaption}\item[{string}]{cookie\+Value,  }\item[{string}]{continuation\+Token = {\ttfamily null},  }\item[{Online\+Playlist\+Collection}]{play\+List\+Col = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -201,7 +201,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b_cgraph}
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a89e55bb751ad66e25c24cb82bc0c0a15_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -209,7 +209,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a5f2c8bcf3147f4934900a12c7544238b_icgraph}
+\includegraphics[width=350pt]{db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_a89e55bb751ad66e25c24cb82bc0c0a15_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab6db75e9f89303b63221c27d85937688}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists_ab6db75e9f89303b63221c27d85937688}} 

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Repos.MusicFileRepo" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -28,6 +28,10 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .RI "async Task< \fBMusicFile\fP > \fBLoadFromVideoId\fP (string videoId)"
 .br
 .RI "Load single MusicFile object by file by YouTube video Id "
+.ti -1c
+.RI "async Task< \fBMusicFile\fP > \fBLoadFromHash\fP (string hash)"
+.br
+.RI "Load single MusicFile object by file hash from the database "
 .ti -1c
 .RI "Task< \fBMusicFile\fP > \fBGetDuplicate\fP (string hash, string path)"
 .br
@@ -88,6 +92,10 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataAccess\fP\&.
 .RI "async Task< \fBDbOperationResult\fP > \fBResetIssueStatus\fP (int id)"
 .br
 .RI "Resets the issue status of a MusicFile for the reason of a force retry "
+.ti -1c
+.RI "async Task< \fBDbOperationResult\fP > \fBResetIssueStatusAll\fP ()"
+.br
+.RI "Resets the issue status of all MusicFiles for the reason of a force retry "
 .ti -1c
 .RI "async Task< \fBDbOperationResult\fP > \fBDelete\fP (\fBMusicFile\fP musicFile, bool destroy=false)"
 .br
@@ -161,7 +169,7 @@ Delete or destroyed a Music File entry from the database (delete in the case of 
 .PP
 \fBParameters\fP
 .RS 4
-\fIid\fP Database ID of Music File entry
+\fIid\fP \fBDatabase\fP ID of Music File entry
 .br
 \fIdestroy\fP If true, deletes from the database\&. If false, just sets the 'Removed' flag
 .RE
@@ -365,6 +373,17 @@ MusicFile object
 .RE
 .PP
 
+.SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadFromHash (string hash)"
+
+.PP
+Load single MusicFile object by file hash from the database 
+.PP
+\fBReturns\fP
+.RS 4
+MusicFile object
+.RE
+.PP
+
 .SS "async Task<\fBMusicFile\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.LoadFromPath (string path)"
 
 .PP
@@ -429,6 +448,17 @@ Resets the issue status of a MusicFile for the reason of a force retry
 .RE
 .PP
 
+.SS "async Task<\fBDbOperationResult\fP> YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.ResetIssueStatusAll ()"
+
+.PP
+Resets the issue status of all MusicFiles for the reason of a force retry 
+.PP
+\fBReturns\fP
+.RS 4
+\fBDbOperationResult\fP - Showing success or fail, with messages and stats
+.RE
+.PP
+
 .SS "Task YTMusicUploader\&.Providers\&.Repos\&.MusicFileRepo\&.RestoreMusicFile (int id)"
 
 .PP
@@ -436,7 +466,7 @@ Sets the 'removed' flag to false
 .PP
 \fBParameters\fP
 .RS 4
-\fIid\fP Database ID of music file
+\fIid\fP \fBDatabase\fP ID of music file
 .RE
 .PP
 

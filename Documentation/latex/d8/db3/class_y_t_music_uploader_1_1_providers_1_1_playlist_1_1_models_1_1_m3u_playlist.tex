@@ -12,7 +12,7 @@ Inheritance diagram for Y\+T\+Music\+Uploader.\+Providers.\+Playlist.\+Models.\+
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=219pt]{df/d2c/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist__inherit__graph}
+\includegraphics[width=232pt]{df/d2c/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -22,7 +22,7 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Playlist.\+Models.
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=219pt]{d1/da5/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist__coll__graph}
+\includegraphics[width=232pt]{d1/da5/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -30,6 +30,11 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Providers.\+Playlist.\+Models.
 \item 
 \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_abbb8ffc9818021ca8ba3af4952ad29ad}{M3u\+Playlist}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_list}{List}}$<$ string $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_aa2be703904b867ccb4c026d8873660fc}{Get\+Playlist\+From\+Corrupt\+M3u}} (string playlist\+Path)
+\begin{DoxyCompactList}\small\item\em This handles playlists created in a particular version of V\+LC and saved as .mp3u. For some odd reason V\+LC isn\textquotesingle{}t saving them correctly. In fact, you can\textquotesingle{}t even open that playlist in V\+L\+C! \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,6 +56,45 @@ See \href{https://github.com/tmk907/PlaylistsNET}{\texttt{ https\+://github.\+co
 \doxysubsubsection{\texorpdfstring{M3uPlaylist()}{M3uPlaylist()}}
 {\footnotesize\ttfamily Y\+T\+Music\+Uploader.\+Providers.\+Playlist.\+Models.\+M3u\+Playlist.\+M3u\+Playlist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_aa2be703904b867ccb4c026d8873660fc}\label{class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_aa2be703904b867ccb4c026d8873660fc}} 
+\index{YTMusicUploader.Providers.Playlist.Models.M3uPlaylist@{YTMusicUploader.Providers.Playlist.Models.M3uPlaylist}!GetPlaylistFromCorruptM3u@{GetPlaylistFromCorruptM3u}}
+\index{GetPlaylistFromCorruptM3u@{GetPlaylistFromCorruptM3u}!YTMusicUploader.Providers.Playlist.Models.M3uPlaylist@{YTMusicUploader.Providers.Playlist.Models.M3uPlaylist}}
+\doxysubsubsection{\texorpdfstring{GetPlaylistFromCorruptM3u()}{GetPlaylistFromCorruptM3u()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_list}{List}}$<$string$>$ Y\+T\+Music\+Uploader.\+Providers.\+Playlist.\+Models.\+M3u\+Playlist.\+Get\+Playlist\+From\+Corrupt\+M3u (\begin{DoxyParamCaption}\item[{string}]{playlist\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+This handles playlists created in a particular version of V\+LC and saved as .mp3u. For some odd reason V\+LC isn\textquotesingle{}t saving them correctly. In fact, you can\textquotesingle{}t even open that playlist in V\+L\+C! 
+
+None-\/the-\/less, the playlist does include the file paths, therefore we can parse them.
+
+
+\begin{DoxyParams}{Parameters}
+{\em playlist\+Path} & Full path to playlist file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Music file paths as a string list
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/db3/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_aa2be703904b867ccb4c026d8873660fc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/db3/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_aa2be703904b867ccb4c026d8873660fc_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Property Documentation}

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.DataModels.Settings" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DataModels.Settings" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,6 +36,15 @@ Inherits \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .ti -1c
 .RI "bool \fBSendLogsToSource\fP = true\fC [get, set]\fP"
 .br
+.ti -1c
+.RI "bool \fBUploadPlaylists\fP = true\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "DateTime? \fBLastPlaylistUpload\fP = null\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int? \fBCurrentSessionPlaylistUploadCount\fP = null\fC [get, set]\fP"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -67,11 +76,17 @@ Implements \fBYTMusicUploader\&.Providers\&.DataModels\&.DbModels\fP\&.
 .PP 
 .SS "string YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.AuthenticationCookie = null\fC [get]\fP, \fC [set]\fP"
 
+.SS "int? YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.CurrentSessionPlaylistUploadCount = null\fC [get]\fP, \fC [set]\fP"
+
+.SS "DateTime? YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.LastPlaylistUpload = null\fC [get]\fP, \fC [set]\fP"
+
 .SS "bool YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.SendLogsToSource = true\fC [get]\fP, \fC [set]\fP"
 
 .SS "bool YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.StartWithWindows = true\fC [get]\fP, \fC [set]\fP"
 
 .SS "int YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.ThrottleSpeed = \-1\fC [get]\fP, \fC [set]\fP"
+
+.SS "bool YTMusicUploader\&.Providers\&.DataModels\&.Settings\&.UploadPlaylists = true\fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

@@ -1,8 +1,8 @@
 <map id="YTMusicUploader.Providers.DataAccess" name="YTMusicUploader.Providers.DataAccess">
-<area shape="rect" id="node1" title="Abastract database repository access class." alt="" coords="503,5,711,171"/>
-<area shape="rect" id="node2" href="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html" title="Log events repository access" alt="" coords="5,270,191,421"/>
-<area shape="rect" id="node3" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html" title="Music File database repository access." alt="" coords="215,219,490,472"/>
-<area shape="rect" id="node4" href="$df/da4/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_playlist_file_repo.html" title="Playlist File database repository access." alt="" coords="515,226,700,465"/>
-<area shape="rect" id="node5" href="$d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html" title="Application settings database repository access." alt="" coords="724,292,909,399"/>
-<area shape="rect" id="node6" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html" title="Library watch folders database repository access" alt="" coords="933,263,1137,428"/>
+<area shape="rect" id="node1" title="Abastract database repository access class." alt="" coords="515,5,700,112"/>
+<area shape="rect" id="node2" href="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html" title="Log events repository access" alt="" coords="5,211,191,362"/>
+<area shape="rect" id="node3" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html" title="Music File database repository access." alt="" coords="215,160,490,413"/>
+<area shape="rect" id="node4" href="$df/da4/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_playlist_file_repo.html" title="Playlist File database repository access." alt="" coords="515,167,700,406"/>
+<area shape="rect" id="node5" href="$d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html" title="Application settings database repository access." alt="" coords="724,233,909,340"/>
+<area shape="rect" id="node6" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html" title="Library watch folders database repository access" alt="" coords="933,204,1137,369"/>
 </map>

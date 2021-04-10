@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Providers.Requests.Playlists" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.Requests.Playlists" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -11,11 +11,11 @@ YTMusicUploader.Providers.Requests.Playlists \- YouTube Music API request method
 
 .in +1c
 .ti -1c
-.RI "static bool \fBAddPlaylistItem\fP (string cookieValue, string playlistId, string videoId, out string errorMessage)"
+.RI "static bool \fBAddPlaylistItem\fP (string cookieValue, string playlistId, string videoId, out \fBException\fP ex)"
 .br
 .RI "HttpWebRequest POST request to send to add a playlist item (track) to an existing YouTube Music playlist "
 .ti -1c
-.RI "static bool \fBCreatePlaylist\fP (string cookieValue, string title, string description, \fBList\fP< string > videoIds, PrivacyStatusEmum privacyStatus, out string playlistId, out string browseId, out string errorMessage)"
+.RI "static bool \fBCreatePlaylist\fP (string cookieValue, string title, string description, \fBList\fP< string > videoIds, PrivacyStatusEmum privacyStatus, out string playlistId, out string browseId, out \fBException\fP ex)"
 .br
 .RI "HttpWebRequest POST request to send to YTM to create a new playlist "
 .ti -1c
@@ -27,7 +27,7 @@ YTMusicUploader.Providers.Requests.Playlists \- YouTube Music API request method
 .br
 .RI "HttpWebRequest POST request to send to YTM, which gets a playlist given a playlist or browse id (You can get this from the '\fBRequests\&.Playlists\&.GetPlaylists\fP (plural)') request method\&. And then recurisvely fetches all tracks listed in the playlist "
 .ti -1c
-.RI "static OnlinePlaylistCollection \fBGetPlaylists\fP (string cookieValue)"
+.RI "static OnlinePlaylistCollection \fBGetPlaylists\fP (string cookieValue, string continuationToken=null, OnlinePlaylistCollection playListCol=null)"
 .br
 .RI "HttpWebRequest POST request to send to YTM which fetches a list (collection) of \fBPlaylists\fP (without playlist tracks)\&. Use the '\fBRequests\&.Playlists\&.GetPlaylist\fP (singular)' method to get an individual playlist complete with track listing\&. "
 .ti -1c
@@ -42,7 +42,7 @@ YouTube Music API request methods specifically for playlist manipulation
 
 .SH "Member Function Documentation"
 .PP 
-.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.AddPlaylistItem (string cookieValue, string playlistId, string videoId, out string errorMessage)\fC [static]\fP"
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.AddPlaylistItem (string cookieValue, string playlistId, string videoId, out \fBException\fP ex)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to add a playlist item (track) to an existing YouTube Music playlist 
@@ -62,7 +62,7 @@ True if successfully, false otherwise
 .RE
 .PP
 
-.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.CreatePlaylist (string cookieValue, string title, string description, \fBList\fP< string > videoIds, PrivacyStatusEmum privacyStatus, out string playlistId, out string browseId, out string errorMessage)\fC [static]\fP"
+.SS "static bool YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.CreatePlaylist (string cookieValue, string title, string description, \fBList\fP< string > videoIds, PrivacyStatusEmum privacyStatus, out string playlistId, out string browseId, out \fBException\fP ex)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to YTM to create a new playlist 
@@ -134,7 +134,7 @@ OnlinePlaylist object
 .RE
 .PP
 
-.SS "static OnlinePlaylistCollection YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.GetPlaylists (string cookieValue)\fC [static]\fP"
+.SS "static OnlinePlaylistCollection YTMusicUploader\&.Providers\&.Requests\&.Playlists\&.GetPlaylists (string cookieValue, string continuationToken = \fCnull\fP, OnlinePlaylistCollection playListCol = \fCnull\fP)\fC [static]\fP"
 
 .PP
 HttpWebRequest POST request to send to YTM which fetches a list (collection) of \fBPlaylists\fP (without playlist tracks)\&. Use the '\fBRequests\&.Playlists\&.GetPlaylist\fP (singular)' method to get an individual playlist complete with track listing\&. 

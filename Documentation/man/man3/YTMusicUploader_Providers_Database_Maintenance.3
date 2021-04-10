@@ -1,0 +1,42 @@
+.TH "YTMusicUploader.Providers.Database.Maintenance" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+YTMusicUploader.Providers.Database.Maintenance
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBCheckAndCopyDatabaseFile\fP ()"
+.br
+.RI "Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder "
+.ti -1c
+.RI "static void \fBResetDatabase\fP ()"
+.br
+.RI "Delete the app data database (user's database) "
+.ti -1c
+.RI "static void \fBCheckDatabaseIntegrity\fP ()"
+.br
+.RI "Checks if the database is OK "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "static void YTMusicUploader\&.Providers\&.Database\&.Maintenance\&.CheckAndCopyDatabaseFile ()\fC [static]\fP"
+
+.PP
+Checks if the database file is present in the users AppData path\&. If it's not present it will copy over the template database file from the Program Files (or working directory) AppData folder 
+.SS "static void YTMusicUploader\&.Providers\&.Database\&.Maintenance\&.CheckDatabaseIntegrity ()\fC [static]\fP"
+
+.PP
+Checks if the database is OK 
+.SS "static void YTMusicUploader\&.Providers\&.Database\&.Maintenance\&.ResetDatabase ()\fC [static]\fP"
+
+.PP
+Delete the app data database (user's database) 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for YT Music Uploader from the source code\&.

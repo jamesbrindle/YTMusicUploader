@@ -1,0 +1,11 @@
+<map id="YTMusicUploader.Business.PlaylistProcessor.Process" name="YTMusicUploader.Business.PlaylistProcessor.Process">
+<area shape="rect" id="node1" title="Execute the playlist management process" alt="" coords="5,169,192,211"/>
+<area shape="rect" id="node2" href="$db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists.html#a5866ba387479a1cf300db03cb3018af5" title="HttpWebRequest POST request to send to YTM, which gets a playlist given a playlist or browse id (You ..." alt="" coords="244,71,443,112"/>
+<area shape="rect" id="node6" href="$db/db3/class_y_t_music_uploader_1_1_providers_1_1_requests_1_1_playlists.html#a89e55bb751ad66e25c24cb82bc0c0a15" title="HttpWebRequest POST request to send to YTM which fetches a list (collection) of Playlists (without pl..." alt="" coords="240,136,447,177"/>
+<area shape="rect" id="node7" href="$dc/d52/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_settings.html#ab33bdedd86bfc9f3b4cb5f87f4ffccbd" title="Updates the database" alt="" coords="251,201,436,243"/>
+<area shape="rect" id="node9" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#add6ab637a49bebf6da6de9fa9ef6a4b0" title=" " alt="" coords="242,267,445,308"/>
+<area shape="rect" id="node3" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a62dae7c90e360d88e8b3f495f3c683ec" title="Required headers for any YouTube music API request" alt="" coords="495,5,699,47"/>
+<area shape="rect" id="node4" href="$d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests.html#a2c548db725ae9ec8fda7e4a2433d412c" title="Converts a string to a byte array for use in a HttpWebRequest upload stream (UTF8 encoded)." alt="" coords="504,71,689,112"/>
+<area shape="rect" id="node5" href="$dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html#acca170671f3b26c9d691293f1586d4dc" title="Read text file without locking it. If it is locked it should read anyway" alt="" coords="504,136,689,177"/>
+<area shape="rect" id="node8" href="$d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html#a4653aa2d8126b9dc3b27727461a9f33c" title="Updates the application settings data in the database" alt="" coords="503,201,690,243"/>
+</map>

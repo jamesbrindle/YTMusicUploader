@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_watchendpointmusicsupportedconfigs2 =
-[
-    [ "watchEndpointMusicConfig", "d0/dc3/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_watchendpointmusicsupportedconfigs2.html#a9b18bcb87145480bd6270922dff5d06c", null ]
-];

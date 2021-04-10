@@ -1,4 +1,0 @@
-var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browseendpointcontextsupportedconfigs =
-[
-    [ "browseEndpointContextMusicConfig", "d9/d47/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browseendpointcontextsupportedconfigs.html#a983f09873ef307288d62769ac2b84bb9", null ]
-];

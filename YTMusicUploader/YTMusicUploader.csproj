@@ -606,6 +606,12 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Raw\playlist.svg" />
+    <Content Include="Resources\Raw\resets.svg" />
+    <None Include="Resources\reset_large_down.png" />
+    <None Include="Resources\reset_large_disabled.png" />
+    <None Include="Resources\reset_large_up.png" />
+    <None Include="Resources\reset_large_hover.png" />
     <EmbeddedResource Include="Embedded\YTMusicUploader.Updater.exe" />
     <None Include="Resources\info.png" />
     <None Include="Resources\info_down.png" />
@@ -613,6 +619,7 @@
     <None Include="Resources\info_hover.png" />
     <None Include="Resources\Playlist.png" />
     <None Include="Resources\idle_square.png" />
+    <Content Include="Resources\Raw\info_icon.svg" />
     <Content Include="Resources\Raw\logs.svg" />
     <Content Include="Resources\Raw\pause_resume.svg" />
     <None Include="Resources\pause_disabled.png" />

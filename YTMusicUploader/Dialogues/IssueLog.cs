@@ -1,4 +1,5 @@
 ﻿using JBToolkit.WinForms;
+using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,9 @@ namespace YTMusicUploader.Dialogues
     /// </summary>
     public partial class IssueLog : OptimisedMetroForm
     {
+        public ToolTip ResetTooltip { get; set; }
+        public ToolTip RefreshTooltip { get; set; }
+
         private int _previousIndex;
         private bool _sortDirection;
         private bool _shown = false;
@@ -32,6 +36,7 @@ namespace YTMusicUploader.Dialogues
         {
             MainForm = mainForm;
             InitializeComponent();
+            InitialiseTooltips();
             SuspendDrawing(this);
         }
 
@@ -40,6 +45,29 @@ namespace YTMusicUploader.Dialogues
             OnLoad(e);
             ResumeDrawing(this);
             new Thread((ThreadStart)delegate { Populate(); }).Start();
+        }
+
+        private void InitialiseTooltips()
+        {
+            RefreshTooltip = new ToolTip
+            {
+                ToolTipTitle = "Refresh Data Source",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            RefreshTooltip.SetToolTip(pbRefresh,
+                "\nRefresh the list from the database");
+
+            ResetTooltip = new ToolTip
+            {
+                ToolTipTitle = "Reset All Issues",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            ResetTooltip.SetToolTip(pbReset,
+                "\nResets all music file issues forcing a retry");
         }
 
         delegate void PopulateDelegate();
@@ -90,6 +118,8 @@ namespace YTMusicUploader.Dialogues
                     {
                         dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
                     }
+
+                    SetResetEnabled(((List<MusicFile>)dvgLog.DataSource).Count > 0);
                 }
                 catch (Exception e)
                 {
@@ -114,9 +144,29 @@ namespace YTMusicUploader.Dialogues
             }
         }
 
+        delegate void SetResetEnabledDelegate(bool enabled);
+        private void SetResetEnabled(bool enabled)
+        {
+            if (pbReset.InvokeRequired)
+            {
+                var d = new SetResetEnabledDelegate(SetResetEnabled);
+                Invoke(d, new object[] { enabled });
+            }
+            else
+            {
+                pbReset.Enabled = enabled;
+
+                if (enabled)
+                    pbReset.Image = Properties.Resources.reset_large_up;
+                else
+                    pbReset.Image = Properties.Resources.reset_large_disabled;
+            }
+        }
+
         private void PbRefresh_Click(object sender, EventArgs e)
         {
             dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+            SetResetEnabled(((List<MusicFile>)dvgLog.DataSource).Count > 0);
         }
 
         private void PbRefresh_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -137,6 +187,47 @@ namespace YTMusicUploader.Dialogues
         private void PbRefresh_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             pbRefresh.Image = Properties.Resources.refresh_hover;
+        }
+
+        private void PbReset_Click(object sender, EventArgs e)
+        {
+            if (MetroMessageBox.Show(this,
+                                "\r\nThis will reset all music file issues and have them retry the upload straight away." +
+                                "\r\n\r\nAre you sure you want to contine?", "Confirm Action",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Error,
+                                150) == DialogResult.Yes)
+            {
+                var _ = MainForm.MusicFileRepo.ResetIssueStatusAll().Result;
+                dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
+                MainForm.SetIssuesLabel((dvgLog.Rows.Count).ToString());
+                SetResetEnabled(false);
+                ChangesMade = true;
+            }
+        }
+
+        private void PbReset_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (pbReset.Enabled)
+                pbReset.Image = Properties.Resources.reset_large_down;
+        }
+
+        private void PbReset_MouseEnter(object sender, EventArgs e)
+        {
+            if (pbReset.Enabled)
+                pbReset.Image = Properties.Resources.reset_large_hover;
+        }
+
+        private void PbReset_MouseLeave(object sender, EventArgs e)
+        {
+            if (pbReset.Enabled)
+                pbReset.Image = Properties.Resources.reset_large_up;
+        }
+
+        private void PbReset_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (pbReset.Enabled)
+                pbReset.Image = Properties.Resources.reset_large_hover;
         }
 
         private void DgvIssues_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -167,14 +258,16 @@ namespace YTMusicUploader.Dialogues
             if (e.RowIndex < 0)
                 return;
 
-            if (e.ColumnIndex == 12 || (_shown && e.ColumnIndex == 0))
+            if (dvgLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.GetType().Name == "Bitmap")
             {
                 int id = (int)dvgLog.Rows[e.RowIndex].Cells["Id"].Value;
                 var _ = MainForm.MusicFileRepo.ResetIssueStatus(id).Result;
                 dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
-                MainForm.SetIssuesLabel((dvgLog.Rows.Count).ToString());
+                MainForm.SetIssuesLabel((dvgLog.Rows.Count).ToString());                
                 ChangesMade = true;
             }
+
+            SetResetEnabled(((List<MusicFile>)dvgLog.DataSource).Count > 0);
         }
 
         private void DvgLog_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -182,14 +275,16 @@ namespace YTMusicUploader.Dialogues
             if (e.RowIndex < 0)
                 return;
 
-            if (e.ColumnIndex == 12 || (_shown && e.ColumnIndex == 0))
+            if (dvgLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.GetType().Name == "Bitmap")
             {
                 int id = (int)dvgLog.Rows[e.RowIndex].Cells["Id"].Value;
                 var _ = MainForm.MusicFileRepo.ResetIssueStatus(id).Result;
                 dvgLog.DataSource = MainForm.MusicFileRepo.LoadIssues().Result;
-                MainForm.SetIssuesLabel(dvgLog.Rows.Count.ToString());
+                MainForm.SetIssuesLabel(dvgLog.Rows.Count.ToString());                
                 ChangesMade = true;
             }
+
+            SetResetEnabled(((List<MusicFile>)dvgLog.DataSource).Count > 0);
         }
 
         private void IssueLog_FormClosing(object sender, FormClosingEventArgs e)

@@ -1,4 +1,4 @@
-.TH "YTMusicUploader.Business.FileScanner" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Business.FileScanner" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -54,7 +54,7 @@ YTMusicUploader.Business.FileScanner \- Responsible for scanning library music f
 .RI "HashSet< string > \fBCurrentProcessingFilesHash\fP = new HashSet<string>()\fC [get, set]\fP"
 .br
 .ti -1c
-.RI "bool \fBStopped\fP = false\fC [get, set]\fP"
+.RI "bool \fBStopped\fP = true\fC [get, set]\fP"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -98,7 +98,7 @@ Resets the properties, such as discovered file, current music files and hashes
 
 .SS "\fBList\fP<\fBPlaylistFile\fP> YTMusicUploader\&.Business\&.FileScanner\&.PlaylistFilesToDelete = new \fBList\fP<\fBPlaylistFile\fP>()\fC [get]\fP, \fC [set]\fP"
 
-.SS "bool YTMusicUploader\&.Business\&.FileScanner\&.Stopped = false\fC [get]\fP, \fC [set]\fP"
+.SS "bool YTMusicUploader\&.Business\&.FileScanner\&.Stopped = true\fC [get]\fP, \fC [set]\fP"
 
 
 .SH "Author"

@@ -39,7 +39,7 @@ static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests
 \begin{DoxyCompactList}\small\item\em Set the uploaded artist cached gathered from You\+Tube Music \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a3d6ca2f67b1b9f6e978e8386ab5abc55}{Start\+Prefetching\+Uploaded\+Files\+Check}} (\mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file}{Music\+File}} $>$ music\+Files\+List, string cookie\+Value, \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}} music\+Data\+Fetcher=null)
 \begin{DoxyCompactList}\small\item\em Starts a new thread which loops through Music\+Files to check if they\textquotesingle{}ve already been uploaded to You\+Tube Music ahead of time and stores them in a cache to speed up the upload checker. \end{DoxyCompactList}\item 
-static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Upload\+Check\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a861288265f72b2257ce633e465a51a04}{Is\+Song\+Uploaded}} (string music\+File\+Path, string cookie\+Value, out string entity\+Id, out string video\+Id, \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}} music\+Data\+Fetcher=null, bool check\+Check=true, bool parallel=true)
+static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Upload\+Check\+Result}} \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a238ba62ccd8d7ab322a689aa9d951251}{Is\+Song\+Uploaded}} (string music\+File\+Path, string cookie\+Value, ref string entity\+Id, out string video\+Id, \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}} music\+Data\+Fetcher=null, bool check\+Cache=true, bool parallel=true)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the song about to be uploaded already exists It may request a little attention depending on the results, seen as though we\textquotesingle{}re trying to match a song based on artist, album and track name, which may be slightly different in the uploading music file\textquotesingle{}s meta tags. Currently it uses a Levenshtein distance fuzzy logic implementation to check similarity between strings and is considered a match if it\textquotesingle{}s above 0.\+75. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_af59e05abcea3771f97484cb75d2f37d9}{Delete\+Album\+Or\+Track\+From\+Y\+T\+Music}} (string cookie\+Value, string entity\+Id, out string error\+Message)
 \begin{DoxyCompactList}\small\item\em Http\+Web\+Request P\+O\+ST request to send to You\+Tube delete a YT music track fro the users uploads \end{DoxyCompactList}\item 
@@ -279,11 +279,11 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{d8/d00/class_y_t_music_uploader_1_1_providers_1_1_requests_a999ef8b6818a6afda480211b7a36a0d5_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a861288265f72b2257ce633e465a51a04}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a861288265f72b2257ce633e465a51a04}} 
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_providers_1_1_requests_a238ba62ccd8d7ab322a689aa9d951251}\label{class_y_t_music_uploader_1_1_providers_1_1_requests_a238ba62ccd8d7ab322a689aa9d951251}} 
 \index{YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}!IsSongUploaded@{IsSongUploaded}}
 \index{IsSongUploaded@{IsSongUploaded}!YTMusicUploader.Providers.Requests@{YTMusicUploader.Providers.Requests}}
 \doxysubsubsection{\texorpdfstring{IsSongUploaded()}{IsSongUploaded()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Upload\+Check\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded (\begin{DoxyParamCaption}\item[{string}]{music\+File\+Path,  }\item[{string}]{cookie\+Value,  }\item[{out string}]{entity\+Id,  }\item[{out string}]{video\+Id,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}}}]{music\+Data\+Fetcher = {\ttfamily null},  }\item[{bool}]{check\+Check = {\ttfamily true},  }\item[{bool}]{parallel = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_requests_a72eb54f3b45a371d5ae1969d5b750ece}{Upload\+Check\+Result}} Y\+T\+Music\+Uploader.\+Providers.\+Requests.\+Is\+Song\+Uploaded (\begin{DoxyParamCaption}\item[{string}]{music\+File\+Path,  }\item[{string}]{cookie\+Value,  }\item[{ref string}]{entity\+Id,  }\item[{out string}]{video\+Id,  }\item[{\mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_music_data_fetcher}{Music\+Data\+Fetcher}}}]{music\+Data\+Fetcher = {\ttfamily null},  }\item[{bool}]{check\+Cache = {\ttfamily true},  }\item[{bool}]{parallel = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -299,7 +299,7 @@ Http\+Web\+Request P\+O\+ST request to send to You\+Tube to determine if the son
 \hline
 {\em music\+Data\+Fetcher} & You can pass an existing Music\+Data\+Fetcher object, or one will be created if left blank\\
 \hline
-{\em check\+Check} & Whether or not to refer to cache for lookup (only useful while scanning)/param$>$ \begin{DoxyReturn}{Returns}
+{\em check\+Cache} & Whether or not to refer to cache for lookup (only useful while scanning)/param$>$ \begin{DoxyReturn}{Returns}
 True if song is found, false otherwise
 \end{DoxyReturn}
 \\

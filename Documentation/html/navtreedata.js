@@ -59,9 +59,9 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", "globals_dup" ],
+        [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", "globals_vars" ]
+        [ "Variables", "globals_vars.html", null ]
       ] ]
     ] ]
   ] ]
@@ -70,24 +70,25 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d0/db1/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_navigationendpoint4.html#ad7fa9c6d76f2a42dce1e4b0d5a3cebfa",
-"d1/da7/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_defaulticon.html",
-"d2/d9f/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_m3u_playlist_entry.html#abf57806207cd393cc34e85553fb38bb6",
-"d3/dcd/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models_1_1_hls_master_playlist_entry.html#ab7a35ca6af9f0eeb3a7881c3a2bf0b93",
-"d4/dc8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_responsecontext.html",
-"d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html#ad5d3bb5eae4d148dfc43511f099cd172",
-"d6/db7/namespace_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_models.html",
-"d7/da1/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_query_result.html#a96f989034cf96bdde02837d6d68da01f",
-"d8/d80/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuation_context_1_1_responsecontext.html#a9dd8727376dfbb089ae7156fde0831cb",
-"d9/d57/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_icon1.html#afe6401beaadd27fce913785207bb6607",
-"da/d41/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_context_1_1_run5.html",
-"db/d50/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_watchplaylistendpoint.html#a76fc9959c869e5537267f742de9ae8ae",
-"dc/d55/class_y_t_music_uploader_1_1_music_brainz_1_1_a_p_i_1_1_services_1_1_release_group_service.html#a5b432244e5f6ada4eadb06b8055aee65",
-"dd/d3b/_main_form_8_delegates_8cs.html",
-"dd/df8/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_navigationendpoint4.html#aae07a35b7621a2e48b55990b1c56e73e",
-"de/da9/_anti_aliased_label_8cs.html",
-"df/d9a/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_music_file.html#a75fd9bf5dd8e1688a3051024379aacc1",
-"functions_prop_i.html"
+"d0/d8f/class_y_t_music_uploader_1_1_providers_1_1_playlist_1_1_content_1_1_zpl_content.html#ae8e7039cd25d03f95125fb0f270c702e",
+"d1/d9a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation_context_1_1_menurenderer.html#a6ae7c5f9e669df4266da82bfbd9b9a08",
+"d2/d84/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_search_result_context_1_1_watchendpointmusicconfig1.html#a22ed98562200c61adbaeb59a12e4b1f8",
+"d3/d99/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_item.html",
+"d4/d7f/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_continuat04dcebe9c44b0e551f0ac403e6dcdce3.html#a9e7cab65a0b96c3b82009b316b0b170c",
+"d5/d63/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_continuatc56d529f278b7929b3e0e845b785246a.html#aaa2af2489a9975a41b21dbfeddaa93d1",
+"d6/d23/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlist_results_context_1_1_watchendpoint.html",
+"d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html",
+"d7/dfb/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_continuation5bd06c6d88be4bec5a80f3907b40b290.html",
+"d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html#a9c02f490fd4bfb39c5f1126f42b34cf8",
+"d9/d6d/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_delete_playlist_request_context_1_1_activeplayers.html",
+"da/d5a/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_results_context_1_1_run6.html#a265c16f5e1437b2914cd98225f0fb1d7",
+"db/d3e/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_create_playlist_request_context_1_1_request.html#ac6baca834ec5bbff24dcded29d3a9044",
+"dc/d39/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_context_1_1_thumbnail1.html#a784602099ed7f0c1bed1d69cb18381b3",
+"dd/d08/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artists_results_continuatio543e85c4803e59633abfed8fd22d4a22.html",
+"dd/dc1/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_artist_request_context_1_1_client.html#a822066de45f1a4dc5bf8480c602fede8",
+"de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#aed3b841b6b5a7d7fde1ec1603cf2147c",
+"df/d93/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_add_playlist_item_context_1_1_clicktracking.html",
+"functions_func_d.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

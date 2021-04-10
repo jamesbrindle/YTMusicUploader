@@ -1,0 +1,4 @@
+var class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_context_1_1_verticalgradient1 =
+[
+    [ "gradientLayerColors", "d8/d37/class_y_t_music_uploader_1_1_providers_1_1_request_models_1_1_browse_playlists_results_context_1_1_verticalgradient1.html#afa35b1c8b73380cf67cb1bd342582d1e", null ]
+];

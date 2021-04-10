@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['closechanges_2480',['CloseChanges',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a6f30edd7cdeb2abdec26d2e88c125754a3f447a329603097c6d19a7c74177682f',1,'YTMusicUploader::MainForm']]],
-  ['closechangescomplete_2481',['CloseChangesComplete',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a6f30edd7cdeb2abdec26d2e88c125754abc5564edb93e1fbe8e1477087bdaf224',1,'YTMusicUploader::MainForm']]],
-  ['closenochange_2482',['CloseNoChange',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a6f30edd7cdeb2abdec26d2e88c125754aef0d70a247100a8a739fe691dc08da13',1,'YTMusicUploader::MainForm']]],
-  ['commonadmintools_2483',['CommonAdminTools',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a1fddf889d1871eb066e696a6953b0e51',1,'JBToolkit::Windows']]],
-  ['commonprograms_2484',['CommonPrograms',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a116e711ee8e36a8ed426a8f837ec2d2f',1,'JBToolkit::Windows']]],
-  ['commonstartmenu_2485',['CommonStartMenu',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a6e8e454e50de736296d9bfc133ae4975',1,'JBToolkit::Windows']]],
-  ['commonstartup_2486',['CommonStartup',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a9bf6f7c4a86a2667d097f91ef4d2ec7f',1,'JBToolkit::Windows']]],
-  ['commontemplates_2487',['CommonTemplates',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a8f3a3550e08db4c5c1062fd1746006de',1,'JBToolkit::Windows']]],
-  ['computer_2488',['Computer',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a181900dad960beccb34f53c4e0ff4647',1,'JBToolkit::Windows']]],
-  ['contacts_2489',['Contacts',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a9aa698f602b1e5694855cee73a683488',1,'JBToolkit::Windows']]],
-  ['controlpanel_2490',['ControlPanel',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a50aa0ff4ceb5f8a5d573548bc52915ca',1,'JBToolkit::Windows']]],
-  ['critical_2491',['Critical',['../d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html#a76540180dce5859f034fa66e83cca6c0a278d01e5af56273bae1bb99a98b370cd',1,'YTMusicUploader::Providers::DataModels::Log']]]
+  ['closechanges_2515',['CloseChanges',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a6f30edd7cdeb2abdec26d2e88c125754a3f447a329603097c6d19a7c74177682f',1,'YTMusicUploader::MainForm']]],
+  ['closechangescomplete_2516',['CloseChangesComplete',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a6f30edd7cdeb2abdec26d2e88c125754abc5564edb93e1fbe8e1477087bdaf224',1,'YTMusicUploader::MainForm']]],
+  ['closenochange_2517',['CloseNoChange',['../d0/d66/class_y_t_music_uploader_1_1_main_form.html#a6f30edd7cdeb2abdec26d2e88c125754aef0d70a247100a8a739fe691dc08da13',1,'YTMusicUploader::MainForm']]],
+  ['commonadmintools_2518',['CommonAdminTools',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a1fddf889d1871eb066e696a6953b0e51',1,'JBToolkit::Windows']]],
+  ['commonprograms_2519',['CommonPrograms',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a116e711ee8e36a8ed426a8f837ec2d2f',1,'JBToolkit::Windows']]],
+  ['commonstartmenu_2520',['CommonStartMenu',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a6e8e454e50de736296d9bfc133ae4975',1,'JBToolkit::Windows']]],
+  ['commonstartup_2521',['CommonStartup',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a9bf6f7c4a86a2667d097f91ef4d2ec7f',1,'JBToolkit::Windows']]],
+  ['commontemplates_2522',['CommonTemplates',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a8f3a3550e08db4c5c1062fd1746006de',1,'JBToolkit::Windows']]],
+  ['computer_2523',['Computer',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a181900dad960beccb34f53c4e0ff4647',1,'JBToolkit::Windows']]],
+  ['contacts_2524',['Contacts',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a9aa698f602b1e5694855cee73a683488',1,'JBToolkit::Windows']]],
+  ['controlpanel_2525',['ControlPanel',['../da/d21/namespace_j_b_toolkit_1_1_windows.html#ac86f51beabdfad7a3227bae5ea6367e8a50aa0ff4ceb5f8a5d573548bc52915ca',1,'JBToolkit::Windows']]],
+  ['critical_2526',['Critical',['../d5/dc7/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_log.html#a76540180dce5859f034fa66e83cca6c0a278d01e5af56273bae1bb99a98b370cd',1,'YTMusicUploader::Providers::DataModels::Log']]]
 ];

@@ -1,8 +1,8 @@
-.TH "YTMusicUploader.Providers.DbOperationResult" 3 "Thu Dec 31 2020" "YT Music Uploader" \" -*- nroff -*-
+.TH "YTMusicUploader.Providers.DbOperationResult" 3 "Sat Apr 10 2021" "YT Music Uploader" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-YTMusicUploader.Providers.DbOperationResult \- Database process execution and query result object\&. Contains if there's any errors and the time taken to perform the database operation\&.  
+YTMusicUploader.Providers.DbOperationResult \- \fBDatabase\fP process execution and query result object\&. Contains if there's any errors and the time taken to perform the database operation\&.  
 
 .SH SYNOPSIS
 .br
@@ -13,11 +13,11 @@ YTMusicUploader.Providers.DbOperationResult \- Database process execution and qu
 .ti -1c
 .RI "static \fBDbOperationResult\fP \fBSuccess\fP (int id, TimeSpan executionTime)"
 .br
-.RI "Database process execution and query result object for 'success'\&. Contains the time taken to perform the database operation along with the scoped database entry ID "
+.RI "\fBDatabase\fP process execution and query result object for 'success'\&. Contains the time taken to perform the database operation along with the scoped database entry ID "
 .ti -1c
 .RI "static \fBDbOperationResult\fP \fBFail\fP (string errorReason, TimeSpan executionTime)"
 .br
-.RI "Database process execution and query result object for 'failure'\&. Contains the error reason and the time taken to perform the database operation "
+.RI "\fBDatabase\fP process execution and query result object for 'failure'\&. Contains the error reason and the time taken to perform the database operation "
 .in -1c
 .SS "Properties"
 
@@ -38,7 +38,7 @@ YTMusicUploader.Providers.DbOperationResult \- Database process execution and qu
 .in -1c
 .SH "Detailed Description"
 .PP 
-Database process execution and query result object\&. Contains if there's any errors and the time taken to perform the database operation\&. 
+\fBDatabase\fP process execution and query result object\&. Contains if there's any errors and the time taken to perform the database operation\&. 
 
 
 .SH "Member Function Documentation"
@@ -46,11 +46,11 @@ Database process execution and query result object\&. Contains if there's any er
 .SS "static \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DbOperationResult\&.Fail (string errorReason, TimeSpan executionTime)\fC [static]\fP"
 
 .PP
-Database process execution and query result object for 'failure'\&. Contains the error reason and the time taken to perform the database operation 
+\fBDatabase\fP process execution and query result object for 'failure'\&. Contains the error reason and the time taken to perform the database operation 
 .SS "static \fBDbOperationResult\fP YTMusicUploader\&.Providers\&.DbOperationResult\&.Success (int id, TimeSpan executionTime)\fC [static]\fP"
 
 .PP
-Database process execution and query result object for 'success'\&. Contains the time taken to perform the database operation along with the scoped database entry ID 
+\fBDatabase\fP process execution and query result object for 'success'\&. Contains the time taken to perform the database operation along with the scoped database entry ID 
 .SH "Property Documentation"
 .PP 
 .SS "string YTMusicUploader\&.Providers\&.DbOperationResult\&.ErrorReason\fC [get]\fP, \fC [set]\fP"

@@ -1,0 +1,5 @@
+<map id="YTMusicUploader.Providers.Database.Maintenance.ResetDatabase" name="YTMusicUploader.Providers.Database.Maintenance.ResetDatabase">
+<area shape="rect" id="node1" title="Delete the app data database (user&#39;s database)" alt="" coords="5,5,253,47"/>
+<area shape="rect" id="node2" href="$dc/df8/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_upgrade.html#a4abbb48d48ccaf27b1ea9f7346a9031c" title="Runs on form load to ensure the database schema is at the latest version following an application upg..." alt="" coords="301,5,517,47"/>
+<area shape="rect" id="node3" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a282db1993d3e890ff819c1afd3e14114" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="565,5,751,47"/>
+</map>

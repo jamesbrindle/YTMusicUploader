@@ -942,6 +942,53 @@ namespace YTMusicUploader.Providers.Repos
         }
 
         /// <summary>
+        /// Resets the issue status of all MusicFiles for the reason of a force retry
+        /// </summary>
+        /// <returns>DbOperationResult - Showing success or fail, with messages and stats</returns>
+        public async Task<DbOperationResult> ResetIssueStatusAll ()
+        {
+            try
+            {
+                return await ResetIssueStatusAll_R();
+            }
+            catch
+            {
+                ThreadHelper.SafeSleep(50);
+                return await ResetIssueStatusAll_R();
+            }
+        }
+
+        private async Task<DbOperationResult> ResetIssueStatusAll_R()
+        {
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+            try
+            {
+                using (var conn = DbConnection())
+                {
+                    conn.Open();
+                    conn.Execute(
+                        @"UPDATE MusicFiles
+                             SET Error = 0,
+                                 ErrorReason = '',
+                                 UploadAttempts = 0,
+                                 LastUploadError = '0001-01-01 00:00:00',
+                                 LastUpload = '0001-01-01 00:00:00'");
+                    conn.Close();
+                }
+
+                stopWatch.Stop();
+                return await Task.FromResult(DbOperationResult.Success(-1, stopWatch.Elapsed));
+            }
+            catch (Exception e)
+            {
+                stopWatch.Stop();
+                return await Task.FromResult(DbOperationResult.Fail(e.Message, stopWatch.Elapsed));
+            }
+        }
+
+        /// <summary>
         /// Delete or destroyed a Music File entry from the database (delete in the case of a Music File is to set the 'removed'
         /// flag, whereas destroy is to completely delete it from the database
         /// </summary>
