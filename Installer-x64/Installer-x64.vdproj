@@ -411,6 +411,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_408D6290B8184A11BB72F60074DDA976"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_41029E4CBB9CAB6AAE024C0C94610F1F"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
@@ -3904,6 +3910,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_408D6290B8184A11BB72F60074DDA976"
+            {
+            "SourcePath" = "8:..\\YTMusicUploader\\Resources\\installer-splash.jpg"
+            "TargetName" = "8:installer-splash.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_41029E4CBB9CAB6AAE024C0C94610F1F"
@@ -7895,15 +7921,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{F2666E44-1246-4246-B363-E596F8A5946C}"
-        "PackageCode" = "8:{F5CF1585-7BA1-48B7-9D67-1CAA69E6A746}"
+        "ProductCode" = "8:{8FCFCC21-DB67-4C54-A585-4F2943DBFAEB}"
+        "PackageCode" = "8:{E6595A11-4F9A-40EE-8C62-06F8758A3B4D}"
         "UpgradeCode" = "8:{AB84D0C0-CDF7-4BDF-90B0-C4808DB11DAB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.7.1"
+        "ProductVersion" = "8:1.7.2"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"
@@ -8071,7 +8097,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -8085,28 +8112,6 @@
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_557428259AE948A7853ED9F1CE1FFE72"
-                    {
-                    "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6D1170396D514F2BA140AA420A8EBF2F"
                     {
                     "Sequence" = "3:100"
@@ -8124,7 +8129,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -8135,8 +8141,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1202"
+                            "Setting" = "3:2"
+                            "Value" = "8:WARNING: This computer program is not protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, will not result in severe civil or criminal penalties, and will not be prosecuted. I will however, not accept any responsbility for your YTM music file and playlists uploads."
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -8172,7 +8178,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "InstallAllUsersVisible"
@@ -8216,7 +8223,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -8260,7 +8268,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -8316,29 +8325,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_95198896E06744E9B9B823F8EAEA4512"
-                    {
-                    "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -8360,7 +8348,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -8371,8 +8360,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1202"
+                            "Setting" = "3:2"
+                            "Value" = "8:WARNING: This computer program is not protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, will not result in severe civil or criminal penalties, and will not be prosecuted. I will however, not accept any responsbility for your YTM music file and playlists uploads."
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -8417,7 +8406,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_408D6290B8184A11BB72F60074DDA976"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"

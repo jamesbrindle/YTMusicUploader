@@ -68,20 +68,32 @@ namespace YTMusicUploader.Providers.Playlist
 
                 foreach (string musicFilePath in paths)
                 {
-                    string absolutePath = Utils.IsAbsolutePath(musicFilePath)
-                                                ? musicFilePath
-                                                : Utils.MakeAbsolutePath(Path.GetDirectoryName(path), musicFilePath);
-
-                    if (absolutePath.StartsWith("file://"))
-                        absolutePath = new Uri(absolutePath).LocalPath;
-
-                    if (Path.GetExtension(absolutePath).ToLower().In(Global.SupportedMusicFiles) &&
-                        File.Exists(absolutePath))
+                    try
                     {
-                        playlistFile.PlaylistItems.Add(new PlaylistFile.PlaylistFileItem
+                        string absolutePath = Utils.IsAbsolutePath(musicFilePath)
+                           ? musicFilePath
+                           : Utils.MakeAbsolutePath(Path.GetDirectoryName(path), musicFilePath);
+
+                        if (absolutePath.StartsWith("file://"))
+                            absolutePath = new Uri(absolutePath).LocalPath;
+
+                        if (Path.GetExtension(absolutePath).ToLower().In(Global.SupportedMusicFiles) &&
+                            File.Exists(absolutePath))
                         {
-                            Path = absolutePath
-                        });
+                            playlistFile.PlaylistItems.Add(new PlaylistFile.PlaylistFileItem
+                            {
+                                Path = absolutePath
+                            });
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        // Invalid path - Ignore - Don't add
+                        var _ = e;
+                        Logger.LogWarning(
+                            "ReadPlaylistFile", 
+                            "Invalid path detected in playlist file and will be ignored: " + path, 
+                            true); 
                     }
                 }
             }

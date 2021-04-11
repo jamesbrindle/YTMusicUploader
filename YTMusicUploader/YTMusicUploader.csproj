@@ -606,6 +606,7 @@
     <None Include="Resources\Raw\yt_logo.svg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\installer-splash.jpg" />
     <Content Include="Resources\Raw\playlist.svg" />
     <Content Include="Resources\Raw\resets.svg" />
     <None Include="Resources\reset_large_down.png" />

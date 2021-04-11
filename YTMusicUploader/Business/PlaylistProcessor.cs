@@ -213,12 +213,19 @@ namespace YTMusicUploader.Business
                             {
                                 if (e.Message.Contains("Empty Playlist"))
                                 {
+                                    // Ignore - don't create playlist
+
+                                    Logger.LogWarning(
+                                        "Playlist Processor", 
+                                        "Empty playlist detected. It will be ignored: " + playlistFile.Path, 
+                                        true);
+
                                     playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
                                     playlistFile.LastUpload = playlistFile.LastModifiedDate;
                                     playlistFile.Save().Wait();
                                 }
-
-                                Logger.Log(e, $"PlaylistProcessor - Error processing playlist: {playlistFile.Title}");
+                                else
+                                    Logger.Log(e, $"PlaylistProcessor - Error processing playlist: {playlistFile.Title}");
                             }
                         }
 
@@ -231,10 +238,9 @@ namespace YTMusicUploader.Business
                             MainForm.Settings.LastPlaylistUpload = DateTime.Now;
                             MainForm.Settings.Save().Wait();
 
-                            Logger.LogWarning(
+                            Logger.LogInfo(
                                 "PlaylistProcessor.Process",
-                                "YTM playlist creation limited reached - Stopping playlist processing for this session.",
-                                true);
+                                "YTM playlist creation limited reached - Stopping playlist processing for this session.");
 
                             ThreadHelper.SafeSleep(15000);
                             break;
