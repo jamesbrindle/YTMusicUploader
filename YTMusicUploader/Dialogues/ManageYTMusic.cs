@@ -21,6 +21,8 @@ namespace YTMusicUploader.Dialogues
         private MainForm MainForm { get; set; }
         private bool ChangesMade { get; set; } = false;
 
+        public ToolTip RefreshTooltip { get; set; }
+
         /// <summary>
         /// Form to manage (see and delete) music currently uploaded to YouTube music
         /// </summary>
@@ -28,6 +30,7 @@ namespace YTMusicUploader.Dialogues
         {
             MainForm = mainForm;
             InitializeComponent();
+            InitialiseTooltips();
         }
 
         private void ManageYTMusic_Load(object sender, EventArgs e)
@@ -56,6 +59,19 @@ namespace YTMusicUploader.Dialogues
                     BindArtistsAndPlaylists(false);
                 });
             }
+        }
+
+        private void InitialiseTooltips()
+        {
+            RefreshTooltip = new ToolTip
+            {
+                ToolTipTitle = "Refresh Data Source",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            RefreshTooltip.SetToolTip(pbRefresh,
+                "\nRefresh the list from the database");
         }
 
         private void ClearFields()
