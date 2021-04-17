@@ -630,9 +630,9 @@ namespace YTMusicUploader.Business
 
                 if (!string.IsNullOrEmpty(musicPath))
                 {
-                    var threadStarter = new ThreadStart(async () =>
+                    ThreadPool.QueueUserWorkItem(delegate
                     {
-                        var image = await MainForm.MusicDataFetcher.GetAlbumArtwork(musicPath);
+                        var image = MainForm.MusicDataFetcher.GetAlbumArtwork(musicPath).Result;
                         if (image != null && MainForm.ArtworkImage != null && ImageHelper.IsSameImage(image, MainForm.ArtworkImage))
                         {
                             MainForm.SetUploadingMessage(
@@ -652,12 +652,6 @@ namespace YTMusicUploader.Business
                                         true);
                         }
                     });
-
-                    _artworkFetchThread = new Thread(threadStarter)
-                    {
-                        IsBackground = true
-                    };
-                    _artworkFetchThread.Start();
                 }
             }
             catch { }

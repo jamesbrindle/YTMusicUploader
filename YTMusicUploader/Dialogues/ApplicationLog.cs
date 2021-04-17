@@ -48,7 +48,11 @@ namespace YTMusicUploader.Dialogues
             OnLoad(e);
             ResumeDrawing(this);
             BindLogTypes();
-            new Thread((ThreadStart)delegate { Populate(); }).Start();
+
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                Populate();
+            });
         }
 
         private void InitialiseTooltips()

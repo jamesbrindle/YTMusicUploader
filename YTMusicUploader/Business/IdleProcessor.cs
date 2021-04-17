@@ -52,13 +52,13 @@ namespace YTMusicUploader.Business
                             return;
 
                         PopulateRandomMusicEntryWithMissingMbId();
-                        ThreadHelper.SafeSleep(100);
+                        ThreadHelper.SafeSleep(1000);
                         PopulateRandomMusicEntryWithMissingEntityId();
 
                         if (MainFormAborting())
                             return;
 
-                        ThreadHelper.SafeSleep(2000);
+                        ThreadHelper.SafeSleep(3000);
                     }
                     catch { }
                 }

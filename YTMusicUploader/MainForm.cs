@@ -372,7 +372,6 @@ namespace YTMusicUploader
             }
 
             Logger.LogInfo("StartMainProcess", "Main process thread starting");
-
             _scanAndUploadThread = new Thread((ThreadStart)delegate
             {
                 if (restarting)

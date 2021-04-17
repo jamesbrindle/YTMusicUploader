@@ -49,7 +49,10 @@ namespace YTMusicUploader.Dialogues
                 Requests.ArtistCache.Artists == null ||
                 Requests.ArtistCache.Artists.Count == 0)
             {
-                new Thread((ThreadStart)delegate { GetArtistsAndPlaylists(); }).Start();
+                ThreadPool.QueueUserWorkItem(delegate
+                {
+                    GetArtistsAndPlaylists();
+                });
             }
             else
             {
@@ -181,12 +184,13 @@ namespace YTMusicUploader.Dialogues
             if (!isDeleting)
             {
                 AppendUpdatesText($"Fetching songs for arists: {artist}...", ColourHelper.HexStringToColor("#0f0466"));
-                new Thread((ThreadStart)delegate
+
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     var albumSongCollection = Requests.GetArtistSongs(MainForm.Settings.AuthenticationCookie, artistNode.Name);
                     Requests.ArtistCache.Artists.Where(a => a.BrowseId == artistNode.Name).FirstOrDefault().AlbumSongCollection = albumSongCollection;
                     BindAlbumNodesFromSelect(artistNode, albumSongCollection, !isDeleting, !isDeleting, isDeleting);
-                }).Start();
+                });
             }
             else
             {
@@ -205,7 +209,8 @@ namespace YTMusicUploader.Dialogues
             if (!isDeleting)
             {
                 AppendUpdatesText($"Fetching songs for playlist: {playlistTitle}...", ColourHelper.HexStringToColor("#0f0466"));
-                new Thread((ThreadStart)delegate
+
+                ThreadPool.QueueUserWorkItem(delegate
                 {
                     var playlist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistOrBrowseId);
                     for (int i = 0; i < Requests.ArtistCache.Playlists.Count; i++)
@@ -217,8 +222,7 @@ namespace YTMusicUploader.Dialogues
                             break;
                         }
                     }
-
-                }).Start();
+                });
             }
             else
             {
@@ -344,7 +348,7 @@ namespace YTMusicUploader.Dialogues
 
         private void DeleteTracksFromYouTubeMusic()
         {
-            new Thread((ThreadStart)delegate
+            ThreadPool.QueueUserWorkItem(delegate
             {
                 DisableAllActionButtons(true);
                 SetTreeViewEnabled(false);
@@ -361,8 +365,7 @@ namespace YTMusicUploader.Dialogues
                 DisableDeleteFromYTMusicButton();
                 SetTreeViewEnabled(true);
                 ShowPreloader(false);
-
-            }).Start();
+            });
         }
 
         private void DeleteTracksFromYouTubeMusicUnderArtists()
