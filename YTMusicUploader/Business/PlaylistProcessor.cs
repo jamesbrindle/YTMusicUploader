@@ -181,7 +181,7 @@ namespace YTMusicUploader.Business
                                             playlistFile.PlaylistItems.Add(playlistToAdd);
                                         }
                                     }
-                                });
+                                }, Global.MaxDegreesOfParallelism);
 
                                 if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                                     return;

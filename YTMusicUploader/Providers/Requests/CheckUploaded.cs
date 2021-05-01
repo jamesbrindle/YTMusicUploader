@@ -762,7 +762,10 @@ namespace YTMusicUploader.Providers
             float _albumSimilarity = 0.0f;
             float _trackSimilarity = 0.0f;
 
-            Parallel.ForEach(runArray, (runElement) =>
+            Parallel.ForEach(
+                runArray,
+                new ParallelOptions { MaxDegreeOfParallelism = Global.MaxDegreesOfParallelism}, 
+                (runElement) =>
             {
                 if (runElement.text == null)
                     runElement.text = string.Empty;
@@ -771,7 +774,11 @@ namespace YTMusicUploader.Providers
                 float __albumSimilartity = 0.0f;
                 float __trackSimilarity = 0.0f;
 
-                Parallel.For(0, 3, (i, state) =>
+                Parallel.For(
+                    0,
+                    3, 
+                    new ParallelOptions { MaxDegreeOfParallelism = Global.MaxDegreesOfParallelism }, 
+                    (i, state) =>
                 {
                     switch (i)
                     {
@@ -890,7 +897,10 @@ namespace YTMusicUploader.Providers
             string tempEntityId = string.Empty;
             string tempVideoId = string.Empty;
 
-            Parallel.ForEach(ArtistCache.Artists.AsParallel(), (artistCacheItem, stateA, indexA) =>
+            Parallel.ForEach(
+                ArtistCache.Artists.AsParallel(), 
+                new ParallelOptions { MaxDegreeOfParallelism = Global.MaxDegreesOfParallelism }, 
+                (artistCacheItem, stateA, indexA) =>
             {
                 float artistSimilarity = Levenshtein.Similarity(artist.UnQuote(), artistCacheItem.ArtistName.UnQuote());
                 if (artistSimilarity >= matchSuccessMinimum)
@@ -911,7 +921,10 @@ namespace YTMusicUploader.Providers
                     }
                     else
                     {
-                        Parallel.ForEach(artistCacheItem.AlbumSongCollection.Songs.AsParallel(), (songCacheItem, stateB, indexB) =>
+                        Parallel.ForEach(
+                            artistCacheItem.AlbumSongCollection.Songs.AsParallel(), 
+                            new ParallelOptions { MaxDegreeOfParallelism = Global.MaxDegreesOfParallelism }, 
+                            (songCacheItem, stateB, indexB) =>
                         {
                             if (!trackFound)
                             {

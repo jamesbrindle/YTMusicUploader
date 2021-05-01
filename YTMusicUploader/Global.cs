@@ -4,6 +4,7 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Reflection;
+using YTMusicUploader.Helpers;
 
 namespace YTMusicUploader
 {
@@ -13,9 +14,13 @@ namespace YTMusicUploader
     /// </summary>
     public static class Global
     {
-        private static string _applicationVersion = null;
-        private static string _appDataLocation = null;
+        // Multi-threading settings
+        private static int? _maxNewPlaylistsPerSession = null;
         private static bool? _multiThreadedRequests = null;
+        private static SystemInfo _systemInfo = null;
+
+        private static string _applicationVersion = null;
+        private static string _appDataLocation = null;        
         private static int? _maxDegreesOfParallelism = null;
         private static int? _clearLogsAfterDays = null;
         private static int? _recheckForUploadedSongsInDays = null;
@@ -30,7 +35,7 @@ namespace YTMusicUploader
         private static int? _yTMusicIssuesMainProcessRetry = null;
         private static int? _playlistCreationWait = null;
         private static int? _playlistAddWait = null;
-        private static int? _maxNewPlaylistsPerSession = null;
+        
         private static int? _sessionRestartHours = null;
         private static float? _yTUploadedSimilarityPercentageForMatch = null;
         private static string _musicBrainzBaseUrl = null;
@@ -39,6 +44,101 @@ namespace YTMusicUploader
         private static string _workingDirectory = null;
         private static string[] _supportedFiles = null;
         private static string[] _supportedPlaylistFiles = null;
+
+        #region Multi-Threading
+
+        /// <summary>
+        /// Check already uploaded tracks with YouTube Music in parallel
+        /// </summary>
+        public static bool MultiThreadedRequests
+        {
+            get
+            {
+                if (_multiThreadedRequests != null)
+                    return (bool)_multiThreadedRequests;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["MultiThreadedRequests"] != null)
+                        _multiThreadedRequests = ConfigurationManager.AppSettings["MultiThreadedRequests"].ToBool();
+                    else
+                        _multiThreadedRequests = GetBestIfShouldMultiThreadRequests();
+                }
+                catch
+                {
+                    _multiThreadedRequests = true;
+                }
+
+                return (bool)_multiThreadedRequests;
+            }
+        }
+
+        /// <summary>
+        /// Check already uploaded tracks with YouTube Music in parallel
+        /// </summary>
+        public static int MaxDegreesOfParallelism
+        {
+            get
+            {
+                if (_maxDegreesOfParallelism != null)
+                    return (int)_maxDegreesOfParallelism;
+
+                try
+                {
+                    if (ConfigurationManager.AppSettings["MaxDegreesOfParallelism"] != null)
+                        _maxDegreesOfParallelism = ConfigurationManager.AppSettings["MaxDegreesOfParallelism"].ToInt();
+                    else
+                        _maxDegreesOfParallelism = GetBestMaxDegreesOfParallelism();
+                }
+                catch
+                {
+                    _maxDegreesOfParallelism = 4;
+                }
+
+                return (int)_maxDegreesOfParallelism;
+            }
+        }
+
+        private static int GetBestMaxDegreesOfParallelism()
+        {
+            if (_systemInfo == null)
+                _systemInfo = SystemInfoHelper.GetSystemInfo();
+
+            if (_systemInfo.CpuCores == 1)
+                return 1;
+            else if (_systemInfo.CpuCores == 2)
+                return 2;
+            else if (_systemInfo.CpuCores < 5)
+                return 3;
+            else if (_systemInfo.CpuCores < 7)
+                return 4;
+            else if (_systemInfo.CpuCores < 9)
+                return 5;
+            else if (_systemInfo.CpuCores < 13)
+                return 6;
+            else if (_systemInfo.CpuCores < 17)
+                return 7;
+            else if (_systemInfo.CpuCores < 21)
+                return 8;
+            else if (_systemInfo.CpuCores < 25)
+                return 9;
+            else if (_systemInfo.CpuCores < 33)
+                return 10;
+            else if (_systemInfo.CpuCores < 65)
+                return 11;
+            else
+                return 12;
+        }
+
+        private static bool GetBestIfShouldMultiThreadRequests()
+        {
+            if (_systemInfo == null)
+                _systemInfo = SystemInfoHelper.GetSystemInfo();
+
+            return _systemInfo.CpuCores >= 2;
+        }
+
+        #endregion
 
         /// <summary>
         /// Returns application's version from Assembly
@@ -145,54 +245,6 @@ namespace YTMusicUploader
                 }
 
                 return _googleVisitorId;
-            }
-        }
-
-        /// <summary>
-        /// Check already uploaded tracks with YouTube Music in parallel
-        /// </summary>
-        public static bool MultiThreadedRequests
-        {
-            get
-            {
-                if (_multiThreadedRequests != null)
-                    return (bool)_multiThreadedRequests;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["MultiThreadedRequests"] != null)
-                        _multiThreadedRequests = ConfigurationManager.AppSettings["MultiThreadedRequests"].ToBool();
-                }
-                catch
-                {
-                    _multiThreadedRequests = true;
-                }
-
-                return (bool)_multiThreadedRequests;
-            }
-        }
-
-        /// <summary>
-        /// Check already uploaded tracks with YouTube Music in parallel
-        /// </summary>
-        public static int MaxDegreesOfParallelism
-        {
-            get
-            {
-                if (_maxDegreesOfParallelism != null)
-                    return (int)_maxDegreesOfParallelism;
-
-                try
-                {
-                    if (ConfigurationManager.AppSettings["MaxDegreesOfParallelism"] != null)
-                        _maxDegreesOfParallelism = ConfigurationManager.AppSettings["MaxDegreesOfParallelism"].ToInt();
-                }
-                catch
-                {
-                    _maxDegreesOfParallelism = 4;
-                }
-
-                return (int)_maxDegreesOfParallelism;
             }
         }
 

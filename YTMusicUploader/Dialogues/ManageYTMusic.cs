@@ -454,11 +454,11 @@ namespace YTMusicUploader.Dialogues
                                                   $"{errorMessage}",
                                                   ColourHelper.HexStringToColor("#e20000"));
                             }
-                        });
+                        }, Global.MaxDegreesOfParallelism);
                     }
 
                     ChangeChildCount(albumNode);
-                });
+                }, Global.MaxDegreesOfParallelism);
 
                 /// Remove album node if no track nodes left
                 for (int i = artistNode.Nodes.Count - 1; i >= 0; i--)
@@ -559,7 +559,7 @@ namespace YTMusicUploader.Dialogues
                                               $"{errorMessage}",
                                               ColourHelper.HexStringToColor("#0d5601"));
                         }
-                    });
+                    }, Global.MaxDegreesOfParallelism);
                 }
             }
 
