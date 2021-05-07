@@ -112,7 +112,7 @@
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblManageYTMusicUploads.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblManageYTMusicUploads.Size = new System.Drawing.Size(991, 633);
+            this.tblManageYTMusicUploads.Size = new System.Drawing.Size(991, 502);
             this.tblManageYTMusicUploads.TabIndex = 5;
             // 
             // pnlMusicDetailsPanel
@@ -141,7 +141,7 @@
             this.lblMbId.AutoSize = true;
             this.lblMbId.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblMbId.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblMbId.Location = new System.Drawing.Point(127, 92);
+            this.lblMbId.Location = new System.Drawing.Point(127, 94);
             this.lblMbId.Name = "lblMbId";
             this.lblMbId.Size = new System.Drawing.Size(163, 13);
             this.lblMbId.TabIndex = 1;
@@ -163,7 +163,7 @@
             // 
             this.lblUploaded.AutoSize = true;
             this.lblUploaded.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUploaded.Location = new System.Drawing.Point(127, 108);
+            this.lblUploaded.Location = new System.Drawing.Point(127, 111);
             this.lblUploaded.Name = "lblUploaded";
             this.lblUploaded.Size = new System.Drawing.Size(93, 13);
             this.lblUploaded.TabIndex = 9;
@@ -173,7 +173,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(-3, 108);
+            this.label4.Location = new System.Drawing.Point(-3, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 8;
@@ -183,7 +183,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(-3, 92);
+            this.label2.Location = new System.Drawing.Point(-3, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 6;
@@ -246,6 +246,7 @@
             this.pbCoverArt.Location = new System.Drawing.Point(0, 0);
             this.pbCoverArt.Name = "pbCoverArt";
             this.pbCoverArt.Size = new System.Drawing.Size(60, 60);
+            this.pbCoverArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCoverArt.TabIndex = 0;
             this.pbCoverArt.TabStop = false;
             // 
@@ -259,7 +260,7 @@
             this.pnlUpdatesPanel.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.pnlUpdatesPanel.Name = "pnlUpdatesPanel";
             this.pnlUpdatesPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.pnlUpdatesPanel.Size = new System.Drawing.Size(411, 388);
+            this.pnlUpdatesPanel.Size = new System.Drawing.Size(411, 257);
             this.pnlUpdatesPanel.TabIndex = 3;
             // 
             // tbUpdates
@@ -269,7 +270,7 @@
             this.tbUpdates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbUpdates.Location = new System.Drawing.Point(4, 4);
             this.tbUpdates.Name = "tbUpdates";
-            this.tbUpdates.Size = new System.Drawing.Size(401, 378);
+            this.tbUpdates.Size = new System.Drawing.Size(401, 247);
             this.tbUpdates.TabIndex = 0;
             this.tbUpdates.Text = "";
             // 
@@ -288,7 +289,7 @@
             // 
             this.lblCheckedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCheckedCount.AutoSize = true;
-            this.lblCheckedCount.Location = new System.Drawing.Point(0, 12);
+            this.lblCheckedCount.Location = new System.Drawing.Point(0, 6);
             this.lblCheckedCount.Name = "lblCheckedCount";
             this.lblCheckedCount.Size = new System.Drawing.Size(92, 13);
             this.lblCheckedCount.TabIndex = 1;
@@ -412,7 +413,7 @@
             this.tvUploads.Margin = new System.Windows.Forms.Padding(3, 0, 20, 0);
             this.tvUploads.Name = "tvUploads";
             this.tblManageYTMusicUploads.SetRowSpan(this.tvUploads, 4);
-            this.tvUploads.Size = new System.Drawing.Size(552, 599);
+            this.tvUploads.Size = new System.Drawing.Size(552, 468);
             this.tvUploads.TabIndex = 1;
             this.tvUploads.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TvUploads_AfterCheck);
             this.tvUploads.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvUploads_AfterSelect);
@@ -452,7 +453,7 @@
             this.label3.AutoSize = true;
             this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(-2, 8);
+            this.label3.Location = new System.Drawing.Point(-2, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 5;
@@ -488,10 +489,10 @@
             // 
             // ManageYTMusic
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.ClientSize = new System.Drawing.Size(1037, 601);
             this.Controls.Add(this.tblManageYTMusicUploads);
             this.Controls.Add(this.pbRefresh);
             this.Controls.Add(this.lblTitle);

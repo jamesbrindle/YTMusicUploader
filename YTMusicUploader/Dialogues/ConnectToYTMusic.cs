@@ -4,6 +4,7 @@ using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -49,6 +50,7 @@ namespace YTMusicUploader.Dialogues
         public ConnectToYTMusic(MainForm mainForm) : base(formResizable: true)
         {
             MainForm = mainForm;
+            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
             InitializeComponent();
             InitializeBrowser();
             SuspendDrawing(this);

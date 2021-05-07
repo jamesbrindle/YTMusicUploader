@@ -91,7 +91,16 @@ namespace YTMusicUploader.Business
                             if (MainFormIsAborting())
                                 return;
 
-                            musicFile.Hash = await DirectoryHelper.GetFileHash(musicFile.Path);
+                            try
+                            {
+                                musicFile.Hash = DirectoryHelper.GetFileHash(musicFile.Path).Result;
+                            }
+                            catch
+                            {
+                                await musicFile.Delete();
+                                continue;
+                            }
+
                             if (MainFormIsAborting())
                                 return;
 

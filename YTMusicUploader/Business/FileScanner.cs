@@ -96,12 +96,15 @@ namespace YTMusicUploader.Business
                         }
                         catch (Exception e)
                         {
-                            Logger.Log(
-                                e,
-                                "FileScanner.Process - Error reading file (possibly removed): " +
-                                file.Path,
-                                Log.LogTypeEnum.Error,
-                                false);
+                            if (!e.Message.Contains("Thread was being aborted"))
+                            {
+                                Logger.Log(
+                                    e,
+                                    "FileScanner.Process - Error reading file (possibly removed): " +
+                                    file.Path,
+                                    Log.LogTypeEnum.Error,
+                                    false);
+                            }
                         }
                     }
                 }

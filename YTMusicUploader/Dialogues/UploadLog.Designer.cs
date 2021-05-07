@@ -53,7 +53,7 @@
             this.pnlUploads.Location = new System.Drawing.Point(26, 76);
             this.pnlUploads.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlUploads.Name = "pnlUploads";
-            this.pnlUploads.Size = new System.Drawing.Size(988, 633);
+            this.pnlUploads.Size = new System.Drawing.Size(988, 502);
             this.pnlUploads.TabIndex = 1;
             // 
             // dvgLog
@@ -100,7 +100,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dvgLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgLog.RowHeadersVisible = false;
-            this.dvgLog.Size = new System.Drawing.Size(988, 633);
+            this.dvgLog.Size = new System.Drawing.Size(988, 502);
             this.dvgLog.TabIndex = 0;
             this.dvgLog.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUploads_CellContentClick);
             this.dvgLog.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUploads_CellMouseEnter);
@@ -147,9 +147,9 @@
             // 
             // UploadLog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(1037, 601);
             this.Controls.Add(this.pbRefresh);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbIssueLogIcon);

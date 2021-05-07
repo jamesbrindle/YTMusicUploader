@@ -224,6 +224,15 @@ namespace YTMusicUploader.Business
                                     playlistFile.LastUpload = playlistFile.LastModifiedDate;
                                     playlistFile.Save().Wait();
                                 }
+                                else if (e.Message.Contains("Could not find the file") ||
+                                    e.Message.Contains("Object reference not set"))
+                                {
+                                    // Ignore -It's probably been moved / deleted
+
+                                    playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
+                                    playlistFile.LastUpload = playlistFile.LastModifiedDate;
+                                    playlistFile.Save().Wait();
+                                }
                                 else
                                     Logger.Log(e, $"PlaylistProcessor - Error processing playlist: {playlistFile.Title}");
                             }

@@ -289,7 +289,11 @@ namespace JBToolkit
                     behind = new Bitmap(control.Parent.ClientSize.Width, control.Parent.ClientSize.Height);
                 }
 
-                c.DrawToBitmap(behind, c.Bounds);
+                try
+                {
+                    c.DrawToBitmap(behind, c.Bounds);
+                }
+                catch { }
             }
 
             if (behind == null

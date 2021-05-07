@@ -20,6 +20,7 @@ namespace YTMusicUploader
         private static string m_externalIp = string.Empty;
         private static string m_machineName = string.Empty;
         public static DateTime? AllowRemoteLogAt { get; set; } = null;
+        public static bool DontLogToSourdceCauseEarlierVersion { get; set; } = false;
 
         private static LogsRepo LogsRepo
         {
@@ -116,7 +117,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
+                    if (SendLogToSource && !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -148,7 +149,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
+                    if (SendLogToSource && !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -180,7 +181,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
+                    if (SendLogToSource && !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -213,7 +214,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
+                    if (SendLogToSource && !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -249,7 +250,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && logType != LogTypeEnum.Info && !ignoreRemote)
+                    if (SendLogToSource && logType != LogTypeEnum.Info && !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -310,7 +311,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
+                    if (SendLogToSource && !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -344,7 +345,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource && !ignoreRemote)
+                    if (SendLogToSource && !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);
@@ -378,7 +379,7 @@ namespace YTMusicUploader
                     };
 
                     Task.Run(async () => await LogsRepo.Add(log));
-                    if (SendLogToSource & !ignoreRemote)
+                    if (SendLogToSource & !ignoreRemote && !DontLogToSourdceCauseEarlierVersion)
                     {
                         log.Machine += $"@{ExternalIp}";
                         LogsRepo.RemoteAdd(log);

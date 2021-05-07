@@ -3,6 +3,7 @@ using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -35,6 +36,7 @@ namespace YTMusicUploader.Dialogues
         public IssueLog(MainForm mainForm) : base(formResizable: true)
         {
             MainForm = mainForm;
+            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
             InitializeComponent();
             InitialiseTooltips();
             SuspendDrawing(this);

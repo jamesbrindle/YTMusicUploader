@@ -27,6 +27,7 @@ namespace YTMusicUploader.Dialogues
         public UploadLog(MainForm mainForm) : base(formResizable: true)
         {
             MainForm = mainForm;
+            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
             InitializeComponent();
             InitialiseTooltips();
             SuspendDrawing(this);

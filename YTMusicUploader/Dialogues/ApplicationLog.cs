@@ -1,6 +1,7 @@
 ﻿using JBToolkit.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -37,6 +38,7 @@ namespace YTMusicUploader.Dialogues
         public ApplicationLog() : base(formResizable: true)
         {
             LogsRepo = new LogsRepo();
+            Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
             InitializeComponent();
             InitialiseTooltips();
             SuspendDrawing(this);

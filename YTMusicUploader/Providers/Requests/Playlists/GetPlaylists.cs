@@ -103,20 +103,44 @@ namespace YTMusicUploader.Providers
                                     {
                                         try
                                         {
-                                            playListCol.Add(new OnlinePlaylist
+                                            var pl = new OnlinePlaylist();
+                                            pl.Title = item.musicTwoRowItemRenderer.title.runs[0].text;
+
+                                            try
                                             {
-                                                Title = item.musicTwoRowItemRenderer.title.runs[0].text,
-                                                Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
-                                                       item.musicTwoRowItemRenderer.subtitle.runs[1].text +
-                                                       item.musicTwoRowItemRenderer.subtitle.runs[2].text,
-                                                BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
-                                                CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
-                                            });
+                                                pl.Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                                      item.musicTwoRowItemRenderer.subtitle.runs[1].text +
+                                                      item.musicTwoRowItemRenderer.subtitle.runs[2].text;
+                                            }
+                                            catch
+                                            {
+                                                try
+                                                {
+                                                    pl.Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                                         item.musicTwoRowItemRenderer.subtitle.runs[1].text;
+                                                }
+                                                catch
+                                                {
+                                                    try
+                                                    {
+                                                        pl.Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text;
+                                                    }
+                                                    catch { }
+                                                }
+                                            }
+
+                                            pl.BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId;
+
+                                            try
+                                            {
+                                                pl.CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url;
+                                            }
+                                            catch { }
+
+                                            playListCol.Add(pl);
+
                                         }
-                                        catch (Exception e)
-                                        {
-                                            Logger.Log(e, "GetPlaylists - Error fetching a playlist", Log.LogTypeEnum.Error);
-                                        }
+                                        catch { }
                                     }
                                 }
 
@@ -158,15 +182,42 @@ namespace YTMusicUploader.Providers
                                     {
                                         try
                                         {
-                                            playListCol.Add(new OnlinePlaylist
+
+                                            var pl = new OnlinePlaylist();
+                                            pl.Title = item.musicTwoRowItemRenderer.title.runs[0].text;
+
+                                            try
                                             {
-                                                Title = item.musicTwoRowItemRenderer.title.runs[0].text,
-                                                Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
-                                                       item.musicTwoRowItemRenderer.subtitle.runs[1].text +
-                                                       item.musicTwoRowItemRenderer.subtitle.runs[2].text,
-                                                BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId,
-                                                CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url
-                                            });
+                                                pl.Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                                      item.musicTwoRowItemRenderer.subtitle.runs[1].text +
+                                                      item.musicTwoRowItemRenderer.subtitle.runs[2].text;
+                                            }
+                                            catch
+                                            {
+                                                try
+                                                {
+                                                    pl.Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text +
+                                                         item.musicTwoRowItemRenderer.subtitle.runs[1].text;
+                                                }
+                                                catch
+                                                {
+                                                    try
+                                                    {
+                                                        pl.Subtitle = item.musicTwoRowItemRenderer.subtitle.runs[0].text;
+                                                    }
+                                                    catch { }
+                                                }
+                                            }
+
+                                            pl.BrowseId = item.musicTwoRowItemRenderer.navigationEndpoint.browseEndpoint.browseId;
+
+                                            try
+                                            {
+                                                pl.CoverArtUrl = item.musicTwoRowItemRenderer.thumbnailRenderer.musicThumbnailRenderer.thumbnail.thumbnails[0].url;
+                                            }
+                                            catch { }
+
+                                            playListCol.Add(pl);
                                         }
                                         catch (Exception e)
                                         {

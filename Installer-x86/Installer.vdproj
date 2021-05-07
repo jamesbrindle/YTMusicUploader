@@ -424,6 +424,12 @@
         "Entry"
         {
         "MsmKey" = "8:_584A3EF8A9312B206C03FABDAB0FB8B0"
+        "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_584A3EF8A9312B206C03FABDAB0FB8B0"
         "OwnerKey" = "8:_1E18CF264BBC6B75FF161D37F1C48D2D"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -526,6 +532,12 @@
         "Entry"
         {
         "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
+        "OwnerKey" = "8:_D515B0D880736A5A001665640BECB5E9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -533,6 +545,18 @@
         {
         "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
         "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
+        "OwnerKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6643C9DCBC09D15C886E9C92329398E7"
+        "OwnerKey" = "8:_6A99698D5581B3A2F2596FFC8A1DF1AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -556,7 +580,31 @@
         "Entry"
         {
         "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_43F6B54CBBC0B338097C08062FD8B5F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_413DADBC84E0C9195CBAB458BFCDB04D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_B717C575093FA5CFDBBB443804A6B9F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6943824F5C90DC61356D7DFFE333FA50"
+        "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -647,6 +695,12 @@
         {
         "MsmKey" = "8:_752C192DB59778155DC6A0F8CAB456CF"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_779CCA240CED2E78EB4F29BBE1F585B2"
+        "OwnerKey" = "8:_B008F4C78851B6D23AD62B9A42F8467D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1019,6 +1073,12 @@
         {
         "MsmKey" = "8:_D3D1CDD0D2660C611B5685F4B7702548"
         "OwnerKey" = "8:_858C89B90B894F97A8CDE5C10D88F13E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D515B0D880736A5A001665640BECB5E9"
+        "OwnerKey" = "8:_D1951648C2597620674D661C0A235702"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -7861,15 +7921,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{9E21003F-8C91-480F-B945-383ECAE5DAA2}"
-        "PackageCode" = "8:{9D42F861-74A0-4235-B2B1-E1C1C4BBEAF3}"
+        "ProductCode" = "8:{6D61441E-0BC8-40EF-8914-DCEF6EB7A452}"
+        "PackageCode" = "8:{3408BA7F-A292-442F-8468-C81463367967}"
         "UpgradeCode" = "8:{1E18ED3F-C210-4589-BEB4-58E2680D3C71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.7.4"
+        "ProductVersion" = "8:1.7.5"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"
@@ -8375,7 +8435,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_858C89B90B894F97A8CDE5C10D88F13E"
             {
-            "SourcePath" = "8:..\\YTMusicUploader\\obj\\x86\\Debug\\YTMusicUploader.exe"
+            "SourcePath" = "8:..\\YTMusicUploader\\obj\\x86\\Release\\YTMusicUploader.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1059907B4555471C9BCCD73D3FBBCC93"

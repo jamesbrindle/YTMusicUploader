@@ -43,7 +43,7 @@
             this.lblSignInMessage.AutoSize = true;
             this.lblSignInMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblSignInMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSignInMessage.Location = new System.Drawing.Point(23, 34);
+            this.lblSignInMessage.Location = new System.Drawing.Point(27, 34);
             this.lblSignInMessage.Name = "lblSignInMessage";
             this.lblSignInMessage.Size = new System.Drawing.Size(221, 13);
             this.lblSignInMessage.TabIndex = 0;
@@ -58,7 +58,7 @@
             this.pnlBrowser.Location = new System.Drawing.Point(26, 76);
             this.pnlBrowser.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlBrowser.Name = "pnlBrowser";
-            this.pnlBrowser.Size = new System.Drawing.Size(988, 633);
+            this.pnlBrowser.Size = new System.Drawing.Size(988, 502);
             this.pnlBrowser.TabIndex = 1;
             // 
             // browser
@@ -67,7 +67,7 @@
             this.browser.Location = new System.Drawing.Point(0, 0);
             this.browser.MinimumSize = new System.Drawing.Size(600, 400);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(988, 633);
+            this.browser.Size = new System.Drawing.Size(988, 502);
             this.browser.TabIndex = 0;
             this.browser.Text = "YouTube Music";
             this.browser.ZoomFactor = 1D;
@@ -78,7 +78,7 @@
             this.lblConnectSuccess.AutoSize = true;
             this.lblConnectSuccess.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblConnectSuccess.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConnectSuccess.Location = new System.Drawing.Point(75, 34);
+            this.lblConnectSuccess.Location = new System.Drawing.Point(82, 34);
             this.lblConnectSuccess.Name = "lblConnectSuccess";
             this.lblConnectSuccess.Size = new System.Drawing.Size(233, 13);
             this.lblConnectSuccess.TabIndex = 3;
@@ -99,9 +99,9 @@
             // 
             // ConnectToYTMusic
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(1037, 601);
             this.Controls.Add(this.lblConnectSuccess);
             this.Controls.Add(this.pbConnectSuccess);
             this.Controls.Add(this.pnlBrowser);

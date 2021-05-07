@@ -217,38 +217,46 @@ namespace YTMusicUploader
 
         private async Task InitialiseFolderWatchers()
         {
-            FileSystemFolderWatchers.Clear();
-            foreach (var watchFolder in WatchFolders)
+            try
             {
-                FileSystemFolderWatchers.Add(new FileSystemWatcher
+                FileSystemFolderWatchers.Clear();
+                foreach (var watchFolder in WatchFolders)
                 {
-                    Path = watchFolder.Path,
-                    NotifyFilter = NotifyFilters.CreationTime |
-                                   NotifyFilters.DirectoryName |
-                                   NotifyFilters.Size |
-                                   NotifyFilters.Attributes |
-                                   NotifyFilters.FileName |
-                                   NotifyFilters.LastWrite |
-                                   NotifyFilters.Size,
-                    Filter = "*.*",
-                    EnableRaisingEvents = true,
-                    IncludeSubdirectories = true
-                });
+                    try
+                    {
+                        FileSystemFolderWatchers.Add(new FileSystemWatcher
+                        {
+                            Path = watchFolder.Path,
+                            NotifyFilter = NotifyFilters.CreationTime |
+                                           NotifyFilters.DirectoryName |
+                                           NotifyFilters.Size |
+                                           NotifyFilters.Attributes |
+                                           NotifyFilters.FileName |
+                                           NotifyFilters.LastWrite |
+                                           NotifyFilters.Size,
+                            Filter = "*.*",
+                            EnableRaisingEvents = true,
+                            IncludeSubdirectories = true
+                        });
 
-                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                    .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
 
-                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                    .Renamed += new RenamedEventHandler(FolderWatcher_OnRenamed);
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Renamed += new RenamedEventHandler(FolderWatcher_OnRenamed);
 
-                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                    .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
 
-                FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                    .Deleted += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Deleted += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                    }
+                    catch { }
+                }
+
+                await Task.Run(() => { });
             }
-
-            await Task.Run(() => { });
+            catch { }
         }
 
         public void InstallEdge()
@@ -547,6 +555,8 @@ namespace YTMusicUploader
 
             if (VersionHelper.LatestVersionGreaterThanCurrentVersion(out string htmlUrl, out string latestVersion))
             {
+                Logger.DontLogToSourdceCauseEarlierVersion = true;
+
                 LatestVersionUrl = htmlUrl;
                 LatestVersionTag = latestVersion;
                 SetVersionWarningVisible(true);
@@ -558,6 +568,8 @@ namespace YTMusicUploader
             }
             else
             {
+                Logger.DontLogToSourdceCauseEarlierVersion = false;
+
                 LatestVersionUrl = null;
                 LatestVersionTag = null;
                 SetVersionWarningVisible(false);

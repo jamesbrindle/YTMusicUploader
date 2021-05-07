@@ -56,7 +56,7 @@
             this.pnlIssueLog.Location = new System.Drawing.Point(26, 76);
             this.pnlIssueLog.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlIssueLog.Name = "pnlIssueLog";
-            this.pnlIssueLog.Size = new System.Drawing.Size(988, 633);
+            this.pnlIssueLog.Size = new System.Drawing.Size(988, 502);
             this.pnlIssueLog.TabIndex = 1;
             // 
             // dgvLog
@@ -103,7 +103,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvLog.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvLog.RowHeadersVisible = false;
-            this.dgvLog.Size = new System.Drawing.Size(988, 633);
+            this.dgvLog.Size = new System.Drawing.Size(988, 502);
             this.dgvLog.TabIndex = 0;
             this.dgvLog.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvLogs_ColumnHeaderMouseClick);
             // 
@@ -151,7 +151,7 @@
             this.lblLogClearMessage.AutoSize = true;
             this.lblLogClearMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblLogClearMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogClearMessage.Location = new System.Drawing.Point(478, 34);
+            this.lblLogClearMessage.Location = new System.Drawing.Point(541, 34);
             this.lblLogClearMessage.Name = "lblLogClearMessage";
             this.lblLogClearMessage.Size = new System.Drawing.Size(161, 13);
             this.lblLogClearMessage.TabIndex = 5;
@@ -162,7 +162,7 @@
             this.ddLogType.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ddLogType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddLogType.FormattingEnabled = true;
-            this.ddLogType.Location = new System.Drawing.Point(330, 31);
+            this.ddLogType.Location = new System.Drawing.Point(359, 31);
             this.ddLogType.Name = "ddLogType";
             this.ddLogType.Size = new System.Drawing.Size(121, 21);
             this.ddLogType.TabIndex = 6;
@@ -179,9 +179,9 @@
             // 
             // ApplicationLog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 732);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(1037, 601);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddLogType);
             this.Controls.Add(this.lblLogClearMessage);
