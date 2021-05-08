@@ -322,7 +322,7 @@
             this.pnlHeader.Controls.Add(this.pictureBox1);
             this.pnlHeader.Location = new System.Drawing.Point(13, 16);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(357, 46);
+            this.pnlHeader.Size = new System.Drawing.Size(214, 46);
             this.pnlHeader.TabIndex = 23;
             // 
             // pictureBox1
@@ -332,7 +332,7 @@
             this.pictureBox1.Image = global::YTMusicUploader.Properties.Resources.Header;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(357, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(214, 46);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 

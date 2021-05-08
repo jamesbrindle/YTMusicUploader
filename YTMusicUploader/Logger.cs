@@ -101,6 +101,9 @@ namespace YTMusicUploader
         /// <param name="e">Exception to log</param>
         public static void Log(Exception e, bool ignoreRemote = false)
         {
+            if (IsInIgnoreList(GetExceptionMessage(e)))
+                return;
+
             try
             {
                 ThreadPool.QueueUserWorkItem(delegate
@@ -133,6 +136,9 @@ namespace YTMusicUploader
         /// <param name="e">Exception to log</param>
         public static void Log(Exception e, LogTypeEnum logType, bool ignoreRemote = false)
         {
+            if (IsInIgnoreList(GetExceptionMessage(e)))
+                return;
+
             try
             {
                 ThreadPool.QueueUserWorkItem(delegate
@@ -165,6 +171,9 @@ namespace YTMusicUploader
         /// <param name="e">Exception to log</param>
         public static void Log(Exception e, string additionalMessage, bool ignoreRemote = false)
         {
+            if (IsInIgnoreList(GetExceptionMessage(e)))
+                return;
+
             try
             {
                 ThreadPool.QueueUserWorkItem(delegate
@@ -198,6 +207,9 @@ namespace YTMusicUploader
         /// <param name="e">Exception to log</param>
         public static void Log(Exception e, string additionalMessage, LogTypeEnum logType, bool ignoreRemote = false)
         {
+            if (IsInIgnoreList(GetExceptionMessage(e)))
+                return;
+
             try
             {
                 ThreadPool.QueueUserWorkItem(delegate
@@ -234,6 +246,9 @@ namespace YTMusicUploader
         /// <param name="message">The messsage to log</param>
         public static void Log(LogTypeEnum logType, string source, string message, bool ignoreRemote = false)
         {
+            if (IsInIgnoreList(message))
+                return;
+
             try
             {
                 ThreadPool.QueueUserWorkItem(delegate
@@ -295,6 +310,9 @@ namespace YTMusicUploader
         /// <param name="message">The messsage to log</param>
         public static void LogError(string source, string message, bool ignoreRemote = false, string stackTrace = null)
         {
+            if (IsInIgnoreList(message))
+                return;
+
             try
             {
                 ThreadPool.QueueUserWorkItem(delegate
@@ -411,6 +429,13 @@ namespace YTMusicUploader
                 return e.InnerException.StackTrace;
 
             return e.StackTrace;
+        }
+
+        private static bool IsInIgnoreList(string exceptionMessage)
+        {
+            if (exceptionMessage.Contains("Thread was being aborted"))
+                return true;
+            return false;
         }
 
         /// <summary>

@@ -81,8 +81,10 @@ namespace YTMusicUploader
         public bool Aborting { get; set; } = false;
         public ManagingYTMusicStatusEnum ManagingYTMusicStatus { get; set; } = ManagingYTMusicStatusEnum.NeverShown;
         public bool DatabaseIntegrityCheckDone { get; set; } = false;
+        private DateTime SessionStart { get; set; } = DateTime.Now;
 
         private bool StartHidden = false;
+
 
         //
         // MusicBrainz Access
@@ -167,11 +169,22 @@ namespace YTMusicUploader
                         if (!Settings.LastPlaylistUpload.HasValue)
                             Settings.LastPlaylistUpload = DateTime.Now.AddHours(Global.SessionRestartHours * -1).AddHours(-2);
 
-                        if (!_scanAndUploadThread.IsAlive && DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours))
+                        if (!_scanAndUploadThread.IsAlive &&
+                            DateTime.Now > ((DateTime)Settings.LastPlaylistUpload).AddHours(Global.SessionRestartHours)
+                            && !PlaylistProcessor.ProcessingPlaylistsFinished)
+                        {
                             StartMainProcess();
+                        }
                     }
 
-                    ThreadHelper.SafeSleep(15000); 
+                    if (DateTime.Now.AddHours(Global.SessionRestartHours * -1) > SessionStart)
+                    {
+                        SessionStart = DateTime.Now;
+                        PlaylistProcessor.ProcessingPlaylistsFinished = false;
+                        StartMainProcess();
+                    }
+
+                    ThreadHelper.SafeSleep(15000);
                 }
             })
             { IsBackground = true };
@@ -181,6 +194,15 @@ namespace YTMusicUploader
         private void RunDebugCommands()
         {
             // Debugging code here
+        }
+
+        private void GCCollect()
+        {
+            try
+            {
+                GC.Collect();
+            }
+            catch { }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -486,6 +508,7 @@ namespace YTMusicUploader
             }
 
             IdleProcessor.Paused = false;
+            GCCollect();
         }
 
         private void YTMAuthenticationCheckWait()
