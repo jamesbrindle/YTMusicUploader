@@ -94,10 +94,8 @@ namespace YTMusicUploader.Providers
                             throw new Exception("Error: " + result);
                     }
                 }
-                catch (Exception e)
+                catch
                 {
-                    Logger.LogError("AddPlaylistItem", "Error adding to playlist: " + playlistId, false, originalRequest);
-                    ex = e;
                     return false;
                 }
 

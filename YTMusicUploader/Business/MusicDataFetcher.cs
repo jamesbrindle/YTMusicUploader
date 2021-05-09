@@ -196,50 +196,8 @@ namespace YTMusicUploader.Business
         /// <returns>MusicBrainz Recording object</returns>
         public Recording GetRecordingFromMusicBrainzWithAlbumNameVariation(string artist, string album, string track)
         {
-            if (!string.IsNullOrEmpty(artist) && !string.IsNullOrEmpty(track))
+            try
             {
-                if (!string.IsNullOrEmpty(album))
-                {
-                    try
-                    {
-                        album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
-                        album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
-                    }
-                    catch { }
-                }
-
-                if (track.Length > 2 && track.Substring(0, 2).IsNumeric())
-                {
-                    try
-                    {
-                        track = track.Substring(2).Trim();
-                        if (track.StartsWith("_") || track.StartsWith("-") || track.StartsWith("."))
-                            track = track.Substring(1).Trim();
-                    }
-                    catch { }
-                }
-
-                track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
-                return GetRecordingFromMusicBrainz(artist, album, track);
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Get the recording (track data) from MusicBrainz via query using the artist, album an track names from the music file meta data
-        /// This method also tries different variations of the album name
-        /// </summary>
-        /// <returns>MusicBrainz Recording object</returns>
-        public Recording GetRecordingFromMusicBrainzWithAlbumNameVariation(string path)
-        {
-            var data = GetMusicFileMetaData(path, out string _);
-            if (data != null)
-            {
-                string artist = data.Artist;
-                string album = data.Album;
-                string track = data.Track;
-
                 if (!string.IsNullOrEmpty(artist) && !string.IsNullOrEmpty(track))
                 {
                     if (!string.IsNullOrEmpty(album))
@@ -267,6 +225,56 @@ namespace YTMusicUploader.Business
                     return GetRecordingFromMusicBrainz(artist, album, track);
                 }
             }
+            catch { }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Get the recording (track data) from MusicBrainz via query using the artist, album an track names from the music file meta data
+        /// This method also tries different variations of the album name
+        /// </summary>
+        /// <returns>MusicBrainz Recording object</returns>
+        public Recording GetRecordingFromMusicBrainzWithAlbumNameVariation(string path)
+        {
+            try
+            {
+                var data = GetMusicFileMetaData(path, out string _);
+                if (data != null)
+                {
+                    string artist = data.Artist;
+                    string album = data.Album;
+                    string track = data.Track;
+
+                    if (!string.IsNullOrEmpty(artist) && !string.IsNullOrEmpty(track))
+                    {
+                        if (!string.IsNullOrEmpty(album))
+                        {
+                            try
+                            {
+                                album = album.Substring(album.IndexOf("-") + 1, album.Length - 1 - album.IndexOf("-")).Trim();
+                                album = Regex.Replace(album, @"(?<=\[)(.*?)(?=\])", "").Replace("[]", "").Replace("  ", " ").Trim();
+                            }
+                            catch { }
+                        }
+
+                        if (track.Length > 2 && track.Substring(0, 2).IsNumeric())
+                        {
+                            try
+                            {
+                                track = track.Substring(2).Trim();
+                                if (track.StartsWith("_") || track.StartsWith("-") || track.StartsWith("."))
+                                    track = track.Substring(1).Trim();
+                            }
+                            catch { }
+                        }
+
+                        track = Regex.Replace(track, @"(\d)+-(\d)+", "").Trim();
+                        return GetRecordingFromMusicBrainz(artist, album, track);
+                    }
+                }
+            }
+            catch { }
 
             return null;
         }
@@ -277,56 +285,60 @@ namespace YTMusicUploader.Business
         /// <returns>MusicBrainz Recording object</returns>
         public Recording GetRecordingFromMusicBrainz(string artist, string album, string track)
         {
-            while (IsLastRequestTooSoon())
-                ThreadHelper.SafeSleep(1100);
-
-            QueryParameters<Recording> query = null;
-            if (!string.IsNullOrEmpty(album))
+            try
             {
-                query = new QueryParameters<Recording>()
+                while (IsLastRequestTooSoon())
+                    ThreadHelper.SafeSleep(1100);
+
+                QueryParameters<Recording> query = null;
+                if (!string.IsNullOrEmpty(album))
+                {
+                    query = new QueryParameters<Recording>()
                     {
                         { "artist", artist },
                         { "release", album },
                         { "recording", track }
                     };
-            }
-            else
-            {
-                query = new QueryParameters<Recording>()
+                }
+                else
+                {
+                    query = new QueryParameters<Recording>()
                     {
                         { "artist", artist },
                         { "recording", track }
                     };
-            }
+                }
 
-            RecordingList recordings = null;
-            try
-            {
-                MusicBrainzLastRequest = DateTime.Now;
-                recordings = MusicBrainzClient.Recordings.SearchAsync(query).GetAwaiter().GetResult();
-            }
-            catch
-            {
-                ThreadHelper.SafeSleep(1100); // MusicBrains throttle handler
+                RecordingList recordings = null;
                 try
                 {
                     MusicBrainzLastRequest = DateTime.Now;
                     recordings = MusicBrainzClient.Recordings.SearchAsync(query).GetAwaiter().GetResult();
                 }
-                catch { }
-            }
+                catch
+                {
+                    ThreadHelper.SafeSleep(1100); // MusicBrains throttle handler
+                    try
+                    {
+                        MusicBrainzLastRequest = DateTime.Now;
+                        recordings = MusicBrainzClient.Recordings.SearchAsync(query).GetAwaiter().GetResult();
+                    }
+                    catch { }
+                }
 
-            if (recordings != null && recordings.Count > 0)
-            {
-                IEnumerable<Recording> matches = null;
-                if (!string.IsNullOrEmpty(album))
-                    matches = recordings.Items.Where(r => r.Title == track && r.Releases.Any(s => s.Title == album));
-                else
-                    matches = recordings.Items.Where(r => r.Title == track);
+                if (recordings != null && recordings.Count > 0)
+                {
+                    IEnumerable<Recording> matches = null;
+                    if (!string.IsNullOrEmpty(album))
+                        matches = recordings.Items.Where(r => r.Title == track && r.Releases.Any(s => s.Title == album));
+                    else
+                        matches = recordings.Items.Where(r => r.Title == track);
 
-                if (matches != null && matches.Count() > 0)
-                    return matches.OrderByDescending(r => r.Releases.Count).FirstOrDefault();
+                    if (matches != null && matches.Count() > 0)
+                        return matches.OrderByDescending(r => r.Releases.Count).FirstOrDefault();
+                }
             }
+            catch { }
 
             return null;
         }
@@ -337,24 +349,28 @@ namespace YTMusicUploader.Business
         /// <returns>MusicBrainz Recording object</returns>
         public Recording GetRecordingFromMusicBrainz(string mbId)
         {
-            while (IsLastRequestTooSoon())
-                ThreadHelper.SafeSleep(1100); // MusicBrains throttle handler
-
             try
             {
-                MusicBrainzLastRequest = DateTime.Now;
-                return MusicBrainzClient.Recordings.GetAsync(mbId).GetAwaiter().GetResult();
-            }
-            catch
-            {
-                ThreadHelper.SafeSleep(1100); // MusicBrains throttle handler
+                while (IsLastRequestTooSoon())
+                    ThreadHelper.SafeSleep(1100); // MusicBrains throttle handler
+
                 try
                 {
                     MusicBrainzLastRequest = DateTime.Now;
                     return MusicBrainzClient.Recordings.GetAsync(mbId).GetAwaiter().GetResult();
                 }
-                catch { }
+                catch
+                {
+                    ThreadHelper.SafeSleep(1100); // MusicBrains throttle handler
+                    try
+                    {
+                        MusicBrainzLastRequest = DateTime.Now;
+                        return MusicBrainzClient.Recordings.GetAsync(mbId).GetAwaiter().GetResult();
+                    }
+                    catch { }
+                }
             }
+            catch { }
 
             return null;
         }

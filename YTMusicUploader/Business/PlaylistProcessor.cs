@@ -121,7 +121,7 @@ namespace YTMusicUploader.Business
                                     updatedPlaylistFile.PlaylistItems != null &&
                                     updatedPlaylistFile.PlaylistItems.Count > 0)
                                 {
-                                    updatedPlaylistFile.PlaylistItems.AsParallel().ForAllInApproximateOrder(playlistItem =>
+                                    foreach (var playlistItem in updatedPlaylistFile.PlaylistItems)
                                     {
                                         while (MainForm.Paused)
                                             ThreadHelper.SafeSleep(500);
@@ -131,24 +131,46 @@ namespace YTMusicUploader.Business
 
                                         // We can only create or update a playlist if we have the YT Music video (entity) ID
                                         MusicFile musicFile = null;
-
-                                        try
-                                        {
-                                            musicFile = MainForm.MusicFileRepo.LoadFromPath(playlistItem.Path).Result;
-                                        }
-                                        catch (Exception e)
-                                        {
-                                            Logger.LogError("TS1: Playlist Processor - Load MusicFile from Path " + playlistItem.Path, e.Message, false, e.StackTrace);
-                                            throw;
-                                        }
+                                        musicFile = MainForm.MusicFileRepo.LoadFromPath(playlistItem.Path).Result;
 
                                         if (string.IsNullOrEmpty(musicFile.VideoId))
                                         {
                                             string entityId = string.Empty;
                                             ConnectionCheckWait();
 
-                                            try
+                                            if (Requests.IsSongUploaded(musicFile.Path,
+                                                                        MainForm.Settings.AuthenticationCookie,
+                                                                        ref entityId,
+                                                                        out string videoId,
+                                                                        MainForm.MusicDataFetcher,
+                                                                        false) != Requests.UploadCheckResult.NotPresent)
                                             {
+                                                musicFile.VideoId = videoId;
+                                                musicFile.Save().Wait();
+                                            }
+                                        }
+
+                                        if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
+                                        {
+
+                                            var playlistToAdd = playlistItem;
+                                            playlistItem.VideoId = musicFile.VideoId;
+                                            playlistFile.PlaylistItems.Add(playlistToAdd);
+                                        }
+                                        else
+                                        {
+                                            // Check the file hash instead, in case the playlist file path is somehow different
+                                            // to the watch folder file path (i.e. network folder locations or symbolics links)
+
+                                            string hash = string.Empty;
+                                            hash = DirectoryHelper.GetFileHash(playlistItem.Path).Result;
+                                            musicFile = MainForm.MusicFileRepo.LoadFromHash(hash).Result;
+
+                                            if (string.IsNullOrEmpty(musicFile.VideoId))
+                                            {
+                                                string entityId = string.Empty;
+                                                ConnectionCheckWait();
+
                                                 if (Requests.IsSongUploaded(musicFile.Path,
                                                                             MainForm.Settings.AuthenticationCookie,
                                                                             ref entityId,
@@ -160,95 +182,15 @@ namespace YTMusicUploader.Business
                                                     musicFile.Save().Wait();
                                                 }
                                             }
-                                            catch (Exception e)
-                                            {
-                                                Logger.LogError("TS2: Playlist Processor - Requests.IsSongUploaded", e.Message, false, e.StackTrace);
-                                                throw;
-                                            }
-                                        }
 
-                                        if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
-                                        {
-                                            try
+                                            if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
                                             {
                                                 var playlistToAdd = playlistItem;
                                                 playlistItem.VideoId = musicFile.VideoId;
                                                 playlistFile.PlaylistItems.Add(playlistToAdd);
                                             }
-                                            catch (Exception e)
-                                            {
-                                                Logger.LogError("TS3: Playlist Processor - playlistFile.PlaylistItems.Add", e.Message, false, e.StackTrace);
-                                                throw;
-                                            }
                                         }
-                                        else
-                                        {
-                                            // Check the file hash instead, in case the playlist file path is somehow different
-                                            // to the watch folder file path (i.e. network folder locations or symbolics links)
-
-                                            string hash = string.Empty;
-
-                                            try
-                                            {
-                                                hash = DirectoryHelper.GetFileHash(playlistItem.Path).Result;
-                                            }
-                                            catch (Exception e)
-                                            {
-                                                Logger.LogError("TS4: Playlist Processor - DirectoryHelper.GetFileHash " + playlistItem.Path, e.Message, false, e.StackTrace);
-                                            }
-
-                                            try
-                                            {
-                                                musicFile = MainForm.MusicFileRepo.LoadFromHash(hash).Result;
-                                            }
-                                            catch (Exception e)
-                                            {
-                                                Logger.LogError("TS5: Playlist Processor - MusicFileRepo.LoadFromHash", e.Message, false, e.StackTrace);
-                                                throw;
-                                            }
-
-                                            try
-                                            {
-                                                if (string.IsNullOrEmpty(musicFile.VideoId))
-                                                {
-                                                    string entityId = string.Empty;
-                                                    ConnectionCheckWait();
-
-                                                    if (Requests.IsSongUploaded(musicFile.Path,
-                                                                                MainForm.Settings.AuthenticationCookie,
-                                                                                ref entityId,
-                                                                                out string videoId,
-                                                                                MainForm.MusicDataFetcher,
-                                                                                false) != Requests.UploadCheckResult.NotPresent)
-                                                    {
-                                                        musicFile.VideoId = videoId;
-                                                        musicFile.Save().Wait();
-                                                    }
-                                                }
-                                            }
-                                            catch (Exception e)
-                                            {
-                                                Logger.LogError("TS6: Playlist Processor - Requests.IsSongUploaded", e.Message, false, e.StackTrace);
-                                                throw;
-                                            }
-
-                                            try
-                                            {
-                                                if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
-                                                {
-                                                    var playlistToAdd = playlistItem;
-                                                    playlistItem.VideoId = musicFile.VideoId;
-                                                    playlistFile.PlaylistItems.Add(playlistToAdd);
-                                                }
-                                            }
-                                            catch (Exception e)
-                                            {
-                                                Logger.LogError("TS7: Playlist Processor - PlaylistItems.Add", e.Message, false, e.StackTrace);
-                                                throw;
-                                            }
-                                        }
-
-                                    }, Global.MaxDegreesOfParallelism);
+                                    }
                                 }
 
                                 if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
@@ -326,7 +268,7 @@ namespace YTMusicUploader.Business
                             ProcessingPlaylistsFinished = true;
 
                         index++;
-                    }                   
+                    }
                 }
             }
             catch (Exception e)
