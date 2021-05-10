@@ -85,7 +85,6 @@ namespace YTMusicUploader
 
         private bool StartHidden = false;
 
-
         //
         // MusicBrainz Access
         //
@@ -241,39 +240,43 @@ namespace YTMusicUploader
         {
             try
             {
-                FileSystemFolderWatchers.Clear();
+                FileSystemFolderWatchers.Clear();                
                 foreach (var watchFolder in WatchFolders)
                 {
-                    try
+                    for (int i = 0; i < 3; i++)
                     {
-                        FileSystemFolderWatchers.Add(new FileSystemWatcher
+                        try
                         {
-                            Path = watchFolder.Path,
-                            NotifyFilter = NotifyFilters.CreationTime |
-                                           NotifyFilters.DirectoryName |
-                                           NotifyFilters.Size |
-                                           NotifyFilters.Attributes |
-                                           NotifyFilters.FileName |
-                                           NotifyFilters.LastWrite |
-                                           NotifyFilters.Size,
-                            Filter = "*.*",
-                            EnableRaisingEvents = true,
-                            IncludeSubdirectories = true
-                        });
+                            FileSystemFolderWatchers.Add(new FileSystemWatcher
+                            {
+                                Path = watchFolder.Path,
+                                NotifyFilter = NotifyFilters.CreationTime |
+                                               NotifyFilters.DirectoryName |
+                                               NotifyFilters.Size |
+                                               NotifyFilters.Attributes |
+                                               NotifyFilters.FileName |
+                                               NotifyFilters.LastWrite |
+                                               NotifyFilters.Size,
+                                Filter = "*.*",
+                                EnableRaisingEvents = true,
+                                IncludeSubdirectories = true,
+                                InternalBufferSize = 24000
+                            });
 
-                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                            .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                                .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
 
-                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                            .Renamed += new RenamedEventHandler(FolderWatcher_OnRenamed);
+                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                                .Renamed += new RenamedEventHandler(FolderWatcher_OnRenamed);
 
-                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                            .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                                .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
 
-                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                            .Deleted += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                                .Deleted += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                        }
+                        catch { }
                     }
-                    catch { }
                 }
 
                 await Task.Run(() => { });

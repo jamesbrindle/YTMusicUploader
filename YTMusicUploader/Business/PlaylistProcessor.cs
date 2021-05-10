@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 using static YTMusicUploader.Providers.RequestModels.ArtistCache;
@@ -328,15 +329,14 @@ namespace YTMusicUploader.Business
                     }
                 }
 
+                int index = 1;
                 foreach (var playlistItem in playlistFile.PlaylistItems)
                 {
-                    int index = 1;
-
                     ConnectionCheckWait();
                     if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
                         return;
 
-                    SetStatus($"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}: Adding track to existing {index}/{playlistFile.PlaylistItems}",
+                    SetStatus($"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}: Adding track to existing {index}/{playlistFile.PlaylistItems.Count}",
                               $"Processing playlist file {currentPlaylistIndex}/{totalPlaylists}");
 
                     while (MainForm.Paused)
