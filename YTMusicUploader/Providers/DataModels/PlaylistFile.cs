@@ -16,12 +16,12 @@ namespace YTMusicUploader.Providers.DataModels
             LastModifiedDate = lastModifiedDate;
         }
 
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string PlaylistId { get; set; }
-        public string Path { get; set; }
-        public DateTime LastModifiedDate { get; set; }
-        public DateTime? LastUpload { get; set; }
+        public string Title { get; set; } = null;
+        public string Description { get; set; } = null;
+        public string PlaylistId { get; set; } = null;
+        public string Path { get; set; } = null;
+        public DateTime? LastModifiedDate { get; set; } = null;
+        public DateTime? LastUpload { get; set; } = null;
         public List<PlaylistFileItem> PlaylistItems { get; set; } = new List<PlaylistFileItem>();
 
         public async override Task<DbOperationResult> Delete()

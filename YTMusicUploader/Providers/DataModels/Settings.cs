@@ -16,7 +16,7 @@ namespace YTMusicUploader.Providers.DataModels
         public bool SendLogsToSource { get; set; } = true;
         public bool UploadPlaylists { get; set; } = true;
         public DateTime? LastPlaylistUpload { get; set; } = null;
-        public int? CurrentSessionPlaylistUploadCount { get; set; } = null;
+        public int? CurrentSessionPlaylistUploadCount { get; set; } = 0;
 
         /// <summary>
         /// Updates the database

@@ -24,78 +24,88 @@ namespace YTMusicUploader.Providers.Playlist
         public static PlaylistFile ReadPlaylistFile(string path)
         {
             var playlistFile = new PlaylistFile();
-            string playlistExtension = Path.GetExtension(path).ToLower();
 
-            var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            using (var sr = new StreamReader(fs))
+            try
             {
-                switch (playlistExtension)
+                string playlistExtension = Path.GetExtension(path).ToLower();
+                var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+                using (var sr = new StreamReader(fs))
                 {
-                    case ".wpl":
-                        var content_wpl = new WplContent();
-                        var playlist_wpl = content_wpl.GetFromStream(sr.BaseStream);
-                        playlistFile.Title = playlist_wpl.Title.Trim();
-                        break;
-                    case ".zpl":
-                        var content_zpl = new ZplContent();
-                        var playlist_zpl = content_zpl.GetFromStream(sr.BaseStream);
-                        playlistFile.Title = playlist_zpl.Title.Trim();
-                        break;
-                    default:
-                        playlistFile.Title = Path.GetFileNameWithoutExtension(path).Trim();
-                        break;
-                }
-
-                if (string.IsNullOrEmpty(playlistFile.Title))
-                    playlistFile.Title = Path.GetFileNameWithoutExtension(path).Trim();
-
-                sr.BaseStream.Position = 0;
-                var parser = PlaylistParserFactory.GetPlaylistParser(playlistExtension);
-
-                if (sr.BaseStream.Length == 0) // empty playlist
-                    throw new ApplicationException("Empty Playlist");
-
-                var playlist = parser.GetFromStream(sr.BaseStream);
-                var paths = playlist.GetTracksPaths();
-
-                if ((paths == null || paths.Count == 0) && playlistExtension.In(".m3u", ".m3u8"))
-                    paths = M3uPlaylist.GetPlaylistFromCorruptM3u(path);
-
-                playlistFile.Path = path;
-                playlistFile.LastModifiedDate = new FileInfo(path).LastWriteTime;
-
-                var musicFileRepo = new MusicFileRepo();
-
-                foreach (string musicFilePath in paths)
-                {
-                    try
+                    switch (playlistExtension)
                     {
-                        string absolutePath = Utils.IsAbsolutePath(musicFilePath)
-                           ? musicFilePath
-                           : Utils.MakeAbsolutePath(Path.GetDirectoryName(path), musicFilePath);
+                        case ".wpl":
+                            var content_wpl = new WplContent();
+                            var playlist_wpl = content_wpl.GetFromStream(sr.BaseStream);
+                            playlistFile.Title = playlist_wpl.Title.Trim();
+                            break;
+                        case ".zpl":
+                            var content_zpl = new ZplContent();
+                            var playlist_zpl = content_zpl.GetFromStream(sr.BaseStream);
+                            playlistFile.Title = playlist_zpl.Title.Trim();
+                            break;
+                        default:
+                            playlistFile.Title = Path.GetFileNameWithoutExtension(path).Trim();
+                            break;
+                    }
 
-                        if (absolutePath.StartsWith("file://"))
-                            absolutePath = new Uri(absolutePath).LocalPath;
+                    if (string.IsNullOrEmpty(playlistFile.Title))
+                        playlistFile.Title = Path.GetFileNameWithoutExtension(path).Trim();
 
-                        if (Path.GetExtension(absolutePath).ToLower().In(Global.SupportedMusicFiles) &&
-                            File.Exists(absolutePath))
+                    sr.BaseStream.Position = 0;
+                    var parser = PlaylistParserFactory.GetPlaylistParser(playlistExtension);
+
+                    if (sr.BaseStream.Length == 0) // empty playlist
+                        throw new ApplicationException("Empty Playlist");
+
+                    var playlist = parser.GetFromStream(sr.BaseStream);
+                    var paths = playlist.GetTracksPaths();
+
+                    if ((paths == null || paths.Count == 0) && playlistExtension.In(".m3u", ".m3u8"))
+                        paths = M3uPlaylist.GetPlaylistFromCorruptM3u(path);
+
+                    playlistFile.Path = path;
+                    playlistFile.LastModifiedDate = new FileInfo(path).LastWriteTime;
+
+                    var musicFileRepo = new MusicFileRepo();
+
+                    foreach (string musicFilePath in paths)
+                    {
+                        try
                         {
-                            playlistFile.PlaylistItems.Add(new PlaylistFile.PlaylistFileItem
+                            string absolutePath = Utils.IsAbsolutePath(musicFilePath)
+                               ? musicFilePath
+                               : Utils.MakeAbsolutePath(Path.GetDirectoryName(path), musicFilePath);
+
+                            if (absolutePath.StartsWith("file://"))
+                                absolutePath = new Uri(absolutePath).LocalPath;
+
+                            if (Path.GetExtension(absolutePath).ToLower().In(Global.SupportedMusicFiles) &&
+                                File.Exists(absolutePath))
                             {
-                                Path = absolutePath
-                            });
+                                playlistFile.PlaylistItems.Add(new PlaylistFile.PlaylistFileItem
+                                {
+                                    Path = absolutePath
+                                });
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            // Invalid path - Ignore - Don't add
+                            var _ = e;
+                            Logger.LogWarning(
+                                "ReadPlaylistFile",
+                                "Invalid path detected in playlist file and will be ignored: " + path,
+                                true);
                         }
                     }
-                    catch(Exception e)
-                    {
-                        // Invalid path - Ignore - Don't add
-                        var _ = e;
-                        Logger.LogWarning(
-                            "ReadPlaylistFile", 
-                            "Invalid path detected in playlist file and will be ignored: " + path, 
-                            true); 
-                    }
                 }
+            }
+            catch(Exception e)
+            {
+                Logger.LogError(
+                             "ReadPlaylistFile",
+                             "Error reading playlist file: " + path + ": " + e.Message,
+                             false);
             }
 
             return playlistFile;

@@ -19,8 +19,8 @@ namespace YTMusicUploader.Business
     public class PlaylistProcessor
     {
         private MainForm MainForm { get; set; }
-        public List<PlaylistFile> PlaylistFiles { get; set; }
-        public OnlinePlaylistCollection OnlinePlaylists { get; set; }
+        public List<PlaylistFile> PlaylistFiles { get; set; } = null;
+        public OnlinePlaylistCollection OnlinePlaylists { get; set; } = null;
         public bool Stopped { get; set; } = true;
         public bool ProcessingPlaylistsFinished { get; set; } = false;
 
@@ -102,15 +102,30 @@ namespace YTMusicUploader.Business
                                     return;
 
                                 if (!string.IsNullOrEmpty(playlistFile.PlaylistId) && MatchOnlinePlaylist(playlistFile.PlaylistId, true) != null)
-                                    onlinePlaylist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistFile.PlaylistId);
+                                {
+                                    try
+                                    {
+                                        onlinePlaylist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, playlistFile.PlaylistId);
+                                    }
+                                    catch { }
+                                }
                                 else
                                 {
-                                    onlinePlaylist = MatchOnlinePlaylist(playlistFile.Title, false);
-                                    if (onlinePlaylist != null)
+                                    try
+                                    {
+                                        onlinePlaylist = MatchOnlinePlaylist(playlistFile.Title, false);
+                                    }
+                                    catch { }
+
+                                    if (onlinePlaylist != null && onlinePlaylist.BrowseId != null)
                                     {
                                         // Get full playlist details
-                                        onlinePlaylist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, onlinePlaylist.BrowseId);
-                                        playlistFile.PlaylistId = onlinePlaylist.BrowseId;
+                                        try
+                                        {
+                                            onlinePlaylist = Requests.Playlists.GetPlaylist(MainForm.Settings.AuthenticationCookie, onlinePlaylist.BrowseId);
+                                            playlistFile.PlaylistId = onlinePlaylist.BrowseId;
+                                        }
+                                        catch { }
                                     }
                                 }
 
@@ -121,7 +136,7 @@ namespace YTMusicUploader.Business
                                     updatedPlaylistFile.PlaylistItems != null &&
                                     updatedPlaylistFile.PlaylistItems.Count > 0)
                                 {
-                                    foreach (var playlistItem in updatedPlaylistFile.PlaylistItems)
+                                    updatedPlaylistFile.PlaylistItems.AsParallel().ForAllInApproximateOrder(playlistItem =>
                                     {
                                         while (MainForm.Paused)
                                             ThreadHelper.SafeSleep(500);
@@ -133,7 +148,7 @@ namespace YTMusicUploader.Business
                                         MusicFile musicFile = null;
                                         musicFile = MainForm.MusicFileRepo.LoadFromPath(playlistItem.Path).Result;
 
-                                        if (string.IsNullOrEmpty(musicFile.VideoId))
+                                        if (musicFile != null && string.IsNullOrEmpty(musicFile.VideoId))
                                         {
                                             string entityId = string.Empty;
                                             ConnectionCheckWait();
@@ -152,7 +167,6 @@ namespace YTMusicUploader.Business
 
                                         if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
                                         {
-
                                             var playlistToAdd = playlistItem;
                                             playlistItem.VideoId = musicFile.VideoId;
                                             playlistFile.PlaylistItems.Add(playlistToAdd);
@@ -162,35 +176,36 @@ namespace YTMusicUploader.Business
                                             // Check the file hash instead, in case the playlist file path is somehow different
                                             // to the watch folder file path (i.e. network folder locations or symbolics links)
 
-                                            string hash = string.Empty;
-                                            hash = DirectoryHelper.GetFileHash(playlistItem.Path).Result;
-                                            musicFile = MainForm.MusicFileRepo.LoadFromHash(hash).Result;
-
-                                            if (string.IsNullOrEmpty(musicFile.VideoId))
+                                            string hash = DirectoryHelper.GetFileHash(playlistItem.Path).Result;
+                                            if (hash != null)
                                             {
-                                                string entityId = string.Empty;
-                                                ConnectionCheckWait();
-
-                                                if (Requests.IsSongUploaded(musicFile.Path,
-                                                                            MainForm.Settings.AuthenticationCookie,
-                                                                            ref entityId,
-                                                                            out string videoId,
-                                                                            MainForm.MusicDataFetcher,
-                                                                            false) != Requests.UploadCheckResult.NotPresent)
+                                                musicFile = MainForm.MusicFileRepo.LoadFromHash(hash).Result;
+                                                if (musicFile != null && string.IsNullOrEmpty(musicFile.VideoId))
                                                 {
-                                                    musicFile.VideoId = videoId;
-                                                    musicFile.Save().Wait();
+                                                    string entityId = string.Empty;
+                                                    ConnectionCheckWait();
+
+                                                    if (Requests.IsSongUploaded(musicFile.Path,
+                                                                                MainForm.Settings.AuthenticationCookie,
+                                                                                ref entityId,
+                                                                                out string videoId,
+                                                                                MainForm.MusicDataFetcher,
+                                                                                false) != Requests.UploadCheckResult.NotPresent)
+                                                    {
+                                                        musicFile.VideoId = videoId;
+                                                        musicFile.Save().Wait();
+                                                    }
+                                                }
+
+                                                if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
+                                                {
+                                                    var playlistToAdd = playlistItem;
+                                                    playlistItem.VideoId = musicFile.VideoId;
+                                                    playlistFile.PlaylistItems.Add(playlistToAdd);
                                                 }
                                             }
-
-                                            if (musicFile != null && !string.IsNullOrEmpty(musicFile.VideoId))
-                                            {
-                                                var playlistToAdd = playlistItem;
-                                                playlistItem.VideoId = musicFile.VideoId;
-                                                playlistFile.PlaylistItems.Add(playlistToAdd);
-                                            }
                                         }
-                                    }
+                                    }, Global.MaxDegreesOfParallelism);
                                 }
 
                                 if (MainFormAborting() || !MainForm.Settings.UploadPlaylists)
@@ -207,7 +222,8 @@ namespace YTMusicUploader.Business
                                 }
                                 else
                                 {
-                                    if (MainForm.Settings.CurrentSessionPlaylistUploadCount <= Global.MaxNewPlaylistsPerSession)
+                                    int currentSessionPlaylistUploadCount = MainForm.Settings.CurrentSessionPlaylistUploadCount ?? 0;
+                                    if (currentSessionPlaylistUploadCount <= Global.MaxNewPlaylistsPerSession)
                                     {
                                         HandleOnlinePlaylistNeedsCreating(
                                             playlistFile,
@@ -237,10 +253,7 @@ namespace YTMusicUploader.Business
                                 else if (e.Message.Contains("Could not find the file"))
                                 {
                                     // Ignore -It's probably been moved / deleted
-
-                                    playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
-                                    playlistFile.LastUpload = playlistFile.LastModifiedDate;
-                                    playlistFile.Save().Wait();
+                                    playlistFile.Delete().Wait();
                                 }
                                 else
                                     Logger.Log(e, $"PlaylistProcessor - Error processing playlist: {playlistFile.Title}");
@@ -383,7 +396,11 @@ namespace YTMusicUploader.Business
             playlistFile.Save().Wait();
         }
 
-        private void HandleOnlinePlaylistNeedsCreating(PlaylistFile playlistFile, int currentPlaylistIndex, int totalPlaylists, out bool limitReached)
+        private void HandleOnlinePlaylistNeedsCreating(
+            PlaylistFile playlistFile,
+            int currentPlaylistIndex, 
+            int totalPlaylists, 
+            out bool limitReached)
         {
             limitReached = false;
 
@@ -548,7 +565,7 @@ namespace YTMusicUploader.Business
         }
         private static string GetProcessingPlaylistTootipText(PlaylistFile playlistFile)
         {
-            if (string.IsNullOrEmpty(playlistFile.Title) && playlistFile.PlaylistItems.Count == 0)
+            if (string.IsNullOrEmpty(playlistFile.Title) && playlistFile.PlaylistItems != null && playlistFile.PlaylistItems.Count == 0)
                 return "Processing";
             else
             {
