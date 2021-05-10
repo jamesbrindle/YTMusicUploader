@@ -11,6 +11,15 @@ Automatically upload your local personal music library to YouTube Music and bulk
 &nbsp;
 &nbsp;
 
+&nbsp;
+&nbsp;
+
+
+<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+&nbsp;
+&nbsp;
+
 ### Application
 
 This is a .Net application written in C# that uploads your personal music library to YouTube. It has a minimalistic UI for basic settings such as:
@@ -186,4 +195,6 @@ I'm going to be using this application for personal use, so I'll know straight a
 - [tmk907](https://github.com/tmk907) - Who created a very good, easy to use, multi-type playlist reader. [tmk907: Github](https://github.com/tmk907/PlaylistsNET).
 
 
+&nbsp;
 
+<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
