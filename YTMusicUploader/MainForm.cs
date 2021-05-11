@@ -18,6 +18,7 @@ using System.Windows.Forms;
 using YTMusicUploader.AssemblyHelper;
 using YTMusicUploader.Business;
 using YTMusicUploader.Dialogues;
+using YTMusicUploader.Helpers;
 using YTMusicUploader.Providers;
 using YTMusicUploader.Providers.DataModels;
 using YTMusicUploader.Providers.Repos;
@@ -75,7 +76,7 @@ namespace YTMusicUploader
         public bool ConnectedToYTMusic { get; set; } = false;
         public System.Windows.Forms.Timer ThrottleTextChangedTimer { get; set; }
         public int InitialFilesCount { get; set; } = 0;
-        private List<FileSystemWatcher> FileSystemFolderWatchers { get; set; } = new List<FileSystemWatcher>();
+        private List<FileSystemWatcherPoller> FileSystemFolderWatchers { get; set; } = new List<FileSystemWatcherPoller>();
         private DateTime? LastFolderChangeTime { get; set; }
         public bool InstallingEdge { get; set; }
         public bool Aborting { get; set; } = false;
@@ -240,43 +241,45 @@ namespace YTMusicUploader
         {
             try
             {
-                FileSystemFolderWatchers.Clear();                
+                FileSystemFolderWatchers.Clear();
                 foreach (var watchFolder in WatchFolders)
                 {
-                    for (int i = 0; i < 3; i++)
+                    try
                     {
-                        try
+                        FileSystemFolderWatchers.Add(new FileSystemWatcherPoller
                         {
-                            FileSystemFolderWatchers.Add(new FileSystemWatcher
-                            {
-                                Path = watchFolder.Path,
-                                NotifyFilter = NotifyFilters.CreationTime |
-                                               NotifyFilters.DirectoryName |
-                                               NotifyFilters.Size |
-                                               NotifyFilters.Attributes |
-                                               NotifyFilters.FileName |
-                                               NotifyFilters.LastWrite |
-                                               NotifyFilters.Size,
-                                Filter = "*.*",
-                                EnableRaisingEvents = true,
-                                IncludeSubdirectories = true,
-                                InternalBufferSize = 24000
-                            });
+                            Path = watchFolder.Path,
+                            NotifyFilter = NotifyFilters.CreationTime |
+                                           NotifyFilters.DirectoryName |
+                                           NotifyFilters.Size |
+                                           NotifyFilters.Attributes |
+                                           NotifyFilters.FileName |
+                                           NotifyFilters.LastWrite |
+                                           NotifyFilters.Size,
+                            Filter = "*.*",
+                            IncludeSubdirectories = true,
+                            InternalBufferSize = 24000,
+                            PollFrequency = 3600000 // 1 Hour
+                        });
 
-                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                                .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Changed += new FileSystemEventHandler(FolderWatcher_OnChanged);
 
-                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                                .Renamed += new RenamedEventHandler(FolderWatcher_OnRenamed);
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Renamed += new RenamedEventHandler(FolderWatcher_OnRenamed);
 
-                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                                .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Created += new FileSystemEventHandler(FolderWatcher_OnChanged);
 
-                            FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
-                                .Deleted += new FileSystemEventHandler(FolderWatcher_OnChanged);
-                        }
-                        catch { }
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .Deleted += new FileSystemEventHandler(FolderWatcher_OnChanged);
+
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1]
+                            .OnPollDiscoveredChange += new FileSystemWatcherPoller.PollDiscoveredChangeHander(FolderWatcher_OnPollDiscoveredChange);
+
+                        FileSystemFolderWatchers[FileSystemFolderWatchers.Count - 1].Start();
                     }
+                    catch { }
                 }
 
                 await Task.Run(() => { });

@@ -357,6 +357,9 @@
     <Compile Include="Helpers\FastFileSearcher.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Business\MusicDataFetcher.cs" />
+    <Compile Include="Helpers\FileSystemWatcherPoller.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Helpers\FuzzyLogic.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\InstalledApplicationHelper.cs" />

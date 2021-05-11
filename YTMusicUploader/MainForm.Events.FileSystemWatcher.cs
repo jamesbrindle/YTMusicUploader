@@ -2,21 +2,41 @@
 using System;
 using System.IO;
 using System.Threading;
+using static YTMusicUploader.Helpers.FileSystemWatcherPoller;
 
 namespace YTMusicUploader
 {
     public partial class MainForm
     {
+        private void FolderWatcher_OnPollDiscoveredChange(object source, PollDiscoveredChangeArgs e)
+        {
+            try
+            {
+                if (LastFolderChangeTime == null)
+                {
+                    PausePolling();
+                    Logger.LogInfo("FolderWatcher_OnPollDiscoveredChange", "Library file change detected: Starting scan process");
+
+                    LastFolderChangeTime = DateTime.Now;
+                    FlagStartQueue();
+                }
+
+                LastFolderChangeTime = DateTime.Now;
+            }
+            catch { }
+        }
+
         private void FolderWatcher_OnChanged(object source, FileSystemEventArgs e)
         {
             try
             {
                 if (LastFolderChangeTime == null)
                 {
+                    PausePolling();
                     Logger.LogInfo("FolderWatcher_OnChanged", "Library file change detected: Starting scan process");
 
                     LastFolderChangeTime = DateTime.Now;
-                    FlagStartQueue();
+                    FlagStartQueue();            
                 }
 
                 LastFolderChangeTime = DateTime.Now;
@@ -30,6 +50,7 @@ namespace YTMusicUploader
             {
                 if (LastFolderChangeTime == null)
                 {
+                    PausePolling();
                     Logger.LogInfo("FolderWatcher_OnRenamed", "Library file change detected: Starting scan process");
 
                     LastFolderChangeTime = DateTime.Now;
@@ -53,9 +74,22 @@ namespace YTMusicUploader
                     LastFolderChangeTime = null;
                     FileScanner.RecountLibraryFiles();
                     QueueChecker.Queue = true;
+                    ResumePolling();
                 });
             }
             catch { }
+        }
+
+        private void PausePolling()
+        {
+            foreach (var watcher in FileSystemFolderWatchers)
+                watcher.Stop();
+        }
+
+        private void ResumePolling()
+        {
+            foreach (var watcher in FileSystemFolderWatchers)
+                watcher.Start();
         }
     }
 }
