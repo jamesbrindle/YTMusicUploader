@@ -99,7 +99,7 @@ Collaboration diagram for YTMusicUploader.Business.PlaylistProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/dbf/class_y_t_music_uploader_1_1_business_1_1_playlist_processor__coll__graph.png" border="0" usemap="#_y_t_music_uploader_8_business_8_playlist_processor_coll__map" alt="Collaboration graph"/></div>
 <map name="_y_t_music_uploader_8_business_8_playlist_processor_coll__map" id="_y_t_music_uploader_8_business_8_playlist_processor_coll__map">
-<area shape="rect" title="Responsible for scanning library playlist files and either creating them on YT Music or adding to the..." alt="" coords="5,5,192,156"/>
+<area shape="rect" title="Responsible for scanning library playlist files and either creating them on YT Music or adding to the..." alt="" coords="5,5,204,171"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -113,12 +113,14 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a28b6bf82ad528ac182ddcd0031f770fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d34/class_list.html">List</a>&lt; <a class="el" href="../../de/df4/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file.html">PlaylistFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a28b6bf82ad528ac182ddcd0031f770fa">PlaylistFiles</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a28b6bf82ad528ac182ddcd0031f770fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d34/class_list.html">List</a>&lt; <a class="el" href="../../de/df4/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file.html">PlaylistFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a28b6bf82ad528ac182ddcd0031f770fa">PlaylistFiles</a> = null<code> [get, set]</code></td></tr>
 <tr class="separator:a28b6bf82ad528ac182ddcd0031f770fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65b7b73bdeba4e11a3f8ab305df2a5a1"><td class="memItemLeft" align="right" valign="top">OnlinePlaylistCollection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a65b7b73bdeba4e11a3f8ab305df2a5a1">OnlinePlaylists</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a65b7b73bdeba4e11a3f8ab305df2a5a1"><td class="memItemLeft" align="right" valign="top">OnlinePlaylistCollection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a65b7b73bdeba4e11a3f8ab305df2a5a1">OnlinePlaylists</a> = null<code> [get, set]</code></td></tr>
 <tr class="separator:a65b7b73bdeba4e11a3f8ab305df2a5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a40b5e2d0d2ae56bf2edf257fe44d50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a6a40b5e2d0d2ae56bf2edf257fe44d50">Stopped</a> = true<code> [get, set]</code></td></tr>
 <tr class="separator:a6a40b5e2d0d2ae56bf2edf257fe44d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cbb26016e2ce365024c8e1bc27fb0af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d9d/class_y_t_music_uploader_1_1_business_1_1_playlist_processor.html#a8cbb26016e2ce365024c8e1bc27fb0af">ProcessingPlaylistsFinished</a> = false<code> [get, set]</code></td></tr>
+<tr class="separator:a8cbb26016e2ce365024c8e1bc27fb0af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Responsible for scanning library playlist files and either creating them on YT Music or adding to them on YT Music </p>
@@ -189,7 +191,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">OnlinePlaylistCollection YTMusicUploader.Business.PlaylistProcessor.OnlinePlaylists</td>
+          <td class="memname">OnlinePlaylistCollection YTMusicUploader.Business.PlaylistProcessor.OnlinePlaylists = null</td>
         </tr>
       </table>
   </td>
@@ -211,7 +213,29 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d34/class_list.html">List</a>&lt;<a class="el" href="../../de/df4/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file.html">PlaylistFile</a>&gt; YTMusicUploader.Business.PlaylistProcessor.PlaylistFiles</td>
+          <td class="memname"><a class="el" href="../../d1/d34/class_list.html">List</a>&lt;<a class="el" href="../../de/df4/class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file.html">PlaylistFile</a>&gt; YTMusicUploader.Business.PlaylistProcessor.PlaylistFiles = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8cbb26016e2ce365024c8e1bc27fb0af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cbb26016e2ce365024c8e1bc27fb0af">&#9670;&nbsp;</a></span>ProcessingPlaylistsFinished</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool YTMusicUploader.Business.PlaylistProcessor.ProcessingPlaylistsFinished = false</td>
         </tr>
       </table>
   </td>

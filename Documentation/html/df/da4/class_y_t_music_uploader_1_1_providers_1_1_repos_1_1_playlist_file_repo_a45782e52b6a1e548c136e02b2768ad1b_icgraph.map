@@ -1,9 +1,7 @@
 <map id="YTMusicUploader.Providers.Repos.PlaylistFileRepo.LoadAll" name="YTMusicUploader.Providers.Repos.PlaylistFileRepo.LoadAll">
-<area shape="rect" id="node1" title="Load all playlist file entries from the database" alt="" coords="1325,39,1529,80"/>
-<area shape="rect" id="node2" href="$d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html#a145a82930bd448280ac095cbe997f675" title="Checks if the database is OK" alt="" coords="1027,31,1277,87"/>
-<area shape="rect" id="node3" href="$d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html#a02b7f55de50468640be2624a4a29c8ef" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="729,31,979,87"/>
-<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a2cc4c1d974056091b535e82ee14cf3ae" title=" " alt="" coords="491,39,681,80"/>
-<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="252,5,443,47"/>
-<area shape="rect" id="node6" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad49bcebfe92cf336cecefee2c73a1883" title=" " alt="" coords="252,71,443,112"/>
-<area shape="rect" id="node7" href="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,71,204,112"/>
+<area shape="rect" id="node1" title="Load all playlist file entries from the database" alt="" coords="1079,13,1283,54"/>
+<area shape="rect" id="node2" href="$d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html#a145a82930bd448280ac095cbe997f675" title="Checks if the database is OK" alt="" coords="780,5,1031,61"/>
+<area shape="rect" id="node3" href="$d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html#a02b7f55de50468640be2624a4a29c8ef" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="483,5,732,61"/>
+<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a2cc4c1d974056091b535e82ee14cf3ae" title=" " alt="" coords="244,13,435,54"/>
+<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="5,13,196,54"/>
 </map>

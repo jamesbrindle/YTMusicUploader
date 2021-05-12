@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "klmnpu",
   7: "acdefghilmnopqrstuvwxz",
   8: "_abcdefghijklmnopqrstuvwy",
-  9: "fr",
+  9: "for",
   10: "y"
 };
 

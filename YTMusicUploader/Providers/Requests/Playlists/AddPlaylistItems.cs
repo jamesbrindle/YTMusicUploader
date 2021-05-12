@@ -31,8 +31,6 @@ namespace YTMusicUploader.Providers
             public static bool AddPlaylistItem(string cookieValue, string playlistId, string videoId, out Exception ex)
             {
                 ex = null;
-                string originalRequest = string.Empty;
-
                 try
                 {
                     var request = (HttpWebRequest)WebRequest.Create(
@@ -68,7 +66,7 @@ namespace YTMusicUploader.Providers
 
                     try
                     {
-                        originalRequest = JsonConvert.SerializeObject(context);
+                        string originalRequest = JsonConvert.SerializeObject(context);
                     }
                     catch { }
 

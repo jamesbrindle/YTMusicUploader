@@ -1,8 +1,6 @@
 <map id="YTMusicUploader.Providers.Repos.MusicFileRepo.CountIssues" name="YTMusicUploader.Providers.Repos.MusicFileRepo.CountIssues">
-<area shape="rect" id="node1" title="Count all non&#45;removed Music File entries that have upload errors" alt="" coords="729,39,955,80"/>
-<area shape="rect" id="node2" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92" title=" " alt="" coords="491,5,681,47"/>
-<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a2cc4c1d974056091b535e82ee14cf3ae" title=" " alt="" coords="491,71,681,112"/>
-<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="252,37,443,79"/>
-<area shape="rect" id="node5" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#ad49bcebfe92cf336cecefee2c73a1883" title=" " alt="" coords="252,103,443,144"/>
-<area shape="rect" id="node6" href="$df/d9e/class_y_t_music_uploader_1_1_business_1_1_queue_checker.html#a7885cfe006bfd9ba1db28e65ec3e81bf" title=" " alt="" coords="5,103,204,144"/>
+<area shape="rect" id="node1" title="Count all non&#45;removed Music File entries that have upload errors" alt="" coords="483,39,708,80"/>
+<area shape="rect" id="node2" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#adf4d8b09c79a8054031a234f8c4e8d92" title=" " alt="" coords="244,5,435,47"/>
+<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a2cc4c1d974056091b535e82ee14cf3ae" title=" " alt="" coords="244,71,435,112"/>
+<area shape="rect" id="node4" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a9309010a8febf37f5df1113725ecc3b9" title=" " alt="" coords="5,71,196,112"/>
 </map>

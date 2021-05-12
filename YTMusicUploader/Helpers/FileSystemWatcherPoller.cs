@@ -47,10 +47,10 @@ namespace YTMusicUploader.Helpers
         {
             bool IEqualityComparer<FileData>.Equals(FileData x, FileData y)
             {
-                return (x.CreationTime.Equals(y.CreationTime) && 
-                        x.LastWriteTime.Equals(y.LastWriteTime) &&
-                        x.Size.Equals(y.Size) &&
-                        x.Path.Equals(y.Path));
+                return x.CreationTime.Equals(y.CreationTime) && 
+                       x.LastWriteTime.Equals(y.LastWriteTime) &&
+                       x.Size.Equals(y.Size) &&
+                       x.Path.Equals(y.Path);
             }
 
             int IEqualityComparer<FileData>.GetHashCode(FileData obj)

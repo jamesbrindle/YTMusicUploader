@@ -14,8 +14,13 @@ var dir_0e014969c9e81403f3d099ca0567a7d4 =
     [ "DirectoryHelper.cs", "d8/d15/_directory_helper_8cs.html", "d8/d15/_directory_helper_8cs" ],
     [ "EmbeddedResourceHelper.cs", "d7/d10/_embedded_resource_helper_8cs.html", null ],
     [ "Extensions.cs", "da/dc3/_extensions_8cs.html", null ],
-    [ "FastFileSearcher.cs", "de/d14/_fast_file_searcher_8cs.html", [
+    [ "FastFileDirectoryEnumerator.cs", "d1/d2a/_fast_file_directory_enumerator_8cs.html", [
       [ "FileData", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data.html", "d8/d9d/class_j_b_toolkit_1_1_windows_1_1_file_data" ]
+    ] ],
+    [ "FileSystemWatcherPoller.cs", "d0/d73/_file_system_watcher_poller_8cs.html", [
+      [ "FileSystemWatcherPoller", "d6/db1/class_y_t_music_uploader_1_1_helpers_1_1_file_system_watcher_poller.html", "d6/db1/class_y_t_music_uploader_1_1_helpers_1_1_file_system_watcher_poller" ],
+      [ "FileDataComparer", "d7/d2b/class_y_t_music_uploader_1_1_helpers_1_1_file_system_watcher_poller_1_1_file_data_comparer.html", null ],
+      [ "PollDiscoveredChangeArgs", "d0/d75/class_y_t_music_uploader_1_1_helpers_1_1_file_system_watcher_poller_1_1_poll_discovered_change_args.html", "d0/d75/class_y_t_music_uploader_1_1_helpers_1_1_file_system_watcher_poller_1_1_poll_discovered_change_args" ]
     ] ],
     [ "FuzzyLogic.cs", "d5/da6/_fuzzy_logic_8cs.html", null ],
     [ "ImageHelper.cs", "d6/d98/_image_helper_8cs.html", null ],
@@ -25,6 +30,10 @@ var dir_0e014969c9e81403f3d099ca0567a7d4 =
     [ "NetworkHelper.cs", "da/d30/_network_helper_8cs.html", null ],
     [ "SafeFileStream.cs", "d4/d03/_safe_file_stream_8cs.html", [
       [ "SafeFileStream", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream.html", "dc/d56/class_j_b_toolkit_1_1_stream_helpers_1_1_safe_file_stream" ]
+    ] ],
+    [ "SystemInfoHelper.cs", "d3/d94/_system_info_helper_8cs.html", [
+      [ "SystemInfoHelper", "de/dd8/class_y_t_music_uploader_1_1_helpers_1_1_system_info_helper.html", null ],
+      [ "SystemInfo", "d8/d84/class_y_t_music_uploader_1_1_helpers_1_1_system_info.html", "d8/d84/class_y_t_music_uploader_1_1_helpers_1_1_system_info" ]
     ] ],
     [ "ThreadHelper.cs", "d5/d9d/_thread_helper_8cs.html", null ],
     [ "VersionHelper.cs", "db/d30/_version_helper_8cs.html", null ]

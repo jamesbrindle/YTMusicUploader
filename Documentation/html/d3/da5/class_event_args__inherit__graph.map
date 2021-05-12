@@ -1,4 +1,5 @@
 <map id="EventArgs" name="EventArgs">
-<area shape="rect" id="node1" title=" " alt="" coords="63,5,145,83"/>
-<area shape="rect" id="node2" href="$dd/d90/class_y_t_music_uploader_1_1_business_1_1_pipes_1_1_data_received_event_args.html" title=" " alt="" coords="5,131,203,223"/>
+<area shape="rect" id="node1" title=" " alt="" coords="174,5,255,83"/>
+<area shape="rect" id="node2" href="$dd/d90/class_y_t_music_uploader_1_1_business_1_1_pipes_1_1_data_received_event_args.html" title=" " alt="" coords="5,138,203,230"/>
+<area shape="rect" id="node3" href="$d0/d75/class_y_t_music_uploader_1_1_helpers_1_1_file_system_watcher_poller_1_1_poll_discovered_change_args.html" title=" " alt="" coords="227,131,426,237"/>
 </map>

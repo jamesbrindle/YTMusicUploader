@@ -103,8 +103,10 @@ namespace YTMusicUploader.Providers
                                     {
                                         try
                                         {
-                                            var pl = new OnlinePlaylist();
-                                            pl.Title = item.musicTwoRowItemRenderer.title.runs[0].text;
+                                            var pl = new OnlinePlaylist
+                                            {
+                                                Title = item.musicTwoRowItemRenderer.title.runs[0].text
+                                            };
 
                                             try
                                             {
@@ -183,8 +185,10 @@ namespace YTMusicUploader.Providers
                                         try
                                         {
 
-                                            var pl = new OnlinePlaylist();
-                                            pl.Title = item.musicTwoRowItemRenderer.title.runs[0].text;
+                                            var pl = new OnlinePlaylist
+                                            {
+                                                Title = item.musicTwoRowItemRenderer.title.runs[0].text
+                                            };
 
                                             try
                                             {

@@ -58,7 +58,7 @@
             this.pnlBrowser.Location = new System.Drawing.Point(26, 76);
             this.pnlBrowser.MinimumSize = new System.Drawing.Size(600, 400);
             this.pnlBrowser.Name = "pnlBrowser";
-            this.pnlBrowser.Size = new System.Drawing.Size(988, 502);
+            this.pnlBrowser.Size = new System.Drawing.Size(988, 579);
             this.pnlBrowser.TabIndex = 1;
             // 
             // browser
@@ -67,7 +67,7 @@
             this.browser.Location = new System.Drawing.Point(0, 0);
             this.browser.MinimumSize = new System.Drawing.Size(600, 400);
             this.browser.Name = "browser";
-            this.browser.Size = new System.Drawing.Size(988, 502);
+            this.browser.Size = new System.Drawing.Size(988, 579);
             this.browser.TabIndex = 0;
             this.browser.Text = "YouTube Music";
             this.browser.ZoomFactor = 1D;
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1037, 601);
+            this.ClientSize = new System.Drawing.Size(1037, 678);
             this.Controls.Add(this.lblConnectSuccess);
             this.Controls.Add(this.pbConnectSuccess);
             this.Controls.Add(this.pnlBrowser);

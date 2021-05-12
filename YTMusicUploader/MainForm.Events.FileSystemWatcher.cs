@@ -71,6 +71,9 @@ namespace YTMusicUploader
                     while (LastFolderChangeTime > DateTime.Now.AddSeconds(-5))
                         ThreadHelper.SafeSleep(1000);
 
+                    while (Paused)
+                        Thread.Sleep(1500);
+
                     LastFolderChangeTime = null;
                     FileScanner.RecountLibraryFiles();
                     QueueChecker.Queue = true;

@@ -9,9 +9,7 @@ namespace JBToolkit.StreamHelpers
     /// one (keep in mind that this might throw an exception). It's a mechanism for creating a stream from a file without the issue if it still
     /// being used by the calling process later when you want to access it again.
     /// </summary>
-#pragma warning disable CA1063 // Implement IDisposable Correctly
     public class SafeFileStream : IDisposable
-#pragma warning restore CA1063 // Implement IDisposable Correctly
     {
         #region Private Members
 
@@ -98,9 +96,7 @@ namespace JBToolkit.StreamHelpers
             }
         }
 
-#pragma warning disable CA1063 // Implement IDisposable Correctly
         public void Dispose()
-#pragma warning restore CA1063 // Implement IDisposable Correctly
         {
             try
             {

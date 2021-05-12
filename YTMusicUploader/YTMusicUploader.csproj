@@ -354,7 +354,7 @@
     <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Business\EdgeDependencyChecker.cs" />
     <Compile Include="Helpers\EmbeddedResourceHelper.cs" />
-    <Compile Include="Helpers\FastFileSearcher.cs" />
+    <Compile Include="Helpers\FastFileDirectoryEnumerator.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Business\MusicDataFetcher.cs" />
     <Compile Include="Helpers\FileSystemWatcherPoller.cs">

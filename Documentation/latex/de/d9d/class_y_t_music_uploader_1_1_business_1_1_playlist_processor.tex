@@ -12,7 +12,7 @@ Collaboration diagram for Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=220pt]{d4/dbf/class_y_t_music_uploader_1_1_business_1_1_playlist_processor__coll__graph}
+\includegraphics[width=229pt]{d4/dbf/class_y_t_music_uploader_1_1_business_1_1_playlist_processor__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -25,11 +25,13 @@ void \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_process
 \doxysubsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a28b6bf82ad528ac182ddcd0031f770fa}{Playlist\+Files}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\mbox{\hyperlink{class_list}{List}}$<$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}} $>$ \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a28b6bf82ad528ac182ddcd0031f770fa}{Playlist\+Files}} = null\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
-Online\+Playlist\+Collection \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a65b7b73bdeba4e11a3f8ab305df2a5a1}{Online\+Playlists}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+Online\+Playlist\+Collection \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a65b7b73bdeba4e11a3f8ab305df2a5a1}{Online\+Playlists}} = null\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a6a40b5e2d0d2ae56bf2edf257fe44d50}{Stopped}} = true\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a8cbb26016e2ce365024c8e1bc27fb0af}{Processing\+Playlists\+Finished}} = false\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \end{DoxyCompactItemize}
 
 
@@ -73,13 +75,19 @@ Here is the call graph for this function\+:
 \index{YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}!OnlinePlaylists@{OnlinePlaylists}}
 \index{OnlinePlaylists@{OnlinePlaylists}!YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}}
 \doxysubsubsection{\texorpdfstring{OnlinePlaylists}{OnlinePlaylists}}
-{\footnotesize\ttfamily Online\+Playlist\+Collection Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Online\+Playlists\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+{\footnotesize\ttfamily Online\+Playlist\+Collection Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Online\+Playlists = null\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a28b6bf82ad528ac182ddcd0031f770fa}\label{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a28b6bf82ad528ac182ddcd0031f770fa}} 
 \index{YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}!PlaylistFiles@{PlaylistFiles}}
 \index{PlaylistFiles@{PlaylistFiles}!YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}}
 \doxysubsubsection{\texorpdfstring{PlaylistFiles}{PlaylistFiles}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}}$>$ Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Playlist\+Files\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_list}{List}}$<$\mbox{\hyperlink{class_y_t_music_uploader_1_1_providers_1_1_data_models_1_1_playlist_file}{Playlist\+File}}$>$ Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Playlist\+Files = null\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a8cbb26016e2ce365024c8e1bc27fb0af}\label{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a8cbb26016e2ce365024c8e1bc27fb0af}} 
+\index{YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}!ProcessingPlaylistsFinished@{ProcessingPlaylistsFinished}}
+\index{ProcessingPlaylistsFinished@{ProcessingPlaylistsFinished}!YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}}
+\doxysubsubsection{\texorpdfstring{ProcessingPlaylistsFinished}{ProcessingPlaylistsFinished}}
+{\footnotesize\ttfamily bool Y\+T\+Music\+Uploader.\+Business.\+Playlist\+Processor.\+Processing\+Playlists\+Finished = false\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 \mbox{\Hypertarget{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a6a40b5e2d0d2ae56bf2edf257fe44d50}\label{class_y_t_music_uploader_1_1_business_1_1_playlist_processor_a6a40b5e2d0d2ae56bf2edf257fe44d50}} 
 \index{YTMusicUploader.Business.PlaylistProcessor@{YTMusicUploader.Business.PlaylistProcessor}!Stopped@{Stopped}}

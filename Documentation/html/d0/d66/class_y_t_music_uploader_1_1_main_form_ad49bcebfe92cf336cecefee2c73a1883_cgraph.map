@@ -1,18 +1,4 @@
 <map id="YTMusicUploader.MainForm.Restart" name="YTMusicUploader.MainForm.Restart">
-<area shape="rect" id="node1" title=" " alt="" coords="5,208,196,249"/>
-<area shape="rect" id="node2" href="$dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#aca7c721e5249d14720bd65ac83b593f4" title="Resets the properties, such as discovered file, current music files and hashes" alt="" coords="246,174,433,216"/>
-<area shape="rect" id="node3" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a2cc4c1d974056091b535e82ee14cf3ae" title=" " alt="" coords="244,240,435,281"/>
-<area shape="rect" id="node4" href="$d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html#a02b7f55de50468640be2624a4a29c8ef" title="Checks if the database file is present in the users AppData path. If it&#39;s not present it will copy ov..." alt="" coords="483,159,732,215"/>
-<area shape="rect" id="node14" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a799073d452dba59c8412e483f124eb73" title="Count all non&#45;removed Music File entries that have upload errors" alt="" coords="495,240,720,281"/>
-<area shape="rect" id="node15" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a780bc3d95ca739d5c25cbde1dc5d75b5" title=" " alt="" coords="512,305,703,346"/>
-<area shape="rect" id="node5" href="$dc/df8/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_upgrade.html#a4abbb48d48ccaf27b1ea9f7346a9031c" title="Runs on form load to ensure the database schema is at the latest version following an application upg..." alt="" coords="1375,324,1591,365"/>
-<area shape="rect" id="node7" href="$d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html#a145a82930bd448280ac095cbe997f675" title="Checks if the database is OK" alt="" coords="780,192,1031,248"/>
-<area shape="rect" id="node6" href="$d7/d1f/class_y_t_music_uploader_1_1_providers_1_1_data_access.html#a282db1993d3e890ff819c1afd3e14114" title="Create an SQLite connection to the database file in the users AppData path" alt="" coords="1639,357,1824,398"/>
-<area shape="rect" id="node8" href="$d5/dcc/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_settings_repo.html#a1225233e12f57aafdf4730f2e38d748d" title="Loads the application settings data from the database" alt="" coords="1110,69,1295,110"/>
-<area shape="rect" id="node9" href="$de/ddb/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_watch_folder_repo.html#ac18f0d293fb211f7050912a9686990a0" title="Loads a list of library watch folders from the database" alt="" coords="1103,134,1302,176"/>
-<area shape="rect" id="node10" href="$df/da4/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_playlist_file_repo.html#a45782e52b6a1e548c136e02b2768ad1b" title="Load all playlist file entries from the database" alt="" coords="1101,200,1305,241"/>
-<area shape="rect" id="node11" href="$d1/d9d/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_music_file_repo.html#a39d2da3fb475240cc9bedef41b3375b9" title="Loads a list of all MusicFiles objects with optional filter or order by criteria" alt="" coords="1105,265,1301,306"/>
-<area shape="rect" id="node12" href="$df/d6a/class_y_t_music_uploader_1_1_providers_1_1_repos_1_1_logs_repo.html#a24deb9133a29bdf70315ec88b9b118fb" title="Loads specific logs from the databse" alt="" coords="1383,389,1582,430"/>
-<area shape="rect" id="node13" href="$d7/d15/class_y_t_music_uploader_1_1_providers_1_1_database_1_1_maintenance.html#a721d7331b3d6fcbbd3062c0b49418089" title="Delete the app data database (user&#39;s database)" alt="" coords="1079,330,1327,372"/>
-<area shape="rect" id="node16" href="$d0/d66/class_y_t_music_uploader_1_1_main_form.html#a00c5ed011552719aa13509e79976e4ee" title=" " alt="" coords="810,305,1001,346"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,196,47"/>
+<area shape="rect" id="node2" href="$dd/d94/class_y_t_music_uploader_1_1_business_1_1_file_scanner.html#aca7c721e5249d14720bd65ac83b593f4" title="Resets the properties, such as discovered file, current music files and hashes" alt="" coords="244,5,431,47"/>
 </map>

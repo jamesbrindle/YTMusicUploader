@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['received_3104',['Received',['../d0/df6/interface_y_t_music_uploader_1_1_business_1_1_pipes_1_1_i_ipc_server.html#ad5ee526dc9e4fef17d7a61aa6aaf36c9',1,'YTMusicUploader::Business::Pipes::IIpcServer']]]
+  ['onpolldiscoveredchange_3133',['OnPollDiscoveredChange',['../d6/db1/class_y_t_music_uploader_1_1_helpers_1_1_file_system_watcher_poller.html#a7540bf44e75855fbff8c0c8cb73c2cce',1,'YTMusicUploader::Helpers::FileSystemWatcherPoller']]]
 ];
