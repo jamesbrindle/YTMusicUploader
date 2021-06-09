@@ -194,7 +194,16 @@ I'm going to be using this application for personal use, so I'll know straight a
 - [DjSt3rios](https://github.com/DjSt3rios) - For some WebView2 insight.
 - [tmk907](https://github.com/tmk907) - Who created a very good, easy to use, multi-type playlist reader. [tmk907: Github](https://github.com/tmk907/PlaylistsNET).
 
+### Thanks for the Coffee
 
+- EdgeGuy13
+- Mew
+- CowtownChina
+- Someone
+- Someone
+- Stephen M
+
+&nbsp;
 &nbsp;
 
 <a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
