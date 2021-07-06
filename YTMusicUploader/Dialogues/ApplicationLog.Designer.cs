@@ -34,17 +34,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationLog));
             this.pnlIssueLog = new System.Windows.Forms.Panel();
-            this.dgvLog = new JBToolkit.WinForms.FastScrollDataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.pbRefresh = new System.Windows.Forms.PictureBox();
-            this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
             this.lblLogClearMessage = new System.Windows.Forms.Label();
             this.ddLogType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pbRefresh = new System.Windows.Forms.PictureBox();
+            this.pbIssueLogIcon = new System.Windows.Forms.PictureBox();
+            this.pbLogDump = new System.Windows.Forms.PictureBox();
+            this.fbLogDump = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
+            this.dgvLog = new JBToolkit.WinForms.FastScrollDataGridView();
             this.pnlIssueLog.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogDump)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlIssueLog
@@ -58,6 +61,93 @@
             this.pnlIssueLog.Name = "pnlIssueLog";
             this.pnlIssueLog.Size = new System.Drawing.Size(988, 502);
             this.pnlIssueLog.TabIndex = 1;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(76, 34);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(145, 13);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.Text = "Application Log. Loading...";
+            // 
+            // lblLogClearMessage
+            // 
+            this.lblLogClearMessage.AutoSize = true;
+            this.lblLogClearMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblLogClearMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogClearMessage.Location = new System.Drawing.Point(541, 34);
+            this.lblLogClearMessage.Name = "lblLogClearMessage";
+            this.lblLogClearMessage.Size = new System.Drawing.Size(161, 13);
+            this.lblLogClearMessage.TabIndex = 5;
+            this.lblLogClearMessage.Text = "Logs are cleared after 30 days.";
+            // 
+            // ddLogType
+            // 
+            this.ddLogType.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ddLogType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddLogType.FormattingEnabled = true;
+            this.ddLogType.Location = new System.Drawing.Point(359, 31);
+            this.ddLogType.Name = "ddLogType";
+            this.ddLogType.Size = new System.Drawing.Size(121, 21);
+            this.ddLogType.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(272, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Log Type";
+            // 
+            // pbRefresh
+            // 
+            this.pbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbRefresh.Image = global::YTMusicUploader.Properties.Resources.refresh;
+            this.pbRefresh.Location = new System.Drawing.Point(989, 38);
+            this.pbRefresh.Name = "pbRefresh";
+            this.pbRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbRefresh.TabIndex = 4;
+            this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
+            this.pbRefresh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseDown);
+            this.pbRefresh.MouseEnter += new System.EventHandler(this.PbRefresh_MouseEnter);
+            this.pbRefresh.MouseLeave += new System.EventHandler(this.PbRefresh_MouseLeave);
+            this.pbRefresh.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseUp);
+            // 
+            // pbIssueLogIcon
+            // 
+            this.pbIssueLogIcon.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbIssueLogIcon.Image = global::YTMusicUploader.Properties.Resources.log_icon;
+            this.pbIssueLogIcon.Location = new System.Drawing.Point(26, 20);
+            this.pbIssueLogIcon.Name = "pbIssueLogIcon";
+            this.pbIssueLogIcon.Size = new System.Drawing.Size(37, 39);
+            this.pbIssueLogIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbIssueLogIcon.TabIndex = 2;
+            this.pbIssueLogIcon.TabStop = false;
+            // 
+            // pbLogDump
+            // 
+            this.pbLogDump.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbLogDump.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbLogDump.Image = global::YTMusicUploader.Properties.Resources.download_up;
+            this.pbLogDump.Location = new System.Drawing.Point(949, 38);
+            this.pbLogDump.Name = "pbLogDump";
+            this.pbLogDump.Size = new System.Drawing.Size(25, 25);
+            this.pbLogDump.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbLogDump.TabIndex = 8;
+            this.pbLogDump.TabStop = false;
+            this.pbLogDump.Click += new System.EventHandler(this.PbLogDump_Click);
+            this.pbLogDump.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbLogDump_MouseDown);
+            this.pbLogDump.MouseEnter += new System.EventHandler(this.PbLogDump_MouseEnter);
+            this.pbLogDump.MouseLeave += new System.EventHandler(this.PbLogDump_MouseLeave);
+            this.pbLogDump.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbLogDump_MouseUp);
             // 
             // dgvLog
             // 
@@ -107,81 +197,12 @@
             this.dgvLog.TabIndex = 0;
             this.dgvLog.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvLogs_ColumnHeaderMouseClick);
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(76, 34);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(145, 13);
-            this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "Application Log. Loading...";
-            // 
-            // pbRefresh
-            // 
-            this.pbRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbRefresh.Image = global::YTMusicUploader.Properties.Resources.refresh;
-            this.pbRefresh.Location = new System.Drawing.Point(989, 38);
-            this.pbRefresh.Name = "pbRefresh";
-            this.pbRefresh.Size = new System.Drawing.Size(25, 25);
-            this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbRefresh.TabIndex = 4;
-            this.pbRefresh.TabStop = false;
-            this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
-            this.pbRefresh.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseDown);
-            this.pbRefresh.MouseEnter += new System.EventHandler(this.PbRefresh_MouseEnter);
-            this.pbRefresh.MouseLeave += new System.EventHandler(this.PbRefresh_MouseLeave);
-            this.pbRefresh.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PbRefresh_MouseUp);
-            // 
-            // pbIssueLogIcon
-            // 
-            this.pbIssueLogIcon.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pbIssueLogIcon.Image = global::YTMusicUploader.Properties.Resources.log_icon;
-            this.pbIssueLogIcon.Location = new System.Drawing.Point(26, 20);
-            this.pbIssueLogIcon.Name = "pbIssueLogIcon";
-            this.pbIssueLogIcon.Size = new System.Drawing.Size(37, 39);
-            this.pbIssueLogIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbIssueLogIcon.TabIndex = 2;
-            this.pbIssueLogIcon.TabStop = false;
-            // 
-            // lblLogClearMessage
-            // 
-            this.lblLogClearMessage.AutoSize = true;
-            this.lblLogClearMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lblLogClearMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogClearMessage.Location = new System.Drawing.Point(541, 34);
-            this.lblLogClearMessage.Name = "lblLogClearMessage";
-            this.lblLogClearMessage.Size = new System.Drawing.Size(161, 13);
-            this.lblLogClearMessage.TabIndex = 5;
-            this.lblLogClearMessage.Text = "Logs are cleared after 30 days.";
-            // 
-            // ddLogType
-            // 
-            this.ddLogType.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ddLogType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddLogType.FormattingEnabled = true;
-            this.ddLogType.Location = new System.Drawing.Point(359, 31);
-            this.ddLogType.Name = "ddLogType";
-            this.ddLogType.Size = new System.Drawing.Size(121, 21);
-            this.ddLogType.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(272, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Log Type";
-            // 
             // ApplicationLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1037, 601);
+            this.Controls.Add(this.pbLogDump);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddLogType);
             this.Controls.Add(this.lblLogClearMessage);
@@ -195,9 +216,10 @@
             this.Name = "ApplicationLog";
             this.Load += new System.EventHandler(this.ApplicationLoad_Load);
             this.pnlIssueLog.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueLogIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogDump)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,5 +234,7 @@
         private System.Windows.Forms.Label lblLogClearMessage;
         private System.Windows.Forms.ComboBox ddLogType;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbLogDump;
+        private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog fbLogDump;
     }
 }

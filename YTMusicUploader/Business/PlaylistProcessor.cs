@@ -243,8 +243,7 @@ namespace YTMusicUploader.Business
 
                                     Logger.LogWarning(
                                         "Playlist Processor",
-                                        "Empty playlist detected. It will be ignored: " + playlistFile.Path,
-                                        true);
+                                        "Empty playlist detected. It will be ignored: " + playlistFile.Path);
 
                                     playlistFile.LastModifiedDate = new FileInfo(playlistFile.Path).LastWriteTime;
                                     playlistFile.LastUpload = playlistFile.LastModifiedDate;

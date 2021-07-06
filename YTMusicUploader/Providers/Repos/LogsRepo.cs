@@ -115,49 +115,6 @@ namespace YTMusicUploader.Providers.Repos
         }
 
         /// <summary>
-        /// Sends the log off to the source for diagnostic data
-        /// </summary>
-        /// <param name="log">Log object to record</param>
-        internal void RemoteAdd(Log log)
-        {
-            try
-            {
-                if (!Logger.AllowRemoteLogAt.HasValue ||
-                    Logger.AllowRemoteLogAt < DateTime.Now)
-                {
-                    using (var conn = RemoteDbConnection())
-                    {
-                        conn.Open();
-                        conn.Execute(
-                            @"INSERT 
-                                INTO Logs (
-                                        Event, 
-                                        LogTypeId,
-                                        Machine,
-                                        Source,
-                                        Message, 
-                                        Version,
-                                        StackTrace) 
-                                VALUES (@Event,
-                                        @LogTypeId,
-                                        @Machine,
-                                        @Source,
-                                        @Message,
-                                        @Version,
-                                        @StackTrace);",
-                            log);
-                        conn.Close();
-                    }
-                }
-            }
-            catch
-            {
-                // Prevent too many requests
-                Logger.AllowRemoteLogAt = DateTime.Now.AddMinutes(5);
-            }
-        }
-
-        /// <summary>
         /// Deletes logs older than a particular date from the databae
         /// </summary>
         /// <param name="dateTime">Delete before date</param>

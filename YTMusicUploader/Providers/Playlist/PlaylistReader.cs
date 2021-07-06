@@ -94,8 +94,7 @@ namespace YTMusicUploader.Providers.Playlist
                             var _ = e;
                             Logger.LogWarning(
                                 "ReadPlaylistFile",
-                                "Invalid path detected in playlist file and will be ignored: " + path,
-                                true);
+                                "Invalid path detected in playlist file and will be ignored: " + path);
                         }
                     }
                 }
@@ -104,8 +103,7 @@ namespace YTMusicUploader.Providers.Playlist
             {
                 Logger.LogError(
                              "ReadPlaylistFile",
-                             "Error reading playlist file: " + path + ": " + e.Message,
-                             false);
+                             "Error reading playlist file: " + path + ": " + e.Message);
             }
 
             return playlistFile;

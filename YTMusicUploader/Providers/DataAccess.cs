@@ -1,6 +1,4 @@
-﻿using JBToolkit.Network;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data.SQLite;
 
 namespace YTMusicUploader.Providers
@@ -17,11 +15,6 @@ namespace YTMusicUploader.Providers
         public static SQLiteConnection DbConnection(bool readOnly = false)
         {
             return new SQLiteConnection("Data Source=" + Global.DbLocation + ";cache=shared" + (readOnly ? ";Read Only=True" : ""));
-        }
-
-        internal static MySqlConnection RemoteDbConnection()
-        {
-            return new MySqlConnection(NetworkHelper.ConnectionString("cLx81TqecjVCRGCPV0fmTi99LTsUqYorQR7JiG9RYvqiqic2bT0S3RBh3CyzDt17MVKPaeMs/HOEZvZObCVjy5NN9krbKP2X/SHHuHTMEOBFxunNaGpTvaZl1Fv54uo6PfkaYeQKPUSnorKNxPVQsZAyfr5imIHyj1qP2pW86V6bueaviRkxMRW72G6t3ZNMIgkOZb+0drCq4xphSrz0H8ctMDq304suE/IFFHQ1M1mBPsfi38Zwjwwy3aA+40mf"));
         }
     }
 

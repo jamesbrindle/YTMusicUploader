@@ -16,7 +16,6 @@ namespace YTMusicUploader
             if (btnAddWatchFolder.InvokeRequired ||
                 btnRemoveWatchFolder.InvokeRequired ||
                 cbAlsoUploadPlaylists.InvokeRequired ||
-                cbSendErrorLogsToSource.InvokeRequired ||
                 cbStartWithWindows.InvokeRequired ||
                 tbThrottleSpeed.InvokeRequired)
             {
@@ -28,7 +27,6 @@ namespace YTMusicUploader
                 btnAddWatchFolder.Enabled = enable;
                 btnRemoveWatchFolder.Enabled = enable;
                 cbAlsoUploadPlaylists.Enabled = enable;
-                cbSendErrorLogsToSource.Enabled = enable;
                 cbStartWithWindows.Enabled = enable;
                 tbThrottleSpeed.Enabled = enable;
             }
@@ -156,20 +154,6 @@ namespace YTMusicUploader
             else
             {
                 cbAlsoUploadPlaylists.Checked = uploadPlaylists;
-            }
-        }
-
-        delegate void SetSendLogsToSourceDelegate(bool sendLogsToSource);
-        public void SetSendLogsToSource(bool sendLogsToSource)
-        {
-            if (cbStartWithWindows.InvokeRequired)
-            {
-                var d = new SetSendLogsToSourceDelegate(SetSendLogsToSource);
-                Invoke(d, new object[] { sendLogsToSource });
-            }
-            else
-            {
-                cbSendErrorLogsToSource.Checked = sendLogsToSource;
             }
         }
 

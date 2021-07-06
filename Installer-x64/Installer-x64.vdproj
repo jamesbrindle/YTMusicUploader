@@ -99,12 +99,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_04A0531BB1601FB7FE5E7F721654F7F1"
-        "OwnerKey" = "8:_C33CBE524F3B0C0585A6B759E3088446"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_04CCE9294EA4DA1298BA31DD3125C289"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
@@ -231,12 +225,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_20390C01DF656C1D1A69F5AC9AEB2B2B"
-        "OwnerKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_204229854DED76E745045B97023424DD"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
@@ -299,12 +287,6 @@
         {
         "MsmKey" = "8:_2A5D8CB395603D1FFD3C563A6A922065"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2A5D8CB395603D1FFD3C563A6A922065"
-        "OwnerKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -646,12 +628,6 @@
         "Entry"
         {
         "MsmKey" = "8:_5E6EE5B445A715BB58D2F6B52DE4E4BB"
-        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1071,18 +1047,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C33CBE524F3B0C0585A6B759E3088446"
-        "OwnerKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C33CBE524F3B0C0585A6B759E3088446"
-        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C4825C0704C5EEACC8126959E4E50927"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
@@ -1108,18 +1072,6 @@
         "Entry"
         {
         "MsmKey" = "8:_CCC8345FACD26AAC78EEC6F1C0F5F014"
-        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CD01CB5D183FF86D6C3237F91098A607"
-        "OwnerKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CD01CB5D183FF86D6C3237F91098A607"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1269,6 +1221,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E8101C8FED6386EB33BB9A7E514B6E64"
+        "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E8DF1E9029C596F114D9135164E1CD4A"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
         "MsmSig" = "8:_UNDEFINED"
@@ -1301,12 +1259,6 @@
         {
         "MsmKey" = "8:_EF0528E9F70E7AFFC392618D826CE7AC"
         "OwnerKey" = "8:_3AB76FEAD3A849FBB271E712B0EA59C3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EF0528E9F70E7AFFC392618D826CE7AC"
-        "OwnerKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1355,12 +1307,6 @@
         {
         "MsmKey" = "8:_F8A37989C6F1A125440D43B102F628C6"
         "OwnerKey" = "8:_47EA99FE097D38802ED21C0769CB4341"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FAA40E3D51368C485A9C438A054ED9D6"
-        "OwnerKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1612,31 +1558,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_679188C9A5E98A57101BA39EDFC3927E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5EEA6950132A732E18F5AA31401F96D6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FAA40E3D51368C485A9C438A054ED9D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C33CBE524F3B0C0585A6B759E3088446"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CD01CB5D183FF86D6C3237F91098A607"
+        "OwnerKey" = "8:_679188C9A5E98A57101BA39EDFC3927E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1703,6 +1631,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_172FDA45E0878D2CC5D1F53AF15CEA66"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E8101C8FED6386EB33BB9A7E514B6E64"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -4568,37 +4502,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5EEA6950132A732E18F5AA31401F96D6"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_5EEA6950132A732E18F5AA31401F96D6"
-                    {
-                    "Name" = "8:MySql.Data.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MySql.Data.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5F44D9502108BFDD41761D125A404AEC"
             {
             "AssemblyRegister" = "3:1"
@@ -6426,37 +6329,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C33CBE524F3B0C0585A6B759E3088446"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C33CBE524F3B0C0585A6B759E3088446"
-                    {
-                    "Name" = "8:Zstandard.Net.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Zstandard.Net.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C4825C0704C5EEACC8126959E4E50927"
             {
             "AssemblyRegister" = "3:1"
@@ -6564,37 +6436,6 @@
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Tools.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CD01CB5D183FF86D6C3237F91098A607"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_CD01CB5D183FF86D6C3237F91098A607"
-                    {
-                    "Name" = "8:Ubiety.Dns.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Ubiety.Dns.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
@@ -7182,6 +7023,37 @@
                     }
                 }
             "SourcePath" = "8:K4os.Compression.LZ4.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E8101C8FED6386EB33BB9A7E514B6E64"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                "ScatterAssemblies"
+                {
+                    "_E8101C8FED6386EB33BB9A7E514B6E64"
+                    {
+                    "Name" = "8:System.IO.Compression.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.IO.Compression.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B3B65ED76DD54A94A22A406398263B40"
@@ -7921,15 +7793,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:YT Music Uploader"
-        "ProductCode" = "8:{FF87D1A4-C3CE-4ED5-BCA1-65464EBECDFE}"
-        "PackageCode" = "8:{A493E546-EB12-47E1-8D62-36795CBBA920}"
+        "ProductCode" = "8:{86BE3740-FE91-483E-8F73-31A9658CA77B}"
+        "PackageCode" = "8:{19E53B28-1DEC-419B-BE70-4371DB4EB8DB}"
         "UpgradeCode" = "8:{AB84D0C0-CDF7-4BDF-90B0-C4808DB11DAB}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.7.8"
+        "ProductVersion" = "8:1.7.9"
         "Manufacturer" = "8:JB-Net Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/jamesbrindle/YTMusicUploader/issues"

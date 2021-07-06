@@ -16,7 +16,6 @@ namespace YTMusicUploader
         public ToolTip AboutTooltip { get; set; }
         public ToolTip ConnectToYTMusicBtnTooltip { get; set; }
         public ToolTip StartWithWindowsTooltip { get; set; }
-        public ToolTip SendDiagnosticDataTooltip { get; set; }
         public ToolTip ThrottleUploadSpeedTooltip { get; set; }
         public ToolTip AddWatchFolderTooltip { get; set; }
         public ToolTip RemoveWatchFolderTooltip { get; set; }
@@ -136,10 +135,6 @@ namespace YTMusicUploader
                 IsBalloon = true,
                 InitialDelay = 1500,
             };
-            StartWithWindowsTooltip.SetToolTip(lblSendDiagnosticData,
-                "\nIf checked, this application will send error logs to the source for the sole\n" +
-                "purpose of troubleshooting bugs.");
-
             ThrottleUploadSpeedTooltip = new ToolTip
             {
                 ToolTipTitle = "Throttle Upload Speed",

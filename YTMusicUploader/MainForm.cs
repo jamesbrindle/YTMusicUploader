@@ -336,7 +336,6 @@ namespace YTMusicUploader
                     : (Convert.ToDouble(Settings.ThrottleSpeed) / 1000000).ToString());
 
             await RegistrySettings.SetStartWithWindows(Settings.StartWithWindows);
-            SetSendLogsToSource(Settings.SendLogsToSource);
             SetStartWithWindows(Settings.StartWithWindows);
             SetAlsoUploadPlaylists(Settings.UploadPlaylists);
 

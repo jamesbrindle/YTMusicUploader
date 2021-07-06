@@ -100,8 +100,7 @@ namespace YTMusicUploader.Business
                                 e,
                                 "FileScanner.Process - Error reading file (possibly removed): " +
                                 file.Path,
-                                Log.LogTypeEnum.Error,
-                                false);
+                                Log.LogTypeEnum.Error);
                         }
                     }
                 }

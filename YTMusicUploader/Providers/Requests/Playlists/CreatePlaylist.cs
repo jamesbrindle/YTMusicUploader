@@ -136,7 +136,7 @@ namespace YTMusicUploader.Providers
                 }
                 catch (Exception e)
                 {
-                    Logger.LogError("CreatePlaylist", "Error creating playlist: " + title, false, originalRequest);
+                    Logger.LogError("CreatePlaylist", "Error creating playlist: " + title, originalRequest);
                     ex = e;
                     return false;
                 }

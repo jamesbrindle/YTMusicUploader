@@ -1,7 +1,10 @@
 ﻿using JBToolkit.WinForms;
+using MetroFramework;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,6 +19,7 @@ namespace YTMusicUploader.Dialogues
     public partial class ApplicationLog : OptimisedMetroForm
     {
         public ToolTip RefreshTooltip { get; set; }
+        public ToolTip LogDumpTooltip { get; set; }
 
         private int _previousIndex;
         private bool _sortDirection;
@@ -68,6 +72,16 @@ namespace YTMusicUploader.Dialogues
             };
             RefreshTooltip.SetToolTip(pbRefresh,
                 "\nRefresh the list from the database");
+
+            LogDumpTooltip = new ToolTip
+            {
+                ToolTipTitle = "Save Log to File",
+                UseFading = true,
+                IsBalloon = true,
+                InitialDelay = 750,
+            };
+            LogDumpTooltip.SetToolTip(pbLogDump,
+                "\nSave the entire log to a text file.");
         }
 
         private void BindLogTypes()
@@ -178,6 +192,52 @@ namespace YTMusicUploader.Dialogues
             pbRefresh.Image = Properties.Resources.refresh_hover;
         }
 
+        private void PbLogDump_Click(object sender, EventArgs e)
+        {
+            var result = fbLogDump.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                try
+                {
+                    string root = fbLogDump.SelectedPath;
+                    string dateTime = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+                    string path = Path.Combine(root, $"YTMUploader-Log-{dateTime}.txt");
+
+                    new Thread((ThreadStart)delegate {
+                        var dt = LogsRepo.LoadAll().Result.ToDataTable();
+                        dt.TableName = "YTMUploader-Log";
+                        dt.WriteXml(path, true);                        
+                        ShowMessageBox("Save Log", $"{Environment.NewLine}The log file has successfully been generated to: {path}", MessageBoxButtons.OK, MessageBoxIcon.Information, 150);
+                    }).Start();
+                }
+                catch (Exception ex)
+                {
+                    ShowMessageBox("Save Log", $"{Environment.NewLine}Error saving log file: {ex.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error, 250);
+                }
+            }
+        }
+
+        private void PbLogDump_MouseDown(object sender, MouseEventArgs e)
+        {
+            pbLogDump.Image = Properties.Resources.download_down;
+        }
+
+        private void PbLogDump_MouseEnter(object sender, EventArgs e)
+        {
+            pbLogDump.Image = Properties.Resources.download_hover;
+        }
+
+        private void PbLogDump_MouseLeave(object sender, EventArgs e)
+        {
+            pbLogDump.Image = Properties.Resources.download_up;
+        }
+
+        private void PbLogDump_MouseUp(object sender, MouseEventArgs e)
+        {
+            pbLogDump.Image = Properties.Resources.download_hover;
+        }
+
         private void DgvLogs_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex == _previousIndex)
@@ -194,6 +254,16 @@ namespace YTMusicUploader.Dialogues
             return ascending ?
                 list.OrderBy(_ => _.GetType().GetProperty(column).GetValue(_)).ToList() :
                 list.OrderByDescending(_ => _.GetType().GetProperty(column).GetValue(_)).ToList();
+        }
+
+        public void ShowMessageBox(
+            string title,
+            string message,
+            MessageBoxButtons buttons,
+            MessageBoxIcon icon,
+            int height)
+        {
+            MetroMessageBox.Show(this, message, title, buttons, icon, height);
         }
     }
 }
