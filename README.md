@@ -1,5 +1,7 @@
 # YT Music Uploader
 
+# NOTICE - YTM / Google has enhanced it's security and the sign-in no longer works. I'll need to update the browser control. Leave it with me!
+
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/yt_logo-64.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
 
