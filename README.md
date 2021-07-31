@@ -1,25 +1,42 @@
 # YT Music Uploader
 
-# NOTICE - YTM / Google has enhanced it's security and the sign-in no longer works. I'll need to update the browser control. Leave it with me!
+
+&nbsp;
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/yt_logo-64.png)](https://github.com/jamesbrindle/YTMusicUploader)
 &nbsp;
 
-Automatically upload your local personal music library to YouTube Music and bulk delete from YouTube Music.
 &nbsp;
+
+## This Project Has Now Been Archived
+
+After much deliberation I have decided to archive this project and will no longer be actively maintaining it.
+
+The main reason is time, which, I ever increasingly have less of - #theburdenofresponsiblityincreaseseswithage
+
+It was a great little project to work on and I really appreciate everyone's interest and support. Thank you!
+
+The spark to my decision was made when google decided to block sign in using an embedded browser (specifically WebView2) - Needed to retrieve your YTM authentication 
+cookie... An alternative means of Google Sign in will be required or a new type of Browser control entirely may be needed.
+
+**Workaround**
+
+A work around to this is to get the cookie values yourself and enter them directly into the database in: C:\users\\[username]\AppData\local\YTMusicUploader.
+
+You can follow this guide to get your authentication cookie: https://ytmusicapi.readthedocs.io/en/latest/setup.html
+And you can edit the database using SQLite Browser: https://sqlitebrowser.org/
+
+The project itself was born out of mere curiosity; I wanted something that would just upload my music automatically and later decided to share it. I was hoping others would be interested in forking it, and then developing on and extending it however there has been no takers.
+
+If I discover someone has indeed made a fork and continued development or I come accross alternative software that basically does the same thing I will note it here.
+
 &nbsp;
 
 **[Download Version 1.7.9 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.7.9)**
 &nbsp;
 &nbsp;
 
-&nbsp;
-&nbsp;
 
-
-<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-&nbsp;
 &nbsp;
 
 ### Application
@@ -178,12 +195,6 @@ private void Browser_CoreWebView2Ready(object sender, EventArgs e)
 }
 ```
 
-### How Long Will This Application Last?
-
-Who knows... It's dependent on YouTube Music / Google not changing how their 'non-public' API methods are stuctured and work. Considering YouTube Music has only just recently added the ability to upload songs (and thus is very new), I suspect it's likely to change as YouTube Music develops...
-
-I'm going to be using this application for personal use, so I'll know straight away when it's not working and will attempt to update the API call implementation as soon as possible.
-&nbsp;
 &nbsp;
 
 ### Special Thanks
@@ -206,8 +217,7 @@ I'm going to be using this application for personal use, so I'll know straight a
 - Stephen M
 - Brian A
 - @NourishedAIO
+- nishantranacrm
+- Oak
 
-&nbsp;
-&nbsp;
 
-<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
