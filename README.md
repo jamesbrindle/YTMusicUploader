@@ -7,7 +7,7 @@
 
 &nbsp;
 
-**[Download Version 1.7.9 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.7.9)**
+**[Download Version 1.8.0 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.8.0)**
 &nbsp;
 
 &nbsp;
