@@ -4,39 +4,18 @@
 &nbsp;
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/yt_logo-64.png)](https://github.com/jamesbrindle/YTMusicUploader)
-&nbsp;
-
-&nbsp;
-
-## This Project Has Now Been Archived
-
-After much deliberation I have decided to archive this project and will no longer be actively maintaining it.
-
-The main reason is time, which, I ever increasingly have less of - #theburdenofresponsiblityincreaseseswithage
-
-It was a great little project to work on and I really appreciate everyone's interest and support. Thank you!
-
-The spark to my decision was made when google decided to block sign in using an embedded browser (specifically WebView2) - Needed to retrieve your YTM authentication 
-cookie... An alternative means of Google Sign in will be required or a new type of Browser control entirely may be needed.
-
-**Workaround**
-
-A work around to this is to get the cookie values yourself and enter them directly into the database in: C:\users\\[username]\AppData\local\YTMusicUploader.
-
-You can follow this guide to get your authentication cookie: https://ytmusicapi.readthedocs.io/en/latest/setup.html
-And you can edit the database using SQLite Browser: https://sqlitebrowser.org/
-
-The project itself was born out of mere curiosity; I wanted something that would just upload my music automatically and later decided to share it. I was hoping others would be interested in forking it, and then developing on and extending it however there has been no takers.
-
-If I discover someone has indeed made a fork and continued development or I come accross alternative software that basically does the same thing I will note it here.
 
 &nbsp;
 
 **[Download Version 1.7.9 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.7.9)**
 &nbsp;
+
 &nbsp;
 
 
+<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+&nbsp;
 &nbsp;
 
 ### Application
@@ -152,51 +131,6 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 &nbsp;
 &nbsp;
 
-### Web Control
-
-- [WebView2](https://docs.microsoft.com/en-us/microsoft-edge/webview2/)
-&nbsp;
-
-**WebView2** is a new web control plugin for WPF and WinForms that uses Microsoft Edge. At the time of writing it's still in its infancy and has been very prone to error. The reason it's used here is because it seems to be the only web control that's able to view YouTube Music.
-
-Using the native WPF or WinForms web control or GeckoFX you just get a web page asking to update the browser. Using CefSharp you get a page telling you the browser isn't secure enough.
-
-I believe I've managed to get it stable, technically you need the latest Edge or maybe even still the version of [Microsoft Edge from the Canary Channel:](https://www.microsoftedgeinsider.com/en-us/download)). **The YT Music Uploader Application self-contains the files needed for this dependency for convenience so you shouldn't need to install anything else other than this app.**
-
-Despite some of the issues found using this control, it is actually a very good browser control. It's fast, uses little system resources and renders everything very nicely.
-&nbsp;
-&nbsp;
-
-**GOTCHAS**
-&nbsp;
-
-One thing to bear in mind, is that it requires a writable location for cache files (and other random files), and you need to set this up **before** navigating to any URL:
-&nbsp;
-
-```
-private async void InitializeBrowser()
-{
-    var env = await CoreWebView2Environment.CreateAsync(Global.EdgeFolder, Global.AppDataLocation);
-    await browser.EnsureCoreWebView2Async(env);
-    browser.Source = new Uri("https://music.youtube.com/", UriKind.Absolute);
-}
-```
-
-Thank you [DjSt3rios](https://github.com/DjSt3rios) for working that out: https://github.com/MicrosoftEdge/WebViewFeedback/issues/297
-
-Also, you need to wait for the ready state of the CoreWebView2WebResource context before trying to read any properties from it (like the request headers). This is easily achievable with events:
-&nbsp;
-
-```
-private void Browser_CoreWebView2Ready(object sender, EventArgs e)
-{
-    browser.CoreWebView2.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
-    browser.CoreWebView2.WebResourceRequested += CoreWebView2_WebResourceRequested;
-}
-```
-
-&nbsp;
-
 ### Special Thanks
 
 - [sigma67](https://ytmusicapi.readthedocs.io/en/latest/) - Who created a Python YouTube Music API that I could reference. [sigma67: Github](https://github.com/sigma67/ytmusicapi).
@@ -219,5 +153,10 @@ private void Browser_CoreWebView2Ready(object sender, EventArgs e)
 - @NourishedAIO
 - nishantranacrm
 - Oak
+
+&nbsp;
+&nbsp;
+
+<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 
