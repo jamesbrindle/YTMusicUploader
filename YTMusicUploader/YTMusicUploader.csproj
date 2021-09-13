@@ -343,7 +343,6 @@
     <Compile Include="Global.cs" />
     <Compile Include="Helpers\ColourHelper.cs" />
     <Compile Include="Helpers\DirectoryHelper.cs" />
-    <Compile Include="Business\EdgeDependencyChecker.cs" />
     <Compile Include="Helpers\EmbeddedResourceHelper.cs" />
     <Compile Include="Helpers\FastFileDirectoryEnumerator.cs" />
     <Compile Include="Helpers\Extensions.cs" />
@@ -494,6 +493,7 @@
     <Compile Include="Providers\Repos\SettingsRepo.cs" />
     <Compile Include="Providers\Repos\WatchFolderRepo.cs" />
     <Compile Include="Providers\RequestModels\AddPlaylistItemContext.cs" />
+    <Compile Include="Providers\RequestModels\AuthorisationCookie.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistRequestContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistResultsContinuationContext.cs" />
     <Compile Include="Providers\RequestModels\BrowseArtistResultsContext.cs" />
@@ -599,9 +599,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="AppData\ytuploader.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="AppData\84.0.522.63.7z">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="Business\PlaylistProcessor.cs" />

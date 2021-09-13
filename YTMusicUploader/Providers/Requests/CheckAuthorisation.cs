@@ -60,8 +60,10 @@ namespace YTMusicUploader.Providers
                     object json = JsonConvert.DeserializeObject(result);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.Out.WriteLine(ex.Message);
+
                 return false;
             }
 

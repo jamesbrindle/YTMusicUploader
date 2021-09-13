@@ -21,9 +21,6 @@ namespace YTMusicUploader.Business
 
             QueueCheckerThread = new Thread((ThreadStart)delegate
             {
-                while (MainForm.InstallingEdge)
-                    ThreadHelper.SafeSleep(200);
-
                 while (true)
                 {
                     try

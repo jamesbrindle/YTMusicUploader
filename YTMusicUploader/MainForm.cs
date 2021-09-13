@@ -4,9 +4,6 @@ using JBToolkit.Network;
 using JBToolkit.Threads;
 using JBToolkit.WinForms;
 using MetroFramework;
-using SharpCompress.Archives.SevenZip;
-using SharpCompress.Common;
-using SharpCompress.Readers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -78,7 +75,6 @@ namespace YTMusicUploader
         public int InitialFilesCount { get; set; } = 0;
         private List<FileSystemWatcherPoller> FileSystemFolderWatchers { get; set; } = new List<FileSystemWatcherPoller>();
         private DateTime? LastFolderChangeTime { get; set; }
-        public bool InstallingEdge { get; set; }
         public bool Aborting { get; set; } = false;
         public ManagingYTMusicStatusEnum ManagingYTMusicStatus { get; set; } = ManagingYTMusicStatusEnum.NeverShown;
         public bool DatabaseIntegrityCheckDone { get; set; } = false;
@@ -95,7 +91,6 @@ namespace YTMusicUploader
         //
         // Threads
         //
-        private Thread _installingEdgeThread;
         private Thread _connectToYouTubeMusicThread;
         private Thread _scanAndUploadThread;
         private Thread _restartThread;
@@ -120,6 +115,7 @@ namespace YTMusicUploader
 
             MainFormInstance = this;
             InitializeComponent();
+            btnConnectToYoutube.Enabled = false;
 
             if (hidden)
             {
@@ -136,13 +132,7 @@ namespace YTMusicUploader
             lblIssues.GotFocus += LinkLabel_GotFocus;
             lblDiscoveredFiles.GotFocus += LinkLabel_GotFocus;
 
-            if (!EdgeDependencyChecker.CheckEdgeCoreFilesArePresentAndCorrect())
-            {
-                btnConnectToYoutube.Enabled = false;
-                InstallEdge();
-            }
-            else
-                ConnectToYTMusicForm = new ConnectToYTMusic(this);
+            ConnectToYTMusicForm = new ConnectToYTMusic(this);
 
             FileScanner = new FileScanner(this);
             FileUploader = new FileUploader(this);
@@ -154,6 +144,7 @@ namespace YTMusicUploader
             InitialiseTooltips();
             InitialiseSystemTrayIconMenuButtons();
             ConnectToYouTubeMusic();
+
             StartMainProcess();
 
             //  Restart everything after 24 hours (is the application is continually run)
@@ -287,45 +278,6 @@ namespace YTMusicUploader
             catch { }
         }
 
-        public void InstallEdge()
-        {
-            InstallingEdge = true;
-            _installingEdgeThread = new Thread((ThreadStart)delegate
-            {
-                SetConnectToYouTubeButtonEnabled(false);
-                SetStatusMessage("Installing Canary Edge Core. This may take a couple of minutes...", "Preparing dependencies");
-
-                try
-                {
-                    using (var archive = SevenZipArchive.Open(Path.Combine(Global.WorkingDirectory, $"AppData\\{Global.EdgeVersion}.7z")))
-                    {
-                        using (var reader = archive.ExtractAllEntries())
-                        {
-                            var options = new ExtractionOptions
-                            {
-                                ExtractFullPath = true,
-                                Overwrite = true
-                            };
-
-                            reader.WriteAllToDirectory(Global.EdgeFolder, options);
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.Out.WriteLine(e.Message);
-                }
-
-                InstallingEdge = false;
-                ConnectToYTMusicForm = new ConnectToYTMusic(this);
-                SetConnectToYouTubeButtonEnabled(true);
-            })
-            {
-                IsBackground = true
-            };
-            _installingEdgeThread.Start();
-        }
-
         private async Task LoadDb()
         {
             Settings = SettingsRepo.Load().Result;
@@ -365,9 +317,6 @@ namespace YTMusicUploader
             _connectToYouTubeMusicThread = new Thread((ThreadStart)delegate
             {
                 while (Settings == null)
-                    ThreadHelper.SafeSleep(200);
-
-                while (InstallingEdge)
                     ThreadHelper.SafeSleep(200);
 
                 SetStatusMessage("Connecting to YouTube Music", "Connecting to YouTube Music");
@@ -447,8 +396,7 @@ namespace YTMusicUploader
                 if (!restarting)
                     LoadDb().Wait();
 
-                while (InstallingEdge)
-                    ThreadHelper.SafeSleep(200);
+                SetConnectToYouTubeButtonEnabled(true);
 
                 CheckForLatestVersion();
 
@@ -675,29 +623,6 @@ namespace YTMusicUploader
             FileUploader.Stopped = true;
             PlaylistProcessor.Stopped = true;
             TrayIcon.Visible = false;
-
-            if (!kill)
-            {
-                try
-                {
-                    ConnectToYTMusicForm.BrowserControl.Dispose();
-                }
-                catch
-                { }
-
-                try
-                {
-                    ConnectToYTMusicForm.Dispose();
-                }
-                catch
-                { }
-            }
-
-            try
-            {
-                _installingEdgeThread.Abort();
-            }
-            catch { }
 
             try
             {

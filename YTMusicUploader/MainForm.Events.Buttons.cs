@@ -34,7 +34,6 @@ namespace YTMusicUploader
                 {
                     // HACK: Odd behaviour on 'reshow' form. This is a workaround.
 
-                    ConnectToYTMusicForm.BrowserControl.Dispose();
                     ConnectToYTMusicForm.Dispose();
                     ConnectToYTMusicForm = new ConnectToYTMusic(this);
 
