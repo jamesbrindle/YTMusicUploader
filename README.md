@@ -1,19 +1,22 @@
 # YT Music Uploader
 
-
 &nbsp;
 
 [![N|Solid](https://portfolio.jb-net.co.uk/shared/yt_logo-64.png)](https://github.com/jamesbrindle/YTMusicUploader)
 
+
+
 &nbsp;
+## This project has now been archived
+
+Unforuntately, YTM / Google has changed they way they authenticate again and I simply don't have time to keep reworking it.
+Thanks for the support guys, it was much appreciated.
+
+
+&nbsp;
+
 
 **[Download Version 1.8.0 Installer](https://github.com/jamesbrindle/YTMusicUploader/releases/tag/v1.8.0)**
-&nbsp;
-
-&nbsp;
-
-
-<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 &nbsp;
 &nbsp;
@@ -153,10 +156,9 @@ YouTube Music uses an authentication cookie, and an authentication header consis
 - @NourishedAIO
 - nishantranacrm
 - Oak
+- Emoniz
+- Ileach
 
 &nbsp;
 &nbsp;
-
-<a href="https://www.buymeacoffee.com/jamiebrindle" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
 
